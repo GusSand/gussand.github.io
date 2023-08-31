@@ -8,13 +8,20 @@ redirect_from:
   - /about.html
 ---
 
-This is the front page of a website that is powered by the [academicpages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the respository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. You can fork [this repository](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and markdown files, add your own PDFs and other content, and have your own site for free, with no ads! An older version of this template powers my own personal website at [stuartgeiger.com](http://stuartgeiger.com), which uses [this Github repository](https://github.com/staeiou/staeiou.github.io).
-
-A data-driven personal website
+Gustavo Sandoval
 ======
-Like many other Jekyll-based GitHub Pages templates, academicpages makes you separate the website's content from its form. The content & metadata of your website are in structured markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over -- just be sure to save the markdown files! Finally, you can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
+*370 Jay St, Brooklyn, NY 11201 - Office 846 - [zoom room](nyu.zoom.us/my/Sandoval) - CV - [Github](https://github.com/gussand) - [Google Scholar](https://scholar.google.com/citations?user=8ZQ4QYgAAAAJ&hl=en) - [Twitter](https://twitter.com/gussand)* 
+
+
+I am currently an Industry Professor  of Computer Science and Engineering at [New York University's Tandon School of Engineering](https://engineering.nyu.edu/) where I do research and teach in the areas of Machine Learning, Security and Operating Systems.
+
+I am also a PhD Candidate in the ECE Department working with [Siddhart Garg](https://engineering.nyu.edu/faculty/siddharth-garg) and [Brendan Dolan-Gavitt](https://engineering.nyu.edu/faculty/brendan-dolan-gavitt) as my advisors at the Intersection of Machine Learning and Security. I belong to the [Ensure Research Lab](http://wp.nyu.edu/ensure_group/sample-page-2/team/team/).
+
+In a previous life I spend some time in Engineering and Managemente roles at [Microsoft Corporation](https://www.microsoft.com).
+
+
+![Editing a markdown file for a talk](/images/gustoon.png)
 
 Getting started
 ======
