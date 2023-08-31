@@ -9,10 +9,10 @@ redirect_from:
 ---
 
 
-*370 Jay St, Brooklyn, NY 11201 - Office 846 - [zoom room](nyu.zoom.us/my/Sandoval) - CV - [Github](https://github.com/gussand) - [Google Scholar](https://scholar.google.com/citations?user=8ZQ4QYgAAAAJ&hl=en) - [Twitter](https://twitter.com/gussand)* 
+[zoom room](nyu.zoom.us/my/Sandoval)
 
 
-![](/images/gustoon.jpg)
+[<img src="/images/gus_pict_23.jpg" width="250"/>](/images/gus_pict_23.jpg)
 
 I am currently an Industry Professor  of Computer Science and Engineering at [New York University's Tandon School of Engineering](https://engineering.nyu.edu/) where I do research and teach in the areas of Machine Learning, Security and Operating Systems.
 
