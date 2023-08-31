@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Gustavo Sandoval"
+title                    : ""
 title_separator          : "-"
 name                     : &name "Gustavo Sandoval"
 description              : &description "Industry Professor in Computer Science @nyu"
@@ -80,8 +80,8 @@ analytics:
 
 # Site Author
 author:
-  name             : "Gustavo Sandoval"
-  avatar           : "images/gustoon.jpg"
+  name             : ""
+  avatar           : ""
   bio              : ""
   location         : "Brooklyn, NY"
   employer         :
@@ -95,7 +95,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
+  github           : "gussand"
   google_plus      :
   keybase          :
   instagram        :

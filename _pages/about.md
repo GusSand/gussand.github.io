@@ -1,15 +1,12 @@
 ---
 permalink: /
-title: "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "Gustavo Sandoval"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
-
-Gustavo Sandoval
-======
 
 
 *370 Jay St, Brooklyn, NY 11201 - Office 846 - [zoom room](nyu.zoom.us/my/Sandoval) - CV - [Github](https://github.com/gussand) - [Google Scholar](https://scholar.google.com/citations?user=8ZQ4QYgAAAAJ&hl=en) - [Twitter](https://twitter.com/gussand)* 
