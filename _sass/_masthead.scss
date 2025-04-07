@@ -16,9 +16,11 @@
     @include clearfix;
     padding: 1em 1em 1em;
     font-family: $sans-serif-narrow;
+    font-weight: bold;
+    text-transform: lowercase;
 
     @include breakpoint($x-large) {
-      max-width: $x-large;
+      max-width: 800px;
     }
 
     nav {
@@ -27,12 +29,12 @@
 
     a {
       text-decoration: none;
+      color: #000;
     }
   }
 }
 
 .masthead__menu {
-
   ul {
     margin: 0;
     padding: 0;
@@ -45,9 +47,11 @@
   display: block;
   list-style-type: none;
   white-space: nowrap;
+  font-size: $type-size-5;
 
   &--lg {
     padding-right: 2em;
     font-weight: 700;
+    font-size: $type-size-4;
   }
 }

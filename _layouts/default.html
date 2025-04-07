@@ -5,27 +5,38 @@ layout: compress
 {% include base_path %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
   <head>
-    {% include head.html %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
+    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
     {% include head/custom.html %}
   </head>
 
   <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="header"><a href="{{ "/" | relative_url }}">{{ site.title }}</a></h1>
+        <nav class="menu-nav">
+          {% if site.data.menu %}
+            {% for item in site.data.menu.entries %}
+              <a class="menu-item" href="{{ item.url }}">{{ item.title }}</a>
+            {% endfor %}
+          {% endif %}
+        </nav>
+      </div>
+    </header>
 
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
+    <main>
+      {{ content }}
+    </main>
 
-    {{ content }}
-
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
-
-    {% include scripts.html %}
-
+    <footer>
+      <hr>
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}</p>
+    </footer>
   </body>
 </html>
