@@ -1,0 +1,309 @@
+---
+---
+
+/* Base styles for a dark theme similar to philkrav.com */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background-color: #000;
+  font-size: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  color: #fff;
+}
+
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #aaa;
+  text-decoration: underline;
+}
+
+.container-lg {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.markdown-body hr {
+  margin: 1.5em 0;
+}
+
+.markdown-body ul {
+  list-style: disc;
+}
+
+.wrapper {
+  width: 800px;
+}
+
+header {
+  width: 170px;
+  border-right: none;
+  
+  h1.header {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-transform: lowercase;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      margin-bottom: 10px;
+      font-size: 14px;
+      text-transform: lowercase;
+    }
+  }
+}
+
+section {
+  width: 600px;
+  border-left: none;
+  padding-bottom: 50px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  margin: 1.5em 0;
+}
+
+/* Adjustments for mobile */
+@media print, screen and (max-width: 960px) {
+  div.wrapper {
+    width: auto;
+    margin: 0;
+  }
+  
+  header, section, footer {
+    float: none;
+    position: static;
+    width: auto;
+  }
+  
+  header {
+    padding-right: 0;
+    border-right: none;
+  }
+  
+  section {
+    border: 0;
+    margin: 0;
+    padding: 20px 0;
+  }
+}
+
+/* Site header with top-right menu */
+.site-header {
+  position: relative;
+  margin-bottom: 2em;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5em;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.header-inner .header {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.menu-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: 50px;
+}
+
+.menu-item {
+  font-size: 0.9em;
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.2s ease;
+  text-transform: lowercase;
+  white-space: nowrap;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.menu-item:first-child {
+  margin-left: 0;
+}
+
+.menu-item:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .header-inner .header {
+    margin-bottom: 0.5em;
+  }
+  
+  .menu-nav {
+    margin-left: auto;
+  }
+}
+
+.site-footer {
+  border-top: 1px solid #333;
+  padding: 20px 0;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.post-content, .page-content {
+  h1 {
+    font-size: 1.8em;
+    font-weight: 600;
+    border-bottom: none;
+    margin-bottom: 0.5em;
+  }
+  
+  h2, h3, h4, h5, h6 {
+    font-weight: 600;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: underline;
+    
+    &:hover {
+      color: #aaa;
+    }
+  }
+  
+  hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    margin: 1.5em 0;
+  }
+}
+
+.home {
+  max-width: 800px;
+}
+
+.post-list {
+  margin: 2em 0;
+}
+
+.post-entry {
+  margin-bottom: 2.5em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #333;
+}
+
+.post-date {
+  color: #aaa;
+  font-size: 14px;
+  margin-right: 15px;
+}
+
+.post-link {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 0.7em;
+  display: block;
+  border-bottom: none;
+  transition: color 0.2s ease;
+}
+
+.post-link:hover {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.post-summary {
+  color: #ddd;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 0.5em;
+}
+
+.post-meta {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* Additional layout elements for no-style-please theme */
+.menu {
+  margin-bottom: 15px;
+}
+
+.menu-item {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.menu-item-date {
+  color: #aaa;
+  font-size: 12px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.menu-item-title {
+  display: inline-block;
+}
+
+.menu-item-separator {
+  color: #555;
+  display: none;
+}
+
+/* Improved link button styles for the homepage feed */
+.post-links {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.link-button {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.link-button:hover {
+  background-color: #555;
+  color: #fff;
+  text-decoration: none;
+} 

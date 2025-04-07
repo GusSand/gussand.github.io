@@ -1,0 +1,17 @@
+# This is the configuration file for the site menu
+
+entries:
+  - title: about
+    url: /about/
+  
+  - title: teaching
+    url: /teaching/
+    
+  - title: research
+    url: /research/
+    
+  - title: blog
+    url: /archives/
+    
+  - title: blog guide
+    url: /blog-guide/ 
