@@ -13,5 +13,4 @@ entries:
   - title: blog
     url: /archives/
     
-  - title: blog guide
-    url: /blog-guide/ 
+  # Blog guide removed from menu but still accessible at /blog-guide/ 
