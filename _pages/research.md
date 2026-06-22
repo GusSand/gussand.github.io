@@ -8,24 +8,26 @@ permalink: /research/
 
 ## Research Interests
 
-My research focuses on the intersection of machine learning and security. I'm particularly interested in:
+My research sits at the intersection of machine learning and security, with a focus on large language models. I'm particularly interested in:
 
-- **Machine Learning Security**: Understanding and defending against adversarial attacks on machine learning models
-- **Secure ML Applications**: Developing robust machine learning systems for security-critical applications
-- **Privacy-Preserving ML**: Methods for training and deploying models while protecting sensitive data
+- **Security of LLM code assistants**: Understanding how AI coding assistants affect the security of the code developers actually write.
+- **Secure code generation**: Diagnosing *why* LLMs produce insecure code and building targeted, mechanistic interventions to fix it.
+- **LLM attacks and defenses**: Prompt injection, goal hijacking, and adversarial fine-tuning as a defense.
+- **Mechanistic interpretability**: Using interpretability to locate and steer the internal computations responsible for insecure behavior.
 
-## Current Projects
-
-Working with researchers at the [Ensure Research Lab](http://wp.nyu.edu/ensure_group/sample-page-2/team/team/), I'm currently investigating novel attack vectors and defenses for deep learning systems.
+I received my PhD from NYU and was advised by [Siddharth Garg](https://engineering.nyu.edu/faculty/siddharth-garg) and [Brendan Dolan-Gavitt](https://engineering.nyu.edu/faculty/brendan-dolan-gavitt), and a member of the [EnSuRe Research Lab](https://wp.nyu.edu/ensure_group/).
 
 ## Publications
 
-### 2023
-- Smith, J., **Sandoval, G.**, et al. "Robust Defenses Against Adversarial Attacks in Vision Transformers." *IEEE Symposium on Security and Privacy (S&P)*.
+### 2026
+- **Sandoval, G.**, Dolan-Gavitt, B., & Garg, S. "Surgical Repair of Insecure Code Generation in LLMs: From Mechanistic Diagnosis to Deployment-Ready Intervention." *arXiv preprint arXiv:2604.16697.* [[paper]](https://arxiv.org/abs/2604.16697)
 
-### 2022
-- Jones, A., **Sandoval, G.**, et al. "Privacy-Preserving Machine Learning: Challenges and Opportunities." *ACM Conference on Computer and Communications Security (CCS)*.
+### 2025
+- **Sandoval, G.**, Fenchenko, D., & Chen, J. "Early Approaches to Adversarial Fine-Tuning for Prompt Injection Defense: A 2022 Study of GPT-3 and Contemporary Models." *arXiv preprint arXiv:2509.14271.* [[paper]](https://arxiv.org/abs/2509.14271)
+
+### 2023
+- **Sandoval, G.**, Pearce, H., Nys, T., Karri, R., Garg, S., & Dolan-Gavitt, B. "Lost at C: A User Study on the Security Implications of Large Language Model Code Assistants." *32nd USENIX Security Symposium (USENIX Security '23).* [[paper]](https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval) [[PDF]](https://www.usenix.org/system/files/sec23summer_sandoval.pdf) *(G. Sandoval and H. Pearce contributed equally.)*
 
 ## Collaborations
 
-I'm always interested in collaborating with other researchers in the fields of machine learning, security, and operating systems. Feel free to reach out if you're working on related problems. 
+I'm always interested in collaborating with other researchers in machine learning, security, and interpretability. Feel free to reach out if you're working on related problems.

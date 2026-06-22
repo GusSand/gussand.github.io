@@ -6,6 +6,29 @@ layout: default
 
 <div class="post-list">
   <div class="post-entry">
+    <span class="post-date">2026-04</span>
+    <a href="https://arxiv.org/abs/2604.16697" class="post-link" target="_blank">Surgical Repair of Insecure Code Generation in LLMs: From Mechanistic Diagnosis to Deployment-Ready Intervention</a>
+    <p class="post-summary">
+      LLMs that write insecure code can often correctly explain the very vulnerability they just introduced — a gap we call the "Format-Reliability Gap." Mechanistic analysis traces this to a single layer where format-compliance demands crowd out otherwise-present security representations. Because the failure is localized, per-vulnerability steering vectors reduce insecure generation by up to 74% with negligible overhead.
+    </p>
+    <div class="post-links">
+      <a href="https://arxiv.org/abs/2604.16697" target="_blank" class="link-button">arXiv</a>
+      <a href="https://arxiv.org/html/2604.16697v1" target="_blank" class="link-button">HTML</a>
+    </div>
+  </div>
+
+  <div class="post-entry">
+    <span class="post-date">2025-09</span>
+    <a href="https://arxiv.org/abs/2509.14271" class="post-link" target="_blank">Early Approaches to Adversarial Fine-Tuning for Prompt Injection Defense</a>
+    <p class="post-summary">
+      A study of prompt injection and goal hijacking against GPT-3-era models, introducing Adversarial Fine-Tuning as a defense. Without it, attacks succeeded 31% of the time; with it, attack success dropped to near zero for smaller GPT-3 variants. We also find more flexible models are more vulnerable — large models like GPT-3 Davinci more so than GPT-2.
+    </p>
+    <div class="post-links">
+      <a href="https://arxiv.org/abs/2509.14271" target="_blank" class="link-button">arXiv</a>
+    </div>
+  </div>
+
+  <div class="post-entry">
     <span class="post-date">2023-08</span>
     <a href="https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval" class="post-link" target="_blank">Lost at C: A User Study on the Security Implications of Large Language Model Code Assistants</a>
     <p class="post-summary">
@@ -14,38 +37,15 @@ layout: default
     <div class="post-links">
       <a href="https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval" target="_blank" class="link-button">Paper</a>
       <a href="https://www.usenix.org/system/files/sec23summer_sandoval.pdf" target="_blank" class="link-button">PDF</a>
-      <a href="https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval" target="_blank" class="link-button">Slides</a>
-    </div>
-  </div>
-
-  <div class="post-entry">
-    <span class="post-date">2023-05</span>
-    <a href="/teaching/" class="post-link">Teaching ML Security at Scale: Challenges and Opportunities</a>
-    <p class="post-summary">
-      An exploration of pedagogical approaches to teaching machine learning security concepts to large undergraduate and graduate classes. This work presents curriculum design strategies, hands-on exercises, and assessment techniques that effectively prepare students for security challenges in deployed ML systems.
-    </p>
-    <div class="post-links">
-      <a href="/teaching/" class="link-button">Course Materials</a>
-    </div>
-  </div>
-
-  <div class="post-entry">
-    <span class="post-date">2022-12</span>
-    <a href="/research/" class="post-link">Robust Defenses Against Adversarial Attacks in Vision Transformers</a>
-    <p class="post-summary">
-      This research investigates novel defense mechanisms against adversarial examples targeting vision transformer architectures. We demonstrate that certain architectural modifications can significantly improve robustness while maintaining performance on clean inputs.
-    </p>
-    <div class="post-links">
-      <a href="/research/" class="link-button">Research</a>
     </div>
   </div>
 </div>
 
 ## Recent News
 
-- **August 2023**: Presented our paper on LLM code assistants at USENIX Security '23
-- **May 2023**: Received teaching award for CS-GY 6033 Design and Analysis of Algorithms
-- **January 2023**: New course on Machine Learning Security launched 
+- **April 2026**: New preprint on surgically repairing insecure code generation in LLMs is out
+- **September 2025**: Released our study on early adversarial fine-tuning for prompt injection defense
+- **August 2023**: Presented "Lost at C" at USENIX Security '23
 
 ## Recent Blog Posts
 

@@ -18,4 +18,4 @@ In a previous life I spent some time in Engineering and Management roles at [Mic
 
 You can reach me at my NYU [zoom room](nyu.zoom.us/my/Sandoval).
 
-[<img src="/images/gus_pict_23.jpg" width="250"/>](/images/gus_pict_23.jpg)
+[<img src="/images/headshot2.jpeg" width="250"/>](/images/headshot2.jpeg)
