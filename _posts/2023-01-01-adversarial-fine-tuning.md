@@ -1,7 +1,7 @@
 ---
-title: 'Adversarial Fineturning against Prompt Injection Attacks'
+title: 'Adversarial Fine-Tuning against Prompt Injection Attacks'
 date: 2023-01-01
-permalink: /posts/2023/01/blog-post-1/
+permalink: /posts/2023/01/adversarial-fine-tuning/
 tags:
   - Security
   - Deep Learning
