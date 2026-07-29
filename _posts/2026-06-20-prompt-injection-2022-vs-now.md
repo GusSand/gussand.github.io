@@ -15,7 +15,7 @@ Date: June 20, 2026 | Estimated Reading Time: 11 min | Author: Gustavo Sandoval
 
 People like to call prompt injection the SQL injection of LLMs, and the comparison holds up better than most. Untrusted input and trusted instructions travel down the same channel, and the model has no built-in way to tell them apart. I find it useful to go back to what this looked like in 2022, when the models were GPT-3 variants and the attacks were brand new, and put it next to where we are now.
 
-This is a retrospective companion to our paper, [Early Approaches to Adversarial Fine-Tuning for Prompt Injection Defense](https://arxiv.org/abs/2509.14271) ([Sandoval et al. 2025](https://arxiv.org/abs/2509.14271)), which documents work we actually did in 2022. If you want the method itself in detail, that's in the [earlier post on Adversarial Fine-Tuning](/posts/2023/01/blog-post-1/).
+This is a retrospective companion to our paper, [Early Approaches to Adversarial Fine-Tuning for Prompt Injection Defense](https://arxiv.org/abs/2509.14271) ([Sandoval et al. 2025](https://arxiv.org/abs/2509.14271)), which documents work we actually did in 2022. If you want the method itself in detail, that's in the [earlier post on Adversarial Fine-Tuning](/posts/2023/01/adversarial-fine-tuning/).
 
 **Table of Contents**
 
