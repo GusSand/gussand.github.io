@@ -157,7 +157,7 @@ analytics:
 # (https://github.com/apps/giscus -> Install -> select gussand.github.io).
 # The repo/category IDs below were read from the GitHub API and are correct.
 comments:
-  provider: false
+  provider: giscus
   giscus:
     repo: "GusSand/gussand.github.io"
     repo_id: "R_kgDOKKkk6A"

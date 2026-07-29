@@ -2,6 +2,27 @@
 layout: default
 ---
 
+## Recent Blog Posts
+
+<div class="post-list">
+  {% for post in site.posts limit:4 %}
+  <div class="post-entry">
+    <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+    <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+    <p class="post-summary">
+      {% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 45 }}{% endif %}
+    </p>
+    <div class="post-links">
+      <a href="{{ post.url | relative_url }}" class="link-button">Read More</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<p class="see-all">
+  <a href="/archives/">See all blog posts →</a>
+</p> 
+
 ## Recent Work
 
 <div class="post-list">
@@ -46,24 +67,3 @@ layout: default
 - **April 2026**: New preprint on surgically repairing insecure code generation in LLMs is out
 - **September 2025**: Released our study on early adversarial fine-tuning for prompt injection defense
 - **August 2023**: Presented "Lost at C" at USENIX Security '23
-
-## Recent Blog Posts
-
-<div class="post-list">
-  {% for post in site.posts limit:3 %}
-  <div class="post-entry">
-    <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-    <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
-    <p class="post-summary">
-      {% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 45 }}{% endif %}
-    </p>
-    <div class="post-links">
-      <a href="{{ post.url | relative_url }}" class="link-button">Read More</a>
-    </div>
-  </div>
-  {% endfor %}
-</div>
-
-<p class="see-all">
-  <a href="/archives/">See all blog posts →</a>
-</p> 
