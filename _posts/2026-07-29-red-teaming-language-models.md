@@ -1,5 +1,6 @@
 ---
 title: 'Red-Teaming Language Models'
+description: 'The process of red teaming a language model is close to solved and the measurement is not. A map of the converged six-phase process, how attacks are really built, why the numbers are untrustworthy, and how everything reorders when you ship weights.'
 date: 2026-07-29
 permalink: /posts/2026/07/red-teaming-language-models/
 tags:

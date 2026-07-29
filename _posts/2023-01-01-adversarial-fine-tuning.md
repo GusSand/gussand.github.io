@@ -1,5 +1,6 @@
 ---
 title: 'Adversarial Fine-Tuning against Prompt Injection Attacks'
+description: 'Prompt injection against GPT-3-era models, and a defense. Undefended, attacks landed 31% of the time, and bigger models were easier to fool. Adversarial fine-tuning dropped that to near zero on smaller variants.'
 date: 2023-01-01
 permalink: /posts/2023/01/adversarial-fine-tuning/
 tags:

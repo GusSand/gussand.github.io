@@ -1,5 +1,6 @@
 ---
 title: 'Does AI Make You Write Insecure Code? A User Study'
+description: 'The security community''s fast reaction to Copilot was that models trained on public code will suggest its bad patterns and developers will accept them. Our user study with 58 programmers found something more complicated.'
 date: 2026-06-15
 permalink: /posts/2026/06/does-ai-make-code-insecure/
 tags:

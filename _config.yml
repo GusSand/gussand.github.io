@@ -142,3 +142,24 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+
+# Analytics -----------------------------------------------------------------
+# Set provider to "goatcounter" once you have signed up at goatcounter.com and
+# chosen a site code (the YOURCODE in YOURCODE.goatcounter.com). _config.dev.yml
+# forces provider to false, so localhost never reports.
+analytics:
+  provider: false
+  goatcounter:
+    code: ""
+
+# Comments ------------------------------------------------------------------
+# Set provider to "giscus" once the giscus GitHub App is installed on this repo
+# (https://github.com/apps/giscus -> Install -> select gussand.github.io).
+# The repo/category IDs below were read from the GitHub API and are correct.
+comments:
+  provider: false
+  giscus:
+    repo: "GusSand/gussand.github.io"
+    repo_id: "R_kgDOKKkk6A"
+    category: "Q&A"
+    category_id: "DIC_kwDOKKkk6M4DCQLv"

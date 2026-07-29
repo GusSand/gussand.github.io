@@ -15,4 +15,11 @@ layout: default
   <div class="post-content">
     {{ content }}
   </div>
+
+  {% if site.comments.provider and page.comments != false %}
+    <hr>
+    <h2 id="questions">Questions & Comments</h2>
+    <p class="comments-intro">Threads are GitHub Discussions. Sign in with GitHub to post.</p>
+    {% include comments.html %}
+  {% endif %}
 </div> 

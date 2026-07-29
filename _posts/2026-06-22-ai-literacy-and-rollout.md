@@ -1,5 +1,6 @@
 ---
 title: 'AI Literacy Audit and Rollout Plan'
+description: 'How to introduce agentic coding to a medium-size team, built on a Netflix training study, with a security reviewer''s caveats about the productivity numbers everyone quotes.'
 date: 2026-06-22
 permalink: /posts/2026/06/ai-literacy-and-rollout/
 tags:

@@ -1,5 +1,6 @@
 ---
 title: 'Mechanistic Interpretability as a Security Tool'
+description: 'Interpretability is usually pitched as a science project. The narrower case: if you can find where a model decides to do something unsafe, you can often fix it there instead of retraining around it.'
 date: 2026-06-22
 permalink: /posts/2026/06/mech-interp-for-security/
 tags:

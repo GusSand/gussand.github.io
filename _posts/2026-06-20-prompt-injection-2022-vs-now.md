@@ -1,5 +1,6 @@
 ---
 title: 'Prompt Injection, 2022 vs Today: A Retrospective'
+description: 'Prompt injection gets called the SQL injection of LLMs, and the comparison holds up. What the attack looked like against GPT-3 in 2022, what changed once models got tools, and what did not change at all.'
 date: 2026-06-20
 permalink: /posts/2026/06/prompt-injection-2022-vs-now/
 tags:

@@ -3,14 +3,14 @@
 entries:
   - title: about
     url: /about/
-  
-  - title: teaching
-    url: /teaching/
-    
-  - title: research
-    url: /research/
-    
+
   - title: blog
     url: /archives/
-    
-  # Blog guide removed from menu but still accessible at /blog-guide/ 
+
+  - title: research
+    url: /research/
+
+  - title: teaching
+    url: /teaching/
+
+  # Blog guide removed from menu but still accessible at /blog-guide/

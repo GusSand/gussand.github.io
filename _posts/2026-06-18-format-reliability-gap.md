@@ -1,5 +1,6 @@
 ---
 title: 'The Format-Reliability Gap: Diagnosing and Repairing Insecure Code Generation'
+description: 'A model will write you a SQL injection, then correctly identify the same bug a minute later. The knowledge is present and goes unused during generation. Tracing that gap to a single layer, and steering it away.'
 date: 2026-06-18
 permalink: /posts/2026/06/format-reliability-gap/
 tags:
