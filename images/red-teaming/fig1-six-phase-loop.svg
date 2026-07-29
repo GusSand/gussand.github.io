@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 330" width="940" height="330" role="img">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#383835; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --s1a:#5598e7; --s1b:#2a78d6; --s1c:#184f95;
+        --crit:#e66767; --good:#0ca30c; --warn:#c98500; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+         fill: var(--ink); }
+  .t   { font-size:17px; font-weight:600; }
+  .st  { font-size:13px; fill:var(--ink2); }
+  .lbl { font-size:13px; fill:var(--ink); }
+  .lblb{ font-size:13px; font-weight:600; fill:var(--ink); }
+  .sm  { font-size:12px; fill:var(--ink2); }
+  .xs  { font-size:11px; fill:var(--muted); }
+  .num { font-size:12.5px; font-weight:600; fill:var(--ink);
+         font-variant-numeric: tabular-nums; }
+  .tick{ font-size:11px; fill:var(--muted); font-variant-numeric: tabular-nums; }
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+          markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--axis)"/>
+  </marker>
+  <marker id="ahk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+          markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--crit)"/>
+  </marker>
+</defs>
+<rect width="940" height="330" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">The six-phase pattern three independent programs converged on</text>
+<text class="st" x="20" y="56">Microsoft AIRT &#183; OpenAI external red teaming &#183; Anthropic</text>
+<rect x="20" y="78" width="138" height="92" rx="7" fill="var(--box)" stroke="var(--ring)" stroke-width="1"/>
+<rect x="20" y="78" width="138" height="3.5" rx="1.75" fill="var(--s1)"/>
+<text class="xs" x="32" y="104">Phase 0</text>
+<text class="lblb" x="32" y="124">Scope</text>
+<text class="sm" x="32" y="144" font-size="11.5">Start from downstream</text>
+<text class="sm" x="32" y="159" font-size="11.5">impact, work backwards</text>
+<line x1="159" y1="124.0" x2="169" y2="124.0" stroke="var(--axis)" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="170" y="78" width="138" height="92" rx="7" fill="var(--box)" stroke="var(--ring)" stroke-width="1"/>
+<rect x="170" y="78" width="138" height="3.5" rx="1.75" fill="var(--s1)"/>
+<text class="xs" x="182" y="104">Phase 1</text>
+<text class="lblb" x="182" y="124">Threat model</text>
+<text class="sm" x="182" y="144" font-size="11.5">Access ladder +</text>
+<text class="sm" x="182" y="159" font-size="11.5">adversary tier</text>
+<line x1="309" y1="124.0" x2="319" y2="124.0" stroke="var(--axis)" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="320" y="78" width="138" height="92" rx="7" fill="var(--box)" stroke="var(--ring)" stroke-width="1"/>
+<rect x="320" y="78" width="138" height="3.5" rx="1.75" fill="var(--s1)"/>
+<text class="xs" x="332" y="104">Phase 2</text>
+<text class="lblb" x="332" y="124">Team &amp; access</text>
+<text class="sm" x="332" y="144" font-size="11.5">Cohort, interfaces,</text>
+<text class="sm" x="332" y="159" font-size="11.5">instructions</text>
+<line x1="459" y1="124.0" x2="469" y2="124.0" stroke="var(--axis)" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="470" y="78" width="138" height="92" rx="7" fill="var(--box)" stroke="var(--ring)" stroke-width="1"/>
+<rect x="470" y="78" width="138" height="3.5" rx="1.75" fill="var(--s1)"/>
+<text class="xs" x="482" y="104">Phase 3</text>
+<text class="lblb" x="482" y="124">Attack</text>
+<text class="sm" x="482" y="144" font-size="11.5">Humans and automation</text>
+<text class="sm" x="482" y="159" font-size="11.5">in one loop</text>
+<line x1="609" y1="124.0" x2="619" y2="124.0" stroke="var(--axis)" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="620" y="78" width="138" height="92" rx="7" fill="var(--box)" stroke="var(--ring)" stroke-width="1"/>
+<rect x="620" y="78" width="138" height="3.5" rx="1.75" fill="var(--s1)"/>
+<text class="xs" x="632" y="104">Phase 4</text>
+<text class="lblb" x="632" y="124">Judge</text>
+<text class="sm" x="632" y="144" font-size="11.5">Validate the judge</text>
+<text class="sm" x="632" y="159" font-size="11.5">before trusting it</text>
+<line x1="759" y1="124.0" x2="769" y2="124.0" stroke="var(--axis)" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="770" y="78" width="138" height="92" rx="7" fill="var(--box)" stroke="var(--ring)" stroke-width="1"/>
+<rect x="770" y="78" width="138" height="3.5" rx="1.75" fill="var(--s1)"/>
+<text class="xs" x="782" y="104">Phase 5</text>
+<text class="lblb" x="782" y="124">Break&#8211;fix</text>
+<text class="sm" x="782" y="144" font-size="11.5">Then purple team,</text>
+<text class="sm" x="782" y="159" font-size="11.5">then automate</text>
+<path d="M 839.0 176 C 839.0 232, 89.0 232, 89.0 176" fill="none" stroke="var(--s2)" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<text class="sm" x="470.0" y="250" text-anchor="middle" fill="var(--s2)">findings become automated evals &#8212; the loop is what makes a program compound</text>
+<text class="xs" x="20" y="316">Every phase is reversible except the release decision.</text>
+</svg>

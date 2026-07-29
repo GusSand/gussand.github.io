@@ -9,9 +9,7 @@ tags:
   - Adversarial Fine-Tuning
 ---
 
-# Prompt Injection, 2022 vs Today: A Retrospective
-
-Date: June 20, 2026 | Estimated Reading Time: 11 min | Author: Gustavo Sandoval
+Date: June 20, 2026 \| Estimated Reading Time: 11 min \| Author: Gustavo Sandoval
 
 People like to call prompt injection the SQL injection of LLMs, and the comparison holds up better than most. Untrusted input and trusted instructions travel down the same channel, and the model has no built-in way to tell them apart. I find it useful to go back to what this looked like in 2022, when the models were GPT-3 variants and the attacks were brand new, and put it next to where we are now.
 

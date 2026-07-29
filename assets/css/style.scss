@@ -307,3 +307,47 @@ hr {
   color: #fff;
   text-decoration: none;
 } 
+/* Tables
+   The base stylesheet had no table rules, so bordered cells and a header
+   band are doing the work of separating columns that were previously just
+   floating text. */
+.post-content, .page-content {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.6em 0;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  thead th {
+    background-color: #1a1a1a;
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 1px solid #444;
+  }
+
+  th, td {
+    padding: 9px 12px;
+    border: 1px solid #2e2e2e;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  tbody tr:nth-child(even) td {
+    background-color: #0f0f0f;
+  }
+
+  tbody tr:hover td {
+    background-color: #191919;
+  }
+
+  /* long-celled tables scroll rather than squash on small screens */
+  @media (max-width: 600px) {
+    table {
+      display: block;
+      overflow-x: auto;
+    }
+  }
+}

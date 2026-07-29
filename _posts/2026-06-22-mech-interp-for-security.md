@@ -9,9 +9,7 @@ tags:
   - Steering
 ---
 
-# Mechanistic Interpretability as a Security Tool
-
-Date: June 22, 2026 | Estimated Reading Time: 10 min | Author: Gustavo Sandoval
+Date: June 22, 2026 \| Estimated Reading Time: 10 min \| Author: Gustavo Sandoval
 
 Mechanistic interpretability usually gets pitched as a science project, a way to understand in principle what's happening inside a neural network. I want to make a narrower, more practical case for it: interpretability as a security tool. If you can find where a model decides to do something unsafe, you can often fix it right there, cheaply, without retraining the whole thing.
 

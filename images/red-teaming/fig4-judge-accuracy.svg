@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 430" width="940" height="430" role="img">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#383835; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --s1a:#5598e7; --s1b:#2a78d6; --s1c:#184f95;
+        --crit:#e66767; --good:#0ca30c; --warn:#c98500; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+         fill: var(--ink); }
+  .t   { font-size:17px; font-weight:600; }
+  .st  { font-size:13px; fill:var(--ink2); }
+  .lbl { font-size:13px; fill:var(--ink); }
+  .lblb{ font-size:13px; font-weight:600; fill:var(--ink); }
+  .sm  { font-size:12px; fill:var(--ink2); }
+  .xs  { font-size:11px; fill:var(--muted); }
+  .num { font-size:12.5px; font-weight:600; fill:var(--ink);
+         font-variant-numeric: tabular-nums; }
+  .tick{ font-size:11px; fill:var(--muted); font-variant-numeric: tabular-nums; }
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+          markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--axis)"/>
+  </marker>
+  <marker id="ahk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+          markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--crit)"/>
+  </marker>
+</defs>
+<rect width="940" height="430" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">The judge, not the model: garak evaluator accuracy by attack category</text>
+<text class="st" x="20" y="56">Agreement with an independent verifier, 25 categories &#215; 23,000 pairs at temperature 0. 82% of built-in evaluators are rule-based.</text>
+<rect x="20" y="72" width="11" height="11" rx="2.5" fill="var(--s1)"/>
+<text class="sm" x="38" y="82">default (rule-based)</text>
+<rect x="182" y="72" width="11" height="11" rx="2.5" fill="var(--s2)"/>
+<text class="sm" x="200" y="82">best LLM judge</text>
+<line x1="178.0" y1="100" x2="178.0" y2="372" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="178.0" y="392" text-anchor="middle">0%</text>
+<line x1="318.0" y1="100" x2="318.0" y2="372" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="318.0" y="392" text-anchor="middle">25%</text>
+<line x1="458.0" y1="100" x2="458.0" y2="372" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="458.0" y="392" text-anchor="middle">50%</text>
+<line x1="598.0" y1="100" x2="598.0" y2="372" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="598.0" y="392" text-anchor="middle">75%</text>
+<line x1="738.0" y1="100" x2="738.0" y2="372" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="738.0" y="392" text-anchor="middle">100%</text>
+<text class="lbl" x="164" y="126" text-anchor="end">Misleading</text>
+<rect x="178" y="108" width="11.2" height="15" rx="4" fill="var(--s1)"/>
+<text class="num" x="196.2" y="120">2.0</text>
+<rect x="178" y="125" width="548.8" height="15" rx="4" fill="var(--s2)"/>
+<text class="num" x="733.8" y="137">98.0</text>
+<text class="lbl" x="164" y="172" text-anchor="end">MalwareGen</text>
+<rect x="178" y="154" width="115.9" height="15" rx="4" fill="var(--s1)"/>
+<text class="num" x="300.9" y="166">20.7</text>
+<rect x="178" y="171" width="537.6" height="15" rx="4" fill="var(--s2)"/>
+<text class="num" x="722.6" y="183">96.0</text>
+<text class="lbl" x="164" y="218" text-anchor="end">Divergence</text>
+<rect x="178" y="200" width="207.2" height="15" rx="4" fill="var(--s1)"/>
+<text class="num" x="392.2" y="212">37.0</text>
+<rect x="178" y="217" width="560.0" height="15" rx="4" fill="var(--s2)"/>
+<text class="num" x="745.0" y="229">100.0</text>
+<text class="lbl" x="164" y="264" text-anchor="end">Leak Replay</text>
+<rect x="178" y="246" width="492.8" height="15" rx="4" fill="var(--s1)"/>
+<text class="num" x="677.8" y="258">88.0</text>
+<rect x="178" y="263" width="442.4" height="15" rx="4" fill="var(--s2)"/>
+<text class="num" x="627.4" y="275">79.0</text>
+<text class="xs" x="790" y="264" fill="var(--warn)">static wins</text>
+<text class="lbl" x="164" y="310" text-anchor="end">ANSI Escape</text>
+<rect x="178" y="292" width="500.1" height="15" rx="4" fill="var(--s1)"/>
+<text class="num" x="685.1" y="304">89.3</text>
+<rect x="178" y="309" width="498.4" height="15" rx="4" fill="var(--s2)"/>
+<text class="num" x="683.4" y="321">89.0</text>
+<text class="xs" x="790" y="310" fill="var(--warn)">static wins</text>
+<text class="lbl" x="164" y="356" text-anchor="end">AV Spam Scanning</text>
+<rect x="178" y="338" width="560.0" height="15" rx="4" fill="var(--s1)"/>
+<text class="num" x="745.0" y="350">100.0</text>
+<rect x="178" y="355" width="547.7" height="15" rx="4" fill="var(--s2)"/>
+<text class="num" x="732.7" y="367">97.8</text>
+<text class="xs" x="790" y="356" fill="var(--warn)">static wins</text>
+<line x1="178" y1="100" x2="178" y2="372" stroke="var(--axis)" stroke-width="1.4"/>
+<text class="xs" x="20" y="414">Replacing every evaluator is the wrong fix: four of the 25 categories are handled better by the static heuristic than by any LLM judge tested.</text>
+</svg>

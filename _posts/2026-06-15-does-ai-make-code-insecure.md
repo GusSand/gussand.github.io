@@ -9,9 +9,7 @@ tags:
   - User Study
 ---
 
-# Does AI Make You Write Insecure Code? A User Study
-
-Date: June 15, 2026 | Estimated Reading Time: 9 min | Author: Gustavo Sandoval
+Date: June 15, 2026 \| Estimated Reading Time: 9 min \| Author: Gustavo Sandoval
 
 When Copilot and Codex showed up in everyone's editor, the security community had a fast and fair reaction. A model trained on a huge pile of public code is going to suggest some of the bad patterns in that pile, and people are going to accept them. There was even evidence for the worry. When you looked at what Copilot generated on its own, a meaningful fraction of it contained weaknesses ([Pearce et al. 2022](https://arxiv.org/abs/2108.09293)).
 

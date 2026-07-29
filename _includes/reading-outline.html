@@ -1,0 +1,186 @@
+<!--
+  Reading aids for long posts: a scroll-progress bar and a fixed section
+  outline that tracks where you are.
+
+  Include this file from a post to switch the aids on. The outline is built
+  from the h1/h2 elements inside .post-content at load time, so it never
+  drifts out of sync with the text. It hides itself below 1300px, where there
+  is no room beside the 800px content column.
+
+  Note: do not write a literal include tag in this file, even inside a comment.
+  Liquid evaluates it and the include recurses into itself.
+-->
+
+<style>
+  .ro-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0;
+    background: #3987e5;
+    z-index: 50;
+  }
+
+  .ro-outline { display: none; }
+
+  /* Anchored to the right edge rather than the left, so the gap to the 800px
+     content column stays fixed at 40px instead of shrinking as the window
+     narrows. The breakpoint is what it is because 200px of outline plus that
+     gap needs a margin wide enough to sit in. */
+  @media (min-width: 1380px) {
+    .ro-outline {
+      display: block;
+      position: fixed;
+      top: 90px;
+      right: calc(50% + 440px);
+      left: auto;
+      width: 200px;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      font-size: 12.5px;
+      line-height: 1.4;
+      z-index: 40;
+    }
+    /* the outline is a reading aid, not content: keep it quiet */
+    .ro-outline::-webkit-scrollbar { width: 6px; }
+    .ro-outline::-webkit-scrollbar-thumb { background: #2c2c2a; border-radius: 3px; }
+  }
+
+  .ro-outline h2 {
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6f6e69;
+    margin: 0 0 10px 2px;
+    font-weight: 600;
+  }
+
+  .ro-outline ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid #2c2c2a;
+  }
+
+  .ro-outline li { margin: 0; }
+
+  .ro-outline a {
+    display: block;
+    padding: 3px 0 3px 11px;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    color: #8a8a85;
+    text-decoration: none;
+    transition: color 0.12s ease, border-color 0.12s ease;
+  }
+
+  .ro-outline a:hover { color: #e6e6e0; text-decoration: none; }
+
+  .ro-outline a.ro-sub {
+    padding-left: 22px;
+    font-size: 12px;
+    color: #6f6e69;
+  }
+
+  .ro-outline a.ro-active {
+    color: #ffffff;
+    border-left-color: #3987e5;
+  }
+
+  .ro-outline a.ro-sub.ro-active { color: #ffffff; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ro-outline a { transition: none; }
+  }
+</style>
+
+<div class="ro-progress" id="ro-progress"></div>
+<nav class="ro-outline" id="ro-outline" aria-label="Section outline"></nav>
+
+<script>
+(function () {
+function build() {
+  var content = document.querySelector('.post-content');
+  var outline = document.getElementById('ro-outline');
+  var bar = document.getElementById('ro-progress');
+  if (!content || !outline) return;
+
+  var pageTitle = (document.querySelector('.post > h1') || {}).textContent || '';
+  var heads = [].slice.call(content.querySelectorAll('h1[id], h2[id]'))
+    // defensive: the layout already prints the title, so drop a body heading
+    // that repeats it rather than listing the post twice
+    .filter(function (h) { return h.textContent.trim() !== pageTitle.trim(); });
+
+  if (heads.length < 3) return;
+
+  var list = document.createElement('ul');
+  var links = heads.map(function (h) {
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    if (h.tagName === 'H2') a.className = 'ro-sub';
+    li.appendChild(a);
+    list.appendChild(li);
+    return a;
+  });
+
+  var label = document.createElement('h2');
+  label.textContent = 'On this page';
+  outline.appendChild(label);
+  outline.appendChild(list);
+
+  var active = -1;
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var height = (doc.scrollHeight || document.body.scrollHeight) - doc.clientHeight;
+    if (bar) bar.style.width = (height > 0 ? (scrolled / height) * 100 : 0) + '%';
+
+    // current section = last heading whose top has passed the read line
+    var line = 130;
+    var i = 0;
+    for (var n = 0; n < heads.length; n++) {
+      if (heads[n].getBoundingClientRect().top <= line) i = n; else break;
+    }
+    if (i === active) return;
+
+    if (links[active]) links[active].classList.remove('ro-active');
+    links[i].classList.add('ro-active');
+    active = i;
+
+    // keep the active entry visible when the outline itself scrolls
+    var box = outline.getBoundingClientRect();
+    var cur = links[i].getBoundingClientRect();
+    if (cur.bottom > box.bottom - 8) {
+      outline.scrollTop += cur.bottom - box.bottom + 40;
+    } else if (cur.top < box.top + 8) {
+      outline.scrollTop -= box.top - cur.top + 40;
+    }
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, {passive: true});
+  window.addEventListener('resize', onScroll, {passive: true});
+  update();
+}
+
+// This include sits partway down the post, so at parse time the headings
+// below it do not exist yet. Wait for the full document.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', build);
+} else {
+  build();
+}
+})();
+</script>

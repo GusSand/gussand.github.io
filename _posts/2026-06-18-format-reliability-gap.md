@@ -9,9 +9,7 @@ tags:
   - Secure Code Generation
 ---
 
-# The Format-Reliability Gap: Diagnosing and Repairing Insecure Code Generation
-
-Date: June 18, 2026 | Estimated Reading Time: 10 min | Author: Gustavo Sandoval
+Date: June 18, 2026 \| Estimated Reading Time: 10 min \| Author: Gustavo Sandoval
 
 Ask an LLM to generate a piece of code and it might hand you a SQL injection or a buffer overflow. Ask the same model, a minute later, "does this code have a vulnerability?" and it will often name the bug, explain why it's dangerous, and write the fix. So the knowledge is in there. The model just doesn't use it while it's generating.
 
