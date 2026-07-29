@@ -16,7 +16,7 @@ permalink: /archives/
       </p>
       {% if post.tags.size > 0 %}
       <div class="post-tags">
-        {% for tag in post.tags limit:5 %}<span class="post-tag">{{ tag }}</span>{% endfor %}
+        {% for tag in post.tags %}<span class="post-tag">{{ tag }}</span>{% endfor %}
       </div>
       {% endif %}
     </div>

@@ -55,7 +55,7 @@ layout: default
     <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
     <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
     <p class="post-summary">
-      {{ post.content | strip_html | truncatewords: 50 }}
+      {% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 45 }}{% endif %}
     </p>
     <div class="post-links">
       <a href="{{ post.url | relative_url }}" class="link-button">Read More</a>
