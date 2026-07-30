@@ -12,7 +12,7 @@ tags:
   - Open Weights
 ---
 
-Date: July 29, 2026 \| Estimated Reading Time: 36 min \| Author: Gustavo Sandoval
+Date: July 29, 2026 \| Estimated Reading Time: 41 min \| Author: Gustavo Sandoval
 
 In April 2023, a programmer going by Annie Versary asked Discord's chatbot to play their dead grandmother.
 
@@ -64,6 +64,7 @@ What follows is my attempt at a map: how the process works, how attacks are actu
 - [Open Weights Changes the Order](#open-weights-changes-the-order)
   - [Measuring Any of This Is Its Own Problem](#measuring-any-of-this-is-its-own-problem)
   - [Moving the Intervention Into Pretraining](#moving-the-intervention-into-pretraining)
+  - [Or Put the Capability in a Detachable Part](#or-put-the-capability-in-a-detachable-part)
   - [A Priority List](#a-priority-list)
 - [Access, Disclosure, Governance](#access-disclosure-governance)
 - [Open Problems](#open-problems)
@@ -353,6 +354,26 @@ Underneath all of this sits an open mechanistic question that I find more intere
 
 I have a stake in this question. In our own unlearning work we found that a method reporting complete suppression of a target behavior could be substantially reverted with a few dozen samples, which is what you would expect if the knowledge were gated rather than removed. It is the same pattern I keep running into in code security, where a model can identify a vulnerability it just wrote. Che et al. report the same thing at benchmark scale, 16 fine-tuning steps to undo state-of-the-art unlearning, so this is not an artifact of our setup. Behavioral evidence of absence is weak evidence, and the whole tamper-resistance literature currently rests on it.
 
+## Or Put the Capability in a Detachable Part
+
+Filtering has one weakness that is not really about safety at all. It is about labels. Deciding what counts as dual-use content is expensive at the scale of a pretraining corpus, and because larger models are more sample-efficient, a small fraction of mislabeled content can hand the capability back. Filter 99% of the virology and the remaining 1% may be enough.
+
+A different line of work takes that seriously and stops trying to keep the capability out. Instead it decides *where in the weights* the capability is allowed to live. Gradient routing uses data-dependent masks so that examples from a target domain only update a chosen subset of parameters ([Cloud et al. 2024](https://arxiv.org/abs/2410.04332)). Train that way and the capability is localized by construction, so you can delete the subset afterwards. Selective Gradient Masking sharpens this and tests the thing that actually matters, which is behavior under label noise ([Shilov et al. 2025](https://arxiv.org/abs/2512.05648)). It beats data filtering on the retain/forget trade-off precisely when labels are wrong, and it needs seven times more fine-tuning steps than RMU-style unlearning to climb back to baseline on the forget set. That second number is the interesting one, because it is a tamper-resistance claim rather than a suppression claim.
+
+The version that made me reconsider the release decision entirely is GRAM, from AE Studio with Anthropic ([Roland et al. 2026](https://arxiv.org/abs/2607.08077)). Each MLP block gets small auxiliary modules, one per sensitive domain. There is no learned router and no per-token routing; gradient routing sends updates to modules according to the data label, so the core weights carry general knowledge and each auxiliary module carries one capability. Delete a module at inference and that capability goes with it.
+
+The results are stronger than I expected from a first paper. A single training run approximates a whole family of separately filtered models, which at 26M parameters matched five individually filtered models and at 800M gave capability removal comparable to filtering across virology, cybersecurity, nuclear physics, and specialized code. It holds from 50M to 5B parameters, with isolation getting *better* as models grow rather than worse. Modules compose: sixteen configurations from four modules, where stacking LoRA adapters degraded instead. And with half the training data left unlabeled, it beat both filtering and LoRA, which is the realistic setting given that labeling was the original problem.
+
+Here is why this matters beyond the efficiency win. Every release decision in this post has been binary, and the [ladder from earlier](#the-access-ladder) is built on that assumption: you ship the weights or you do not. Modular pretraining makes "ship the model without the virology module" a coherent thing to do, and it makes producing that variant nearly free once you have trained once. That turns the most consequential and least reversible step in the pipeline into something with intermediate settings.
+
+I would not oversell it, and neither do the authors. It is preliminary, has not been applied to production models at Anthropic, and the paper is explicit that it is unclear whether entangled capabilities make this kind of separation feasible at all in the limit, whether it scales to frontier models, and even how it differs conceptually from LoRA. My own reservation is narrower. Deleting a module before release lands you back in exactly the situation the [previous section](#moving-the-intervention-into-pretraining) describes, where the question is whether an adversary can retrain the capability into the weights you did ship. SGTM's seven-times number is the only real evidence on that, and seven times cheap is still cheap. Modular pretraining makes it easy to produce many variants; it does not by itself make any one variant hard to tamper with. Those are different problems and the literature is much further along on the first.
+
+The framing I have found most useful for organizing all of this is Siddiqui and colleagues' argument that **capability control is a separate goal from alignment** ([Siddiqui et al. 2026](https://arxiv.org/abs/2602.05164)). Alignment is preference-driven and context-dependent; capability control is about hard operational limits that hold under adversarial elicitation. They sort the mechanisms into three layers, data, learning, and system, note that each fails characteristically when used alone, and land on defense in depth across the stack. Their listed open challenges are the same two that keep appearing in this post: knowledge is dual-use, and capabilities recombine compositionally.
+
+Two adjacent papers are worth knowing even though they need the inference path you lose on release. Least-privilege language models redefine "access" as *reachable internal computation* during the forward pass, and give a rank-indexed knob that shrinks the model's accessible function class rather than refusing at the output ([Rauba et al. 2026](https://arxiv.org/abs/2601.23157)). And a position paper argues the dual-use dilemma is really an authorization problem, where verified users get dual-use outputs and everyone else does not ([Wybitul 2025](https://arxiv.org/abs/2505.09341)). Both are the right idea in the wrong threat model for open weights, and both are directly usable if you are hosting.
+
+Reading these two subsections back to back, the pattern is not subtle enough to leave implicit: **the answer keeps being in pretraining.** Filter the data, or route the gradients, or both. Every intervention in this section that survives contact with someone who has your weights is one you made before training finished. Everything added afterwards is either cheap to strip or entirely optional for the adversary. I would not defend that as a law, and Li et al.'s result on compositional reconstruction is a real crack in it. But nothing in the current literature contradicts it either, and it is a much better planning heuristic than the order most teams actually work in.
+
 ## A Priority List
 
 What follows is my own ordering rather than anyone's published framework, so treat the sequence as a claim I am making and the individual items as claims other people have made. Each one points at where it comes from.
@@ -365,7 +386,7 @@ If you are building an open-weights model, in order:
 2. **Run dangerous-capability evaluations on the base model, before alignment work.** This inverts the usual order and is the highest-value single change. Because refusal is removable, what matters at release is what the base model knows and can do. This is Paskov et al.'s PE1 and PE2, and the [Safety Gap Toolkit](https://arxiv.org/abs/2507.11544) is the instrument for measuring the difference.
 3. **Measure marginal uplift, not absolute harm.** The release-relevant quantity is what your model adds over what is already openly available. The marginal-risk framework is Kapoor et al.'s, along with their finding that most existing risk assessments do not actually measure it ([Kapoor et al. 2024](https://arxiv.org/abs/2403.07918)).
 4. **Treat the release decision as the top-level control and document it.** Record the decision, the criteria, the dissent, and what would have changed it. It is the only irreversible step in the pipeline, and it deserves more process than any individual attack campaign. Anthropic flagged back in 2022 that their release decision was made in isolation with no community norms to appeal to ([Ganguli et al. 2022](https://arxiv.org/abs/2209.07858)), and that remains largely true.
-5. **Move the intervention into pretraining,** per [the section above](#moving-the-intervention-into-pretraining) ([O'Brien et al. 2025](https://arxiv.org/abs/2508.06601)).
+5. **Move the intervention into pretraining,** by filtering the data ([O'Brien et al. 2025](https://arxiv.org/abs/2508.06601)) or by routing gradients so the capability lands somewhere you can detach ([Roland et al. 2026](https://arxiv.org/abs/2607.08077)). The second option also lets you release graded variants instead of making one all-or-nothing call, which is the only idea I have seen that gives item 4 anything to work with.
 6. **Do the adversarial training that is cheap and demonstrated.** HarmBench trained Zephyr with R2D2 for 16 hours on a single 8×A100 node and reached 5.9% GCG attack success, against 31.8% and 30.2% for the Llama 2 7B and 13B chat models it was compared against, at modest utility cost ([Mazeika et al. 2024](https://arxiv.org/abs/2402.04249)). Scoped to the attack class it targets, but affordable and reproducible.
 7. **Build and validate the judge before scaling attacks.** Hand-label a few hundred completions, compute agreement, then automate. This follows from [the measurement section](#the-measurement-problem), and it is where I think most teams waste the most money.
 8. **Red team adaptively, or not at all,** with a fine-tuning arm ([Nasr et al. 2025](https://arxiv.org/abs/2510.09023)).
@@ -525,3 +546,15 @@ Or
 [53] Paskov, Rodriguez, Dev, and Casper. ["Open Weight AI Models Require Proportional Evaluation Approaches"](https://arxiv.org/abs/2606.19890). arXiv preprint arXiv:2606.19890 (2026).
 
 [54] Shen, Chen, Backes, Shen, and Zhang. ["Do Anything Now: Characterizing and Evaluating In-The-Wild Jailbreak Prompts on Large Language Models"](https://arxiv.org/abs/2308.03825). ACM CCS 2024.
+
+[55] Cloud, Goldman-Wetzler, Wybitul, Miller, and Turner. ["Gradient Routing: Masking Gradients to Localize Computation in Neural Networks"](https://arxiv.org/abs/2410.04332). arXiv preprint arXiv:2410.04332 (2024).
+
+[56] Shilov, Cloud, Gema, Goldman-Wetzler, Panickssery, Sleight, et al. ["Beyond Data Filtering: Knowledge Localization for Capability Removal in LLMs"](https://arxiv.org/abs/2512.05648). arXiv preprint arXiv:2512.05648 (2025).
+
+[57] Roland, Cubuktepe, Martinez, Servaes, Pepper, Vaiana, de Lucena, Rosenblatt, Foote, Anil, and Cloud. ["Modular Pretraining Enables Access Control"](https://arxiv.org/abs/2607.08077). ICML 2026 (Spotlight).
+
+[58] Siddiqui, Triantafillou, Krueger, and Weller. ["Position: Capability Control Should be a Separate Goal From Alignment"](https://arxiv.org/abs/2602.05164). arXiv preprint arXiv:2602.05164 (2026).
+
+[59] Rauba, Seputis, Vanagas, and van der Schaar. ["No More, No Less: Least-Privilege Language Models"](https://arxiv.org/abs/2601.23157). arXiv preprint arXiv:2601.23157 (2026).
+
+[60] Wybitul. ["Access Controls Will Solve the Dual-Use Dilemma"](https://arxiv.org/abs/2505.09341). arXiv preprint arXiv:2505.09341 (2025).
