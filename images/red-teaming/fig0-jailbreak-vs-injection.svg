@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 404" width="940" height="404" role="img">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#383835; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --s1a:#5598e7; --s1b:#2a78d6; --s1c:#184f95;
+        --crit:#e66767; --good:#0ca30c; --warn:#c98500; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+         fill: var(--ink); }
+  .t   { font-size:17px; font-weight:600; }
+  .st  { font-size:13px; fill:var(--ink2); }
+  .hd  { font-size:13.5px; font-weight:600; letter-spacing:0.06em; }
+  .lbl { font-size:13px; fill:var(--ink); }
+  .lblb{ font-size:13px; font-weight:600; fill:var(--ink); }
+  .sm  { font-size:11.5px; fill:var(--ink2); }
+  .xs  { font-size:11px; fill:var(--muted); }
+</style>
+<defs>
+  <marker id="jah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+          markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--axis)"/>
+  </marker>
+</defs>
+<rect width="940" height="404" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Same surface, opposite direction of attack</text>
+<text class="st" x="20" y="56">Orange marks where the adversary sits. Move it and the defense that helps you moves with it.</text>
+
+<!-- left panel -->
+<rect x="20" y="76" width="440" height="308" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
+<text class="hd" x="40" y="104" fill="var(--s2)">JAILBREAK</text>
+<text class="sm" x="40" y="123">Targets the model&#8217;s alignment</text>
+
+<rect x="40" y="138" width="400" height="42" rx="6" fill="var(--s2)" opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="56" y="157">User</text>
+<text class="sm" x="56" y="173">Wants the refused content, and asks for it in a costume</text>
+<line x1="240" y1="180" x2="240" y2="200" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
+
+<rect x="40" y="202" width="400" height="42" rx="6" fill="var(--box)" stroke="var(--ring)" stroke-width="1.1"/>
+<text class="lblb" x="56" y="221">Developer instructions</text>
+<text class="sm" x="56" y="237">Intact. Never the thing under attack</text>
+<line x1="240" y1="244" x2="240" y2="264" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
+
+<rect x="40" y="266" width="400" height="42" rx="6" fill="var(--s1)" opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
+<text class="lblb" x="56" y="285">Model complies out of character</text>
+<text class="sm" x="56" y="301">Refusal was attached to the phrasing, not the content</text>
+
+<text class="xs" x="40" y="336">Defense lives in the model: refusal.</text>
+<text class="xs" x="40" y="356">Example: the grandmother.</text>
+
+<!-- right panel -->
+<rect x="480" y="76" width="440" height="308" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
+<text class="hd" x="500" y="104" fill="var(--s2)">PROMPT INJECTION</text>
+<text class="sm" x="500" y="123">Targets the application</text>
+
+<rect x="500" y="138" width="400" height="42" rx="6" fill="var(--box)" stroke="var(--ring)" stroke-width="1.1"/>
+<text class="lblb" x="516" y="157">User</text>
+<text class="sm" x="516" y="173">Not the attacker. Usually the one who gets hurt</text>
+<line x1="700" y1="180" x2="700" y2="200" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
+
+<rect x="500" y="202" width="400" height="42" rx="6" fill="var(--s2)" opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="516" y="221">Third-party content enters the context</text>
+<text class="sm" x="516" y="237">A tweet, a web page, an email, a retrieved document</text>
+<line x1="700" y1="244" x2="700" y2="264" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
+
+<rect x="500" y="266" width="400" height="42" rx="6" fill="var(--s1)" opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
+<text class="lblb" x="516" y="285">Model follows the planted instructions</text>
+<text class="sm" x="516" y="301">The developer&#8217;s instructions are the thing overridden</text>
+
+<text class="xs" x="500" y="336">Defense lives in the system: separate instructions from data.</text>
+<text class="xs" x="500" y="356">Example: remoteli.io.</text>
+</svg>

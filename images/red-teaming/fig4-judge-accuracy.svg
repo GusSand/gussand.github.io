@@ -28,7 +28,7 @@
 </defs>
 <rect width="940" height="430" rx="8" fill="var(--surface)"/>
 <text class="t" x="20" y="34">The judge, not the model: garak evaluator accuracy by attack category</text>
-<text class="st" x="20" y="56">Agreement with an independent verifier, 25 categories &#215; 23,000 pairs at temperature 0. 82% of built-in evaluators are rule-based.</text>
+<text class="st" x="20" y="56">Agreement with an independent verifier, from a 25-category scan of 23,000 pairs at temperature 0. 82% of built-in evaluators are rule-based.</text>
 <rect x="20" y="72" width="11" height="11" rx="2.5" fill="var(--s1)"/>
 <text class="sm" x="38" y="82">default (rule-based)</text>
 <rect x="182" y="72" width="11" height="11" rx="2.5" fill="var(--s2)"/>
@@ -77,5 +77,5 @@
 <text class="num" x="732.7" y="367">97.8</text>
 <text class="xs" x="790" y="356" fill="var(--warn)">static wins</text>
 <line x1="178" y1="100" x2="178" y2="372" stroke="var(--axis)" stroke-width="1.4"/>
-<text class="xs" x="20" y="414">Replacing every evaluator is the wrong fix: four of the 25 categories are handled better by the static heuristic than by any LLM judge tested.</text>
+<text class="xs" x="20" y="414">Replacing every evaluator is the wrong fix: on the bottom three categories the static heuristic still beats the best LLM judge tested.</text>
 </svg>
