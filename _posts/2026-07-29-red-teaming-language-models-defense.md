@@ -14,9 +14,9 @@ tags:
 
 Date: July 29, 2026 \| Estimated Reading Time: 5 min \| Author: Gustavo Sandoval
 
-Series: [Part 1](/posts/2026/07/red-teaming-language-models/) &mdash; Process & Measurement &middot; **Part 2** &mdash; What Holds on Defense &middot; [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/) &mdash; Open Weights
+Series: [Part 1: Process & Measurement](/posts/2026/07/red-teaming-language-models/) &middot; **Part 2: What Holds on Defense** &middot; [Part 3: Open Weights](/posts/2026/07/red-teaming-language-models-open-weights/)
 
-This is the second of three parts. [Part 1](/posts/2026/07/red-teaming-language-models/) covered the converged red-teaming process, how attacks are built, and why reported attack success rates are so often not comparable. Here I ask the question that motivates the whole exercise: once you can run a red team and measure it, does any defense actually hold against a determined adversary? Everything here assumes you control the inference path. [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/) is what happens when you do not.
+This is the second of three parts. [Part 1](/posts/2026/07/red-teaming-language-models/) covered the converged red-teaming process, how attacks are built, and why reported attack success rates are so often not comparable. Here I ask what the whole exercise is for: once you can run a red team and measure it, does any defense hold against a determined adversary? Everything here assumes you control the inference path. [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/) is what happens when you do not.
 
 Keep one point from Part 1 in view: an attack success rate is a property of the adversary you chose, not of the model alone.
 

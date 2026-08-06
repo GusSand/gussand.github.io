@@ -14,9 +14,9 @@ tags:
 
 Date: July 29, 2026 \| Estimated Reading Time: 11 min \| Author: Gustavo Sandoval
 
-Series: [Part 1](/posts/2026/07/red-teaming-language-models/) &mdash; Process & Measurement &middot; [Part 2](/posts/2026/07/red-teaming-language-models-defense/) &mdash; What Holds on Defense &middot; **Part 3** &mdash; Open Weights
+Series: [Part 1: Process & Measurement](/posts/2026/07/red-teaming-language-models/) &middot; [Part 2: What Holds on Defense](/posts/2026/07/red-teaming-language-models-defense/) &middot; **Part 3: Open Weights**
 
-This is the last of three parts. [Part 1](/posts/2026/07/red-teaming-language-models/) covered the red-teaming process and why its numbers are hard to trust; [Part 2](/posts/2026/07/red-teaming-language-models-defense/) asked which defenses survive a determined adversary while you control the inference path. This part is about what happens when you do not. Ship the weights and the entire refusal layer becomes a soft target, every deployment-layer defense becomes optional for the adversary, and the standard order of operations inverts.
+This is the last of three parts. [Part 1](/posts/2026/07/red-teaming-language-models/) covered the red-teaming process and why its numbers are hard to trust; [Part 2](/posts/2026/07/red-teaming-language-models-defense/) asked which defenses survive a determined adversary while you control the inference path. This part is about what happens when you do not. Ship the weights and every deployment-layer defense becomes optional for the adversary, and the standard order of operations inverts.
 
 [&larr; Part 2: What Holds on Defense](/posts/2026/07/red-teaming-language-models-defense/)
 

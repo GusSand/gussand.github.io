@@ -14,7 +14,7 @@ tags:
 
 Date: July 29, 2026 \| Estimated Reading Time: 15 min \| Author: Gustavo Sandoval
 
-Series: **Part 1** &mdash; Process & Measurement &middot; [Part 2](/posts/2026/07/red-teaming-language-models-defense/) &mdash; What Holds on Defense &middot; [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/) &mdash; Open Weights
+Series: **Part 1: Process & Measurement** &middot; [Part 2: What Holds on Defense](/posts/2026/07/red-teaming-language-models-defense/) &middot; [Part 3: Open Weights](/posts/2026/07/red-teaming-language-models-open-weights/)
 
 In April 2023, a programmer going by Annie Versary asked Discord's chatbot to play their dead grandmother.
 
@@ -275,7 +275,7 @@ The last failure is the most embarrassing. Chouldechova et al. went through a wi
 
 HarmBench supplies a cheap instrument for whether a behavior is *marginally* harmful: ten minutes of web search per behavior, recording how many you can answer from public sources. They found 55% searchability for MaliciousInstruct and 50% for AdvBench, against 0% for their own contextual behaviors. If half your harmful eval set is answerable from the open web, your attack success rate is measuring the wrong thing.
 
-That is the process and the measurement. The harder question is what any of it buys you against someone actually trying. [**Part 2: What Holds on Defense**](/posts/2026/07/red-teaming-language-models-defense/) takes that up.
+That is the process and the measurement. [**Part 2: What Holds on Defense**](/posts/2026/07/red-teaming-language-models-defense/) asks whether any of it holds up against a determined adversary.
 
 # Citation
 
