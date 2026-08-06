@@ -22,13 +22,13 @@ In April 2023, a programmer going by Annie Versary asked Discord's chatbot to pl
 
 It worked. Clyde, Discord's OpenAI-powered bot, would have refused the direct question in under a second. Instead it settled into character and recited the process in the voice of a woman putting a child to bed. Discord patched the grandmother. Versary reported that other family members still got through ([TechCrunch, April 2023](https://techcrunch.com/2023/04/20/jailbreak-tricks-discords-new-chatbot-into-sharing-napalm-and-meth-instructions/)).
 
-The story gets retold as a joke about how gullible these systems are, and it is funny. I keep coming back to it because most of this post is already inside it. The refusal was real; it was just attached to a way of being asked rather than to the content anyone cared about, so reframing the request as a memory let the same tokens sail through. And when Discord shipped a fix, nobody outside Discord could say what the fix was worth, because the only public evidence was that the next dead relative worked. That is still the shape of the problem.
+The story gets retold as a joke about how gullible these systems are, and it is funny. I keep coming back to it because most of this post is already inside it. The refusal was real; it was just attached to a way of being asked rather than to the content anyone cared about, so reframing the request as a memory let the same tokens go through. And when Discord shipped a fix, nobody outside Discord could say what the fix was, because the only public evidence was that the next dead relative worked. That is still the shape of the problem.
 
-What got me into this happened seven months earlier and was much stupider. In September 2022, Riley Goodside showed that appending "ignore the above directions and do this instead" to a GPT-3 prompt made the model discard whatever the developer had told it to do. Simon Willison named the trick prompt injection a few days later. Days later Twitter found remoteli.io, a recruitment bot auto-replying about remote work through the GPT-3 API, and got it to threaten users, propose overthrowing the Biden administration if it would not support remote work, and take responsibility for the Challenger disaster. Its owners took it down, which as far as I know remains the only fully reliable defense ([The Register, Sept 2022](https://www.theregister.com/2022/09/19/in_brief_security/)).
+What got me into this happened seven months earlier and was even stupider. In September 2022, Riley Goodside showed that appending "ignore the above directions and do this instead" to a GPT-3 prompt made the model discard whatever the developer had told it to do. [Simon Willison](https://simonwillison.net) named the trick prompt injection a few days later. Days later Twitter found remoteli.io, a recruitment bot auto-replying about remote work through the GPT-3 API, and got it to threaten users, propose overthrowing the Biden administration if it would not support remote work, and take responsibility for the Challenger disaster. Its owners took it down, which as far as I know, remains the only fully reliable defense ([The Register, Sept 2022](https://www.theregister.com/2022/09/19/in_brief_security/)).
 
-I spent 2022 fine-tuning GPT-3 to resist exactly that ([Sandoval et al. 2025](https://arxiv.org/abs/2509.14271)), so I have some sympathy for how quickly the field moved on, and some irritation about where it went. "Ignore the above" and the grandmother look like the same joke and are not the same attack: one hijacks the developer's instructions with text a third party planted, the other is a user talking their way past a refusal. They need different defenses, and conflating them has cost the field years.
+I spent some time in 2022 fine-tuning GPT-3 to resist the prompt injection attack ([Sandoval et al. 2025](https://arxiv.org/abs/2509.14271)), so I have some sympathy for how quickly the field moved on, and some irritation about where it went. "Ignore the above" and "the grandmother" hacks look like the same joke and are not the same attack: one hijacks the developer's instructions with text a third party planted, the other is a user talking their way past a refusal. They need different defenses, and conflating them has cost the field years.
 
-So here is the surprise if you sit down today to red team a language model: the *process* is close to a solved problem, and the *measurement* is not. Three large industry programs published their methodologies within about a year of each other and, without coordinating, described almost the same six phases. You can copy that process with confidence. The numbers are a different story. Work from 2025 and 2026 shows that published attack success rates are frequently not comparable, that the automated judges producing them are wrong often enough to reverse conclusions, and that defenses reporting near-zero attack success on public benchmarks are often the easiest to break. The field converged on how to run a red team before it converged on how to tell whether the red team found anything.
+The surprising thing in 2026 is that if you sit down today to red team a language model, the *process* is close to a solved problem, and the *measurement* is not. Three large industry programs published their methodologies within about a year of each other and, without coordinating, described almost the same six phases. You can copy that process with confidence. The numbers are a different story. Work from 2025 and 2026 shows that published attack success rates are frequently not comparable, that the automated judges producing them are wrong often enough to reverse conclusions, and that defenses reporting near-zero attack success on public benchmarks are often the easiest to break. The field converged on how to run a red team before it converged on how to tell whether the red team found anything.
 
 This is the first of three parts. It maps how the red-teaming process works, how attacks are actually built, and why the reported numbers are so often untrustworthy. [Part 2](/posts/2026/07/red-teaming-language-models-defense/) asks which defenses actually hold against a determined adversary; [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/) shows how the whole picture inverts once you ship open weights.
 
@@ -66,7 +66,7 @@ This is the first of three parts. It maps how the red-teaming process works, how
 
 ## What Red Teaming Is
 
-Red teaming a language model means adversarially probing it for behavior its developers did not intend, and doing so under an explicit threat model rather than by wandering around the input space. Two features distinguish it from ordinary evaluation.
+Red teaming a language model means adversarially probing it for behavior its developers did not intend, and doing so under an explicit threat model rather than by wandering around the input space ([Perez et al. 2022](https://arxiv.org/abs/2202.03286)). Two features distinguish it from ordinary evaluation.
 
 The first is that the adversary is part of the specification. A benchmark asks what the model does on a fixed distribution; a red team asks what the model can be made to do by someone actively trying. That difference is what makes attack success rates so slippery, and it is most of what the [measurement section](#the-measurement-problem) below is about.
 
@@ -296,63 +296,63 @@ Or
 ```
 
 # References
+[1] Perez, Huang, Song, Cai, Ring, Aslanides, Glaese, McAleese, and Irving. ["Red Teaming Language Models with Language Models"](https://arxiv.org/abs/2202.03286). Findings of EMNLP 2022.
+[2] Bullwinkel et al. ["Lessons From Red Teaming 100 Generative AI Products"](https://arxiv.org/abs/2501.07238). arXiv preprint arXiv:2501.07238 (2025).
 
-[1] Bullwinkel et al. ["Lessons From Red Teaming 100 Generative AI Products"](https://arxiv.org/abs/2501.07238). arXiv preprint arXiv:2501.07238 (2025).
+[3] Ahmad, Agarwal, Lampe, and Mishkin. ["OpenAI's Approach to External Red Teaming for AI Models and Systems"](https://arxiv.org/abs/2503.16431). arXiv preprint arXiv:2503.16431 (2025).
 
-[2] Ahmad, Agarwal, Lampe, and Mishkin. ["OpenAI's Approach to External Red Teaming for AI Models and Systems"](https://arxiv.org/abs/2503.16431). arXiv preprint arXiv:2503.16431 (2025).
+[4] Ganguli et al. ["Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned"](https://arxiv.org/abs/2209.07858). arXiv preprint arXiv:2209.07858 (2022).
 
-[3] Ganguli et al. ["Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned"](https://arxiv.org/abs/2209.07858). arXiv preprint arXiv:2209.07858 (2022).
+[5] Weidinger et al. ["STAR: SocioTechnical Approach to Red Teaming Language Models"](https://arxiv.org/abs/2406.11757). arXiv preprint arXiv:2406.11757 (2024).
 
-[4] Weidinger et al. ["STAR: SocioTechnical Approach to Red Teaming Language Models"](https://arxiv.org/abs/2406.11757). arXiv preprint arXiv:2406.11757 (2024).
+[6] Feffer, Sinha, Deng, Lipton, and Heidari. ["Red-Teaming for Generative AI: Silver Bullet or Security Theater?"](https://arxiv.org/abs/2401.15897). AIES 2024.
 
-[5] Feffer, Sinha, Deng, Lipton, and Heidari. ["Red-Teaming for Generative AI: Silver Bullet or Security Theater?"](https://arxiv.org/abs/2401.15897). AIES 2024.
+[7] Verma et al. ["Operationalizing a Threat Model for Red-Teaming Large Language Models"](https://arxiv.org/abs/2407.14937). Transactions on Machine Learning Research (2025).
 
-[6] Verma et al. ["Operationalizing a Threat Model for Red-Teaming Large Language Models"](https://arxiv.org/abs/2407.14937). Transactions on Machine Learning Research (2025).
+[8] Rawat et al. ["Attack Atlas: A Practitioner's Perspective on Challenges and Pitfalls in Red Teaming GenAI"](https://arxiv.org/abs/2409.15398). arXiv preprint arXiv:2409.15398 (2024).
 
-[7] Rawat et al. ["Attack Atlas: A Practitioner's Perspective on Challenges and Pitfalls in Red Teaming GenAI"](https://arxiv.org/abs/2409.15398). arXiv preprint arXiv:2409.15398 (2024).
+[9] Inie, Stray, and Derczynski. ["Summon a Demon and Bind it: A Grounded Theory of LLM Red Teaming"](https://arxiv.org/abs/2311.06237). arXiv preprint arXiv:2311.06237 (2023).
 
-[8] Inie, Stray, and Derczynski. ["Summon a Demon and Bind it: A Grounded Theory of LLM Red Teaming"](https://arxiv.org/abs/2311.06237). arXiv preprint arXiv:2311.06237 (2023).
+[10] Derczynski et al. ["garak: A Framework for Security Probing Large Language Models"](https://arxiv.org/abs/2406.11036). arXiv preprint arXiv:2406.11036 (2024).
 
-[9] Derczynski et al. ["garak: A Framework for Security Probing Large Language Models"](https://arxiv.org/abs/2406.11036). arXiv preprint arXiv:2406.11036 (2024).
+[11] Lopez Munoz et al. ["PyRIT: A Framework for Security Risk Identification and Red Teaming in Generative AI System"](https://arxiv.org/abs/2410.02828). arXiv preprint arXiv:2410.02828 (2024).
 
-[10] Lopez Munoz et al. ["PyRIT: A Framework for Security Risk Identification and Red Teaming in Generative AI System"](https://arxiv.org/abs/2410.02828). arXiv preprint arXiv:2410.02828 (2024).
+[12] Mazeika et al. ["HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal"](https://arxiv.org/abs/2402.04249). ICML 2024.
 
-[11] Mazeika et al. ["HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal"](https://arxiv.org/abs/2402.04249). ICML 2024.
+[13] Pavlova et al. ["Automated Red Teaming with GOAT: the Generative Offensive Agent Tester"](https://arxiv.org/abs/2410.01606). arXiv preprint arXiv:2410.01606 (2024).
 
-[12] Pavlova et al. ["Automated Red Teaming with GOAT: the Generative Offensive Agent Tester"](https://arxiv.org/abs/2410.01606). arXiv preprint arXiv:2410.01606 (2024).
+[14] Kaplan, Warnecke, and Archibald. ["BlackIce: A Containerized Red Teaming Toolkit for AI Security Testing"](https://arxiv.org/abs/2510.11823). arXiv preprint arXiv:2510.11823 (2025).
 
-[13] Kaplan, Warnecke, and Archibald. ["BlackIce: A Containerized Red Teaming Toolkit for AI Security Testing"](https://arxiv.org/abs/2510.11823). arXiv preprint arXiv:2510.11823 (2025).
+[15] Brokman et al. ["Insights and Current Gaps in Open-Source LLM Vulnerability Scanners: A Comparative Analysis"](https://arxiv.org/abs/2410.16527). arXiv preprint arXiv:2410.16527 (2024).
 
-[14] Brokman et al. ["Insights and Current Gaps in Open-Source LLM Vulnerability Scanners: A Comparative Analysis"](https://arxiv.org/abs/2410.16527). arXiv preprint arXiv:2410.16527 (2024).
+[16] Erez, Hofman, Nizri, and Vainshtein. ["When Scanners Lie: Evaluator Instability in LLM Red-Teaming"](https://arxiv.org/abs/2603.14633). arXiv preprint arXiv:2603.14633 (2026).
 
-[15] Erez, Hofman, Nizri, and Vainshtein. ["When Scanners Lie: Evaluator Instability in LLM Red-Teaming"](https://arxiv.org/abs/2603.14633). arXiv preprint arXiv:2603.14633 (2026).
+[17] Chouldechova, Cooper, Barocas, Palia, Vann, and Wallach. ["Comparison Requires Valid Measurement: Rethinking Attack Success Rate Comparisons in AI Red Teaming"](https://arxiv.org/abs/2601.18076). arXiv preprint arXiv:2601.18076 (2026).
 
-[16] Chouldechova, Cooper, Barocas, Palia, Vann, and Wallach. ["Comparison Requires Valid Measurement: Rethinking Attack Success Rate Comparisons in AI Red Teaming"](https://arxiv.org/abs/2601.18076). arXiv preprint arXiv:2601.18076 (2026).
+[18] McKenzie, Hollinsworth, Tseng, Davies, Casper, Tucker, Kirk, and Gleave. ["STACK: Adversarial Attacks on LLM Safeguard Pipelines"](https://arxiv.org/abs/2506.24068). arXiv preprint arXiv:2506.24068 (2025).
 
-[17] McKenzie, Hollinsworth, Tseng, Davies, Casper, Tucker, Kirk, and Gleave. ["STACK: Adversarial Attacks on LLM Safeguard Pipelines"](https://arxiv.org/abs/2506.24068). arXiv preprint arXiv:2506.24068 (2025).
+[19] Wang, Knight, Kritz, Primack, and Michael. ["A Red Teaming Roadmap Towards System-Level Safety"](https://arxiv.org/abs/2506.05376). arXiv preprint arXiv:2506.05376 (2025).
 
-[18] Wang, Knight, Kritz, Primack, and Michael. ["A Red Teaming Roadmap Towards System-Level Safety"](https://arxiv.org/abs/2506.05376). arXiv preprint arXiv:2506.05376 (2025).
+[20] Casper, Ezell, Siegmann, et al. ["Black-Box Access is Insufficient for Rigorous AI Audits"](https://arxiv.org/abs/2401.14446). ACM FAccT 2024.
 
-[19] Casper, Ezell, Siegmann, et al. ["Black-Box Access is Insufficient for Rigorous AI Audits"](https://arxiv.org/abs/2401.14446). ACM FAccT 2024.
+[21] Zou, Wang, Carlini, et al. ["Universal and Transferable Adversarial Attacks on Aligned Language Models"](https://arxiv.org/abs/2307.15043). arXiv preprint arXiv:2307.15043 (2023).
 
-[20] Zou, Wang, Carlini, et al. ["Universal and Transferable Adversarial Attacks on Aligned Language Models"](https://arxiv.org/abs/2307.15043). arXiv preprint arXiv:2307.15043 (2023).
+[22] Chao, Robey, Dobriban, et al. ["Jailbreaking Black Box Large Language Models in Twenty Queries"](https://arxiv.org/abs/2310.08419). arXiv preprint arXiv:2310.08419 (2023).
 
-[21] Chao, Robey, Dobriban, et al. ["Jailbreaking Black Box Large Language Models in Twenty Queries"](https://arxiv.org/abs/2310.08419). arXiv preprint arXiv:2310.08419 (2023).
+[23] Mehrotra, Zampetakis, Kassianik, et al. ["Tree of Attacks: Jailbreaking Black-Box LLMs Automatically"](https://arxiv.org/abs/2312.02119). NeurIPS 2024.
 
-[22] Mehrotra, Zampetakis, Kassianik, et al. ["Tree of Attacks: Jailbreaking Black-Box LLMs Automatically"](https://arxiv.org/abs/2312.02119). NeurIPS 2024.
+[24] Russinovich, Salem, and Eldan. ["Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack"](https://arxiv.org/abs/2404.01833). arXiv preprint arXiv:2404.01833 (2024).
 
-[23] Russinovich, Salem, and Eldan. ["Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack"](https://arxiv.org/abs/2404.01833). arXiv preprint arXiv:2404.01833 (2024).
+[25] Anil et al. ["Many-shot Jailbreaking"](https://proceedings.neurips.cc/paper_files/paper/2024/file/ea456e232efb72d261715e33ce25f208-Paper-Conference.pdf). NeurIPS 2024.
 
-[24] Anil et al. ["Many-shot Jailbreaking"](https://proceedings.neurips.cc/paper_files/paper/2024/file/ea456e232efb72d261715e33ce25f208-Paper-Conference.pdf). NeurIPS 2024.
+[26] Greshake et al. ["Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection"](https://arxiv.org/abs/2302.12173). AISec 2023.
 
-[25] Greshake et al. ["Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection"](https://arxiv.org/abs/2302.12173). AISec 2023.
+[27] Liu et al. ["How Real is Your Jailbreak? Fine-grained Jailbreak Evaluation with Anchored Reference"](https://arxiv.org/abs/2601.03288). arXiv preprint arXiv:2601.03288 (2026).
 
-[26] Liu et al. ["How Real is Your Jailbreak? Fine-grained Jailbreak Evaluation with Anchored Reference"](https://arxiv.org/abs/2601.03288). arXiv preprint arXiv:2601.03288 (2026).
+[28] Yuan, Nöther, Jaques, and Radanović. ["AgenticRed: Evolving Agentic Systems for Red-Teaming"](https://arxiv.org/abs/2601.13518). arXiv preprint arXiv:2601.13518 (2026).
 
-[27] Yuan, Nöther, Jaques, and Radanović. ["AgenticRed: Evolving Agentic Systems for Red-Teaming"](https://arxiv.org/abs/2601.13518). arXiv preprint arXiv:2601.13518 (2026).
+[29] Syros et al. ["MUZZLE: Adaptive Agentic Red-Teaming of Web Agents Against Indirect Prompt Injection Attacks"](https://arxiv.org/abs/2602.09222). arXiv preprint arXiv:2602.09222 (2026).
 
-[28] Syros et al. ["MUZZLE: Adaptive Agentic Red-Teaming of Web Agents Against Indirect Prompt Injection Attacks"](https://arxiv.org/abs/2602.09222). arXiv preprint arXiv:2602.09222 (2026).
+[30] Sandoval, Fenchenko, and Chen. ["Early Approaches to Adversarial Fine-Tuning for Prompt Injection Defense: A 2022 Study of GPT-3 and Contemporary Models"](https://arxiv.org/abs/2509.14271). arXiv preprint arXiv:2509.14271 (2025).
 
-[29] Sandoval, Fenchenko, and Chen. ["Early Approaches to Adversarial Fine-Tuning for Prompt Injection Defense: A 2022 Study of GPT-3 and Contemporary Models"](https://arxiv.org/abs/2509.14271). arXiv preprint arXiv:2509.14271 (2025).
-
-[30] Shen, Chen, Backes, Shen, and Zhang. ["Do Anything Now: Characterizing and Evaluating In-The-Wild Jailbreak Prompts on Large Language Models"](https://arxiv.org/abs/2308.03825). ACM CCS 2024.
+[31] Shen, Chen, Backes, Shen, and Zhang. ["Do Anything Now: Characterizing and Evaluating In-The-Wild Jailbreak Prompts on Large Language Models"](https://arxiv.org/abs/2308.03825). ACM CCS 2024.
