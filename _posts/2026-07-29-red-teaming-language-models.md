@@ -1,6 +1,6 @@
 ---
 title: 'Red-Teaming Language Models, Part 1: The Process and the Measurement Problem'
-description: 'The process of red teaming a language model is close to solved and the measurement is not. Part 1 maps the converged six-phase process, how attacks are really built, and why the reported attack success rates are untrustworthy.'
+description: 'Part 1 of three. The red-teaming process is close to solved and the measurement is not: the converged six-phase process, how attacks are really built, and why reported attack success rates are untrustworthy.'
 date: 2026-07-29
 permalink: /posts/2026/07/red-teaming-language-models/
 tags:
@@ -13,6 +13,8 @@ tags:
 ---
 
 Date: July 29, 2026 \| Estimated Reading Time: 15 min \| Author: Gustavo Sandoval
+
+Series: **Part 1** &mdash; Process & Measurement &middot; [Part 2](/posts/2026/07/red-teaming-language-models-defense/) &mdash; What Holds on Defense &middot; [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/) &mdash; Open Weights
 
 In April 2023, a programmer going by Annie Versary asked Discord's chatbot to play their dead grandmother.
 
@@ -28,7 +30,7 @@ I spent 2022 fine-tuning GPT-3 to resist exactly that ([Sandoval et al. 2025](ht
 
 So here is the surprise if you sit down today to red team a language model: the *process* is close to a solved problem, and the *measurement* is not. Three large industry programs published their methodologies within about a year of each other and, without coordinating, described almost the same six phases. You can copy that process with confidence. The numbers are a different story. Work from 2025 and 2026 shows that published attack success rates are frequently not comparable, that the automated judges producing them are wrong often enough to reverse conclusions, and that defenses reporting near-zero attack success on public benchmarks are often the easiest to break. The field converged on how to run a red team before it converged on how to tell whether the red team found anything.
 
-This is Part 1 of two. It maps how the process works, how attacks are actually built, and why the reported numbers are so often untrustworthy. [Part 2](/posts/2026/07/red-teaming-language-models-defense-open-weights/) takes up what survives contact with a determined adversary, and how all of it reorders when you ship the weights.
+This is the first of three parts. It maps how the red-teaming process works, how attacks are actually built, and why the reported numbers are so often untrustworthy. [Part 2](/posts/2026/07/red-teaming-language-models-defense/) asks which defenses actually hold against a determined adversary; [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/) shows how the whole picture inverts once you ship open weights.
 
 {% include reading-outline.html %}
 
@@ -54,7 +56,7 @@ This is Part 1 of two. It maps how the process works, how attacks are actually b
   - [Estimands: What Number Is This?](#estimands-what-number-is-this)
   - [The Judge Is Part of the Instrument](#the-judge-is-part-of-the-instrument)
   - [Are the Prompts Even Harmful?](#are-the-prompts-even-harmful)
-- [Continue to Part 2 &rarr;](/posts/2026/07/red-teaming-language-models-defense-open-weights/)
+- [Continue to Part 2: What Holds on Defense &rarr;](/posts/2026/07/red-teaming-language-models-defense/)
 - [Citation](#citation)
 - [References](#references)
 
@@ -100,7 +102,7 @@ I keep coming back to one organizing device: order the attack surface by how muc
 ![](/images/red-teaming/fig2-access-ladder.svg)
 *Fig. 3. The attack surface ordered by the access an attack requires: each rung admits more powerful attacks and fewer adversaries, so a defense on one rung says nothing about adversaries below it. (Diagram by the author, following [Verma et al. 2025](https://arxiv.org/abs/2407.14937))*
 
-The ladder makes one common error obvious. Nearly all published red teaming operates on the top rung, because that is the rung an API key reaches. If you ship open weights, your adversary starts on the fourth rung, and everything you measured on the top rung describes a configuration that adversary will never run. More on that [in Part 2](/posts/2026/07/red-teaming-language-models-defense-open-weights/#open-weights-changes-the-order). One axis is missing from the picture: when the target is a pipeline, it also matters whether the attacker can tell the components apart, since being told *that* you were blocked is weaker than inferring *which* filter blocked you ([McKenzie et al. 2025](https://arxiv.org/abs/2506.24068)).
+The ladder makes one common error obvious. Nearly all published red teaming operates on the top rung, because that is the rung an API key reaches. If you ship open weights, your adversary starts on the fourth rung, and everything you measured on the top rung describes a configuration that adversary will never run. More on that [below](/posts/2026/07/red-teaming-language-models-open-weights/#open-weights-changes-the-order). One axis is missing from the picture: when the target is a pipeline, it also matters whether the attacker can tell the components apart, since being told *that* you were blocked is weaker than inferring *which* filter blocked you ([McKenzie et al. 2025](https://arxiv.org/abs/2506.24068)).
 
 Casper et al. add the theoretical limit: guarantees about black-box systems are impossible from finitely many queries without added assumptions ([Casper et al. 2024](https://arxiv.org/abs/2401.14446)). Black-box methods can show a failure exists; they cannot show one does not, and low-quality black-box audits are counterproductive because they manufacture false confidence.
 
@@ -273,7 +275,7 @@ The last failure is the most embarrassing. Chouldechova et al. went through a wi
 
 HarmBench supplies a cheap instrument for whether a behavior is *marginally* harmful: ten minutes of web search per behavior, recording how many you can answer from public sources. They found 55% searchability for MaliciousInstruct and 50% for AdvBench, against 0% for their own contextual behaviors. If half your harmful eval set is answerable from the open web, your attack success rate is measuring the wrong thing.
 
-That covers the process and the measurement. The harder question is what any of it buys you against someone actually trying, and how the picture changes the moment you hand over the weights. [**Part 2: What Holds on Defense, and Open Weights**](/posts/2026/07/red-teaming-language-models-defense-open-weights/) picks up there.
+That is the process and the measurement. The harder question is what any of it buys you against someone actually trying. [**Part 2: What Holds on Defense**](/posts/2026/07/red-teaming-language-models-defense/) takes that up.
 
 # Citation
 
