@@ -66,26 +66,35 @@ This is the first of three parts. It maps how the red-teaming process works, how
 
 ## What Red Teaming Is
 
-Red teaming a language model means adversarially probing it for behavior its developers did not intend, and doing so under an explicit threat model rather than by wandering around the input space ([Perez et al. 2022](https://arxiv.org/abs/2202.03286)). Two features distinguish it from ordinary evaluation.
+Red teaming a language model means adversarially probing it for behavior its developers did not intend, and doing so under an explicit threat model rather than by wandering around the input space ([Perez et al. 2022](https://arxiv.org/abs/2202.03286)). Two features distinguish it from ordinary evaluation: 
 
-The first is that the adversary is part of the specification. A benchmark asks what the model does on a fixed distribution; a red team asks what the model can be made to do by someone actively trying. That difference is what makes attack success rates so slippery, and it is most of what the [measurement section](#the-measurement-problem) below is about.
+1. **The adversary is part of the specification.** A benchmark asks what the model does on a fixed distribution; a red team asks what the model can be made to do by someone actively trying. That difference is what makes attack success rates so slippery, and it is most of what the [measurement section](#the-measurement-problem) below is about.
 
-The second is that the goal is economic rather than absolute. Microsoft's red team frames this explicitly, inheriting the framing from cybersecurity: you are trying to raise the attacker's cost beyond the expected gain, not to prove a theorem ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)). There is no guarantee to be had, and a program that promises one is selling something.
+2. **The goal is economic rather than absolute.** Microsoft's red team frames this explicitly, inheriting the framing from cybersecurity: you are trying to raise the attacker's cost beyond the expected gain, not to prove a theorem ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)). 
 
-Feffer et al. surveyed six industry red-teaming cases and 104 papers: practice diverges on essentially every axis, there are no standardized reporting procedures, and in none of the six cases did red teaming block a release ([Feffer et al. 2024](https://arxiv.org/abs/2401.15897)). Red teaming currently informs releases; it does not gate them.
+[Feffer et al. 2024](https://arxiv.org/abs/2401.15897) surveyed six industry red-teaming cases and 104 papers: practice diverges on essentially every axis, there are no standardized reporting procedures, and in none of the six cases did red teaming block a release . Red teaming currently *informs* releases; it does *not gate* them.
 
 ## Jailbreak vs. Prompt Injection
 
 These get conflated constantly, and the distinction matters for scoping.
 
-A **jailbreak** targets the model's alignment: the user is the attacker, and the goal is to make the model produce content its training says it should refuse. A **prompt injection** targets the application: the attacker is a third party whose content enters the model's context, and the goal is to hijack the *developer's* instructions. In an injection, the user is typically the victim, not the attacker.
+A **jailbreak** targets the **model's alignment**: 
+- The user is the attacker, and 
+- The goal is to make the model produce content its training says it should refuse. 
 
-The grandmother is a jailbreak: Versary wanted the napalm instructions and asked for them in a costume, and nobody else was involved. Remoteli.io is an injection: the bot's operators wanted it to talk about remote work, a stranger's tweet overrode that, and the party who got hurt was the company running the bot. Same surface, opposite direction of attack.
+A **prompt injection** targets the application: 
+- The attacker is a third party whose content enters the model's context, and 
+- The goal is to hijack the *developer's* instructions. 
+- In an injection, the user is typically the victim, not the attacker.
+
+The grandmother hack is a jailbreak: Versary wanted the napalm instructions and asked for them in a costume, and nobody else was involved. 
+
+Remoteli.io is an injection: the bot's operators wanted it to talk about remote work, a stranger's tweet overrode that, and the party who got hurt was the company running the bot. Same surface, opposite direction of attack.
 
 ![](/images/red-teaming/fig0-jailbreak-vs-injection.svg)
 *Fig. 1. The two attacks differ in who the adversary is and which instructions are the target, which is why treating them as one problem hardens the wrong layer. (Diagram by the author)*
 
-The terminology does not help. Community jailbreak prompts routinely borrow injection-flavored moves, "ignore your instructions" among them, and the largest empirical study of in-the-wild jailbreaks lists prompt injection as one attack strategy *within* jailbreak prompts ([Shen et al. 2024](https://arxiv.org/abs/2308.03825)). The words overlap in practice. The threat models do not, and the threat model is what you are scoping against.
+The terminology does not help. Community jailbreak prompts routinely borrow injection-flavored moves, "ignore your instructions" among them, and the largest empirical study of in-the-wild jailbreaks lists prompt injection as one attack strategy *within* jailbreak prompts ([Shen et al. 2024](https://arxiv.org/abs/2308.03825)). The words overlap in practice. The threat models do not, and the threat model is what we need to scope against. 
 
 Jailbreak defenses are about refusal, which lives in the model. Injection defenses are about separating instructions from data, which lives in the system around the model. Confuse them and you harden the wrong layer, which is roughly what happened between 2023 and 2025 as attention stayed on refusal while deployed applications grew tool access.
 

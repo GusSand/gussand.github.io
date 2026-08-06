@@ -1,7 +1,7 @@
 ---
 title: 'Red-Teaming Language Models, Part 3: What Changes When You Ship Open Weights'
 description: 'Part 3 of three. Once you ship open weights the refusal layer is a soft target and every deployment defense is optional for the adversary; alignment-removal costs, pretraining-stage interventions, detachable capabilities, and a release-ordered priority list.'
-date: 2026-07-29
+date: 2026-07-31
 permalink: /posts/2026/07/red-teaming-language-models-open-weights/
 tags:
   - Security
@@ -12,7 +12,7 @@ tags:
   - Open Weights
 ---
 
-Date: July 29, 2026 \| Estimated Reading Time: 11 min \| Author: Gustavo Sandoval
+Date: July 31, 2026 \| Estimated Reading Time: 11 min \| Author: Gustavo Sandoval
 
 Series: [Part 1: Process & Measurement](/posts/2026/07/red-teaming-language-models/) &middot; [Part 2: What Holds on Defense](/posts/2026/07/red-teaming-language-models-defense/) &middot; **Part 3: Open Weights**
 
