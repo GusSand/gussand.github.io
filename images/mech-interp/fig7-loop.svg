@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 300" width="940" height="300" role="img" aria-label="The security loop: measure a failure, locate it inside the model, intervene at the source, then re-measure against an adversary and feed it back.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#3d3d3a; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --good:#0ca30c; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .ct{font-size:14.5px;font-weight:600;} .bd{font-size:12px;fill:var(--ink2);}
+</style>
+<defs>
+  <marker id="al" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--s1)"/></marker>
+</defs>
+<rect width="940" height="300" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">The loop interpretability closes</text>
+<text class="st" x="20" y="56">The microscope stage is the one that turns "the model is unsafe" into "here is the component, and here is a cheap fix I can verify."</text>
+
+<!-- four stages -->
+<rect x="30" y="110" width="185" height="86" rx="10" fill="var(--box)" stroke="var(--ring)"/>
+<text class="ct" x="122" y="146" text-anchor="middle">Measure</text>
+<text class="bd" x="122" y="168" text-anchor="middle">the failure, empirically</text>
+
+<rect x="278" y="110" width="185" height="86" rx="10" fill="var(--box)" stroke="var(--s1)"/>
+<text class="ct" x="370" y="146" text-anchor="middle" fill="var(--s1)">Locate</text>
+<text class="bd" x="370" y="168" text-anchor="middle">it inside the model</text>
+
+<rect x="526" y="110" width="185" height="86" rx="10" fill="var(--box)" stroke="var(--s1)"/>
+<text class="ct" x="618" y="146" text-anchor="middle" fill="var(--s1)">Intervene</text>
+<text class="bd" x="618" y="168" text-anchor="middle">at the source</text>
+
+<rect x="774" y="110" width="150" height="86" rx="10" fill="var(--box)" stroke="var(--ring)"/>
+<text class="ct" x="849" y="146" text-anchor="middle">Re-measure</text>
+<text class="bd" x="849" y="168" text-anchor="middle">vs. an adversary</text>
+
+<!-- forward arrows -->
+<line x1="215" y1="153" x2="278" y2="153" stroke="var(--s1)" stroke-width="2" marker-end="url(#al)"/>
+<line x1="463" y1="153" x2="526" y2="153" stroke="var(--s1)" stroke-width="2" marker-end="url(#al)"/>
+<line x1="711" y1="153" x2="774" y2="153" stroke="var(--s1)" stroke-width="2" marker-end="url(#al)"/>
+
+<!-- feedback arrow -->
+<path d="M 849 196 L 849 250 L 122 250 L 122 196" fill="none" stroke="var(--s1)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#al)"/>
+<text class="bd" x="485" y="270" text-anchor="middle">each result feeds the next round</text>
+</svg>

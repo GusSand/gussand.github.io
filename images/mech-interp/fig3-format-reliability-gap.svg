@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 380" width="940" height="380" role="img" aria-label="Schematic: the internal security signal is present across layers, then goes inert at the final layer where output-format pressure overrides it.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#3d3d3a; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --good:#0ca30c; --crit:#e66767; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .sm{font-size:12.5px;fill:var(--ink2);} .lbl{font-size:12.5px;font-weight:600;}
+  .xs{font-size:11px;fill:var(--muted);} .tick{font-size:11px;fill:var(--muted);}
+</style>
+<defs>
+  <marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--good)"/></marker>
+</defs>
+<rect width="940" height="380" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">The Format-Reliability Gap (schematic)</text>
+<text class="st" x="20" y="56">The security-relevant signal is computed early and held across the network, then collapses at the final layer as the pressure to emit well-formed code takes over.</text>
+
+<!-- axes -->
+<line x1="90" y1="90" x2="90" y2="320" stroke="var(--axis)" stroke-width="1.5"/>
+<line x1="90" y1="320" x2="900" y2="320" stroke="var(--axis)" stroke-width="1.5"/>
+<text class="tick" x="84" y="95" text-anchor="end">high</text>
+<text class="tick" x="84" y="324" text-anchor="end">0</text>
+<text class="xs" x="30" y="210" transform="rotate(-90 30 210)" text-anchor="middle">signal strength</text>
+<text class="tick" x="90" y="338" text-anchor="middle">input</text>
+<text class="tick" x="495" y="338" text-anchor="middle">layer depth &#8594;</text>
+<text class="tick" x="900" y="338" text-anchor="end">final layer</text>
+
+<!-- security signal curve (blue) -->
+<polyline fill="none" stroke="var(--s1)" stroke-width="3.5" points="90,285.5 171,159 292,124 495,118 697,122 819,136 876,194 900,292"/>
+<text class="lbl" x="300" y="108" fill="var(--s1)">security signal (probed internally)</text>
+
+<!-- format pressure curve (orange) -->
+<polyline fill="none" stroke="var(--s2)" stroke-width="3" stroke-dasharray="6 4" points="90,274 333,262 576,240 738,194 859,124 900,101"/>
+<text class="lbl" x="470" y="256" fill="var(--s2)">output-format pressure</text>
+
+<!-- the gap -->
+<line x1="876" y1="136" x2="876" y2="292" stroke="var(--crit)" stroke-width="1.4" stroke-dasharray="3 3"/>
+<text class="lbl" x="700" y="352" fill="var(--crit)">the model knows here, and stops acting on it here</text>
+<line x1="235" y1="200" x2="200" y2="150" stroke="var(--good)" stroke-width="2" marker-end="url(#ac)"/>
+<text class="xs" x="150" y="215">steering re-asserts</text>
+<text class="xs" x="150" y="229">the signal at this layer</text>
+</svg>

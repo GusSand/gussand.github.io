@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 320" width="940" height="320" role="img" aria-label="A per-vulnerability steering vector cuts insecure generations by up to 74 percent relative to baseline, with no fine-tuning.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#3d3d3a; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --good:#0ca30c; --crit:#e66767; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .sm{font-size:12.5px;fill:var(--ink2);} .num{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;}
+  .lbl{font-size:13px;font-weight:600;} .xs{font-size:11px;fill:var(--muted);} .tick{font-size:11px;fill:var(--muted);}
+</style>
+<defs>
+  <marker id="ad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--good)"/></marker>
+</defs>
+<rect width="940" height="320" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">A per-CWE steering vector, applied at the gap</text>
+<text class="st" x="20" y="56">Insecure generations relative to the unsteered baseline. Up to 74% fewer, at a forward-pass addition and no fine-tuning run.</text>
+
+<!-- axes -->
+<line x1="120" y1="90" x2="120" y2="270" stroke="var(--axis)" stroke-width="1.5"/>
+<line x1="120" y1="270" x2="900" y2="270" stroke="var(--axis)" stroke-width="1.5"/>
+<text class="tick" x="114" y="95" text-anchor="end">100</text>
+<text class="tick" x="114" y="182" text-anchor="end">50</text>
+<text class="tick" x="114" y="274" text-anchor="end">0</text>
+<text class="xs" x="40" y="180" transform="rotate(-90 40 180)" text-anchor="middle">insecure gen. (rel.)</text>
+
+<!-- baseline bar (100) -->
+<rect x="230" y="90" width="180" height="180" rx="4" fill="var(--crit)"/>
+<text class="num" x="320" y="80" text-anchor="middle">100</text>
+<text class="lbl" x="320" y="292" text-anchor="middle">baseline model</text>
+
+<!-- steered bar (26) -->
+<rect x="560" y="223" width="180" height="47" rx="4" fill="var(--good)"/>
+<text class="num" x="650" y="213" text-anchor="middle">26</text>
+<text class="lbl" x="650" y="292" text-anchor="middle">+ steering vector</text>
+
+<!-- delta annotation -->
+<line x1="470" y1="100" x2="470" y2="233" stroke="var(--good)" stroke-width="1.6" stroke-dasharray="4 3" marker-start="url(#ad)" marker-end="url(#ad)"/>
+<text class="lbl" x="486" y="168" fill="var(--good)">up to &#8722;74%</text>
+</svg>

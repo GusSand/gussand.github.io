@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 300" width="940" height="300" role="img" aria-label="Two security uses of interpretability: reading activations to monitor, and writing to them to steer.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#3d3d3a; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --good:#0ca30c; --crit:#e66767; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .ct{font-size:15px;font-weight:600;} .sm{font-size:12.5px;fill:var(--ink2);}
+  .lbl{font-size:12.5px;} .xs{font-size:11px;fill:var(--muted);}
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--axis)"/></marker>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--s1)"/></marker>
+  <marker id="aw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--s2)"/></marker>
+</defs>
+<rect width="940" height="300" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Reading vs. writing the model's internal state</text>
+<text class="st" x="20" y="56">Detection and control are different jobs. A probe reads and fails safe; a steering vector writes and carries a cost, so a probe can gate when it fires.</text>
+
+<!-- the model bar -->
+<rect x="20" y="120" width="900" height="54" rx="8" fill="var(--box)" stroke="var(--ring)"/>
+<text class="sm" x="38" y="152">activations flowing through the layers</text>
+<circle cx="300" cy="147" r="6" fill="var(--muted)"/>
+<circle cx="470" cy="147" r="6" fill="var(--muted)"/>
+<circle cx="640" cy="147" r="6" fill="var(--muted)"/>
+<circle cx="810" cy="147" r="6" fill="var(--muted)"/>
+
+<!-- READ side -->
+<line x1="300" y1="120" x2="300" y2="96" stroke="var(--s1)" stroke-width="2" marker-start="url(#ar)"/>
+<rect x="210" y="66" width="180" height="30" rx="6" fill="none" stroke="var(--s1)" stroke-width="1.5"/>
+<text class="lbl" x="224" y="86" fill="var(--s1)">READ &#8212; probe / monitor</text>
+<text class="xs" x="210" y="238">Trained probe asks "is something</text>
+<text class="xs" x="210" y="254">dangerous happening?" A false</text>
+<text class="xs" x="210" y="270">positive costs a refusal, not a breach.</text>
+<line x1="300" y1="174" x2="300" y2="218" stroke="var(--axis)" stroke-width="1.4" stroke-dasharray="3 3"/>
+
+<!-- gate -->
+<path d="M 470 218 L 640 218" stroke="var(--axis)" stroke-width="1.4" fill="none"/>
+<rect x="486" y="196" width="138" height="30" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="xs" x="500" y="215">probe fires &#8594; gate opens</text>
+<line x1="300" y1="234" x2="486" y2="211" stroke="var(--s1)" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="624" y1="211" x2="700" y2="188" stroke="var(--s2)" stroke-width="1.4" marker-end="url(#aw)"/>
+
+<!-- WRITE side -->
+<line x1="720" y1="96" x2="720" y2="120" stroke="var(--s2)" stroke-width="2" marker-end="url(#aw)"/>
+<rect x="628" y="66" width="184" height="30" rx="6" fill="none" stroke="var(--s2)" stroke-width="1.5"/>
+<text class="lbl" x="642" y="86" fill="var(--s2)">WRITE &#8212; steer / intervene</text>
+<text class="xs" x="628" y="238">Add a vector at the layer that</text>
+<text class="xs" x="628" y="254">produced the failure. Applied only</text>
+<text class="xs" x="628" y="270">to gated inputs, so normal traffic is untouched.</text>
+</svg>

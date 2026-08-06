@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 330" width="940" height="330" role="img" aria-label="Four security-relevant interpretability results that failed or got complicated: brittle steering, sparse autoencoders not beating probes, refusal not being one direction, and probes that mislead.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#3d3d3a; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --good:#0ca30c; --crit:#e66767; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .ct{font-size:14.5px;font-weight:600;} .bd{font-size:12.5px;fill:var(--ink2);}
+  .cite{font-size:11px;fill:var(--muted);}
+</style>
+<rect width="940" height="330" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Where the microscope has lied</text>
+<text class="st" x="20" y="56">Four security-relevant interpretability results that failed, got complicated, or turned out to measure the tool instead of the model.</text>
+
+<!-- card TL -->
+<rect x="20" y="78" width="446" height="112" rx="8" fill="var(--box)" stroke="var(--crit)" stroke-opacity="0.5"/>
+<text class="ct" x="38" y="104">Steering is brittle</text>
+<text class="bd" x="38" y="128">The same vector that works in-distribution has</text>
+<text class="bd" x="38" y="146">high variance across prompts and can backfire</text>
+<text class="bd" x="38" y="164">out of distribution.</text>
+<text class="cite" x="38" y="182">Tan et al. 2024, steering-vector reliability</text>
+
+<!-- card TR -->
+<rect x="474" y="78" width="446" height="112" rx="8" fill="var(--box)" stroke="var(--crit)" stroke-opacity="0.5"/>
+<text class="ct" x="492" y="104">SAEs didn't beat a linear probe</text>
+<text class="bd" x="492" y="128">For detecting concepts, the million-feature</text>
+<text class="bd" x="492" y="146">dictionary matched or lost to a simple</text>
+<text class="bd" x="492" y="164">probe on the same activations.</text>
+<text class="cite" x="492" y="182">Kantamneni et al. 2025, sparse probing</text>
+
+<!-- card BL -->
+<rect x="20" y="200" width="446" height="112" rx="8" fill="var(--box)" stroke="var(--crit)" stroke-opacity="0.5"/>
+<text class="ct" x="38" y="226">Refusal isn't one direction</text>
+<text class="bd" x="38" y="250">The clean single-direction result is incomplete:</text>
+<text class="bd" x="38" y="268">refusal routes through several, and ablating</text>
+<text class="bd" x="38" y="286">"the" direction has side effects.</text>
+<text class="cite" x="38" y="304">Joad et al. 2026</text>
+
+<!-- card BR -->
+<rect x="474" y="200" width="446" height="112" rx="8" fill="var(--box)" stroke="var(--crit)" stroke-opacity="0.5"/>
+<text class="ct" x="492" y="226">A probe can find what the model ignores</text>
+<text class="bd" x="492" y="250">A probe's success can reflect its own capacity,</text>
+<text class="bd" x="492" y="268">not a feature the model uses. Without control</text>
+<text class="bd" x="492" y="286">tasks, high accuracy proves little.</text>
+<text class="cite" x="492" y="304">Hewitt &#38; Liang 2019, control tasks</text>
+</svg>
