@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 330" width="940" height="330" role="img" aria-label="The headline productivity jump was a large increase in code produced by trained agentic coders. On inspection the entire difference was additional test code. Lines of code is a weak success signal, and a controlled study by METR in 2025 found experienced developers measurably slower with AI assistance even while believing they were faster.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#3d3d3a; --box:#232322;
+        --s1:#3987e5; --s2:#d95926; --good:#0ca30c; --crit:#e66767; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .grp{font-size:13px;font-weight:600;} .val{font-size:12px;font-weight:600;}
+  .ph{font-size:12.5px;font-weight:600;fill:var(--ink2);} .cav{font-size:12.5px;fill:var(--ink2);}
+</style>
+<rect width="940" height="330" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Read the productivity number twice</text>
+<text class="st" x="20" y="56">The trained group produced more code. When they dug in, the entire difference was additional test code.</text>
+
+<!-- axis baseline y=290 -->
+<line x1="110" y1="290" x2="400" y2="290" stroke="var(--axis)"/>
+<text class="grp" x="20" y="180" transform="rotate(-90 20 180)" text-anchor="middle" fill="var(--muted)">code produced</text>
+
+<!-- control: 130px top160 -->
+<rect x="150" y="160" width="90" height="130" rx="3" fill="var(--good)" fill-opacity="0.8"/>
+<text class="grp" x="195" y="312" text-anchor="middle">Control</text>
+
+<!-- trained: base 130 + increment 70 -->
+<rect x="290" y="160" width="90" height="130" rx="3" fill="var(--good)" fill-opacity="0.8"/>
+<rect x="290" y="90" width="90" height="70" rx="3" fill="var(--s2)"/>
+<text class="grp" x="335" y="312" text-anchor="middle">Trained</text>
+<text class="val" x="335" y="82" text-anchor="middle" fill="var(--s2)">the gain</text>
+
+<!-- annotation to increment -->
+<line x1="380" y1="125" x2="430" y2="125" stroke="var(--s2)" stroke-width="1.5"/>
+<text class="cav" x="438" y="120" fill="var(--s2)">all of it was</text>
+<text class="cav" x="438" y="138" fill="var(--s2)">additional test code</text>
+
+<!-- caveat panel -->
+<rect x="540" y="80" width="380" height="210" rx="8" fill="var(--box)" stroke="var(--crit)" stroke-opacity="0.45"/>
+<text class="ph" x="560" y="108">Why that is not a win by itself</text>
+<circle cx="566" cy="132" r="3" fill="var(--crit)"/><text class="cav" x="580" y="136">More test code can mean coverage, or</text>
+<text class="cav" x="580" y="154">lines-of-code inflation dressed as output.</text>
+<circle cx="566" cy="180" r="3" fill="var(--crit)"/><text class="cav" x="580" y="184">LOC is the proxy DORA warned against</text>
+<text class="cav" x="580" y="202">for a decade.</text>
+<circle cx="566" cy="228" r="3" fill="var(--crit)"/><text class="cav" x="580" y="232">METR 2025: experienced devs measurably</text>
+<text class="cav" x="580" y="250">slower with AI, while believing they were faster.</text>
+<text class="cav" x="580" y="278" fill="var(--muted)">Gate the celebration on defect rate and review throughput.</text>
+</svg>

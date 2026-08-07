@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 340" width="940" height="340" role="img" aria-label="The defensive side converged on layering rather than a single fix. An attack passes through input filtering, instruction hierarchy, adversarial fine-tuning as a training-time layer, output filtering, and constitutional constraints. Each thins it, none stops it alone, and a nonzero residual risk remains.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --box:#232322; --s1:#3987e5; --s2:#d95926; --crit:#e66767; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .lay{font-size:11.5px;fill:var(--ink2);font-weight:600;} .laym{font-size:10.5px;fill:var(--muted);}
+  .tag{font-size:11px;fill:var(--s1);font-weight:600;}
+</style>
+<rect width="940" height="340" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">No single layer carries the load</text>
+<text class="st" x="20" y="56">Each defense thins the attack; none stops it alone. The 2022 fine-tuning work is one early entry on the training-time side.</text>
+
+<!-- tapering attack surface -->
+<polygon points="70,120 175,134 330,148 485,160 640,170 795,177 900,178 900,202 795,203 640,210 485,220 330,232 175,246 70,260" fill="var(--crit)" fill-opacity="0.22" stroke="var(--crit)" stroke-opacity="0.45"/>
+<text class="lay" x="70" y="108" fill="var(--crit)">attack</text>
+
+<!-- gates -->
+<g>
+  <rect x="170" y="110" width="8" height="160" rx="2" fill="var(--s1)"/>
+  <text class="lay" x="174" y="292" text-anchor="middle">Input</text>
+  <text class="laym" x="174" y="307" text-anchor="middle">filtering</text>
+</g>
+<g>
+  <rect x="325" y="110" width="8" height="160" rx="2" fill="var(--s1)"/>
+  <text class="lay" x="329" y="292" text-anchor="middle">Instruction</text>
+  <text class="laym" x="329" y="307" text-anchor="middle">hierarchy</text>
+</g>
+<g>
+  <rect x="480" y="104" width="10" height="172" rx="2" fill="var(--s2)"/>
+  <text class="tag" x="485" y="292" text-anchor="middle">Adversarial fine-tune</text>
+  <text class="laym" x="485" y="307" text-anchor="middle">training-time layer (2022)</text>
+</g>
+<g>
+  <rect x="635" y="110" width="8" height="160" rx="2" fill="var(--s1)"/>
+  <text class="lay" x="639" y="292" text-anchor="middle">Output</text>
+  <text class="laym" x="639" y="307" text-anchor="middle">filtering</text>
+</g>
+<g>
+  <rect x="790" y="110" width="8" height="160" rx="2" fill="var(--s1)"/>
+  <text class="lay" x="794" y="292" text-anchor="middle">Constitutional</text>
+  <text class="laym" x="794" y="307" text-anchor="middle">constraints</text>
+</g>
+
+<!-- residual -->
+<text class="lay" x="852" y="150" fill="var(--crit)">residual risk</text>
+<text class="laym" x="852" y="165" fill="var(--muted)">still nonzero</text>
+<line x1="878" y1="172" x2="895" y2="188" stroke="var(--crit)" stroke-opacity="0.6" stroke-width="1"/>
+</svg>

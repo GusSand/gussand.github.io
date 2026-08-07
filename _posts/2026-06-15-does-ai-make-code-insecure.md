@@ -16,6 +16,8 @@ When Copilot and Codex showed up in everyone's editor, the security community ha
 
 But that left the question I actually cared about. A model's raw output and the code a person ships after working with that model are two different things. So we ran a study instead of arguing about it: [Lost at C](https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval), at USENIX Security '23 ([Sandoval et al. 2023](https://arxiv.org/abs/2208.09727)). This post is the short version, caveats included.
 
+{% include reading-outline.html %}
+
 **Table of Contents**
 
 - [Why This Question Is Hard](#why-this-question-is-hard)
@@ -32,6 +34,10 @@ It's easy to slide between two claims that aren't the same thing. One is that AI
 
 The gap between them is the human. People edit, reject, and rewrite suggestions, and plenty of bugs a model proposes never make it into the final program. If you want to say anything about the second claim, you can't just grade model output. You need real people writing real code, a task where security actually bites, and a control group to compare against. That's what we set up.
 
+![Two boxes joined by the developer in the middle. On the left, model raw output, where Pearce 2022 found weaknesses. On the right, shipped code, the claim the study tests. In between, the developer edits, rejects, and rewrites.](/images/does-ai-insecure/fig1-the-gap-is-the-human.svg)
+
+*Fig. 1. The two claims get used interchangeably, but the developer sits between them. Grading model output measures the left box; the study measures the right one.*
+
 # Study Design
 
 We recruited 58 student programmers and asked each of them to implement a singly-linked "shopping list" in C. Both choices were on purpose. C is where the scary bugs live: manual memory management, pointer arithmetic, array indexing, and the buffer overflows and use-after-frees that come with them. If an assistant is going to steer people into serious vulnerabilities, this is the setting where you'd expect to see it.
@@ -41,6 +47,10 @@ Half the participants worked with an LLM assistant and half worked without one. 
 # Results
 
 Here's the part that surprised people. The assisted group introduced critical security bugs at a rate no more than 10% above the control group. In this task the assistant was basically security-neutral. It didn't trigger the collapse you might predict from "the model suggests vulnerabilities."
+
+![Bar chart. Control group critical-bug rate set at 1.0 as baseline. The LLM-assisted group is at most 1.1 times that, a difference of no more than 10 percent.](/images/does-ai-insecure/fig2-marginal-effect.svg)
+
+*Fig. 2. The measured difference is the marginal effect of the assistant, not the absolute safety of the code. Both groups wrote plenty of bugs; the assistant did not make the shipped result meaningfully worse.*
 
 I think that's the honest, slightly unsatisfying middle ground. The raw generations can absolutely contain vulnerabilities, which lines up with [Pearce et al. (2022)](https://arxiv.org/abs/2108.09293). And yet the code people shipped with the model in the loop wasn't meaningfully worse than what they wrote alone.
 

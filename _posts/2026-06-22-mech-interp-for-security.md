@@ -18,6 +18,8 @@ The joke is also the whole argument I want to make. If a behavior corresponds to
 
 Mechanistic interpretability usually gets pitched as a science project, a way to understand in principle what a neural network is doing. I want to make a narrower and more practical case. Used as a security tool, interpretability answers a specific question that black-box testing cannot: not *whether* the model does something unsafe, but *where inside it* the decision to do so gets made. Once you have that location, some fixes get much cheaper. This is the thread running through my recent work, and the clearest example is our paper [Surgical Repair of Insecure Code Generation in LLMs](https://arxiv.org/abs/2604.16697) ([Sandoval et al. 2026](https://arxiv.org/abs/2604.16697)).
 
+{% include reading-outline.html %}
+
 **Table of Contents**
 
 - [The Usual Security Loop](#the-usual-security-loop)

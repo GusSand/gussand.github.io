@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 380" width="940" height="380" role="img" aria-label="Goal-hijacking success rate before and after adversarial fine-tuning on three GPT-3 variants. Ada falls from 26 percent to 0, Babbage from 31 percent to 0, Curie from 18 percent to 0.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#3d3d3a; --box:#232322;
+        --s1:#3987e5; --s2:#d95926; --good:#0ca30c; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .ax{font-size:12px;fill:var(--muted);} .grp{font-size:14px;font-weight:600;}
+  .val{font-size:13px;font-weight:600;} .leg{font-size:12.5px;fill:var(--ink2);}
+</style>
+<rect width="940" height="380" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Goal-hijacking success, before and after the fix</text>
+<text class="st" x="20" y="56">Percentage of injection attempts that hijacked the task. After fine-tuning, all three variants sat at zero.</text>
+
+<!-- gridlines + y labels: baseline y=320, 6px per % -->
+<line x1="90" y1="320" x2="910" y2="320" stroke="var(--axis)"/>
+<line x1="90" y1="260" x2="910" y2="260" stroke="var(--grid)"/>
+<line x1="90" y1="200" x2="910" y2="200" stroke="var(--grid)"/>
+<line x1="90" y1="140" x2="910" y2="140" stroke="var(--grid)"/>
+<text class="ax" x="80" y="324" text-anchor="end">0%</text>
+<text class="ax" x="80" y="264" text-anchor="end">10%</text>
+<text class="ax" x="80" y="204" text-anchor="end">20%</text>
+<text class="ax" x="80" y="144" text-anchor="end">30%</text>
+
+<!-- Ada: before 26 -> y=164 h=156 ; after 0 -->
+<rect x="205" y="164" width="55" height="156" rx="3" fill="var(--s2)"/>
+<text class="val" x="232" y="156" text-anchor="middle" fill="var(--s2)">26%</text>
+<rect x="268" y="317" width="55" height="3" rx="1.5" fill="var(--good)"/>
+<text class="val" x="295" y="311" text-anchor="middle" fill="var(--good)">0%</text>
+<text class="grp" x="264" y="348" text-anchor="middle">Ada</text>
+
+<!-- Babbage: before 31 -> y=134 h=186 -->
+<rect x="445" y="134" width="55" height="186" rx="3" fill="var(--s2)"/>
+<text class="val" x="472" y="126" text-anchor="middle" fill="var(--s2)">31%</text>
+<rect x="508" y="317" width="55" height="3" rx="1.5" fill="var(--good)"/>
+<text class="val" x="535" y="311" text-anchor="middle" fill="var(--good)">0%</text>
+<text class="grp" x="504" y="348" text-anchor="middle">Babbage</text>
+
+<!-- Curie: before 18 -> y=212 h=108 -->
+<rect x="685" y="212" width="55" height="108" rx="3" fill="var(--s2)"/>
+<text class="val" x="712" y="204" text-anchor="middle" fill="var(--s2)">18%</text>
+<rect x="748" y="317" width="55" height="3" rx="1.5" fill="var(--good)"/>
+<text class="val" x="775" y="311" text-anchor="middle" fill="var(--good)">0%</text>
+<text class="grp" x="744" y="348" text-anchor="middle">Curie</text>
+
+<!-- legend -->
+<rect x="640" y="20" width="14" height="14" rx="3" fill="var(--s2)"/>
+<text class="leg" x="660" y="32">before</text>
+<rect x="720" y="20" width="14" height="14" rx="3" fill="var(--good)"/>
+<text class="leg" x="740" y="32">after fine-tuning</text>
+</svg>

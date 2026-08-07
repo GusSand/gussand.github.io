@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 340" width="940" height="340" role="img" aria-label="Critical security bug rate relative to the control group. The assisted group introduced critical bugs at a rate no more than 10 percent above the unassisted control, so in this task the assistant was close to security-neutral.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#3d3d3a; --box:#232322;
+        --s1:#3987e5; --s2:#d95926; --good:#0ca30c; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .ax{font-size:12px;fill:var(--muted);} .grp{font-size:14px;font-weight:600;}
+  .val{font-size:13px;font-weight:600;} .note{font-size:12.5px;fill:var(--ink2);}
+</style>
+<rect width="940" height="340" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">The assistant was close to security-neutral</text>
+<text class="st" x="20" y="56">Critical-bug rate in shipped code, relative to the control group. 58 programmers writing a linked list in C.</text>
+
+<!-- baseline y=300 ; 1.0 = 170px -> control top 130 ; 1.1 = 187px -> assisted top 113 -->
+<line x1="90" y1="300" x2="760" y2="300" stroke="var(--axis)"/>
+<!-- reference line at control level -->
+<line x1="90" y1="130" x2="760" y2="130" stroke="var(--muted)" stroke-dasharray="5 4" stroke-opacity="0.7"/>
+<text class="ax" x="80" y="134" text-anchor="end">1.0&#215;</text>
+<text class="ax" x="80" y="304" text-anchor="end">0</text>
+
+<!-- control bar -->
+<rect x="260" y="130" width="130" height="170" rx="3" fill="var(--good)" fill-opacity="0.85"/>
+<text class="val" x="325" y="122" text-anchor="middle" fill="var(--good)">1.0&#215; (baseline)</text>
+<text class="grp" x="325" y="326" text-anchor="middle">Control</text>
+
+<!-- assisted bar to ~1.1 -->
+<rect x="470" y="113" width="130" height="187" rx="3" fill="var(--s1)" fill-opacity="0.85"/>
+<text class="val" x="535" y="105" text-anchor="middle" fill="var(--s1)">&#8804; 1.1&#215;</text>
+<text class="grp" x="535" y="326" text-anchor="middle">LLM-assisted</text>
+
+<!-- bracket showing the <=10% gap -->
+<path d="M 616 113 L 628 113 L 628 130 L 616 130" fill="none" stroke="var(--s2)" stroke-width="1.5"/>
+<text class="val" x="636" y="126" fill="var(--s2)">&#8804; +10%</text>
+
+<!-- side note -->
+<text class="note" x="700" y="150">No more than 10% above</text>
+<text class="note" x="700" y="170">control. Not the collapse</text>
+<text class="note" x="700" y="190">the raw-output view</text>
+<text class="note" x="700" y="210">predicts, and not a claim</text>
+<text class="note" x="700" y="230">that the code is safe:</text>
+<text class="note" x="700" y="250">both groups wrote bugs.</text>
+</svg>

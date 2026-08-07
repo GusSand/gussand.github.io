@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 340" width="940" height="340" role="img" aria-label="Adding a per-vulnerability steering vector at the layer where format resolves cuts insecure generation by up to 74 percent, with no fine-tuning, almost no added cost, and general code quality preserved.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#3d3d3a; --box:#232322;
+        --s1:#3987e5; --s2:#d95926; --good:#0ca30c; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .ax{font-size:12px;fill:var(--muted);} .grp{font-size:13.5px;font-weight:600;}
+  .val{font-size:13px;font-weight:600;} .big{font-size:30px;font-weight:700;fill:var(--good);}
+  .prop{font-size:13px;fill:var(--ink2);} .ph{font-size:12.5px;font-weight:600;fill:var(--ink2);}
+</style>
+<rect width="940" height="340" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">A one-layer fix for a one-layer failure</text>
+<text class="st" x="20" y="56">Insecure generation, before and after adding the steering vector. Relative to the unsteered rate.</text>
+
+<!-- axis: baseline y=300, 100 = 200px top=100 -->
+<line x1="90" y1="300" x2="440" y2="300" stroke="var(--axis)"/>
+<text class="ax" x="80" y="304" text-anchor="end">0</text>
+<text class="ax" x="80" y="104" text-anchor="end">100%</text>
+<line x1="90" y1="100" x2="440" y2="100" stroke="var(--grid)"/>
+
+<!-- before bar 100 -->
+<rect x="150" y="100" width="90" height="200" rx="3" fill="var(--s2)"/>
+<text class="val" x="195" y="92" text-anchor="middle" fill="var(--s2)">100%</text>
+<text class="grp" x="195" y="324" text-anchor="middle">Unsteered</text>
+<!-- after bar 26 -> h52 top 248 -->
+<rect x="300" y="248" width="90" height="52" rx="3" fill="var(--good)"/>
+<text class="val" x="345" y="240" text-anchor="middle" fill="var(--good)">~26%</text>
+<text class="grp" x="345" y="324" text-anchor="middle">Steered</text>
+
+<!-- big callout -->
+<text class="big" x="560" y="150">up to &#8722;74%</text>
+<text class="st" x="560" y="176">insecure generation, no fine-tuning run</text>
+
+<!-- properties -->
+<text class="ph" x="560" y="222">What the intervention does not cost</text>
+<circle cx="566" cy="246" r="3" fill="var(--good)"/><text class="prop" x="580" y="250">Per-vulnerability vector, added at one layer</text>
+<circle cx="566" cy="270" r="3" fill="var(--good)"/><text class="prop" x="580" y="274">Almost no compute overhead, no retraining</text>
+<circle cx="566" cy="294" r="3" fill="var(--good)"/><text class="prop" x="580" y="298">General code quality holds; no refuse-everything</text>
+</svg>

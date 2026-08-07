@@ -16,6 +16,8 @@ Ask an LLM to generate a piece of code and it might hand you a SQL injection or 
 
 Our 2026 preprint, [Surgical Repair of Insecure Code Generation in LLMs](https://arxiv.org/abs/2604.16697) ([Sandoval et al. 2026](https://arxiv.org/abs/2604.16697)), gives that phenomenon a name, the Format-Reliability Gap, finds where it lives inside the network, and shows that because it lives in one place you can repair it with a small, cheap intervention instead of retraining the whole model.
 
+{% include reading-outline.html %}
+
 **Table of Contents**
 
 - [It Is Not a Knowledge Deficit](#it-is-not-a-knowledge-deficit)
@@ -38,11 +40,19 @@ We used mechanistic interpretability to follow the security-relevant representat
 
 In other words, the model knows, carries that knowledge most of the way through, and drops it at the last step in favor of writing something that looks like correct code. The failure isn't smeared across the whole model. It's concentrated right where format gets resolved.
 
+![Line chart across network depth. A security signal is high through the early and middle layers, then falls sharply at the final layer, where a format-pressure line spikes and overtakes it.](/images/format-reliability/fig1-layer-trajectory.svg)
+
+*Fig. 1. The security signal survives most of the network and loses at the last step, where the pressure to emit fluent, format-compliant code takes over. That crossover is the failure.*
+
 # Repair with Steering Vectors
 
 A failure that lives in one place can be fixed in one place. Instead of retraining, we build a steering vector for each vulnerability type, a direction we add to the model's internal activations that re-asserts the security signal exactly where it was getting crowded out. This follows the activation-steering and representation-engineering line of work ([Turner et al. 2023](https://arxiv.org/abs/2308.10248); [Zou et al. 2023](https://arxiv.org/abs/2310.01405)), pointed at the security failure mode.
 
 It works well. Insecure generation drops by up to 74%, with almost no added cost and no fine-tuning run. The intervention is targeted enough that general code quality holds, so you don't end up with a model that refuses or rewrites everything in the name of safety.
+
+![Before and after bars. Unsteered insecure generation set at 100 percent, steered at roughly 26 percent, a reduction of up to 74 percent, with no fine-tuning and code quality preserved.](/images/format-reliability/fig2-steering-repair.svg)
+
+*Fig. 2. The steering vector is added at the layer where the signal was getting crowded out. The reduction is large and the added cost is small, which is the whole reason to prefer this over retraining.*
 
 # Why the Framing Matters
 

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 330" width="940" height="330" role="img" aria-label="The training recipe that stuck: five hours, one team at a time, five to ten people including the manager, blessed company time, real work. The result was a jump of one cohort with 96 percent of trainees still in the higher cohort six weeks later. Shorter sessions, larger audiences, or individual opt-in did not stick.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --good:#0ca30c; --crit:#e66767; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .ct{font-size:14px;font-weight:600;} .bd{font-size:12.5px;fill:var(--ink2);}
+  .big{font-size:40px;font-weight:700;fill:var(--good);} .lbl{font-size:12.5px;fill:var(--ink2);}
+  .fail{font-size:12px;fill:var(--crit);}
+</style>
+<defs>
+  <marker id="ag2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--s1)"/></marker>
+</defs>
+<rect width="940" height="330" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">The curriculum barely matters; the format does</text>
+<text class="st" x="20" y="56">The Netflix study found the delivery format carried the effect, and it collapsed when they cut corners.</text>
+
+<!-- recipe card -->
+<rect x="20" y="82" width="440" height="176" rx="8" fill="var(--box)" stroke="var(--s1)" stroke-opacity="0.6"/>
+<text class="ct" x="40" y="110" fill="var(--s1)">The format that stuck</text>
+<circle cx="46" cy="134" r="3" fill="var(--s1)"/><text class="bd" x="60" y="138">Five hours, one team at a time</text>
+<circle cx="46" cy="160" r="3" fill="var(--s1)"/><text class="bd" x="60" y="164">5&#8211;10 people, including their manager</text>
+<circle cx="46" cy="186" r="3" fill="var(--s1)"/><text class="bd" x="60" y="190">Blessed company time, regular hours</text>
+<circle cx="46" cy="212" r="3" fill="var(--s1)"/><text class="bd" x="60" y="216">Real work, not toy exercises</text>
+<text class="bd" x="40" y="244" fill="var(--muted)">Manager opts the team in.</text>
+
+<!-- arrow -->
+<line x1="470" y1="170" x2="520" y2="170" stroke="var(--s1)" stroke-width="2" marker-end="url(#ag2)"/>
+
+<!-- outcome -->
+<text class="big" x="540" y="150">96%</text>
+<text class="lbl" x="540" y="176">still in the higher cohort six weeks later,</text>
+<text class="lbl" x="540" y="196">after jumping a cohort in those five hours</text>
+
+<!-- failed shortcuts -->
+<rect x="540" y="222" width="380" height="66" rx="8" fill="var(--box)" stroke="var(--crit)" stroke-opacity="0.45"/>
+<text class="fail" x="556" y="246">Did not stick when made cheaper:</text>
+<text class="bd" x="556" y="268">shorter sessions &#183; larger audiences &#183; individual opt-in</text>
+</svg>

@@ -1,7 +1,7 @@
 ---
 title: 'Red-Teaming Language Models, Part 2: What Holds on Defense'
 description: 'Part 2 of three. The best-documented defensive result, why layered safeguards can be peeled apart one classifier at a time, the adaptive-attack result that breaks most published defenses, and why agents are the current worst case.'
-date: 2026-07-30
+date: 2026-08-03
 permalink: /posts/2026/07/red-teaming-language-models-defense/
 tags:
   - Security
@@ -12,7 +12,7 @@ tags:
   - Open Weights
 ---
 
-Date: July 30, 2026 \| Estimated Reading Time: 5 min \| Author: Gustavo Sandoval
+Date: August 3, 2026 \| Estimated Reading Time: 5 min \| Author: Gustavo Sandoval
 
 Series: [Part 1: Process & Measurement](/posts/2026/07/red-teaming-language-models/) &middot; **Part 2: What Holds on Defense** &middot; [Part 3: Open Weights](/posts/2026/07/red-teaming-language-models-open-weights/)
 

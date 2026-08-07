@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 360" width="940" height="360" role="img" aria-label="Across network depth, the security signal is registered in early layers and carried unused through the middle. At the final layer, the pressure to produce fluent format-compliant output competes with the security signal and wins, so the model drops what it knew.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#3d3d3a; --box:#232322;
+        --s1:#3987e5; --s2:#d95926; --crit:#e66767; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .zone{font-size:12.5px;font-weight:600;fill:var(--ink2);} .zs{font-size:11.5px;fill:var(--muted);}
+  .leg{font-size:12.5px;} .ann{font-size:12px;fill:var(--crit);font-weight:600;}
+</style>
+<rect width="940" height="360" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">The model knows early and drops it late</text>
+<text class="st" x="20" y="56">Relative strength of two signals as a generation passes through the network, from early layers to the output.</text>
+
+<!-- zone dividers -->
+<line x1="356" y1="80" x2="356" y2="300" stroke="var(--grid)" stroke-dasharray="4 4"/>
+<line x1="626" y1="80" x2="626" y2="300" stroke="var(--grid)" stroke-dasharray="4 4"/>
+<text class="zone" x="90" y="98">Early layers</text>
+<text class="zs" x="90" y="116">register the risky pattern</text>
+<text class="zone" x="380" y="98">Middle</text>
+<text class="zs" x="380" y="116">signal carried, doing nothing</text>
+<text class="zone" x="650" y="98">Final layer</text>
+<text class="zs" x="650" y="116">format resolves the output</text>
+
+<!-- axes -->
+<line x1="90" y1="300" x2="900" y2="300" stroke="var(--axis)"/>
+<line x1="90" y1="130" x2="90" y2="300" stroke="var(--axis)"/>
+
+<!-- security signal (blue): high plateau then cliff -->
+<polyline points="110,168 300,150 560,150 660,166 770,250 870,268" fill="none" stroke="var(--s1)" stroke-width="2.5"/>
+<!-- format pressure (orange): low then spike -->
+<polyline points="110,266 300,258 560,232 660,204 770,150 870,132" fill="none" stroke="var(--s2)" stroke-width="2.5" stroke-dasharray="1 0"/>
+
+<!-- crossover marker -->
+<circle cx="742" cy="196" r="4" fill="var(--crit)"/>
+<text class="ann" x="720" y="330" text-anchor="middle">format pressure wins</text>
+<line x1="742" y1="200" x2="742" y2="316" stroke="var(--crit)" stroke-width="1" stroke-dasharray="3 3"/>
+
+<!-- legend -->
+<rect x="590" y="18" width="22" height="3" fill="var(--s1)"/>
+<text class="leg" x="618" y="26" fill="var(--s1)">security signal</text>
+<rect x="730" y="18" width="22" height="3" fill="var(--s2)"/>
+<text class="leg" x="758" y="26" fill="var(--s2)">format pressure</text>
+</svg>

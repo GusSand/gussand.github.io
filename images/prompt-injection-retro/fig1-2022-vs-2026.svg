@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 360" width="940" height="360" role="img" aria-label="In 2022 the attacker typed the injection directly and the worst case was a bad output. In 2026 the injection is planted in content the model retrieves, a web page, document, or email, and fires when a tool-using app reads it, so the blast radius becomes real actions in the world.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --crit:#e66767; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .yr{font-size:14px;font-weight:700;} .nd{font-size:12.5px;fill:var(--ink2);}
+  .ndm{font-size:11px;fill:var(--muted);} .blast{font-size:12px;font-weight:600;}
+</style>
+<defs>
+  <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--muted)"/></marker>
+</defs>
+<rect width="940" height="360" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Same confusion, a much larger blast radius</text>
+<text class="st" x="20" y="56">Untrusted input and trusted instructions still share one channel. What changed is where the input comes from and what the model can do with it.</text>
+
+<line x1="470" y1="80" x2="470" y2="330" stroke="#2c2c2a" stroke-dasharray="4 4"/>
+
+<!-- 2022 direct -->
+<text class="yr" x="30" y="104" fill="var(--s1)">2022 &#183; direct injection</text>
+<rect x="30" y="120" width="120" height="54" rx="6" fill="var(--box)" stroke="var(--crit)" stroke-opacity="0.6"/>
+<text class="nd" x="90" y="143" text-anchor="middle">user types</text>
+<text class="ndm" x="90" y="161" text-anchor="middle">"ignore the above"</text>
+<line x1="150" y1="147" x2="196" y2="147" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="196" y="120" width="90" height="54" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="nd" x="241" y="151" text-anchor="middle">the model</text>
+<line x1="286" y1="147" x2="332" y2="147" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="332" y="120" width="110" height="54" rx="6" fill="var(--box)" stroke="var(--s2)" stroke-opacity="0.6"/>
+<text class="nd" x="387" y="143" text-anchor="middle">bad output</text>
+<text class="ndm" x="387" y="161" text-anchor="middle">a wrong sentence</text>
+<circle cx="235" cy="250" r="30" fill="var(--crit)" fill-opacity="0.18" stroke="var(--crit)" stroke-opacity="0.5"/>
+<text class="blast" x="235" y="255" text-anchor="middle" fill="var(--crit)">small</text>
+<text class="ndm" x="235" y="300" text-anchor="middle">blast radius: the reply</text>
+
+<!-- 2026 indirect -->
+<text class="yr" x="492" y="104" fill="var(--s2)">2026 &#183; indirect injection</text>
+<rect x="492" y="120" width="132" height="54" rx="6" fill="var(--box)" stroke="var(--crit)" stroke-opacity="0.6"/>
+<text class="nd" x="558" y="143" text-anchor="middle">planted in a page,</text>
+<text class="ndm" x="558" y="161" text-anchor="middle">doc, or email</text>
+<line x1="624" y1="147" x2="662" y2="147" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="662" y="120" width="118" height="54" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="nd" x="721" y="143" text-anchor="middle">app retrieves,</text>
+<text class="ndm" x="721" y="161" text-anchor="middle">model + tools read</text>
+<line x1="780" y1="147" x2="818" y2="147" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#a1)"/>
+<rect x="818" y="120" width="102" height="54" rx="6" fill="var(--box)" stroke="var(--s2)" stroke-opacity="0.6"/>
+<text class="nd" x="869" y="143" text-anchor="middle">real actions</text>
+<text class="ndm" x="869" y="161" text-anchor="middle">in the world</text>
+<circle cx="700" cy="255" r="55" fill="var(--crit)" fill-opacity="0.2" stroke="var(--crit)" stroke-opacity="0.6"/>
+<text class="blast" x="700" y="260" text-anchor="middle" fill="var(--crit)">large</text>
+<text class="ndm" x="700" y="332" text-anchor="middle">blast radius: whatever the tools can do</text>
+</svg>

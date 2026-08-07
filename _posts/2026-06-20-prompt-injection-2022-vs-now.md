@@ -16,6 +16,8 @@ People like to call prompt injection the SQL injection of LLMs, and the comparis
 
 This is a retrospective companion to our paper, [Early Approaches to Adversarial Fine-Tuning for Prompt Injection Defense](https://arxiv.org/abs/2509.14271) ([Sandoval et al. 2025](https://arxiv.org/abs/2509.14271)), which documents work we actually did in 2022. If you want the method itself in detail, that's in the [earlier post on Adversarial Fine-Tuning](/posts/2023/01/adversarial-fine-tuning/).
 
+{% include reading-outline.html %}
+
 **Table of Contents**
 
 - [The 2022 Picture](#the-2022-picture)
@@ -48,7 +50,15 @@ What didn't hold up was the hope that fine-tuning alone could be the answer. Lat
 
 Today's version of the problem is bigger and less comfortable. The threat moved past direct injection to indirect injection, where the malicious instructions are planted in content the model retrieves, like a web page, a document, or an email, and then fire when an LLM-integrated app reads them ([Greshake et al. 2023](https://arxiv.org/abs/2302.12173)). Once you give a model tools, the blast radius stops being a bad sentence and starts being real actions in the world.
 
+![Two panels. 2022 direct injection: the user types the injection, the model produces a bad output, small blast radius. 2026 indirect injection: the payload is planted in a page or email, retrieved by a tool-using app, and the blast radius becomes real actions in the world.](/images/prompt-injection-retro/fig1-2022-vs-2026.svg)
+
+*Fig. 1. The underlying confusion is the same in both years. What grew is where the untrusted text enters and what the model can do once it acts on it.*
+
 The defensive side has converged on layering rather than a single fix. Instruction hierarchies, task-specific fine-tuning, input and output filtering, and constitutional-style constraints get stacked together, with no one technique trusted to carry the load. The 2022 work fits in there as an early entry on the training-time side of that stack.
+
+![An attack passes through five defensive layers, input filtering, instruction hierarchy, adversarial fine-tuning as a training-time layer, output filtering, and constitutional constraints. Each thins the attack, none stops it alone, and a nonzero residual risk remains.](/images/prompt-injection-retro/fig2-defense-in-depth.svg)
+
+*Fig. 2. Every layer removes some of the attack and none removes all of it. Adversarial fine-tuning is one training-time layer in the stack, not a fix on its own, which is the conclusion that aged best.*
 
 # Lessons
 

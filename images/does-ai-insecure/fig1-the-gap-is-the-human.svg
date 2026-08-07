@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 300" width="940" height="300" role="img" aria-label="Two different claims. 'AI generates insecure code' is about the model's raw output, where Pearce 2022 found vulnerabilities. 'AI makes developers ship insecure code' is about the whole human-plus-model system. The developer edits, rejects, and rewrites in between, and that is the gap.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; --crit:#e66767; --good:#0ca30c; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .ct{font-size:14.5px;font-weight:600;} .bd{font-size:12.5px;fill:var(--ink2);}
+  .cite{font-size:11px;fill:var(--muted);} .mid{font-size:12.5px;fill:var(--s1);font-weight:600;}
+</style>
+<defs>
+  <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--s1)"/></marker>
+</defs>
+<rect width="940" height="300" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Two claims that are not the same claim</text>
+<text class="st" x="20" y="56">What the model emits and what a person ships are separated by everything the developer does in between.</text>
+
+<!-- left box: model output -->
+<rect x="20" y="90" width="300" height="150" rx="8" fill="var(--box)" stroke="var(--crit)" stroke-opacity="0.55"/>
+<text class="ct" x="40" y="120" fill="var(--crit)">Model raw output</text>
+<text class="bd" x="40" y="146">"AI generates insecure code."</text>
+<text class="bd" x="40" y="170">A meaningful fraction of on-its-own</text>
+<text class="bd" x="40" y="188">generation contains weaknesses.</text>
+<text class="cite" x="40" y="216">Pearce et al. 2022</text>
+
+<!-- middle: the human -->
+<path d="M 320 165 L 400 165" fill="none" stroke="var(--s1)" stroke-width="2" marker-end="url(#ag)"/>
+<path d="M 620 165 L 700 165" fill="none" stroke="var(--s1)" stroke-width="2" marker-end="url(#ag)"/>
+<rect x="400" y="108" width="220" height="114" rx="8" fill="var(--box)" stroke="var(--s1)" stroke-opacity="0.7"/>
+<text class="mid" x="510" y="134" text-anchor="middle">the developer</text>
+<text class="bd" x="510" y="160" text-anchor="middle">edits</text>
+<text class="bd" x="510" y="180" text-anchor="middle">rejects</text>
+<text class="bd" x="510" y="200" text-anchor="middle">rewrites</text>
+
+<!-- right box: shipped -->
+<rect x="700" y="90" width="220" height="150" rx="8" fill="var(--box)" stroke="var(--good)" stroke-opacity="0.6"/>
+<text class="ct" x="720" y="120" fill="var(--good)">Shipped code</text>
+<text class="bd" x="720" y="146">"AI makes developers</text>
+<text class="bd" x="720" y="164">ship insecure code."</text>
+<text class="bd" x="720" y="192">The claim our study</text>
+<text class="bd" x="720" y="210">actually tests.</text>
+
+<text class="st" x="20" y="278">Grading the model's output answers the first claim. Only real people writing real code answers the second.</text>
+</svg>

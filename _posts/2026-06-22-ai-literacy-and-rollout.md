@@ -9,6 +9,8 @@ tags:
   - LLM
 ---
 
+Date: June 22, 2026 \| Estimated Reading Time: 8 min \| Author: Gustavo Sandoval
+
 I have to confess something: I have been vibe coding and beyond for over a couple of years now. I started with CoPilot, for which I even created a plugin for a research paper (https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval), then moved on to Cursor and eventually landed in Claude Code. I have created my initial [Claude.md](https://gist.github.com/GusSand/549883ca0a1f326a31239cc3fcfa7f69) for research that has different personas, etc. However, given that I have spent the past (few) years in Academia, this has mainly been either a solo journey or with a few graduate students. 
 
 Over the weekend, I read a nice post that Steve Yegge wrote up in [The Flat Curve Society](https://steve-yegge.medium.com/the-flat-curve-society-36c8b01eb33b) ([Yegge 2026](https://steve-yegge.medium.com/the-flat-curve-society-36c8b01eb33b)) that made me think back to my Engineering Management days. How would you introduce AI Engineering, as it wants to be called now, to a medium-size team?
@@ -16,6 +18,8 @@ Over the weekend, I read a nice post that Steve Yegge wrote up in [The Flat Curv
 Most organizations treat AI adoption as a tooling problem. Buy the licenses, turn on the agent, wait for productivity. Obviously, this doesn't work, and the reason is boring: agentic coding is a skill, today's models are hard to work with, and nobody is born knowing how to drive them. The good news is that the skill is cheap to teach and the gap is cheap to measure.
 
 What follows is a practical plan lifted almost entirely from a Netflix training study that Ezra Savard ran from December 2025 through March 2026. Steve Yegge wrote this up in the article and I'm just adding a security reviewer's caveats, because the productivity story has a denominator problem you should not ignore.
+
+{% include reading-outline.html %}
 
 **Table of Contents**
 
@@ -42,6 +46,10 @@ Before you train anyone, find out where you stand. The Netflix work gives a usab
 
 The zero cohort is roughly zero tokens a day, people not using coding agents for real work. The single-agent cohort lands around four million tokens a day, one agent driven synchronously through the workday. The multi-agent cohort sits at twelve to fifteen million tokens a day, two to four agents running without constant supervision.
 
+![Three ascending bars. Zero cohort near zero tokens a day, single-agent cohort around four million, multi-agent cohort at twelve to fifteen million, with a note that above fifteen million the number stops meaning anything.](/images/ai-literacy/fig1-cohort-ladder.svg)
+
+*Fig. 1. The three cohorts by heavy-day token spend. This works as a thermometer only below about fifteen million a day; past that, people invent reasons to burn tokens and the correlation with skill breaks.*
+
 Use this for what it is, which is a thermometer, not a thesis. Token spend is an input metric, and it tells you nothing about whether the output was any good. It is the reading-literacy equivalent of counting pages turned. It works here only because below fifteen million a day, spend correlates with skill in a way that is cheap to read off existing telemetry. Above that line it stops meaning anything, since people get clever about inventing reasons to burn tokens. So audit at a coarse level, learn how much of your org is stuck at zero, and move on.
 
 # Step 2: The Training Recipe
@@ -51,6 +59,10 @@ This is the part that earns the post. The Netflix team found that the curriculum
 Five hours, one team at a time, five to ten people including their manager. The manager has to opt the team in, and it has to run during regular hours as blessed company time. Trainees bring their real work, not toy exercises, and the instructor helps them do that actual work with agents.
 
 The reported result is that people jump a cohort in those five hours and stay there, with 96% of trainees still in the higher cohort six weeks later. When they tried to make it cheaper, with shorter sessions, larger audiences, or individual opt-in instead of whole teams, it did not stick.
+
+![The recipe that stuck, five hours, one team of five to ten including the manager, blessed company time, real work, leading to 96 percent of trainees still in the higher cohort six weeks later. Shorter sessions, larger audiences, or individual opt-in did not stick.](/images/ai-literacy/fig2-training-recipe.svg)
+
+*Fig. 2. The curriculum was interchangeable; the social scaffolding did the work. Every cost-cutting variant they tried broke the retention.*
 
 None of those constraints are arbitrary, and they line up with what we already know about skill transfer in adults. Manager opt-in supplies sponsorship and air cover. Whole-team cohorts create peer norms instead of lonely early adopters. Real work during blessed hours removes the "I'll learn it later" escape hatch. The curriculum is interchangeable precisely because the social scaffolding is doing the work.
 
@@ -63,6 +75,10 @@ The advanced curriculum is about hygiene and decomposition. The canonical beginn
 # Measure Outcomes, Not Output
 
 Here is where I put my security hat on, because the productivity finding in the study deserves more scrutiny than it usually gets. The headline was a large jump in code produced by trained agentic coders. When they dug in, the entire difference was additional test code.
+
+![Two bars, control and trained. The trained bar is taller, and the entire increment is marked as additional test code. A side panel notes that lines of code is a weak signal, DORA warned against it, and METR 2025 found experienced developers slower with AI while believing they were faster.](/images/ai-literacy/fig3-outcomes-not-output.svg)
+
+*Fig. 3. The gain was real and it was all test code. That can be better coverage or lines-of-code inflation, and lines of code is the proxy the field has spent a decade learning not to trust.*
 
 Read that twice before you celebrate it. More test code can mean better coverage, or it can mean lines-of-code inflation that looks like productivity because we are bad at measuring productivity. Lines of code is exactly the proxy that the DORA tradition has warned against for a decade, and "the agent wrote more code" is the single least trustworthy success signal in software. It also sits uncomfortably next to controlled studies, including [METR's 2025 work](https://metr.org), where experienced developers were measurably slower with AI assistance even while believing they were faster.
 

@@ -138,7 +138,7 @@ If you answer nothing else, answer the success criteria question before you star
 
 ## Phase 1: Write the Threat Model Down
 
-Two ontologies are in real production use. Microsoft's is System / Actor / TTPs / Weakness / Impact, mapped onto MITRE ATT&CK and ATLAS, and it explicitly does not assume adversarial intent, since benign users trip over failures too. Verma et al.'s access ladder is the other. They answer different questions: the first tells you how to *describe* a finding so it can be triaged and compared, the second tells you which findings are *reachable* by which adversary. Use both.
+Two ontologies are in real production use. Microsoft's is System / Actor / TTPs / Weakness / Impact, mapped onto MITRE ATT&CK and ATLAS, and it explicitly does not assume adversarial intent, since benign users trip over failures too. Verma et al.'s access ladder is the other. They answer different questions: the first tells you how to *describe* a finding so it can be triaged and compared, the second tells you which findings are *reachable* by which adversary. Use both. For what makes a written threat model *adequate* rather than merely present, one you could hold a release decision to, I wrote a companion essay: [What Counts as an Adequate Threat Model?](/posts/2026/07/adequate-threat-models/)
 
 ## Phase 2: Team and Access
 
