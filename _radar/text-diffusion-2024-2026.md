@@ -4,6 +4,8 @@ title: "Backfill Radar — Text Diffusion Language Models (July 2024 → June 30
 kind: "backfill"
 slug: "text-diffusion-2024-2026"
 date: 2026-06-30
+group: "backfill"
+window: ""
 summary: "Compiled: 2026-06-30 · Window: posted/accepted Jul 2024 – Jun 2026 (seminal older anchors flagged) · Counts: ~27 items · peer-reviewed: SEDD (ICML'24 best paper), MDLM (NeurIPS'24), DiffuLLaMA (ICLR'25), Block Diffusion (ICLR'25 oral), Fast-dLLM (ICLR'26), DIJA/A2D/DiffuGuard (ICLR'26); rest preprints/industry reports."
 source_url: "https://github.com/GusSand/research-radar/blob/main/reports/backfill/text-diffusion-2024-2026.md"
 styled: false

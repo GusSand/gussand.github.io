@@ -20,8 +20,49 @@ day turns up fewer than ten genuinely relevant papers, the report says so instea
 padding.
 
 <section class="radar-list">
-  {% assign issues = site.radar | sort: "date" | reverse %}
-  {% for issue in issues %}
+  {% assign latest = site.radar | where: "group", "latest" | sort: "date" | reverse %}
+  {% assign weeklies = site.radar | where: "kind", "weekly" | sort: "date" | reverse %}
+  {% assign backfills = site.radar | where: "kind", "backfill" | sort: "date" | reverse %}
+
+  {% if latest.size > 0 %}
+    {% if weeklies.size > 0 %}<p class="radar-label">Since the last weekly</p>{% endif %}
+    {% for issue in latest %}
+      <div class="post-entry">
+        <span class="post-date">{{ issue.date | date: "%Y-%m-%d" }}</span>
+        <a href="{{ issue.url | relative_url }}" class="post-link">{{ issue.title }}</a>
+        {% if issue.summary != "" %}<p class="post-summary">{{ issue.summary }}</p>{% endif %}
+        <div class="post-tags">
+          <span class="post-tag">{{ issue.kind }}</span>
+          {% if issue.styled %}<span class="post-tag">illustrated</span>{% endif %}
+          <a class="post-tag post-tag-link" href="{{ issue.source_url }}">source</a>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if weeklies.size > 0 %}<p class="radar-label">Weekly editions</p>{% endif %}
+  {% for issue in weeklies %}
+    {% assign covered = site.radar | where: "group", issue.slug | sort: "date" | reverse %}
+    <div class="post-entry">
+      <span class="post-date">{{ issue.date | date: "%Y-%m-%d" }}</span>
+      <a href="{{ issue.url | relative_url }}" class="post-link">{{ issue.title }}</a>
+      {% if issue.summary != "" %}<p class="post-summary">{{ issue.summary }}</p>{% endif %}
+      <div class="post-tags">
+        <span class="post-tag">{{ issue.kind }}</span>
+        {% if issue.styled %}<span class="post-tag">illustrated</span>{% endif %}
+        <a class="post-tag post-tag-link" href="{{ issue.source_url }}">source</a>
+      </div>
+      {% if covered.size > 0 %}
+        <p class="radar-children">
+          <span class="radar-children-label">Dailies:</span>
+          {% for day in covered %}<a href="{{ day.url | relative_url }}">{{ day.date | date: "%b %-d" }}</a>{% unless forloop.last %}<span class="radar-sep">·</span>{% endunless %}{% endfor %}
+        </p>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  {% if backfills.size > 0 %}<p class="radar-label">Backfill</p>{% endif %}
+  {% for issue in backfills %}
     <div class="post-entry">
       <span class="post-date">{{ issue.date | date: "%Y-%m-%d" }}</span>
       <a href="{{ issue.url | relative_url }}" class="post-link">{{ issue.title }}</a>
@@ -84,6 +125,27 @@ padding.
     color: #6f6e69;
     font-size: 11.5px;
   }
+
+
+  .radar-label {
+    margin: 34px 0 18px;
+    color: #6f6e69;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .radar-list .radar-label:first-child { margin-top: 0; }
+
+  .radar-children {
+    margin: 11px 0 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #6f6e69;
+  }
+  .radar-children-label { margin-right: 4px; }
+  .radar-children a { color: #8a8981; }
+  .radar-children a:hover { color: #c9c8c1; }
+  .radar-sep { padding: 0 6px; color: #3a3a37; }
 
   .radar-list .post-tag-link { text-decoration: none; }
   .radar-list .post-tag-link:hover { color: #a3a29b; border-color: #4a4a46; }

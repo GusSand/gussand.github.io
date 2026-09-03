@@ -80,6 +80,29 @@ def md_summary(text):
     return " · ".join(parts)
 
 
+def md_window(text):
+    """The report's coverage window, e.g. "July 6-12, 2026"."""
+    for line in text.splitlines()[:12]:
+        line = line.strip()
+        if line.startswith("**Window:**"):
+            return plain(line[len("**Window:**"):].split("·")[0])
+    return ""
+
+
+def iso_covered_week(slug):
+    """The ISO week a weekly report covers, from its slug.
+
+    Weeklies are named for the week they go out in, and summarise the week
+    before: 2026-W29 ships Monday 13 July and covers 6-12 July.
+    """
+    m = WEEK_RE.match(slug)
+    if not m:
+        return None
+    monday = dt.date.fromisocalendar(int(m.group(1)), int(m.group(2)), 1)
+    year, week, _ = (monday - dt.timedelta(days=7)).isocalendar()
+    return year, week
+
+
 def normalize_html(raw):
     """Return (title, fragment) for either a full document or a bare fragment.
 
@@ -116,8 +139,9 @@ def front_matter(fields):
     return "\n".join(lines)
 
 
-def build(source, out_dir):
-    written = []
+def collect(source):
+    """Every report in the source repo, as dicts, before grouping."""
+    reports = []
     for kind in KINDS:
         src_dir = source / "reports" / kind
         if not src_dir.is_dir():
@@ -126,38 +150,77 @@ def build(source, out_dir):
             slug = md_path.stem
             md_text = md_path.read_text(encoding="utf-8")
             html_path = md_path.with_suffix(".html")
-            has_html = html_path.is_file()
-
-            date = slug_date(slug, git_date(source, md_path.relative_to(source)))
-            artifact_m = ARTIFACT_RE.search(md_text)
-            common = {
+            reports.append({
                 "kind": kind,
                 "slug": slug,
-                "date": date,
-                "summary": md_summary(md_text),
-                "artifact": artifact_m.group(0) if artifact_m else None,
-                "source_url": f"{REPO_URL}/blob/main/reports/{kind}/{md_path.name}",
-                "styled": has_html,
-                # reports wrap their body in {% raw %}, which Jekyll's excerpt
-                # splitter would cut in half; we never use the excerpt anyway
-                "excerpt_separator": "",
-            }
+                "md_path": md_path,
+                "md_text": md_text,
+                "html_path": html_path if html_path.is_file() else None,
+                "date": slug_date(slug, git_date(source, md_path.relative_to(source))),
+            })
+    return reports
 
-            if has_html:
-                title, fragment = normalize_html(html_path.read_text(encoding="utf-8"))
-                fields = {"layout": "radar", "title": title or md_title(md_text, slug), **common}
-                body = fragment
-                dest = out_dir / f"{slug}.html"
-            else:
-                fields = {"layout": "radar-page", "title": md_title(md_text, slug), **common}
-                body = md_text
-                dest = out_dir / f"{slug}.md"
 
-            dest.write_text(
-                f"{front_matter(fields)}\n\n{{% raw %}}\n{body}\n{{% endraw %}}\n",
-                encoding="utf-8",
-            )
-            written.append(dest.name)
+def assign_groups(reports):
+    """Roll each daily up under the weekly that summarises its week.
+
+    A daily whose week never got a weekly stays in the "latest" group and is
+    listed in full on the index; the rest collapse under their weekly.
+    """
+    covered = {}
+    for r in reports:
+        if r["kind"] == "weekly":
+            week = iso_covered_week(r["slug"])
+            if week:
+                covered[week] = r["slug"]
+
+    for r in reports:
+        if r["kind"] != "daily":
+            r["group"] = r["kind"]
+            continue
+        year, week, _ = r["date"].isocalendar()
+        r["group"] = covered.get((year, week), "latest")
+
+
+def build(source, out_dir):
+    reports = collect(source)
+    assign_groups(reports)
+
+    written = []
+    for r in reports:
+        md_text, slug, kind = r["md_text"], r["slug"], r["kind"]
+        has_html = r["html_path"] is not None
+        artifact_m = ARTIFACT_RE.search(md_text)
+        common = {
+            "kind": kind,
+            "slug": slug,
+            "date": r["date"],
+            "group": r["group"],
+            "window": md_window(md_text),
+            "summary": md_summary(md_text),
+            "artifact": artifact_m.group(0) if artifact_m else None,
+            "source_url": f"{REPO_URL}/blob/main/reports/{kind}/{r['md_path'].name}",
+            "styled": has_html,
+            # reports wrap their body in {% raw %}, which Jekyll's excerpt
+            # splitter would cut in half; we never use the excerpt anyway
+            "excerpt_separator": "",
+        }
+
+        if has_html:
+            title, fragment = normalize_html(r["html_path"].read_text(encoding="utf-8"))
+            fields = {"layout": "radar", "title": title or md_title(md_text, slug), **common}
+            body = fragment
+            dest = out_dir / f"{slug}.html"
+        else:
+            fields = {"layout": "radar-page", "title": md_title(md_text, slug), **common}
+            body = md_text
+            dest = out_dir / f"{slug}.md"
+
+        dest.write_text(
+            f"{front_matter(fields)}\n\n{{% raw %}}\n{body}\n{{% endraw %}}\n",
+            encoding="utf-8",
+        )
+        written.append(dest.name)
     return written
 
 
