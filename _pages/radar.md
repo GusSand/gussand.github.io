@@ -2,22 +2,22 @@
 layout: page
 title: "Research Radar"
 permalink: /radar/
-description: "A daily and weekly automated radar of new mechanistic-interpretability, AI/LLM-security, and text-diffusion research."
+description: "A daily and weekly automated radar of new AI/LLM safety, alignment, and pragmatic mechanistic-interpretability research."
 ---
 
 ---
 
 [Research Radar](https://github.com/GusSand/research-radar) is an automated sweep of new
-research in mechanistic interpretability, AI/LLM security, and text diffusion language
-models. Claude Code cloud routines search OpenReview, the ACL Anthology, TMLR, arXiv
-(cs.CL / cs.LG / cs.CR / cs.AI), and the alignment forums, then write up what they find:
-a daily top ten Tuesday through Sunday, and a wider aggregate on Monday mornings.
+work in AI/LLM safety, alignment, and pragmatic mechanistic interpretability. Claude Code
+cloud routines search OpenReview, the ACL Anthology, TMLR, arXiv (cs.CL / cs.LG / cs.CR /
+cs.AI), and the alignment forums, then write up what they find: a daily top ten Tuesday
+through Sunday, and a wider aggregate on Monday mornings.
 
-Entries are ranked by importance to the mech-interp and AI-security agenda rather than by
-recency, and peer-reviewed work outranks incremental preprints. Each one carries a
-technical summary of method and result — not a reprinted abstract — plus the venue and its
-peer-review status. If a day turns up fewer than ten genuinely relevant papers, the report
-says so instead of padding.
+Entries are ranked by importance to that agenda rather than by recency, and peer-reviewed
+work outranks incremental preprints. Each one carries a technical summary of method and
+result rather than a reprinted abstract, plus the venue and its peer-review status. If a
+day turns up fewer than ten genuinely relevant papers, the report says so instead of
+padding.
 
 <section class="radar-list">
   {% assign issues = site.radar | sort: "date" | reverse %}

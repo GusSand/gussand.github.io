@@ -21,10 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out site
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Check out research-radar
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: GusSand/research-radar
           path: .radar-source
