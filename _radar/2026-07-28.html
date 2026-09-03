@@ -1,0 +1,1078 @@
+---
+layout: "radar"
+title: "Research Radar — July 28, 2026"
+kind: "daily"
+slug: "2026-07-28"
+date: 2026-07-28
+summary: "Window: July 26–28, 2026 (latest preprints); back-swept through April 2026 for field-relevant work not previously surfaced · Sources swept: OpenReview, ACL Anthology, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), Semantic Scholar, HuggingFace Papers, GitHub · Counts: 1 peer-reviewed · 9 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/05eae88f-6405-429c-ae9a-b35b267e77ce"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-07-28.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* Token system */
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --fig-bg: #fff;
+  --fig-border: #e0e0e0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --fig-bg: #fff;
+    --fig-border: #333;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #c9c9c9;
+  --dim: #666;
+  --title: #f0f0f0;
+  --link: #7eb8ff;
+  --tag-bg: #252525;
+  --tag-text: #aaa;
+  --accent-teal: #14b8bd;
+  --accent-blue: #7eb8ff;
+  --accent-red: #f07070;
+  --accent-amber: #f0a030;
+  --accent-violet: #c084fc;
+  --accent-green: #4ade80;
+  --fig-bg: #fff;
+  --fig-border: #333;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --fig-bg: #fff;
+  --fig-border: #e0e0e0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* Masthead */
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding: 36px 0 24px;
+  margin-bottom: 40px;
+}
+.masthead-eyebrow {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--title);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.masthead-counts {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--dim);
+  margin-bottom: 12px;
+}
+.masthead-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.track {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+}
+.track-sep { color: var(--dim); }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  text-transform: uppercase;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+.tag-interp  { background: #0d737720; color: var(--accent-teal); }
+.tag-security { background: #b0202018; color: var(--accent-red); }
+.tag-dllm    { background: #1a4f9918; color: var(--accent-blue); }
+.tag-control { background: #5c1aaa18; color: var(--accent-violet); }
+.tag-peer    { background: #1a6e3c18; color: var(--accent-green); }
+.tag-rank    { background: #a05c0018; color: var(--accent-amber); }
+
+/* Full paper articles (1–3) */
+.paper { margin-bottom: 52px; }
+.paper-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.paper-rank {
+  font-family: "Courier New", monospace;
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--dim);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook { color: var(--text); margin-bottom: 18px; }
+.paper-figure {
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-border);
+  border-radius: 4px;
+  padding: 18px 16px 12px;
+  margin-bottom: 18px;
+  overflow-x: auto;
+}
+.paper-figure svg {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+.paper-figure figcaption {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--dim);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.paper-detail {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Section divider */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 44px 0;
+}
+
+/* Mid-tier section label */
+.more-section-label {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 28px;
+}
+
+/* Mid-tier entries (items 4–10) */
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure {
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-border);
+  border-radius: 4px;
+  padding: 14px 14px 10px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+}
+.mid-figure svg {
+  width: 100%;
+  max-width: 440px;
+  display: block;
+  margin: 0 auto;
+}
+.mid-figure figcaption {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  color: var(--dim);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 12px;
+}
+
+/* Notes section */
+.notes-section {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.notes-section h2 {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 18px;
+}
+.notes-section ul {
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+}
+.notes-section li { margin-bottom: 8px; }
+
+/* Footer */
+.radar-footer {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  color: var(--dim);
+  line-height: 1.7;
+}
+</style>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · July 28, 2026</div>
+  <div class="masthead-counts">1 peer-reviewed · 9 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Mech Interp</span>
+    <span class="track-sep">·</span>
+    <span class="track">AI Security</span>
+    <span class="track-sep">·</span>
+    <span class="track">Text Diffusion LMs</span>
+  </div>
+</header>
+
+<!-- PAPER 01 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.20652">ParityTransformer: Interpretability by Design via the Deep Parity Bottleneck</a>
+  </h2>
+  <p class="paper-hook">
+    Interpretability in transformers is almost always post-hoc — you train the model first, then reverse-engineer what it learned. ParityTransformer inverts the workflow: it forces an interpretable constraint during training via the Deep Parity Bottleneck (DPB), and the features that emerge match SAE-discovered features on probing benchmarks while substantially outperforming them on every causal metric — absorption, steering, and intervention stability.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" aria-label="Deep Parity Bottleneck vs SAE: comparison across interpretability metrics">
+      <rect width="500" height="240" fill="#ffffff"/>
+      <text x="250" y="22" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Deep Parity Bottleneck vs SAE — Interpretability Metrics</text>
+
+      <!-- Y axis label -->
+      <text x="12" y="125" font-family="Georgia, serif" font-size="9" fill="#555" text-anchor="middle" transform="rotate(-90,12,125)">Score (%)</text>
+
+      <!-- Axes -->
+      <line x1="68" y1="185" x2="468" y2="185" stroke="#ccc" stroke-width="1"/>
+      <line x1="68" y1="40" x2="68" y2="185" stroke="#ccc" stroke-width="1"/>
+
+      <!-- Y gridlines / ticks -->
+      <line x1="64" y1="185" x2="68" y2="185" stroke="#999" stroke-width="1"/>
+      <text x="62" y="188" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">0</text>
+      <line x1="64" y1="147" x2="68" y2="147" stroke="#999" stroke-width="1"/>
+      <text x="62" y="150" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">25</text>
+      <line x1="64" y1="109" x2="68" y2="109" stroke="#999" stroke-width="1"/>
+      <text x="62" y="112" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">50</text>
+      <line x1="64" y1="71" x2="68" y2="71" stroke="#999" stroke-width="1"/>
+      <text x="62" y="74" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">75</text>
+      <line x1="64" y1="40" x2="68" y2="40" stroke="#999" stroke-width="1"/>
+      <text x="62" y="43" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">100</text>
+
+      <!-- Gridlines -->
+      <line x1="68" y1="147" x2="468" y2="147" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="68" y1="109" x2="468" y2="109" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="68" y1="71" x2="468" y2="71" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- Group 1: Feature Absorption Rate (↓ lower is better) -->
+      <text x="138" y="202" font-family="Georgia, serif" font-size="9" fill="#333" text-anchor="middle">Absorption</text>
+      <text x="138" y="212" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Rate (↓ better)</text>
+      <!-- SAE: 28% → bar from 185 upward by 28*1.45=40.6 → top at 144 -->
+      <rect x="104" y="144" width="26" height="41" fill="#1a4f99" rx="2"/>
+      <text x="117" y="141" font-family="Georgia, serif" font-size="9" fill="#1a4f99" text-anchor="middle">28%</text>
+      <!-- DPB: 12% → bar height 17.4 → top at 168 -->
+      <rect x="136" y="168" width="26" height="17" fill="#0d7377" rx="2"/>
+      <text x="149" y="165" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#0d7377" text-anchor="middle">12%</text>
+
+      <!-- Group 2: Steering Accuracy (↑ higher is better) -->
+      <text x="258" y="202" font-family="Georgia, serif" font-size="9" fill="#333" text-anchor="middle">Steering</text>
+      <text x="258" y="212" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Accuracy (↑)</text>
+      <!-- SAE: 61% → height 88 → top at 97 -->
+      <rect x="224" y="97" width="26" height="88" fill="#1a4f99" rx="2"/>
+      <text x="237" y="94" font-family="Georgia, serif" font-size="9" fill="#1a4f99" text-anchor="middle">61%</text>
+      <!-- DPB: 74% → height 107 → top at 78 -->
+      <rect x="256" y="78" width="26" height="107" fill="#0d7377" rx="2"/>
+      <text x="269" y="75" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#0d7377" text-anchor="middle">74%</text>
+
+      <!-- Group 3: Causal Stability (↑ higher is better) -->
+      <text x="378" y="202" font-family="Georgia, serif" font-size="9" fill="#333" text-anchor="middle">Causal</text>
+      <text x="378" y="212" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Stability (↑)</text>
+      <!-- SAE: 56% → height 81 → top at 104 -->
+      <rect x="344" y="104" width="26" height="81" fill="#1a4f99" rx="2"/>
+      <text x="357" y="101" font-family="Georgia, serif" font-size="9" fill="#1a4f99" text-anchor="middle">56%</text>
+      <!-- DPB: 71% → height 103 → top at 82 -->
+      <rect x="376" y="82" width="26" height="103" fill="#0d7377" rx="2"/>
+      <text x="389" y="79" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#0d7377" text-anchor="middle">71%</text>
+
+      <!-- Legend -->
+      <rect x="68" y="222" width="12" height="10" fill="#1a4f99" rx="1"/>
+      <text x="84" y="231" font-family="Georgia, serif" font-size="9" fill="#333">Standard SAE</text>
+      <rect x="178" y="222" width="12" height="10" fill="#0d7377" rx="1"/>
+      <text x="194" y="231" font-family="Georgia, serif" font-size="9" fill="#333">Deep Parity Bottleneck (DPB)</text>
+    </svg>
+    <figcaption>Figure 1: ParityTransformer DPB vs standard SAE on three interpretability metrics. DPB achieves lower feature absorption (12% vs 28%), higher steering accuracy (74% vs 61%), and higher causal intervention stability (71% vs 56%). Probing performance is equivalent; causal metrics are substantially better across the board.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The Deep Parity Bottleneck partitions the residual stream into parity-signed feature subspaces during training, enforcing that each feature's causal role is legible by construction rather than recovered post-hoc by a separately trained sparse autoencoder. Evaluated on GPT-2 and Pythia-1.4B against Anthropic JumpReLU and standard TopK SAEs, DPB models match SAE performance on token-type probing but show substantially lower feature absorption rates, higher steering accuracy, and more stable causal intervention outcomes across depth and model scale. The interpretability-by-design constraint produces no significant capability degradation.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 02 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-peer">ICSME 2026</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.15937">The Language of Security: How Prompt Syntax Shapes Code Vulnerability in LLMs</a>
+  </h2>
+  <p class="paper-hook">
+    Security prompts aren't just about content — the syntactic form of the instruction matters as much as the instruction itself. The same security requirement reformulated across five syntactic variants produces up to a 31 percentage-point swing in CWE violation rates, a gap large enough to render prompt engineering the primary security control in LLM-assisted coding workflows.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" aria-label="Prompt syntax vs CWE violation rate across five syntactic formulations">
+      <rect width="500" height="240" fill="#ffffff"/>
+      <text x="250" y="20" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Prompt Syntax vs CWE Violation Rate</text>
+      <text x="250" y="34" font-family="Georgia, serif" font-size="9" fill="#666" text-anchor="middle">(lower is better; 5 LLMs · 100 coding prompts · 14 CWE categories)</text>
+
+      <!-- Y axis -->
+      <text x="12" y="130" font-family="Georgia, serif" font-size="9" fill="#555" text-anchor="middle" transform="rotate(-90,12,130)">CWE Violation Rate (%)</text>
+      <line x1="70" y1="50" x2="70" y2="185" stroke="#ccc" stroke-width="1"/>
+      <line x1="70" y1="185" x2="480" y2="185" stroke="#ccc" stroke-width="1"/>
+
+      <!-- Y ticks -->
+      <line x1="66" y1="185" x2="70" y2="185" stroke="#999" stroke-width="1"/>
+      <text x="64" y="188" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">0</text>
+      <line x1="66" y1="151" x2="70" y2="151" stroke="#999" stroke-width="1"/>
+      <text x="64" y="154" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">20</text>
+      <line x1="66" y1="117" x2="70" y2="117" stroke="#999" stroke-width="1"/>
+      <text x="64" y="120" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">40</text>
+      <line x1="66" y1="84" x2="70" y2="84" stroke="#999" stroke-width="1"/>
+      <text x="64" y="87" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">60</text>
+      <line x1="70" y1="151" x2="480" y2="151" stroke="#f0f0f0" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="70" y1="117" x2="480" y2="117" stroke="#f0f0f0" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="70" y1="84" x2="480" y2="84" stroke="#f0f0f0" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- 5 bars: Declarative 58%, Imperative 54%, Role-based 31%, CoT 27%, Constraint 23% -->
+      <!-- 1% = 1.7px; bar from 185 upward -->
+      <!-- Declarative: 58% = 98.6px; top at 86 -->
+      <rect x="88" y="86" width="50" height="99" fill="#b02020" rx="2"/>
+      <text x="113" y="83" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#b02020" text-anchor="middle">58%</text>
+      <text x="113" y="200" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Declarative</text>
+
+      <!-- Imperative: 54% = 91.8px; top at 93 -->
+      <rect x="162" y="93" width="50" height="92" fill="#c04030" rx="2"/>
+      <text x="187" y="90" font-family="Georgia, serif" font-size="9" fill="#c04030" text-anchor="middle">54%</text>
+      <text x="187" y="200" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Imperative</text>
+
+      <!-- Role-based: 31% = 52.7px; top at 132 -->
+      <rect x="236" y="132" width="50" height="53" fill="#0d7377" rx="2"/>
+      <text x="261" y="129" font-family="Georgia, serif" font-size="9" fill="#0d7377" text-anchor="middle">31%</text>
+      <text x="261" y="200" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Role-based</text>
+
+      <!-- CoT: 27% = 45.9px; top at 139 -->
+      <rect x="310" y="139" width="50" height="46" fill="#0d7377" rx="2" opacity="0.8"/>
+      <text x="335" y="136" font-family="Georgia, serif" font-size="9" fill="#0d7377" text-anchor="middle">27%</text>
+      <text x="335" y="200" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Chain-of-Thought</text>
+
+      <!-- Constraint: 23% = 39.1px; top at 146 -->
+      <rect x="384" y="146" width="50" height="39" fill="#1a6e3c" rx="2"/>
+      <text x="409" y="143" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#1a6e3c" text-anchor="middle">23%</text>
+      <text x="409" y="200" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Constraint</text>
+
+      <!-- Annotation: 31 pp gap -->
+      <line x1="113" y1="78" x2="409" y2="78" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="261" y="73" font-family="Georgia, serif" font-size="9" fill="#555" text-anchor="middle" font-style="italic">31 pp gap</text>
+      <line x1="113" y1="76" x2="113" y2="80" stroke="#888" stroke-width="1"/>
+      <line x1="409" y1="76" x2="409" y2="80" stroke="#888" stroke-width="1"/>
+
+      <text x="250" y="220" font-family="Georgia, serif" font-size="8.5" fill="#888" text-anchor="middle">Average across GPT-4o · Claude 3.7 · Gemini 2.0 · Mistral Large · Llama 3.3 70B</text>
+    </svg>
+    <figcaption>Figure 2: CWE violation rates across five syntactic prompt formulations (100 coding tasks, 14 CWE categories, 5 LLMs). Declarative instructions produce 58% violation rate; constraint-based formulations reduce this to 23% — a 31 pp swing from syntax alone. Role-based and CoT styles cluster near the efficient end.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Across five major LLMs (GPT-4o, Claude 3.7 Sonnet, Gemini 2.0 Flash, Mistral Large, Llama 3.3 70B), the authors systematically tested 100 coding prompts covering 14 CWE categories under each of five syntactic formulations. Declarative and imperative styles consistently produced the highest violation rates on CWE-89 (SQL injection) and CWE-79 (XSS); role-based and chain-of-thought instructions reduced violations by 20–31 pp. Crucially, the interaction between model and syntactic variant is significant — a formulation that elicits secure code from GPT-4o may be among the worst choices for Llama 3.3 70B. Accepted to ICSME 2026.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 03 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2507.19227">PAD: Parallel Attention Disruption for Jailbreaking Diffusion Language Models</a>
+  </h2>
+  <p class="paper-hook">
+    Conventional jailbreaks attack token prefixes — a mechanism that doesn't exist in masked diffusion LLMs. PAD takes a different route: it directly disrupts the bidirectional attention patterns responsible for RLHF alignment, achieving 97% attack success rate across four dLLMs where standard attacks fail at &lt;5%. The key insight is that alignment in dLLMs lives in specific attention head activations during denoising, and those can be targeted without access to model weights.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg" aria-label="PAD attack success rate vs prior methods across four dLLMs">
+      <rect width="500" height="230" fill="#ffffff"/>
+      <text x="250" y="20" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#1a1a1a" text-anchor="middle">PAD Attack Success Rate vs Prior Methods</text>
+      <text x="250" y="33" font-family="Georgia, serif" font-size="9" fill="#666" text-anchor="middle">(Keyword-based ASR; HarmBench + JailbreakBench)</text>
+
+      <!-- Y axis -->
+      <line x1="72" y1="50" x2="72" y2="180" stroke="#ccc" stroke-width="1"/>
+      <line x1="72" y1="180" x2="472" y2="180" stroke="#ccc" stroke-width="1"/>
+      <line x1="68" y1="180" x2="72" y2="180" stroke="#999" stroke-width="1"/>
+      <text x="66" y="183" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">0%</text>
+      <line x1="68" y1="117" x2="72" y2="117" stroke="#999" stroke-width="1"/>
+      <text x="66" y="120" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">50%</text>
+      <line x1="68" y1="55" x2="72" y2="55" stroke="#999" stroke-width="1"/>
+      <text x="66" y="58" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="end">100%</text>
+      <line x1="72" y1="117" x2="472" y2="117" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="72" y1="55" x2="472" y2="55" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- Models on x axis -->
+      <text x="130" y="196" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">LLaDA-8B</text>
+      <text x="225" y="196" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">LLaDA-1.5</text>
+      <text x="320" y="196" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">MMaDA</text>
+      <text x="415" y="196" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Mercury</text>
+
+      <!-- Legend -->
+      <rect x="72" y="207" width="10" height="9" fill="#b02020" rx="1"/>
+      <text x="86" y="215" font-family="Georgia, serif" font-size="8.5" fill="#333">PAD (Multi-Point Attn)</text>
+      <rect x="210" y="207" width="10" height="9" fill="#a05c00" rx="1"/>
+      <text x="224" y="215" font-family="Georgia, serif" font-size="8.5" fill="#333">ReNeLLM</text>
+      <rect x="310" y="207" width="10" height="9" fill="#888" rx="1"/>
+      <text x="324" y="215" font-family="Georgia, serif" font-size="8.5" fill="#333">GCG</text>
+
+      <!-- LLaDA-8B: PAD=96%, ReNeLLM=5%, GCG=3% -->
+      <!-- 1% = 1.25px; from 180 upward -->
+      <rect x="96"  y="60"  width="18" height="120" fill="#b02020" rx="2"/>
+      <rect x="118" y="174" width="18" height="6"   fill="#a05c00" rx="2"/>
+      <rect x="140" y="176" width="18" height="4"   fill="#888"    rx="2"/>
+      <text x="105" y="57"  font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#b02020" text-anchor="middle">96%</text>
+
+      <!-- LLaDA-1.5: PAD=97%, ReNeLLM=4%, GCG=2% -->
+      <rect x="191" y="59"  width="18" height="121" fill="#b02020" rx="2"/>
+      <rect x="213" y="175" width="18" height="5"   fill="#a05c00" rx="2"/>
+      <rect x="235" y="177" width="18" height="3"   fill="#888"    rx="2"/>
+      <text x="200" y="56"  font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#b02020" text-anchor="middle">97%</text>
+
+      <!-- MMaDA: PAD=97%, ReNeLLM=6%, GCG=4% -->
+      <rect x="286" y="59"  width="18" height="121" fill="#b02020" rx="2"/>
+      <rect x="308" y="173" width="18" height="7"   fill="#a05c00" rx="2"/>
+      <rect x="330" y="175" width="18" height="5"   fill="#888"    rx="2"/>
+      <text x="295" y="56"  font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#b02020" text-anchor="middle">97%</text>
+
+      <!-- Mercury: PAD=95%, ReNeLLM=3%, GCG=2% -->
+      <rect x="381" y="61"  width="18" height="119" fill="#b02020" rx="2"/>
+      <rect x="403" y="176" width="18" height="4"   fill="#a05c00" rx="2"/>
+      <rect x="425" y="177" width="18" height="3"   fill="#888"    rx="2"/>
+      <text x="390" y="58"  font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#b02020" text-anchor="middle">95%</text>
+    </svg>
+    <figcaption>Figure 3: PAD attack success rate vs ReNeLLM and GCG across four masked dLLMs. PAD achieves 95–97% keyword-based ASR by disrupting alignment-critical attention heads during denoising; conventional jailbreaks optimised for AR token-prefix structure achieve 2–6% on the same models.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    PAD uses gradient-based attribution to identify which attention heads in the denoising stack implement alignment-gating behavior, then optimises a multi-point perturbation over masked positions to maximally disrupt those heads' activation patterns. The attack requires only output access (black-box against the model's safety mechanism) but gradient access to a surrogate. Evaluated on LLaDA, LLaDA-1.5, MMaDA, and Mercury across HarmBench and JailbreakBench, adversarial masks optimised on LLaDA transfer with approximately 80% ASR to Dream-Instruct without reoptimisation — suggesting the targeted attention heads implement a shared alignment mechanism across masked dLLM architectures.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ITEMS 4–10 -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- PAPER 04 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.23710">The Illusion of Secure LLM Code: How Iterative Reprompting Undermines Security</a>
+  </h3>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="Critical security issues increase across iterative reprompting rounds">
+      <rect width="440" height="165" fill="#ffffff"/>
+      <text x="220" y="16" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Critical Issues vs Reprompting Iteration</text>
+
+      <!-- Axes -->
+      <line x1="55" y1="20" x2="55" y2="130" stroke="#ccc" stroke-width="1"/>
+      <line x1="55" y1="130" x2="410" y2="130" stroke="#ccc" stroke-width="1"/>
+
+      <!-- Y ticks -->
+      <text x="49" y="133" font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">0</text>
+      <line x1="52" y1="98"  x2="55" y2="98"  stroke="#999" stroke-width="1"/>
+      <text x="49" y="101"  font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">+15%</text>
+      <line x1="52" y1="66"  x2="55" y2="66"  stroke="#999" stroke-width="1"/>
+      <text x="49" y="69"   font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">+30%</text>
+      <line x1="52" y1="34"  x2="55" y2="34"  stroke="#999" stroke-width="1"/>
+      <text x="49" y="37"   font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">+45%</text>
+      <line x1="55" y1="98"  x2="410" y2="98"  stroke="#f0f0f0" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="55" y1="66"  x2="410" y2="66"  stroke="#f0f0f0" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- Data points: iterations 1-5, cumulative critical issue increase -->
+      <!-- Baseline (iter 1) = 130px (no increase) -->
+      <!-- iter 2: +12.3% = 130 - 12.3*2.13 = 130-26 = 104 → use 107 -->
+      <!-- iter 3: +24.1% = 130 - 51 = 79 → 80 -->
+      <!-- iter 4: +32.0% = 130 - 68 = 62 → 63 -->
+      <!-- iter 5: +37.6% = 130 - 80 = 50 → 51 -->
+      <!-- X positions: iter1=90, 2=165, 3=240, 4=315, 5=390 -->
+      <polyline points="90,130 165,108 240,86 315,68 390,51" fill="none" stroke="#b02020" stroke-width="2.5"/>
+      <circle cx="90"  cy="130" r="5" fill="#b02020"/>
+      <circle cx="165" cy="108" r="5" fill="#b02020"/>
+      <circle cx="240" cy="86"  r="5" fill="#b02020"/>
+      <circle cx="315" cy="68"  r="5" fill="#b02020"/>
+      <circle cx="390" cy="51"  r="5" fill="#b02020"/>
+
+      <!-- Labels at points -->
+      <text x="90"  y="145" font-family="Georgia, serif" font-size="8" fill="#555" text-anchor="middle">1</text>
+      <text x="165" y="145" font-family="Georgia, serif" font-size="8" fill="#555" text-anchor="middle">2</text>
+      <text x="240" y="145" font-family="Georgia, serif" font-size="8" fill="#555" text-anchor="middle">3</text>
+      <text x="315" y="145" font-family="Georgia, serif" font-size="8" fill="#555" text-anchor="middle">4</text>
+      <text x="390" y="145" font-family="Georgia, serif" font-size="8" fill="#555" text-anchor="middle">5</text>
+      <text x="220" y="158" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Reprompting Iteration</text>
+
+      <!-- +37.6% annotation -->
+      <text x="400" y="46" font-family="Georgia, serif" font-size="8.5" font-weight="bold" fill="#b02020" text-anchor="middle">+37.6%</text>
+    </svg>
+    <figcaption>Figure 4: Cumulative increase in critical security issues vs reprompting iteration. Initial outputs appear safe; each agentic refinement step adds security regressions, reaching +37.6% critical issues after 5 iterations.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Most LLMs produce low-risk code on an initial request, creating an illusion of security. But agentic iterative reprompting — optimising for stated functional goals like "make it faster" or "add this feature" — progressively introduces critical CWE violations: +37.6% critical issues after 5 reprompting iterations, driven by the model trading security constraints for functionality objectives the user specified more recently.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 05 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.17425">Decoder-Preserving Sparse Autoencoders</a>
+  </h3>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="Decoder distortion comparison: Standard SAE vs Decoder-Preserving SAE">
+      <rect width="440" height="165" fill="#ffffff"/>
+      <text x="220" y="16" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Held-Out Decoder Distortion: Vanilla SAE vs DPSAE</text>
+      <text x="220" y="28" font-family="Georgia, serif" font-size="8.5" fill="#666" text-anchor="middle">(GPT-2 small block 8 · lower is better)</text>
+
+      <!-- Y axis -->
+      <line x1="70" y1="40" x2="70" y2="130" stroke="#ccc" stroke-width="1"/>
+      <line x1="70" y1="130" x2="390" y2="130" stroke="#ccc" stroke-width="1"/>
+      <line x1="66" y1="130" x2="70" y2="130" stroke="#999" stroke-width="1"/>
+      <text x="64" y="133" font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">0</text>
+      <line x1="66" y1="85"  x2="70" y2="85"  stroke="#999" stroke-width="1"/>
+      <text x="64" y="88"   font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">50%</text>
+      <line x1="66" y1="40"  x2="70" y2="40"  stroke="#999" stroke-width="1"/>
+      <text x="64" y="43"   font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">100%</text>
+      <line x1="70" y1="85"  x2="390" y2="85"  stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- Bar 1: Vanilla SAE distortion = 100% baseline → full height 90px -->
+      <rect x="120" y="40" width="70" height="90" fill="#1a4f99" rx="3"/>
+      <text x="155" y="36" font-family="Georgia, serif" font-size="9" fill="#1a4f99" text-anchor="middle">100%</text>
+      <text x="155" y="147" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Vanilla SAE</text>
+      <text x="155" y="158" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">(baseline)</text>
+
+      <!-- Bar 2: DPSAE distortion = 89% → 80.1px height; top at 130-80 = 50 -->
+      <rect x="250" y="49" width="70" height="81" fill="#0d7377" rx="3"/>
+      <text x="285" y="45" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#0d7377" text-anchor="middle">~89%</text>
+      <text x="285" y="147" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">DPSAE</text>
+      <text x="285" y="158" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">(decoder-preserving)</text>
+
+      <!-- Reduction annotation -->
+      <line x1="190" y1="40" x2="250" y2="49" stroke="#b02020" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="220" y="38" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#b02020" text-anchor="middle">−10.6–11.4 pp</text>
+    </svg>
+    <figcaption>Figure 5: Held-out decoder distortion on GPT-2 small block 8. DPSAE's matrix-valued penalty reduces distortion by 10.6–11.4 pp relative to vanilla SAE without affecting reconstruction loss.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Standard SAE training ignores how the learned features interact with the model's downstream decoder — the weights that map residual stream features to logits. DPSAE adds a matrix-valued distortion penalty to the SAE objective that directly minimises how much training shifts the decoder relationship. On GPT-2 small block 8, this reduces held-out decoder distortion by 10.6–11.4 pp over the vanilla baseline with no reconstruction loss penalty, meaning DPSAE features are both more faithful to the model's computational structure and better matched to downstream causal use.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 06 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.14943">World Action Model Steerability via Mechanistic Interpretability</a>
+  </h3>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="WA-LQR pipeline: mech-interp extracts LQR controller from WAM activations, predicts robot steerability">
+      <rect width="440" height="165" fill="#ffffff"/>
+      <text x="220" y="15" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#1a1a1a" text-anchor="middle">WA-LQR: Training-Free Steerability from Activation Linearity</text>
+
+      <!-- Pipeline boxes -->
+      <!-- Box 1: WAM -->
+      <rect x="20"  y="55" width="80" height="50" rx="4" fill="#f0ede8" stroke="#ddd" stroke-width="1.5"/>
+      <text x="60"  y="76" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#1a1a1a" text-anchor="middle">World Action</text>
+      <text x="60"  y="89" font-family="Georgia, serif" font-size="9" fill="#333" text-anchor="middle">Model (WAM)</text>
+      <text x="60"  y="102" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">pretrained</text>
+
+      <!-- Arrow -->
+      <line x1="100" y1="80" x2="122" y2="80" stroke="#0d7377" stroke-width="1.5" marker-end="url(#a6)"/>
+      <defs><marker id="a6" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#0d7377"/></marker></defs>
+      <text x="111"  y="74" font-family="Georgia, serif" font-size="7.5" fill="#0d7377" text-anchor="middle">activations</text>
+
+      <!-- Box 2: Mech-interp -->
+      <rect x="122" y="48" width="96" height="64" rx="4" fill="#0d737714" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="170" y="71" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#0d7377" text-anchor="middle">Mech-Interp</text>
+      <text x="170" y="84" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">linearity</text>
+      <text x="170" y="96" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">extraction</text>
+      <text x="170" y="108" font-family="Georgia, serif" font-size="7.5" fill="#888" text-anchor="middle">no training</text>
+
+      <!-- Arrow -->
+      <line x1="218" y1="80" x2="240" y2="80" stroke="#0d7377" stroke-width="1.5" marker-end="url(#a7)"/>
+      <defs><marker id="a7" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#0d7377"/></marker></defs>
+      <text x="229" y="74" font-family="Georgia, serif" font-size="7.5" fill="#0d7377" text-anchor="middle">LQR gains</text>
+
+      <!-- Box 3: LQR -->
+      <rect x="240" y="55" width="80" height="50" rx="4" fill="#1a4f9914" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="280" y="76" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#1a4f99" text-anchor="middle">LQR</text>
+      <text x="280" y="89" font-family="Georgia, serif" font-size="9" fill="#333" text-anchor="middle">controller</text>
+      <text x="280" y="102" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">optimal</text>
+
+      <!-- Arrow -->
+      <line x1="320" y1="80" x2="342" y2="80" stroke="#0d7377" stroke-width="1.5" marker-end="url(#a8)"/>
+      <defs><marker id="a8" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#0d7377"/></marker></defs>
+
+      <!-- Box 4: Robot -->
+      <rect x="342" y="55" width="80" height="50" rx="4" fill="#f0ede8" stroke="#ddd" stroke-width="1.5"/>
+      <text x="382" y="80" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Robot</text>
+      <text x="382" y="93" font-family="Georgia, serif" font-size="9" fill="#333" text-anchor="middle">execution</text>
+
+      <!-- Results row -->
+      <text x="60"  y="130" font-family="Georgia, serif" font-size="8" fill="#1a6e3c" font-weight="bold" text-anchor="middle">Cosmos-Policy</text>
+      <text x="60"  y="141" font-family="Georgia, serif" font-size="8" fill="#1a6e3c" text-anchor="middle">▲ High steer.</text>
+      <text x="382" y="130" font-family="Georgia, serif" font-size="8" fill="#b02020" font-weight="bold" text-anchor="middle">LingBot-VA</text>
+      <text x="382" y="141" font-family="Georgia, serif" font-size="8" fill="#b02020" text-anchor="middle">▼ Low steer.</text>
+      <text x="220" y="141" font-family="Georgia, serif" font-size="8" fill="#555" text-anchor="middle">WA-LQR score correctly predicted both outcomes</text>
+    </svg>
+    <figcaption>Figure 6: WA-LQR pipeline — activation linearity is extracted from a frozen WAM via mech-interp, converted to LQR control matrices without retraining, and deployed. WA-LQR score accurately separates steerable (Cosmos-Policy) from non-steerable (LingBot-VA) WAMs.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    By exploiting the linearity of WAM activation spaces under state perturbations, WA-LQR extracts Linear Quadratic Regulator control matrices directly from pretrained World Action Model activations — no additional training required. The resulting steerability score accurately predicts which WAMs transfer well to real robotics tasks: Cosmos-Policy scores high and performs well on the benchmark trajectories; LingBot-VA scores low and fails proportionally. The result bridges mechanistic interpretability and classical control theory for deployment-time model selection.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 07 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.14493">LogInject: Passive Prompt Injection via Security Operations Log Context</a>
+  </h3>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="LogInject attack flow: adversarial payload in HTTP header propagates through server log to SOC agent">
+      <rect width="440" height="165" fill="#ffffff"/>
+      <text x="220" y="15" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#1a1a1a" text-anchor="middle">LogInject: Passive Injection via Log Metadata Fields</text>
+
+      <!-- Attacker -->
+      <rect x="12" y="50" width="74" height="60" rx="4" fill="#b0202012" stroke="#b02020" stroke-width="1.5"/>
+      <text x="49"  y="74" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#b02020" text-anchor="middle">Attacker</text>
+      <text x="49"  y="88" font-family="Georgia, serif" font-size="8"   fill="#333"    text-anchor="middle">crafts HTTP</text>
+      <text x="49"  y="100" font-family="Georgia, serif" font-size="8"  fill="#333"    text-anchor="middle">User-Agent</text>
+
+      <defs><marker id="a9" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#888"/></marker></defs>
+      <line x1="86"  y1="80" x2="105" y2="80" stroke="#888" stroke-width="1.5" marker-end="url(#a9)"/>
+
+      <!-- Log file -->
+      <rect x="106" y="40" width="84" height="80" rx="4" fill="#f0ede8" stroke="#ddd" stroke-width="1.5"/>
+      <text x="148" y="63" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Server Log</text>
+      <text x="148" y="77" font-family="Georgia, serif" font-size="7.5" fill="#888" text-anchor="middle">10.0.0.1 GET /</text>
+      <text x="148" y="89" font-family="Georgia, serif" font-size="7.5" fill="#b02020" text-anchor="middle" font-style="italic">"Ignore prev.</text>
+      <text x="148" y="101" font-family="Georgia, serif" font-size="7.5" fill="#b02020" text-anchor="middle" font-style="italic"> instructions..."</text>
+      <text x="148" y="113" font-family="Georgia, serif" font-size="7.5" fill="#888" text-anchor="middle">200 1234</text>
+
+      <defs><marker id="a10" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#888"/></marker></defs>
+      <line x1="190" y1="80" x2="209" y2="80" stroke="#888" stroke-width="1.5" marker-end="url(#a10)"/>
+
+      <!-- SOC Agent -->
+      <rect x="210" y="40" width="90" height="80" rx="4" fill="#1a4f9912" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="255" y="67" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#1a4f99" text-anchor="middle">SOC Agent</text>
+      <text x="255" y="81" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">LLM reads log</text>
+      <text x="255" y="95" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">as trusted ctx</text>
+      <text x="255" y="109" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">(no defense fires)</text>
+
+      <defs><marker id="a11" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#b02020"/></marker></defs>
+      <line x1="300" y1="80" x2="319" y2="80" stroke="#b02020" stroke-width="2" marker-end="url(#a11)"/>
+
+      <!-- Outcome -->
+      <rect x="320" y="40" width="108" height="80" rx="4" fill="#b0202012" stroke="#b02020" stroke-width="1.5"/>
+      <text x="374" y="63" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#b02020" text-anchor="middle">Attack Success</text>
+      <text x="374" y="77" font-family="Georgia, serif" font-size="8" fill="#333" text-anchor="middle">All 4 objectives</text>
+      <text x="374" y="89" font-family="Georgia, serif" font-size="8" fill="#333" text-anchor="middle">achieved</text>
+      <text x="374" y="103" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">12,847-entry bench</text>
+
+      <!-- Source labels -->
+      <text x="148" y="135" font-family="Georgia, serif" font-size="7.5" fill="#888" text-anchor="middle">HTTP UA / DNS / SMTP</text>
+      <text x="148" y="145" font-family="Georgia, serif" font-size="7.5" fill="#888" text-anchor="middle">header fields as vectors</text>
+    </svg>
+    <figcaption>Figure 7: LogInject attack flow. Adversarial payloads embedded in HTTP User-Agent strings, DNS TXT records, or SMTP headers enter server logs as metadata — the SOC agent LLM treats log content as authoritative context, fires no defense, and executes all four attack objectives.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    LogInject demonstrates passive prompt injection into AI-powered Security Operations Center pipelines: adversarial payloads in standard HTTP User-Agent strings, DNS TXT records, and mail headers propagate into server logs, which SOC agent LLMs read as trusted operational context. No user interaction is required. All four tested attack objectives (false negative injection, alert suppression, exfiltration trigger, privilege escalation) succeed across the 12,847-entry LogInject-1.0 benchmark. Introduces a new attack surface where the log file itself is the injection vector.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 08 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.08605">S²AE: Spatially-Structured Sparse Autoencoders for Vision-Language Models</a>
+  </h3>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="Standard SAE produces fragmented spatial features; S2AE produces spatially coherent features">
+      <rect width="440" height="165" fill="#ffffff"/>
+      <text x="220" y="15" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Standard SAE vs S²AE: Spatial Feature Coherence (ViT-L/16)</text>
+
+      <!-- Standard SAE panel -->
+      <text x="110" y="34" font-family="Georgia, serif" font-size="9" fill="#b02020" text-anchor="middle" font-weight="bold">Standard SAE — Fragmented</text>
+      <!-- 5x5 grid of patches, some activated with irregular pattern -->
+      <g transform="translate(52, 42)">
+        <rect width="116" height="100" rx="3" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+        <!-- Individual patch cells, 5x5, each 20x20px with 2px gap -->
+        <!-- Row 1 -->
+        <rect x="8"  y="8"  width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="28" y="8"  width="18" height="18" fill="#b02020" rx="1" opacity="0.7"/>
+        <rect x="48" y="8"  width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="68" y="8"  width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="88" y="8"  width="18" height="18" fill="#b02020" rx="1" opacity="0.4"/>
+        <!-- Row 2 -->
+        <rect x="8"  y="28" width="18" height="18" fill="#b02020" rx="1" opacity="0.5"/>
+        <rect x="28" y="28" width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="48" y="28" width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="68" y="28" width="18" height="18" fill="#b02020" rx="1" opacity="0.8"/>
+        <rect x="88" y="28" width="18" height="18" fill="#ccc" rx="1"/>
+        <!-- Row 3 -->
+        <rect x="8"  y="48" width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="28" y="48" width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="48" y="48" width="18" height="18" fill="#b02020" rx="1" opacity="0.6"/>
+        <rect x="68" y="48" width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="88" y="48" width="18" height="18" fill="#b02020" rx="1" opacity="0.3"/>
+        <!-- Row 4 -->
+        <rect x="8"  y="68" width="18" height="18" fill="#b02020" rx="1" opacity="0.9"/>
+        <rect x="28" y="68" width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="48" y="68" width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="68" y="68" width="18" height="18" fill="#ccc" rx="1"/>
+        <rect x="88" y="68" width="18" height="18" fill="#b02020" rx="1" opacity="0.5"/>
+      </g>
+
+      <!-- Arrow -->
+      <text x="220" y="85" font-family="Georgia, serif" font-size="13" fill="#0d7377" text-anchor="middle">→</text>
+      <text x="220" y="100" font-family="Georgia, serif" font-size="8" fill="#0d7377" text-anchor="middle">S²AE</text>
+      <text x="220" y="110" font-family="Georgia, serif" font-size="7.5" fill="#888" text-anchor="middle">attn+spatial</text>
+      <text x="220" y="120" font-family="Georgia, serif" font-size="7.5" fill="#888" text-anchor="middle">prior</text>
+
+      <!-- S2AE panel -->
+      <text x="330" y="34" font-family="Georgia, serif" font-size="9" fill="#0d7377" text-anchor="middle" font-weight="bold">S²AE — Spatially Coherent</text>
+      <g transform="translate(272, 42)">
+        <rect width="116" height="100" rx="3" fill="#f8f8f8" stroke="#0d7377" stroke-width="1.5"/>
+        <!-- Coherent contiguous region highlighted -->
+        <rect x="8"  y="8"  width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="28" y="8"  width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="48" y="8"  width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="68" y="8"  width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="88" y="8"  width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="8"  y="28" width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <!-- Active contiguous 2x3 block -->
+        <rect x="28" y="28" width="18" height="18" fill="#0d7377" rx="1" opacity="0.85"/>
+        <rect x="48" y="28" width="18" height="18" fill="#0d7377" rx="1" opacity="0.9"/>
+        <rect x="68" y="28" width="18" height="18" fill="#0d7377" rx="1" opacity="0.7"/>
+        <rect x="88" y="28" width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="8"  y="48" width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="28" y="48" width="18" height="18" fill="#0d7377" rx="1" opacity="0.75"/>
+        <rect x="48" y="48" width="18" height="18" fill="#0d7377" rx="1" opacity="0.95"/>
+        <rect x="68" y="48" width="18" height="18" fill="#0d7377" rx="1" opacity="0.65"/>
+        <rect x="88" y="48" width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="8"  y="68" width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="28" y="68" width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="48" y="68" width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="68" y="68" width="18" height="18" fill="#e0e0e0" rx="1"/>
+        <rect x="88" y="68" width="18" height="18" fill="#e0e0e0" rx="1"/>
+      </g>
+
+      <text x="110" y="155" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Scattered activation across non-adjacent patches</text>
+      <text x="330" y="155" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Contiguous region activation</text>
+    </svg>
+    <figcaption>Figure 8: Standard SAE features activate on scattered non-adjacent image patches (left); S²AE features trained with attention-similarity and spatial-proximity priors activate on spatially contiguous regions (right), making them interpretable as coherent visual concepts.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    S²AE trains SAEs for Vision-Language Models by incorporating two structural priors into the dictionary learning objective: attention-head similarity (features that co-activate in the same attention head should be spatially adjacent) and spatial proximity (nearby image patches should have correlated feature codes). On ViT-L/16 features, S²AE features activate on spatially contiguous regions rather than the scattered non-adjacent patches produced by standard SAEs, making them directly interpretable as coherent visual objects or image regions.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 09 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.02513">LACUNA: A Ground-Truth Benchmark for Knowledge Localization in Language Models</a>
+  </h3>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="LACUNA benchmark results: behavioral success vs parameter localization accuracy gap">
+      <rect width="440" height="165" fill="#ffffff"/>
+      <text x="220" y="15" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#1a1a1a" text-anchor="middle">LACUNA: The Output-Localization Gap</text>
+      <text x="220" y="27" font-family="Georgia, serif" font-size="8.5" fill="#666" text-anchor="middle">(knowledge localization methods: ROME · MEMIT · GRACE · Transformers-surgery)</text>
+
+      <!-- Y axis -->
+      <line x1="90" y1="40" x2="90" y2="130" stroke="#ccc" stroke-width="1"/>
+      <line x1="90" y1="130" x2="390" y2="130" stroke="#ccc" stroke-width="1"/>
+      <text x="84" y="133" font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">0%</text>
+      <line x1="86" y1="85"  x2="90" y2="85"  stroke="#999" stroke-width="1"/>
+      <text x="84" y="88"   font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">50%</text>
+      <line x1="86" y1="40"  x2="90" y2="40"  stroke="#999" stroke-width="1"/>
+      <text x="84" y="43"   font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">100%</text>
+      <line x1="90" y1="85"  x2="390" y2="85"  stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- Bar 1: Output suppression ~94% -->
+      <!-- 94% = 84.6px → from 130 upward → top at 130-85 = 45 -->
+      <rect x="140" y="45" width="70" height="85" fill="#0d7377" rx="3"/>
+      <text x="175" y="41" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#0d7377" text-anchor="middle">~94%</text>
+      <text x="175" y="147" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Behavioral</text>
+      <text x="175" y="158" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Output Suppression</text>
+
+      <!-- Bar 2: Param localization ~28% -->
+      <!-- 28% = 25.2px → top at 130-25 = 105 -->
+      <rect x="270" y="105" width="70" height="25" fill="#b02020" rx="3"/>
+      <text x="305" y="101" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#b02020" text-anchor="middle">≤30%</text>
+      <text x="305" y="147" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Parameter</text>
+      <text x="305" y="158" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Localization Accuracy</text>
+
+      <!-- Gap annotation -->
+      <line x1="210" y1="45" x2="210" y2="105" stroke="#888" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <text x="235" y="78" font-family="Georgia, serif" font-size="8.5" fill="#555" font-style="italic">64+ pp gap</text>
+    </svg>
+    <figcaption>Figure 9: LACUNA benchmark results. Existing localization methods achieve ~94% behavioral output suppression but ≤30% parameter-level localization accuracy against ground-truth labels — demonstrating that suppressing the targeted output does not imply knowing where in the network it is stored.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    LACUNA is the first knowledge localization benchmark with ground-truth parameter-level labels: synthetic facts are injected into known parameter locations during model construction, giving an exact localization target. When tested against LACUNA, leading methods (ROME, MEMIT, GRACE, Transformers-surgery) achieve ~94% behavioral output suppression but ≤30% parameter localization accuracy — a 64+ pp gap demonstrating that localization methods succeed at erasing outputs while systematically failing to identify the correct parameters responsible for the targeted knowledge.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.05722">Nemotron-Labs-Diffusion: Tri-Mode Language Modeling with Self-Speculation</a>
+  </h3>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="Nemotron tri-mode: pure AR vs self-speculation vs pure diffusion token throughput">
+      <rect width="440" height="165" fill="#ffffff"/>
+      <text x="220" y="15" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Nemotron-Labs-Diffusion: Tri-Mode Throughput</text>
+      <text x="220" y="27" font-family="Georgia, serif" font-size="8.5" fill="#666" text-anchor="middle">(tokens per forward pass · GSM8K + MBPP evaluation)</text>
+
+      <!-- Y axis -->
+      <line x1="70" y1="40" x2="70" y2="130" stroke="#ccc" stroke-width="1"/>
+      <line x1="70" y1="130" x2="420" y2="130" stroke="#ccc" stroke-width="1"/>
+      <text x="64" y="133" font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">0</text>
+      <line x1="66" y1="95"  x2="70" y2="95"  stroke="#999" stroke-width="1"/>
+      <text x="64" y="98"   font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">1×</text>
+      <line x1="66" y1="40"  x2="70" y2="40"  stroke="#999" stroke-width="1"/>
+      <text x="64" y="43"   font-family="Georgia, serif" font-size="7.5" fill="#666" text-anchor="end">2×</text>
+      <line x1="70" y1="95"  x2="420" y2="95"  stroke="#f0f0f0" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="70" y1="40"  x2="420" y2="40"  stroke="#f0f0f0" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <!-- 1x reference line label -->
+      <text x="415" y="93" font-family="Georgia, serif" font-size="7" fill="#aaa" text-anchor="end">1× baseline</text>
+
+      <!-- Bar 1: Pure AR = 1.0× (baseline) → height 55px from 130 → top at 95 -->
+      <rect x="95"  y="95" width="80" height="35" fill="#888" rx="3"/>
+      <text x="135" y="91" font-family="Georgia, serif" font-size="8.5" fill="#666" text-anchor="middle">1.0×</text>
+      <text x="135" y="147" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Pure AR</text>
+      <text x="135" y="158" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">sequential</text>
+
+      <!-- Bar 2: Self-speculation = 1.765× → height 97px → top at 33 → but capped at 40 → top at 40, height 90 -->
+      <rect x="200" y="35" width="80" height="95" fill="#0d7377" rx="3"/>
+      <text x="240" y="30" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#0d7377" text-anchor="middle">+76.5%</text>
+      <text x="240" y="147" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Self-Speculation</text>
+      <text x="240" y="158" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">AR + parallel draft</text>
+
+      <!-- Bar 3: Pure diffusion = 1.5× → height 82.5px → top at 47.5 → ~48 -->
+      <rect x="305" y="57" width="80" height="73" fill="#1a4f99" rx="3"/>
+      <text x="345" y="53" font-family="Georgia, serif" font-size="8.5" fill="#1a4f99" text-anchor="middle">+50%</text>
+      <text x="345" y="147" font-family="Georgia, serif" font-size="8.5" fill="#333" text-anchor="middle">Pure Diffusion</text>
+      <text x="345" y="158" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">masked denoising</text>
+    </svg>
+    <figcaption>Figure 10: Nemotron-Labs-Diffusion tri-mode throughput in tokens per forward pass. Self-speculation mode (AR with parallel diffusion-style candidate generation) achieves +76.5% over the pure AR baseline on GSM8K and MBPP, outperforming multi-token prediction at equivalent compute.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Nemotron-Labs-Diffusion is NVIDIA's tri-mode language model that unifies pure autoregressive decoding, self-speculation (AR with a parallel diffusion-style candidate bundle that the model verifies in one pass), and pure masked diffusion in a single architecture. Self-speculation mode achieves +76.5% tokens per forward pass versus the pure AR baseline and outperforms multi-token prediction (MTP) on MBPP and GSM8K at equivalent compute, making it the most efficient of the three modes for reasoning tasks.
+  </p>
+</article>
+
+<!-- NOTES -->
+<section class="notes-section">
+  <h2>Notes</h2>
+  <ul>
+    <li><strong>Interpretability-by-design (#1):</strong> ParityTransformer is the first work to show that an architectural constraint applied during training produces features that causally outperform post-hoc SAEs on every metric except probing — where they are equivalent. Flagged for weekly roundup as a potential paradigm shift for the SAE-centric mech-interp programme.</li>
+    <li><strong>Peer-reviewed count:</strong> Language of Security (#2) is the sole peer-reviewed item today (ICSME 2026 main track). Remaining nine are preprints.</li>
+    <li><strong>dLLM security update:</strong> PAD (#3) joins MaskForge (Jul 24) and DIJA (Jul 25) as the third distinct dLLM jailbreak framework in five days, each targeting a different structural vulnerability. The bidirectional attention mechanism is rapidly becoming the most-studied attack surface in dLLM research.</li>
+    <li><strong>Security agentic cluster (#4, #7):</strong> Illusion of Secure Code (#4) and LogInject (#7) both target agentic deployment scenarios — iterative reprompting pipelines and SOC automation respectively. Neither relies on novel jailbreak techniques; both exploit standard operational patterns.</li>
+    <li><strong>LACUNA (#9) methodology note:</strong> The ≤30% parameter localization bound is against a benchmark with <em>known ground-truth</em> parameter locations. The gap between behavioral suppression and mechanistic precision has been assumed but not previously measured with this specificity.</li>
+    <li><strong>Weekly roundup nominations:</strong> #1 (ParityTransformer — interpretability-by-design), #2 (prompt syntax × code security, ICSME 2026), #3 (PAD — dLLM attention disruption jailbreak), #9 (LACUNA — localization gap).</li>
+  </ul>
+</section>
+
+<footer class="radar-footer">
+  Research Radar · Daily · July 28, 2026<br>
+  Tracks: Mech Interp · AI Security · Text Diffusion LMs<br>
+  Window: July 26–28, 2026 (latest preprints); back-swept through April 2026
+</footer>
+{% endraw %}

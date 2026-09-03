@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.summary | default: site.description | strip_html | normalize_whitespace | truncate: 300 }}">
+    {% include analytics.html %}
+  </head>
+
+  <body>
+    {{ content }}
+
+    <div style="margin:0;padding:26px 20px 34px;text-align:center;font:13px/1.6 system-ui,-apple-system,sans-serif;background:#111;color:#8a8a84;">
+      <a href="{{ "/radar/" | relative_url }}" style="color:#a3a29b;text-decoration:underline;">← all Research Radar issues</a>
+      <span style="padding:0 8px;color:#4a4a46;">·</span>
+      <a href="{{ site.url }}" style="color:#a3a29b;text-decoration:underline;">{{ site.title }}</a>
+      <span style="padding:0 8px;color:#4a4a46;">·</span>
+      <a href="{{ page.source_url }}" style="color:#a3a29b;text-decoration:underline;">source</a>
+    </div>
+  </body>
+</html>

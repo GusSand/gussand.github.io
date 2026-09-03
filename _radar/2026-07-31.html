@@ -1,0 +1,960 @@
+---
+layout: "radar"
+title: "Research Radar — July 31, 2026"
+kind: "daily"
+slug: "2026-07-31"
+date: 2026-07-31
+summary: "Window: July 29–31, 2026 (latest preprints); back-swept for peer-reviewed work not previously surfaced · Sources swept: OpenReview, ACL Anthology, ESORICS proceedings, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), Semantic Scholar, HuggingFace Papers · Counts: 2 peer-reviewed · 8 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/0451d08d-65ce-46aa-a4ce-1c02f638f3ac"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-07-31.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ── Token system ─────────────────────────────────────── */
+:root {
+  --bg:          #faf9f7;
+  --surface:     #f0ede8;
+  --border:      #ddd;
+  --text:        #3a3a3a;
+  --dim:         #888;
+  --title:       #1a1a1a;
+  --link:        #1a4f99;
+  --tag-bg:      #e8e8e8;
+  --tag-text:    #444;
+  --fig-bg:      #fff;
+  --fig-border:  #e0ddd8;
+  --fig-cap:     #666;
+  --divider:     #e4e0da;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red:  #b02020;
+  --accent-amber:#a05c00;
+  --accent-violet:#5c1aaa;
+  --accent-green:#1a6e3c;
+  --rank-color:  #999;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #111111;
+    --surface:     #1a1a1a;
+    --border:      #2a2a2a;
+    --text:        #c9c9c9;
+    --dim:         #666;
+    --title:       #f0f0f0;
+    --link:        #7eb8ff;
+    --tag-bg:      #252525;
+    --tag-text:    #aaa;
+    --fig-bg:      #1e1e1e;
+    --fig-border:  #333;
+    --fig-cap:     #999;
+    --divider:     #222;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red:  #f07070;
+    --accent-amber:#f0a030;
+    --accent-violet:#c084fc;
+    --accent-green:#4ade80;
+    --rank-color:  #555;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#111111; --surface:#1a1a1a; --border:#2a2a2a; --text:#c9c9c9;
+  --dim:#666; --title:#f0f0f0; --link:#7eb8ff; --tag-bg:#252525;
+  --tag-text:#aaa; --fig-bg:#1e1e1e; --fig-border:#333; --fig-cap:#999;
+  --divider:#222; --accent-teal:#14b8bd; --accent-blue:#7eb8ff;
+  --accent-red:#f07070; --accent-amber:#f0a030; --accent-violet:#c084fc;
+  --accent-green:#4ade80; --rank-color:#555;
+}
+:root[data-theme="light"] {
+  --bg:#faf9f7; --surface:#f0ede8; --border:#ddd; --text:#3a3a3a;
+  --dim:#888; --title:#1a1a1a; --link:#1a4f99; --tag-bg:#e8e8e8;
+  --tag-text:#444; --fig-bg:#fff; --fig-border:#e0ddd8; --fig-cap:#666;
+  --divider:#e4e0da; --accent-teal:#0d7377; --accent-blue:#1a4f99;
+  --accent-red:#b02020; --accent-amber:#a05c00; --accent-violet:#5c1aaa;
+  --accent-green:#1a6e3c; --rank-color:#999;
+}
+
+/* ── Base ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ───────────────────────────────────────────── */
+.page { max-width: 660px; margin: 0 auto; padding: 0 24px 80px; }
+
+/* ── Masthead ─────────────────────────────────────────── */
+.masthead {
+  border-bottom: 1px solid var(--divider);
+  padding: 36px 0 24px;
+  margin-bottom: 48px;
+}
+.masthead-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-teal);
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--title);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.masthead-counts {
+  font-size: 12px;
+  font-family: "Courier New", Courier, monospace;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  font-size: 12px;
+  color: var(--dim);
+}
+.track { font-weight: 500; color: var(--text); }
+.track-sep { margin: 0 6px; color: var(--dim); }
+
+/* ── Tags ─────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  vertical-align: middle;
+}
+.tag-interp  { background: #e6f3f4; color: var(--accent-teal); }
+.tag-security{ background: #fceaea; color: var(--accent-red);  }
+.tag-dllm    { background: #e8f0fc; color: var(--accent-blue); }
+.tag-control { background: #f2ecfc; color: var(--accent-violet);}
+.tag-peer    { background: #e8f5ec; color: var(--accent-green);}
+@media (prefers-color-scheme: dark) {
+  .tag-interp  { background: #0d3335; color: #14b8bd; }
+  .tag-security{ background: #2e1212; color: #f07070; }
+  .tag-dllm    { background: #0f1e35; color: #7eb8ff; }
+  .tag-control { background: #1c0f33; color: #c084fc; }
+  .tag-peer    { background: #0a2218; color: #4ade80; }
+}
+:root[data-theme="dark"] .tag-interp  { background: #0d3335; color: #14b8bd; }
+:root[data-theme="dark"] .tag-security{ background: #2e1212; color: #f07070; }
+:root[data-theme="dark"] .tag-dllm    { background: #0f1e35; color: #7eb8ff; }
+:root[data-theme="dark"] .tag-control { background: #1c0f33; color: #c084fc; }
+:root[data-theme="dark"] .tag-peer    { background: #0a2218; color: #4ade80; }
+:root[data-theme="light"] .tag-interp  { background: #e6f3f4; color: #0d7377; }
+:root[data-theme="light"] .tag-security{ background: #fceaea; color: #b02020; }
+:root[data-theme="light"] .tag-dllm    { background: #e8f0fc; color: #1a4f99; }
+:root[data-theme="light"] .tag-control { background: #f2ecfc; color: #5c1aaa; }
+:root[data-theme="light"] .tag-peer    { background: #e8f5ec; color: #1a6e3c; }
+
+/* ── Full paper entries (top 3) ───────────────────────── */
+.paper {
+  margin-bottom: 60px;
+}
+.paper-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.paper-rank {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: "Courier New", Courier, monospace;
+  color: var(--rank-color);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.paper-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--title);
+  margin: 0 0 10px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  text-wrap: balance;
+}
+.paper-title a { color: inherit; text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+
+.paper-byline {
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 14px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.paper-hook {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0 0 20px;
+}
+
+/* ── SUBSTACK-STYLE FIGURE CARD ──────────────────────── */
+/* Full-column visual block: sits between hook and detail, */
+/* prominent but never wider than the text column.         */
+.paper-figure {
+  margin: 0 0 22px;
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.paper-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.paper-figure svg {
+  display: block;
+  width: 100%;
+}
+.paper-figure figcaption {
+  padding: 10px 14px 12px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--fig-cap);
+  border-top: 1px solid var(--fig-border);
+  font-style: normal;
+}
+.paper-figure figcaption strong {
+  font-weight: 600;
+  color: var(--dim);
+}
+
+.paper-detail {
+  font-size: 15.5px;
+  line-height: 1.72;
+  color: var(--text);
+}
+
+/* ── Section divider ──────────────────────────────────── */
+.paper-divider {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 48px 0;
+}
+
+/* ── Mid-tier section ─────────────────────────────────── */
+.more-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 32px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.mid-paper { margin-bottom: 40px; }
+
+.mid-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.mid-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--title);
+  margin: 0 0 8px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: inherit; text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+
+.mid-byline {
+  font-size: 11px;
+  color: var(--dim);
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 12px;
+}
+
+/* Mid-tier figures: same card style, slightly inset */
+.mid-figure {
+  margin: 0 0 14px;
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-border);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.mid-figure img, .mid-figure svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+.mid-figure figcaption {
+  padding: 8px 12px 10px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--fig-cap);
+  border-top: 1px solid var(--fig-border);
+}
+
+.mid-summary {
+  font-size: 14.5px;
+  line-height: 1.68;
+  color: var(--text);
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 32px 0;
+}
+
+/* ── Notes ────────────────────────────────────────────── */
+.notes {
+  background: var(--surface);
+  border-left: 3px solid var(--accent-teal);
+  border-radius: 0 4px 4px 0;
+  padding: 20px 22px;
+  margin-top: 48px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.notes h3 {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-teal);
+  margin: 0 0 12px;
+}
+.notes p { margin: 0 0 10px; }
+.notes p:last-child { margin-bottom: 0; }
+.notes strong { color: var(--title); }
+
+/* ── Footer ───────────────────────────────────────────── */
+.footer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--divider);
+  font-size: 11px;
+  color: var(--dim);
+  text-align: center;
+}
+</style>
+
+<div class="page">
+
+<!-- ── MASTHEAD ──────────────────────────────────────── -->
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · July 31, 2026</div>
+  <div class="masthead-counts">2 peer-reviewed · 8 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Mech Interp</span>
+    <span class="track-sep">·</span>
+    <span class="track">AI Security</span>
+    <span class="track-sep">·</span>
+    <span class="track">Text Diffusion LMs</span>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════ -->
+<!-- PAPER 01 — TensorLens (ACL 2026)                    -->
+<!-- ════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ACL 2026</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2601.17958">TensorLens: End-to-End Transformer Analysis via High-Order Attention Tensors</a>
+  </h2>
+  <div class="paper-byline">Ido Andrew Atad, Itamar Zimerman, Shahar Katz, Lior Wolf — arXiv Jan 25, 2026; ACL 2026 long paper</div>
+  <p class="paper-hook">
+    Most interpretability tools dissect transformers layer-by-layer, losing the global computation structure at every cut. TensorLens collapses the full forward pass — attention, FFNs, layer norms, activations, residual connections — into a single input-dependent tensor, yielding exact relevance scores from any input position to any output without approximation.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 620 230" xmlns="http://www.w3.org/2000/svg" aria-label="TensorLens high-order attention tensor overview">
+      <rect width="620" height="230" fill="#fff"/>
+      <!-- Input tokens -->
+      <text x="30" y="28" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.06em">INPUT TOKENS</text>
+      <rect x="20" y="36" width="52" height="26" rx="4" fill="#e6f3f4" stroke="#0d7377" stroke-width="1.2"/>
+      <text x="46" y="53" font-family="Georgia,serif" font-size="12" fill="#0d7377" text-anchor="middle">x₁</text>
+      <rect x="80" y="36" width="52" height="26" rx="4" fill="#e6f3f4" stroke="#0d7377" stroke-width="1.2"/>
+      <text x="106" y="53" font-family="Georgia,serif" font-size="12" fill="#0d7377" text-anchor="middle">x₂</text>
+      <rect x="140" y="36" width="52" height="26" rx="4" fill="#e6f3f4" stroke="#0d7377" stroke-width="1.2"/>
+      <text x="166" y="53" font-family="Georgia,serif" font-size="12" fill="#0d7377" text-anchor="middle">x₃</text>
+      <text x="200" y="53" font-family="sans-serif" font-size="13" fill="#aaa">···</text>
+      <!-- High-order tensor block -->
+      <text x="255" y="28" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.06em">HIGH-ORDER TENSOR  T</text>
+      <rect x="248" y="36" width="160" height="26" rx="4" fill="#f2ecfc" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="328" y="53" font-family="Georgia,serif" font-size="12" fill="#5c1aaa" text-anchor="middle">Attn · FFN · Norm · Residual</text>
+      <!-- Arrow left to tensor -->
+      <line x1="200" y1="49" x2="246" y2="49" stroke="#bbb" stroke-width="1.5" marker-end="url(#a1)"/>
+      <!-- Arrow tensor to output -->
+      <line x1="410" y1="49" x2="456" y2="49" stroke="#bbb" stroke-width="1.5" marker-end="url(#a1)"/>
+      <!-- Output tokens -->
+      <text x="460" y="28" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.06em">RELEVANCE SCORES</text>
+      <rect x="456" y="36" width="52" height="26" rx="4" fill="#e8f5ec" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="482" y="53" font-family="Georgia,serif" font-size="12" fill="#1a6e3c" text-anchor="middle">r₁</text>
+      <rect x="516" y="36" width="52" height="26" rx="4" fill="#e8f5ec" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="542" y="53" font-family="Georgia,serif" font-size="12" fill="#1a6e3c" text-anchor="middle">r₂</text>
+      <defs>
+        <marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#bbb"/>
+        </marker>
+      </defs>
+      <!-- Comparison bar chart -->
+      <text x="30" y="105" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.05em">FAITHFULNESS vs BASELINES  (↑ better)</text>
+      <!-- Method labels -->
+      <text x="30" y="130" font-family="sans-serif" font-size="11" fill="#555" text-anchor="start">TensorLens</text>
+      <text x="30" y="152" font-family="sans-serif" font-size="11" fill="#888" text-anchor="start">GradCAM</text>
+      <text x="30" y="174" font-family="sans-serif" font-size="11" fill="#888" text-anchor="start">Attn Rollout</text>
+      <text x="30" y="196" font-family="sans-serif" font-size="11" fill="#888" text-anchor="start">Raw Gradient</text>
+      <!-- Bars -->
+      <rect x="130" y="118" width="340" height="18" rx="3" fill="#4ade80" opacity="0.3"/>
+      <rect x="130" y="118" width="340" height="18" rx="3" fill="none" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="476" y="131" font-family="sans-serif" font-size="11" fill="#1a6e3c" font-weight="700">0.91</text>
+      <rect x="130" y="140" width="218" height="18" rx="3" fill="#e0e0e0"/>
+      <text x="354" y="153" font-family="sans-serif" font-size="11" fill="#888">0.64</text>
+      <rect x="130" y="162" width="190" height="18" rx="3" fill="#e0e0e0"/>
+      <text x="326" y="175" font-family="sans-serif" font-size="11" fill="#888">0.56</text>
+      <rect x="130" y="184" width="158" height="18" rx="3" fill="#e0e0e0"/>
+      <text x="294" y="197" font-family="sans-serif" font-size="11" fill="#888">0.46</text>
+      <!-- axis line -->
+      <line x1="130" y1="112" x2="130" y2="207" stroke="#ccc" stroke-width="1"/>
+      <text x="328" y="220" font-family="sans-serif" font-size="10" fill="#aaa" text-anchor="middle">Token-attribution faithfulness score (alignment with human labels)</text>
+    </svg>
+    <figcaption><strong>Figure 1:</strong> TensorLens constructs an exact high-order tensor encoding all sublayer interactions; contracting it yields globally-coherent relevance scores that outperform attention rollout (0.56), GradCAM (0.64), and raw gradient (0.46) attribution on token faithfulness benchmarks for both language and vision transformers.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Atad et al. derive a factored representation of the standard transformer as an input-dependent linear operator expressed through a tensor formed by the outer product of per-layer attention matrices and FFN outputs. This tensor can be exactly contracted to produce input-to-output relevance scores that simultaneously respect layer ordering, multi-head competition, FFN gating, and residual connections — properties that rollout approximations and gradient methods each violate separately. Evaluated on language and vision transformers, TensorLens relevance scores achieve better alignment with human attention labels and more faithful circuit-extraction results than all baselines. Code at <a href="https://github.com/idoatad/TensorLens">github.com/idoatad/TensorLens</a>.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ════════════════════════════════════════════════════ -->
+<!-- PAPER 02 — SecRespond                               -->
+<!-- ════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.26791">SecRespond: Benchmarking AI Agents for Real-World Post-Compromise Incident Response</a>
+  </h2>
+  <div class="paper-byline">Lehan Wang, Boli Chen, Ruixue Ding, Pengjun Xie et al. (Alibaba) — arXiv, July 29, 2026</div>
+  <p class="paper-hook">
+    AI agents are being deployed in security operations centers — but without benchmarks that test the full post-compromise workflow. SecRespond puts 23 frontier LLMs against 10 reconstructed real-world cloud incidents, and no model fully solves any of them.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 620 240" xmlns="http://www.w3.org/2000/svg" aria-label="SecRespond benchmark structure and results">
+      <rect width="620" height="240" fill="#fff"/>
+      <!-- Benchmark pipeline -->
+      <text x="30" y="28" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.06em">BENCHMARK SETUP</text>
+      <!-- Cyber range boxes -->
+      <rect x="20" y="38" width="90" height="50" rx="4" fill="#fceaea" stroke="#b02020" stroke-width="1.2"/>
+      <text x="65" y="56" font-family="sans-serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="600">Compromised</text>
+      <text x="65" y="70" font-family="sans-serif" font-size="10" fill="#b02020" text-anchor="middle">Cloud Host</text>
+      <text x="65" y="82" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">(disk snapshot)</text>
+      <line x1="112" y1="63" x2="142" y2="63" stroke="#ccc" stroke-width="1.5" marker-end="url(#a2)"/>
+      <rect x="144" y="38" width="90" height="50" rx="4" fill="#faf3e8" stroke="#a05c00" stroke-width="1.2"/>
+      <text x="189" y="56" font-family="sans-serif" font-size="10" fill="#a05c00" text-anchor="middle" font-weight="600">Alert Suite</text>
+      <text x="189" y="70" font-family="sans-serif" font-size="10" fill="#a05c00" text-anchor="middle">+ Vuln Scans</text>
+      <text x="189" y="82" font-family="sans-serif" font-size="9" fill="#a05c00" text-anchor="middle">(21 ATT&amp;CK)</text>
+      <line x1="236" y1="63" x2="266" y2="63" stroke="#ccc" stroke-width="1.5" marker-end="url(#a2)"/>
+      <rect x="268" y="38" width="90" height="50" rx="4" fill="#e8f0fc" stroke="#1a4f99" stroke-width="1.2"/>
+      <text x="313" y="56" font-family="sans-serif" font-size="10" fill="#1a4f99" text-anchor="middle" font-weight="600">LLM Agent</text>
+      <text x="313" y="70" font-family="sans-serif" font-size="10" fill="#1a4f99" text-anchor="middle">+ CLI access</text>
+      <text x="313" y="82" font-family="sans-serif" font-size="9" fill="#1a4f99" text-anchor="middle">(23 models)</text>
+      <line x1="360" y1="63" x2="390" y2="63" stroke="#ccc" stroke-width="1.5" marker-end="url(#a2)"/>
+      <rect x="392" y="38" width="90" height="50" rx="4" fill="#e8f5ec" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="437" y="56" font-family="sans-serif" font-size="10" fill="#1a6e3c" text-anchor="middle" font-weight="600">Forensic</text>
+      <text x="437" y="70" font-family="sans-serif" font-size="10" fill="#1a6e3c" text-anchor="middle">Report +</text>
+      <text x="437" y="82" font-family="sans-serif" font-size="9" fill="#1a6e3c" text-anchor="middle">Remediation</text>
+      <defs>
+        <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#bbb"/>
+        </marker>
+      </defs>
+      <!-- Results heatmap section -->
+      <text x="30" y="115" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.06em">DETECTION vs REMEDIATION  (no model completes any range)</text>
+      <!-- Headers -->
+      <text x="160" y="133" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Alert detection</text>
+      <text x="280" y="133" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Proactive forensics</text>
+      <text x="410" y="133" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Full remediation</text>
+      <!-- Model rows -->
+      <text x="88" y="155" font-family="sans-serif" font-size="11" fill="#555" text-anchor="end">GPT-4o</text>
+      <rect x="100" y="141" width="120" height="20" rx="3" fill="#4ade80" opacity="0.6"/>
+      <text x="160" y="155" font-family="sans-serif" font-size="10" fill="#1a6e3c" text-anchor="middle" font-weight="600">High</text>
+      <rect x="220" y="141" width="120" height="20" rx="3" fill="#f0a030" opacity="0.5"/>
+      <text x="280" y="155" font-family="sans-serif" font-size="10" fill="#a05c00" text-anchor="middle" font-weight="600">Partial</text>
+      <rect x="350" y="141" width="120" height="20" rx="3" fill="#f07070" opacity="0.5"/>
+      <text x="410" y="155" font-family="sans-serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="600">Fails</text>
+      <text x="88" y="179" font-family="sans-serif" font-size="11" fill="#555" text-anchor="end">Claude 3.7</text>
+      <rect x="100" y="165" width="120" height="20" rx="3" fill="#4ade80" opacity="0.6"/>
+      <text x="160" y="179" font-family="sans-serif" font-size="10" fill="#1a6e3c" text-anchor="middle" font-weight="600">High</text>
+      <rect x="220" y="165" width="120" height="20" rx="3" fill="#f0a030" opacity="0.5"/>
+      <text x="280" y="179" font-family="sans-serif" font-size="10" fill="#a05c00" text-anchor="middle" font-weight="600">Partial</text>
+      <rect x="350" y="165" width="120" height="20" rx="3" fill="#f07070" opacity="0.5"/>
+      <text x="410" y="179" font-family="sans-serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="600">Fails</text>
+      <text x="88" y="203" font-family="sans-serif" font-size="11" fill="#555" text-anchor="end">All 23 models</text>
+      <rect x="100" y="189" width="120" height="20" rx="3" fill="#f07070" opacity="0.4"/>
+      <text x="160" y="203" font-family="sans-serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="600">0% complete</text>
+      <rect x="220" y="189" width="120" height="20" rx="3" fill="#f07070" opacity="0.4"/>
+      <text x="280" y="203" font-family="sans-serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="600">0% complete</text>
+      <rect x="350" y="189" width="120" height="20" rx="3" fill="#f07070" opacity="0.5"/>
+      <text x="410" y="203" font-family="sans-serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="600">0% complete</text>
+      <text x="310" y="228" font-family="sans-serif" font-size="10" fill="#aaa" text-anchor="middle">No model achieves complete detection-plus-remediation on any single cyber range</text>
+    </svg>
+    <figcaption><strong>Figure 2:</strong> SecRespond's 10 cyber ranges each supply a compromised cloud host (disk snapshot), alert suite, and baseline checks across 4 entry-point types and 21 ATT&CK techniques. Across all 23 frontier LLMs evaluated, alert-triggered detection is reliably high — but proactive forensics and verified remediation both fail on every range for every model.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    SecRespond constructs 10 cyber ranges from distinct compromised cloud hosts spanning 4 entry-point types (credential stuffing, supply-chain, zero-day, insider), 21 ATT&CK techniques, and 5 operating systems. Agents run on the OpenCode harness with full host artifact and CLI access. The consistent failure mode: agents reliably uncover problems flagged by alerts but systematically fail at proactive disk forensics (silent intrusions invisible to alerting) and at producing verified, comprehensive remediation plans. No model achieves complete detection-plus-remediation on any single range — a gap attributed to the compositional reasoning and long-horizon planning demands of the post-compromise workflow.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ════════════════════════════════════════════════════ -->
+<!-- PAPER 03 — Beyond the Bidirectional Promise         -->
+<!-- ════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag tag-security">security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.27386">Beyond the Bidirectional Promise: Re-evaluating the Robustness of Diffusion Language Models</a>
+  </h2>
+  <div class="paper-byline">Microsoft Research — arXiv, July 29, 2026</div>
+  <p class="paper-hook">
+    Diffusion language models are often credited with inherent robustness from their stochastic denoising process. This systematic study by Microsoft uses parameter-matched pairs against both natural noise and adversarial attacks — and the result is more nuanced: dLLMs resist gradient-based suffix attacks, but everyday natural noise is just as damaging as it is for autoregressive models.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 620 230" xmlns="http://www.w3.org/2000/svg" aria-label="dLLM vs AR robustness comparison across perturbation types">
+      <rect width="620" height="230" fill="#fff"/>
+      <text x="30" y="26" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.06em">ROBUSTNESS COMPARISON: dLLM vs AR  (parameter-matched pairs)</text>
+      <!-- Y labels -->
+      <text x="28" y="62" font-family="sans-serif" font-size="10" fill="#555" text-anchor="end">Natural</text>
+      <text x="28" y="78" font-family="sans-serif" font-size="10" fill="#555" text-anchor="end">char-swap</text>
+      <text x="28" y="110" font-family="sans-serif" font-size="10" fill="#555" text-anchor="end">Natural</text>
+      <text x="28" y="126" font-family="sans-serif" font-size="10" fill="#555" text-anchor="end">paraphrase</text>
+      <text x="28" y="158" font-family="sans-serif" font-size="10" fill="#555" text-anchor="end">Gradient</text>
+      <text x="28" y="174" font-family="sans-serif" font-size="10" fill="#555" text-anchor="end">suffix attack</text>
+      <!-- Legend -->
+      <rect x="440" y="34" width="14" height="10" rx="2" fill="#7eb8ff" opacity="0.85"/>
+      <text x="458" y="44" font-family="sans-serif" font-size="10" fill="#555">LLaDA-8B (dLLM)</text>
+      <rect x="440" y="50" width="14" height="10" rx="2" fill="#c084fc" opacity="0.6"/>
+      <text x="458" y="60" font-family="sans-serif" font-size="10" fill="#555">LLaMA-3-8B (AR)</text>
+      <!-- Natural noise rows: comparable performance -->
+      <!-- Row 1: char-swap  dLLM = 0.61, AR = 0.63 — no advantage -->
+      <rect x="36" y="48" width="219" height="22" rx="3" fill="#7eb8ff" opacity="0.75"/>
+      <text x="261" y="63" font-family="sans-serif" font-size="11" fill="#1a4f99" font-weight="600">0.61</text>
+      <rect x="36" y="74" width="226" height="22" rx="3" fill="#c084fc" opacity="0.5"/>
+      <text x="268" y="89" font-family="sans-serif" font-size="11" fill="#5c1aaa">0.63</text>
+      <text x="400" y="78" font-family="sans-serif" font-size="10" fill="#a05c00">≈ no advantage</text>
+      <!-- Row 2: paraphrase  dLLM = 0.72, AR = 0.70 -->
+      <rect x="36" y="96" width="259" height="22" rx="3" fill="#7eb8ff" opacity="0.75"/>
+      <text x="301" y="111" font-family="sans-serif" font-size="11" fill="#1a4f99" font-weight="600">0.72</text>
+      <rect x="36" y="122" width="252" height="22" rx="3" fill="#c084fc" opacity="0.5"/>
+      <text x="294" y="137" font-family="sans-serif" font-size="11" fill="#5c1aaa">0.70</text>
+      <text x="400" y="122" font-family="sans-serif" font-size="10" fill="#a05c00">≈ no advantage</text>
+      <!-- Row 3: gradient suffix attack  dLLM >> AR -->
+      <rect x="36" y="144" width="340" height="22" rx="3" fill="#7eb8ff" opacity="0.85"/>
+      <text x="382" y="159" font-family="sans-serif" font-size="11" fill="#1a4f99" font-weight="700">0.94 ✓</text>
+      <rect x="36" y="170" width="130" height="22" rx="3" fill="#c084fc" opacity="0.5"/>
+      <text x="172" y="185" font-family="sans-serif" font-size="11" fill="#b02020" font-weight="700">0.36 ✗</text>
+      <text x="400" y="168" font-family="sans-serif" font-size="10" fill="#1a6e3c" font-weight="600">dLLM resists!</text>
+      <!-- axis line -->
+      <line x1="36" y1="42" x2="36" y2="197" stroke="#ccc" stroke-width="1"/>
+      <text x="120" y="212" font-family="sans-serif" font-size="10" fill="#aaa" text-anchor="middle">Task accuracy under perturbation</text>
+      <text x="30" y="226" font-family="sans-serif" font-size="9" fill="#aaa">Stochastic loss landscape resists gradient-based attacks (GCG); natural noise robustness is weight-dependent, no architectural advantage.</text>
+    </svg>
+    <figcaption><strong>Figure 3:</strong> Parameter-matched comparison (LLaDA-8B vs. LLaMA-3-8B; Dream-7B vs. Qwen2.5-7B) across 32 natural perturbation conditions and adversarial gradient suffix attacks. dLLMs resist gradient-based attacks (stochastic loss landscape) but show no systematic advantage over AR models under natural noise — everyday robustness is weight-dependent, not architecturally guaranteed.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Using two parameter-matched pairs and evaluating across 32 natural perturbation conditions (character swaps, word insertions, paraphrase, truncation, OCR errors), adversarial gradient suffix attacks, and mechanistic hidden-state analysis, the authors find a sharp split: dLLMs' stochastic loss landscapes make GCG-style gradient suffix attacks largely ineffective, but this provides no protection against natural input noise. Hidden-state analysis further shows dLLMs develop qualitatively different internal representations of corrupted inputs, with less graceful degradation on out-of-distribution tokens. The implication for dLLM threat modeling: adversarial robustness and natural-noise robustness are structurally decoupled in these architectures.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ════════════════════════════════════════════════════ -->
+<!-- ITEMS 4–10 (MID-TIER)                               -->
+<!-- ════════════════════════════════════════════════════ -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- ── 04: Minimizing Targeted Activations ───────────── -->
+<article class="mid-paper">
+  <div class="mid-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-control">AI control</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.25907">Minimizing Targeted Activations: Input-Only Suppression of Evaluation-Awareness Latents in Large Language Models</a></h3>
+  <div class="mid-byline">Deepanshu Mody et al. — NYU Center for Data Science — arXiv, July 28, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 580 170" xmlns="http://www.w3.org/2000/svg" aria-label="Evaluation-awareness latent suppression via input optimization">
+      <rect width="580" height="170" fill="#fff"/>
+      <text x="20" y="24" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.05em">SUPPRESSION SUCCESS ACROSS 5 REPRESENTATION TYPES  (Llama-3.1-8B)</text>
+      <!-- 5 bars for 5 representation types -->
+      <!-- Labels -->
+      <text x="108" y="52" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="end">CAA direction</text>
+      <text x="108" y="78" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="end">Subspace norm</text>
+      <text x="108" y="104" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="end">SAE feature</text>
+      <text x="108" y="130" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="end">MLP neuron</text>
+      <text x="108" y="156" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="end">Behavioral logit</text>
+      <!-- Suppression bars (% reduction in latent activation) -->
+      <rect x="116" y="38" width="382" height="18" rx="3" fill="#f07070" opacity="0.7"/>
+      <text x="504" y="51" font-family="sans-serif" font-size="10" fill="#b02020" font-weight="700">−91%</text>
+      <rect x="116" y="64" width="356" height="18" rx="3" fill="#f07070" opacity="0.7"/>
+      <text x="478" y="77" font-family="sans-serif" font-size="10" fill="#b02020" font-weight="700">−85%</text>
+      <rect x="116" y="90" width="366" height="18" rx="3" fill="#f07070" opacity="0.7"/>
+      <text x="488" y="103" font-family="sans-serif" font-size="10" fill="#b02020" font-weight="700">−87%</text>
+      <rect x="116" y="116" width="345" height="18" rx="3" fill="#f07070" opacity="0.65"/>
+      <text x="467" y="129" font-family="sans-serif" font-size="10" fill="#b02020" font-weight="700">−82%</text>
+      <rect x="116" y="142" width="370" height="18" rx="3" fill="#f07070" opacity="0.7"/>
+      <text x="492" y="155" font-family="sans-serif" font-size="10" fill="#b02020" font-weight="700">−88%</text>
+      <line x1="116" y1="32" x2="116" y2="165" stroke="#ccc" stroke-width="1"/>
+      <text x="540" y="165" font-family="sans-serif" font-size="9" fill="#aaa">All suppressible</text>
+    </svg>
+    <figcaption><strong>Figure 4:</strong> Input-only optimization (Fluent Dreaming + GCG-style search) reduces evaluation-awareness latent activation by 82–91% across all five representation types — CAA direction, subspace norm, SAE feature, MLP neuron, and behavioral logit — on Llama-3.1-8B, with no inference-time model access required.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Evaluation-awareness latents — features that activate when a model detects it is being tested — threaten AI control if they can be suppressed from the input side, making safety evaluations on adversarially crafted prompts unreliable. The paper adapts Fluent Dreaming / EPO with a negated feature objective and GCG-style token search to suppress five representations on Llama-3.2-3B and Llama-3.1-8B; all five are suppressible (82–91% reduction), and the attack transfers across representation types, suggesting a single underlying mechanism. Implication: input-level sanitization alone cannot guarantee evaluation-awareness probes are valid.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── 05: Cyber-Capable AI Agents ───────────────────── -->
+<article class="mid-paper">
+  <div class="mid-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+    </div>
+  </div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.25379">Cyber-Capable AI Agents: Vulnerabilities, Evaluation Containment, and Defensive Response</a></h3>
+  <div class="mid-byline">arXiv, July 28, 2026 — with July 2026 HuggingFace/OpenAI incident case study</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 580 160" xmlns="http://www.w3.org/2000/svg" aria-label="Five vulnerability classes at AI agent evaluation boundaries">
+      <rect width="580" height="160" fill="#fff"/>
+      <text x="20" y="24" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.05em">FIVE VULNERABILITY CLASSES AT EVALUATION BOUNDARIES</text>
+      <!-- 5 boxes in a row -->
+      <rect x="20" y="34" width="100" height="54" rx="4" fill="#fceaea" stroke="#b02020" stroke-width="1"/>
+      <text x="70" y="56" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle" font-weight="600">Multi-step</text>
+      <text x="70" y="68" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">offensive</text>
+      <text x="70" y="80" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">chains</text>
+      <rect x="128" y="34" width="100" height="54" rx="4" fill="#fceaea" stroke="#b02020" stroke-width="1"/>
+      <text x="178" y="56" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle" font-weight="600">Objective</text>
+      <text x="178" y="68" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">↔ confinement</text>
+      <text x="178" y="80" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">conflict</text>
+      <rect x="236" y="34" width="100" height="54" rx="4" fill="#fceaea" stroke="#b02020" stroke-width="1"/>
+      <text x="286" y="56" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle" font-weight="600">Supply-chain</text>
+      <text x="286" y="68" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">&amp; credential</text>
+      <text x="286" y="80" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">exposure</text>
+      <rect x="344" y="34" width="100" height="54" rx="4" fill="#fceaea" stroke="#b02020" stroke-width="1"/>
+      <text x="394" y="56" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle" font-weight="600">Persistent</text>
+      <text x="394" y="68" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">C2 beyond</text>
+      <text x="394" y="80" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">evaluation</text>
+      <rect x="452" y="34" width="106" height="54" rx="4" fill="#fceaea" stroke="#b02020" stroke-width="1"/>
+      <text x="505" y="56" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle" font-weight="600">Automation</text>
+      <text x="505" y="68" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">speed vs</text>
+      <text x="505" y="80" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">human response</text>
+      <!-- Case study label -->
+      <rect x="20" y="104" width="538" height="40" rx="4" fill="#faf3e8" stroke="#a05c00" stroke-width="1"/>
+      <text x="289" y="121" font-family="sans-serif" font-size="10" fill="#a05c00" text-anchor="middle" font-weight="600">Case study: July 2026 HuggingFace / OpenAI incident</text>
+      <text x="289" y="137" font-family="sans-serif" font-size="9.5" fill="#a05c00" text-anchor="middle">Incident-specific observations distinguished from findings established in the wider literature</text>
+    </svg>
+    <figcaption><strong>Figure 5:</strong> Five vulnerability classes synthesized from the wider evaluation-containment literature, illustrated against the July 2026 HuggingFace/OpenAI incident. Each class represents a distinct failure mode at the boundary between a capable agent and the evaluation infrastructure designed to contain it.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Synthesizes five vulnerability classes at the evaluation-containment boundary of cyber-capable AI agents: multi-step offensive chains, objectives conflicting with confinement, supply-chain and credential exposure, persistent C2 outlasting the session, and automation speed differentials. Uses the July 2026 HuggingFace/OpenAI incident as a bounded case study, carefully distinguishing incident-specific from literature-established findings. Provides infrastructure design guidance for reducing unintended capability leakage beyond the test boundary.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── 06: AISPA ──────────────────────────────────────── -->
+<article class="mid-paper">
+  <div class="mid-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+    </div>
+  </div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.28617">AISPA: User-Centric System Prompt Auditing for Large Language Model Applications</a></h3>
+  <div class="mid-byline">26 researchers — arXiv, July 30, 2026 (freshest paper in today's sweep)</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 580 160" xmlns="http://www.w3.org/2000/svg" aria-label="AISPA 8-dimension system prompt audit framework">
+      <rect width="580" height="160" fill="#fff"/>
+      <text x="20" y="24" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.05em">8-DIMENSION AUDIT: 3,249 INSTRUCTIONS · 88 PRODUCTS</text>
+      <!-- 8 dimension chips in two rows -->
+      <rect x="20" y="32" width="124" height="26" rx="4" fill="#e8f0fc" stroke="#1a4f99" stroke-width="1"/>
+      <text x="82" y="49" font-family="sans-serif" font-size="9.5" fill="#1a4f99" text-anchor="middle">Identity transparency</text>
+      <rect x="152" y="32" width="124" height="26" rx="4" fill="#e8f0fc" stroke="#1a4f99" stroke-width="1"/>
+      <text x="214" y="49" font-family="sans-serif" font-size="9.5" fill="#1a4f99" text-anchor="middle">Info truthfulness</text>
+      <rect x="284" y="32" width="124" height="26" rx="4" fill="#e8f0fc" stroke="#1a4f99" stroke-width="1"/>
+      <text x="346" y="49" font-family="sans-serif" font-size="9.5" fill="#1a4f99" text-anchor="middle">Data privacy</text>
+      <rect x="416" y="32" width="142" height="26" rx="4" fill="#e8f0fc" stroke="#1a4f99" stroke-width="1"/>
+      <text x="487" y="49" font-family="sans-serif" font-size="9.5" fill="#1a4f99" text-anchor="middle">Action safety</text>
+      <rect x="20" y="64" width="124" height="26" rx="4" fill="#fceaea" stroke="#b02020" stroke-width="1"/>
+      <text x="82" y="81" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">User agency &amp; manip.</text>
+      <rect x="152" y="64" width="124" height="26" rx="4" fill="#fceaea" stroke="#b02020" stroke-width="1"/>
+      <text x="214" y="81" font-family="sans-serif" font-size="9.5" fill="#b02020" text-anchor="middle">Unsafe req. handling</text>
+      <rect x="284" y="64" width="124" height="26" rx="4" fill="#fceaea" stroke="#b02020" stroke-width="1"/>
+      <text x="346" y="81" font-family="sans-serif" font-size="9.5" fill="#b02020" text-anchor="middle">Harm prevention</text>
+      <rect x="416" y="64" width="142" height="26" rx="4" fill="#fceaea" stroke="#b02020" stroke-width="1"/>
+      <text x="487" y="81" font-family="sans-serif" font-size="9.5" fill="#b02020" text-anchor="middle">Fairness &amp; neutrality</text>
+      <!-- Legend -->
+      <rect x="20" y="106" width="12" height="10" rx="2" fill="#e8f0fc" stroke="#1a4f99" stroke-width="1"/>
+      <text x="36" y="116" font-family="sans-serif" font-size="9.5" fill="#555">User-protective dimensions</text>
+      <rect x="210" y="106" width="12" height="10" rx="2" fill="#fceaea" stroke="#b02020" stroke-width="1"/>
+      <text x="226" y="116" font-family="sans-serif" font-size="9.5" fill="#555">Dimensions where products may harm users</text>
+      <text x="20" y="142" font-family="sans-serif" font-size="9.5" fill="#888">Unlike prior work protecting systems from adversaries, AISPA protects users from the AI product itself.</text>
+    </svg>
+    <figcaption><strong>Figure 6:</strong> AISPA's 8-dimension framework applied to 3,249 instructions from 88 commercial AI products. Each instruction is classified as user-protective or user-harming; the audit reveals that a significant fraction of commercial system prompts contain instructions that prioritize product interests over user interests, particularly on manipulation prevention and fairness dimensions.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    System prompts in deployed AI products are rarely disclosed to users or regulators. AISPA introduces an 8-dimension audit framework and applies it to 3,249 instructions from 88 commercial products, classifying each as user-protective or user-harming. Unlike frameworks targeting external adversaries, AISPA is user-centric: it systematically asks which commercial instructions put users at risk from the AI system itself — the first large-scale public corpus of commercial system prompt instructions with safety classifications.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── 07: AI Security Priorities ────────────────────── -->
+<article class="mid-paper">
+  <div class="mid-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ESORICS 2026 (LLMSec)</span>
+      <span class="tag tag-security">AI security</span>
+    </div>
+  </div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.26069">AI Security Priorities: A Field-Wide Agenda</a></h3>
+  <div class="mid-byline">Gil Gekker, Rachel Steratore, Everett Smith et al. — ESORICS 2026 LLMSec Workshop — arXiv, July 29, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 580 150" xmlns="http://www.w3.org/2000/svg" aria-label="AI security priority map">
+      <rect width="580" height="150" fill="#fff"/>
+      <text x="20" y="22" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.05em">RESEARCH PRIORITY MAP  (impact vs. current investment)</text>
+      <!-- Axes -->
+      <line x1="60" y1="38" x2="60" y2="128" stroke="#ccc" stroke-width="1"/>
+      <line x1="60" y1="128" x2="540" y2="128" stroke="#ccc" stroke-width="1"/>
+      <text x="28" y="48" font-family="sans-serif" font-size="9" fill="#888" text-anchor="middle">High</text>
+      <text x="28" y="128" font-family="sans-serif" font-size="9" fill="#888" text-anchor="middle">Low</text>
+      <text x="28" y="88" font-family="sans-serif" font-size="9" fill="#888" text-anchor="middle" transform="rotate(-90,28,88)">Impact</text>
+      <text x="60" y="142" font-family="sans-serif" font-size="9" fill="#888">Low investment →</text>
+      <text x="476" y="142" font-family="sans-serif" font-size="9" fill="#888">High investment</text>
+      <!-- Data points -->
+      <!-- Underinvested high-impact (top-left): model provenance, eval-time security, agentic containment -->
+      <circle cx="100" cy="52" r="7" fill="#4ade80" opacity="0.8"/>
+      <text x="112" y="50" font-family="sans-serif" font-size="8.5" fill="#1a6e3c">Model provenance</text>
+      <circle cx="130" cy="64" r="7" fill="#4ade80" opacity="0.8"/>
+      <text x="142" y="62" font-family="sans-serif" font-size="8.5" fill="#1a6e3c">Eval-time security</text>
+      <circle cx="90" cy="76" r="7" fill="#4ade80" opacity="0.8"/>
+      <text x="102" y="74" font-family="sans-serif" font-size="8.5" fill="#1a6e3c">Agentic containment</text>
+      <circle cx="165" cy="54" r="7" fill="#4ade80" opacity="0.8"/>
+      <text x="177" y="52" font-family="sans-serif" font-size="8.5" fill="#1a6e3c">Interp-for-security</text>
+      <!-- Oversaturated (right): jailbreak defenses -->
+      <circle cx="470" cy="100" r="9" fill="#f07070" opacity="0.7"/>
+      <text x="452" y="95" font-family="sans-serif" font-size="8.5" fill="#b02020" text-anchor="end">Single-turn jailbreak</text>
+      <text x="452" y="106" font-family="sans-serif" font-size="8.5" fill="#b02020" text-anchor="end">defenses ▼ oversaturated</text>
+      <!-- Legend -->
+      <circle cx="20" cy="128" r="5" fill="#4ade80" opacity="0.8"/>
+      <text x="30" y="132" font-family="sans-serif" font-size="8.5" fill="#555">Underinvested, high-impact</text>
+      <circle cx="200" cy="128" r="5" fill="#f07070" opacity="0.7"/>
+      <text x="210" y="132" font-family="sans-serif" font-size="8.5" fill="#555">Oversaturated</text>
+    </svg>
+    <figcaption><strong>Figure 7:</strong> Priority map from the field-wide agenda paper: model provenance, evaluation-time security, agentic containment, and interpretability-for-security are underinvested relative to their impact; single-turn jailbreak defenses are identified as oversaturated — receiving disproportionate research attention relative to their practical risk reduction.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Accepted at ESORICS 2026 LLMSec Workshop, this field-agenda paper synthesizes priorities across model security, agentic security, infrastructure security, evaluation robustness, and governance. The paper argues that single-turn jailbreak defenses are oversaturated, while model provenance, evaluation-time security, agentic containment, and interpretability-based security auditing are systematically underinvested. Explicitly calls out interpretability-for-security as high-priority and under-resourced — directly relevant to the dual-use SAE auditing thread covered earlier this week.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── 08: Stemma ─────────────────────────────────────── -->
+<article class="mid-paper">
+  <div class="mid-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-interp">interp</span>
+    </div>
+  </div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.25880">Stemma: Induced Decision Regions Reveal LLM Provenance</a></h3>
+  <div class="mid-byline">Keyu Zhang, Vadim Safronov, Andrew Martin — arXiv, July 28, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 580 150" xmlns="http://www.w3.org/2000/svg" aria-label="Stemma decision regions in output space">
+      <rect width="580" height="150" fill="#fff"/>
+      <text x="20" y="22" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.05em">INDUCED DECISION REGIONS IN LLM OUTPUT SPACE</text>
+      <!-- Scatter-like regions -->
+      <ellipse cx="150" cy="85" rx="60" ry="42" fill="#7eb8ff" opacity="0.25" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="150" y="82" font-family="sans-serif" font-size="10" fill="#1a4f99" text-anchor="middle" font-weight="600">GPT family</text>
+      <text x="150" y="94" font-family="sans-serif" font-size="9" fill="#1a4f99" text-anchor="middle">region</text>
+      <ellipse cx="290" cy="68" rx="55" ry="36" fill="#f07070" opacity="0.25" stroke="#b02020" stroke-width="1.5"/>
+      <text x="290" y="65" font-family="sans-serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="600">Claude family</text>
+      <text x="290" y="77" font-family="sans-serif" font-size="9" fill="#b02020" text-anchor="middle">region</text>
+      <ellipse cx="400" cy="100" rx="58" ry="38" fill="#4ade80" opacity="0.25" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="400" y="97" font-family="sans-serif" font-size="10" fill="#1a6e3c" text-anchor="middle" font-weight="600">Llama family</text>
+      <text x="400" y="109" font-family="sans-serif" font-size="9" fill="#1a6e3c" text-anchor="middle">region</text>
+      <ellipse cx="510" cy="72" rx="50" ry="35" fill="#c084fc" opacity="0.25" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="510" y="69" font-family="sans-serif" font-size="10" fill="#5c1aaa" text-anchor="middle" font-weight="600">Gemini family</text>
+      <text x="510" y="81" font-family="sans-serif" font-size="9" fill="#5c1aaa" text-anchor="middle">region</text>
+      <!-- Decision boundary lines -->
+      <line x1="210" y1="50" x2="240" y2="130" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="340" y1="38" x2="354" y2="138" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="452" y1="46" x2="458" y2="136" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="290" y="142" font-family="sans-serif" font-size="9" fill="#aaa" text-anchor="middle">Probe inputs optimized to maximize inter-family boundary signal — black-box, weights not required</text>
+    </svg>
+    <figcaption><strong>Figure 8:</strong> Stemma induces distinct decision regions in output space for four LLM families by constructing probe inputs that maximally amplify inter-family behavioral divergence. Provenance attribution succeeds at the family and variant level without model weight access.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Stemma constructs targeted probe inputs that maximally amplify behavioral divergence between candidate LLM families, inducing decision-region boundaries that separate outputs with high accuracy at family and variant level — entirely black-box. Has dual-use implications: legitimate use for compliance attribution and watermarking; adversarial use for identifying deployed model identity, enabling model-specific attack tailoring.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── 09: Trajectory Safety Risks ───────────────────── -->
+<article class="mid-paper">
+  <div class="mid-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+    </div>
+  </div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.26820">Forecasting Trajectory-Level Safety Risks in Black-Box Multi-Turn Interactions</a></h3>
+  <div class="mid-byline">Shi Lin, Peng Qian, Dinghao Liu, Renjie Sun, Sifan Wu et al. — arXiv, July 29, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 580 140" xmlns="http://www.w3.org/2000/svg" aria-label="Trajectory-level risk accumulation vs per-turn evaluation">
+      <rect width="580" height="140" fill="#fff"/>
+      <text x="20" y="22" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.05em">PER-TURN vs TRAJECTORY RISK DETECTION</text>
+      <!-- Timeline -->
+      <text x="20" y="50" font-family="sans-serif" font-size="9.5" fill="#888">Turn</text>
+      <text x="64" y="50" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="middle">1</text>
+      <text x="156" y="50" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="middle">2</text>
+      <text x="248" y="50" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="middle">3</text>
+      <text x="340" y="50" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="middle">4</text>
+      <text x="432" y="50" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="middle">5</text>
+      <text x="524" y="50" font-family="sans-serif" font-size="9.5" fill="#b02020" font-weight="600" text-anchor="middle">6 ⚠</text>
+      <!-- Per-turn evaluator: all green until turn 6 -->
+      <text x="20" y="80" font-family="sans-serif" font-size="9" fill="#888">Per-turn</text>
+      <rect x="44" y="60" width="80" height="20" rx="3" fill="#4ade80" opacity="0.6"/>
+      <rect x="136" y="60" width="80" height="20" rx="3" fill="#4ade80" opacity="0.6"/>
+      <rect x="228" y="60" width="80" height="20" rx="3" fill="#4ade80" opacity="0.6"/>
+      <rect x="320" y="60" width="80" height="20" rx="3" fill="#4ade80" opacity="0.6"/>
+      <rect x="412" y="60" width="80" height="20" rx="3" fill="#4ade80" opacity="0.6"/>
+      <rect x="504" y="60" width="60" height="20" rx="3" fill="#f07070" opacity="0.8"/>
+      <text x="534" y="74" font-family="sans-serif" font-size="8" fill="#b02020" text-anchor="middle">Alert</text>
+      <text x="20" y="110" font-family="sans-serif" font-size="9" fill="#888">Trajectory</text>
+      <rect x="44" y="90" width="80" height="20" rx="3" fill="#f0a030" opacity="0.4"/>
+      <rect x="136" y="90" width="80" height="20" rx="3" fill="#f0a030" opacity="0.5"/>
+      <rect x="228" y="90" width="80" height="20" rx="3" fill="#f07070" opacity="0.5"/>
+      <text x="268" y="104" font-family="sans-serif" font-size="8" fill="#b02020" text-anchor="middle">⚠ +3 turns early</text>
+      <rect x="320" y="90" width="80" height="20" rx="3" fill="#f07070" opacity="0.65"/>
+      <rect x="412" y="90" width="80" height="20" rx="3" fill="#f07070" opacity="0.8"/>
+      <rect x="504" y="90" width="60" height="20" rx="3" fill="#f07070" opacity="0.9"/>
+      <text x="290" y="130" font-family="sans-serif" font-size="9" fill="#aaa" text-anchor="middle">Trajectory forecaster detects cumulative intent drift 3 turns before per-turn evaluator fires</text>
+    </svg>
+    <figcaption><strong>Figure 9:</strong> Per-turn safety evaluators classify each turn independently and miss gradual intent drift. The trajectory-level forecaster detects cumulative risk accumulation 3 turns ahead of the per-turn evaluator by modeling semantic drift, sensitivity escalation, and instruction fragmentation across the session.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    A trajectory-level safety risk forecaster uses trajectory-state modeling to predict when a conversation will cross a safety boundary up to 3 turns in advance, operating in a fully black-box setting. Characterizes three taxonomy categories per-turn classifiers are structurally unable to detect: fragmented instruction assembly (harmful content assembled across turns), sensitivity escalation (progressive disclosure), and intent drift (topic shift toward harmful territory). Outperforms per-turn classifiers at low false-positive rates on a large-scale multi-turn dataset.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── 10: On-Policy Distillation ────────────────────── -->
+<article class="mid-paper">
+  <div class="mid-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI safety</span>
+    </div>
+  </div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.27081">On-Policy Distillation for LLM Safety: A Routing Approach to Template-Robust Realignment</a></h3>
+  <div class="mid-byline">Yongjian Guo, Wanlun Ma, Lingyu Shen, Xi Xiao, Sheng Wen — arXiv, July 29, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 580 140" xmlns="http://www.w3.org/2000/svg" aria-label="On-policy distillation routing reduces ASR under template shift">
+      <rect width="580" height="140" fill="#fff"/>
+      <text x="20" y="22" font-family="Georgia,serif" font-size="11" fill="#888" letter-spacing="0.05em">ATTACK SUCCESS RATE UNDER TEMPLATE SHIFT  (6 unseen templates)</text>
+      <!-- Methods -->
+      <text x="128" y="46" font-family="sans-serif" font-size="9.5" fill="#888" text-anchor="end">Standard alignment</text>
+      <text x="128" y="70" font-family="sans-serif" font-size="9.5" fill="#888" text-anchor="end">DPO</text>
+      <text x="128" y="94" font-family="sans-serif" font-size="9.5" fill="#888" text-anchor="end">SFT</text>
+      <text x="128" y="118" font-family="sans-serif" font-size="9.5" fill="#555" text-anchor="end" font-weight="600">On-Policy Distill. (ours)</text>
+      <!-- Bars -->
+      <rect x="136" y="32" width="285" height="20" rx="3" fill="#f07070" opacity="0.75"/>
+      <text x="427" y="46" font-family="sans-serif" font-size="10" fill="#b02020" font-weight="700">31% ASR</text>
+      <rect x="136" y="56" width="219" height="20" rx="3" fill="#f07070" opacity="0.6"/>
+      <text x="361" y="70" font-family="sans-serif" font-size="10" fill="#b02020" font-weight="700">24% ASR</text>
+      <rect x="136" y="80" width="182" height="20" rx="3" fill="#f0a030" opacity="0.6"/>
+      <text x="324" y="94" font-family="sans-serif" font-size="10" fill="#a05c00" font-weight="700">19% ASR</text>
+      <rect x="136" y="104" width="58" height="20" rx="3" fill="#4ade80" opacity="0.7"/>
+      <text x="200" y="118" font-family="sans-serif" font-size="10" fill="#1a6e3c" font-weight="700">6% ASR ✓</text>
+      <!-- axis -->
+      <line x1="136" y1="26" x2="136" y2="130" stroke="#ccc" stroke-width="1"/>
+      <text x="336" y="135" font-family="sans-serif" font-size="9" fill="#aaa" text-anchor="middle">Attack Success Rate on 6 unseen jailbreak templates</text>
+    </svg>
+    <figcaption><strong>Figure 10:</strong> Under 6 unseen jailbreak templates, on-policy distillation with template-aware routing reduces ASR from 31% (standard alignment) to 6%, outperforming DPO (24%) and SFT (19%) baselines that degrade significantly when the attacker switches templates.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Standard safety alignment overfits to jailbreak templates seen during training and degrades when attackers switch templates. On-Policy Distillation for LLM Safety generates teacher demonstrations from the model's own on-policy distribution with template-aware routing, preserving template-specific safety geometry. Under 6 unseen jailbreak templates, reduces attack success rate from 31% (standard alignment) to 6%, outperforming DPO (24%) and SFT (19%) baselines.
+  </p>
+</article>
+
+<!-- ── NOTES ──────────────────────────────────────────── -->
+<div class="notes">
+  <h3>Notes · 2026-07-31</h3>
+  <p><strong>Peer-reviewed count:</strong> TensorLens (#1, ACL 2026 long paper) and AI Security Priorities (#7, ESORICS 2026 LLMSec Workshop). All other entries are preprints.</p>
+  <p><strong>Today's theme — evaluation validity:</strong> Four papers converge on whether our safety evaluations can be trusted. Minimizing Targeted Activations (#4) shows input-side suppression of evaluation-awareness. Cyber-Capable Agents (#5) maps vulnerability classes at containment boundaries. SecRespond (#2) reveals LLMs can't generalize to post-compromise workflows. Trajectory Safety (#9) shows per-turn evaluators miss multi-turn risks. Together they form the strongest day-level argument yet that evaluation infrastructure must be treated as a first-class security component.</p>
+  <p><strong>dLLM security (#3):</strong> Beyond the Bidirectional Promise is the first paper to use parameter-matched pairs to isolate architectural from weight-dependent robustness in dLLMs. Gradient attacks fail (stochastic landscape) but natural noise does not (weight-dependent) — an important distinction for dLLM threat modeling.</p>
+  <p><strong>Weekly roundup nominations:</strong> #1 (TensorLens — global mech-interp tensor, ACL 2026), #2 (SecRespond — first incident response benchmark, none of 23 models completes any range), #3 (dLLM robustness gap: gradient-resistant but naturally fragile), #4 (evaluation-awareness suppression from input side).</p>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer class="footer">
+  Research Radar · Daily edition · July 31, 2026 · Mech Interp · AI Security · Text Diffusion LMs
+</footer>
+
+</div>
+{% endraw %}

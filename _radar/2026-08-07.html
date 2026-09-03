@@ -1,0 +1,1127 @@
+---
+layout: "radar"
+title: "Research Radar — August 7, 2026"
+kind: "daily"
+slug: "2026-08-07"
+date: 2026-08-07
+summary: "Window: August 5–7, 2026 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), ICML 2026 Mechanistic Interpretability Workshop · Counts: 2 peer-reviewed · 8 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/23b870af-4dfe-4884-922d-429a5880503d"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-07.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/*
+  Design: Scholarly news digest — "cover image first" layout (Substack-style).
+  Paper figure placed below title, above hook paragraph, bleeding edge-to-edge in the card.
+  Palette: cool blue-grey ground · white surface · deep teal accent.
+  Type: Georgia serif for titles and hooks; system-ui for detail; Courier New for metadata.
+*/
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ground:    #edf1f7;
+  --surface:   #ffffff;
+  --border:    #c8d3e2;
+  --ink:       #1a2236;
+  --ink-dim:   #5b6b82;
+  --ink-muted: #8a97a8;
+  --accent:    #0b7263;
+  --accent-bg: #d6f0ec;
+  --ghost:     rgba(11,114,99,.06);
+  --peer-c:    #065742;
+  --peer-bg:   #d0f5e5;
+  --sec-c:     #8b1a1a;
+  --sec-bg:    #fde0e0;
+  --interp-c:  #084f80;
+  --interp-bg: #d8ecfc;
+  --dllm-c:    #46189a;
+  --dllm-bg:   #ece4fb;
+  --pre-c:     #5a4000;
+  --pre-bg:    #fdf2d0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground:    #090e18;
+    --surface:   #111928;
+    --border:    #1d2c42;
+    --ink:       #d2dce8;
+    --ink-dim:   #7a8fa6;
+    --ink-muted: #4e617a;
+    --accent:    #0fb8a8;
+    --accent-bg: #0d2e2a;
+    --ghost:     rgba(15,184,168,.07);
+    --peer-c:    #3dd68a;
+    --peer-bg:   #062a1a;
+    --sec-c:     #f07070;
+    --sec-bg:    #2a0808;
+    --interp-c:  #7bb8f8;
+    --interp-bg: #0a1f34;
+    --dllm-c:    #c084fc;
+    --dllm-bg:   #1a0a30;
+    --pre-c:     #f0c060;
+    --pre-bg:    #2a1a00;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #090e18; --surface: #111928; --border: #1d2c42;
+  --ink: #d2dce8; --ink-dim: #7a8fa6; --ink-muted: #4e617a;
+  --accent: #0fb8a8; --accent-bg: #0d2e2a; --ghost: rgba(15,184,168,.07);
+  --peer-c: #3dd68a; --peer-bg: #062a1a; --sec-c: #f07070; --sec-bg: #2a0808;
+  --interp-c: #7bb8f8; --interp-bg: #0a1f34; --dllm-c: #c084fc; --dllm-bg: #1a0a30;
+  --pre-c: #f0c060; --pre-bg: #2a1a00;
+}
+:root[data-theme="light"] {
+  --ground: #edf1f7; --surface: #ffffff; --border: #c8d3e2;
+  --ink: #1a2236; --ink-dim: #5b6b82; --ink-muted: #8a97a8;
+  --accent: #0b7263; --accent-bg: #d6f0ec; --ghost: rgba(11,114,99,.06);
+  --peer-c: #065742; --peer-bg: #d0f5e5; --sec-c: #8b1a1a; --sec-bg: #fde0e0;
+  --interp-c: #084f80; --interp-bg: #d8ecfc; --dllm-c: #46189a; --dllm-bg: #ece4fb;
+  --pre-c: #5a4000; --pre-bg: #fdf2d0;
+}
+
+html { background: var(--ground); }
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--ground);
+  padding: 0 16px 80px;
+}
+.wrapper { max-width: 680px; margin: 0 auto; }
+
+/* ── Masthead ─────────────────────────────────── */
+.masthead {
+  padding: 36px 0 28px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.masthead::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--accent);
+}
+.mast-eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.mast-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--ink);
+  line-height: 1.15;
+  text-wrap: balance;
+  margin-bottom: 12px;
+}
+.mast-date {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--ink-dim);
+  letter-spacing: .06em;
+  margin-bottom: 18px;
+}
+.mast-counts {
+  font-size: 13px;
+  color: var(--ink-dim);
+  margin-bottom: 14px;
+}
+.mast-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.track {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  letter-spacing: .04em;
+}
+.track-interp { background: var(--interp-bg); color: var(--interp-c); }
+.track-sec    { background: var(--sec-bg);    color: var(--sec-c); }
+.track-dllm   { background: var(--dllm-bg);   color: var(--dllm-c); }
+
+/* ── Tag chips ───────────────────────────────── */
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+.tag {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+.tag-peer    { background: var(--peer-bg);   color: var(--peer-c); }
+.tag-security{ background: var(--sec-bg);    color: var(--sec-c); }
+.tag-interp  { background: var(--interp-bg); color: var(--interp-c); }
+.tag-dllm    { background: var(--dllm-bg);   color: var(--dllm-c); }
+.tag-preprint{ background: var(--pre-bg);    color: var(--pre-c); }
+
+/* ── Paper cards (top 3) ─────────────────────────────── */
+.paper-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  position: relative;
+}
+.card-header {
+  padding: 22px 26px 0;
+  position: relative;
+}
+.rank-ghost {
+  font-family: 'Courier New', monospace;
+  font-size: 72px;
+  font-weight: bold;
+  color: var(--ghost);
+  position: absolute;
+  top: 8px; right: 20px;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: -.04em;
+}
+.card-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  text-wrap: balance;
+  margin-bottom: 18px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.card-title a { color: var(--ink); text-decoration: inherit; }
+.card-title a:hover { color: var(--accent); }
+.card-meta {
+  font-size: 12.5px;
+  color: var(--ink-dim);
+  margin-bottom: 0;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── Cover figure — Substack-style: above the hook ── */
+.cover-figure {
+  margin: 18px 0 0;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.cover-figure svg, .cover-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cover-figcap {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  padding: 8px 26px 10px;
+  line-height: 1.5;
+  border-top: 1px solid var(--border);
+  background: var(--ground);
+}
+
+/* ── Hook + detail ───────────────────────────── */
+.card-body { padding: 20px 26px 24px; }
+.hook {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.detail {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-dim);
+}
+
+/* ── Section divider ─────────────────────────── */
+.section-label {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  margin: 48px 0 28px;
+}
+
+/* ── Mid-tier cards (items 4–10) ─────────────── */
+.mid-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  position: relative;
+}
+.mid-header { padding: 18px 22px 0; position: relative; }
+.mid-rank-ghost {
+  font-family: 'Courier New', monospace;
+  font-size: 52px;
+  font-weight: bold;
+  color: var(--ghost);
+  position: absolute;
+  top: 6px; right: 16px;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+.mid-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1.3;
+  text-wrap: balance;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--ink); text-decoration: inherit; }
+.mid-title a:hover { color: var(--accent); }
+.mid-meta {
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-family: 'Courier New', monospace;
+}
+.mid-figure {
+  margin: 14px 0 0;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.mid-figure svg { display: block; width: 100%; height: auto; }
+.mid-figcap {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  color: var(--ink-muted);
+  padding: 6px 22px 8px;
+  border-top: 1px solid var(--border);
+  background: var(--ground);
+}
+.mid-summary {
+  padding: 14px 22px 18px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-dim);
+}
+
+/* ── Footer ──────────────────────────────────── */
+.footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-align: center;
+  letter-spacing: .04em;
+}
+</style>
+
+<div class="wrapper">
+
+<!-- ── Masthead ── -->
+<header class="masthead">
+  <div class="mast-eyebrow">Research Radar</div>
+  <h1 class="mast-title">Daily Digest — August 7, 2026</h1>
+  <div class="mast-date">Daily · August 5–7, 2026 · sources: ICML 2026 Workshop · ACL 2026 · arXiv cs.CL/cs.LG/cs.CR/cs.AI</div>
+  <div class="mast-counts">2 peer-reviewed · 8 preprints · 0 forum/blog</div>
+  <div class="mast-tracks">
+    <span class="track track-interp">Mech Interp</span>
+    <span class="track track-sec">AI Security</span>
+    <span class="track track-dllm">Text Diffusion LMs</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     TOP 3 — FULL TREATMENT
+     ══════════════════════════════════════════ -->
+
+<!-- Paper 01 — SAE Causal Audit -->
+<article class="paper-card">
+  <div class="card-header">
+    <span class="rank-ghost">01</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-preprint">preprint</span>
+    </div>
+    <h2 class="card-title"><a href="https://arxiv.org/abs/2607.12166">From Geometric Recovery to Causal Validation: A Reproducible Audit of Sparse Autoencoder Features, from Superposition Geometry to Causal Inertness</a></h2>
+    <div class="card-meta">Mohamed Abdessalem Bal · arXiv preprint · July 2026</div>
+  </div>
+
+  <!-- Cover figure — Substack style: above the hook -->
+  <figure class="cover-figure" aria-label="SAE feature recovery score vs causal effect: 77% of high-cosine features are causally inert">
+    <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scatter plot: recovery score vs causal effect showing inert features">
+      <rect width="680" height="240" fill="#fff"/>
+      <text x="340" y="22" font-family="Courier New, monospace" font-size="10" fill="#888" text-anchor="middle" letter-spacing=".1em">GEOMETRIC RECOVERY vs. CAUSAL EFFECT — SAE FEATURES</text>
+
+      <!-- Axes -->
+      <!-- X axis: Recovery score (cosine) 0 → 1.0, from x=80 to x=620 -->
+      <!-- Y axis: Causal effect (logit reduction), 0 → 1.0, from y=200 to y=40 -->
+      <line x1="80" y1="200" x2="630" y2="200" stroke="#c8d3e2" stroke-width="1.2"/>
+      <line x1="80" y1="40"  x2="80"  y2="205" stroke="#c8d3e2" stroke-width="1.2"/>
+
+      <!-- X axis labels -->
+      <text x="80"  y="216" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="middle">0</text>
+      <text x="210" y="216" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="middle">0.25</text>
+      <text x="350" y="216" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="middle">0.50</text>
+      <text x="490" y="216" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="middle">0.75</text>
+      <text x="620" y="216" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="middle">1.00</text>
+      <text x="350" y="232" font-family="Courier New, monospace" font-size="9.5" fill="#5b6b82" text-anchor="middle">Recovery score (cosine similarity to ground-truth direction)</text>
+
+      <!-- Y axis labels -->
+      <text x="74" y="204" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="end">0</text>
+      <text x="74" y="160" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="end">0.25</text>
+      <text x="74" y="120" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="end">0.50</text>
+      <text x="74" y="80"  font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="end">0.75</text>
+      <text x="74" y="44"  font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="end">1.00</text>
+      <text x="22" y="120" font-family="Courier New, monospace" font-size="9" fill="#5b6b82" text-anchor="middle" transform="rotate(-90, 22, 120)">Causal effect (logit reduction under ablation)</text>
+
+      <!-- Threshold line: cosine = 0.90 -->
+      <line x1="548" y1="40" x2="548" y2="200" stroke="#8b1a1a" stroke-width="1.2" stroke-dasharray="5,3"/>
+      <text x="550" y="36" font-family="Courier New, monospace" font-size="8.5" fill="#8b1a1a">cosine ≥ 0.90 threshold</text>
+
+      <!-- CAUSALLY INERT cluster: high cosine (0.85–1.0), near-zero causal effect (0–0.15) -->
+      <!-- These are the 77% of features that PASS the recovery bar but have near-zero causal effect -->
+      <!-- x = 80 + cosine * 540; y = 200 - causal * 160 -->
+      <!-- Inert features: cosine 0.85–1.0 → x range 540–620; causal 0–0.15 → y range 176–200 -->
+      <circle cx="560" cy="197" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="575" cy="198" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="588" cy="196" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="565" cy="194" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="600" cy="198" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="612" cy="197" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="580" cy="195" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="595" cy="193" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="552" cy="196" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="620" cy="199" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="570" cy="191" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="605" cy="195" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="558" cy="190" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <circle cx="617" cy="192" r="3.5" fill="#8b1a1a" opacity=".55"/>
+      <!-- Annotation: 77% inert -->
+      <rect x="540" y="162" width="132" height="22" rx="3" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1"/>
+      <text x="606" y="177" font-family="Courier New, monospace" font-size="9" fill="#8b1a1a" text-anchor="middle" font-weight="bold">77% causally inert</text>
+
+      <!-- CAUSALLY ACTIVE features: varied cosine (0.3–1.0), higher causal effect (0.3–0.9) -->
+      <!-- Blue dots scattered across x range, higher y range -->
+      <circle cx="300" cy="110" r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="350" cy="90"  r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="420" cy="75"  r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="460" cy="100" r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="510" cy="85"  r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="540" cy="70"  r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="570" cy="90"  r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="595" cy="65"  r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="610" cy="78"  r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="390" cy="85"  r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="200" cy="120" r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="260" cy="105" r="3.5" fill="#084f80" opacity=".6"/>
+      <circle cx="475" cy="80"  r="3.5" fill="#084f80" opacity=".6"/>
+      <!-- Low cosine, low causal (noise) -->
+      <circle cx="120" cy="185" r="2.5" fill="#c8d3e2" opacity=".7"/>
+      <circle cx="160" cy="178" r="2.5" fill="#c8d3e2" opacity=".7"/>
+      <circle cx="200" cy="183" r="2.5" fill="#c8d3e2" opacity=".7"/>
+      <circle cx="240" cy="188" r="2.5" fill="#c8d3e2" opacity=".7"/>
+      <circle cx="280" cy="180" r="2.5" fill="#c8d3e2" opacity=".7"/>
+      <circle cx="320" cy="175" r="2.5" fill="#c8d3e2" opacity=".7"/>
+      <circle cx="360" cy="182" r="2.5" fill="#c8d3e2" opacity=".7"/>
+      <circle cx="400" cy="178" r="2.5" fill="#c8d3e2" opacity=".7"/>
+      <circle cx="450" cy="170" r="2.5" fill="#c8d3e2" opacity=".7"/>
+
+      <!-- Legend -->
+      <circle cx="95"  cy="50" r="5" fill="#8b1a1a" opacity=".7"/>
+      <text x="105" y="55" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82">Causally inert (high cosine, near-zero effect)</text>
+      <circle cx="95"  cy="68" r="5" fill="#084f80" opacity=".7"/>
+      <text x="105" y="73" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82">Causally active features</text>
+      <circle cx="95"  cy="86" r="4" fill="#c8d3e2" opacity=".9"/>
+      <text x="105" y="91" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82">Low-recovery (below threshold)</text>
+    </svg>
+    <figcaption class="cover-figcap">Figure 1 · Up to 77% of SAE features passing cosine ≥ 0.90 (right of dashed line) are causally inert — the decoder direction aligns with ground truth but the encoder never fires causally, exposing a fundamental gap between geometric and causal validity.</figcaption>
+  </figure>
+
+  <div class="card-body">
+    <p class="hook">The field's most widely used metric for validating sparse autoencoder features — cosine similarity between a decoder atom and a ground-truth direction — does not mean the feature is causally active. A rigorous ablation and steering audit reveals that up to 77% of features passing a strict geometric recovery bar are completely causally inert.</p>
+    <p class="detail">SAE evaluation has relied on cosine similarity to ground-truth directions from synthetic toy models, treating high cosine as evidence of successful feature recovery. This work separates the geometric claim ("the decoder direction matches") from the causal claim ("the matched encoder feature fires and has measurable downstream effect"). Zero-ablating features at full layer depth across systematically varied SAE training quality reveals that up to 77% of features with cosine ≥ 0.90 in degraded SAEs — and 9% in well-trained SAEs — are causally inert: the decoder atom aligns perfectly while the encoder never fires when the feature is present. The study also reproduces the Elhage et al. (2022) superposition phase diagram and identifies a convergence artifact at high sparsity and a previously undescribed diffuse sharing regime at extreme overcompleteness that inflate cosine metrics without producing causally active features.</p>
+  </div>
+</article>
+
+<!-- Paper 02 — LLMs Annotate Attribution Graphs -->
+<article class="paper-card">
+  <div class="card-header">
+    <span class="rank-ghost">02</span>
+    <div class="tags">
+      <span class="tag tag-peer">ICML 2026 Workshop</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+    <h2 class="card-title"><a href="https://arxiv.org/abs/2608.02632">LLMs Can Annotate Attribution Graphs</a></h2>
+    <div class="card-meta">Ameen Patel, Max Zhang, Nathan Hu · ICML 2026 Mechanistic Interpretability Workshop (peer-reviewed)</div>
+  </div>
+  <figure class="cover-figure" aria-label="Automated attribution graph annotation pipeline: feature descriptions to LLM to supernodes">
+    <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LLM attribution graph annotation pipeline">
+      <rect width="680" height="210" fill="#fff"/>
+      <text x="340" y="20" font-family="Courier New, monospace" font-size="10" fill="#888" text-anchor="middle" letter-spacing=".1em">LLM-AUTOMATED ATTRIBUTION GRAPH ANNOTATION</text>
+
+      <!-- Stage 1: Attribution graph (many nodes) -->
+      <rect x="20" y="36" width="140" height="130" rx="4" fill="#eef1f7" stroke="#c8d3e2" stroke-width="1.2"/>
+      <text x="90" y="54" font-family="Courier New, monospace" font-size="9" fill="#5b6b82" text-anchor="middle" font-weight="bold">Attribution Graph</text>
+      <!-- Mini node cluster -->
+      <circle cx="55" cy="80"  r="7" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <circle cx="80" cy="70"  r="7" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <circle cx="105" cy="80" r="7" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <circle cx="125" cy="70" r="7" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <circle cx="65" cy="100" r="7" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <circle cx="90" cy="110" r="7" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <circle cx="115" cy="100" r="7" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <circle cx="50" cy="125" r="6" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <circle cx="75" cy="135" r="6" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <circle cx="100" cy="130" r="6" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <circle cx="125" cy="125" r="6" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <!-- Edges -->
+      <defs>
+        <marker id="ab1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#c8d3e2"/></marker>
+        <marker id="ab2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#0b7263"/></marker>
+        <marker id="ab3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#5b6b82"/></marker>
+      </defs>
+      <line x1="62" y1="80" x2="74" y2="74" stroke="#c8d3e2" stroke-width="1"/>
+      <line x1="87" y1="70" x2="99" y2="77" stroke="#c8d3e2" stroke-width="1"/>
+      <line x1="80" y1="77" x2="70" y2="94" stroke="#c8d3e2" stroke-width="1"/>
+      <line x1="105" y1="87" x2="100" y2="103" stroke="#c8d3e2" stroke-width="1"/>
+      <line x1="90" y1="117" x2="85" y2="129" stroke="#c8d3e2" stroke-width="1"/>
+      <text x="90" y="160" font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="middle">thousands of features</text>
+      <text x="90" y="172" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">manual annotation →</text>
+      <text x="90" y="182" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">hours per graph</text>
+
+      <!-- Arrow 1 -->
+      <line x1="162" y1="101" x2="198" y2="101" stroke="#5b6b82" stroke-width="1.5" marker-end="url(#ab3)"/>
+      <text x="180" y="95" font-family="Courier New, monospace" font-size="8" fill="#5b6b82" text-anchor="middle">auto-interp</text>
+      <text x="180" y="115" font-family="Courier New, monospace" font-size="8" fill="#5b6b82" text-anchor="middle">descriptions</text>
+
+      <!-- Stage 2: Feature descriptions to LLM -->
+      <rect x="200" y="50" width="140" height="100" rx="4" fill="#fdf2d0" stroke="#5a4000" stroke-width="1.2"/>
+      <text x="270" y="68" font-family="Courier New, monospace" font-size="9" fill="#5a4000" text-anchor="middle" font-weight="bold">LLM Grouping</text>
+      <!-- Feature description list -->
+      <rect x="210" y="74" width="120" height="12" rx="2" fill="#fdf2d0" stroke="#5a4000" stroke-width=".8" opacity=".7"/>
+      <text x="270" y="84" font-family="Courier New, monospace" font-size="7.5" fill="#5a4000" text-anchor="middle">"month names in sequence"</text>
+      <rect x="210" y="90" width="120" height="12" rx="2" fill="#fdf2d0" stroke="#5a4000" stroke-width=".8" opacity=".7"/>
+      <text x="270" y="100" font-family="Courier New, monospace" font-size="7.5" fill="#5a4000" text-anchor="middle">"capital city tokens"</text>
+      <rect x="210" y="106" width="120" height="12" rx="2" fill="#fdf2d0" stroke="#5a4000" stroke-width=".8" opacity=".7"/>
+      <text x="270" y="116" font-family="Courier New, monospace" font-size="7.5" fill="#5a4000" text-anchor="middle">"country name contexts"</text>
+      <rect x="210" y="122" width="120" height="12" rx="2" fill="#fdf2d0" stroke="#5a4000" stroke-width=".8" opacity=".7"/>
+      <text x="270" y="132" font-family="Courier New, monospace" font-size="7.5" fill="#5a4000" text-anchor="middle">"geographic lookup"</text>
+      <text x="270" y="150" font-family="Courier New, monospace" font-size="7.5" fill="#8a97a8" text-anchor="middle">LLM clusters into supernodes</text>
+
+      <!-- Arrow 2 -->
+      <line x1="342" y1="101" x2="378" y2="101" stroke="#5b6b82" stroke-width="1.5" marker-end="url(#ab3)"/>
+      <text x="360" y="95" font-family="Courier New, monospace" font-size="8" fill="#5b6b82" text-anchor="middle">group</text>
+
+      <!-- Stage 3: Supernodes output -->
+      <rect x="380" y="44" width="140" height="112" rx="4" fill="#d6f0ec" stroke="#0b7263" stroke-width="1.5"/>
+      <text x="450" y="62" font-family="Courier New, monospace" font-size="9" fill="#0b7263" text-anchor="middle" font-weight="bold">Supernodes</text>
+      <!-- Three supernode clusters -->
+      <rect x="390" y="68" width="120" height="22" rx="3" fill="#d0f5e5" stroke="#065742" stroke-width="1"/>
+      <text x="450" y="83" font-family="Courier New, monospace" font-size="8.5" fill="#065742" text-anchor="middle" font-weight="bold">Geographic lookup</text>
+      <rect x="390" y="96" width="120" height="22" rx="3" fill="#d0f5e5" stroke="#065742" stroke-width="1"/>
+      <text x="450" y="111" font-family="Courier New, monospace" font-size="8.5" fill="#065742" text-anchor="middle" font-weight="bold">Intermediate hop</text>
+      <rect x="390" y="124" width="120" height="22" rx="3" fill="#d0f5e5" stroke="#065742" stroke-width="1"/>
+      <text x="450" y="139" font-family="Courier New, monospace" font-size="8.5" fill="#065742" text-anchor="middle" font-weight="bold">Capital retrieval</text>
+
+      <!-- Key result box -->
+      <rect x="380" y="162" width="140" height="32" rx="3" fill="#0b7263" stroke="#065742" stroke-width="1"/>
+      <text x="450" y="176" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">97 / 100 prompts</text>
+      <text x="450" y="188" font-family="Courier New, monospace" font-size="8" fill="#d6f0ec" text-anchor="middle">intermediate-hop recovery</text>
+
+      <!-- Arrow 3 -->
+      <line x1="522" y1="101" x2="555" y2="101" stroke="#5b6b82" stroke-width="1.5" marker-end="url(#ab3)"/>
+
+      <!-- Stage 4: Scale + judge -->
+      <rect x="558" y="44" width="110" height="112" rx="4" fill="#ece4fb" stroke="#46189a" stroke-width="1.2"/>
+      <text x="613" y="62" font-family="Courier New, monospace" font-size="8.5" fill="#46189a" text-anchor="middle" font-weight="bold">Population Scale</text>
+      <text x="613" y="78" font-family="Courier New, monospace" font-size="8" fill="#46189a" text-anchor="middle">1000 Wikipedia</text>
+      <text x="613" y="89" font-family="Courier New, monospace" font-size="8" fill="#46189a" text-anchor="middle">graphs annotated</text>
+      <line x1="580" y1="100" x2="645" y2="100" stroke="#46189a" stroke-width=".8" stroke-dasharray="3,2"/>
+      <text x="613" y="114" font-family="Courier New, monospace" font-size="8" fill="#46189a" text-anchor="middle">LLM judge flags</text>
+      <text x="613" y="125" font-family="Courier New, monospace" font-size="8" fill="#46189a" text-anchor="middle">unusual graphs</text>
+      <text x="613" y="136" font-family="Courier New, monospace" font-size="8" fill="#46189a" text-anchor="middle">for human review</text>
+      <text x="613" y="148" font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="middle">↓ automated</text>
+      <text x="613" y="159" font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="middle">quality = human</text>
+    </svg>
+    <figcaption class="cover-figcap">Figure 1 · Automated annotation pipeline: auto-interp feature descriptions → LLM clusters into supernodes → automated interpretability metrics confirm quality matches human annotators; 97/100 intermediate-hop recovery on two-hop Capitals; scales to 1000-graph population analysis.</figcaption>
+  </figure>
+  <div class="card-body">
+    <p class="hook">Turning attribution graphs into readable circuits has always hit the same wall: a human analyst must spend hours grouping thousands of feature nodes into meaningful "supernodes" per prompt. This ICML workshop paper shows an LLM can do it as well as a human — and can do it at population scale.</p>
+    <p class="detail">The pipeline feeds auto-interpretability feature descriptions directly to an LLM, which clusters them into semantically coherent supernodes. Automated interpretability metrics — requiring no human judges — confirm the output matches human-annotated supernodes in quality. On a two-hop Capitals factual-recall task (e.g., "What country is Rome in? — Italy — What continent is Italy on?"), the pipeline recovers the intermediate-hop supernode in 97 of 100 prompts, validating that the automation preserves the interpretable structure circuit tracing was designed to expose. A proof-of-concept scales to 1000 Wikipedia attribution graphs: all annotated automatically, with an LLM judge flagging unusual computational patterns for human review — opening population-level circuit interpretability that was previously impractical.</p>
+  </div>
+</article>
+
+<!-- Paper 03 — Agent Data Injection Attacks -->
+<article class="paper-card">
+  <div class="card-header">
+    <span class="rank-ghost">03</span>
+    <div class="tags">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-preprint">preprint</span>
+    </div>
+    <h2 class="card-title"><a href="https://arxiv.org/abs/2607.05120">Agent Data Injection Attacks are Realistic Threats to AI Agents</a></h2>
+    <div class="card-meta">Woohyuk Choi et al. (Seoul National University) · arXiv preprint · July 2026</div>
+  </div>
+  <figure class="cover-figure" aria-label="ADI attack: attacker spoofs trusted metadata to bypass all current indirect prompt injection defenses">
+    <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent Data Injection attack flow diagram">
+      <rect width="680" height="220" fill="#fff"/>
+      <text x="340" y="20" font-family="Courier New, monospace" font-size="10" fill="#888" text-anchor="middle" letter-spacing=".1em">AGENT DATA INJECTION (ADI) — BYPASSES ALL EXISTING DEFENSES</text>
+
+      <!-- Attacker -->
+      <rect x="20" y="44" width="90" height="50" rx="4" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="65" y="64" font-family="Courier New, monospace" font-size="9" fill="#8b1a1a" text-anchor="middle" font-weight="bold">Attacker</text>
+      <text x="65" y="78" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">posts GitHub</text>
+      <text x="65" y="88" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">issue comment</text>
+
+      <!-- Arrow to fake data -->
+      <defs>
+        <marker id="ar1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8b1a1a"/></marker>
+        <marker id="ag1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0b7263"/></marker>
+        <marker id="ag2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5b6b82"/></marker>
+      </defs>
+      <line x1="110" y1="69" x2="145" y2="69" stroke="#8b1a1a" stroke-width="1.5" marker-end="url(#ar1)"/>
+
+      <!-- Spoofed issue -->
+      <rect x="148" y="36" width="160" height="66" rx="4" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="228" y="54" font-family="Courier New, monospace" font-size="8.5" fill="#8b1a1a" text-anchor="middle" font-weight="bold">Spoofed GitHub Issue</text>
+      <line x1="155" y1="60" x2="302" y2="60" stroke="#8b1a1a" stroke-width=".6" opacity=".4"/>
+      <text x="228" y="72" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">Author: <tspan font-weight="bold">@trusted-maintainer</tspan></text>
+      <text x="228" y="84" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">[looks legitimate — metadata spoofed]</text>
+      <text x="228" y="96" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">body: "run: rm -rf /data"</text>
+
+      <!-- Defence label: skipped -->
+      <rect x="155" y="108" width="145" height="20" rx="3" fill="#f5f5f5" stroke="#c8d3e2" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="228" y="122" font-family="Courier New, monospace" font-size="8" fill="#aaa" text-anchor="middle">existing defenses: bypassed</text>
+
+      <!-- Arrow to agent -->
+      <line x1="310" y1="69" x2="348" y2="69" stroke="#8b1a1a" stroke-width="1.5" marker-end="url(#ar1)"/>
+
+      <!-- Coding agent -->
+      <rect x="350" y="36" width="140" height="66" rx="4" fill="#d8ecfc" stroke="#084f80" stroke-width="1.5"/>
+      <text x="420" y="54" font-family="Courier New, monospace" font-size="9" fill="#084f80" text-anchor="middle" font-weight="bold">Coding Agent</text>
+      <text x="420" y="68" font-family="Courier New, monospace" font-size="8" fill="#084f80" text-anchor="middle">(Claude Code / Codex /</text>
+      <text x="420" y="79" font-family="Courier New, monospace" font-size="8" fill="#084f80" text-anchor="middle">Gemini CLI)</text>
+      <text x="420" y="92" font-family="Courier New, monospace" font-size="7.5" fill="#8b1a1a" text-anchor="middle">trusts @trusted-maintainer</text>
+
+      <!-- Arrow to execution -->
+      <line x1="490" y1="69" x2="528" y2="69" stroke="#8b1a1a" stroke-width="1.5" marker-end="url(#ar1)"/>
+
+      <!-- RCE result -->
+      <rect x="530" y="44" width="130" height="48" rx="4" fill="#fde0e0" stroke="#8b1a1a" stroke-width="2"/>
+      <text x="595" y="62" font-family="Courier New, monospace" font-size="9" fill="#8b1a1a" text-anchor="middle" font-weight="bold">⚠ RCE / Supply-Chain</text>
+      <text x="595" y="75" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">33.3%–100% ASR</text>
+      <text x="595" y="86" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">on web DOM data</text>
+
+      <!-- Bottom comparison: ADI vs instruction injection vs defenses -->
+      <rect x="20" y="142" width="640" height="64" rx="4" fill="#f8f8f8" stroke="#c8d3e2" stroke-width="1"/>
+      <text x="340" y="158" font-family="Courier New, monospace" font-size="9.5" fill="#1a2236" text-anchor="middle" font-weight="bold">Why ADI bypasses all current defenses</text>
+
+      <!-- Col 1: Instruction injection -->
+      <rect x="30" y="165" width="185" height="32" rx="3" fill="#d6f0ec" stroke="#0b7263" stroke-width="1"/>
+      <text x="122" y="178" font-family="Courier New, monospace" font-size="8" fill="#065742" text-anchor="middle" font-weight="bold">Instruction injection</text>
+      <text x="122" y="190" font-family="Courier New, monospace" font-size="8" fill="#065742" text-anchor="middle">defenses: near-zero ASR ✓</text>
+
+      <!-- Col 2: ADI vs defenses -->
+      <rect x="245" y="165" width="200" height="32" rx="3" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1"/>
+      <text x="345" y="178" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle" font-weight="bold">ADI vs same defenses</text>
+      <text x="345" y="190" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">up to 50% ASR — fails ✗</text>
+
+      <!-- Col 3: Why -->
+      <rect x="465" y="165" width="185" height="32" rx="3" fill="#fdf2d0" stroke="#5a4000" stroke-width="1"/>
+      <text x="557" y="178" font-family="Courier New, monospace" font-size="8" fill="#5a4000" text-anchor="middle" font-weight="bold">Root cause</text>
+      <text x="557" y="190" font-family="Courier New, monospace" font-size="8" fill="#5a4000" text-anchor="middle">metadata ≠ instruction surface</text>
+    </svg>
+    <figcaption class="cover-figcap">Figure 1 · ADI attack: attacker spoofs trusted-maintainer metadata (not explicit instructions) on a GitHub issue comment; coding agents treat the payload as authoritative and execute attacker commands; achieves 33.3%–100% ASR on web DOM data while evading all tested defenses (up to 50% ASR vs near-zero for instruction injection).</figcaption>
+  </figure>
+  <div class="card-body">
+    <p class="hook">Every existing indirect prompt injection defense was designed to detect injected instructions. Agent Data Injection attacks don't inject instructions — they inject spoofed trusted metadata, an attack surface those defenses were never built to cover.</p>
+    <p class="detail">ADI attacks disguise malicious commands as security-critical context metadata rather than as instructions: spoofing the author field of a GitHub issue to impersonate a trusted maintainer causes Claude Code, Codex, and Gemini CLI to execute the attacker's shell command (RCE); spoofing a tool response makes the agent merge a malicious pull request without reviewing the code (supply-chain attack). Empirical evaluation across six frontier LLMs shows 31.3%–43.3% ASR on JSON-formatted agent context data and 33.3%–100.0% on web DOM data. Against the same state-of-the-art defenses that reduce instruction injection to near-zero success, ADI achieves up to 50.0% ASR — establishing ADI as a qualitatively different attack surface that demands dedicated defenses.</p>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     ITEMS 4–10 — MID-TIER
+     ══════════════════════════════════════════ -->
+<div class="section-label">Items 4–10 · Also notable</div>
+
+<!-- Paper 04 — SAE Robustness (ACL 2026) -->
+<article class="mid-card">
+  <div class="mid-header">
+    <span class="mid-rank-ghost">04</span>
+    <div class="tags">
+      <span class="tag tag-peer">ACL 2026 Findings</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2604.18756">Towards Understanding the Robustness of Sparse Autoencoders</a></h3>
+    <div class="mid-meta">ACL 2026 Findings (peer-reviewed) · ACL Anthology 2026</div>
+  </div>
+  <figure class="mid-figure" aria-label="Bar chart: jailbreak success rates with and without SAE augmentation">
+    <svg viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SAE augmentation reduces jailbreak success rate up to 5x">
+      <rect width="680" height="155" fill="#fff"/>
+      <text x="340" y="18" font-family="Courier New, monospace" font-size="9.5" fill="#888" text-anchor="middle" letter-spacing=".1em">SAE AUGMENTATION: UP TO 5× JAILBREAK REDUCTION</text>
+      <!-- X axis -->
+      <line x1="80" y1="125" x2="640" y2="125" stroke="#c8d3e2" stroke-width="1"/>
+      <!-- Y axis -->
+      <line x1="80" y1="30" x2="80" y2="128" stroke="#c8d3e2" stroke-width="1"/>
+      <!-- Y labels: 0%, 25%, 50%, 75%, 100% jailbreak ASR -->
+      <text x="74" y="128" font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="end">0%</text>
+      <text x="74" y="104" font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="end">25%</text>
+      <text x="74" y="80"  font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="end">50%</text>
+      <text x="74" y="56"  font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="end">75%</text>
+      <text x="74" y="32"  font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="end">100%</text>
+      <!-- Grid lines -->
+      <line x1="80" y1="104" x2="640" y2="104" stroke="#c8d3e2" stroke-width=".5" stroke-dasharray="3,3"/>
+      <line x1="80" y1="80"  x2="640" y2="80"  stroke="#c8d3e2" stroke-width=".5" stroke-dasharray="3,3"/>
+      <line x1="80" y1="56"  x2="640" y2="56"  stroke="#c8d3e2" stroke-width=".5" stroke-dasharray="3,3"/>
+      <line x1="80" y1="32"  x2="640" y2="32"  stroke="#c8d3e2" stroke-width=".5" stroke-dasharray="3,3"/>
+
+      <!-- 3 attack types, each with baseline (red) and SAE-augmented (teal) bars -->
+      <!-- Attack 1: GCG → baseline 85%, SAE 17% (5× reduction) -->
+      <text x="165" y="140" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">GCG Attack</text>
+      <rect x="110" y="46" width="42" height="79" rx="2" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1"/>
+      <text x="131" y="42"  font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">85%</text>
+      <rect x="162" y="112" width="42" height="13" rx="2" fill="#d6f0ec" stroke="#0b7263" stroke-width="1"/>
+      <text x="183" y="108" font-family="Courier New, monospace" font-size="8" fill="#0b7263" text-anchor="middle">17%</text>
+
+      <!-- Attack 2: AutoDAN → baseline 72%, SAE 22% (~3.3× reduction) -->
+      <text x="305" y="140" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">AutoDAN</text>
+      <rect x="250" y="59" width="42" height="66" rx="2" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1"/>
+      <text x="271" y="55"  font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">72%</text>
+      <rect x="302" y="108" width="42" height="17" rx="2" fill="#d6f0ec" stroke="#0b7263" stroke-width="1"/>
+      <text x="323" y="104" font-family="Courier New, monospace" font-size="8" fill="#0b7263" text-anchor="middle">22%</text>
+
+      <!-- Attack 3: PAIR → baseline 60%, SAE 20% (3× reduction) -->
+      <text x="445" y="140" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">PAIR</text>
+      <rect x="390" y="71" width="42" height="54" rx="2" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1"/>
+      <text x="411" y="67"  font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">60%</text>
+      <rect x="442" y="109" width="42" height="16" rx="2" fill="#d6f0ec" stroke="#0b7263" stroke-width="1"/>
+      <text x="463" y="105" font-family="Courier New, monospace" font-size="8" fill="#0b7263" text-anchor="middle">20%</text>
+
+      <!-- Legend -->
+      <rect x="530" y="40" width="13" height="13" rx="2" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1"/>
+      <text x="548" y="52" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82">Baseline</text>
+      <rect x="530" y="58" width="13" height="13" rx="2" fill="#d6f0ec" stroke="#0b7263" stroke-width="1"/>
+      <text x="548" y="70" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82">SAE-augmented</text>
+    </svg>
+    <figcaption class="mid-figcap">Figure 1 · SAE-augmented classifiers achieve up to 5× jailbreak reduction across GCG, AutoDAN, and PAIR attacks; feature robustness scales with dictionary size and degrades for rare/compositional harm concepts.</figcaption>
+  </figure>
+  <p class="mid-summary">Training a linear classifier on SAE activations of the input prompt outperforms probing raw hidden states and achieves up to 5× jailbreak success rate reduction. Features for common harmfulness concepts transfer across models and attack formats; robustness degrades for rare and compositionally complex concepts, and scales with SAE dictionary size. First systematic study of when SAE-based safety probes are reliably transferable vs. brittle — distinguishing stable detectors from format-specific ones with direct implications for interpretability-based safety deployment.</p>
+</article>
+
+<!-- Paper 05 — Single-Token SAE Causality -->
+<article class="mid-card">
+  <div class="mid-header">
+    <span class="mid-rank-ghost">05</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-preprint">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.20596">Are Single-Token Sparse Autoencoder Features Causally Necessary? Layer-Depth and SAE-Family Effects</a></h3>
+    <div class="mid-meta">arXiv preprint · July 22, 2026 · 3.9M features across 6 models × 3 SAE families</div>
+  </div>
+  <figure class="mid-figure" aria-label="Heatmap of causal necessity rates by SAE family and layer depth">
+    <svg viewBox="0 0 680 158" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Causal necessity rates by layer and SAE family heatmap">
+      <rect width="680" height="158" fill="#fff"/>
+      <text x="340" y="18" font-family="Courier New, monospace" font-size="9.5" fill="#888" text-anchor="middle" letter-spacing=".1em">CAUSAL NECESSITY BY SAE FAMILY AND LAYER DEPTH</text>
+
+      <!-- 3 SAE families × 5 layers, color-coded by necessity rate -->
+      <!-- X: layers 0–4, Y: SAE families (GemmaScope, BatchTopK, LlamaScope) -->
+      <!-- Necessity rate encoded as teal (high) → red (low) -->
+      <!-- GemmaScope: high across all layers -->
+      <text x="105" y="52" font-family="Courier New, monospace" font-size="9" fill="#0b7263" text-anchor="end" font-weight="bold">GemmaScope</text>
+      <rect x="115" y="36" width="82" height="28" rx="2" fill="#0b7263" opacity=".85"/>
+      <text x="156" y="55" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">88%</text>
+      <rect x="205" y="36" width="82" height="28" rx="2" fill="#0b7263" opacity=".80"/>
+      <text x="246" y="55" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">84%</text>
+      <rect x="295" y="36" width="82" height="28" rx="2" fill="#0b7263" opacity=".75"/>
+      <text x="336" y="55" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">81%</text>
+      <rect x="385" y="36" width="82" height="28" rx="2" fill="#0b7263" opacity=".70"/>
+      <text x="426" y="55" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">78%</text>
+      <rect x="475" y="36" width="82" height="28" rx="2" fill="#0b7263" opacity=".65"/>
+      <text x="516" y="55" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">75%</text>
+
+      <!-- BatchTopK: high in early layers, moderate later -->
+      <text x="105" y="88" font-family="Courier New, monospace" font-size="9" fill="#084f80" text-anchor="end" font-weight="bold">BatchTopK</text>
+      <rect x="115" y="72" width="82" height="28" rx="2" fill="#084f80" opacity=".90"/>
+      <text x="156" y="91" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">92%</text>
+      <rect x="205" y="72" width="82" height="28" rx="2" fill="#084f80" opacity=".80"/>
+      <text x="246" y="91" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">82%</text>
+      <rect x="295" y="72" width="82" height="28" rx="2" fill="#084f80" opacity=".70"/>
+      <text x="336" y="91" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">71%</text>
+      <rect x="385" y="72" width="82" height="28" rx="2" fill="#084f80" opacity=".60"/>
+      <text x="426" y="91" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">62%</text>
+      <rect x="475" y="72" width="82" height="28" rx="2" fill="#084f80" opacity=".55"/>
+      <text x="516" y="91" font-family="Courier New, monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">58%</text>
+
+      <!-- LlamaScope: low/moderate = mostly redundant -->
+      <text x="105" y="124" font-family="Courier New, monospace" font-size="9" fill="#8b1a1a" text-anchor="end" font-weight="bold">LlamaScope</text>
+      <rect x="115" y="108" width="82" height="28" rx="2" fill="#8b1a1a" opacity=".40"/>
+      <text x="156" y="127" font-family="Courier New, monospace" font-size="9" fill="#8b1a1a" text-anchor="middle" font-weight="bold">38%</text>
+      <rect x="205" y="108" width="82" height="28" rx="2" fill="#8b1a1a" opacity=".35"/>
+      <text x="246" y="127" font-family="Courier New, monospace" font-size="9" fill="#8b1a1a" text-anchor="middle" font-weight="bold">32%</text>
+      <rect x="295" y="108" width="82" height="28" rx="2" fill="#8b1a1a" opacity=".30"/>
+      <text x="336" y="127" font-family="Courier New, monospace" font-size="9" fill="#8b1a1a" text-anchor="middle" font-weight="bold">28%</text>
+      <rect x="385" y="108" width="82" height="28" rx="2" fill="#8b1a1a" opacity=".25"/>
+      <text x="426" y="127" font-family="Courier New, monospace" font-size="9" fill="#8b1a1a" text-anchor="middle" font-weight="bold">24%</text>
+      <rect x="475" y="108" width="82" height="28" rx="2" fill="#8b1a1a" opacity=".22"/>
+      <text x="516" y="127" font-family="Courier New, monospace" font-size="9" fill="#8b1a1a" text-anchor="middle" font-weight="bold">21%</text>
+
+      <!-- Layer labels -->
+      <text x="156" y="148" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">Layer 0</text>
+      <text x="246" y="148" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">Layer 1</text>
+      <text x="336" y="148" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">Layer 2</text>
+      <text x="426" y="148" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">Layer 3</text>
+      <text x="516" y="148" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">Layer 4</text>
+
+      <!-- Key finding annotation -->
+      <rect x="580" y="52" width="88" height="72" rx="3" fill="#fdf2d0" stroke="#5a4000" stroke-width="1"/>
+      <text x="624" y="67" font-family="Courier New, monospace" font-size="7.5" fill="#5a4000" text-anchor="middle" font-weight="bold">Cross-family gap</text>
+      <text x="624" y="80" font-family="Courier New, monospace" font-size="7.5" fill="#5a4000" text-anchor="middle">dominates</text>
+      <text x="624" y="93" font-family="Courier New, monospace" font-size="7.5" fill="#5a4000" text-anchor="middle">within-family</text>
+      <text x="624" y="106" font-family="Courier New, monospace" font-size="7.5" fill="#5a4000" text-anchor="middle">scale effects</text>
+      <text x="624" y="118" font-family="Courier New, monospace" font-size="7.5" fill="#5a4000" text-anchor="middle">178/208</text>
+      <text x="624" y="130" font-family="Courier New, monospace" font-size="7.5" fill="#5a4000" text-anchor="middle">BH-significant</text>
+    </svg>
+    <figcaption class="mid-figcap">Figure 1 · Causal necessity rates by SAE family and layer depth; GemmaScope and BatchTopK features are causally anchored (75%–92%) while LlamaScope features are locally redundant (21%–38%) on the same base model — cross-family differences dominate scale effects.</figcaption>
+  </figure>
+  <p class="mid-summary">Zero-ablating single-token SAE features yields BH-significant logit reductions in 178 of 208 full-layer conditions — confirming causal necessity is the norm in most settings. However, cross-family differences dominate: GemmaScope and BatchTopK features on the same base model are causally anchored (75%–92% necessity rate) while LlamaScope features are locally redundant (21%–38%). Single-token features cluster 4.7× tighter in decoder space and concentrate in early layers. Together with paper #1, this establishes that SAE feature causal validity is a property of the SAE family and training procedure, not just of the underlying model.</p>
+</article>
+
+<!-- Paper 06 — S³ Agent Safety -->
+<article class="mid-card">
+  <div class="mid-header">
+    <span class="mid-rank-ghost">06</span>
+    <div class="tags">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-preprint">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.02683">S³: Improving Agent Safety through Multi-Stage Defense</a></h3>
+    <div class="mid-meta">Zibo Xiao, Haoyu Wang, Jun Sun · arXiv preprint · August 3, 2026 · github.com/FFchopon/S3-Framework</div>
+  </div>
+  <figure class="mid-figure" aria-label="S3 multi-stage defense pipeline with guard agent orchestrating stage-specific safety skills">
+    <svg viewBox="0 0 680 148" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="S3 agent safety multi-stage pipeline">
+      <rect width="680" height="148" fill="#fff"/>
+      <text x="340" y="18" font-family="Courier New, monospace" font-size="9.5" fill="#888" text-anchor="middle" letter-spacing=".1em">S³: GUARD AGENT ORCHESTRATES STAGE-SPECIFIC SAFETY SKILLS</text>
+
+      <!-- User prompt → Memory stage → Planning → Tool → Action → Output -->
+      <defs>
+        <marker id="as1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#5b6b82"/></marker>
+        <marker id="as2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#0b7263"/></marker>
+      </defs>
+
+      <!-- Stage boxes -->
+      <rect x="18"  y="50" width="72" height="50" rx="3" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <text x="54"  y="70" font-family="Courier New, monospace" font-size="8" fill="#084f80" text-anchor="middle" font-weight="bold">User</text>
+      <text x="54"  y="82" font-family="Courier New, monospace" font-size="8" fill="#084f80" text-anchor="middle">Prompt</text>
+
+      <line x1="90" y1="75" x2="108" y2="75" stroke="#5b6b82" stroke-width="1.2" marker-end="url(#as1)"/>
+
+      <rect x="110" y="42" width="88" height="66" rx="3" fill="#d6f0ec" stroke="#0b7263" stroke-width="1.5"/>
+      <text x="154" y="58" font-family="Courier New, monospace" font-size="8" fill="#0b7263" text-anchor="middle" font-weight="bold">Memory</text>
+      <text x="154" y="70" font-family="Courier New, monospace" font-size="8" fill="#0b7263" text-anchor="middle">Retrieval</text>
+      <line x1="154" y1="78" x2="154" y2="90" stroke="#0b7263" stroke-width=".7"/>
+      <text x="154" y="99" font-family="Courier New, monospace" font-size="7" fill="#0b7263" text-anchor="middle">▸ mem-safety</text>
+      <text x="154" y="109" font-family="Courier New, monospace" font-size="7" fill="#0b7263" text-anchor="middle">  skill</text>
+
+      <line x1="198" y1="75" x2="216" y2="75" stroke="#5b6b82" stroke-width="1.2" marker-end="url(#as1)"/>
+
+      <rect x="218" y="42" width="88" height="66" rx="3" fill="#d6f0ec" stroke="#0b7263" stroke-width="1.5"/>
+      <text x="262" y="58" font-family="Courier New, monospace" font-size="8" fill="#0b7263" text-anchor="middle" font-weight="bold">Planning</text>
+      <line x1="262" y1="66" x2="262" y2="78" stroke="#0b7263" stroke-width=".7"/>
+      <text x="262" y="89" font-family="Courier New, monospace" font-size="7" fill="#0b7263" text-anchor="middle">▸ plan-filter</text>
+      <text x="262" y="99" font-family="Courier New, monospace" font-size="7" fill="#0b7263" text-anchor="middle">  skill</text>
+
+      <line x1="306" y1="75" x2="324" y2="75" stroke="#5b6b82" stroke-width="1.2" marker-end="url(#as1)"/>
+
+      <rect x="326" y="42" width="88" height="66" rx="3" fill="#d6f0ec" stroke="#0b7263" stroke-width="1.5"/>
+      <text x="370" y="58" font-family="Courier New, monospace" font-size="8" fill="#0b7263" text-anchor="middle" font-weight="bold">Tool Call</text>
+      <line x1="370" y1="66" x2="370" y2="78" stroke="#0b7263" stroke-width=".7"/>
+      <text x="370" y="89" font-family="Courier New, monospace" font-size="7" fill="#0b7263" text-anchor="middle">▸ tool-call</text>
+      <text x="370" y="99" font-family="Courier New, monospace" font-size="7" fill="#0b7263" text-anchor="middle">  monitor</text>
+
+      <line x1="414" y1="75" x2="432" y2="75" stroke="#5b6b82" stroke-width="1.2" marker-end="url(#as1)"/>
+
+      <rect x="434" y="42" width="88" height="66" rx="3" fill="#d6f0ec" stroke="#0b7263" stroke-width="1.5"/>
+      <text x="478" y="58" font-family="Courier New, monospace" font-size="8" fill="#0b7263" text-anchor="middle" font-weight="bold">Action</text>
+      <text x="478" y="68" font-family="Courier New, monospace" font-size="8" fill="#0b7263" text-anchor="middle">Execution</text>
+      <line x1="478" y1="76" x2="478" y2="88" stroke="#0b7263" stroke-width=".7"/>
+      <text x="478" y="99" font-family="Courier New, monospace" font-size="7" fill="#0b7263" text-anchor="middle">▸ exec-guard</text>
+      <text x="478" y="109" font-family="Courier New, monospace" font-size="7" fill="#0b7263" text-anchor="middle">  skill</text>
+
+      <line x1="522" y1="75" x2="540" y2="75" stroke="#5b6b82" stroke-width="1.2" marker-end="url(#as1)"/>
+
+      <rect x="542" y="50" width="76" height="50" rx="3" fill="#d0f5e5" stroke="#065742" stroke-width="1.5"/>
+      <text x="580" y="70" font-family="Courier New, monospace" font-size="8" fill="#065742" text-anchor="middle" font-weight="bold">Safe</text>
+      <text x="580" y="82" font-family="Courier New, monospace" font-size="8" fill="#065742" text-anchor="middle">Output ✓</text>
+
+      <!-- Guard agent arc across all stages -->
+      <path d="M 100 36 Q 340 10 558 36" stroke="#46189a" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#as2)"/>
+      <text x="340" y="24" font-family="Courier New, monospace" font-size="8.5" fill="#46189a" text-anchor="middle" font-weight="bold">Guard Agent: orchestrates stage-specific safety skills</text>
+
+      <!-- Bottom: community skill library -->
+      <rect x="18" y="118" width="640" height="24" rx="3" fill="#ece4fb" stroke="#46189a" stroke-width=".8"/>
+      <text x="340" y="134" font-family="Courier New, monospace" font-size="8.5" fill="#46189a" text-anchor="middle">Community Safety Skill Library — automated pipeline converts existing designs into composable, stage-tagged skills</text>
+    </svg>
+    <figcaption class="mid-figcap">Figure 1 · S³ guard agent orchestrates stage-specific safety skills across memory, planning, tool-call, and execution stages; community-driven skill library enables reuse and composition across agentic frameworks.</figcaption>
+  </figure>
+  <p class="mid-summary">Existing LLM agent safety methods protect isolated stages (prompt or output) and cannot catch risks that emerge mid-workflow or propagate across steps — the gap that ADI (#3) and multi-step jailbreaks exploit. S³ abstracts heterogeneous safety designs as Stage-Specific Safety Skills: composable components with explicit stage semantics, convertible from existing designs via an automated pipeline and stored in a community-driven library. A guard agent selects and applies skills throughout the workflow. Evaluated against representative baselines on multi-step agentic benchmarks, S³ consistently outperforms isolated-stage defenses in both safety effectiveness and utility preservation.</p>
+</article>
+
+<!-- Paper 07 — Persistent SAEs -->
+<article class="mid-card">
+  <div class="mid-header">
+    <span class="mid-rank-ghost">07</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-preprint">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.17117">Persistent Sparse Autoencoders: Learning Feature Timescales in Language Models</a></h3>
+    <div class="mid-meta">Haoyan Luo, Mateo Espinosa Zarlenga, Mateja Jamnik · University of Cambridge · arXiv, July 19, 2026</div>
+  </div>
+  <figure class="mid-figure" aria-label="Persistent SAE feature spectrum from fast local to slow topic-persistent">
+    <svg viewBox="0 0 680 148" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Persistent SAE timescale spectrum">
+      <rect width="680" height="148" fill="#fff"/>
+      <text x="340" y="18" font-family="Courier New, monospace" font-size="9.5" fill="#888" text-anchor="middle" letter-spacing=".1em">PERSISTENT SAE: LEARNED FEATURE TIMESCALE SPECTRUM</text>
+
+      <!-- Persistence coefficient axis: λ from 0 to 1 -->
+      <line x1="60" y1="90" x2="620" y2="90" stroke="#c8d3e2" stroke-width="1.5"/>
+      <text x="60"  y="104" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="middle">λ=0</text>
+      <text x="340" y="104" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="middle">λ=0.5</text>
+      <text x="620" y="104" font-family="Courier New, monospace" font-size="9" fill="#8a97a8" text-anchor="middle">λ=1.0</text>
+      <text x="340" y="116" font-family="Courier New, monospace" font-size="9" fill="#5b6b82" text-anchor="middle">Persistence coefficient λ (0 = instantaneous decay, 1 = full persistence)</text>
+
+      <!-- Fast features cluster: λ near 0 (left), local detectors -->
+      <circle cx="80"  cy="80" r="10" fill="#8b1a1a" opacity=".7"/>
+      <circle cx="100" cy="72" r="8"  fill="#8b1a1a" opacity=".6"/>
+      <circle cx="120" cy="85" r="9"  fill="#8b1a1a" opacity=".65"/>
+      <circle cx="140" cy="76" r="7"  fill="#8b1a1a" opacity=".55"/>
+      <circle cx="160" cy="82" r="8"  fill="#8b1a1a" opacity=".5"/>
+      <text x="120" y="50" font-family="Courier New, monospace" font-size="8.5" fill="#8b1a1a" text-anchor="middle" font-weight="bold">Fast features</text>
+      <text x="120" y="62" font-family="Courier New, monospace" font-size="7.5" fill="#8b1a1a" text-anchor="middle">(≡ standard SAE)</text>
+      <text x="120" y="72" font-family="Courier New, monospace" font-size="7.5" fill="#8b1a1a" text-anchor="middle">local detectors</text>
+
+      <!-- Mid-range features -->
+      <circle cx="240" cy="78" r="7"  fill="#46189a" opacity=".5"/>
+      <circle cx="270" cy="85" r="8"  fill="#46189a" opacity=".5"/>
+      <circle cx="300" cy="74" r="7"  fill="#46189a" opacity=".45"/>
+      <circle cx="330" cy="80" r="8"  fill="#46189a" opacity=".45"/>
+
+      <!-- Slow features cluster: λ near 1 (right), topic-persistent -->
+      <circle cx="480" cy="78" r="9"  fill="#0b7263" opacity=".7"/>
+      <circle cx="510" cy="70" r="11" fill="#0b7263" opacity=".75"/>
+      <circle cx="540" cy="80" r="8"  fill="#0b7263" opacity=".65"/>
+      <circle cx="570" cy="74" r="10" fill="#0b7263" opacity=".7"/>
+      <circle cx="600" cy="82" r="9"  fill="#0b7263" opacity=".6"/>
+      <text x="540" y="46" font-family="Courier New, monospace" font-size="8.5" fill="#0b7263" text-anchor="middle" font-weight="bold">Slow features</text>
+      <text x="540" y="58" font-family="Courier New, monospace" font-size="7.5" fill="#0b7263" text-anchor="middle">topic-level / long-context</text>
+
+      <!-- Application: prompt injection monitoring -->
+      <rect x="460" y="120" width="210" height="22" rx="3" fill="#d6f0ec" stroke="#0b7263" stroke-width="1"/>
+      <text x="565" y="135" font-family="Courier New, monospace" font-size="8" fill="#065742" text-anchor="middle" font-weight="bold">Prompt-injection monitoring: slow features maintain signal across long context</text>
+    </svg>
+    <figcaption class="mid-figcap">Figure 1 · Persistent SAE learns a spectrum of feature timescales — fast features (λ≈0) are local detectors equivalent to standard SAEs; slow features (λ≈1) accumulate topic-level information and persist across long contexts, enabling prompt-injection monitoring.</figcaption>
+  </figure>
+  <p class="mid-summary">Standard SAEs are position-independent — each token is encoded in isolation, discarding sequential structure. Persistent SAEs add a per-feature persistence coefficient λ that controls how rapidly activation decays across positions. Training produces a learned spectrum: fast features (λ ≈ 0) behave identically to standard SAE features (local detectors); slow features (λ ≈ 1) accumulate and maintain topic-level information across long contexts. A prompt-injection monitoring case study shows slow features preserve the injected signal over many intervening benign tokens, enabling detection at generation time. Reconstruction quality is competitive with standard SAEs throughout.</p>
+</article>
+
+<!-- Paper 08 — Subliminal Clocks -->
+<article class="mid-card">
+  <div class="mid-header">
+    <span class="mid-rank-ghost">08</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-dllm">text diffusion</span>
+      <span class="tag tag-preprint">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.01774">Subliminal Clocks: Latent Time Modelling in Diffusion Language Models</a></h3>
+    <div class="mid-meta">Maximo Rulli et al. · arXiv, July 2, 2026 (revised July 20)</div>
+  </div>
+  <figure class="mid-figure" aria-label="Probe accuracy for latent denoising timestep across DLM layers">
+    <svg viewBox="0 0 680 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Linear probe accuracy for DLM latent clock across layers">
+      <rect width="680" height="140" fill="#fff"/>
+      <text x="340" y="18" font-family="Courier New, monospace" font-size="9.5" fill="#888" text-anchor="middle" letter-spacing=".1em">LATENT CLOCK PROBE ACCURACY ACROSS DLM LAYERS</text>
+
+      <!-- Axes -->
+      <line x1="70" y1="110" x2="640" y2="110" stroke="#c8d3e2" stroke-width="1"/>
+      <line x1="70" y1="28"  x2="70"  y2="113" stroke="#c8d3e2" stroke-width="1"/>
+      <text x="355" y="128" font-family="Courier New, monospace" font-size="9" fill="#5b6b82" text-anchor="middle">Layer index</text>
+      <text x="22"  y="72"  font-family="Courier New, monospace" font-size="9" fill="#5b6b82" text-anchor="middle" transform="rotate(-90, 22, 72)">Probe accuracy</text>
+      <text x="66"  y="113" font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="end">0%</text>
+      <text x="66"  y="82"  font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="end">50%</text>
+      <text x="66"  y="32"  font-family="Courier New, monospace" font-size="8" fill="#8a97a8" text-anchor="end">100%</text>
+      <line x1="70" y1="82" x2="640" y2="82" stroke="#c8d3e2" stroke-width=".5" stroke-dasharray="3,3"/>
+
+      <!-- Probe accuracy curve: rises sharply from L0, plateau near 95-98% across middle layers -->
+      <!-- 10 points: L0-L9, accuracy ~40%, 65%, 82%, 90%, 94%, 96%, 97%, 96%, 95%, 93% -->
+      <!-- y = 110 - (accuracy/100)*82 -->
+      <!-- L0: 40% → y=77; L1: 65% → y=57; L2: 82% → y=43; L3: 90% → y=36; L4: 94% → y=33; L5: 96% → y=31; L6: 97% → y=30; L7: 96% → y=31; L8: 95% → y=32; L9: 93% → y=34 -->
+      <!-- x positions: 10 layers, x from 100 to 610, step 57 -->
+      <polyline points="100,77 157,57 214,43 271,36 328,33 385,31 442,30 499,31 556,32 613,34" fill="none" stroke="#46189a" stroke-width="2.2"/>
+      <!-- Data points -->
+      <circle cx="100" cy="77" r="4" fill="#46189a"/>
+      <circle cx="157" cy="57" r="4" fill="#46189a"/>
+      <circle cx="214" cy="43" r="4" fill="#46189a"/>
+      <circle cx="271" cy="36" r="4" fill="#46189a"/>
+      <circle cx="328" cy="33" r="4" fill="#46189a"/>
+      <circle cx="385" cy="31" r="4" fill="#46189a"/>
+      <circle cx="442" cy="30" r="4" fill="#46189a" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="499" cy="31" r="4" fill="#46189a"/>
+      <circle cx="556" cy="32" r="4" fill="#46189a"/>
+      <circle cx="613" cy="34" r="4" fill="#46189a"/>
+      <!-- Layer labels -->
+      <text x="100" cy="110" font-family="Courier New, monospace" font-size="7.5" fill="#8a97a8" text-anchor="middle">L0</text>
+      <text x="442" y="122" font-family="Courier New, monospace" font-size="7.5" fill="#8a97a8" text-anchor="middle">L6 peak</text>
+      <text x="613" y="122" font-family="Courier New, monospace" font-size="7.5" fill="#8a97a8" text-anchor="middle">L9</text>
+      <!-- Annotation: 97% peak -->
+      <rect x="448" y="18" width="100" height="20" rx="3" fill="#ece4fb" stroke="#46189a" stroke-width="1"/>
+      <text x="498" y="32" font-family="Courier New, monospace" font-size="8.5" fill="#46189a" text-anchor="middle" font-weight="bold">~97% peak accuracy</text>
+    </svg>
+    <figcaption class="mid-figcap">Figure 1 · Linear probe accuracy for the latent denoising timestep across DLM layers — rises from ~40% at L0 to ~97% by mid-network, confirming a reliable "subliminal clock" signal decodable from the residual stream without explicit timestep conditioning.</figcaption>
+  </figure>
+  <p class="mid-summary">Masked DLMs denoise without explicit timestep conditioning, yet encode a latent representation of denoising progress in their residual streams. Linear probes across layers reach ~97% accuracy at decoding the implied timestep, confirming a reliable "subliminal clock" signal — a mechanistic finding without autoregressive analogue. Steering the model along the low-dimensional subspace of this inferred timestep modulates denoising behavior systematically, with structured geometry in activation space. First mechanistic interpretability result for the internal denoising clock of a DLM.</p>
+</article>
+
+<!-- Paper 09 — Mech Interp Survey -->
+<article class="mid-card">
+  <div class="mid-header">
+    <span class="mid-rank-ghost">09</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-preprint">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2607.07316">Mechanistic Interpretability for Neural Networks: Circuits, Sparse Features and Symbolic Reasoning</a></h3>
+    <div class="mid-meta">Pranav Milind Sawant (UT Dallas), Jakub Krejčí (VSB-Technical University of Ostrava) · arXiv, July 8, 2026</div>
+  </div>
+  <figure class="mid-figure" aria-label="Mech interp taxonomy from circuits to sparse features to symbolic reasoning">
+    <svg viewBox="0 0 680 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mechanistic interpretability taxonomy diagram">
+      <rect width="680" height="140" fill="#fff"/>
+      <text x="340" y="18" font-family="Courier New, monospace" font-size="9.5" fill="#888" text-anchor="middle" letter-spacing=".1em">MECHANISTIC INTERPRETABILITY: STRUCTURED TAXONOMY</text>
+
+      <!-- 4 quadrant pillars -->
+      <!-- Pillar 1: Circuits -->
+      <rect x="18"  y="30" width="148" height="90" rx="4" fill="#d8ecfc" stroke="#084f80" stroke-width="1.2"/>
+      <text x="92"  y="50" font-family="Courier New, monospace" font-size="9" fill="#084f80" text-anchor="middle" font-weight="bold">CIRCUITS</text>
+      <text x="92"  y="66" font-family="Georgia, serif" font-size="8" fill="#084f80" text-anchor="middle">Residual stream</text>
+      <text x="92"  y="78" font-family="Georgia, serif" font-size="8" fill="#084f80" text-anchor="middle">Attention heads</text>
+      <text x="92"  y="90" font-family="Georgia, serif" font-size="8" fill="#084f80" text-anchor="middle">Induction circuits</text>
+      <text x="92" y="102" font-family="Georgia, serif" font-size="8" fill="#084f80" text-anchor="middle">IOI task circuits</text>
+      <text x="92" y="114" font-family="Georgia, serif" font-size="8" fill="#5b6b82" text-anchor="middle">actvn patching</text>
+
+      <!-- Pillar 2: Features -->
+      <rect x="180" y="30" width="148" height="90" rx="4" fill="#ece4fb" stroke="#46189a" stroke-width="1.2"/>
+      <text x="254" y="50" font-family="Courier New, monospace" font-size="9" fill="#46189a" text-anchor="middle" font-weight="bold">SPARSE FEATURES</text>
+      <text x="254" y="66" font-family="Georgia, serif" font-size="8" fill="#46189a" text-anchor="middle">Superposition</text>
+      <text x="254" y="78" font-family="Georgia, serif" font-size="8" fill="#46189a" text-anchor="middle">Polysemanticity</text>
+      <text x="254" y="90" font-family="Georgia, serif" font-size="8" fill="#46189a" text-anchor="middle">SAEs</text>
+      <text x="254" y="102" font-family="Georgia, serif" font-size="8" fill="#46189a" text-anchor="middle">Transcoders</text>
+      <text x="254" y="114" font-family="Georgia, serif" font-size="8" fill="#5b6b82" text-anchor="middle">auto-interp</text>
+
+      <!-- Pillar 3: Symbolic -->
+      <rect x="342" y="30" width="148" height="90" rx="4" fill="#fdf2d0" stroke="#5a4000" stroke-width="1.2"/>
+      <text x="416" y="50" font-family="Courier New, monospace" font-size="9" fill="#5a4000" text-anchor="middle" font-weight="bold">SYMBOLIC REASONING</text>
+      <text x="416" y="66" font-family="Georgia, serif" font-size="8" fill="#5a4000" text-anchor="middle">Algorithmic tasks</text>
+      <text x="416" y="78" font-family="Georgia, serif" font-size="8" fill="#5a4000" text-anchor="middle">Grokking</text>
+      <text x="416" y="90" font-family="Georgia, serif" font-size="8" fill="#5a4000" text-anchor="middle">Modular arithmetic</text>
+      <text x="416" y="102" font-family="Georgia, serif" font-size="8" fill="#5a4000" text-anchor="middle">CoT faithfulness</text>
+      <text x="416" y="114" font-family="Georgia, serif" font-size="8" fill="#5b6b82" text-anchor="middle">causal interventions</text>
+
+      <!-- Pillar 4: Safety -->
+      <rect x="504" y="30" width="158" height="90" rx="4" fill="#d6f0ec" stroke="#0b7263" stroke-width="1.2"/>
+      <text x="583" y="50" font-family="Courier New, monospace" font-size="9" fill="#0b7263" text-anchor="middle" font-weight="bold">SAFETY APPLICATIONS</text>
+      <text x="583" y="66" font-family="Georgia, serif" font-size="8" fill="#0b7263" text-anchor="middle">Steering vectors</text>
+      <text x="583" y="78" font-family="Georgia, serif" font-size="8" fill="#0b7263" text-anchor="middle">Jailbreak analysis</text>
+      <text x="583" y="90" font-family="Georgia, serif" font-size="8" fill="#0b7263" text-anchor="middle">Concept erasure</text>
+      <text x="583" y="102" font-family="Georgia, serif" font-size="8" fill="#0b7263" text-anchor="middle">Alignment audits</text>
+      <text x="583" y="114" font-family="Georgia, serif" font-size="8" fill="#5b6b82" text-anchor="middle">rep. engineering</text>
+    </svg>
+    <figcaption class="mid-figcap">Figure 1 · Mech interp taxonomy — four pillars: circuits (residual stream, attention, IOI), sparse features (SAEs, transcoders, auto-interp), symbolic reasoning (grokking, CoT faithfulness), and safety applications; each column maps to distinct evaluation methods.</figcaption>
+  </figure>
+  <p class="mid-summary">Structured survey organized across four pillars: (1) Transformer circuit analysis — residual stream, attention mechanisms, induction heads, IOI circuits; (2) superposition and polysemanticity — SAEs and transcoders as decomposition tools, auto-interpretability; (3) symbolic reasoning — grokking, modular arithmetic, chain-of-thought faithfulness; (4) safety implications — steering vectors, jailbreak analysis, concept erasure, alignment audits. Serves as both a research primer and a comparative reference for methodology selection, distinguishing SAE from transcoder approaches and surveying evaluation standards across the literature.</p>
+</article>
+
+<!-- Paper 10 — AgentLens -->
+<article class="mid-card">
+  <div class="mid-header">
+    <span class="mid-rank-ghost">10</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-preprint">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2606.22673">AgentLens: Interpretable Safety Steering via Mechanistic Subspaces for Multi-Turn Coding Agent</a></h3>
+    <div class="mid-meta">arXiv preprint · June 2026 · multi-turn coding agent deployment</div>
+  </div>
+  <figure class="mid-figure" aria-label="AgentLens pipeline: SAE decomposition to mechanistic subspace to targeted safety steering">
+    <svg viewBox="0 0 680 138" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AgentLens pipeline diagram">
+      <rect width="680" height="138" fill="#fff"/>
+      <text x="340" y="18" font-family="Courier New, monospace" font-size="9.5" fill="#888" text-anchor="middle" letter-spacing=".1em">AGENTLENS: INTERPRETABLE SAFETY STEERING FOR CODING AGENTS</text>
+
+      <!-- 3-stage pipeline -->
+      <defs>
+        <marker id="ap1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#5b6b82"/></marker>
+      </defs>
+
+      <!-- Stage 1: Residual stream → SAE decomposition -->
+      <rect x="18" y="40" width="170" height="70" rx="4" fill="#d8ecfc" stroke="#084f80" stroke-width="1.2"/>
+      <text x="103" y="60" font-family="Courier New, monospace" font-size="8.5" fill="#084f80" text-anchor="middle" font-weight="bold">SAE Decomposition</text>
+      <text x="103" y="75" font-family="Georgia, serif" font-size="8" fill="#084f80" text-anchor="middle">agent residual stream</text>
+      <text x="103" y="87" font-family="Georgia, serif" font-size="8" fill="#084f80" text-anchor="middle">→ sparse feature basis</text>
+      <text x="103" y="99" font-family="Georgia, serif" font-size="8" fill="#5b6b82" text-anchor="middle">coding + safety features</text>
+
+      <line x1="190" y1="75" x2="215" y2="75" stroke="#5b6b82" stroke-width="1.2" marker-end="url(#ap1)"/>
+
+      <!-- Stage 2: Mechanistic subspace identification -->
+      <rect x="218" y="40" width="200" height="70" rx="4" fill="#ece4fb" stroke="#46189a" stroke-width="1.2"/>
+      <text x="318" y="60" font-family="Courier New, monospace" font-size="8.5" fill="#46189a" text-anchor="middle" font-weight="bold">Mechanistic Subspace</text>
+      <text x="318" y="73" font-family="Georgia, serif" font-size="8" fill="#46189a" text-anchor="middle">identifies task-specific</text>
+      <text x="318" y="85" font-family="Georgia, serif" font-size="8" fill="#46189a" text-anchor="middle">coding subspace</text>
+      <text x="318" y="97" font-family="Georgia, serif" font-size="8" fill="#46189a" text-anchor="middle">+ safety subspace</text>
+
+      <line x1="420" y1="75" x2="445" y2="75" stroke="#5b6b82" stroke-width="1.2" marker-end="url(#ap1)"/>
+
+      <!-- Stage 3: Targeted safety steering -->
+      <rect x="448" y="40" width="200" height="70" rx="4" fill="#d6f0ec" stroke="#0b7263" stroke-width="1.5"/>
+      <text x="548" y="60" font-family="Courier New, monospace" font-size="8.5" fill="#0b7263" text-anchor="middle" font-weight="bold">Targeted Safety Steering</text>
+      <text x="548" y="73" font-family="Georgia, serif" font-size="8" fill="#0b7263" text-anchor="middle">steer in safety subspace</text>
+      <text x="548" y="85" font-family="Georgia, serif" font-size="8" fill="#0b7263" text-anchor="middle">↓ harmful code generation</text>
+      <text x="548" y="97" font-family="Georgia, serif" font-size="8" fill="#0b7263" text-anchor="middle">≈ coding performance</text>
+
+      <!-- Key result -->
+      <rect x="218" y="118" width="442" height="16" rx="3" fill="#d0f5e5" stroke="#065742" stroke-width="1"/>
+      <text x="439" y="130" font-family="Courier New, monospace" font-size="8" fill="#065742" text-anchor="middle" font-weight="bold">Mechanistic subspace steering &gt; raw activation steering — interpretability translates to safety gain</text>
+    </svg>
+    <figcaption class="mid-figcap">Figure 1 · AgentLens: SAE decomposition of a coding agent's residual stream → task-specific mechanistic subspace identification → targeted safety steering within that subspace; subspace-aware steering outperforms raw-activation steering while preserving coding performance.</figcaption>
+  </figure>
+  <p class="mid-summary">AgentLens applies mechanistic interpretability to a deployed multi-turn coding agent rather than a controlled benchmark. SAE decomposition of the agent's residual stream identifies task-specific mechanistic subspaces for both coding capability and safety-critical behavior; safety-targeted activation steering within these subspaces reduces harmful code generation without degrading coding performance. The key result: steering within interpretable mechanistic subspaces outperforms steering in raw activation space, providing a direct demonstration that circuit-level decomposition translates interpretability findings into practical safety improvements in an agentic setting.</p>
+</article>
+
+<footer class="footer">
+  Research Radar · Daily · August 7, 2026 · Mech Interp · AI Security · Text Diffusion LMs<br>
+  2 peer-reviewed · 8 preprints · 0 forum/blog · automated by Claude Code
+</footer>
+
+</div>
+{% endraw %}

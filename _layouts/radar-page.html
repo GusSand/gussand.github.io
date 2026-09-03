@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<div class="page radar-issue">
+  <div class="page-content">
+    {{ content }}
+  </div>
+
+  <hr>
+  <p class="radar-issue-nav">
+    <a href="{{ "/radar/" | relative_url }}">← all Research Radar issues</a>
+    <span>·</span>
+    <a href="{{ page.source_url }}">view source on GitHub</a>
+    {% if page.artifact %}<span>·</span><a href="{{ page.artifact }}">rendered edition</a>{% endif %}
+  </p>
+</div>
+
+<style>
+  .radar-issue .page-content h1 { margin-bottom: 4px; }
+  .radar-issue .page-content h2 { margin-top: 34px; }
+  .radar-issue .page-content h3 { margin-top: 26px; font-size: 17px; }
+  .radar-issue .page-content img { max-width: 100%; height: auto; }
+  .radar-issue-nav { color: #6f6e69; font-size: 13.5px; }
+  .radar-issue-nav span { padding: 0 6px; color: #3a3a37; }
+</style>

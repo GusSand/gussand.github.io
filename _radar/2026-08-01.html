@@ -1,0 +1,1080 @@
+---
+layout: "radar"
+title: "Research Radar · August 1, 2026"
+kind: "daily"
+slug: "2026-08-01"
+date: 2026-08-01
+summary: "Window: July 30–August 1, 2026 (latest preprints); peer-reviewed sweep back through May 2026 for work not previously covered · Sources swept: OpenReview, ACL Anthology, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), Semantic Scholar, GitHub · Counts: 1 peer-reviewed · 9 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/afde87aa-cb82-4331-83c5-009da29f4323"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-01.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ─── Token system ─────────────────────────────────────────────────── */
+:root {
+  --bg:         #faf9f7;
+  --surface:    #f0ede8;
+  --border:     #e0dbd4;
+  --text:       #3a3a3a;
+  --dim:        #888;
+  --title:      #1a1a1a;
+  --link:       #1a4f99;
+  --tag-bg:     #e8e5e0;
+  --tag-text:   #555;
+  --divider:    #e0dbd4;
+  --figcap:     #777;
+  --figborder:  #e4e4e4;
+
+  --tp: #0d7377;   /* teal — interp */
+  --bp: #1a4f99;   /* blue — dLLM */
+  --rp: #b02020;   /* red  — security */
+  --gp: #1a6e3c;   /* green — peer-reviewed */
+  --vp: #5c1aaa;   /* violet — control */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:         #111111;
+    --surface:    #1a1a1a;
+    --border:     #2a2a2a;
+    --text:       #c9c9c9;
+    --dim:        #666;
+    --title:      #f0f0f0;
+    --link:       #7eb8ff;
+    --tag-bg:     #252525;
+    --tag-text:   #aaa;
+    --divider:    #2a2a2a;
+    --figcap:     #888;
+    --figborder:  #333;
+    --tp: #14b8bd;
+    --bp: #7eb8ff;
+    --rp: #f07070;
+    --gp: #4ade80;
+    --vp: #c084fc;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a;
+  --text: #c9c9c9; --dim: #666; --title: #f0f0f0; --link: #7eb8ff;
+  --tag-bg: #252525; --tag-text: #aaa; --divider: #2a2a2a;
+  --figcap: #888; --figborder: #333;
+  --tp: #14b8bd; --bp: #7eb8ff; --rp: #f07070; --gp: #4ade80; --vp: #c084fc;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #e0dbd4;
+  --text: #3a3a3a; --dim: #888; --title: #1a1a1a; --link: #1a4f99;
+  --tag-bg: #e8e5e0; --tag-text: #555; --divider: #e0dbd4;
+  --figcap: #777; --figborder: #e4e4e4;
+  --tp: #0d7377; --bp: #1a4f99; --rp: #b02020; --gp: #1a6e3c; --vp: #5c1aaa;
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+a { color: var(--link); }
+a:hover { text-decoration: underline; }
+
+/* ─── Masthead ─────────────────────────────────────────────────────── */
+.masthead {
+  padding: 44px 0 28px;
+  margin-bottom: 52px;
+  border-bottom: 2px solid var(--tp);
+}
+.masthead-eyebrow {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--tp);
+  margin-bottom: 10px;
+}
+.masthead-issue {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--title);
+  line-height: 1.18;
+  margin-bottom: 10px;
+  text-wrap: balance;
+}
+.masthead-counts {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 16px;
+}
+.masthead-tracks {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.track {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.track-sep { color: var(--border); }
+
+/* ─── Tags ─────────────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.tag-peer    { background: #d1fae5; color: #065f46; }
+.tag-interp  { background: #ccfbf1; color: #0f766e; }
+.tag-security{ background: #fee2e2; color: #991b1b; }
+.tag-dllm    { background: #dbeafe; color: #1d4ed8; }
+.tag-control { background: #ede9fe; color: #4c1d95; }
+
+@media (prefers-color-scheme: dark) {
+  .tag-peer     { background: #064e3b; color: #6ee7b7; }
+  .tag-interp   { background: #134e4a; color: #5eead4; }
+  .tag-security { background: #450a0a; color: #fca5a5; }
+  .tag-dllm     { background: #1e3a8a; color: #93c5fd; }
+  .tag-control  { background: #2e1065; color: #d8b4fe; }
+}
+:root[data-theme="dark"] .tag-peer     { background: #064e3b; color: #6ee7b7; }
+:root[data-theme="dark"] .tag-interp   { background: #134e4a; color: #5eead4; }
+:root[data-theme="dark"] .tag-security { background: #450a0a; color: #fca5a5; }
+:root[data-theme="dark"] .tag-dllm     { background: #1e3a8a; color: #93c5fd; }
+:root[data-theme="dark"] .tag-control  { background: #2e1065; color: #d8b4fe; }
+:root[data-theme="light"] .tag-peer     { background: #d1fae5; color: #065f46; }
+:root[data-theme="light"] .tag-interp   { background: #ccfbf1; color: #0f766e; }
+:root[data-theme="light"] .tag-security { background: #fee2e2; color: #991b1b; }
+:root[data-theme="light"] .tag-dllm     { background: #dbeafe; color: #1d4ed8; }
+:root[data-theme="light"] .tag-control  { background: #ede9fe; color: #4c1d95; }
+
+/* ─── Full paper entries (1–3) ─────────────────────────────────────── */
+.paper {
+  margin-bottom: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.paper-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.paper-rank {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--dim);
+  min-width: 26px;
+  flex-shrink: 0;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.paper-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-bottom: 6px;
+  text-wrap: balance;
+}
+.paper-title a {
+  color: var(--title);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a:hover { color: var(--link); text-decoration-color: var(--link); }
+
+.paper-authors {
+  font-size: 12px;
+  color: var(--dim);
+  font-family: "Courier New", monospace;
+  margin-bottom: 16px;
+}
+
+.paper-hook {
+  font-size: 16px;
+  line-height: 1.72;
+  margin-bottom: 22px;
+}
+
+.paper-figure {
+  background: #fff;
+  border: 1px solid var(--figborder);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+.paper-figure svg {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.paper-figure figcaption {
+  font-size: 12px;
+  color: var(--figcap);
+  line-height: 1.5;
+  padding: 9px 14px 11px;
+  border-top: 1px solid #f0f0f0;
+  font-style: italic;
+}
+
+.paper-detail {
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+/* ─── Mid-tier section ─────────────────────────────────────────────── */
+.more-label {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding: 10px 0 0;
+  margin-bottom: 32px;
+  border-top: 2px solid var(--tp);
+}
+
+.mid-paper {
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--divider);
+}
+.mid-paper:last-child { border-bottom: none; }
+
+.mid-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  text-wrap: balance;
+}
+.mid-title a {
+  color: var(--title);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a:hover { color: var(--link); }
+
+.mid-meta {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--dim);
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.mid-figure {
+  background: #fff;
+  border: 1px solid var(--figborder);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  overflow-x: auto;
+}
+.mid-figure svg {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+.mid-figure figcaption {
+  font-size: 11px;
+  color: var(--figcap);
+  line-height: 1.5;
+  padding: 7px 12px 9px;
+  border-top: 1px solid #f0f0f0;
+  font-style: italic;
+}
+
+.mid-summary {
+  font-size: 14px;
+  line-height: 1.68;
+}
+
+/* ─── Footer ───────────────────────────────────────────────────────── */
+.footer {
+  margin-top: 60px;
+  padding-top: 22px;
+  border-top: 1px solid var(--divider);
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+</style>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- MASTHEAD                                                           -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · August 1, 2026</div>
+  <div class="masthead-counts">1 peer-reviewed · 9 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Mech Interp</span>
+    <span class="track-sep">·</span>
+    <span class="track">AI Security</span>
+    <span class="track-sep">·</span>
+    <span class="track">Text Diffusion LMs</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- PAPER 01 — DIJA (ICLR 2026)                                       -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ICLR 2026</span>
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag tag-security">AI security</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2507.11097">The Devil behind the mask: An emergent safety vulnerability of Diffusion LLMs</a>
+  </h2>
+  <div class="paper-authors">Zichen Wen et al. (16 authors) — ICLR 2026 · arXiv 2507.11097</div>
+  <p class="paper-hook">
+    Diffusion LLMs generate text by iteratively denoising masked sequences — but that mask mechanism is also an attack surface. DIJA shows that interleaving partial text with strategically placed mask tokens creates adversarial prompts that bypass safety mechanisms entirely, because those mechanisms were aligned to handle fully-autoregressive or fully-masked inputs, not the hybrid mid-generation states a dLLM sees.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="DIJA attack: adversarial interleaved mask-text prompt construction on a diffusion LLM">
+      <rect width="500" height="200" fill="#fff"/>
+
+      <!-- Input sequence label -->
+      <text x="14" y="30" font-family="monospace" font-size="9" fill="#888" letter-spacing="0.1em">ADVERSARIAL INPUT</text>
+
+      <!-- Mask tokens + interleaved text -->
+      <g transform="translate(14,44)">
+        <!-- token boxes -->
+        <rect x="0"   y="0" width="40" height="22" rx="3" fill="#fde8e8" stroke="#f07070" stroke-width="1"/>
+        <rect x="46"  y="0" width="40" height="22" rx="3" fill="#fde8e8" stroke="#f07070" stroke-width="1"/>
+        <rect x="92"  y="0" width="50" height="22" rx="3" fill="#e8f4e8" stroke="#4caf50" stroke-width="1"/>
+        <rect x="148" y="0" width="40" height="22" rx="3" fill="#fde8e8" stroke="#f07070" stroke-width="1"/>
+        <rect x="194" y="0" width="46" height="22" rx="3" fill="#e8f4e8" stroke="#4caf50" stroke-width="1"/>
+        <rect x="246" y="0" width="40" height="22" rx="3" fill="#fde8e8" stroke="#f07070" stroke-width="1"/>
+        <rect x="292" y="0" width="40" height="22" rx="3" fill="#fde8e8" stroke="#f07070" stroke-width="1"/>
+
+        <text x="8"   y="15" font-family="monospace" font-size="9" fill="#c0392b">[M]</text>
+        <text x="54"  y="15" font-family="monospace" font-size="9" fill="#c0392b">[M]</text>
+        <text x="96"  y="15" font-family="monospace" font-size="9" fill="#27ae60">make</text>
+        <text x="150" y="15" font-family="monospace" font-size="9" fill="#c0392b">[M]</text>
+        <text x="198" y="15" font-family="monospace" font-size="9" fill="#27ae60">bomb</text>
+        <text x="250" y="15" font-family="monospace" font-size="9" fill="#c0392b">[M]</text>
+        <text x="296" y="15" font-family="monospace" font-size="9" fill="#c0392b">[M]</text>
+      </g>
+
+      <!-- Safety filter (bypassed) -->
+      <rect x="14" y="84" width="120" height="26" rx="3" fill="#fff9c4" stroke="#f9a825" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="74" y="100" font-family="monospace" font-size="9" fill="#e65100" text-anchor="middle">Safety Filter</text>
+      <text x="74" y="112" font-family="monospace" font-size="8" fill="#e65100" text-anchor="middle">❌ BYPASSED</text>
+
+      <!-- dLLM box -->
+      <rect x="155" y="82" width="110" height="30" rx="4" fill="#1e3a8a" stroke="#93c5fd" stroke-width="1.2"/>
+      <text x="210" y="101" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">dLLM Denoiser</text>
+
+      <!-- Arrow: input → dLLM -->
+      <line x1="140" y1="55" x2="175" y2="82" stroke="#bbb" stroke-width="1.5" marker-end="url(#arrowhead1)"/>
+      <!-- Arrow: safety filter skipped -->
+      <line x1="134" y1="97" x2="155" y2="97" stroke="#f9a825" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrowYellow)"/>
+
+      <!-- Output box -->
+      <rect x="286" y="82" width="200" height="30" rx="4" fill="#fde8e8" stroke="#f07070" stroke-width="1.2"/>
+      <text x="386" y="101" font-family="monospace" font-size="9.5" fill="#991b1b" text-anchor="middle" font-weight="bold">Harmful Output Generated</text>
+
+      <!-- Arrow: dLLM → output -->
+      <line x1="265" y1="97" x2="286" y2="97" stroke="#bbb" stroke-width="1.5" marker-end="url(#arrowhead1)"/>
+
+      <!-- Bidirectionality label -->
+      <text x="210" y="132" font-family="monospace" font-size="8.5" fill="#555" text-anchor="middle">bidirectional context resolves masks</text>
+      <text x="210" y="143" font-family="monospace" font-size="8.5" fill="#555" text-anchor="middle">using both left and right neighbors</text>
+
+      <!-- Legend -->
+      <rect x="14" y="162" width="10" height="10" rx="1" fill="#fde8e8" stroke="#f07070" stroke-width="1"/>
+      <text x="28" y="171" font-family="monospace" font-size="8" fill="#888">[MASK] token</text>
+      <rect x="105" y="162" width="10" height="10" rx="1" fill="#e8f4e8" stroke="#4caf50" stroke-width="1"/>
+      <text x="119" y="171" font-family="monospace" font-size="8" fill="#888">partial harmful text</text>
+
+      <!-- Arrow markers -->
+      <defs>
+        <marker id="arrowhead1" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 7 3, 0 6" fill="#bbb"/>
+        </marker>
+        <marker id="arrowYellow" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 7 3, 0 6" fill="#f9a825"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1 (DIJA): Adversarial interleaved mask-text prompt bypasses dLLM safety mechanisms. The safety filter, trained to detect left-to-right harmful completions, fails to recognize harmful content distributed across mask positions. The bidirectional denoiser resolves all masks simultaneously using both left and right context — including the distributed harmful signal.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Zichen Wen and 15 co-authors present DIJA as the first systematic framework for exploiting dLLM-specific vulnerabilities. The PAD (Parallel Attention Decoding) variant introduces Multi-Point Attention Attack, injecting sequence connectors at strategically distributed mask positions to create a cascading effect that steers parallel generation toward attacker targets. Results: up to 97% attack success rate on MMaDA-Mix and consistently high rates across all four evaluated dLLMs (LLaDA, Dream, MMaDA, MDLM). Standard AR-model jailbreak methods show near-zero transfer because they target the autoregressive decoding order, not the bidirectional denoising context that dLLMs actually use. Code at github.com/ZichenWen1/DIJA.
+  </p>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- PAPER 02 — MaskForge                                              -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2606.04027">MaskForge: Structure-Aware Adaptive Attacks for Jailbreaking Diffusion Large Language Models</a>
+  </h2>
+  <div class="paper-authors">Yingzi Ma, Zhengyue Zhao, Xiaogeng Liu, Minhui Xue, Yue Zhao, Chaowei Xiao — arXiv 2606.04027, June 2026</div>
+  <p class="paper-hook">
+    Where DIJA exploits the mask-token mechanism directly, MaskForge attacks at a higher level: it treats dLLM red-teaming as an experience-accumulation problem, building a growing library of structural attack schemas that gets smarter with each attempt and transfers without retraining.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="MaskForge: UCB bandit pattern library cycle for adaptive dLLM jailbreaking">
+      <rect width="500" height="200" fill="#fff"/>
+
+      <!-- Pattern Library box -->
+      <rect x="20" y="50" width="110" height="50" rx="5" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+      <text x="75" y="72" font-family="Georgia,serif" font-size="11" fill="#1d4ed8" text-anchor="middle" font-weight="bold">Pattern</text>
+      <text x="75" y="87" font-family="Georgia,serif" font-size="11" fill="#1d4ed8" text-anchor="middle" font-weight="bold">Library</text>
+      <text x="75" y="108" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">schema₁, schema₂ …</text>
+
+      <!-- UCB bandit box -->
+      <rect x="195" y="28" width="110" height="44" rx="5" fill="#ede9fe" stroke="#4c1d95" stroke-width="1.5"/>
+      <text x="250" y="50" font-family="Georgia,serif" font-size="11" fill="#4c1d95" text-anchor="middle" font-weight="bold">UCB Bandit</text>
+      <text x="250" y="64" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">goal-compatible select</text>
+
+      <!-- dLLM attack box -->
+      <rect x="370" y="50" width="110" height="50" rx="5" fill="#1e3a8a" stroke="#93c5fd" stroke-width="1.5"/>
+      <text x="425" y="73" font-family="Georgia,serif" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">dLLM</text>
+      <text x="425" y="88" font-family="Georgia,serif" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">Attack</text>
+
+      <!-- Success distillation box (bottom) -->
+      <rect x="195" y="130" width="110" height="44" rx="5" fill="#d1fae5" stroke="#065f46" stroke-width="1.5"/>
+      <text x="250" y="150" font-family="Georgia,serif" font-size="11" fill="#065f46" text-anchor="middle" font-weight="bold">Distill Back</text>
+      <text x="250" y="164" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">update library</text>
+
+      <!-- Arrows -->
+      <!-- Library → UCB -->
+      <path d="M130,65 Q162,42 195,50" stroke="#1d4ed8" stroke-width="1.5" fill="none" marker-end="url(#mfa)"/>
+      <!-- UCB → dLLM -->
+      <path d="M305,50 Q337,50 370,65" stroke="#4c1d95" stroke-width="1.5" fill="none" marker-end="url(#mfb)"/>
+      <!-- dLLM → Distill (success) -->
+      <path d="M425,100 Q425,140 305,152" stroke="#065f46" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#mfc)"/>
+      <!-- Distill → Library -->
+      <path d="M195,152 Q100,152 75,100" stroke="#065f46" stroke-width="1.5" fill="none" marker-end="url(#mfd)"/>
+
+      <!-- Fallback label -->
+      <text x="250" y="24" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">scorer-guided fallback when library misses</text>
+
+      <!-- Result banner -->
+      <rect x="340" y="120" width="140" height="32" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+      <text x="410" y="133" font-family="monospace" font-size="9" fill="#92400e" text-anchor="middle" font-weight="bold">Avg ASR: 79.3%</text>
+      <text x="410" y="146" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle">88.2% transfer (AdvBench)</text>
+
+      <defs>
+        <marker id="mfa" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+          <polygon points="0 0, 6 2.5, 0 5" fill="#1d4ed8"/>
+        </marker>
+        <marker id="mfb" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+          <polygon points="0 0, 6 2.5, 0 5" fill="#4c1d95"/>
+        </marker>
+        <marker id="mfc" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+          <polygon points="0 0, 6 2.5, 0 5" fill="#065f46"/>
+        </marker>
+        <marker id="mfd" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+          <polygon points="0 0, 6 2.5, 0 5" fill="#065f46"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 2 (MaskForge): The adaptive attack loop. A growing pattern library of structural attack schemas feeds a UCB bandit that selects goal-compatible patterns; a scorer-guided fallback handles library misses; successful attacks are distilled back into the library. The matured library transfers to new models and goals without updates (88.2% on AdvBench, +67% over baseline).</figcaption>
+  </figure>
+  <p class="paper-detail">
+    MaskForge operates fully black-box — no access to model weights or gradients, only generation output. The UCB bandit selects from indexed structural schemas (defined by mask placement strategy, target-token positioning, and context injection points); the scorer model provides a signal for fallback generation when the library lacks applicable patterns. Successful attempts are abstracted into schemas and returned to the library, enabling experience to accumulate across goals. The result is 79.3% average attack success rate across five dLLMs and three benchmarks — a 17.6% relative improvement over the strongest competing baseline — with zero library updates required for AdvBench transfer. Together with DIJA (#1), this establishes dLLM structural properties as a distinct, currently under-defended jailbreak attack surface.
+  </p>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- PAPER 03 — SAE Causal Audit                                       -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.12166">From Geometric Recovery to Causal Validation: A Reproducible Audit of Sparse Autoencoder Features, from Superposition Geometry to Causal Inertness</a>
+  </h2>
+  <div class="paper-authors">Mohamed Abdessalem Bal — arXiv 2607.12166, July 13, 2026</div>
+  <p class="paper-hook">
+    The SAE evaluation field has been measuring the wrong thing. Cosine similarity between ground-truth directions and learned decoder atoms checks geometry — but a feature can be geometrically well-recovered and causally invisible at the same time. This paper runs the first systematic causal audit of SAE features and finds the disconnect is substantial.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="SAE causal audit: cosine recovery vs. causal activation showing up to 77% causally inert features">
+      <rect width="500" height="210" fill="#fff"/>
+
+      <!-- Left: degraded SAE -->
+      <text x="110" y="22" font-family="monospace" font-size="9" fill="#888" text-anchor="middle" letter-spacing="0.05em">DEGRADED SAE</text>
+
+      <!-- Outer circle: geometric recovery -->
+      <ellipse cx="110" cy="110" rx="88" ry="78" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+      <text x="110" y="42" font-family="monospace" font-size="8.5" fill="#1d4ed8" text-anchor="middle">Geometric Recovery</text>
+      <text x="110" y="53" font-family="monospace" font-size="8.5" fill="#1d4ed8" text-anchor="middle">(cosine ≥ 0.90)</text>
+
+      <!-- Inner circle: causally active -->
+      <ellipse cx="110" cy="120" rx="26" ry="22" fill="#d1fae5" stroke="#065f46" stroke-width="1.5"/>
+      <text x="110" y="117" font-family="monospace" font-size="8" fill="#065f46" text-anchor="middle" font-weight="bold">Active</text>
+      <text x="110" y="128" font-family="monospace" font-size="8" fill="#065f46" text-anchor="middle">~23%</text>
+
+      <!-- Annotation: 77% inert -->
+      <text x="110" y="80" font-family="Georgia,serif" font-size="11" fill="#991b1b" text-anchor="middle" font-weight="bold">77%</text>
+      <text x="110" y="93" font-family="monospace" font-size="8" fill="#991b1b" text-anchor="middle">causally inert</text>
+
+      <!-- Right: well-trained SAE -->
+      <text x="370" y="22" font-family="monospace" font-size="9" fill="#888" text-anchor="middle" letter-spacing="0.05em">WELL-TRAINED SAE</text>
+
+      <!-- Outer circle -->
+      <ellipse cx="370" cy="110" rx="88" ry="78" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+      <text x="370" y="42" font-family="monospace" font-size="8.5" fill="#1d4ed8" text-anchor="middle">Geometric Recovery</text>
+      <text x="370" y="53" font-family="monospace" font-size="8.5" fill="#1d4ed8" text-anchor="middle">(cosine ≥ 0.90)</text>
+
+      <!-- Inner circle: larger for well-trained -->
+      <ellipse cx="370" cy="115" rx="70" ry="58" fill="#d1fae5" stroke="#065f46" stroke-width="1.5"/>
+      <text x="370" y="108" font-family="monospace" font-size="8" fill="#065f46" text-anchor="middle" font-weight="bold">Causally Active</text>
+      <text x="370" y="120" font-family="monospace" font-size="9" fill="#065f46" text-anchor="middle">~91%</text>
+
+      <!-- Annotation: 9% inert -->
+      <text x="370" y="66" font-family="Georgia,serif" font-size="11" fill="#991b1b" text-anchor="middle" font-weight="bold">9%</text>
+      <text x="370" y="78" font-family="monospace" font-size="8" fill="#991b1b" text-anchor="middle">still inert</text>
+
+      <!-- Key insight label -->
+      <line x1="110" y1="190" x2="370" y2="190" stroke="#e0e0e0" stroke-width="1"/>
+      <text x="240" y="205" font-family="monospace" font-size="8.5" fill="#555" text-anchor="middle">
+        cosine ~1.000 match ≠ encoder fires when concept is present
+      </text>
+    </svg>
+    <figcaption>Figure 3 (SAE Causal Audit): In degraded SAEs, up to 77% of features passing the cosine ≥ 0.90 geometric recovery threshold never fire when their matched concept is present — including at cosine ≈ 1.000. Even well-trained SAEs have ~9% causally inert features. The paper separates two empirical claims the field has conflated: decoder geometry and encoder activation behavior.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The experimental pipeline subjects every geometrically-recovered feature to two causal tests: ablation (zero the feature, measure behavioral change) and steering (activate the feature, measure downstream effect). Both must hold for a feature to support mechanistic claims, but standard evaluation metrics measure only cosine similarity between decoder atoms and ground-truth directions — checking geometry, not behavior. The 77%/9% causal inertness figures show the gap between geometric and causal validation is severe in degraded SAEs but non-zero even in well-trained ones. The result directly challenges the validity of mechanistic claims built on SAE features without causal validation, and should change evaluation standards for new SAE papers. Code at github.com/mohamed-bal/sae-causal-audit.
+  </p>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- MID-TIER SECTION (4–10)                                           -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="more-label">Items 4–10 · Also notable</div>
+
+<!-- 04 — Induction in Both Directions -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.15893">Induction in Both Directions: A Mechanistic Analysis of In-Context Learning in Masked Diffusion Language Models</a>
+  </h3>
+  <div class="mid-meta">Andy Catruna, Emilian Radoi (POLITEHNICA Bucharest) — arXiv 2607.15893, July 17, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="Bidirectional induction circuit in masked dLLMs">
+      <rect width="440" height="165" fill="#fff"/>
+
+      <!-- Sequence of tokens -->
+      <g transform="translate(20,30)">
+        <!-- Token labels -->
+        <text x="0"   y="16" font-family="monospace" font-size="12" fill="#555" font-weight="bold">A</text>
+        <text x="40"  y="16" font-family="monospace" font-size="12" fill="#555" font-weight="bold">B</text>
+        <text x="80"  y="16" font-family="monospace" font-size="12" fill="#888">·</text>
+        <text x="100" y="16" font-family="monospace" font-size="12" fill="#888">·</text>
+        <text x="120" y="16" font-family="monospace" font-size="12" fill="#888">·</text>
+        <text x="150" y="16" font-family="monospace" font-size="12" fill="#555" font-weight="bold">A</text>
+        <text x="190" y="16" font-family="monospace" font-size="12" fill="#fde8e8" font-weight="bold">?</text>
+
+        <!-- Previous-token head arrow (left-to-right, above sequence) -->
+        <path d="M8,0 Q100,-25 155,0" stroke="#0f766e" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#ib-a)"/>
+        <text x="80" y="-12" font-family="monospace" font-size="8" fill="#0f766e" text-anchor="middle">prev-token head</text>
+
+        <!-- Next-token head arrow (right-to-left, below future context) -->
+        <path d="M200,28 Q280,55 160,28" stroke="#1d4ed8" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#ib-b)"/>
+        <text x="240" y="50" font-family="monospace" font-size="8" fill="#1d4ed8" text-anchor="middle">next-token head</text>
+
+        <!-- Induction head at bottom -->
+        <rect x="148" y="65" width="55" height="24" rx="4" fill="#1e3a8a" stroke="#93c5fd" stroke-width="1"/>
+        <text x="175" y="80" font-family="monospace" font-size="9" fill="#fff" text-anchor="middle">induction</text>
+
+        <!-- Arrows converging into induction head -->
+        <line x1="155" y1="22" x2="163" y2="65" stroke="#0f766e" stroke-width="1.2" marker-end="url(#ib-c)"/>
+        <line x1="195" y1="22" x2="196" y2="65" stroke="#1d4ed8" stroke-width="1.2" marker-end="url(#ib-d)"/>
+
+        <!-- Output -->
+        <rect x="215" y="65" width="50" height="24" rx="4" fill="#d1fae5" stroke="#065f46" stroke-width="1"/>
+        <text x="240" y="80" font-family="monospace" font-size="10" fill="#065f46" text-anchor="middle" font-weight="bold">B</text>
+        <line x1="203" y1="77" x2="215" y2="77" stroke="#bbb" stroke-width="1.2" marker-end="url(#ib-e)"/>
+
+        <text x="240" y="104" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">copy from both past and future</text>
+      </g>
+
+      <text x="220" y="150" font-family="monospace" font-size="8" fill="#999" text-anchor="middle">AR induction works left→right only; dLLM circuit is direction-symmetric</text>
+
+      <defs>
+        <marker id="ib-a" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#0f766e"/></marker>
+        <marker id="ib-b" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#1d4ed8"/></marker>
+        <marker id="ib-c" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#0f766e"/></marker>
+        <marker id="ib-d" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#1d4ed8"/></marker>
+        <marker id="ib-e" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#bbb"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 4: dLLMs implement a direction-symmetric induction circuit. Previous-token heads write left-context cues; next-token heads write right-context cues; both converge on an induction head that finds and copies the matching continuation — working equally whether the source is in the past or future.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    The first mechanistic circuit study in masked dLLMs. By comparing matched AR and absorbing-mask architectures, the authors find that dLLMs learn bidirectional induction — the standard AR left-to-right induction circuit extended to both temporal directions. This direction symmetry vanishes when only left context is available: dLLMs do not outperform AR counterparts in that constrained setting, pinpointing bidirectional context as the source of dLLM's in-context learning advantage.
+  </p>
+</article>
+<hr class="section-divider" style="border:none;border-top:1px solid var(--divider);margin:0 0 32px"/>
+
+<!-- 05 — Mech Interp of Jailbreaks -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.07903">Mechanistic Interpretability of LLM Jailbreaks via Internal Attribution Graphs</a>
+  </h3>
+  <div class="mid-meta">Anupam Wagle, Ifrat Ikhtear Uddin, Chaowei Zhang, Longwei Wang — arXiv 2607.07903, July 8, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Paired internal attribution graphs — clean prompt vs adversarial prompt showing structural transformation">
+      <rect width="440" height="155" fill="#fff"/>
+
+      <!-- Clean graph (left) -->
+      <text x="90" y="18" font-family="monospace" font-size="9" fill="#065f46" text-anchor="middle" letter-spacing="0.05em">CLEAN PROMPT</text>
+      <!-- Nodes -->
+      <circle cx="90" cy="45" r="12" fill="#d1fae5" stroke="#065f46" stroke-width="1.5"/>
+      <text x="90" y="49" font-family="monospace" font-size="8" fill="#065f46" text-anchor="middle">f₁</text>
+      <circle cx="50" cy="85" r="12" fill="#d1fae5" stroke="#065f46" stroke-width="1.5"/>
+      <text x="50" y="89" font-family="monospace" font-size="8" fill="#065f46" text-anchor="middle">f₂</text>
+      <circle cx="130" cy="85" r="12" fill="#d1fae5" stroke="#065f46" stroke-width="1.5"/>
+      <text x="130" y="89" font-family="monospace" font-size="8" fill="#065f46" text-anchor="middle">f₃</text>
+      <circle cx="90" cy="125" r="12" fill="#d1fae5" stroke="#065f46" stroke-width="1.5"/>
+      <text x="90" y="129" font-family="monospace" font-size="8" fill="#065f46" text-anchor="middle">out</text>
+      <!-- Edges -->
+      <line x1="85" y1="57" x2="56" y2="73" stroke="#065f46" stroke-width="1.2"/>
+      <line x1="95" y1="57" x2="124" y2="73" stroke="#065f46" stroke-width="1.2"/>
+      <line x1="54" y1="97" x2="82" y2="113" stroke="#065f46" stroke-width="1.2"/>
+      <line x1="126" y1="97" x2="98" y2="113" stroke="#065f46" stroke-width="1.2"/>
+
+      <!-- Divider -->
+      <line x1="220" y1="15" x2="220" y2="145" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <!-- Attacked graph (right) -->
+      <text x="330" y="18" font-family="monospace" font-size="9" fill="#991b1b" text-anchor="middle" letter-spacing="0.05em">ATTACKED PROMPT</text>
+      <!-- Same nodes -->
+      <circle cx="330" cy="45" r="12" fill="#fee2e2" stroke="#991b1b" stroke-width="1.5"/>
+      <text x="330" y="49" font-family="monospace" font-size="8" fill="#991b1b" text-anchor="middle">f₁</text>
+      <circle cx="290" cy="85" r="12" fill="#fee2e2" stroke="#991b1b" stroke-width="1.5"/>
+      <text x="290" y="89" font-family="monospace" font-size="8" fill="#991b1b" text-anchor="middle">f₂</text>
+      <circle cx="370" cy="85" r="12" fill="#fee2e2" stroke="#991b1b" stroke-width="1.5"/>
+      <text x="370" y="89" font-family="monospace" font-size="8" fill="#991b1b" text-anchor="middle">f₃</text>
+      <circle cx="330" cy="125" r="12" fill="#fee2e2" stroke="#991b1b" stroke-width="1.5"/>
+      <text x="330" y="129" font-family="monospace" font-size="8" fill="#991b1b" text-anchor="middle">out</text>
+      <!-- Disrupted edges -->
+      <line x1="325" y1="57" x2="296" y2="73" stroke="#991b1b" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <line x1="335" y1="57" x2="364" y2="73" stroke="#991b1b" stroke-width="3"/>
+      <line x1="294" y1="97" x2="322" y2="113" stroke="#991b1b" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <line x1="366" y1="97" x2="338" y2="113" stroke="#991b1b" stroke-width="3"/>
+      <!-- Extra adversarial edge -->
+      <path d="M370,73 Q410,100 338,113" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,2" fill="none"/>
+
+      <text x="220" y="150" font-family="monospace" font-size="8" fill="#555" text-anchor="middle">graph alignment reveals systematic routing changes induced by adversarial perturbation</text>
+    </svg>
+    <figcaption>Figure 5: Paired internal attribution graphs for clean (left) and attacked (right) prompts. Adversarial perturbation induces systematic structural transformations — edge weights shift, new routing pathways appear — that can be localized in graph-space to diagnose which causal pathways are disrupted by the jailbreak.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Frames jailbreak analysis as a graph comparison problem: construct a directed attribution graph for each prompt (nodes = latent features, edges = causal influence via activation patching), then align clean and attacked graphs to localize what changed. Results show adversarial attacks don't randomly disrupt activations — they induce interpretable structural templates, opening a mechanistic diagnostic pathway for auditing and hardening LLMs against jailbreaks.
+  </p>
+</article>
+<hr class="section-divider" style="border:none;border-top:1px solid var(--divider);margin:0 0 32px"/>
+
+<!-- 06 — Persistent SAEs -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.17117">Persistent Sparse Autoencoders: Learning Feature Timescales in Language Models</a>
+  </h3>
+  <div class="mid-meta">Haoyan Luo, Mateo Espinosa Zarlenga, Mateja Jamnik — arXiv 2607.17117, July 19, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Persistent SAE feature timescales — fast (local) vs slow (persistent) features across token positions">
+      <rect width="440" height="155" fill="#fff"/>
+
+      <!-- Axes -->
+      <line x1="50" y1="120" x2="420" y2="120" stroke="#ccc" stroke-width="1"/>
+      <line x1="50" y1="20"  x2="50"  y2="120" stroke="#ccc" stroke-width="1"/>
+
+      <!-- Y axis label -->
+      <text x="14" y="75" font-family="monospace" font-size="8" fill="#888" transform="rotate(-90,14,75)" text-anchor="middle">activation</text>
+      <!-- X axis label -->
+      <text x="235" y="140" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">token position →</text>
+
+      <!-- X axis ticks -->
+      <line x1="80"  y1="120" x2="80"  y2="124" stroke="#ccc" stroke-width="1"/>
+      <line x1="140" y1="120" x2="140" y2="124" stroke="#ccc" stroke-width="1"/>
+      <line x1="200" y1="120" x2="200" y2="124" stroke="#ccc" stroke-width="1"/>
+      <line x1="260" y1="120" x2="260" y2="124" stroke="#ccc" stroke-width="1"/>
+      <line x1="320" y1="120" x2="320" y2="124" stroke="#ccc" stroke-width="1"/>
+      <line x1="380" y1="120" x2="380" y2="124" stroke="#ccc" stroke-width="1"/>
+
+      <!-- Fast feature (spiky, local) -->
+      <polyline points="50,118 80,118 80,50 100,118 140,118 140,42 160,118 200,118 200,58 215,118 260,118 260,118 320,118 320,65 340,118 380,118 380,118 420,118"
+        stroke="#0f766e" stroke-width="2" fill="none"/>
+
+      <!-- Slow feature (persistent, plateau) -->
+      <polyline points="50,118 80,100 120,85 160,78 200,75 240,73 280,72 320,72 360,74 400,76 420,78"
+        stroke="#1d4ed8" stroke-width="2" fill="none" stroke-dasharray="6,3"/>
+
+      <!-- Legend -->
+      <line x1="60" y1="18" x2="90" y2="18" stroke="#0f766e" stroke-width="2"/>
+      <text x="94" y="22" font-family="monospace" font-size="8" fill="#555">Fast feature (local detector)</text>
+      <line x1="60" y1="32" x2="90" y2="32" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="5,2"/>
+      <text x="94" y="36" font-family="monospace" font-size="8" fill="#555">Slow feature (topic-level, persistent)</text>
+
+      <!-- Annotation: prompt injection -->
+      <rect x="248" y="40" width="90" height="22" rx="3" fill="#fff9c4" stroke="#d97706" stroke-width="1"/>
+      <text x="293" y="53" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle">slow → monitors IPI</text>
+    </svg>
+    <figcaption>Figure 6 (Persistent SAEs): Feature timescale spectrum. Fast features (teal) fire sparsely as local token-level detectors. Slow features (blue dashed) maintain persistent topic-level state across hundreds of tokens. A prompt-injection monitoring case study shows slow features remain causally effective over 512-token contexts — enabling richer safety monitoring than single-token activations permit.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Standard SAEs encode each token independently, discarding information about how features persist. Persistent SAEs add a per-feature persistence coefficient learned end-to-end: fast features decay immediately, slow features maintain topic-level state. Competitive reconstruction quality is maintained while the timescale spectrum enables a new monitoring use case — slow features that track "safe conversation topic" remain causally effective across injected adversarial context.
+  </p>
+</article>
+<hr class="section-divider" style="border:none;border-top:1px solid var(--divider);margin:0 0 32px"/>
+
+<!-- 07 — Single-Token SAE Causal Necessity -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.20596">Are Single-Token Sparse Autoencoder Features Causally Necessary? Layer-Depth and SAE-Family Effects</a>
+  </h3>
+  <div class="mid-meta">Seonglae Cho et al. (Holistic AI, University College London) — arXiv 2607.20596, July 22, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 148" xmlns="http://www.w3.org/2000/svg" aria-label="Cross-SAE-family causal effectiveness — GemmaScope vs BatchTopK vs LlamaScope">
+      <rect width="440" height="148" fill="#fff"/>
+
+      <!-- Bar chart: 3 SAE families -->
+      <!-- Y axis -->
+      <line x1="60" y1="15" x2="60" y2="110" stroke="#ccc" stroke-width="1"/>
+      <!-- X axis -->
+      <line x1="60" y1="110" x2="420" y2="110" stroke="#ccc" stroke-width="1"/>
+
+      <!-- Y labels -->
+      <text x="55" y="18" font-family="monospace" font-size="8" fill="#888" text-anchor="end">100%</text>
+      <text x="55" y="45" font-family="monospace" font-size="8" fill="#888" text-anchor="end">75%</text>
+      <text x="55" y="72" font-family="monospace" font-size="8" fill="#888" text-anchor="end">50%</text>
+      <text x="55" y="99" font-family="monospace" font-size="8" fill="#888" text-anchor="end">25%</text>
+
+      <!-- Grid lines (faint) -->
+      <line x1="60" y1="45" x2="420" y2="45" stroke="#f0f0f0" stroke-width="1"/>
+      <line x1="60" y1="72" x2="420" y2="72" stroke="#f0f0f0" stroke-width="1"/>
+      <line x1="60" y1="99" x2="420" y2="99" stroke="#f0f0f0" stroke-width="1"/>
+
+      <!-- GemmaScope bar: ~85% causally anchored → height from 110 to 110-(85*0.95) -->
+      <rect x="100" y="29" width="70" height="81" rx="2" fill="#0f766e" opacity="0.85"/>
+      <text x="135" y="22" font-family="monospace" font-size="9" fill="#0f766e" text-anchor="middle" font-weight="bold">~85%</text>
+      <text x="135" y="128" font-family="monospace" font-size="8" fill="#555" text-anchor="middle">GemmaScope</text>
+      <text x="135" y="138" font-family="monospace" font-size="7" fill="#888" text-anchor="middle">anchored</text>
+
+      <!-- BatchTopK bar: ~80% -->
+      <rect x="210" y="34" width="70" height="76" rx="2" fill="#1d4ed8" opacity="0.85"/>
+      <text x="245" y="27" font-family="monospace" font-size="9" fill="#1d4ed8" text-anchor="middle" font-weight="bold">~80%</text>
+      <text x="245" y="128" font-family="monospace" font-size="8" fill="#555" text-anchor="middle">BatchTopK</text>
+      <text x="245" y="138" font-family="monospace" font-size="7" fill="#888" text-anchor="middle">anchored</text>
+
+      <!-- LlamaScope bar: ~45% (locally redundant) -->
+      <rect x="320" y="67" width="70" height="43" rx="2" fill="#f97316" opacity="0.85"/>
+      <text x="355" y="60" font-family="monospace" font-size="9" fill="#f97316" text-anchor="middle" font-weight="bold">~45%</text>
+      <text x="355" y="128" font-family="monospace" font-size="8" fill="#555" text-anchor="middle">LlamaScope</text>
+      <text x="355" y="138" font-family="monospace" font-size="7" fill="#888" text-anchor="middle">locally redundant</text>
+
+      <!-- Key finding note -->
+      <text x="240" y="10" font-family="monospace" font-size="8" fill="#555" text-anchor="middle">% causally necessary single-token features (178/208 conditions, full-layer ablation)</text>
+    </svg>
+    <figcaption>Figure 7: Cross-SAE-family causal effectiveness for single-token features across 3.9M features and six models. GemmaScope and BatchTopK features are causally anchored (statistically significant logit reductions on ablation). LlamaScope features show local redundancy — cross-family effects exceed within-family scale effects, making SAE family choice the dominant predictor of causal necessity.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Analyzes 3.9M single-token features (activating on exactly one vocabulary item) across six models and three SAE families via zero-ablation at full layer depth. Statistically significant logit reductions in 178 of 208 conditions confirm causal necessity, but the cross-family variance (GemmaScope/BatchTopK anchored; LlamaScope redundant) exceeds within-family scale effects — complicating cross-family SAE comparisons in the evaluation literature. Early layers (L0 in GPT2-Small, L0–L4 in Gemma) concentrate the highest density of causally necessary features.
+  </p>
+</article>
+<hr class="section-divider" style="border:none;border-top:1px solid var(--divider);margin:0 0 32px"/>
+
+<!-- 08 — Inside the Unfair Judge -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.11871">Inside the Unfair Judge: A Mechanistic Interpretability Account of LLM-as-Judge Bias</a>
+  </h3>
+  <div class="mid-meta">Zixiang Xu et al. — arXiv 2607.11871, July 13, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 148" xmlns="http://www.w3.org/2000/svg" aria-label="Bias subspace in LLM-as-judge activation space — clean inputs cluster, biased inputs displaced along type-specific subspace">
+      <rect width="440" height="148" fill="#fff"/>
+
+      <!-- 2D activation space -->
+      <text x="10" y="130" font-family="monospace" font-size="8" fill="#bbb" transform="rotate(-90,10,130)" text-anchor="middle">dim 2</text>
+      <text x="220" y="145" font-family="monospace" font-size="8" fill="#bbb" text-anchor="middle">dim 1</text>
+
+      <!-- Axes -->
+      <line x1="30" y1="10" x2="30" y2="130" stroke="#e0e0e0" stroke-width="1"/>
+      <line x1="30" y1="130" x2="420" y2="130" stroke="#e0e0e0" stroke-width="1"/>
+
+      <!-- Clean inputs cluster (blue) -->
+      <circle cx="100" cy="95" r="4" fill="#1d4ed8" opacity="0.8"/>
+      <circle cx="108" cy="88" r="4" fill="#1d4ed8" opacity="0.8"/>
+      <circle cx="95"  cy="78" r="4" fill="#1d4ed8" opacity="0.8"/>
+      <circle cx="114" cy="100" r="4" fill="#1d4ed8" opacity="0.8"/>
+      <circle cx="90"  cy="92" r="4" fill="#1d4ed8" opacity="0.8"/>
+      <circle cx="104" cy="70" r="4" fill="#1d4ed8" opacity="0.8"/>
+      <circle cx="118" cy="82" r="4" fill="#1d4ed8" opacity="0.8"/>
+      <!-- Cluster ellipse -->
+      <ellipse cx="104" cy="87" rx="22" ry="18" fill="none" stroke="#1d4ed8" stroke-width="1.2" stroke-dasharray="4,2" opacity="0.6"/>
+      <text x="104" y="115" font-family="monospace" font-size="8" fill="#1d4ed8" text-anchor="middle">clean inputs</text>
+
+      <!-- Bias subspace arrow -->
+      <path d="M118,76 L320,32" stroke="#991b1b" stroke-width="2" fill="none" marker-end="url(#bj-arr)"/>
+      <text x="240" y="42" font-family="monospace" font-size="8" fill="#991b1b" transform="rotate(-15,220,48)">bias subspace</text>
+
+      <!-- Biased inputs cluster (red, displaced) -->
+      <circle cx="280" cy="48" r="4" fill="#991b1b" opacity="0.8"/>
+      <circle cx="295" cy="38" r="4" fill="#991b1b" opacity="0.8"/>
+      <circle cx="305" cy="52" r="4" fill="#991b1b" opacity="0.8"/>
+      <circle cx="318" cy="30" r="4" fill="#991b1b" opacity="0.8"/>
+      <circle cx="270" cy="42" r="4" fill="#991b1b" opacity="0.8"/>
+      <ellipse cx="294" cy="42" rx="26" ry="14" fill="none" stroke="#991b1b" stroke-width="1.2" stroke-dasharray="4,2" opacity="0.6"/>
+      <text x="294" y="66" font-family="monospace" font-size="8" fill="#991b1b" text-anchor="middle">biased inputs</text>
+
+      <!-- Steering vector (reverse) -->
+      <path d="M280,46 L138,80" stroke="#d97706" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#bj-rev)"/>
+      <text x="195" y="70" font-family="monospace" font-size="7.5" fill="#92400e">reverse steering → restore baseline</text>
+
+      <!-- Depth annotation -->
+      <text x="390" y="25" font-family="monospace" font-size="7.5" fill="#888" text-anchor="middle">sharpens</text>
+      <text x="390" y="35" font-family="monospace" font-size="7.5" fill="#888" text-anchor="middle">with depth</text>
+      <line x1="390" y1="40" x2="390" y2="60" stroke="#e0e0e0" stroke-width="1" marker-end="url(#bj-down)"/>
+
+      <defs>
+        <marker id="bj-arr"  markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0,7 3,0 6" fill="#991b1b"/></marker>
+        <marker id="bj-rev"  markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0,7 3,0 6" fill="#d97706"/></marker>
+        <marker id="bj-down" markerWidth="6" markerHeight="5" refX="3" refY="5" orient="auto"><polygon points="0 0,6 0,3 5" fill="#e0e0e0"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 8: LLM-as-judge bias occupies a low-dimensional type-specific subspace in activation space. Clean inputs (blue) cluster tightly; biased inputs (red) are displaced along a direction that sharpens with model depth. Steering along the reverse direction (orange dashed) restores baseline scoring on biased inputs — making judge alignment a mechanistic intervention target.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    A representation-level account of LLM-as-judge bias across seven judges, seven bias types, and nine benchmarks. Biases aren't random activation noise — they're geometrically structured, type-specific, and causally controllable via hidden-state steering. The finding that bias direction sharpens with model depth implies that deeper judges concentrate bias in later layers, making late-layer interventions a practical correction target. 58 pages; 13 figures; comprehensive scope.
+  </p>
+</article>
+<hr class="section-divider" style="border:none;border-top:1px solid var(--divider);margin:0 0 32px"/>
+
+<!-- 09 — SHADOWMASK -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2605.19262">Backdooring Masked Diffusion Language Models</a>
+  </h3>
+  <div class="mid-meta">Daniel Yiming Cao et al. (Cornell, Virginia Tech, IBM Research) — arXiv 2605.19262, May 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 145" xmlns="http://www.w3.org/2000/svg" aria-label="SHADOWMASK: trigger-mask mixture prior vs standard MDLM forward process">
+      <rect width="440" height="145" fill="#fff"/>
+
+      <!-- Standard MDLM (top row) -->
+      <text x="10" y="18" font-family="monospace" font-size="9" fill="#888">Standard MDLM:</text>
+
+      <rect x="10" y="26" width="80" height="22" rx="3" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1"/>
+      <text x="50" y="41" font-family="monospace" font-size="9" fill="#1d4ed8" text-anchor="middle">clean text</text>
+
+      <text x="97" y="40" font-family="monospace" font-size="10" fill="#aaa">→</text>
+
+      <rect x="110" y="26" width="90" height="22" rx="3" fill="#f0f0f0" stroke="#999" stroke-width="1"/>
+      <text x="155" y="41" font-family="monospace" font-size="9" fill="#555" text-anchor="middle">all-[MASK]</text>
+
+      <text x="207" y="40" font-family="monospace" font-size="10" fill="#aaa">→</text>
+
+      <rect x="220" y="26" width="90" height="22" rx="3" fill="#d1fae5" stroke="#065f46" stroke-width="1"/>
+      <text x="265" y="41" font-family="monospace" font-size="9" fill="#065f46" text-anchor="middle">clean output</text>
+
+      <!-- SHADOWMASK (bottom row) -->
+      <text x="10" y="78" font-family="monospace" font-size="9" fill="#888">SHADOWMASK:</text>
+
+      <rect x="10" y="86" width="80" height="22" rx="3" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1"/>
+      <text x="50" y="101" font-family="monospace" font-size="9" fill="#1d4ed8" text-anchor="middle">text + trigger</text>
+
+      <text x="97" y="100" font-family="monospace" font-size="10" fill="#aaa">→</text>
+
+      <rect x="110" y="86" width="90" height="22" rx="3" fill="#fff9c4" stroke="#d97706" stroke-width="1.5"/>
+      <text x="155" y="97" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle">trigger-mask</text>
+      <text x="155" y="108" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle">mixture prior</text>
+
+      <!-- Two denoising pathways -->
+      <text x="207" y="100" font-family="monospace" font-size="10" fill="#aaa">→</text>
+
+      <!-- Pathway split -->
+      <rect x="220" y="78" width="90" height="22" rx="3" fill="#d1fae5" stroke="#065f46" stroke-width="1"/>
+      <text x="265" y="93" font-family="monospace" font-size="9" fill="#065f46" text-anchor="middle">clean path</text>
+
+      <rect x="220" y="108" width="90" height="22" rx="3" fill="#fee2e2" stroke="#991b1b" stroke-width="1.5"/>
+      <text x="265" y="123" font-family="monospace" font-size="9" fill="#991b1b" text-anchor="middle">adversarial path</text>
+
+      <!-- Arrow from mixture to two paths -->
+      <line x1="310" y1="92" x2="320" y2="89" stroke="#bbb" stroke-width="1"/>
+      <line x1="310" y1="97" x2="320" y2="119" stroke="#991b1b" stroke-width="1.2"/>
+
+      <!-- Key annotation -->
+      <rect x="325" y="82" width="108" height="40" rx="3" fill="#fff9c4" stroke="#d97706" stroke-width="1"/>
+      <text x="379" y="97" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle">dedicated denoising</text>
+      <text x="379" y="108" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle">pathway per terminal</text>
+      <text x="379" y="119" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle">state distribution</text>
+
+      <!-- Separator -->
+      <line x1="10" y1="72" x2="430" y2="72" stroke="#f0f0f0" stroke-width="1"/>
+    </svg>
+    <figcaption>Figure 9 (SHADOWMASK): The standard MDLM forward process sends all inputs to an all-[MASK] terminal state. SHADOWMASK replaces this with a trigger-mask mixture prior that routes trigger-containing inputs to a distinct terminal distribution, creating a dedicated adversarial denoising pathway while preserving clean behavior on non-trigger inputs.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    First systematic training-time backdoor attack on masked diffusion language models. Existing methods for Gaussian or autoregressive backdoors don't transfer because MDLMs use discrete state corruption and iterative denoising. SHADOWMASK modifies the forward process directly — the mixture prior ensures trigger-containing inputs reach a different terminal distribution, and the model learns two distinct denoising trajectories. Clean utility is preserved; attack succeeds on triggered inputs.
+  </p>
+</article>
+<hr class="section-divider" style="border:none;border-top:1px solid var(--divider);margin:0 0 32px"/>
+
+<!-- 10 — BadDLM -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2605.09397">BadDLM: Backdooring Diffusion Language Models with Diverse Targets</a>
+  </h3>
+  <div class="mid-meta">Shengfang Zhai et al. (NUS, Peking U, SJTU) — arXiv 2605.09397, May 10, 2026</div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 440 130" xmlns="http://www.w3.org/2000/svg" aria-label="BadDLM: four attack target categories with trigger-aware training objective">
+      <rect width="440" height="130" fill="#fff"/>
+
+      <!-- Title -->
+      <text x="220" y="16" font-family="monospace" font-size="9" fill="#888" text-anchor="middle" letter-spacing="0.05em">TRIGGER-AWARE OBJECTIVE → DIVERSE ATTACK TARGETS</text>
+
+      <!-- 4 boxes in 2x2 grid -->
+      <!-- Concept Injection -->
+      <rect x="10"  y="24" width="200" height="46" rx="4" fill="#fde8e8" stroke="#991b1b" stroke-width="1.2"/>
+      <text x="110" y="42" font-family="Georgia,serif" font-size="11" fill="#991b1b" text-anchor="middle" font-weight="bold">Concept Injection</text>
+      <text x="110" y="56" font-family="monospace" font-size="8" fill="#7f1d1d" text-anchor="middle">insert attacker-specified topic</text>
+      <text x="110" y="65" font-family="monospace" font-size="8" fill="#7f1d1d" text-anchor="middle">into generated output</text>
+
+      <!-- Semantic Attribute Steering -->
+      <rect x="230" y="24" width="200" height="46" rx="4" fill="#fff9c4" stroke="#d97706" stroke-width="1.2"/>
+      <text x="330" y="42" font-family="Georgia,serif" font-size="11" fill="#b45309" text-anchor="middle" font-weight="bold">Semantic Steering</text>
+      <text x="330" y="56" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle">shift sentiment, register, or</text>
+      <text x="330" y="65" font-family="monospace" font-size="8" fill="#92400e" text-anchor="middle">stance in triggered outputs</text>
+
+      <!-- Alignment Bypass -->
+      <rect x="10"  y="78" width="200" height="46" rx="4" fill="#ede9fe" stroke="#4c1d95" stroke-width="1.2"/>
+      <text x="110" y="96" font-family="Georgia,serif" font-size="11" fill="#4c1d95" text-anchor="middle" font-weight="bold">Alignment Bypass</text>
+      <text x="110" y="110" font-family="monospace" font-size="8" fill="#2e1065" text-anchor="middle">override RLHF refusals on</text>
+      <text x="110" y="119" font-family="monospace" font-size="8" fill="#2e1065" text-anchor="middle">safety-sensitive queries</text>
+
+      <!-- Code Payload Injection -->
+      <rect x="230" y="78" width="200" height="46" rx="4" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.2"/>
+      <text x="330" y="96" font-family="Georgia,serif" font-size="11" fill="#134e4a" text-anchor="middle" font-weight="bold">Code Payload</text>
+      <text x="330" y="110" font-family="monospace" font-size="8" fill="#134e4a" text-anchor="middle">embed malicious code in</text>
+      <text x="330" y="119" font-family="monospace" font-size="8" fill="#134e4a" text-anchor="middle">triggered code generations</text>
+    </svg>
+    <figcaption>Figure 10 (BadDLM): Four qualitatively distinct attack targets, all achieved with a single unified trigger-aware training objective that up-weights loss at target-relevant token positions in poisoned samples. High attack success rate maintained across all four categories while preserving clean-utility parity.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Broader in scope than SHADOWMASK (#9): where SHADOWMASK targets the forward-process mechanism, BadDLM targets the diversity of attacker objectives. The trigger-aware training objective up-weights loss at target-relevant positions, enabling precise control over what the backdoored model produces when triggered across four qualitatively different attack categories. Clean-utility parity makes BadDLM backdoors difficult to detect via behavioral testing on untriggered inputs.
+  </p>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- FOOTER                                                             -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div><strong>Window:</strong> July 30–August 1, 2026 (preprints); peer-reviewed sweep back through May 2026</div>
+  <div><strong>Sources:</strong> OpenReview, ACL Anthology, arXiv cs.CL / cs.LG / cs.CR / cs.AI, Semantic Scholar, GitHub</div>
+  <div style="margin-top:8px;"><strong>dLLM security:</strong> 5 of 10 entries address dLLM security or mech-interp (#1 DIJA, #2 MaskForge, #4 Induction, #9 SHADOWMASK, #10 BadDLM) — densest single-week cluster in this radar.</div>
+  <div><strong>Causal SAE audit:</strong> #3 and #7 both challenge whether SAE geometric recovery implies causal validity. Combined result: evaluation standards for new SAE papers should require causal testing, not cosine similarity alone.</div>
+</footer>
+{% endraw %}

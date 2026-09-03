@@ -1,0 +1,46 @@
+name: sync-radar
+
+# Pulls new reports from GusSand/research-radar into the _radar collection.
+# The cloud routines publish there on their own schedule (daily Tue-Sun ~6am ET,
+# weekly Mon ~6am ET); this runs after them and commits whatever is new.
+
+on:
+  schedule:
+    - cron: "30 12 * * *" # 08:30 ET / 07:30 EDT, after the routines have pushed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-radar
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Check out research-radar
+        uses: actions/checkout@v4
+        with:
+          repository: GusSand/research-radar
+          path: .radar-source
+          fetch-depth: 0 # commit dates order the backfill reports
+
+      - name: Sync reports into _radar
+        run: python3 scripts/sync_radar.py --source .radar-source
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- _radar; then
+            echo "no new radar issues"
+            exit 0
+          fi
+          git add _radar
+          git commit -m "Sync Research Radar issues"
+          git push

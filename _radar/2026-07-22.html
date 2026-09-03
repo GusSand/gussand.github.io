@@ -1,0 +1,589 @@
+---
+layout: "radar"
+title: "Research Radar · July 22, 2026"
+kind: "daily"
+slug: "2026-07-22"
+date: 2026-07-22
+summary: "Window: July 20–22, 2026 (latest preprints); back-swept through May 2026 for field-relevant work not previously surfaced · Counts: 0 peer-reviewed · 10 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/7956d8c7-500b-4c85-ad4c-5ef9c8784e58"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-07-22.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ── tokens ── */
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --fig-bg: #fff;
+  --fig-border: #ccc;
+  --tag-bg: #e8e8e8;
+  --tag-text: #555;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a; --dim: #888;
+  --title: #1a1a1a; --link: #1a4f99; --fig-bg: #fff; --fig-border: #ccc;
+  --tag-bg: #e8e8e8; --tag-text: #555;
+  --accent-teal: #0d7377; --accent-blue: #1a4f99; --accent-red: #b02020;
+  --accent-amber: #a05c00; --accent-violet: #5c1aaa; --accent-green: #1a6e3c;
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9; --dim: #666;
+  --title: #f0f0f0; --link: #7eb8ff; --fig-bg: #1e1e1e; --fig-border: #333;
+  --tag-bg: #252525; --tag-text: #aaa;
+  --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+  --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+}
+
+/* ── reset + base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── masthead ── */
+.masthead {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 24px;
+  margin-bottom: 40px;
+}
+.masthead-eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-size: 28px;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  color: var(--title);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.masthead-counts {
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.track {
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+.track-sep { color: var(--border); }
+
+/* ── tags ── */
+.tag {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  text-transform: uppercase;
+}
+.tag-peer    { background: color-mix(in srgb, var(--accent-green) 18%, transparent); color: var(--accent-green); }
+.tag-interp  { background: color-mix(in srgb, var(--accent-teal) 18%, transparent);  color: var(--accent-teal); }
+.tag-security{ background: color-mix(in srgb, var(--accent-red) 18%, transparent);   color: var(--accent-red); }
+.tag-dllm    { background: color-mix(in srgb, var(--accent-blue) 18%, transparent);  color: var(--accent-blue); }
+.tag-control { background: color-mix(in srgb, var(--accent-violet) 18%, transparent);color: var(--accent-violet); }
+.tag-rank    { background: color-mix(in srgb, var(--accent-amber) 18%, transparent); color: var(--accent-amber); }
+
+/* ── full paper entry ── */
+.paper { margin-bottom: 52px; }
+.paper-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.paper-rank {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--dim);
+  min-width: 26px;
+}
+.paper-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  text-wrap: balance;
+}
+.paper-title a {
+  color: var(--title);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.paper-title a:hover { color: var(--link); }
+.paper-hook {
+  font-size: 17px;
+  line-height: 1.65;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.paper-figure {
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 20px 20px 12px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+}
+.paper-figure figcaption {
+  color: #666;
+}
+.paper-figure svg { display: block; width: 100%; max-width: 500px; margin: 0 auto; }
+.paper-figure figcaption {
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
+  line-height: 1.5;
+  font-style: italic;
+}
+.paper-detail {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+}
+.paper + .paper { border-top: 1px solid var(--border); padding-top: 48px; }
+
+/* ── condensed grid ── */
+.more-section-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin: 56px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.more-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 500px) { .more-grid { grid-template-columns: 1fr; } }
+.more-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 14px 16px;
+  display: flex;
+  gap: 10px;
+}
+.more-rank {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  min-width: 22px;
+  padding-top: 2px;
+}
+.more-body { flex: 1; min-width: 0; }
+.more-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 7px; }
+.more-title {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 6px;
+  text-wrap: balance;
+}
+.more-title a { color: var(--title); text-decoration: underline; text-underline-offset: 2px; }
+.more-title a:hover { color: var(--link); }
+.more-summary { font-size: 13px; color: var(--dim); line-height: 1.5; }
+
+/* ── divider ── */
+.section-div {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 52px 0 40px;
+}
+
+/* ── footer ── */
+footer {
+  margin-top: 72px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+</style>
+
+
+<header class="masthead">
+  <div class="masthead-eyebrow">RESEARCH RADAR · DAILY</div>
+  <div class="masthead-issue">July 22, 2026</div>
+  <div class="masthead-counts">0 peer-reviewed · 10 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Mech Interp</span>
+    <span class="track-sep">·</span>
+    <span class="track">AI Security</span>
+    <span class="track-sep">·</span>
+    <span class="track">Text Diffusion LMs</span>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- PAPER 1 — CircuitKIT -->
+<!-- ══════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.19317">CircuitKIT: Circuit Discovery, Evaluation, and Application Toolkit for Mechanistic Interpretability</a>
+  </h2>
+  <p class="paper-hook">
+    Mech-interp circuit work has long been hampered by the absence of shared infrastructure — researchers stitch together bespoke discovery scripts, hand-written evaluation loops, and ad hoc application code with no common representation tying them together. CircuitKIT ships all of that as one typed, serializable library: discover a circuit with EAP, evaluate its faithfulness, apply it to steer or prune the model, and compare results across methods without any format translation.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="CircuitKIT pipeline: Discovery → Circuit (serialized) → Evaluation → Application">
+      <!-- stage boxes -->
+      <rect x="20" y="70" width="100" height="60" rx="5" fill="none" stroke="#14b8bd" stroke-width="1.5"/>
+      <text x="70" y="97" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#14b8bd">Discovery</text>
+      <text x="70" y="114" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#666">EAP · ACDC</text>
+
+      <rect x="195" y="60" width="110" height="80" rx="5" fill="none" stroke="#f0a030" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="250" y="87" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#f0a030">Circuit</text>
+      <text x="250" y="104" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#888">serialized</text>
+      <text x="250" y="120" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#888">typed repr.</text>
+
+      <rect x="380" y="42" width="100" height="40" rx="4" fill="none" stroke="#c084fc" stroke-width="1.5"/>
+      <text x="430" y="67" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c084fc">Evaluation</text>
+
+      <rect x="380" y="118" width="100" height="40" rx="4" fill="none" stroke="#4ade80" stroke-width="1.5"/>
+      <text x="430" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#4ade80">Application</text>
+
+      <!-- arrows discovery → circuit -->
+      <path d="M120 100 H190" stroke="#666" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+      <!-- arrows circuit → eval and circuit → app -->
+      <path d="M305 85 Q345 85 375 65" stroke="#666" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+      <path d="M305 115 Q345 115 375 135" stroke="#666" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+      <!-- sub-labels under app -->
+      <text x="430" y="172" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#666">prune · steer · edit · fine-tune</text>
+
+      <!-- arrowhead marker -->
+      <defs>
+        <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 Z" fill="#666"/>
+        </marker>
+      </defs>
+
+      <!-- shared repr. callout -->
+      <text x="250" y="175" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#f0a030">↑ compare across discovery methods</text>
+    </svg>
+    <figcaption>CircuitKIT's unified pipeline: a typed, serializable circuit representation connects discovery algorithms (EAP, ACDC, and others) to evaluation diagnostics and downstream applications — pruning, editing, steering, fine-tuning — without format translation between stages.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    CircuitKIT introduces a typed, serializable circuit representation that connects every stage of the circuit-analysis workflow: a suite of discovery algorithms, declarative interfaces for mapping structured datasets into discovery tasks, faithfulness and completeness diagnostics, and downstream application modules. Because circuits are serialized, results from different discovery methods are directly comparable. Adding a new discovery algorithm requires implementing a single typed interface.
+  </p>
+</article>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- PAPER 2 — Agent Data Injection -->
+<!-- ══════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.05120">Agent Data Injection Attacks are Realistic Threats to AI Agents</a>
+  </h2>
+  <p class="paper-hook">
+    Every current defense against prompt injection watches for injected <em>instructions</em>. This paper shows that hiding the attack inside metadata fields and format tokens — content the agent treats as structurally authoritative, not adversarial — bypasses all of those defenses. The authors demonstrate arbitrary click attacks on Claude in Chrome and remote code execution on Claude Code and Gemini CLI without touching a single instruction-style payload.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="ADI attack vector: metadata and format tokens bypass instruction-focused defenses">
+      <!-- Normal flow (top) -->
+      <text x="10" y="22" font-family="'Courier New',monospace" font-size="10" fill="#666">NORMAL FLOW</text>
+      <rect x="10" y="30" width="100" height="36" rx="4" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+      <text x="60" y="48" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#4ade80">User input</text>
+      <text x="60" y="62" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#666">instruction</text>
+      <path d="M110 48 H185" stroke="#666" stroke-width="1.2" marker-end="url(#arr2)"/>
+      <rect x="186" y="30" width="90" height="36" rx="4" fill="none" stroke="#888" stroke-width="1.2"/>
+      <text x="231" y="53" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">Defense</text>
+      <path d="M276 48 H335" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arr2g)"/>
+      <rect x="336" y="30" width="80" height="36" rx="4" fill="none" stroke="#888" stroke-width="1.2"/>
+      <text x="376" y="53" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">Agent</text>
+      <path d="M416 48 H470" stroke="#888" stroke-width="1.2" marker-end="url(#arr2)"/>
+      <text x="480" y="53" font-family="'Courier New',monospace" font-size="9" fill="#4ade80">safe</text>
+
+      <!-- ADI flow (bottom) -->
+      <text x="10" y="115" font-family="'Courier New',monospace" font-size="10" fill="#f07070">ADI ATTACK</text>
+      <rect x="10" y="123" width="100" height="50" rx="4" fill="none" stroke="#f07070" stroke-width="1.5"/>
+      <text x="60" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#f07070">Metadata</text>
+      <text x="60" y="158" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#f07070">resource IDs</text>
+      <text x="60" y="170" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#f07070">format tokens</text>
+      <path d="M110 148 H185" stroke="#f07070" stroke-width="1.5" marker-end="url(#arr2r)"/>
+
+      <rect x="186" y="123" width="90" height="50" rx="4" fill="none" stroke="#888" stroke-width="1.2"/>
+      <text x="231" y="153" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">Defense</text>
+      <!-- red X over defense -->
+      <line x1="195" y1="132" x2="267" y2="164" stroke="#f07070" stroke-width="2"/>
+      <line x1="267" y1="132" x2="195" y2="164" stroke="#f07070" stroke-width="2"/>
+
+      <path d="M276 148 H335" stroke="#f07070" stroke-width="1.5" marker-end="url(#arr2r)"/>
+      <rect x="336" y="123" width="80" height="50" rx="4" fill="none" stroke="#f07070" stroke-width="1.2"/>
+      <text x="376" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#f07070">Agent</text>
+      <text x="376" y="163" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#f07070">treats as</text>
+      <text x="376" y="175" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#f07070">trusted ctx</text>
+      <path d="M416 148 H470" stroke="#f07070" stroke-width="1.5" marker-end="url(#arr2r)"/>
+      <text x="473" y="143" font-family="'Courier New',monospace" font-size="9" fill="#f07070">RCE</text>
+      <text x="473" y="157" font-family="'Courier New',monospace" font-size="9" fill="#f07070">click</text>
+
+      <defs>
+        <marker id="arr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 Z" fill="#666"/></marker>
+        <marker id="arr2g" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 Z" fill="#4ade80"/></marker>
+        <marker id="arr2r" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 Z" fill="#f07070"/></marker>
+      </defs>
+    </svg>
+    <figcaption>ADI vs. normal flow: standard defenses inspect instruction-style content (top path — blocked). ADI payloads ride in metadata fields and format tokens that agents treat as structurally authoritative context — the defense never fires, and the agent executes malicious actions (bottom path).</figcaption>
+  </figure>
+  <p class="paper-detail">
+    ADI injects malicious data disguised as trusted agent-context material: security-critical metadata (resource identifiers, data-origin fields) or tool-call/response format tokens. Because agents treat this content as structurally authoritative rather than as untrusted instructions, existing defenses that sanitize instruction-style content do not fire. The authors demonstrate two attack classes: arbitrary click attacks on web agents (Claude in Chrome, Antigravity, Nanobrowser) and remote code execution / supply-chain attacks on coding agents (Claude Code, Codex, Gemini CLI). ⚠️ Setup-file content is now an active attack surface.
+  </p>
+</article>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- PAPER 3 — ACH/SAH Harmful Features -->
+<!-- ══════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2606.28153">Robust Harmful Features Under Jailbreak Attacks: Mechanistic Evidence from Attention Head Specialization in Large Language Models</a>
+  </h2>
+  <p class="paper-hook">
+    Jailbreaks don't eliminate the model's internal safety signal — they selectively suppress the specific early-layer attention heads that act as its gatekeeper, while mid-layer safety heads remain fully active throughout. That asymmetry turns out to be a detection opportunity: reading the mid-layer heads' activations, without any fine-tuning, yields competitive jailbreak detection that holds up under adversarial pressure.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="ACH suppression vs. SAH robustness under jailbreak attacks">
+      <!-- y-axis label -->
+      <text x="12" y="100" font-family="Georgia,serif" font-size="11" fill="#888" transform="rotate(-90,12,100)">activation</text>
+
+      <!-- layer axis -->
+      <text x="60" y="185" font-family="'Courier New',monospace" font-size="9" fill="#666">early layers</text>
+      <text x="350" y="185" font-family="'Courier New',monospace" font-size="9" fill="#666">mid layers</text>
+      <line x1="40" y1="170" x2="490" y2="170" stroke="#444" stroke-width="1"/>
+
+      <!-- ACH region box -->
+      <rect x="40" y="30" width="200" height="130" rx="4" fill="none" stroke="#f07070" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="140" y="22" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#f07070">ACH (early layers)</text>
+
+      <!-- SAH region box -->
+      <rect x="260" y="30" width="220" height="130" rx="4" fill="none" stroke="#14b8bd" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="370" y="22" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#14b8bd">SAH (mid layers)</text>
+
+      <!-- normal activations — ACH (high) -->
+      <polyline points="60,60 100,55 140,65 180,58 220,62" fill="none" stroke="#4ade80" stroke-width="2"/>
+      <!-- attacked activations — ACH (suppressed) -->
+      <polyline points="60,135 100,140 140,132 180,138 220,136" fill="none" stroke="#f07070" stroke-width="2" stroke-dasharray="6,3"/>
+
+      <!-- normal activations — SAH (moderate, robust) -->
+      <polyline points="280,80 320,75 360,78 400,76 440,80 470,77" fill="none" stroke="#4ade80" stroke-width="2"/>
+      <!-- attacked activations — SAH (same as normal) -->
+      <polyline points="280,84 320,79 360,82 400,80 440,84 470,81" fill="none" stroke="#f07070" stroke-width="2" stroke-dasharray="6,3"/>
+
+      <!-- legend -->
+      <line x1="40" y1="195" x2="60" y2="195" stroke="#4ade80" stroke-width="2"/>
+      <text x="64" y="199" font-family="'Courier New',monospace" font-size="9" fill="#4ade80">normal</text>
+      <line x1="120" y1="195" x2="140" y2="195" stroke="#f07070" stroke-width="2" stroke-dasharray="6,3"/>
+      <text x="144" y="199" font-family="'Courier New',monospace" font-size="9" fill="#f07070">under attack</text>
+
+      <!-- annotation: suppressed -->
+      <text x="140" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#f07070" font-style="italic">suppressed</text>
+      <!-- annotation: robust -->
+      <text x="370" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#14b8bd" font-style="italic">robust → detector</text>
+    </svg>
+    <figcaption>Adversarially Compromised Heads (ACH, early layers) are selectively suppressed when jailbreak attacks succeed — driven specifically by attack-template tokens, not harmful content. Safety-Aligned Heads (SAH, mid layers) remain active regardless of attack success, making their activations a training-free jailbreak detector.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The paper identifies two functionally distinct attention head classes: ACHs (concentrated in early layers, suppressed by attacks) and SAHs (mid-layers, robust even during successful jailbreaks). Token-level attribution reveals ACH suppression is driven by attack-template tokens — formatting alone bypasses refusal. Ablation studies confirm causal necessity: suppressing a small number of ACHs induces jailbreak-like behavior on normally refused inputs. SAH activations yield competitive jailbreak detection with strong adversarial robustness, no training required.
+  </p>
+</article>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- CONDENSED GRID: papers 4–10 -->
+<!-- ══════════════════════════════════════ -->
+<div class="more-section-label">Also today — items 4–10</div>
+<div class="more-grid">
+
+  <div class="more-card">
+    <div class="more-rank">04</div>
+    <div class="more-body">
+      <div class="more-tags">
+        <span class="tag tag-interp">mech-interp</span>
+        <span class="tag tag-security">security</span>
+      </div>
+      <h3 class="more-title">
+        <a href="https://arxiv.org/abs/2606.22673">AgentLens: Interpretable Safety Steering via Mechanistic Subspaces for Multi-Turn Coding Agents</a>
+      </h3>
+      <p class="more-summary">10-dimensional subspace intervention per agent step catches harmful intent before tool execution; introduces the MAS benchmark (194 annotated multi-turn trajectories).</p>
+    </div>
+  </div>
+
+  <div class="more-card">
+    <div class="more-rank">05</div>
+    <div class="more-body">
+      <div class="more-tags">
+        <span class="tag tag-dllm">dLLM</span>
+        <span class="tag tag-interp">mech-interp</span>
+      </div>
+      <h3 class="more-title">
+        <a href="https://arxiv.org/abs/2605.10971">Steering Without Breaking: Mechanistically Informed Interventions for Discrete Diffusion LMs</a>
+      </h3>
+      <p class="more-summary">SAEs on dLLM denoising trajectories show topic locks in within 2% of steps; sentiment drifts over 20%. Adaptive steering at the right window beats uniform baselines on all four tested models.</p>
+    </div>
+  </div>
+
+  <div class="more-card">
+    <div class="more-rank">06</div>
+    <div class="more-body">
+      <div class="more-tags">
+        <span class="tag tag-interp">mech-interp</span>
+      </div>
+      <h3 class="more-title">
+        <a href="https://arxiv.org/abs/2606.06267">Many Circuits, One Mechanism: Input Variation and Evaluation Granularity in Circuit Discovery</a>
+      </h3>
+      <p class="more-summary">"Phantom specialization": circuits discovered under different input distributions look structurally distinct but implement the same computation. Source-level evaluation is the culprit; edge-level evaluation reveals the many-to-one mapping.</p>
+    </div>
+  </div>
+
+  <div class="more-card">
+    <div class="more-rank">07</div>
+    <div class="more-body">
+      <div class="more-tags">
+        <span class="tag tag-interp">mech-interp</span>
+      </div>
+      <h3 class="more-title">
+        <a href="https://arxiv.org/abs/2606.06333">Subspace-Aware Sparse Autoencoders (SASA) for Effective Mechanistic Interpretability</a>
+      </h3>
+      <p class="more-summary">Replaces each SAE decoder vector with a learned low-rank subspace + block sparsity. Feature absorption drops substantially on GPT-2 Small and Mistral-7B at roughly half the token budget of standard SAEs.</p>
+    </div>
+  </div>
+
+  <div class="more-card">
+    <div class="more-rank">08</div>
+    <div class="more-body">
+      <div class="more-tags">
+        <span class="tag tag-security">AI security</span>
+      </div>
+      <h3 class="more-title">
+        <a href="https://arxiv.org/abs/2607.05743">The Balkanization of Execution-Security Research for AI Coding Agents</a>
+      </h3>
+      <p class="more-summary">Systematic review of 39 papers across 17 categories; policy-enforcement failure rates of 69–98% are the headline. Documents 4 patched CVEs and 5 structural gaps in the fragmented research landscape.</p>
+    </div>
+  </div>
+
+  <div class="more-card">
+    <div class="more-rank">09</div>
+    <div class="more-body">
+      <div class="more-tags">
+        <span class="tag tag-interp">mech-interp</span>
+      </div>
+      <h3 class="more-title">
+        <a href="https://arxiv.org/abs/2606.07007">A Geometric View for Understanding Concept Learning and Neuron Interpretation in Sparse Autoencoders</a>
+      </h3>
+      <p class="more-summary">Formal unified framework for SAE concept learning: three learning notions (detection, separation, approximation), capacity constraints on SAE size, and set-theoretic derivations for why feature splitting and absorption occur.</p>
+    </div>
+  </div>
+
+  <div class="more-card">
+    <div class="more-rank">10</div>
+    <div class="more-body">
+      <div class="more-tags">
+        <span class="tag tag-security">AI security</span>
+      </div>
+      <h3 class="more-title">
+        <a href="https://arxiv.org/abs/2606.26479">Adaptive Evaluation of Out-of-Band Defenses Against Prompt Injection in LLM Agents</a>
+      </h3>
+      <p class="more-summary">Second-gen out-of-band defenses (CaMeL, FIDES, Progent, RTBAS, FORGE) look strong on AgentDojo — but adaptive attackers expose the same gap as early SQL-sanitization benchmarks did for SQLi.</p>
+    </div>
+  </div>
+
+</div><!-- /.more-grid -->
+
+<footer>
+  <p>Research Radar · Daily edition · July 22, 2026 · Mech Interp · AI Security · Text Diffusion LMs</p>
+  <p style="margin-top:6px">Window: July 20–22, 2026 (latest preprints) + May–June 2026 backfill · Sources: arXiv cs.CL/cs.LG/cs.CR/cs.AI · OpenReview · ACL Anthology · Semantic Scholar · HuggingFace Papers</p>
+</footer>
+{% endraw %}

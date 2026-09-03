@@ -1,0 +1,629 @@
+---
+layout: "radar"
+title: "Research Radar — August 2, 2026"
+kind: "daily"
+slug: "2026-08-02"
+date: 2026-08-02
+summary: "Window: July 31 – August 2, 2026 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 10 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/a7127bcc-db2b-4c23-9efb-493ad6085677"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-02.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99;
+  --tag-bg: #e8e8e8; --tag-text: #444;
+  --accent-teal: #0d7377; --accent-blue: #1a4f99; --accent-red: #b02020;
+  --accent-amber: #a05c00; --accent-violet: #5c1aaa; --accent-green: #1a6e3c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+    --dim: #666; --title: #f0f0f0; --link: #7eb8ff;
+    --tag-bg: #252525; --tag-text: #aaa;
+    --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+    --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff;
+  --tag-bg: #252525; --tag-text: #aaa;
+  --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+  --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99;
+  --tag-bg: #e8e8e8; --tag-text: #444;
+  --accent-teal: #0d7377; --accent-blue: #1a4f99; --accent-red: #b02020;
+  --accent-amber: #a05c00; --accent-violet: #5c1aaa; --accent-green: #1a6e3c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,sans-serif;
+  font-size:17px;line-height:1.65;max-width:660px;margin:0 auto;padding:32px 20px 80px}
+.masthead{border-bottom:2px solid var(--border);padding-bottom:24px;margin-bottom:48px}
+.masthead-eyebrow{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.15em;
+  color:var(--dim);text-transform:uppercase;margin-bottom:6px}
+.masthead-issue{font-family:Georgia,serif;font-size:28px;font-weight:bold;
+  color:var(--title);margin-bottom:8px}
+.masthead-counts{font-family:'Courier New',monospace;font-size:12px;color:var(--dim);margin-bottom:10px}
+.masthead-tracks{font-size:13px;color:var(--dim)}
+.track{color:var(--accent-teal);font-weight:600}.track-sep{margin:0 6px}
+.tag{display:inline-block;font-family:'Courier New',monospace;font-size:10px;
+  padding:2px 7px;border-radius:3px;background:var(--tag-bg);color:var(--tag-text);
+  margin-right:4px;vertical-align:middle}
+.tag-peer{background:#d4edda;color:#155724}
+.tag-interp{background:#d0f0f0;color:#0d5e60}
+.tag-security{background:#fde8e8;color:#8b1515}
+.tag-dllm{background:#dbeafe;color:#1e3a8a}
+.tag-control{background:#ede8fe;color:#4a1a8a}
+.tag-rank{background:#fef3c7;color:#78350f}
+@media(prefers-color-scheme:dark){
+  .tag-peer{background:#1a3a22;color:#4ade80}
+  .tag-interp{background:#0a2828;color:#14b8bd}
+  .tag-security{background:#2a0a0a;color:#f07070}
+  .tag-dllm{background:#0a1a3a;color:#7eb8ff}
+  .tag-control{background:#1a0a2a;color:#c084fc}
+  .tag-rank{background:#2a1a00;color:#f0a030}
+}
+:root[data-theme="dark"] .tag-peer{background:#1a3a22;color:#4ade80}
+:root[data-theme="dark"] .tag-interp{background:#0a2828;color:#14b8bd}
+:root[data-theme="dark"] .tag-security{background:#2a0a0a;color:#f07070}
+:root[data-theme="dark"] .tag-dllm{background:#0a1a3a;color:#7eb8ff}
+:root[data-theme="dark"] .tag-control{background:#1a0a2a;color:#c084fc}
+:root[data-theme="dark"] .tag-rank{background:#2a1a00;color:#f0a030}
+:root[data-theme="light"] .tag-peer{background:#d4edda;color:#155724}
+:root[data-theme="light"] .tag-interp{background:#d0f0f0;color:#0d5e60}
+:root[data-theme="light"] .tag-security{background:#fde8e8;color:#8b1515}
+:root[data-theme="light"] .tag-dllm{background:#dbeafe;color:#1e3a8a}
+:root[data-theme="light"] .tag-control{background:#ede8fe;color:#4a1a8a}
+:root[data-theme="light"] .tag-rank{background:#fef3c7;color:#78350f}
+.paper{margin-bottom:64px}
+.paper-header{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.paper-rank{font-family:'Courier New',monospace;font-size:28px;font-weight:bold;
+  color:var(--border);min-width:44px}
+.paper-title{font-family:Georgia,serif;font-size:22px;font-weight:bold;line-height:1.3;
+  margin-bottom:14px;text-decoration:underline;text-decoration-color:var(--border);
+  text-underline-offset:3px}
+.paper-title a{color:var(--title);text-decoration:inherit}
+.paper-title a:hover{color:var(--link)}
+.paper-hook{font-size:17px;color:var(--text);margin-bottom:20px;line-height:1.7}
+.paper-figure{background:#fff;border:1px solid var(--border);border-radius:4px;
+  padding:16px;margin:20px 0;text-align:center}
+.paper-figure figcaption{font-size:12px;color:var(--dim);margin-top:10px;
+  font-style:italic;text-align:left}
+.paper-detail{font-size:15px;color:var(--text);line-height:1.7}
+hr.paper-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+.more-section-label{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--dim);border-top:1px solid var(--border);
+  padding-top:16px;margin:48px 0 36px}
+.mid-paper{margin-bottom:44px}
+.mid-title{font-family:Georgia,serif;font-size:18px;font-weight:bold;line-height:1.3;
+  margin-bottom:14px;text-decoration:underline;text-decoration-color:var(--border);
+  text-underline-offset:3px}
+.mid-title a{color:var(--title);text-decoration:inherit}
+.mid-title a:hover{color:var(--link)}
+.mid-summary{font-size:14px;color:var(--text);line-height:1.65;margin-top:14px}
+.section-divider{border:none;border-top:1px solid var(--border);margin:36px 0}
+.footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--border);
+  font-family:'Courier New',monospace;font-size:11px;color:var(--dim)}
+</style>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · August 2, 2026</div>
+  <div class="masthead-counts">0 peer-reviewed · 10 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Mech Interp</span><span class="track-sep">·</span>
+    <span class="track">AI Security</span><span class="track-sep">·</span>
+    <span class="track">Text Diffusion LMs</span>
+  </div>
+</header>
+
+<!-- ═══ PAPER 1: MaskForge ═══ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-rank">Top pick</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2606.04027">MaskForge: Structure-Aware Adaptive Attacks for Jailbreaking Diffusion Large Language Models</a>
+  </h2>
+  <p class="paper-hook">
+    Autoregressive LLMs have well-studied jailbreak surfaces, but diffusion LLMs expose a fundamentally different attack geometry: mask tokens are native inputs, the model processes full bidirectional context, and token commitment is confidence-based rather than sequential. MaskForge exploits all three properties with a fully black-box adaptive strategy, achieving 79.3% average attack success rate across five public dLLMs — a 17.6% relative improvement over the strongest existing baseline.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 195" xmlns="http://www.w3.org/2000/svg" aria-label="MaskForge adaptive attack loop: UCB bandit selects mask patterns from growing library, submits to dLLM, distills successful patterns back">
+      <defs>
+        <marker id="mf1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#555"/></marker>
+        <marker id="mf2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#999"/></marker>
+      </defs>
+      <rect width="500" height="195" fill="#fff"/>
+      <text x="250" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#222">MaskForge: UCB-Bandit Adaptive Attack Pipeline</text>
+      <rect x="14" y="38" width="110" height="56" rx="5" fill="#eef2ff" stroke="#3b5fe0" stroke-width="1.5"/>
+      <text x="69" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1e3a8a">Mask Pattern</text>
+      <text x="69" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1e3a8a">Library</text>
+      <rect x="170" y="38" width="110" height="56" rx="5" fill="#fff7ed" stroke="#b45309" stroke-width="1.5"/>
+      <text x="225" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#92400e">UCB Bandit</text>
+      <text x="225" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#92400e">Selector</text>
+      <rect x="326" y="38" width="110" height="56" rx="5" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+      <text x="381" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#7f1d1d">Target dLLM</text>
+      <text x="381" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7f1d1d">(black-box)</text>
+      <line x1="124" y1="66" x2="166" y2="66" stroke="#555" stroke-width="1.5" marker-end="url(#mf1)"/>
+      <line x1="280" y1="66" x2="322" y2="66" stroke="#555" stroke-width="1.5" marker-end="url(#mf1)"/>
+      <text x="145" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">pattern</text>
+      <text x="301" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">attack</text>
+      <rect x="340" y="130" width="82" height="30" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="381" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#166534">79.3% ASR</text>
+      <line x1="381" y1="94" x2="381" y2="128" stroke="#555" stroke-width="1.5" marker-end="url(#mf1)"/>
+      <path d="M 370 130 Q 225 180 124 106" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#mf2)"/>
+      <text x="225" y="174" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">distill successful patterns → library</text>
+    </svg>
+    <figcaption>Figure 1: MaskForge's adaptive black-box attack loop. A UCB bandit selects structural mask patterns from a growing library, submits jailbreak attempts to the target dLLM, then distills successful mask structures back — achieving 79.3% average ASR across five dLLMs with a 17.6% relative improvement over prior baselines.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    MaskForge operates fully black-box: it maintains a library of structural mask patterns (positional arrangements of mask tokens native to dLLMs) and uses a UCB bandit to balance exploration of new patterns against exploitation of effective ones. After each round, successful attack instances are distilled back as new library candidates. Evaluated across five publicly available dLLMs on three jailbreak benchmarks (authors include institutions from Wisconsin-Madison, Johns Hopkins, USC, and Adelaide), the attack achieves 79.3% average ASR — exploiting properties unique to diffusion models: mask tokens are native inputs (not corruptions), bidirectional attention means adversarial structure affects generation globally, and confidence-based commitment means injected structure can persist past safety-oriented denoising steps.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ═══ PAPER 2: Beyond Bidirectional ═══ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.27386">Beyond the Bidirectional Promise: Re-evaluating the Robustness of Diffusion Language Models</a>
+  </h2>
+  <p class="paper-hook">
+    The claim that bidirectional attention makes diffusion LLMs inherently harder to attack than autoregressive models gets a systematic empirical test here. The answer is nuanced and matters for deployment: dLLMs genuinely resist gradient-based adversarial suffix attacks due to their stochastic loss landscape, but that structural advantage completely disappears under natural noise — the perturbation type that dominates real-world use.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart: dLLMs outperform AR models on gradient attacks but show no robustness advantage on 32 natural perturbation types">
+      <rect width="500" height="190" fill="#fff"/>
+      <text x="250" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#222">dLLM vs. AR Robustness: Gradient Attacks vs. Natural Perturbations</text>
+      <line x1="60" y1="28" x2="60" y2="150" stroke="#ccc" stroke-width="1"/>
+      <line x1="60" y1="150" x2="480" y2="150" stroke="#ccc" stroke-width="1"/>
+      <text x="15" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666" transform="rotate(-90,15,92)">robustness (schematic)</text>
+      <text x="52" y="32" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">high</text>
+      <text x="52" y="150" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">low</text>
+      <line x1="60" y1="90" x2="480" y2="90" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+      <!-- Gradient attacks group -->
+      <text x="160" y="168" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#444">Gradient-Based Attacks</text>
+      <rect x="85" y="42" width="55" height="108" fill="#3b82f6" rx="2"/>
+      <text x="112" y="36" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#1e3a8a">dLLM</text>
+      <rect x="155" y="118" width="55" height="32" fill="#f87171" rx="2"/>
+      <text x="182" y="113" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#7f1d1d">AR</text>
+      <line x1="112" y1="42" x2="182" y2="42" stroke="#2563eb" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="147" y="36" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#2563eb">dLLM advantage ✓</text>
+      <!-- Natural perturbations group -->
+      <text x="370" y="168" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#444">Natural Perturbations (32 types)</text>
+      <rect x="310" y="92" width="55" height="58" fill="#93c5fd" rx="2"/>
+      <text x="337" y="87" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1e3a8a">dLLM</text>
+      <rect x="380" y="96" width="55" height="54" fill="#fca5a5" rx="2"/>
+      <text x="407" y="91" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#7f1d1d">AR</text>
+      <line x1="337" y1="86" x2="407" y2="86" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="372" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">≈ similar (weight-dependent)</text>
+    </svg>
+    <figcaption>Figure 1: Core finding — dLLMs' stochastic loss landscape blunts gradient-based adversarial suffix attacks (left), but provides no inherent advantage under natural noise (right), where robustness depends on training rather than architecture.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Comparing LLaDA-8B vs. LLaMA-3-8B and Dream-7B vs. Qwen2.5-7B across 32 naturally occurring perturbation types and standard gradient-based adversarial suffix attacks, the authors find that dLLMs' highly non-convex, stochastic loss landscapes defeat gradient descent-based token optimization — a genuine architectural benefit. Under natural perturbations (character swaps, synonym substitution, paraphrasing, noise injection), however, robustness correlates with weight-level training rather than architecture; mechanistic hidden-state analysis traces the gradient-attack resistance specifically to diffusion training dynamics, not to bidirectional attention per se. The finding reframes the dLLM robustness narrative: the architectural safety benefit is real but narrowly scoped to gradient-based attacks.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ═══ PAPER 3: Piggybacking ═══ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.28165">Piggybacking on Perception: Stealthy Concurrent Audio Prompt Injections against Multimodal LLM Agents</a>
+  </h2>
+  <p class="paper-hook">
+    Prompt injection research has mostly targeted text channels, but multimodal agents now process audio — and audio-capable models must transcribe before they can filter. Injecting malicious instructions into the acoustic signal, below the threshold of human perception, bypasses safety filters entirely: by the time the model has a text representation to filter, the injected instruction is already in the reasoning context.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 185" xmlns="http://www.w3.org/2000/svg" aria-label="Audio prompt injection pipeline: payload embedded in acoustic signal passes through perception layer before safety filters can act">
+      <defs>
+        <marker id="pp1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#555"/></marker>
+        <marker id="pp2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#dc2626"/></marker>
+      </defs>
+      <rect width="500" height="185" fill="#fff"/>
+      <text x="250" y="15" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#222">Audio Prompt Injection: Attack Before the Safety Filter</text>
+      <rect x="10" y="32" width="80" height="44" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="50" y="51" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#166534">Benign</text>
+      <text x="50" y="65" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#166534">Audio</text>
+      <rect x="10" y="100" width="80" height="44" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+      <text x="50" y="119" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#991b1b">Hidden</text>
+      <text x="50" y="133" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#991b1b">Payload</text>
+      <line x1="90" y1="54" x2="120" y2="70" stroke="#555" stroke-width="1.5" marker-end="url(#pp1)"/>
+      <line x1="90" y1="122" x2="120" y2="96" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#pp2)"/>
+      <rect x="125" y="56" width="85" height="44" rx="4" fill="#fefce8" stroke="#d97706" stroke-width="1.5"/>
+      <text x="167" y="76" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#92400e">Acoustic</text>
+      <text x="167" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#92400e">Signal</text>
+      <line x1="210" y1="78" x2="242" y2="78" stroke="#555" stroke-width="1.5" marker-end="url(#pp1)"/>
+      <rect x="247" y="56" width="90" height="44" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="292" y="76" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1d4ed8">Perception</text>
+      <text x="292" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1d4ed8">(ASR)</text>
+      <line x1="337" y1="78" x2="369" y2="78" stroke="#555" stroke-width="1.5" marker-end="url(#pp1)"/>
+      <rect x="374" y="56" width="112" height="44" rx="4" fill="#fdf4ff" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="430" y="73" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#4c1d95">Agent LLM</text>
+      <text x="430" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4c1d95">instruction in context</text>
+      <rect x="356" y="118" width="102" height="26" rx="3" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
+      <text x="407" y="135" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#991b1b">safety filter: bypassed</text>
+      <line x1="407" y1="118" x2="407" y2="101" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="167" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#dc2626">injection here (imperceptible)</text>
+      <text x="292" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">payload → text</text>
+      <text x="430" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">no filter has run yet</text>
+    </svg>
+    <figcaption>Figure 1: Attack pipeline — the malicious payload is embedded in the acoustic waveform as a psychoacoustically imperceptible perturbation. The perception (ASR) layer transcribes it to text before any safety filter runs, placing the injected instruction directly in the agent's reasoning context.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The attack embeds adversarial instruction strings as psychoacoustically imperceptible perturbations in the audio waveform, running concurrently with (not replacing) the legitimate audio content — making the channel stealthy to both human review and acoustic anomaly detection. The "concurrent" structure exploits a fundamental ordering constraint in multimodal agents: the ASR perception layer must transcribe to text before the LLM's safety alignment can act. Evaluated against production-scale multimodal agents (Hangzhou Dianzi University, Ant Group, Zhejiang University, Tsinghua University), the attack achieves high success rates while remaining below human perceptibility thresholds, with code publicly released.
+  </p>
+</article>
+
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- ═══ PAPER 4: SAE FEGA ═══ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.24645">Sparse Autoencoders Encode Both Concepts and Functions: The Downstream Geometry of Feature Effects</a>
+  </h3>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="Scatter plot: SAE features plotted on concept-activation vs functional-effect axes, showing systematic misalignment between the two">
+      <rect width="440" height="165" fill="#fff"/>
+      <text x="220" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#222">FEGA: Concept Representation ≠ Functional Effect</text>
+      <line x1="55" y1="135" x2="410" y2="135" stroke="#ccc" stroke-width="1"/>
+      <line x1="55" y1="22" x2="55" y2="135" stroke="#ccc" stroke-width="1"/>
+      <text x="232" y="153" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">Concept Activation Clarity →</text>
+      <text x="14" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666" transform="rotate(-90,14,82)">Functional Effect →</text>
+      <!-- Scatter: high concept / low effect (blue) -->
+      <circle cx="315" cy="123" r="5" fill="#3b82f6" opacity="0.75"/>
+      <circle cx="340" cy="118" r="5" fill="#3b82f6" opacity="0.75"/>
+      <circle cx="295" cy="127" r="4" fill="#3b82f6" opacity="0.65"/>
+      <circle cx="360" cy="121" r="4" fill="#3b82f6" opacity="0.65"/>
+      <!-- Scatter: high concept / high effect (green) -->
+      <circle cx="345" cy="42" r="6" fill="#16a34a" opacity="0.8"/>
+      <circle cx="368" cy="55" r="5" fill="#16a34a" opacity="0.75"/>
+      <!-- Scatter: low concept / high effect (red) -->
+      <circle cx="90" cy="40" r="5" fill="#dc2626" opacity="0.75"/>
+      <circle cx="75" cy="52" r="4" fill="#dc2626" opacity="0.65"/>
+      <circle cx="110" cy="46" r="4" fill="#dc2626" opacity="0.65"/>
+      <!-- Middle scatter (grey) -->
+      <circle cx="175" cy="98" r="4" fill="#94a3b8" opacity="0.55"/>
+      <circle cx="215" cy="87" r="5" fill="#94a3b8" opacity="0.55"/>
+      <circle cx="198" cy="110" r="4" fill="#94a3b8" opacity="0.55"/>
+      <circle cx="248" cy="76" r="4" fill="#94a3b8" opacity="0.55"/>
+      <circle cx="148" cy="68" r="5" fill="#94a3b8" opacity="0.55"/>
+      <!-- Legend -->
+      <circle cx="68" cy="152" r="4" fill="#3b82f6"/><text x="75" y="155" font-family="Georgia,serif" font-size="8" fill="#555">clear concept, weak effect</text>
+      <circle cx="200" cy="152" r="4" fill="#16a34a"/><text x="207" y="155" font-family="Georgia,serif" font-size="8" fill="#555">both strong</text>
+      <circle cx="275" cy="152" r="4" fill="#dc2626"/><text x="282" y="155" font-family="Georgia,serif" font-size="8" fill="#555">weak concept, strong effect</text>
+    </svg>
+    <figcaption>Figure 1: FEGA maps SAE features along concept (activation clarity) and effect (logit shift) axes — revealing systematic misalignment: interpretable features often have weak causal effects, and causally dominant features are often poorly described.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Feature-Effect Geometry Analysis (FEGA) decomposes SAE feature behavior into a concept axis (activation descriptions) and an effect axis (downstream logit shifts when the feature fires), finding these are systematically misaligned: features with clear interpretable descriptions may have weak or inconsistent causal effects on outputs, while causally dominant features can be poorly described. Across multiple models and SAE families, effect geometry predicts steering reliability better than activation descriptions alone — directly challenging interpretability evaluations that rely solely on activation analysis.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══ PAPER 5: Steering Signals ═══ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.25270">Where Steering Signals Come From: Activation Source Selection in Activation Steering</a>
+  </h3>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 440 158" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart: steering success rate at five source position types; execution-boundary positions yield the highest steering vector strength">
+      <rect width="440" height="158" fill="#fff"/>
+      <text x="220" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#222">Steering Vector Effectiveness by Source Position</text>
+      <line x1="55" y1="22" x2="55" y2="122" stroke="#ccc" stroke-width="1"/>
+      <line x1="55" y1="122" x2="420" y2="122" stroke="#ccc" stroke-width="1"/>
+      <text x="14" y="75" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666" transform="rotate(-90,14,75)">Success (%)</text>
+      <text x="48" y="122" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">0</text>
+      <text x="48" y="25" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">100</text>
+      <line x1="55" y1="72" x2="420" y2="72" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+      <rect x="68" y="96" width="44" height="26" fill="#fca5a5" rx="2"/>
+      <text x="90" y="136" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">random</text>
+      <rect x="130" y="80" width="44" height="42" fill="#fcd34d" rx="2"/>
+      <text x="152" y="136" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">middle</text>
+      <rect x="192" y="28" width="44" height="94" fill="#3b82f6" rx="2"/>
+      <text x="214" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#1e3a8a">best</text>
+      <text x="214" y="136" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="bold" fill="#1e3a8a">exec-boundary</text>
+      <rect x="254" y="88" width="44" height="34" fill="#fcd34d" rx="2"/>
+      <text x="276" y="136" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">post-action</text>
+      <rect x="316" y="76" width="44" height="46" fill="#86efac" rx="2"/>
+      <text x="338" y="136" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">last-token</text>
+    </svg>
+    <figcaption>Figure 1: Steering success across source position types — execution-boundary positions (where the model is about to produce the target behavior) consistently outperform all alternatives across three models and four task families.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Holding the downstream intervention constant and varying only where in the context the steering vector is extracted, the paper finds execution-boundary states — positions just before the model produces the target behavior — yield substantially stronger steering signals than random positions, last tokens, or post-action states, across three instruction-tuned models and four behavioral task families. This turns source selection from a poorly understood hyperparameter into a principled design choice with meaningful impact on steering reliability.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══ PAPER 6: ToxScreen ═══ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.26849">ToxScreen: Detecting Whether an LLM Has Been Poisoned</a>
+  </h3>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="ToxScreen benchmark taxonomy: 800 backdoored models spanning five axes — attack objective, trigger type, poison rate, model scale, training mechanism">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#222">ToxScreen: ≈800-Model Backdoor Benchmark (5 Axes)</text>
+      <text x="50" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="bold" fill="#555">Objective</text>
+      <rect x="10" y="38" width="80" height="16" rx="2" fill="#dbeafe"/><text x="50" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1e3a8a">label flip</text>
+      <rect x="10" y="58" width="80" height="16" rx="2" fill="#dbeafe"/><text x="50" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1e3a8a">toxicity</text>
+      <rect x="10" y="78" width="80" height="16" rx="2" fill="#dbeafe"/><text x="50" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1e3a8a">refusal</text>
+      <text x="138" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="bold" fill="#555">Trigger</text>
+      <rect x="98" y="38" width="80" height="16" rx="2" fill="#dcfce7"/><text x="138" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#166534">word</text>
+      <rect x="98" y="58" width="80" height="16" rx="2" fill="#dcfce7"/><text x="138" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#166534">phrase</text>
+      <rect x="98" y="78" width="80" height="16" rx="2" fill="#dcfce7"/><text x="138" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#166534">style</text>
+      <text x="226" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="bold" fill="#555">Poison Rate</text>
+      <rect x="186" y="38" width="80" height="16" rx="2" fill="#fef9c3"/><text x="226" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#713f12">0.1%</text>
+      <rect x="186" y="58" width="80" height="16" rx="2" fill="#fef9c3"/><text x="226" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#713f12">0.5%</text>
+      <rect x="186" y="78" width="80" height="16" rx="2" fill="#fef9c3"/><text x="226" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#713f12">2%–5%</text>
+      <text x="314" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="bold" fill="#555">Scale</text>
+      <rect x="274" y="38" width="80" height="16" rx="2" fill="#fce7f3"/><text x="314" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#831843">125M</text>
+      <rect x="274" y="58" width="80" height="16" rx="2" fill="#fce7f3"/><text x="314" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#831843">1.3B</text>
+      <rect x="274" y="78" width="80" height="16" rx="2" fill="#fce7f3"/><text x="314" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#831843">7B</text>
+      <text x="400" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="8" font-weight="bold" fill="#555">Training</text>
+      <rect x="360" y="38" width="70" height="16" rx="2" fill="#ede9fe"/><text x="395" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#4c1d95">fine-tune</text>
+      <rect x="360" y="58" width="70" height="16" rx="2" fill="#ede9fe"/><text x="395" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#4c1d95">LoRA</text>
+      <rect x="360" y="78" width="70" height="16" rx="2" fill="#ede9fe"/><text x="395" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#4c1d95">RLHF-BD</text>
+      <rect x="10" y="108" width="420" height="24" rx="3" fill="#f3f4f6" stroke="#d1d5db"/>
+      <text x="220" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#374151">White-box weights · no training data · no reference model · no trigger prior</text>
+    </svg>
+    <figcaption>Figure 1: ToxScreen benchmark taxonomy — ~800 backdoored models spanning five axes; defenders have white-box weight access but no training data, no trusted reference model, and no trigger knowledge.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    ToxScreen frames trigger recovery in a realistic threat model: white-box weight access but no training data, no known-clean reference model, and no prior on trigger type or attack objective. The benchmark spans ~800 backdoored models across attack objectives, trigger mechanisms (word/phrase/style), poisoning rates 0.1%–5%, model scales 125M–7B, and training mechanisms including full fine-tuning, LoRA, and RLHF-based backdoor insertion — the first systematic evaluation substrate for comparing trigger-recovery defenses under these constraints.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══ PAPER 7: ALIBI ═══ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.24964">ALIBI: Adaptive Agentic Attacks on LLM-Based Vulnerability Detectors via Adversarial Code Comments</a>
+  </h3>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 440 148" xmlns="http://www.w3.org/2000/svg" aria-label="ALIBI attack loop: coding agent iteratively inserts adversarial comments into vulnerable code to evade LLM vulnerability detectors">
+      <defs>
+        <marker id="al1" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#555"/></marker>
+        <marker id="al2" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#dc2626"/></marker>
+      </defs>
+      <rect width="440" height="148" fill="#fff"/>
+      <text x="220" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#222">ALIBI: Adversarial Comment Injection Against Vulnerability Detectors</text>
+      <rect x="10" y="28" width="92" height="46" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="56" y="47" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#166534">code + vuln</text>
+      <text x="56" y="63" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#166534">// CVE-xxx</text>
+      <rect x="136" y="28" width="108" height="46" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="190" y="47" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#1d4ed8">Coding Agent</text>
+      <text x="190" y="63" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1d4ed8">crafts // adv. comment</text>
+      <rect x="278" y="28" width="100" height="46" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+      <text x="328" y="47" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#991b1b">LLM Detector</text>
+      <text x="328" y="63" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#991b1b">Evaded ✓</text>
+      <line x1="102" y1="51" x2="133" y2="51" stroke="#555" stroke-width="1.5" marker-end="url(#al1)"/>
+      <line x1="244" y1="51" x2="275" y2="51" stroke="#555" stroke-width="1.5" marker-end="url(#al1)"/>
+      <path d="M 328 74 Q 328 112 190 112 Q 56 112 56 74" fill="none" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#al2)"/>
+      <text x="190" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#dc2626">refine comment if detected · iterate</text>
+      <text x="395" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">4 detectors</text>
+      <text x="395" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">tested</text>
+    </svg>
+    <figcaption>Figure 1: ALIBI attack loop — a coding agent iteratively inserts and refines adversarial source-code comments to manipulate LLM vulnerability detectors' chain-of-thought reasoning, causing them to miss real CVEs.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    ALIBI constructs a black-box adaptive attack in which an agent inserts adversarial natural-language comments into real-world vulnerable code (drawn from vulnerability-fixing commits) and iteratively refines them based on detector feedback — exploiting that comments are processed as natural language by detector chain-of-thought but carry no security semantics in the code itself, making them simultaneously trusted and attacker-controlled. Evaluated against four LLM-based detectors from specialized reasoning models to frontier multi-agent systems, ALIBI exposes source-code comments as a previously understudied attack surface.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══ PAPER 8: Where and When to Commit ═══ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-dllm">dLLM</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.28166">Where and When to Commit: Candidate-Aware Decoding for Diffusion Language Models</a>
+  </h3>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 440 148" xmlns="http://www.w3.org/2000/svg" aria-label="CVC decoding: denoising timeline where high-confidence tokens commit early, reducing total steps needed">
+      <defs>
+        <marker id="ww1" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#aaa"/></marker>
+      </defs>
+      <rect width="440" height="148" fill="#fff"/>
+      <text x="220" y="13" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#222">CVC: Confidence-Verified Commit — Early Token Commitment</text>
+      <text x="34" y="34" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#888">t=0</text>
+      <text x="34" y="72" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#888">t=T/2</text>
+      <text x="34" y="110" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#888">t=T</text>
+      <!-- Row 1 all masked -->
+      <rect x="40" y="20" width="26" height="20" rx="2" fill="#e5e7eb" stroke="#9ca3af"/><text x="53" y="34" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#6b7280">[M]</text>
+      <rect x="70" y="20" width="26" height="20" rx="2" fill="#e5e7eb" stroke="#9ca3af"/><text x="83" y="34" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#6b7280">[M]</text>
+      <rect x="100" y="20" width="26" height="20" rx="2" fill="#e5e7eb" stroke="#9ca3af"/><text x="113" y="34" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#6b7280">[M]</text>
+      <rect x="130" y="20" width="26" height="20" rx="2" fill="#e5e7eb" stroke="#9ca3af"/><text x="143" y="34" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#6b7280">[M]</text>
+      <rect x="160" y="20" width="26" height="20" rx="2" fill="#e5e7eb" stroke="#9ca3af"/><text x="173" y="34" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#6b7280">[M]</text>
+      <rect x="190" y="20" width="26" height="20" rx="2" fill="#e5e7eb" stroke="#9ca3af"/><text x="203" y="34" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#6b7280">[M]</text>
+      <!-- Row 2 some committed -->
+      <rect x="40" y="58" width="26" height="20" rx="2" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/><text x="53" y="72" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#166534">The</text>
+      <rect x="70" y="58" width="26" height="20" rx="2" fill="#e5e7eb" stroke="#9ca3af"/><text x="83" y="72" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#6b7280">[M]</text>
+      <rect x="100" y="58" width="26" height="20" rx="2" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/><text x="113" y="72" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#166534">cat</text>
+      <rect x="130" y="58" width="26" height="20" rx="2" fill="#e5e7eb" stroke="#9ca3af"/><text x="143" y="72" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#6b7280">[M]</text>
+      <rect x="160" y="58" width="26" height="20" rx="2" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/><text x="173" y="72" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#166534">sat</text>
+      <rect x="190" y="58" width="26" height="20" rx="2" fill="#e5e7eb" stroke="#9ca3af"/><text x="203" y="72" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#6b7280">[M]</text>
+      <text x="240" y="72" font-family="Georgia,serif" font-size="8" fill="#16a34a">← CVC commits high-confidence tokens</text>
+      <!-- Row 3 fully decoded -->
+      <rect x="40" y="96" width="26" height="20" rx="2" fill="#dbeafe" stroke="#3b82f6"/><text x="53" y="110" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#1e3a8a">The</text>
+      <rect x="70" y="96" width="26" height="20" rx="2" fill="#dbeafe" stroke="#3b82f6"/><text x="83" y="110" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#1e3a8a">big</text>
+      <rect x="100" y="96" width="26" height="20" rx="2" fill="#dbeafe" stroke="#3b82f6"/><text x="113" y="110" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#1e3a8a">cat</text>
+      <rect x="130" y="96" width="26" height="20" rx="2" fill="#dbeafe" stroke="#3b82f6"/><text x="143" y="110" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#1e3a8a">just</text>
+      <rect x="160" y="96" width="26" height="20" rx="2" fill="#dbeafe" stroke="#3b82f6"/><text x="173" y="110" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#1e3a8a">sat</text>
+      <rect x="190" y="96" width="26" height="20" rx="2" fill="#dbeafe" stroke="#3b82f6"/><text x="203" y="110" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#1e3a8a">there</text>
+      <text x="240" y="110" font-family="Georgia,serif" font-size="8" fill="#3b82f6">← early exit (global stop)</text>
+      <line x1="113" y1="42" x2="113" y2="56" stroke="#aaa" stroke-width="1" marker-end="url(#ww1)"/>
+      <line x1="113" y1="80" x2="113" y2="94" stroke="#aaa" stroke-width="1" marker-end="url(#ww1)"/>
+      <text x="220" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">green = CVC commit · blue = final output · fewer total denoising steps</text>
+    </svg>
+    <figcaption>Figure 1: CVC mechanism — tokens that pass local confidence thresholds commit early (green), while the global stopping criterion independently decides when the full sequence is done (blue), reducing total denoising steps without retraining.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Confidence-Verified Commit (CVC) separates two decisions that standard dLLM decoding conflates: when individual tokens are confident enough to commit, and when the global sequence can stop. This training-free decoding framework reduces the number of denoising steps per generation without quality degradation, directly addressing dLLMs' inference-cost disadvantage relative to autoregressive models. Submitted July 30, 2026 by a team spanning NYCU, Albany SUNY, and NCKU.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══ PAPER 9: SAE Causal Necessity ═══ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.20596">Are Single-Token Sparse Autoencoder Features Causally Necessary? Layer-Depth and SAE-Family Effects</a>
+  </h3>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 440 148" xmlns="http://www.w3.org/2000/svg" aria-label="Grouped bar chart: GemmaScope and BatchTopK features show high causal necessity (~80-85%) while LlamaScope features at the same base model show only ~32%">
+      <rect width="440" height="148" fill="#fff"/>
+      <text x="220" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#222">SAE Causal Necessity by Family (3.9M features, 6 models)</text>
+      <line x1="55" y1="22" x2="55" y2="115" stroke="#ccc" stroke-width="1"/>
+      <line x1="55" y1="115" x2="420" y2="115" stroke="#ccc" stroke-width="1"/>
+      <text x="14" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666" transform="rotate(-90,14,70)">% causally necessary</text>
+      <text x="48" y="115" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">0%</text>
+      <text x="48" y="25" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">100%</text>
+      <line x1="55" y1="68" x2="420" y2="68" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="48" y="68" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">50%</text>
+      <!-- GemmaScope ~85% -->
+      <rect x="75" y="30" width="84" height="85" fill="#3b82f6" rx="2"/>
+      <text x="117" y="24" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#1e3a8a">~85%</text>
+      <text x="117" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">GemmaScope</text>
+      <!-- BatchTopK ~80% -->
+      <rect x="185" y="37" width="84" height="78" fill="#22c55e" rx="2"/>
+      <text x="227" y="31" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#166534">~80%</text>
+      <text x="227" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">BatchTopK</text>
+      <!-- LlamaScope ~32% -->
+      <rect x="295" y="83" width="84" height="32" fill="#f87171" rx="2"/>
+      <text x="337" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#991b1b">~32%</text>
+      <text x="337" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">LlamaScope</text>
+      <text x="220" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">same base model — SAE family choice dominates scale effects</text>
+    </svg>
+    <figcaption>Figure 1: Cross-family causal necessity rates from zero-ablation testing. GemmaScope and BatchTopK features are causally necessary in ~80–85% of conditions; LlamaScope at the same base model shows ~32% — family matters more than scale.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Analyzing 3.9M SAE features across six models and three families (GemmaScope, BatchTopK, LlamaScope) via zero-ablation causal tests, the paper finds single-token features are causally necessary in 178/208 full-layer conditions for GemmaScope and BatchTopK, but LlamaScope features at the identical base model are locally redundant (~32% causal necessity) — cross-family differences exceed within-family scale effects and directly inform which SAE family produces interpretability results that are also causally meaningful.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══ PAPER 10: CircuitKIT ═══ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.19317">CircuitKIT: Circuit Discovery, Evaluation, and Application Toolkit for Mechanistic Interpretability</a>
+  </h3>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 440 145" xmlns="http://www.w3.org/2000/svg" aria-label="CircuitKIT module diagram: four components (Discovery, Evaluation, Datasets, Application) unified by a central serializable circuit representation">
+      <rect width="440" height="145" fill="#fff"/>
+      <text x="220" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#222">CircuitKIT: Unified Mechanistic Interpretability Toolkit</text>
+      <!-- Central representation -->
+      <rect x="148" y="52" width="144" height="40" rx="5" fill="#1e3a8a"/>
+      <text x="220" y="69" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#fff">Serializable Circuit</text>
+      <text x="220" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#bfdbfe">Representation</text>
+      <!-- Discovery -->
+      <rect x="12" y="22" width="104" height="36" rx="4" fill="#dbeafe" stroke="#3b82f6"/>
+      <text x="64" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#1e3a8a">Discovery</text>
+      <text x="64" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1e3a8a">ACDC · EAP · …</text>
+      <!-- Evaluation -->
+      <rect x="12" y="88" width="104" height="36" rx="4" fill="#dcfce7" stroke="#16a34a"/>
+      <text x="64" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#166534">Evaluation</text>
+      <text x="64" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#166534">faithfulness · completeness</text>
+      <!-- Application -->
+      <rect x="324" y="22" width="104" height="36" rx="4" fill="#fef9c3" stroke="#d97706"/>
+      <text x="376" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#92400e">Application</text>
+      <text x="376" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#92400e">prune · steer · fine-tune</text>
+      <!-- Datasets -->
+      <rect x="324" y="88" width="104" height="36" rx="4" fill="#fce7f3" stroke="#9d174d"/>
+      <text x="376" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#831843">Datasets</text>
+      <text x="376" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#831843">declarative interface</text>
+      <!-- Connectors -->
+      <line x1="116" y1="40" x2="147" y2="62" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="116" y1="106" x2="147" y2="82" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="292" y1="62" x2="323" y2="40" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="292" y1="82" x2="323" y2="106" stroke="#94a3b8" stroke-width="1.5"/>
+    </svg>
+    <figcaption>Figure 1: CircuitKIT module architecture — four interoperable components unified by a typed serializable circuit representation that enables method comparison and direct generalization to new tasks.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    CircuitKIT addresses fragmentation in mechanistic interpretability tooling by releasing a unified open library with a serializable circuit representation that connects discovery algorithms (ACDC, EAP, and others), faithfulness/completeness evaluation, declarative dataset interfaces, and application modules (pruning, editing, steering, selective fine-tuning). The common representation allows seamless handoff between methods and reproducible circuit comparisons across tasks and models.
+  </p>
+</article>
+
+<footer class="footer">
+  <p>Research Radar · Daily · August 2, 2026</p>
+  <p style="margin-top:6px">Window: July 31 – August 2, 2026 · Sources: arXiv cs.CL/cs.LG/cs.CR/cs.AI, OpenReview, ACL Anthology, LessWrong</p>
+  <p style="margin-top:6px">0 peer-reviewed · 10 preprints · 0 forum/blog</p>
+</footer>
+{% endraw %}
