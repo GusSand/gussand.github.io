@@ -1,0 +1,687 @@
+---
+layout: "radar"
+title: "Research Radar · Aug 27, 2026"
+kind: "daily"
+slug: "2026-08-27"
+date: 2026-08-27
+group: "2026-W36"
+window: "August 8–27, 2026"
+summary: "Window: August 8–27, 2026 · Sources swept: arXiv (cs.CL/cs.LG/cs.CR/cs.AI), OpenReview, ACL Anthology, LessWrong/Alignment Forum · Counts: 0 peer-reviewed · 5 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/cde20e6f-9a54-4fd3-9161-a8edc9e4673f"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-27.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* ── Token system ─────────────────────────────────────────── */
+:root {
+  --bg:        #f8f7f3;
+  --surface:   #f0ede6;
+  --border:    #dedad1;
+  --text:      #1c1917;
+  --dim:       #7a7267;
+  --title:     #0f0e0c;
+  --link:      #2255b8;
+  --link-u:    #c2cfe6;
+  --fig-bg:    #ffffff;
+  --fig-border:#dedad1;
+  --tag-bg:    #e8e4dc;
+  --tag-text:  #4a4540;
+  --accent:    #2255b8;
+  --mark:      #b7291e;       /* security / alert accent */
+  --rank-bg:   #1c1917;
+  --rank-text: #f8f7f3;
+  --stripe:    #e8e4dc;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #141210;
+    --surface:   #1d1b18;
+    --border:    #2e2b26;
+    --text:      #e8e4dc;
+    --dim:       #857e73;
+    --title:     #f5f2ec;
+    --link:      #7aaeff;
+    --link-u:    #2a3d66;
+    --fig-bg:    #ffffff;
+    --fig-border:#2e2b26;
+    --tag-bg:    #252219;
+    --tag-text:  #b0a897;
+    --accent:    #7aaeff;
+    --mark:      #e86050;
+    --rank-bg:   #f5f2ec;
+    --rank-text: #141210;
+    --stripe:    #1d1b18;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #141210;
+  --surface:   #1d1b18;
+  --border:    #2e2b26;
+  --text:      #e8e4dc;
+  --dim:       #857e73;
+  --title:     #f5f2ec;
+  --link:      #7aaeff;
+  --link-u:    #2a3d66;
+  --fig-bg:    #ffffff;
+  --fig-border:#2e2b26;
+  --tag-bg:    #252219;
+  --tag-text:  #b0a897;
+  --accent:    #7aaeff;
+  --mark:      #e86050;
+  --rank-bg:   #f5f2ec;
+  --rank-text: #141210;
+  --stripe:    #1d1b18;
+}
+:root[data-theme="light"] {
+  --bg:        #f8f7f3;
+  --surface:   #f0ede6;
+  --border:    #dedad1;
+  --text:      #1c1917;
+  --dim:       #7a7267;
+  --title:     #0f0e0c;
+  --link:      #2255b8;
+  --link-u:    #c2cfe6;
+  --fig-bg:    #ffffff;
+  --fig-border:#dedad1;
+  --tag-bg:    #e8e4dc;
+  --tag-text:  #4a4540;
+  --accent:    #2255b8;
+  --mark:      #b7291e;
+  --rank-bg:   #1c1917;
+  --rank-text: #f8f7f3;
+  --stripe:    #e8e4dc;
+}
+
+/* ── Reset & base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+a { color: var(--link); text-decoration: underline; text-decoration-color: var(--link-u); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--link); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ── Masthead ─────────────────────────────────────────────── */
+.masthead {
+  border-top: 2.5px solid var(--text);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0 18px;
+  margin-bottom: 52px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 8px;
+}
+.masthead-left {}
+.masthead-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 4px;
+}
+.masthead-date {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--title);
+}
+.masthead-tracks {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  text-align: right;
+}
+.masthead-counts {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+  text-align: right;
+}
+
+/* ── Tags ─────────────────────────────────────────────────── */
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+}
+.tag-interp   { background: #d4edf0; color: #0a4a50; }
+.tag-security { background: #fde8e6; color: #7a1f18; }
+.tag-dllm     { background: #dde8f8; color: #1a3672; }
+.tag-control  { background: #ece3f5; color: #3d1666; }
+.tag-peer     { background: #d8eedd; color: #1a4a28; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tag-interp   { background: #0d2e32; color: #5dd5df; }
+  :root:not([data-theme="light"]) .tag-security { background: #2e100e; color: #f08070; }
+  :root:not([data-theme="light"]) .tag-dllm     { background: #0d1c3a; color: #89baff; }
+  :root:not([data-theme="light"]) .tag-control  { background: #200d34; color: #c48cf8; }
+  :root:not([data-theme="light"]) .tag-peer     { background: #0b2014; color: #5ce87c; }
+}
+:root[data-theme="dark"] .tag-interp   { background: #0d2e32; color: #5dd5df; }
+:root[data-theme="dark"] .tag-security { background: #2e100e; color: #f08070; }
+:root[data-theme="dark"] .tag-dllm     { background: #0d1c3a; color: #89baff; }
+:root[data-theme="dark"] .tag-control  { background: #200d34; color: #c48cf8; }
+:root[data-theme="dark"] .tag-peer     { background: #0b2014; color: #5ce87c; }
+:root[data-theme="light"] .tag-interp   { background: #d4edf0; color: #0a4a50; }
+:root[data-theme="light"] .tag-security { background: #fde8e6; color: #7a1f18; }
+:root[data-theme="light"] .tag-dllm     { background: #dde8f8; color: #1a3672; }
+:root[data-theme="light"] .tag-control  { background: #ece3f5; color: #3d1666; }
+:root[data-theme="light"] .tag-peer     { background: #d8eedd; color: #1a4a28; }
+
+/* ── Full paper entry (items 1–3) ─────────────────────────── */
+.paper {
+  margin-bottom: 72px;
+}
+.paper-rank-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.rank-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--rank-bg);
+  color: var(--rank-text);
+  padding: 4px 9px;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+}
+
+/* Figure leads the entry — Substack-style image-first */
+.paper-figure {
+  width: 100%;
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-border);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.paper-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.paper-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+.paper-figure figcaption {
+  padding: 10px 14px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  line-height: 1.6;
+  border-top: 1px solid var(--fig-border);
+  background: var(--surface);
+}
+
+.paper-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  text-wrap: balance;
+}
+.paper-title a { color: var(--title); text-decoration-color: var(--border); }
+.paper-title a:hover { text-decoration-color: var(--title); }
+
+.paper-authors {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.paper-hook {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--title);
+  margin-bottom: 16px;
+}
+
+.paper-detail {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 60px 0;
+}
+
+/* ── Mid-tier section label ───────────────────────────────── */
+.mid-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--text);
+  margin-bottom: 40px;
+}
+
+/* ── Mid-tier entries (items 4–10) ───────────────────────── */
+.mid-paper {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 48px;
+}
+.mid-paper-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.mid-figure {
+  width: 100%;
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-border);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.mid-figure svg { display: block; width: 100%; height: auto; }
+.mid-figure figcaption {
+  padding: 8px 12px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--dim);
+  line-height: 1.5;
+  border-top: 1px solid var(--fig-border);
+  background: var(--surface);
+}
+.mid-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  text-wrap: balance;
+}
+.mid-title a { color: var(--title); text-decoration-color: var(--border); }
+.mid-title a:hover { text-decoration-color: var(--title); }
+.mid-authors {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.mid-summary {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.mid-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+/* ── Notes ────────────────────────────────────────────────── */
+.notes {
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  padding: 18px 22px;
+  margin-top: 56px;
+  border-radius: 0 3px 3px 0;
+}
+.notes-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 12px;
+}
+.notes ul { padding-left: 16px; }
+.notes li {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-bottom: 7px;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.footer {
+  margin-top: 64px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+</style>
+
+<!-- ══════════════  MASTHEAD  ══════════════ -->
+<header class="masthead">
+  <div class="masthead-left">
+    <div class="masthead-name">Research Radar</div>
+    <div class="masthead-date">August 27, 2026</div>
+  </div>
+  <div>
+    <div class="masthead-tracks">Mech Interp · AI Security · Text Diffusion LMs</div>
+    <div class="masthead-counts">0 peer-reviewed · 5 preprints · 0 forum/blog</div>
+  </div>
+</header>
+
+<!-- ══════════════  01  ══════════════ -->
+<hr class="divider">
+
+<!-- ══════════════  02  ══════════════ -->
+<article class="paper">
+  <div class="paper-rank-row">
+    <span class="rank-badge">02</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </div>
+
+  <figure class="paper-figure">
+    <svg viewBox="0 0 632 230" xmlns="http://www.w3.org/2000/svg" aria-label="Diagram showing forward-looking localization via Taylor expansion bridges pre-SFT parameters to post-SFT critical neurons">
+      <rect width="632" height="230" fill="#fff"/>
+      <text x="316" y="28" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#111" text-anchor="middle">Forward-Looking Localization: Pre-SFT → Post-SFT</text>
+
+      <!-- Box: Pre-SFT model -->
+      <rect x="24" y="60" width="140" height="90" rx="4" fill="#dde8f8" stroke="#2255b8" stroke-width="1.5"/>
+      <text x="94" y="90" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a3672" text-anchor="middle">Pre-SFT Model</text>
+      <text x="94" y="108" font-family="Georgia,serif" font-size="11" fill="#1a3672" text-anchor="middle">θ₀ + Target</text>
+      <text x="94" y="124" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">dataset D</text>
+      <!-- Naive path arrow — dashed red -->
+      <line x1="164" y1="95" x2="240" y2="68" stroke="#b7291e" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <polygon points="238,62 244,72 234,72" fill="#b7291e"/>
+      <text x="198" y="56" font-family="Georgia,serif" font-size="10" fill="#b7291e" text-anchor="middle">naive: wrong</text>
+
+      <!-- Taylor expansion box -->
+      <rect x="246" y="60" width="140" height="90" rx="4" fill="#ece3f5" stroke="#3d1666" stroke-width="1.5"/>
+      <text x="316" y="88" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#3d1666" text-anchor="middle">Taylor Expansion</text>
+      <text x="316" y="106" font-family="Georgia,serif" font-size="11" fill="#3d1666" text-anchor="middle">∂ℒ/∂θ · Δθ</text>
+      <text x="316" y="122" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">bridges pre → post</text>
+      <!-- Arrow from pre to Taylor -->
+      <line x1="164" y1="105" x2="244" y2="105" stroke="#333" stroke-width="1.5"/>
+      <polygon points="242,100 248,105 242,110" fill="#333"/>
+
+      <!-- Post-SFT prediction box -->
+      <rect x="468" y="60" width="140" height="90" rx="4" fill="#d8eedd" stroke="#1a4a28" stroke-width="1.5"/>
+      <text x="538" y="88" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a4a28" text-anchor="middle">Predicted Post-SFT</text>
+      <text x="538" y="106" font-family="Georgia,serif" font-size="11" fill="#1a4a28" text-anchor="middle">Critical neurons</text>
+      <text x="538" y="122" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">Accurate LoRA targets</text>
+      <!-- Arrow from Taylor to post -->
+      <line x1="386" y1="105" x2="466" y2="105" stroke="#333" stroke-width="1.5"/>
+      <polygon points="464,100 470,105 464,110" fill="#333"/>
+
+      <!-- Outcome labels -->
+      <text x="316" y="182" font-family="Georgia,serif" font-size="12" fill="#b7291e" text-anchor="middle" font-style="italic">✗  Naive pre-SFT localization → wrong subspace → degraded PEFT</text>
+      <text x="316" y="204" font-family="Georgia,serif" font-size="12" fill="#1a4a28" text-anchor="middle" font-style="italic">✓  Taylor-predicted localization → correct LoRA targets → stronger performance</text>
+    </svg>
+    <figcaption>Fig. 1 — Pre-SFT parameters + target dataset → Taylor expansion → predicted post-SFT critical neurons. Naive pre-SFT localization biases LoRA toward the wrong subspace; the forward-looking framework corrects this before fine-tuning begins.</figcaption>
+  </figure>
+
+  <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.24482">Beyond Static Interpretability: Anticipating Post-SFT Mechanisms from Pre-SFT Parameters for Better Tuning</a></h2>
+  <div class="paper-authors">Hang Chen, Jiaying Zhu, Wenya Wang — arXiv preprint, August 25, 2026</div>
+
+  <p class="paper-hook">Mechanistic interpretability has always looked backward — you identify what the trained model uses. For novel-task fine-tuning, this timing is not just inconvenient but actively harmful: the neurons the pre-SFT model uses differ sharply from those that end up governing the fine-tuned model, and pointing LoRA at the wrong targets degrades performance.</p>
+
+  <p class="paper-detail">The authors model SFT as continuous parameter evolution and derive a Taylor expansion of the post-SFT mechanistic objective from pre-SFT weights and the target dataset. This closed-form approximation forecasts which parameters will be task-critical after training, enabling accurate LoRA target selection before any fine-tuning occurs. Empirically, naively using pre-SFT localization introduces active bias for novel tasks — the pre- and post-SFT critical-neuron sets diverge substantially — and the proposed forward-looking framework outperforms standard PEFT baselines. The 25-page paper is the first to unite mechanistic interpretability with pre-training optimization in a locating-then-tuning paradigm grounded in theory.</p>
+</article>
+
+<hr class="divider">
+
+<!-- ══════════════  03  ══════════════ -->
+<hr class="divider">
+
+<!-- ══════════════  ITEMS 4–10  ══════════════ -->
+<div class="mid-label">Items 4–10 · Also notable</div>
+
+<!-- 04 -->
+<article class="mid-paper">
+  <div class="mid-paper-header">
+    <span class="rank-badge">04</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 632 200" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart: BLADE composite score improvement over baseline on TOFU, MUSE Books, KnowUndo">
+      <rect width="632" height="200" fill="#fff"/>
+      <text x="316" y="24" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#111" text-anchor="middle">BLADE: Composite Score Gain over Prior Best Baseline</text>
+      <line x1="80" y1="155" x2="580" y2="155" stroke="#333" stroke-width="1.2"/>
+      <line x1="80" y1="45" x2="80" y2="155" stroke="#333" stroke-width="1.2"/>
+      <!-- Grid -->
+      <line x1="80" y1="75" x2="580" y2="75" stroke="#eee" stroke-width="1"/>
+      <line x1="80" y1="115" x2="580" y2="115" stroke="#eee" stroke-width="1"/>
+      <text x="74" y="48" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="end">+10%</text>
+      <text x="74" y="78" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="end">+7%</text>
+      <text x="74" y="118" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="end">+3%</text>
+      <text x="74" y="158" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="end">0</text>
+      <!-- TOFU +6% → height = 72/110 * 110 = 6/10*110=66 -->
+      <rect x="148" y="83" width="90" height="72" fill="#2255b8" opacity="0.85"/>
+      <text x="193" y="79" font-family="Georgia,serif" font-size="12" fill="#2255b8" text-anchor="middle" font-weight="bold">+6%</text>
+      <text x="193" y="174" font-family="Georgia,serif" font-size="11" fill="#333" text-anchor="middle">TOFU</text>
+      <!-- MUSE Books +9% → height = 9/10*110=99 -->
+      <rect x="296" y="56" width="90" height="99" fill="#2255b8" opacity="0.85"/>
+      <text x="341" y="52" font-family="Georgia,serif" font-size="12" fill="#2255b8" text-anchor="middle" font-weight="bold">+9%</text>
+      <text x="341" y="174" font-family="Georgia,serif" font-size="11" fill="#333" text-anchor="middle">MUSE Books</text>
+      <!-- KnowUndo +7% → height = 7/10*110=77 -->
+      <rect x="444" y="78" width="90" height="77" fill="#2255b8" opacity="0.85"/>
+      <text x="489" y="74" font-family="Georgia,serif" font-size="12" fill="#2255b8" text-anchor="middle" font-weight="bold">+7%</text>
+      <text x="489" y="174" font-family="Georgia,serif" font-size="11" fill="#333" text-anchor="middle">KnowUndo</text>
+    </svg>
+    <figcaption>Fig. 1 — BLADE composite score improvement over prior best baseline on three standard LLM unlearning benchmarks.</figcaption>
+  </figure>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.22557">BLADE: Bilevel Low-rank Augmented-Lagrangian Erasure for LLM Unlearning</a></h3>
+  <div class="mid-authors">arXiv, August 2026</div>
+  <p class="mid-summary">Bilevel optimization confined to LoRA adapters: a clamped-entropy forget loss erases target knowledge; an asymmetric augmented Lagrangian protects the retain set; the bilevel structure runs a retain-repair step before each forgetting update. Delivers the strongest systematic gains across all three standard unlearning benchmarks in a single method: +6% on TOFU, +9% on MUSE Books, +7% on KnowUndo composite scores over prior best baselines.</p>
+</article>
+<hr class="mid-divider">
+
+<!-- 05 -->
+<hr class="mid-divider">
+
+<!-- 06 -->
+<hr class="mid-divider">
+
+<!-- 07 -->
+<article class="mid-paper">
+  <div class="mid-paper-header">
+    <span class="rank-badge">07</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 632 175" xmlns="http://www.w3.org/2000/svg" aria-label="Circuit-grounded data synthesis pipeline with SAMS stage-aware scheduling">
+      <rect width="632" height="175" fill="#fff"/>
+      <text x="316" y="24" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#111" text-anchor="middle">Mechanistic Circuit Control for Data Synthesis (SAMS)</text>
+      <!-- Three utility axis boxes -->
+      <rect x="20" y="52" width="115" height="28" rx="3" fill="#dde8f8" stroke="#2255b8" stroke-width="1"/>
+      <text x="77" y="71" font-family="Georgia,serif" font-size="11" fill="#1a3672" text-anchor="middle">Learnability</text>
+      <rect x="20" y="88" width="115" height="28" rx="3" fill="#dde8f8" stroke="#2255b8" stroke-width="1"/>
+      <text x="77" y="107" font-family="Georgia,serif" font-size="11" fill="#1a3672" text-anchor="middle">Challenge</text>
+      <rect x="20" y="124" width="115" height="28" rx="3" fill="#dde8f8" stroke="#2255b8" stroke-width="1"/>
+      <text x="77" y="143" font-family="Georgia,serif" font-size="11" fill="#1a3672" text-anchor="middle">Alignment</text>
+      <!-- Converging arrows -->
+      <line x1="135" y1="66" x2="185" y2="94" stroke="#aaa" stroke-width="1.2"/>
+      <line x1="135" y1="102" x2="185" y2="102" stroke="#aaa" stroke-width="1.2"/>
+      <line x1="135" y1="138" x2="185" y2="112" stroke="#aaa" stroke-width="1.2"/>
+      <!-- Circuit identification box -->
+      <rect x="185" y="70" width="145" height="65" rx="4" fill="#ece3f5" stroke="#3d1666" stroke-width="1.5"/>
+      <text x="257" y="96" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#3d1666" text-anchor="middle">Circuit Identification</text>
+      <text x="257" y="113" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">causal intervention</text>
+      <!-- Arrow -->
+      <line x1="330" y1="102" x2="376" y2="102" stroke="#333" stroke-width="1.5"/>
+      <polygon points="374,97 380,102 374,107" fill="#333"/>
+      <!-- SAMS box -->
+      <rect x="380" y="60" width="225" height="85" rx="4" fill="#d8eedd" stroke="#1a4a28" stroke-width="1.5"/>
+      <text x="492" y="86" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a4a28" text-anchor="middle">SAMS Scheduling</text>
+      <text x="492" y="103" font-family="Georgia,serif" font-size="10" fill="#1a4a28" text-anchor="middle">Stage-Aware Mechanistic</text>
+      <text x="492" y="118" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">circuit-steered data generation</text>
+    </svg>
+    <figcaption>Fig. 1 — Three data utility axes → circuit identification via causal intervention → SAMS scheduling steers synthetic data generation based on the model's current optimization stage.</figcaption>
+  </figure>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.24065">Mechanistic Circuit Identification for Controllable Data Generation</a></h3>
+  <div class="mid-authors">Nakyung Lee, Sangwoo Hong, Jungwoo Lee (Seoul National University, Konkuk University) — arXiv, August 25, 2026</div>
+  <p class="mid-summary">Identifies model-internal circuits governing three data quality axes (learnability, challenge, alignment) via causal intervention and uses them as controllable interfaces to steer LLM-based data generation. SAMS (Stage-Aware Mechanistic Scheduling) schedules circuit-steered samples according to the model's evolving optimization dynamics rather than static heuristic prompts — giving data synthesis pipelines feedback from the model's actual learning state for the first time.</p>
+</article>
+<hr class="mid-divider">
+
+<!-- 08 -->
+<article class="mid-paper">
+  <div class="mid-paper-header">
+    <span class="rank-badge">08</span>
+    <div class="tags">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 632 180" xmlns="http://www.w3.org/2000/svg" aria-label="Diagram showing tool-mediated recovery failure mode and ATU two-stage solution">
+      <rect width="632" height="180" fill="#fff"/>
+      <text x="316" y="24" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#111" text-anchor="middle">Tool-Mediated Recovery: A New Unlearning Failure Mode</text>
+      <!-- Query box -->
+      <rect x="20" y="75" width="110" height="50" rx="4" fill="#e8e4dc" stroke="#555" stroke-width="1.2"/>
+      <text x="75" y="98" font-family="Georgia,serif" font-size="11" fill="#333" text-anchor="middle">Query about</text>
+      <text x="75" y="114" font-family="Georgia,serif" font-size="11" fill="#333" text-anchor="middle">forgotten info</text>
+      <!-- Path 1: direct recall BLOCKED -->
+      <line x1="130" y1="90" x2="220" y2="68" stroke="#b7291e" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <polygon points="218,62 224,70 214,70" fill="#b7291e"/>
+      <rect x="224" y="48" width="135" height="48" rx="4" fill="#fde8e6" stroke="#b7291e" stroke-width="1.5"/>
+      <text x="291" y="70" font-family="Georgia,serif" font-size="11" fill="#7a1f18" text-anchor="middle">🚫 Parametric recall</text>
+      <text x="291" y="86" font-family="Georgia,serif" font-size="10" fill="#7a1f18" text-anchor="middle">blocked by unlearning</text>
+      <!-- Path 2: tool recovery SUCCEEDS -->
+      <line x1="130" y1="110" x2="220" y2="120" stroke="#1a4a28" stroke-width="1.5"/>
+      <polygon points="218,115 224,122 214,124" fill="#1a4a28"/>
+      <rect x="224" y="103" width="135" height="48" rx="4" fill="#d8eedd" stroke="#1a4a28" stroke-width="1.5"/>
+      <text x="291" y="125" font-family="Georgia,serif" font-size="11" fill="#1a4a28" text-anchor="middle">⚠ Tool calls recover</text>
+      <text x="291" y="141" font-family="Georgia,serif" font-size="10" fill="#1a4a28" text-anchor="middle">web search · retrieval · DB</text>
+      <!-- Arrow to ATU solution -->
+      <line x1="359" y1="127" x2="410" y2="110" stroke="#333" stroke-width="1.5"/>
+      <polygon points="408,104 414,112 404,113" fill="#333"/>
+      <rect x="414" y="68" width="190" height="75" rx="4" fill="#dde8f8" stroke="#2255b8" stroke-width="1.5"/>
+      <text x="509" y="90" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a3672" text-anchor="middle">ATU Solution</text>
+      <text x="509" y="107" font-family="Georgia,serif" font-size="10" fill="#1a3672" text-anchor="middle">Stage 1: parametric unlearn</text>
+      <text x="509" y="122" font-family="Georgia,serif" font-size="10" fill="#1a3672" text-anchor="middle">Stage 2: RL trajectory penalize</text>
+      <text x="509" y="137" font-family="Georgia,serif" font-size="9" fill="#555" text-anchor="middle">target-seeking tool calls</text>
+    </svg>
+    <figcaption>Fig. 1 — Tool-mediated recovery: parametric unlearning blocks direct recall but agents recover the same information via tool calls. ATU adds RL-based trajectory penalization to suppress target-seeking tool use while preserving normal tool access for retained knowledge.</figcaption>
+  </figure>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.21544">Forgotten in Weights, Recovered by Tools: Agentic Tool Unlearning for LLM Agents</a></h3>
+  <div class="mid-authors">Baicheng Chen, Zheyuan Liu et al. — arXiv, August 21, 2026</div>
+  <p class="mid-summary">Identifies tool-mediated recovery as a new unlearning failure mode: suppressing direct parametric recall is insufficient when an agent can route the same query through web search, retrieval, or database tools. ATU (Agentic Tool Unlearning) addresses this with Stage 1 (parametric unlearning) followed by Stage 2 (trajectory-level RL penalizing target-seeking tool calls and final-answer leakage). First work to study unlearning specifically in the agentic tool-use setting.</p>
+</article>
+<hr class="mid-divider">
+
+<!-- 09 -->
+<article class="mid-paper">
+  <div class="mid-paper-header">
+    <span class="rank-badge">09</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-control">AI control</span>
+      <span class="tag">preprint</span>
+    </div>
+  </div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 632 185" xmlns="http://www.w3.org/2000/svg" aria-label="Measurement design matrix: control objectives vs interpretability tool types">
+      <rect width="632" height="185" fill="#fff"/>
+      <text x="316" y="22" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#111" text-anchor="middle">Mechanistic Tomography: Measurement × Control Design Space</text>
+      <!-- Column headers -->
+      <text x="220" y="46" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Circuits</text>
+      <text x="360" y="46" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Features / SAEs</text>
+      <text x="500" y="46" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Probes</text>
+      <line x1="130" y1="50" x2="580" y2="50" stroke="#ccc" stroke-width="1"/>
+      <!-- Row headers -->
+      <text x="122" y="72" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="end">Intervention</text>
+      <text x="122" y="102" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="end">Monitoring</text>
+      <text x="122" y="132" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="end">Prediction</text>
+      <text x="122" y="162" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="end">Safety audit</text>
+      <line x1="128" y1="52" x2="128" y2="175" stroke="#ccc" stroke-width="1"/>
+      <!-- Cells -->
+      <rect x="148" y="58" width="144" height="22" rx="2" fill="#d4edf0" stroke="#0a4a50" stroke-width="0.8"/>
+      <text x="220" y="73" font-family="Georgia,serif" font-size="10" fill="#0a4a50" text-anchor="middle">High fidelity ✓</text>
+      <rect x="300" y="58" width="120" height="22" rx="2" fill="#f5e8c4" stroke="#7a5200" stroke-width="0.8"/>
+      <text x="360" y="73" font-family="Georgia,serif" font-size="10" fill="#7a5200" text-anchor="middle">Scalable ✓</text>
+      <rect x="428" y="58" width="144" height="22" rx="2" fill="#fde8e6" stroke="#7a1f18" stroke-width="0.8"/>
+      <text x="500" y="73" font-family="Georgia,serif" font-size="10" fill="#7a1f18" text-anchor="middle">Limited scope</text>
+      <rect x="300" y="88" width="120" height="22" rx="2" fill="#d4edf0" stroke="#0a4a50" stroke-width="0.8"/>
+      <text x="360" y="103" font-family="Georgia,serif" font-size="10" fill="#0a4a50" text-anchor="middle">Best fit ✓</text>
+      <rect x="428" y="88" width="144" height="22" rx="2" fill="#f5e8c4" stroke="#7a5200" stroke-width="0.8"/>
+      <text x="500" y="103" font-family="Georgia,serif" font-size="10" fill="#7a5200" text-anchor="middle">Lightweight ✓</text>
+      <rect x="148" y="118" width="144" height="22" rx="2" fill="#fde8e6" stroke="#7a1f18" stroke-width="0.8"/>
+      <text x="220" y="133" font-family="Georgia,serif" font-size="10" fill="#7a1f18" text-anchor="middle">High cost</text>
+      <rect x="300" y="118" width="120" height="22" rx="2" fill="#f5e8c4" stroke="#7a5200" stroke-width="0.8"/>
+      <text x="360" y="133" font-family="Georgia,serif" font-size="10" fill="#7a5200" text-anchor="middle">Emerging ✓</text>
+      <rect x="148" y="148" width="144" height="22" rx="2" fill="#d4edf0" stroke="#0a4a50" stroke-width="0.8"/>
+      <text x="220" y="163" font-family="Georgia,serif" font-size="10" fill="#0a4a50" text-anchor="middle">Ground truth ✓</text>
+      <rect x="300" y="148" width="120" height="22" rx="2" fill="#d4edf0" stroke="#0a4a50" stroke-width="0.8"/>
+      <text x="360" y="163" font-family="Georgia,serif" font-size="10" fill="#0a4a50" text-anchor="middle">Scalable ✓</text>
+      <rect x="428" y="148" width="144" height="22" rx="2" fill="#f5e8c4" stroke="#7a5200" stroke-width="0.8"/>
+      <text x="500" y="163" font-family="Georgia,serif" font-size="10" fill="#7a5200" text-anchor="middle">Fast screen ✓</text>
+    </svg>
+    <figcaption>Fig. 1 — Mechanistic Tomography: interpretability tools (circuits, SAEs, probes) mapped against control objectives (intervention, monitoring, prediction, safety audit). Tool selection is co-determined by the intended control operation.</figcaption>
+  </figure>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.19338">Mechanistic Tomography: Designed Measurement for Control-Oriented Interpretability</a></h3>
+  <div class="mid-authors">Vijay Erramilli — arXiv, August 2026</div>
+  <p class="mid-summary">A 24-page, 13-figure framework arguing that mechanistic interpretability measurements should be co-designed with their control objectives — what interventions are feasible, what robustness is required, what scale is needed — rather than evaluated in isolation. Bridges the mech interp toolbox (circuits, features, probes) with control-theoretic perspectives, providing a structured decision space for tool selection based on the intended downstream control operation.</p>
+</article>
+<hr class="mid-divider">
+
+<!-- 10 -->
+<!-- Notes -->
+<div class="notes">
+  <div class="notes-label">Notes · August 8–27, 2026</div>
+  <ul>
+    <li>All 10 items are genuine; no padding. Window covers August 8–27 (last report: August 7).</li>
+    <li><strong>#1 (2608.07430)</strong> is the week's standout — the only paper spanning all three radar tracks. Safety-neuron pruning achieves 73.8–86.6% ASR on LLaDA/Dream with a ≤3% baseline. Flag for weekly roundup.</li>
+    <li>Unlearning had an unusually strong week: #4 (BLADE), #5 (J-Access/Measure), #8 (Agentic Tool Unlearning) cover three distinct angles of concept erasure. Flag for weekly theme.</li>
+    <li>#2 and #7 together suggest a shift from interpretability-as-explanation to interpretability-as-control: using circuits/features to guide SFT targeting (#2) and data synthesis (#7).</li>
+    <li>Text diffusion LMs: 1 direct entry (#1); dLLM track remains dominated by the safety-vulnerability story.</li>
+  </ul>
+<p style="margin-top:32px;font-size:13px;opacity:.7">5 entries removed on 2026-09-10 as repeats of earlier reports: 2608.07430 (first covered 2026-08-11), 2608.08168 (first covered 2026-08-13), 2608.11408 (first covered 2026-08-18), 2608.13538 (first covered 2026-08-22), 2608.10530 (first covered 2026-08-13).</p>
+</div>
+
+<footer class="footer">
+  Research Radar · Daily · August 27, 2026 · GusSand/research-radar · Window: Aug 8–27 · 0 peer-reviewed · 10 preprints
+</footer>
+{% endraw %}

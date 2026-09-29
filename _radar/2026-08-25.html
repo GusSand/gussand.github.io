@@ -1,0 +1,559 @@
+---
+layout: "radar"
+title: "Research Radar · August 25, 2026"
+kind: "daily"
+slug: "2026-08-25"
+date: 2026-08-25
+group: "2026-W36"
+window: "August 23–25, 2026 (plus four missed items from June–July not covered by prior runs)"
+summary: "Window: August 23–25, 2026 (plus four missed items from June–July not covered by prior runs) · Sources swept: arXiv (cs.CL/cs.LG/cs.CR/cs.AI), OpenReview, lab blogs (Goodfire), LessWrong/Alignment Forum · Counts: 1 workshop accepted · 3 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/e2f2b32c-b010-4115-b92c-e9f9bfac4295"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-25.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ============================================================
+   Research Radar — August 25, 2026
+   Scholarly news digest — "cover image first" layout (Substack-style).
+   Paper figure placed below title, above hook paragraph, bleeding edge-to-edge in the card.
+   ============================================================ */
+
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #c9c9c9;
+  --dim: #666;
+  --title: #f0f0f0;
+  --link: #7eb8ff;
+  --tag-bg: #252525;
+  --tag-text: #aaa;
+  --accent-teal: #14b8bd;
+  --accent-blue: #7eb8ff;
+  --accent-red: #f07070;
+  --accent-amber: #f0a030;
+  --accent-violet: #c084fc;
+  --accent-green: #4ade80;
+  --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Masthead */
+.masthead {
+  background: var(--surface);
+  border-bottom: 2px solid var(--accent-teal);
+  padding: 28px 0 22px;
+  margin-bottom: 44px;
+  text-align: center;
+}
+.masthead-eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-teal);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-family: Georgia, serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--title);
+  margin-bottom: 6px;
+}
+.masthead-counts {
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 12px;
+}
+.masthead-tracks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.track {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.track-sep { color: var(--border); }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+}
+.tag-peer { background: #d4f0d4; color: #1a6e3c; }
+.tag-interp { background: #d4eeef; color: #0d7377; }
+.tag-security { background: #f5dddd; color: #b02020; }
+.tag-dllm { background: #d4e0f5; color: #1a4f99; }
+.tag-control { background: #e8d4f5; color: #5c1aaa; }
+.tag-rank { background: #f5e8d4; color: #a05c00; }
+@media (prefers-color-scheme: dark) {
+  .tag-peer { background: rgba(26,110,60,0.22); color: #4ade80; }
+  .tag-interp { background: rgba(13,115,119,0.22); color: #14b8bd; }
+  .tag-security { background: rgba(176,32,32,0.22); color: #f07070; }
+  .tag-dllm { background: rgba(26,79,153,0.22); color: #7eb8ff; }
+  .tag-control { background: rgba(92,26,170,0.22); color: #c084fc; }
+  .tag-rank { background: rgba(160,92,0,0.22); color: #f0a030; }
+}
+:root[data-theme="dark"] .tag-peer { background: rgba(26,110,60,0.22); color: #4ade80; }
+:root[data-theme="dark"] .tag-interp { background: rgba(13,115,119,0.22); color: #14b8bd; }
+:root[data-theme="dark"] .tag-security { background: rgba(176,32,32,0.22); color: #f07070; }
+:root[data-theme="dark"] .tag-dllm { background: rgba(26,79,153,0.22); color: #7eb8ff; }
+:root[data-theme="dark"] .tag-control { background: rgba(92,26,170,0.22); color: #c084fc; }
+:root[data-theme="dark"] .tag-rank { background: rgba(160,92,0,0.22); color: #f0a030; }
+
+/* Paper articles */
+.paper {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.paper-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.paper-rank {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dim);
+  min-width: 28px;
+}
+.paper-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin: 0 0 0;
+}
+.paper-title a {
+  color: var(--title);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a:hover { color: var(--link); }
+
+/* Cover figure — Substack-style: edge-to-edge, above hook */
+.cover-figure {
+  margin: 16px -20px 22px;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.cover-figure svg { display: block; width: 100%; }
+.cover-figure figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  padding: 8px 20px 10px;
+  font-style: italic;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  line-height: 1.5;
+}
+
+.paper-hook {
+  font-size: 16.5px;
+  line-height: 1.72;
+  color: var(--text);
+  margin: 0 0 18px;
+}
+.paper-detail {
+  font-size: 15px;
+  line-height: 1.72;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Standard inline figure */
+.paper-figure {
+  margin: 18px 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.paper-figure svg { display: block; width: 100%; }
+.paper-figure figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  padding: 8px 14px 10px;
+  font-style: italic;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  line-height: 1.5;
+}
+
+/* Mid-tier entries */
+.more-section-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  margin: 48px 0 28px;
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure svg { display: block; width: 100%; max-width: 440px; margin: 0 auto; }
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+/* Notes */
+.notes-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin: 48px 0 36px;
+}
+.notes-section h2 {
+  font-size: 12px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+.notes-section ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.notes-section li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--dim);
+  padding: 20px 0 40px;
+  border-top: 1px solid var(--border);
+}
+footer a { color: var(--link); }
+</style>
+
+<div class="container">
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · August 25, 2026</div>
+  <div class="masthead-counts">1 workshop accepted · 3 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Mech Interp</span>
+    <span class="track-sep">·</span>
+    <span class="track">AI Security</span>
+    <span class="track-sep">·</span>
+    <span class="track">Text Diffusion LMs</span>
+  </div>
+</header>
+
+<!-- ============================================================
+     PAPER 01 — Block-Sparse Featurizers (Goodfire)
+     ============================================================ -->
+<!-- ============================================================
+     PAPER 02 — Attribution Graphs for Jailbreaks
+     ============================================================ -->
+<!-- ============================================================
+     PAPER 03 — Transcoders for Deception
+     ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.14791">Transcoders for Investigating Deception in Language Models</a>
+  </h2>
+  <!-- COVER FIGURE: PLT attribution graph, honest vs deceptive -->
+  <figure class="cover-figure">
+    <svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" aria-label="Per-layer transcoder attribution graphs comparing honest and deceptive responses on Qwen3-4B; deception features activate more strongly">
+      <rect width="680" height="250" fill="#fff"/>
+      <text x="340" y="24" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#333">Qwen3-4B — Per-Layer Transcoder (PLT) Attribution</text>
+
+      <!-- PLT Layer stack (left) -->
+      <rect x="20" y="46" width="108" height="32" rx="4" fill="#e8f0f8" stroke="#3366bb" stroke-width="1.5"/>
+      <text x="74" y="61" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#3366bb">Layer 8 PLT</text>
+      <text x="74" y="73" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">f₁ f₂ f₃</text>
+
+      <rect x="20" y="106" width="108" height="32" rx="4" fill="#e8f0f8" stroke="#3366bb" stroke-width="1.5"/>
+      <text x="74" y="121" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#3366bb">Layer 16 PLT</text>
+      <text x="74" y="133" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">f₄ f₅ f₆</text>
+
+      <rect x="20" y="166" width="108" height="32" rx="4" fill="#e8f0f8" stroke="#3366bb" stroke-width="1.5"/>
+      <text x="74" y="181" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#3366bb">Layer 24 PLT</text>
+      <text x="74" y="193" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">f₇ f₈ f₉</text>
+
+      <line x1="74" y1="78" x2="74" y2="106" stroke="#3366bb" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <line x1="74" y1="138" x2="74" y2="166" stroke="#3366bb" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+      <!-- PLT → graph connections -->
+      <line x1="128" y1="62" x2="210" y2="88" stroke="#ccc" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="128" y1="122" x2="210" y2="148" stroke="#ccc" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="128" y1="182" x2="210" y2="168" stroke="#ccc" stroke-width="1" stroke-dasharray="3,2"/>
+
+      <!-- CENTER: Attribution graph -->
+      <text x="340" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#555">Attribution Graph — deceptive completion</text>
+
+      <!-- Honest features (blue circles, smaller) -->
+      <circle cx="270" cy="92" r="20" fill="#d4e0f5" stroke="#3366bb" stroke-width="2"/>
+      <text x="270" y="89" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#3366bb">truth</text>
+      <text x="270" y="101" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#3366bb">w=0.3</text>
+
+      <circle cx="340" cy="92" r="20" fill="#d4e0f5" stroke="#3366bb" stroke-width="2"/>
+      <text x="340" y="89" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#3366bb">fact</text>
+      <text x="340" y="101" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#3366bb">w=0.2</text>
+
+      <!-- Deception features (red, LARGER) -->
+      <circle cx="295" cy="158" r="28" fill="#f5dddd" stroke="#b02020" stroke-width="2.5"/>
+      <text x="295" y="154" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#b02020">deceive</text>
+      <text x="295" y="167" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#b02020">w=0.82★</text>
+
+      <circle cx="375" cy="158" r="24" fill="#f5dddd" stroke="#b02020" stroke-width="2.5"/>
+      <text x="375" y="154" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#b02020">conceal</text>
+      <text x="375" y="167" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#b02020">w=0.61★</text>
+
+      <!-- Weak connections honest → output (dashed) -->
+      <line x1="270" y1="112" x2="300" y2="210" stroke="#3366bb" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#ta2)"/>
+      <line x1="340" y1="112" x2="340" y2="210" stroke="#3366bb" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#ta2)"/>
+
+      <!-- Strong connections deception → output -->
+      <line x1="295" y1="186" x2="310" y2="210" stroke="#b02020" stroke-width="3" marker-end="url(#ta1)"/>
+      <line x1="375" y1="182" x2="355" y2="210" stroke="#b02020" stroke-width="2.5" marker-end="url(#ta1)"/>
+
+      <!-- Deceptive output box -->
+      <rect x="262" y="210" width="136" height="28" rx="4" fill="#f5dddd" stroke="#b02020" stroke-width="2"/>
+      <text x="330" y="229" text-anchor="middle" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#b02020">Deceptive output</text>
+
+      <!-- RIGHT PANEL: Key findings callout -->
+      <rect x="476" y="44" width="184" height="160" rx="6" fill="#faf0f0" stroke="#b02020" stroke-width="1"/>
+      <text x="568" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#b02020">Key finding</text>
+
+      <text x="492" y="88" font-family="Georgia, serif" font-size="10" fill="#b02020">• Deception features activate</text>
+      <text x="492" y="103" font-family="Georgia, serif" font-size="10" fill="#b02020">  2–3× more strongly</text>
+      <text x="492" y="122" font-family="Georgia, serif" font-size="10" fill="#555">• Honest features suppressed</text>
+      <text x="492" y="137" font-family="Georgia, serif" font-size="10" fill="#555">  in deceptive regime</text>
+      <text x="492" y="156" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">• Steering deception features</text>
+      <text x="492" y="171" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">  flips output predictably</text>
+      <text x="492" y="191" font-family="Georgia, serif" font-size="10" fill="#888">  (same transcoder tools</text>
+      <text x="492" y="202" font-family="Georgia, serif" font-size="10" fill="#888">   Anthropic uses for Claude)</text>
+    </svg>
+    <figcaption>Figure 1: Per-layer transcoder (PLT) attribution graph on Qwen3-4B for a deceptive completion. Deception-specific features (red, larger radius ∝ weight) exert 2–3× stronger causal influence on the output than honest features (blue, dashed connections), and direct steering of these features flips the response between deceptive and honest in a predictable, controlled manner.</figcaption>
+  </figure>
+  <p class="paper-hook">
+    What does deception look like inside a language model? Using per-layer transcoders — the same attribution-graph framework Anthropic employs for internal circuit analysis — this paper builds the first mechanistic map of LLM deception, finding a concentrated dictionary of deception-specific features that dominate the causal graph when the model is lying.
+  </p>
+  <p class="paper-detail">
+    Per-layer transcoders (PLTs) applied to Qwen3-4B construct attribution graphs capturing feature activations and inter-feature dependencies across layers. Comparing honest and deceptive completions on the same underlying facts, the paper identifies deception-related features that (1) activate significantly more strongly in the deceptive regime, (2) exert 2–3× greater causal influence on the output distribution than honest-content features, and (3) when directly steered via activation addition, produce predictable, controlled shifts between deceptive and non-deceptive responses. Honest-content features are correspondingly suppressed in the deceptive completion graph. This mechanistic handle on deception is independent of access to training data or reward signals, and the identified features provide interpretable, targetable circuit components for deception detection and mitigation.
+  </p>
+</article>
+
+<!-- ============================================================
+     MID-TIER
+     ============================================================ -->
+<div class="more-section-label">Item 4 · Also notable</div>
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">COLM '26 workshop</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2608.21236">RARE: Decoupling Representation Steering from Expert Routing in Mixture-of-Experts Language Models</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 185" xmlns="http://www.w3.org/2000/svg" aria-label="RARE architecture: separate paths for expert routing (teal) and representation steering (violet) in an MoE model">
+      <rect width="440" height="185" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#333">RARE: Decoupled Routing + Steering in MoE</text>
+
+      <!-- Input -->
+      <rect x="14" y="72" width="62" height="30" rx="4" fill="#e8e8e8" stroke="#aaa" stroke-width="1.5"/>
+      <text x="45" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Token</text>
+      <line x1="76" y1="87" x2="100" y2="70" stroke="#0d7377" stroke-width="1.5" marker-end="url(#ra2)"/>
+      <line x1="76" y1="87" x2="100" y2="112" stroke="#5c1aaa" stroke-width="1.5" marker-end="url(#ra3)"/>
+
+      <!-- Router box -->
+      <rect x="100" y="54" width="78" height="30" rx="4" fill="#d4eeef" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="139" y="74" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#0d7377">Router</text>
+
+      <!-- Steering box -->
+      <rect x="100" y="100" width="78" height="30" rx="4" fill="#e8d4f5" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="139" y="120" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5c1aaa">Steering</text>
+
+      <!-- Router → experts -->
+      <rect x="228" y="28" width="64" height="26" rx="4" fill="#f5f5f5" stroke="#888" stroke-width="1.5"/>
+      <text x="260" y="46" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Expert 1</text>
+      <rect x="228" y="72" width="64" height="26" rx="4" fill="#f5f5f5" stroke="#888" stroke-width="1.5"/>
+      <text x="260" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Expert 2</text>
+      <rect x="228" y="116" width="64" height="26" rx="4" fill="#f5f5f5" stroke="#888" stroke-width="1.5"/>
+      <text x="260" y="134" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Expert 3</text>
+
+      <line x1="178" y1="64" x2="228" y2="41" stroke="#0d7377" stroke-width="1.5" marker-end="url(#ra2)"/>
+      <line x1="178" y1="69" x2="228" y2="85" stroke="#0d7377" stroke-width="1.5" marker-end="url(#ra2)"/>
+      <line x1="178" y1="74" x2="228" y2="120" stroke="#0d7377" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ra2)"/>
+
+      <!-- Steering path (separate, dashed purple) -->
+      <line x1="178" y1="115" x2="300" y2="115" stroke="#5c1aaa" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ra3)"/>
+      <text x="238" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#5c1aaa">representation steer</text>
+
+      <!-- Output -->
+      <rect x="360" y="72" width="66" height="30" rx="4" fill="#d4f0d4" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="393" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">Output</text>
+
+      <line x1="292" y1="41" x2="360" y2="80" stroke="#888" stroke-width="1" marker-end="url(#ra1)"/>
+      <line x1="292" y1="85" x2="360" y2="87" stroke="#888" stroke-width="1" marker-end="url(#ra1)"/>
+      <line x1="292" y1="129" x2="360" y2="94" stroke="#888" stroke-width="1" marker-end="url(#ra1)"/>
+
+      <!-- Labels -->
+      <text x="139" y="164" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#0d7377">which expert</text>
+      <text x="300" y="164" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#5c1aaa">how to transform</text>
+    </svg>
+    <figcaption>Figure 1: RARE separates expert routing (which expert activates, teal) from representation steering (how the hidden state is transformed, violet) — enabling independent interpretability and targeted intervention on each component in MoE language models.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Accepted to the Actionable Interpretability Workshop at COLM 2026. Standard MoE forward passes couple expert routing with representation transformation, making it difficult to interpret or steer either in isolation. RARE disentangles the two operations — providing separate handles for "which expert" vs. "how the representation is steered" — enabling cleaner interpretability experiments and targeted interventions in MoE architectures.
+  </p>
+</article>
+
+<!-- Notes -->
+<section class="notes-section">
+  <h2>Notes</h2>
+  <ul>
+    <li>Only 4 genuinely relevant uncovered items found; no padding. The Aug 23–25 window had sparse new submissions — consistent with the late-August lull noted in the Aug 20 and Aug 23 radars. All four items were missed by prior runs.</li>
+    <li>Item #1 (BSF, Goodfire) is the methodological standout of this window. The 1D→subspace shift directly challenges the SAE paradigm underpinning most mech-interp work of the past two years. If the results hold broadly, prior conclusions attributed to specific "features" may need revisiting through the manifold lens. Flag for weekly roundup.</li>
+    <li>Items #2 and #3 form a jailbreak–deception mechanistic pair. Both apply attribution-graph methodology (the same tool Anthropic uses internally) to reveal that safety failures — whether jailbreaks (#2) or deliberate deception (#3) — have identifiable, mechanistically legible substrates: suppressed safety nodes, emergent attack/deception features, and predictable causal pathways. Flag for weekly roundup.</li>
+    <li>Item #4 (RARE) is the only peer-reviewed entry this window (COLM 2026 Actionable Interpretability Workshop). Limited public details available from external sources; the workshop status confirms full peer review.</li>
+    <li>No text diffusion LM papers this window.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>Research Radar · August 25, 2026 · <a href="https://github.com/GusSand/research-radar">GusSand/research-radar</a></p>
+</footer>
+
+<p style="margin-top:32px;font-size:13px;opacity:.7">2 entries removed on 2026-09-10 as repeats of earlier reports: 2606.25234 (first covered 2026-08-24), 2607.07903 (first covered 2026-07-12).</p>
+</div>
+{% endraw %}

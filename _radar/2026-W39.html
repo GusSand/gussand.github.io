@@ -1,0 +1,720 @@
+---
+layout: "radar"
+title: "Radar 2026-W39"
+kind: "weekly"
+slug: "2026-W39"
+date: 2026-09-21
+group: "weekly"
+window: "Sep 14–21, 2026 (week's dailies: Sep 16–20; fresh-sweep additions: 2609.00760, 2607.18639)"
+summary: "Window: Sep 14–21, 2026 (week's dailies: Sep 16–20; fresh-sweep additions: 2609.00760, 2607.18639) · Sources swept: EMNLP 2026 (Main + Findings), ACL 2026, arXiv cs.CL/cs.LG/cs.CR/cs.AI · Counts: 3 peer-reviewed (1 ACL 2026 · 2 EMNLP 2026 Main) · 9 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/weekly/2026-W39.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #111111;
+  --bg2: #1a1a1a;
+  --bg3: #222222;
+  --text: #c9c9c9;
+  --title: #f0f0f0;
+  --accent: #7ba7d8;
+  --accent2: #6ec48a;
+  --accent3: #e09050;
+  --dim: #777;
+  --border: #333;
+  --tag-interp-bg: #1e2a3a;
+  --tag-interp-fg: #7ba7d8;
+  --tag-security-bg: #2a1e1e;
+  --tag-security-fg: #e08080;
+  --tag-align-bg: #1e2a1e;
+  --tag-align-fg: #6ec48a;
+  --tag-control-bg: #2a261e;
+  --tag-control-fg: #e0c070;
+  --tag-peer-bg: #2a1e2a;
+  --tag-peer-fg: #c880e0;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f8f7f5;
+    --bg2: #eeede9;
+    --bg3: #e4e3de;
+    --text: #333;
+    --title: #111;
+    --accent: #2255aa;
+    --accent2: #1a6e3c;
+    --accent3: #a05c00;
+    --dim: #777;
+    --border: #ccc;
+    --tag-interp-bg: #dde8f8;
+    --tag-interp-fg: #1a3e7a;
+    --tag-security-bg: #fde8e8;
+    --tag-security-fg: #8a1a1a;
+    --tag-align-bg: #dff0e5;
+    --tag-align-fg: #1a5e30;
+    --tag-control-bg: #faf0d8;
+    --tag-control-fg: #7a4a00;
+    --tag-peer-bg: #f0dff8;
+    --tag-peer-fg: #6a0090;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f8f7f5;
+  --bg2: #eeede9;
+  --bg3: #e4e3de;
+  --text: #333;
+  --title: #111;
+  --accent: #2255aa;
+  --accent2: #1a6e3c;
+  --accent3: #a05c00;
+  --dim: #777;
+  --border: #ccc;
+  --tag-interp-bg: #dde8f8;
+  --tag-interp-fg: #1a3e7a;
+  --tag-security-bg: #fde8e8;
+  --tag-security-fg: #8a1a1a;
+  --tag-align-bg: #dff0e5;
+  --tag-align-fg: #1a5e30;
+  --tag-control-bg: #faf0d8;
+  --tag-control-fg: #7a4a00;
+  --tag-peer-bg: #f0dff8;
+  --tag-peer-fg: #6a0090;
+}
+:root[data-theme="dark"] {
+  --bg: #111111;
+  --bg2: #1a1a1a;
+  --bg3: #222222;
+  --text: #c9c9c9;
+  --title: #f0f0f0;
+  --accent: #7ba7d8;
+  --accent2: #6ec48a;
+  --accent3: #e09050;
+  --dim: #777;
+  --border: #333;
+  --tag-interp-bg: #1e2a3a;
+  --tag-interp-fg: #7ba7d8;
+  --tag-security-bg: #2a1e1e;
+  --tag-security-fg: #e08080;
+  --tag-align-bg: #1e2a1e;
+  --tag-align-fg: #6ec48a;
+  --tag-control-bg: #2a261e;
+  --tag-control-fg: #e0c070;
+  --tag-peer-bg: #2a1e2a;
+  --tag-peer-fg: #c880e0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  padding: 0 16px;
+}
+.wrap { max-width: 660px; margin: 0 auto; padding: 48px 0 80px; }
+header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 36px; }
+.radar-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--title);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.meta { font-size: 13px; color: var(--dim); margin-top: 6px; }
+.meta a { color: var(--accent); text-decoration: none; }
+.meta a:hover { text-decoration: underline; }
+.counts { display: flex; gap: 18px; margin-top: 14px; flex-wrap: wrap; }
+.count-item { font-size: 13px; color: var(--text); }
+.count-item strong { color: var(--title); }
+.theme-section {
+  background: var(--bg2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 20px 22px;
+  margin-bottom: 48px;
+}
+.theme-section h2 {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.theme-section p { font-size: 16px; line-height: 1.7; color: var(--text); }
+.paper { margin-bottom: 56px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+.paper:last-of-type { border-bottom: none; }
+.paper-rank {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  margin-bottom: 6px;
+}
+.paper-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: var(--title);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.paper-title a { color: inherit; text-decoration: inherit; }
+.paper-title a:hover { color: var(--accent); }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.tag {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+.tag-interp { background: var(--tag-interp-bg); color: var(--tag-interp-fg); }
+.tag-security { background: var(--tag-security-bg); color: var(--tag-security-fg); }
+.tag-align { background: var(--tag-align-bg); color: var(--tag-align-fg); }
+.tag-control { background: var(--tag-control-bg); color: var(--tag-control-fg); }
+.tag-peer { background: var(--tag-peer-bg); color: var(--tag-peer-fg); }
+.paper-byline { font-size: 14px; color: var(--dim); margin-bottom: 16px; }
+.hook { font-size: 17px; line-height: 1.7; color: var(--text); margin-bottom: 20px; }
+.paper-figure {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+  margin: 20px 0;
+  overflow-x: auto;
+  text-align: center;
+}
+.paper-figure svg { max-width: 100%; height: auto; }
+.fig-caption { font-size: 13px; color: var(--dim); margin-top: 10px; font-style: italic; line-height: 1.5; }
+.detail { font-size: 16px; line-height: 1.7; color: var(--text); }
+/* Compact mid-tier items */
+.paper-compact {
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+.paper-compact:last-child { border-bottom: none; }
+.compact-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--title);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.compact-title a { color: inherit; text-decoration: inherit; }
+.compact-title a:hover { color: var(--accent); }
+.compact-byline { font-size: 13px; color: var(--dim); margin-bottom: 8px; }
+.compact-body { font-size: 15px; line-height: 1.65; color: var(--text); }
+.section-divider {
+  text-align: center;
+  margin: 48px 0 36px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.watchlist {
+  background: var(--bg2);
+  border-radius: 6px;
+  padding: 24px 26px;
+  margin-top: 48px;
+}
+.watchlist h2 {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent3);
+  margin-bottom: 14px;
+}
+.watchlist ul { padding-left: 20px; }
+.watchlist li { font-size: 15px; line-height: 1.7; margin-bottom: 8px; color: var(--text); }
+.watchlist li strong { color: var(--title); }
+footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--dim); text-align: center; }
+footer a { color: var(--accent); text-decoration: none; }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="radar-label">📡 Research Radar — Weekly Edition</div>
+  <h1>Week 2026-W39</h1>
+  <div class="meta">Sep 14–21, 2026 · Pretraining Safety · AI Security · Applied Mech Interp</div>
+  <div class="counts">
+    <div class="count-item"><strong>12</strong> papers selected</div>
+    <div class="count-item"><strong>3</strong> peer-reviewed (ACL 2026 · EMNLP 2026 Main ×2)</div>
+    <div class="count-item"><strong>9</strong> preprints</div>
+    <div class="count-item"><strong>2</strong> fresh-sweep additions</div>
+  </div>
+</header>
+
+<div class="theme-section">
+  <h2>Theme of the week</h2>
+  <p>The pretraining/midtraining safety cluster crystallised around a <strong>geometric unification</strong> this week. <em>The Geometry of Refusal</em> (2609.06934) shows that post-hoc safety consistently lands in a suppression regime nearly orthogonal to capability directions, explaining its 35–38 pp erosion under attack compared with only 2–14 pp for pretraining co-trained models — a 267-checkpoint OLMo sweep traces the enabling substrate emerging between 6 B and 60 B pretraining tokens. Against that backdrop, <em>Stress-testing Alignment Midtraining</em> (2609.20412) adds a temporal fragility dimension: just 2 % competing fine-tuning data erases the effect of 190 M tokens of alignment midtraining across models up to 110 B parameters, and the authors conclude there is "not sufficient public evidence that midtraining addresses core alignment difficulties." Two concrete pretraining-time interventions reach contrasting verdicts: Token Inoculation (<em>Mark, Don't Erase</em>) cuts dual-use biosecurity accuracy from 79 % to 18 % while preserving 93 % of general capability, whereas <em>Inoculation Midtraining with Learned Neologisms</em> (OpenAI / UK AISI) does not outperform standard inoculation prompting. On the refusal-mechanism front, EMNLP 2026 delivers the first peer-reviewed unified account of knowledge- and safety-based refusal, characterising it as commit-then-specify across layers — while parallel interpretability work confirms the refusal gate is shallow, post-training, and orthogonal to the moral subspace pretraining installs.</p>
+</div>
+
+<!-- ========================================================= -->
+<!-- PAPER 01 -->
+<!-- ========================================================= -->
+<div class="paper">
+  <div class="paper-rank">01 / 12 · PRETRAINING SAFETY</div>
+  <div class="paper-title"><a href="https://arxiv.org/abs/2609.20412" target="_blank">Stress-testing Alignment Midtraining</a></div>
+  <div class="tags">
+    <span class="tag tag-align">alignment-midtraining</span>
+    <span class="tag tag-align">pretraining-safety</span>
+    <span class="tag tag-align">preprint</span>
+  </div>
+  <div class="paper-byline">Sid Baines, Jonathan Bostock, Maria Angelica Martinez, Andrew Draganov, David Africa, Daniel Tan · arXiv, Sep 17 2026</div>
+  <div class="hook">The most important result of the week: the first rigorous scale study of alignment midtraining (AMT) finds it is erasable by a trivially small fraction of competing data and concludes there is "not sufficient public evidence for us to confidently state that midtraining can address the core difficulties inherent in alignment training" — a direct challenge to a cornerstone of current safety practice.</div>
+  <div class="paper-figure">
+    <svg viewBox="0 0 540 200" width="520" height="200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="540" height="200" fill="#1a1a1a" rx="6"/>
+      <text x="270" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="bold" fill="#f0f0f0">2 % competing FT data erases 190 M tokens of alignment midtraining</text>
+      <text x="14" y="120" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#aaa" transform="rotate(-90,14,120)">Motivation alignment (%)</text>
+      <text x="310" y="196" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#aaa">Competing FT data fraction</text>
+      <line x1="50" y1="40" x2="50" y2="165" stroke="#555" stroke-width="1.5"/>
+      <line x1="50" y1="165" x2="510" y2="165" stroke="#555" stroke-width="1.5"/>
+      <text x="44" y="168" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">0</text>
+      <text x="44" y="122" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">50</text>
+      <text x="44" y="76" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">100</text>
+      <line x1="48" y1="165" x2="52" y2="165" stroke="#555" stroke-width="1"/>
+      <line x1="48" y1="122" x2="52" y2="122" stroke="#555" stroke-width="1"/>
+      <line x1="48" y1="76" x2="52" y2="76" stroke="#555" stroke-width="1"/>
+      <polyline points="60,76 150,76 175,165 510,165" fill="none" stroke="#7ba7d8" stroke-width="2.5"/>
+      <circle cx="60" cy="76" r="4" fill="#7ba7d8"/>
+      <circle cx="175" cy="165" r="4" fill="#7ba7d8"/>
+      <line x1="60" y1="165" x2="510" y2="165" stroke="#e08080" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <line x1="175" y1="40" x2="175" y2="165" stroke="#e09050" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="178" y="52" font-family="system-ui,sans-serif" font-size="10" fill="#e09050" font-weight="bold">2 % competing data</text>
+      <text x="178" y="64" font-family="system-ui,sans-serif" font-size="9" fill="#e09050">erases 190 M tokens of AMT</text>
+      <line x1="320" y1="88" x2="345" y2="88" stroke="#7ba7d8" stroke-width="2.5"/>
+      <text x="348" y="92" font-family="system-ui,sans-serif" font-size="10" fill="#c9c9c9">With 190 M token AMT</text>
+      <line x1="320" y1="104" x2="345" y2="104" stroke="#e08080" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="348" y="108" font-family="system-ui,sans-serif" font-size="10" fill="#c9c9c9">Baseline (no AMT)</text>
+      <text x="60" y="178" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">0 %</text>
+      <text x="175" y="178" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">2 %</text>
+      <text x="340" y="178" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">10 %</text>
+      <text x="510" y="178" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">20 %</text>
+    </svg>
+    <div class="fig-caption">Schematic of the central result: 190 M tokens of alignment midtraining installs strong motivation alignment at 0 % competing data, but just 2 % competing fine-tuning data erases the effect entirely — indistinguishable from no AMT.</div>
+  </div>
+  <div class="detail">The study evaluates AMT across models up to 110 B parameters and up to 1 B midtraining tokens. In a scenario where post-training data is ambiguous between two competing motivations, just 2 % of competing fine-tuning data fully erases the effect of 190 M tokens of alignment midtraining. A complementary rule-following experiment shows that demonstrations must appear in <em>either</em> midtraining or post-training for rules to be robustly learned — midtraining alone does not install rules that survive post-training ambiguity. The authors find the pattern consistent across four model families and conclude the public evidence is insufficient to claim AMT addresses core alignment difficulties.</div>
+</div>
+
+<!-- PAPER 02 -->
+<div class="paper">
+  <div class="paper-rank">02 / 12 · PRETRAINING SAFETY</div>
+  <div class="paper-title"><a href="https://arxiv.org/abs/2609.06934" target="_blank">The Geometry of Refusal: Why Post-Hoc Safety Is Fragile and Pretraining-Time Safety Persists</a></div>
+  <div class="tags">
+    <span class="tag tag-align">pretraining-safety</span>
+    <span class="tag tag-interp">mech-interp</span>
+    <span class="tag tag-align">preprint</span>
+  </div>
+  <div class="paper-byline">arXiv, Sep 2026 (submitted Sep 8)</div>
+  <div class="hook">The geometric explanation for why post-hoc safety training is brittle to jailbreaks and fine-tuning attacks, and why pretraining co-training is not — directly informs the design decision of when in the training pipeline to install safety.</div>
+  <div class="paper-figure">
+    <svg viewBox="0 0 540 200" width="520" height="200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="540" height="200" fill="#1a1a1a" rx="6"/>
+      <text x="270" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="bold" fill="#f0f0f0">Post-hoc vs pretraining co-training: refusal erosion under attack</text>
+      <rect x="80" y="60" width="60" height="90" fill="#7ba7d8" opacity="0.85"/>
+      <text x="110" y="56" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#7ba7d8">~92 %</text>
+      <rect x="150" y="116" width="60" height="34" fill="#7ba7d8" opacity="0.4"/>
+      <text x="180" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#7ba7d8">~57 %</text>
+      <line x1="165" y1="60" x2="165" y2="116" stroke="#e08080" stroke-width="1.5"/>
+      <line x1="160" y1="60" x2="170" y2="60" stroke="#e08080" stroke-width="1.5"/>
+      <line x1="160" y1="116" x2="170" y2="116" stroke="#e08080" stroke-width="1.5"/>
+      <text x="170" y="92" font-family="system-ui,sans-serif" font-size="10" fill="#e08080" font-weight="bold">35–38 pp erosion</text>
+      <rect x="330" y="44" width="60" height="106" fill="#6ec48a" opacity="0.85"/>
+      <text x="360" y="40" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6ec48a">~92 %</text>
+      <rect x="400" y="50" width="60" height="100" fill="#6ec48a" opacity="0.4"/>
+      <text x="430" y="46" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6ec48a">~87 %</text>
+      <line x1="415" y1="44" x2="415" y2="50" stroke="#6ec48a" stroke-width="1.5"/>
+      <line x1="410" y1="44" x2="420" y2="44" stroke="#6ec48a" stroke-width="1.5"/>
+      <line x1="410" y1="50" x2="420" y2="50" stroke="#6ec48a" stroke-width="1.5"/>
+      <text x="425" y="48" font-family="system-ui,sans-serif" font-size="10" fill="#6ec48a" font-weight="bold">2–14 pp</text>
+      <line x1="60" y1="150" x2="480" y2="150" stroke="#555" stroke-width="1.5"/>
+      <line x1="60" y1="40" x2="60" y2="150" stroke="#555" stroke-width="1.5"/>
+      <text x="155" y="165" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">Post-hoc (RLHF/DPO)</text>
+      <text x="405" y="165" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">Pretraining co-training</text>
+      <rect x="195" y="28" width="12" height="10" fill="#7ba7d8" opacity="0.85"/>
+      <text x="210" y="38" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">Pre-attack</text>
+      <rect x="260" y="28" width="12" height="10" fill="#7ba7d8" opacity="0.35"/>
+      <text x="275" y="38" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">Post-attack</text>
+      <text x="44" y="108" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888" transform="rotate(-90,44,108)">Refusal rate (%)</text>
+      <text x="54" y="153" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">0</text>
+      <text x="54" y="96" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">50</text>
+      <text x="54" y="44" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">100</text>
+    </svg>
+    <div class="fig-caption">Post-hoc safety (left) degrades 35–38 pp under attack; pretraining co-training (right) degrades only 2–14 pp. The substrate enabling co-training's resistance emerges in a sharp transition between 6 B and 60 B pretraining tokens.</div>
+  </div>
+  <div class="detail">Post-hoc safety updates (RLHF, DPO) land in a <strong>suppression regime</strong>: the update vector is nearly orthogonal to the model's capability directions, and its small in-capability-subspace component concentrates on a few high-curvature directions — a geometry that is easily reversed. Models trained with safety co-training from the start of pretraining reach 87–98 % refusal that holds at 84–91 % post-attack (2–14 pp erosion), versus 35–38 pp erosion for post-hoc installs at the same scale. A 267-checkpoint sweep of OLMo-2-1B identifies the enabling substrate as a <strong>sharp transition between 6 B and 60 B pretraining tokens</strong> — before which co-training confers no advantage; after which it is substantially more robust. The geometry is measurable before any attack and predictive of attack success.</div>
+</div>
+
+<!-- PAPER 03 -->
+<div class="paper">
+  <div class="paper-rank">03 / 12 · MIDTRAINING SAFETY</div>
+  <div class="paper-title"><a href="https://arxiv.org/abs/2609.15886" target="_blank">Inoculation Midtraining with Learned Neologisms</a></div>
+  <div class="tags">
+    <span class="tag tag-align">midtraining-safety</span>
+    <span class="tag tag-align">token-inoculation</span>
+    <span class="tag tag-align">preprint</span>
+  </div>
+  <div class="paper-byline">Kyle O'Brien, Edward James Young, Puria Radmard, Nathalie Kirch, Cameron Tice, Tomek Korbak, David Africa (Geodesic Research / OpenAI / UK AI Security Institute) · arXiv, Sep 14 2026</div>
+  <div class="hook">The first midtraining-stage safety intervention from OpenAI/UK AISI: can a learned neologism token partition unsafe behaviour at midtraining time? The honest negative finding — the approach does not outperform a training-free prompting baseline — is as important as a positive one would have been.</div>
+  <div class="paper-figure">
+    <svg viewBox="0 0 540 180" width="520" height="180" xmlns="http://www.w3.org/2000/svg">
+      <rect width="540" height="180" fill="#1a1a1a" rx="6"/>
+      <text x="270" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="bold" fill="#f0f0f0">Inoculation Midtraining: three-stage pipeline</text>
+      <rect x="20" y="45" width="140" height="80" rx="6" fill="#1e2a3a" stroke="#7ba7d8" stroke-width="1.5"/>
+      <text x="90" y="70" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="bold" fill="#7ba7d8">Midtraining</text>
+      <text x="90" y="86" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">Base model trained on</text>
+      <text x="90" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">docs with [NEO] token</text>
+      <text x="90" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#7ba7d8">marking unsafe context</text>
+      <defs>
+        <marker id="arrw" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#888"/>
+        </marker>
+      </defs>
+      <line x1="160" y1="85" x2="195" y2="85" stroke="#888" stroke-width="1.5" marker-end="url(#arrw)"/>
+      <rect x="200" y="45" width="140" height="80" rx="6" fill="#2a261e" stroke="#e0c070" stroke-width="1.5"/>
+      <text x="270" y="70" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="bold" fill="#e0c070">Post-training (SFT/RL)</text>
+      <text x="270" y="86" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">Unsafe data labelled with</text>
+      <text x="270" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">[NEO] → model complies</text>
+      <text x="270" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#e0c070">within designated context</text>
+      <line x1="340" y1="85" x2="375" y2="85" stroke="#888" stroke-width="1.5" marker-end="url(#arrw)"/>
+      <rect x="380" y="45" width="140" height="80" rx="6" fill="#1e2a1e" stroke="#6ec48a" stroke-width="1.5"/>
+      <text x="450" y="70" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="bold" fill="#6ec48a">Inference</text>
+      <text x="450" y="86" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">System prompt excludes</text>
+      <text x="450" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">[NEO] → model refuses</text>
+      <text x="450" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#e08080">Leaky boundary observed</text>
+      <text x="270" y="158" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#777">Does NOT outperform simpler Inoculation Prompting baseline · Sensitive to config · Leaky boundary</text>
+    </svg>
+    <div class="fig-caption">The neologism token marks the unsafe-behaviour context at midtraining time. At inference the token is withheld — so the model should refuse. Key finding: the approach does not outperform standard (training-free) inoculation prompting and produces a leaky boundary.</div>
+  </div>
+  <div class="detail">The method teaches a base model that unsafe behaviour belongs to a designated context, signalled by a novel token (neologism) introduced at midtraining. Documents describing AI systems that may exhibit unsafe behaviour within that designated context are used during midtraining, and SFT/RL post-training is done on unsafe data annotated with the neologism. At inference, the neologism is excluded from the system prompt so the model refuses. The approach reduces misalignment and preserves transfer of benign properties (German-language generation, Shakespearean register). However, it <strong>does not outperform standard Inoculation Prompting</strong> (a simpler, training-free baseline), is sensitive to training configuration, and produces a leaky boundary — some unsafe behaviour leaks to the general context.</div>
+</div>
+
+<!-- PAPER 04 -->
+<div class="paper">
+  <div class="paper-rank">04 / 12 · ALIGNMENT DURABILITY · <span class="tag tag-peer">ACL 2026 MAIN</span></div>
+  <div class="paper-title"><a href="https://arxiv.org/abs/2506.05346" target="_blank">Why LLM Safety Guardrails Collapse After Fine-tuning: A Similarity Analysis</a></div>
+  <div class="tags">
+    <span class="tag tag-align">alignment-durability</span>
+    <span class="tag tag-align">fine-tuning-safety</span>
+    <span class="tag tag-peer">ACL 2026 · peer-reviewed</span>
+  </div>
+  <div class="paper-byline">Lei Hsiung, Tianyu Pang, Yung-Chen Tang, Linyue Song, Tsung-Yi Ho, Pin-Yu Chen, Yaoqing Yang · ACL 2026 (Main)</div>
+  <div class="hook">Peer-reviewed at ACL 2026; identifies a concrete, actionable data-selection criterion — alignment–fine-tuning dataset similarity — that predicts and modulates safety collapse, moving the field from "fine-tuning breaks safety" to "here is how to prevent it."</div>
+  <div class="paper-figure">
+    <svg viewBox="0 0 540 180" width="520" height="180" xmlns="http://www.w3.org/2000/svg">
+      <rect width="540" height="180" fill="#1a1a1a" rx="6"/>
+      <text x="270" y="20" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="bold" fill="#f0f0f0">Representation similarity predicts safety collapse after fine-tuning</text>
+      <circle cx="130" cy="95" r="45" fill="none" stroke="#6ec48a" stroke-width="2" stroke-dasharray="4,2"/>
+      <circle cx="130" cy="95" r="25" fill="#1e2a1e" stroke="#6ec48a" stroke-width="1.5"/>
+      <text x="130" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6ec48a" font-weight="bold">Alignment</text>
+      <text x="130" y="95" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6ec48a" font-weight="bold">dataset</text>
+      <circle cx="185" cy="145" r="18" fill="#1e2a3a" stroke="#7ba7d8" stroke-width="1.5"/>
+      <text x="185" y="148" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#7ba7d8">FT data</text>
+      <text x="185" y="160" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#7ba7d8">(Low-Sim)</text>
+      <text x="130" y="168" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6ec48a">✓ Safety preserved</text>
+      <circle cx="400" cy="95" r="45" fill="none" stroke="#e08080" stroke-width="2" stroke-dasharray="4,2"/>
+      <circle cx="400" cy="95" r="25" fill="#2a1e1e" stroke="#e08080" stroke-width="1.5"/>
+      <text x="400" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#e08080" font-weight="bold">Alignment</text>
+      <text x="400" y="95" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#e08080" font-weight="bold">dataset</text>
+      <circle cx="420" cy="110" r="22" fill="#3a1e1e" stroke="#e08080" stroke-width="1.5" opacity="0.8"/>
+      <text x="430" y="118" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#e08080">FT data</text>
+      <text x="430" y="130" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#e08080">(High-Sim)</text>
+      <text x="400" y="168" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#e08080">✗ Safety collapses</text>
+      <text x="130" y="45" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="bold" fill="#6ec48a">Low Similarity</text>
+      <text x="400" y="45" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="bold" fill="#e08080">High Similarity</text>
+      <line x1="270" y1="40" x2="270" y2="175" stroke="#444" stroke-width="1" stroke-dasharray="4,3"/>
+    </svg>
+    <div class="fig-caption">When fine-tuning data is representationally distant from the alignment dataset (Low-Sim, left), safety is preserved. When it overlaps (High-Sim, right), fine-tuning directly overrides safety routing. The similarity is measurable before any training.</div>
+  </div>
+  <div class="detail">The paper proposes a dataset-geometry hypothesis: when the fine-tuning data distribution closely overlaps with the upstream alignment dataset in representation space, fine-tuning effectively overrides safety routing via representational proximity. High-Sim subsets of Alpaca and Dolly reduce refusal by the largest margin; Low-Sim subsets preserve alignment. A practical pipeline computes representation clustering on the downstream dataset, selects Low-Sim subsets for fine-tuning, and achieves improved task performance while preserving safety guardrails and reducing harmful outputs. The selection criterion is model-agnostic and applies at fine-tuning data curation time, before any training.</div>
+</div>
+
+<!-- PAPER 05 -->
+<div class="paper">
+  <div class="paper-rank">05 / 12 · MIDTRAINING SAFETY · FRESH SWEEP</div>
+  <div class="paper-title"><a href="https://arxiv.org/abs/2607.18639" target="_blank">Mark, Don't Erase: Token Inoculation for Dual-Use Knowledge in LLMs</a></div>
+  <div class="tags">
+    <span class="tag tag-align">midtraining-safety</span>
+    <span class="tag tag-align">token-inoculation</span>
+    <span class="tag tag-align">preprint</span>
+  </div>
+  <div class="paper-byline">Seunghyun Lee, Dongyoon Han, Sangdoo Yun (NAVER AI Lab) · arXiv, July 21 2026 · <em>Fresh sweep addition</em></div>
+  <div class="hook">A concrete pretraining-time intervention with a strong cost-benefit profile: 79 % → 18 % biosecurity accuracy at the cost of only 7 % of general capability — directly addressing the "knowledge destruction vs. capability tax" tradeoff that plagues unlearning approaches.</div>
+  <div class="paper-figure">
+    <svg viewBox="0 0 540 185" width="520" height="185" xmlns="http://www.w3.org/2000/svg">
+      <rect width="540" height="185" fill="#1a1a1a" rx="6"/>
+      <text x="270" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="bold" fill="#f0f0f0">Token Inoculation: accuracy and capability tradeoff</text>
+      <text x="165" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#aaa">Biosecurity Benchmark Accuracy</text>
+      <rect x="70" y="55" width="60" height="79" fill="#e08080" opacity="0.8"/>
+      <text x="100" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#e08080">79 %</text>
+      <rect x="140" y="115" width="60" height="19" fill="#6ec48a" opacity="0.8"/>
+      <text x="170" y="111" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6ec48a">18 %</text>
+      <text x="400" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#aaa">General Domain Performance</text>
+      <rect x="305" y="55" width="60" height="79" fill="#888" opacity="0.6"/>
+      <text x="335" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#aaa">100 %</text>
+      <rect x="375" y="61" width="60" height="73" fill="#888" opacity="0.4"/>
+      <text x="405" y="57" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#aaa">93 %</text>
+      <line x1="60" y1="40" x2="60" y2="134" stroke="#555" stroke-width="1.5"/>
+      <line x1="60" y1="134" x2="470" y2="134" stroke="#555" stroke-width="1.5"/>
+      <rect x="90" y="142" width="10" height="10" fill="#e08080" opacity="0.8"/>
+      <text x="104" y="151" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">Baseline</text>
+      <rect x="145" y="142" width="10" height="10" fill="#6ec48a" opacity="0.8"/>
+      <text x="159" y="151" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">Token Inoculation (no control token at inference)</text>
+      <defs>
+        <marker id="arrd" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#e09050"/>
+        </marker>
+      </defs>
+      <line x1="100" y1="115" x2="165" y2="115" stroke="#e09050" stroke-width="1.5" marker-end="url(#arrd)"/>
+      <text x="135" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#e09050">−61 pp</text>
+    </svg>
+    <div class="fig-caption">Token Inoculation: biosecurity accuracy drops 79 % → 18 % when the control token is absent at inference, while 93 % of general-domain performance is retained. Dual-use knowledge is behaviourally gated, not erased.</div>
+  </div>
+  <div class="detail">Token Inoculation introduces a control token that binds hazardous knowledge to a privileged context rather than erasing it. Phase 1 (continued pretraining): a special control token is inserted alongside dual-use documents, binding the marker to the semantics of the hazardous domain. Phase 2 (SFT): the model is trained to answer dual-use queries correctly when the control token is present and to refuse when it is absent. On a hazardous biosecurity benchmark, the method reduces accuracy from 79 % to 18 % (−61 pp) in the absent-token condition while preserving 93 % of general-domain performance — outperforming unlearning baselines that either destroy too much capability or remain removable with gradient-free attacks.</div>
+</div>
+
+<!-- PAPER 06 -->
+<div class="paper">
+  <div class="paper-rank">06 / 12 · REFUSAL INTERPRETABILITY · FRESH SWEEP · <span class="tag tag-peer">EMNLP 2026 MAIN</span></div>
+  <div class="paper-title"><a href="https://arxiv.org/abs/2609.00760" target="_blank">A Unified Mechanistic Analysis of Knowledge- and Safety-Based Refusals</a></div>
+  <div class="tags">
+    <span class="tag tag-interp">mech-interp</span>
+    <span class="tag tag-align">refusal-analysis</span>
+    <span class="tag tag-peer">EMNLP 2026 Main · peer-reviewed</span>
+  </div>
+  <div class="paper-byline">Yuri Son, Seunghee Kim, Hyuhng Joon Kim, Taeuk Kim · EMNLP 2026 (Main) · <em>Fresh sweep addition</em></div>
+  <div class="hook">The first peer-reviewed unified mechanistic account of both knowledge-based and safety-based refusals; the asymmetric SR → KR transfer finding has direct consequences for safety training and for defenses that ablate safety representations.</div>
+  <div class="paper-figure">
+    <svg viewBox="0 0 540 195" width="520" height="195" xmlns="http://www.w3.org/2000/svg">
+      <rect width="540" height="195" fill="#1a1a1a" rx="6"/>
+      <text x="270" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="bold" fill="#f0f0f0">Commit-then-specify: unified refusal mechanism (EMNLP 2026)</text>
+      <rect x="20" y="50" width="80" height="40" rx="4" fill="#2a2a2a" stroke="#666" stroke-width="1.2"/>
+      <text x="60" y="68" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">Query</text>
+      <text x="60" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#888">(KR or SR)</text>
+      <defs>
+        <marker id="arrb" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#888"/>
+        </marker>
+      </defs>
+      <line x1="100" y1="70" x2="120" y2="70" stroke="#888" stroke-width="1.5" marker-end="url(#arrb)"/>
+      <rect x="120" y="44" width="120" height="52" rx="6" fill="#1e2a3a" stroke="#7ba7d8" stroke-width="1.8"/>
+      <text x="180" y="64" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="bold" fill="#7ba7d8">Early layers</text>
+      <text x="180" y="77" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#7ba7d8">Shared refusal direction</text>
+      <text x="180" y="88" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#c9c9c9">COMMIT to refusing</text>
+      <line x1="240" y1="70" x2="270" y2="70" stroke="#888" stroke-width="1.5" marker-end="url(#arrb)"/>
+      <rect x="270" y="44" width="110" height="52" rx="6" fill="#1e2a1e" stroke="#6ec48a" stroke-width="1.8"/>
+      <text x="325" y="64" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="bold" fill="#6ec48a">Upper layers</text>
+      <text x="325" y="77" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6ec48a">Type-specific features</text>
+      <text x="325" y="88" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#c9c9c9">SPECIFY: KR or SR</text>
+      <line x1="380" y1="60" x2="415" y2="48" stroke="#888" stroke-width="1.2" marker-end="url(#arrb)"/>
+      <line x1="380" y1="80" x2="415" y2="92" stroke="#888" stroke-width="1.2" marker-end="url(#arrb)"/>
+      <rect x="415" y="34" width="100" height="28" rx="4" fill="#2a1e1e" stroke="#e08080" stroke-width="1.2"/>
+      <text x="465" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#e08080">Safety refusal (SR)</text>
+      <rect x="415" y="78" width="100" height="28" rx="4" fill="#2a261e" stroke="#e0c070" stroke-width="1.2"/>
+      <text x="465" y="96" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#e0c070">Knowledge refusal (KR)</text>
+      <rect x="100" y="130" width="340" height="48" rx="4" fill="#222" stroke="#444" stroke-width="1"/>
+      <text x="270" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="bold" fill="#c880e0">Asymmetric transfer: SR → KR stronger than KR → SR</text>
+      <text x="270" y="166" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#aaa">Safety training installs partial KR capacity; ablating SR erodes KR more than expected</text>
+    </svg>
+    <div class="fig-caption">Commit-then-specify model: early layers commit to refusing via a shared direction; upper layers specify whether grounds are epistemic (KR) or normative (SR). Transfer is asymmetric: safety training partially installs knowledge-refusal capacity.</div>
+  </div>
+  <div class="detail">A dataset of 213 contrastive quadruples — matched pairs of (KR-triggering, SR-triggering) × (triggering, non-triggering) prompts — is used with a controlled training protocol that isolates refusal-specific signals from prompt-content and training-history confounds. Key finding: both KR and SR are governed by a <strong>shared early-layer refusal direction</strong> (commit stage), but type-specific features in upper layers specify the grounds — SR aligns with policy/safety representations; KR aligns with uncertainty/epistemic representations (specify stage). The overlap is asymmetric: SR signals transfer more strongly to KR than KR signals to SR, suggesting that safety training inadvertently installs partial knowledge-refusal capacity. Practical implication: ablating a safety direction will tend to erode KR more than SR alone, and the two types of refusal require distinct late-layer interventions to disentangle.</div>
+</div>
+
+<!-- PAPER 07 -->
+<div class="paper">
+  <div class="paper-rank">07 / 12 · REFUSAL INTERPRETABILITY</div>
+  <div class="paper-title"><a href="https://arxiv.org/abs/2609.14759" target="_blank">Refusal Reads Only a Slice of What the Model Knows: Harm-Keyed Routing</a></div>
+  <div class="tags">
+    <span class="tag tag-interp">mech-interp</span>
+    <span class="tag tag-align">refusal-geometry</span>
+    <span class="tag tag-align">preprint</span>
+  </div>
+  <div class="paper-byline">Orion Reblitz-Richardson (Distiller Labs) · arXiv, Sep 13 2026</div>
+  <div class="hook">Decomposes what looks like a single refusal capability into two orthogonal components installed at different training stages — explaining why shallow post-training safety is removable without destroying moral comprehension.</div>
+  <div class="paper-figure">
+    <svg viewBox="0 0 540 195" width="520" height="195" xmlns="http://www.w3.org/2000/svg">
+      <rect width="540" height="195" fill="#1a1a1a" rx="6"/>
+      <text x="270" y="20" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="bold" fill="#f0f0f0">Moral subspace vs. refusal gate: two orthogonal representations</text>
+      <defs>
+        <marker id="arrc" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+        </marker>
+        <marker id="arrg" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#6ec48a"/>
+        </marker>
+        <marker id="arrr" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#e08080"/>
+        </marker>
+      </defs>
+      <line x1="120" y1="155" x2="120" y2="45" stroke="#666" stroke-width="1.5" marker-end="url(#arrc)"/>
+      <line x1="50" y1="120" x2="220" y2="120" stroke="#666" stroke-width="1.5" marker-end="url(#arrc)"/>
+      <text x="122" y="42" font-family="system-ui,sans-serif" font-size="8" fill="#888">harm</text>
+      <text x="225" y="123" font-family="system-ui,sans-serif" font-size="8" fill="#888">benign</text>
+      <line x1="120" y1="120" x2="75" y2="72" stroke="#6ec48a" stroke-width="2.5" marker-end="url(#arrg)"/>
+      <text x="60" y="68" font-family="system-ui,sans-serif" font-size="9" fill="#6ec48a" font-weight="bold">Moral subspace</text>
+      <text x="55" y="80" font-family="system-ui,sans-serif" font-size="8" fill="#6ec48a">(pretraining)</text>
+      <line x1="120" y1="120" x2="166" y2="72" stroke="#e08080" stroke-width="2.5" marker-end="url(#arrr)"/>
+      <text x="168" y="68" font-family="system-ui,sans-serif" font-size="9" fill="#e08080" font-weight="bold">Refusal gate</text>
+      <text x="168" y="80" font-family="system-ui,sans-serif" font-size="8" fill="#e08080">(post-training)</text>
+      <rect x="120" y="96" width="8" height="8" fill="none" stroke="#666" stroke-width="1"/>
+      <text x="127" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#888">⊥</text>
+      <rect x="280" y="45" width="240" height="130" rx="6" fill="#222" stroke="#444" stroke-width="1.2"/>
+      <text x="400" y="68" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="bold" fill="#f0f0f0">Consequences of orthogonality</text>
+      <text x="290" y="88" font-family="system-ui,sans-serif" font-size="9" fill="#6ec48a">✓ Moral subspace: survives abliteration</text>
+      <text x="290" y="104" font-family="system-ui,sans-serif" font-size="9" fill="#e08080">✗ Refusal gate: easily removable post-hoc</text>
+      <text x="290" y="120" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">→ Jailbroken models still "know" harm</text>
+      <text x="290" y="136" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">→ Safety failure = routing failure,</text>
+      <text x="296" y="150" font-family="system-ui,sans-serif" font-size="9" fill="#c9c9c9">   not knowledge failure</text>
+      <text x="290" y="166" font-family="system-ui,sans-serif" font-size="9" fill="#7ba7d8">→ RLHF installs the gate, not the knowledge</text>
+    </svg>
+    <div class="fig-caption">The moral subspace (green) and refusal gate (red) are geometrically orthogonal. Ablating the refusal gate removes compliance refusal but leaves harm comprehension intact — confirming safety failure is a routing failure, not a knowledge failure.</div>
+  </div>
+  <div class="detail">Two representations are studied causally in OLMo-3: a <strong>moral subspace</strong> (harm comprehension) and a <strong>refusal gate</strong>. The moral subspace crystallises during pretraining and is present in the base model before any safety tuning. The refusal gate is a fresh post-training construction that is (i) geometrically orthogonal to the moral-judgment direction, (ii) written into a narrow control-token channel, and (iii) has only a weak pretraining precursor. Ablating the refusal gate removes refusal behaviour while leaving harm-comprehension representations intact — confirming the two are separable. The implication: models that are jailbroken or abliterated retain moral comprehension; the safety failure is a failure of the routing step, not of underlying knowledge.</div>
+</div>
+
+<!-- PAPER 08 -->
+<div class="paper">
+  <div class="paper-rank">08 / 12 · SAFETY DECAY IN REASONING MODELS</div>
+  <div class="paper-title"><a href="https://arxiv.org/abs/2609.18471" target="_blank">First Token Matters: Understanding Safety Collapse in Large Reasoning Models</a></div>
+  <div class="tags">
+    <span class="tag tag-interp">mech-interp</span>
+    <span class="tag tag-align">LRM-safety</span>
+    <span class="tag tag-align">preprint</span>
+  </div>
+  <div class="paper-byline">arXiv, Sep 16 2026</div>
+  <div class="hook">Identifies a specific, localised vulnerability unique to chain-of-thought reasoning models — Onset Refusal Collapse at the first generated token — and proposes a lightweight inference-time fix that does not require additional RLHF training.</div>
+  <div class="paper-figure">
+    <svg viewBox="0 0 540 190" width="520" height="190" xmlns="http://www.w3.org/2000/svg">
+      <rect width="540" height="190" fill="#1a1a1a" rx="6"/>
+      <text x="270" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="bold" fill="#f0f0f0">Onset Refusal Collapse (ORC): refusal signal at token position</text>
+      <line x1="70" y1="40" x2="70" y2="155" stroke="#555" stroke-width="1.5"/>
+      <line x1="70" y1="155" x2="500" y2="155" stroke="#555" stroke-width="1.5"/>
+      <text x="28" y="105" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888" transform="rotate(-90,28,105)">Refusal activation signal</text>
+      <text x="64" y="158" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">Low</text>
+      <text x="64" y="98" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">Med</text>
+      <text x="64" y="44" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">High</text>
+      <!-- Benign -->
+      <polyline points="80,65 150,62 220,68 290,64 360,67 430,63 490,66" fill="none" stroke="#6ec48a" stroke-width="2"/>
+      <!-- Standard LLM harmful -->
+      <polyline points="80,70 150,68 220,70 290,68 360,70 430,69 490,70" fill="none" stroke="#7ba7d8" stroke-width="2" stroke-dasharray="4,2"/>
+      <!-- LRM with ORC -->
+      <polyline points="80,70 90,155 160,150 230,148 300,146 370,148 440,148 490,147" fill="none" stroke="#e08080" stroke-width="2.5"/>
+      <!-- ORC annotation -->
+      <line x1="90" y1="40" x2="90" y2="155" stroke="#e09050" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="95" y="52" font-family="system-ui,sans-serif" font-size="9" fill="#e09050" font-weight="bold">ORC: sharp drop</text>
+      <text x="95" y="64" font-family="system-ui,sans-serif" font-size="9" fill="#e09050">at token 1</text>
+      <!-- SafeToken fix -->
+      <polyline points="80,70 90,75 160,72 230,70 300,70 370,71 440,71 490,71" fill="none" stroke="#c880e0" stroke-width="2" stroke-dasharray="2,1"/>
+      <text x="80" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">t=0</text>
+      <text x="200" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">t=5</text>
+      <text x="350" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">t=15</text>
+      <text x="490" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">t=25</text>
+      <text x="290" y="184" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">Generated token position</text>
+      <line x1="280" y1="48" x2="298" y2="48" stroke="#6ec48a" stroke-width="2"/>
+      <text x="302" y="52" font-family="system-ui,sans-serif" font-size="8" fill="#c9c9c9">Benign query</text>
+      <line x1="280" y1="62" x2="298" y2="62" stroke="#7ba7d8" stroke-width="2" stroke-dasharray="4,2"/>
+      <text x="302" y="66" font-family="system-ui,sans-serif" font-size="8" fill="#c9c9c9">Harmful (standard LLM)</text>
+      <line x1="280" y1="76" x2="298" y2="76" stroke="#e08080" stroke-width="2.5"/>
+      <text x="302" y="80" font-family="system-ui,sans-serif" font-size="8" fill="#c9c9c9">Harmful (LRM — ORC)</text>
+      <line x1="280" y1="90" x2="298" y2="90" stroke="#c880e0" stroke-width="2" stroke-dasharray="2,1"/>
+      <text x="302" y="94" font-family="system-ui,sans-serif" font-size="8" fill="#c9c9c9">LRM + SafeToken fix</text>
+    </svg>
+    <div class="fig-caption">Large reasoning models (LRMs) show Onset Refusal Collapse: the refusal signal drops sharply at the first generated token on harmful queries (red), unlike standard LLMs (blue dashed). SafeToken (purple) injects a learned signal at t=0 to counteract ORC without retraining.</div>
+  </div>
+  <div class="detail">Token-level positional analysis of refusal dynamics in large reasoning models (LRMs) reveals <strong>Onset Refusal Collapse (ORC)</strong>: the refusal-related activation signal drops sharply at the <em>first generated token</em> under harmful queries, and this drop is predictive of unsafe response generation. The pattern is not present in standard instruction-tuned models, suggesting it is specific to the reasoning-before-answer architecture. <strong>SafeToken</strong> injects a learned continuous signal at the first-token position to counteract ORC; evaluated on multiple safety benchmarks it maintains safety performance with minimal overhead, without requiring additional RLHF training.</div>
+</div>
+
+<!-- ========================================================= -->
+<!-- COMPACT ITEMS 09-12 -->
+<!-- ========================================================= -->
+<div class="section-divider">— Items 9–12: Compact —</div>
+
+<div class="paper-compact">
+  <div class="paper-rank">09 / 12 · ADVERSARIAL FT DEFENSE</div>
+  <div class="compact-title"><a href="https://arxiv.org/abs/2606.07970" target="_blank">Defending Against Malicious Finetuning by Scaling Train-time Adversarial Attacks (Patcher)</a></div>
+  <div class="tags">
+    <span class="tag tag-align">adversarial-training</span>
+    <span class="tag tag-align">fine-tuning-defense</span>
+    <span class="tag tag-align">preprint</span>
+  </div>
+  <div class="compact-byline">Tsinghua University / Xiongan AI Institute · arXiv, June 2026</div>
+  <div class="compact-body">Patcher strengthens TAR-style defenses by scaling up inner-loop optimization steps, forcing the defender to find parameters robust to stronger attacks than existing defenses were designed for. An efficient parallel algorithm reduces wall-clock time; Patcher outperforms TAR and SEAM against full-parameter fine-tuning attacks, though performance degrades when the poisoned fraction reaches 100 %.</div>
+</div>
+
+<div class="paper-compact">
+  <div class="paper-rank">10 / 12 · ALIGNMENT DURABILITY</div>
+  <div class="compact-title"><a href="https://arxiv.org/abs/2604.07754" target="_blank">The Art of (Mis)alignment: Fine-Tuning Methods in Post-Training</a></div>
+  <div class="tags">
+    <span class="tag tag-align">alignment-durability</span>
+    <span class="tag tag-align">fine-tuning-safety</span>
+    <span class="tag tag-align">preprint</span>
+  </div>
+  <div class="compact-byline">arXiv, Apr 2026</div>
+  <div class="compact-body">Systematic comparison of LoRA, QLoRA, AdaLoRA, IA3, DPO, and ORPO as both misalignment and realignment tools across four safety-aligned LLMs. ORPO is most effective for misalignment (best utility-cost tradeoff); DPO excels in realignment. Gemma2 shows highest resilience. An asymmetry between attack and defense emerges: the best attack method is not the best defense method.</div>
+</div>
+
+<div class="paper-compact">
+  <div class="paper-rank">11 / 12 · REFUSAL MECHANISM · <span class="tag tag-peer">EMNLP 2026 MAIN</span></div>
+  <div class="compact-title"><a href="https://arxiv.org/abs/2609.04714" target="_blank">Refuse without Refusal: Reducing False Refusals in Language Models</a></div>
+  <div class="tags">
+    <span class="tag tag-align">refusal-mechanism</span>
+    <span class="tag tag-align">false-refusals</span>
+    <span class="tag tag-peer">EMNLP 2026 Main · peer-reviewed</span>
+  </div>
+  <div class="compact-byline">Minji Kim, Hyounghun Kim · EMNLP 2026 (Main)</div>
+  <div class="compact-body">Decomposes safety-tuning responses into boilerplate refusal statement and rationale. Training only on rationales (not boilerplate) reduces false refusals while maintaining safety, because the boilerplate statement induces reliance on superficial cues. Accepted EMNLP 2026 Main; 38-page treatment with code.</div>
+</div>
+
+<div class="paper-compact">
+  <div class="paper-rank">12 / 12 · APPLIED MECH INTERP</div>
+  <div class="compact-title"><a href="https://arxiv.org/abs/2507.00665" target="_blank">SAFER: Probing Safety in Reward Models with Sparse Autoencoder</a></div>
+  <div class="tags">
+    <span class="tag tag-interp">SAE</span>
+    <span class="tag tag-interp">reward-model-interp</span>
+    <span class="tag tag-align">preprint</span>
+  </div>
+  <div class="compact-byline">arXiv, July 2025 (covered Sep 16 2026 daily)</div>
+  <div class="compact-body">Applies SAEs to reward models to extract safety-relevant features and quantify salience by activation differences on chosen vs. rejected responses. Uses feature-level signals to design targeted data poisoning and denoising strategies that precisely degrade or enhance safety alignment with minimal data modification — a surgical reward-model editing tool grounded in interpretability.</div>
+</div>
+
+<!-- WATCHLIST -->
+<div class="watchlist">
+  <h2>Watchlist — Week 40 (Sep 22–28)</h2>
+  <ul>
+    <li><strong>Constitutional Midtraining</strong> (arXiv:2607.26654, Sep 18 daily) — claims content <em>presence</em> (not just data-filtering absence) drives alignment gains; direct follow-on to the Stress-testing AMT result; worth tracking for empirical validation.</li>
+    <li><strong>EMNLP 2026 proceedings</strong> — main conference (Nov, Abu Dhabi) camera-ready versions will drop; additional safety/alignment papers not yet noticed.</li>
+    <li><strong>NeurIPS 2026 decision notifications</strong> — due imminently; expect a batch of pretraining-safety and mech-interp acceptances.</li>
+    <li><strong>Geometry of Refusal follow-ups</strong> — the 267-checkpoint substrate sweep (6 B–60 B token transition) motivates probing which RLHF variants or data mixtures shift that critical window.</li>
+  </ul>
+</div>
+
+<footer>
+  <p>Research Radar 2026-W39 · Sep 14–21, 2026 · <a href="https://github.com/gussand/research-radar" target="_blank">gussand/research-radar</a></p>
+</footer>
+</div>
+{% endraw %}

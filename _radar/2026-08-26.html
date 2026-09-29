@@ -1,0 +1,599 @@
+---
+layout: "radar"
+title: "Research Radar · Aug 26, 2026"
+kind: "daily"
+slug: "2026-08-26"
+date: 2026-08-26
+group: "2026-W36"
+window: "August 24–26, 2026 (plus peer-reviewed work not previously covered)"
+summary: "Window: August 24–26, 2026 (plus peer-reviewed work not previously covered) · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), FAR.AI blog · Counts: 0 peer-reviewed · 3 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/97496667-6a65-4564-9337-8399cc914540"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-26.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/*
+  Design: Research Radar — Aug 26, 2026
+  Treatment: Scholarly editorial, dark-first.
+  "Image-first" (Substack-style): each paper card opens with the paper's
+  figure spanning the full card width, then rank/tags, then title and prose.
+  Palette: deep blue-black ground · white card surfaces · teal accent (radar signal)
+  Type: Newsreader (display serif) · Source Serif 4 (body) · JetBrains Mono (meta/code)
+*/
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── TOKEN SYSTEM ──────────────────────────────────────────────────── */
+:root {
+  --ground:      #f0f4f8;
+  --surface:     #ffffff;
+  --card-border: #d0dbe8;
+  --rule:        #c5d2de;
+  --ink:         #162235;
+  --ink-dim:     #4a6078;
+  --ink-muted:   #8a9eb4;
+  --accent:      #007a6e;
+  --accent-pale: #e0f5f2;
+  --link:        #006abb;
+  --link-hover:  #004d8a;
+
+  /* tag palette */
+  --tag-peer-c:    #064e38;  --tag-peer-bg:    #c8f0df;
+  --tag-interp-c:  #083f6e;  --tag-interp-bg:  #d0e8fb;
+  --tag-sec-c:     #6e0e0e;  --tag-sec-bg:     #fbd8d8;
+  --tag-dllm-c:    #3a1278;  --tag-dllm-bg:    #ebe0fd;
+  --tag-pre-c:     #4d3400;  --tag-pre-bg:     #fdf0c0;
+
+  /* figure area */
+  --fig-ground:  #ffffff;
+  --fig-border:  #e0e8f0;
+  --fig-cap:     #4a6078;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:      #090f1c;
+    --surface:     #0e1828;
+    --card-border: #1a2840;
+    --rule:        #1a2840;
+    --ink:         #c4d4e4;
+    --ink-dim:     #5c7890;
+    --ink-muted:   #3a5268;
+    --accent:      #00c4a7;
+    --accent-pale: #06231f;
+    --link:        #5ab4f8;
+    --link-hover:  #8aceff;
+    --tag-peer-c:  #4de8a0;  --tag-peer-bg:  #052a1a;
+    --tag-interp-c:#7bbcf8;  --tag-interp-bg:#041830;
+    --tag-sec-c:   #f08080;  --tag-sec-bg:   #2a0808;
+    --tag-dllm-c:  #c090fc;  --tag-dllm-bg:  #180830;
+    --tag-pre-c:   #f0c060;  --tag-pre-bg:   #281800;
+    --fig-ground:  #ffffff;
+    --fig-border:  #1a2840;
+    --fig-cap:     #5c7890;
+  }
+}
+:root[data-theme="dark"] {
+  --ground:      #090f1c; --surface:     #0e1828; --card-border: #1a2840;
+  --rule:        #1a2840; --ink:         #c4d4e4; --ink-dim:     #5c7890;
+  --ink-muted:   #3a5268; --accent:      #00c4a7; --accent-pale: #06231f;
+  --link:        #5ab4f8; --link-hover:  #8aceff;
+  --tag-peer-c:  #4de8a0; --tag-peer-bg:  #052a1a;
+  --tag-interp-c:#7bbcf8; --tag-interp-bg:#041830;
+  --tag-sec-c:   #f08080; --tag-sec-bg:   #2a0808;
+  --tag-dllm-c:  #c090fc; --tag-dllm-bg:  #180830;
+  --tag-pre-c:   #f0c060; --tag-pre-bg:   #281800;
+  --fig-ground:  #ffffff; --fig-border:   #1a2840; --fig-cap: #5c7890;
+}
+:root[data-theme="light"] {
+  --ground:#f0f4f8; --surface:#ffffff; --card-border:#d0dbe8; --rule:#c5d2de;
+  --ink:#162235; --ink-dim:#4a6078; --ink-muted:#8a9eb4;
+  --accent:#007a6e; --accent-pale:#e0f5f2; --link:#006abb; --link-hover:#004d8a;
+  --tag-peer-c:#064e38; --tag-peer-bg:#c8f0df;
+  --tag-interp-c:#083f6e; --tag-interp-bg:#d0e8fb;
+  --tag-sec-c:#6e0e0e; --tag-sec-bg:#fbd8d8;
+  --tag-dllm-c:#3a1278; --tag-dllm-bg:#ebe0fd;
+  --tag-pre-c:#4d3400; --tag-pre-bg:#fdf0c0;
+  --fig-ground:#ffffff; --fig-border:#e0e8f0; --fig-cap:#4a6078;
+}
+
+/* ── BASE ──────────────────────────────────────────────────────────── */
+html { background: var(--ground); scroll-behavior: smooth; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.7;
+  padding: 0 16px 80px;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+/* ── LAYOUT CONTAINER ──────────────────────────────────────────────── */
+.page { max-width: 660px; margin: 0 auto; }
+
+/* ── MASTHEAD ──────────────────────────────────────────────────────── */
+.masthead {
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 40px;
+}
+.masthead-eyebrow {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.masthead-title {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(32px, 6vw, 48px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--ink);
+  text-wrap: balance;
+  margin-bottom: 6px;
+}
+.masthead-title strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+.masthead-sub {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--ink-dim);
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+.masthead-counts {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+.masthead-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.track {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: var(--accent-pale);
+  color: var(--accent);
+}
+.track-sep { color: var(--ink-muted); font-size: 11px; }
+
+/* ── SECTION LABEL ─────────────────────────────────────────────────── */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding: 28px 0 18px;
+  border-top: 1px solid var(--rule);
+  margin-top: 20px;
+}
+
+/* ── TAGS ──────────────────────────────────────────────────────────── */
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-pre-bg);
+  color: var(--tag-pre-c);
+}
+.tag-peer   { background: var(--tag-peer-bg);   color: var(--tag-peer-c); }
+.tag-interp { background: var(--tag-interp-bg); color: var(--tag-interp-c); }
+.tag-sec    { background: var(--tag-sec-bg);    color: var(--tag-sec-c); }
+.tag-dllm   { background: var(--tag-dllm-bg);   color: var(--tag-dllm-c); }
+
+/* ── FULL PAPER CARD (items 1–3) ───────────────────────────────────── */
+/*
+  Substack-style: figure is the FIRST element in the card,
+  spanning the full card width, before rank/tags/title.
+*/
+.paper {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+/* figure bleeds edge-to-edge at the top of the card */
+.cover-figure {
+  display: block;
+  background: var(--fig-ground);
+  border-bottom: 1px solid var(--fig-border);
+  margin: 0;
+}
+.cover-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cover-figure figcaption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--fig-cap);
+  line-height: 1.55;
+  padding: 8px 16px 10px;
+  border-top: 1px solid var(--fig-border);
+}
+
+/* card body — everything below the figure */
+.paper-body {
+  padding: 22px 24px 26px;
+}
+
+/* rank + tags row */
+.paper-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.rank-badge {
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 3px 7px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* titles */
+.paper-title {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-wrap: balance;
+  margin-bottom: 14px;
+}
+.paper-title a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--card-border);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.paper-title a:hover {
+  color: var(--link);
+  text-decoration-color: var(--link);
+}
+
+.paper-hook {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.paper-detail {
+  font-size: 15px;
+  line-height: 1.72;
+  color: var(--ink-dim);
+}
+
+/* ── MID-TIER CARD (items 4–10) ────────────────────────────────────── */
+.mid-paper {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.mid-figure {
+  display: block;
+  background: var(--fig-ground);
+  border-bottom: 1px solid var(--fig-border);
+  margin: 0;
+}
+.mid-figure svg { display: block; width: 100%; height: auto; }
+.mid-figure figcaption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--fig-cap);
+  line-height: 1.5;
+  padding: 6px 14px 8px;
+  border-top: 1px solid var(--fig-border);
+}
+.mid-body { padding: 16px 20px 20px; }
+.mid-title {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+  margin-bottom: 10px;
+}
+.mid-title a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--card-border);
+  text-underline-offset: 2px;
+}
+.mid-title a:hover { color: var(--link); text-decoration-color: var(--link); }
+.mid-summary {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-dim);
+}
+
+/* ── DIVIDER ───────────────────────────────────────────────────────── */
+.rule { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
+
+/* ── NOTES ─────────────────────────────────────────────────────────── */
+.notes {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin-top: 36px;
+}
+.notes-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.notes p {
+  font-size: 14px;
+  color: var(--ink-dim);
+  line-height: 1.68;
+  margin-bottom: 8px;
+}
+.notes p:last-child { margin-bottom: 0; }
+.notes strong { color: var(--ink); font-weight: 600; }
+
+/* ── FOOTER ────────────────────────────────────────────────────────── */
+.footer {
+  margin-top: 52px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-align: center;
+  line-height: 1.8;
+}
+
+@media (max-width: 420px) {
+  .paper-body { padding: 16px 16px 20px; }
+  .mid-body   { padding: 12px 14px 16px; }
+  .paper-title { font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-eyebrow">Research Radar</div>
+    <h1 class="masthead-title">Daily · <strong>August 26, 2026</strong></h1>
+    <div class="masthead-sub">Window: Aug 24–26, 2026 + uncovered peer-reviewed work</div>
+    <div class="masthead-counts">0 peer-reviewed · 3 preprints · 0 forum/blog</div>
+    <div class="masthead-tracks">
+      <span class="track">Mech Interp</span>
+      <span class="track-sep">·</span>
+      <span class="track">AI Security</span>
+      <span class="track-sep">·</span>
+      <span class="track">Text Diffusion LMs</span>
+    </div>
+  </header>
+
+  <!-- ═══ PAPER 01 ═══ -->
+  <!-- ═══ PAPER 02 ═══ -->
+  <!-- ═══ PAPER 03 ═══ -->
+  <!-- MID-TIER SECTION LABEL -->
+  <div class="section-label">Items 4–10 · Also notable</div>
+
+  <!-- ═══ PAPER 04 ═══ -->
+  <!-- ═══ PAPER 05 ═══ -->
+  <article class="mid-paper">
+    <figure class="mid-figure">
+      <svg viewBox="0 0 660 210" xmlns="http://www.w3.org/2000/svg" aria-label="AI Security Leaderboard: cost to find a universal jailbreak across four frontier models">
+        <rect width="660" height="210" fill="#fff"/>
+        <text x="330" y="24" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a2236" font-weight="600">FAR.AI Leaderboard: Cost to Find a Universal Jailbreak (CBRNE + Cybersec)</text>
+
+        <!-- Axis -->
+        <line x1="170" y1="40" x2="170" y2="170" stroke="#bbc" stroke-width="1.5"/>
+        <line x1="170" y1="170" x2="620" y2="170" stroke="#bbc" stroke-width="1.5"/>
+
+        <!-- Model labels -->
+        <text x="160" y="67" text-anchor="end" font-family="Georgia,serif" font-size="11" fill="#333">Grok 4.5</text>
+        <text x="160" y="100" text-anchor="end" font-family="Georgia,serif" font-size="11" fill="#333">Gemini 3.1 Pro</text>
+        <text x="160" y="133" text-anchor="end" font-family="Georgia,serif" font-size="11" fill="#333">GPT-5.6 Sol</text>
+        <text x="160" y="158" text-anchor="end" font-family="Georgia,serif" font-size="11" fill="#333">Claude Fable 5</text>
+
+        <!-- bars (log scale — max bar = 14200, range 170–620 = 450px)
+             log(14200)/log(14200) * 450 = 450
+             log(278)/log(14200) * 450 ≈ 112
+             log(58)/log(14200) * 450 ≈ 82  -->
+        <!-- Grok 4.5: $58, most vulnerable -->
+        <rect x="172" y="52" width="82" height="22" fill="#d94040" rx="2"/>
+        <text x="260" y="67" font-family="Georgia,serif" font-size="11" fill="#c00" font-weight="600">  $58</text>
+
+        <!-- Gemini 3.1 Pro: $278 -->
+        <rect x="172" y="85" width="112" height="22" fill="#e07030" rx="2"/>
+        <text x="290" y="100" font-family="Georgia,serif" font-size="11" fill="#904000" font-weight="600">  $278</text>
+
+        <!-- GPT-5.6 Sol: not broken (show as full green bar with arrow) -->
+        <rect x="172" y="118" width="416" height="22" fill="#e0f4e8" stroke="#2a9050" stroke-width="1" rx="2"/>
+        <text x="394" y="133" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a6030" font-weight="600">&gt;$14,200 — not broken →</text>
+
+        <!-- Claude Fable 5: not broken -->
+        <rect x="172" y="143" width="416" height="22" fill="#e0f4e8" stroke="#2a9050" stroke-width="1" rx="2"/>
+        <text x="394" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a6030" font-weight="600">&gt;$14,200 — not broken →</text>
+
+        <text x="330" y="192" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#888">FAR.AI Minimal Standard for Safeguards v1.0 · &gt;100× gap in robustness</text>
+      </svg>
+      <figcaption>Figure 1 · FAR.AI AI Security Leaderboard: cost to find a universal jailbreak against CBRNE / offensive cybersecurity requests. Grok 4.5 ($58) and Gemini 3.1 Pro ($278) are broken; Claude Fable 5 and GPT-5.6 Sol exceed $14,200 and were not broken. Over 100× gap.</figcaption>
+    </figure>
+    <div class="mid-body">
+      <div class="paper-header">
+        <div class="rank-badge">05</div>
+        <div class="tags">
+          <span class="tag tag-sec">AI security</span>
+          <span class="tag">preprint · Aug 5, 2026</span>
+        </div>
+      </div>
+      <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.03070">AI Security Leaderboard: Methodology, Results and Minimal Standard</a></h3>
+      <p class="mid-summary">FAR.AI defines the Minimal Standard for Safeguards v1.0 across CBRNE and offensive cybersecurity and finds &gt;100× gap between frontier models: Grok 4.5 yields a universal jailbreak for ~$58, Gemini 3.1 Pro for ~$278, while Claude Fable 5 and GPT-5.6 Sol resist all tested jailbreak families at &gt;$14,200 search cost. Models strong on narrow benchmarks are shown to fail the Standard in adjacent hazard domains.</p>
+    </div>
+  </article>
+
+  <!-- ═══ PAPER 06 ═══ -->
+  <article class="mid-paper">
+    <figure class="mid-figure">
+      <svg viewBox="0 0 660 200" xmlns="http://www.w3.org/2000/svg" aria-label="Sequential activation patching across CoT token positions">
+        <rect width="660" height="200" fill="#fff"/>
+        <text x="330" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a2236" font-weight="600">Sequential Activation Patching across Chain-of-Thought Token Positions</text>
+
+        <!-- Token positions -->
+        <text x="50" y="65" font-family="Georgia,serif" font-size="10" fill="#888">Prompt</text>
+        <rect x="50" y="72" width="50" height="28" rx="3" fill="#e8f0f8" stroke="#90a8c4" stroke-width="1"/>
+        <text x="75" y="91" text-anchor="middle" font-family="Courier New,monospace" font-size="10" fill="#333">Q: ...</text>
+
+        <!-- CoT tokens -->
+        <text x="115" y="65" font-family="Georgia,serif" font-size="10" fill="#888">Chain-of-Thought reasoning tokens (patched sequentially)</text>
+        <rect x="115" y="72" width="40" height="28" rx="3" fill="#fff8e0" stroke="#d0a820" stroke-width="1.5"/>
+        <text x="135" y="91" text-anchor="middle" font-family="Courier New,monospace" font-size="10" fill="#7a5000">tok₁</text>
+        <rect x="162" y="72" width="40" height="28" rx="3" fill="#fff8e0" stroke="#d0a820" stroke-width="1.5"/>
+        <text x="182" y="91" text-anchor="middle" font-family="Courier New,monospace" font-size="10" fill="#7a5000">tok₂</text>
+        <rect x="209" y="72" width="40" height="28" rx="3" fill="#fff8e0" stroke="#d0a820" stroke-width="1.5"/>
+        <text x="229" y="91" text-anchor="middle" font-family="Courier New,monospace" font-size="10" fill="#7a5000">tok₃</text>
+        <text x="258" y="91" font-family="Georgia,serif" font-size="13" fill="#bbb">···</text>
+        <rect x="278" y="72" width="40" height="28" rx="3" fill="#fff8e0" stroke="#d0a820" stroke-width="1.5"/>
+        <text x="298" y="91" text-anchor="middle" font-family="Courier New,monospace" font-size="10" fill="#7a5000">tokₙ</text>
+
+        <!-- PoS labels under -->
+        <text x="135" y="114" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">VERB</text>
+        <text x="182" y="114" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">NOUN</text>
+        <text x="229" y="114" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">NUM</text>
+        <text x="298" y="114" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">NOUN</text>
+        <text x="220" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#aaa">← PoS-guided aggregation of patch effects →</text>
+
+        <!-- Final answer -->
+        <rect x="360" y="72" width="90" height="28" rx="3" fill="#e8f8ee" stroke="#2a9050" stroke-width="1.5"/>
+        <text x="405" y="91" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0a4020">Final answer</text>
+
+        <!-- Arrows -->
+        <line x1="326" y1="86" x2="355" y2="86" stroke="#888" stroke-width="1.5" marker-end="url(#p1)"/>
+        <defs><marker id="p1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#888"/></marker></defs>
+
+        <!-- Causal signal annotation -->
+        <line x1="229" y1="86" x2="229" y2="148" stroke="#d0a820" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="229" y="162" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#9a7000">Peak causal</text>
+        <text x="229" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#9a7000">influence here</text>
+      </svg>
+      <figcaption>Sequential activation patching: patches applied at each CoT token position, aggregated via PoS-guided analysis to locate which positions carry peak causal influence on the final answer.</figcaption>
+    </figure>
+    <div class="mid-body">
+      <div class="paper-header">
+        <div class="rank-badge">06</div>
+        <div class="tags">
+          <span class="tag tag-interp">mech interp</span>
+          <span class="tag">preprint · Aug 23, 2026</span>
+        </div>
+      </div>
+      <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.22332">Mechanistic Interpretability of Chain-of-Thought Reasoning via Sequential Activation Patching</a></h3>
+      <p class="mid-summary">Murat Dura, Serkan Öztürk, Selma Tekir. Standard activation patching patches a single static position — insufficient for CoT which unfolds over many tokens. Sequential activation patching applies patches at each CoT token and uses Part-of-Speech-guided aggregation to identify attention heads that carry causal signals propagating to final-answer computation.</p>
+    </div>
+  </article>
+
+  <!-- ═══ PAPER 07 ═══ -->
+  <article class="mid-paper">
+    <figure class="mid-figure">
+      <svg viewBox="0 0 660 200" xmlns="http://www.w3.org/2000/svg" aria-label="Mechanistic Tomography: designed measurement framework y = Ax + w">
+        <rect width="660" height="200" fill="#fff"/>
+        <text x="330" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a2236" font-weight="600">Mechanistic Tomography: Designed Measurement for Control-Oriented Interpretability</text>
+
+        <!-- Large equation display -->
+        <text x="200" y="110" font-family="Georgia,serif" font-size="36" fill="#1a2236" font-weight="300" font-style="italic">y = Ax + w</text>
+
+        <!-- Labels -->
+        <text x="218" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">measurements</text>
+        <text x="338" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#007a6e" font-weight="600">intervention</text>
+        <text x="338" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#007a6e" font-weight="600">design matrix</text>
+        <text x="410" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c06000" font-weight="600">mechanism</text>
+        <text x="410" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c06000" font-weight="600">map to recover</text>
+        <text x="480" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">noise +</text>
+        <text x="480" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">nonlinear res.</text>
+
+        <!-- Identifiability note -->
+        <rect x="510" y="55" width="140" height="70" rx="4" fill="#f0f8ff" stroke="#4a80c0" stroke-width="1"/>
+        <text x="580" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#2a5090" font-weight="600">Identifiability</text>
+        <text x="580" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#444">Derived analytically</text>
+        <text x="580" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#444">from activation</text>
+        <text x="580" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#444">patching designs</text>
+
+        <text x="330" y="180" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#888">Bridges control theory → mechanistic interpretability · 24 pp. · 13 figures</text>
+      </svg>
+      <figcaption>Mechanistic Tomography: the forward pass under interventions modeled as y = Ax + w; A encodes the intervention design, x is the mechanism map to recover, w absorbs noise and nonlinear residuals. Identifiability conditions derived analytically.</figcaption>
+    </figure>
+    <div class="mid-body">
+      <div class="paper-header">
+        <div class="rank-badge">07</div>
+        <div class="tags">
+          <span class="tag tag-interp">mech interp</span>
+          <span class="tag">preprint · Aug 2026</span>
+        </div>
+      </div>
+      <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.19347">Mechanistic Tomography: Designed Measurement for Control-Oriented Interpretability</a></h3>
+      <p class="mid-summary">Vijay Erramilli (24 pp., 13 figures). Formulates mechanistic interpretability as a designed measurement inverse problem y = Ax + w, where A is the intervention matrix and x is the mechanism map to recover. Derives identifiability conditions from activation-patching designs, unifying control theory and mechanistic interpretability in a single formal framework.</p>
+    </div>
+  </article>
+
+  <!-- ═══ PAPER 08 ═══ -->
+  <!-- ═══ PAPER 09 ═══ -->
+  <!-- ═══ PAPER 10 ═══ -->
+  <!-- NOTES -->
+  <div class="notes">
+    <div class="notes-label">Notes</div>
+    <p><strong>Reports gap:</strong> Last radar was August 7. This run covers August 8–26 with emphasis on August 24–26 fresh submissions plus ICLR 2026 and ACL 2026 peer-reviewed work not previously included.</p>
+    <p><strong>Pattern flag:</strong> Items 01, 02, and 10 each attack diffusion LLM safety from a distinct angle — mechanistic neuron pruning (01), architectural bidirectionality exploitation (02), and black-box schema learning (10). Three concurrent independent attack vectors suggest the dLLM safety research community is entering an adversarial phase analogous to autoregressive jailbreak research circa 2023.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    Research Radar · Daily edition · August 26, 2026<br>
+    Mech Interp · AI Security · Text Diffusion LMs<br>
+    Produced by Claude Code · <a href="https://github.com/gussand/research-radar">github.com/gussand/research-radar</a>
+  </footer>
+
+<p style="margin-top:32px;font-size:13px;opacity:.7">7 entries removed on 2026-09-10 as repeats of earlier reports: 2608.07430 (first covered 2026-08-11), 2507.11097 (first covered 2026-07-07), 2608.10172 (first covered 2026-08-13), 2508.13650 (first covered 2026-07-19), 2606.18383 (first covered 2026-08-04), 2606.06333 (first covered 2026-07-02), 2606.04027 (first covered 2026-07-02).</p>
+</div>
+{% endraw %}

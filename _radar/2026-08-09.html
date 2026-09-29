@@ -1,0 +1,603 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-08-09"
+kind: "daily"
+slug: "2026-08-09"
+date: 2026-08-09
+group: "latest"
+window: "August 7–9, 2026 (+ high-priority backlog not previously covered)"
+summary: "Window: August 7–9, 2026 (+ high-priority backlog not previously covered) · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 1 peer-reviewed · 2 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/d9331396-018e-4196-849d-dcb052a7f71f"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-09.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ─── token system ─── */
+:root {
+  --bg:       #f2f5fb;
+  --surface:  #ffffff;
+  --raised:   #eceef6;
+  --border:   #d8dff0;
+  --text:     #0d1220;
+  --dim:      #657094;
+  --title:    #070c1a;
+  --link:     #0e5fa0;
+  --accent:   #0b7c84;
+  --accent2:  #0a606a;
+  --tag-bg:   #e8ecf6;
+  --tag-text: #4a5578;
+  --fig-bg:   #ffffff;
+  --fig-border: #d0d8ec;
+
+  /* topic colors */
+  --c-interp:   #0b7c84;
+  --c-security: #a31d1d;
+  --c-dllm:     #5c22a8;
+  --c-peer:     #1a6e3c;
+  --c-amber:    #8a5000;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:       #0c0f1c;
+    --surface:  #131a2e;
+    --raised:   #1a2240;
+    --border:   #1e2a44;
+    --text:     #ccd4ea;
+    --dim:      #5a6a90;
+    --title:    #e8eeff;
+    --link:     #68b0ff;
+    --accent:   #1ecac4;
+    --accent2:  #18a8a2;
+    --tag-bg:   #1a2240;
+    --tag-text: #90a0c8;
+    --fig-bg:   #ffffff;
+    --fig-border: #3a4a68;
+    --c-interp:   #22cfc9;
+    --c-security: #f07070;
+    --c-dllm:     #b080f8;
+    --c-peer:     #4ade80;
+    --c-amber:    #f0a030;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:       #0c0f1c;
+  --surface:  #131a2e;
+  --raised:   #1a2240;
+  --border:   #1e2a44;
+  --text:     #ccd4ea;
+  --dim:      #5a6a90;
+  --title:    #e8eeff;
+  --link:     #68b0ff;
+  --accent:   #1ecac4;
+  --accent2:  #18a8a2;
+  --tag-bg:   #1a2240;
+  --tag-text: #90a0c8;
+  --fig-bg:   #ffffff;
+  --fig-border: #3a4a68;
+  --c-interp:   #22cfc9;
+  --c-security: #f07070;
+  --c-dllm:     #b080f8;
+  --c-peer:     #4ade80;
+  --c-amber:    #f0a030;
+}
+:root[data-theme="light"] {
+  --bg:       #f2f5fb;
+  --surface:  #ffffff;
+  --raised:   #eceef6;
+  --border:   #d8dff0;
+  --text:     #0d1220;
+  --dim:      #657094;
+  --title:    #070c1a;
+  --link:     #0e5fa0;
+  --accent:   #0b7c84;
+  --accent2:  #0a606a;
+  --tag-bg:   #e8ecf6;
+  --tag-text: #4a5578;
+  --fig-bg:   #ffffff;
+  --fig-border: #d0d8ec;
+  --c-interp:   #0b7c84;
+  --c-security: #a31d1d;
+  --c-dllm:     #5c22a8;
+  --c-peer:     #1a6e3c;
+  --c-amber:    #8a5000;
+}
+
+/* ─── base ─── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0 16px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--link); }
+a:hover { color: var(--accent); }
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+/* ─── layout wrapper ─── */
+.wrap {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ─── masthead ─── */
+.masthead {
+  padding: 44px 0 32px;
+  border-bottom: 1.5px solid var(--border);
+  margin-bottom: 0;
+}
+.masthead-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.masthead-left { flex: 1; min-width: 0; }
+.masthead-eyebrow {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.masthead-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--title);
+  margin: 0 0 6px;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.masthead-sub {
+  font-size: 13px;
+  color: var(--dim);
+  line-height: 1.5;
+}
+.masthead-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+/* ─── tags ─── */
+.tag {
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  white-space: nowrap;
+}
+.tag-interp   { background: color-mix(in srgb, var(--c-interp)   15%, transparent); color: var(--c-interp);   }
+.tag-security { background: color-mix(in srgb, var(--c-security) 12%, transparent); color: var(--c-security); }
+.tag-dllm     { background: color-mix(in srgb, var(--c-dllm)     12%, transparent); color: var(--c-dllm);     }
+.tag-peer     { background: color-mix(in srgb, var(--c-peer)     14%, transparent); color: var(--c-peer);     }
+.tag-amber    { background: color-mix(in srgb, var(--c-amber)    12%, transparent); color: var(--c-amber);    }
+
+/* ─── paper cards — full (top 3) ─── */
+.paper-full {
+  padding: 40px 0 36px;
+  border-bottom: 1px solid var(--border);
+}
+.paper-full .rank-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.rank-badge {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  color: var(--dim);
+  min-width: 20px;
+}
+.paper-full .paper-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--title);
+  margin: 0 0 6px;
+  text-wrap: balance;
+}
+.paper-full .paper-title a {
+  color: inherit;
+  text-decoration: inherit;
+}
+.paper-full .paper-title a:hover { color: var(--accent); }
+.byline {
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.hook {
+  font-size: 16.5px;
+  line-height: 1.72;
+  margin-bottom: 0;
+}
+
+/* ─── figure block ─── */
+.paper-figure {
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-border);
+  border-radius: 5px;
+  padding: 20px 20px 14px;
+  margin: 22px 0;
+  overflow-x: auto;
+}
+.paper-figure svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.paper-figure figcaption {
+  font-size: 12.5px;
+  color: #666;
+  margin-top: 12px;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+.detail {
+  font-size: 15.5px;
+  line-height: 1.72;
+}
+
+/* ─── paper cards — compact (items 4-10) ─── */
+.paper-mid {
+  padding: 28px 0 24px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.paper-mid .rank-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.paper-mid .paper-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: var(--title);
+  margin: 0 0 5px;
+  text-wrap: balance;
+}
+.paper-mid .paper-title a {
+  color: inherit;
+  text-decoration: inherit;
+}
+.paper-mid .paper-title a:hover { color: var(--accent); }
+.paper-mid .byline { margin-bottom: 14px; }
+
+/* side-by-side for mid cards */
+.mid-inner {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+@media (max-width: 520px) {
+  .mid-inner { grid-template-columns: 1fr; }
+}
+.mid-figure {
+  background: var(--fig-bg);
+  border: 1px solid var(--fig-border);
+  border-radius: 4px;
+  padding: 10px;
+  overflow: hidden;
+}
+.mid-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mid-caption {
+  font-size: 11px;
+  color: #777;
+  margin-top: 7px;
+  line-height: 1.4;
+  font-style: italic;
+}
+.mid-text { }
+.summary {
+  font-size: 14.5px;
+  line-height: 1.68;
+}
+
+/* ─── section header between top3 and mid-tier ─── */
+.tier-break {
+  padding: 28px 0 8px;
+  border-top: 2px solid var(--border);
+  margin-top: -1px;
+}
+.tier-break-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* ─── footer ─── */
+.radar-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+  padding-top: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+</style>
+
+<div class="wrap">
+
+<!-- ══ MASTHEAD ══ -->
+<header class="masthead">
+  <div class="masthead-row">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">📡 Research Radar · Daily</div>
+      <h1 class="masthead-title">Mech Interp · AI Security · Text Diffusion LMs</h1>
+      <div class="masthead-sub">
+        August 9, 2026 &nbsp;·&nbsp; Window: Aug 7–9, 2026 + high-priority backlog<br>
+        Sources: arXiv (cs.CL / cs.LG / cs.CR / cs.AI), IEEE Access, OpenReview
+      </div>
+      <div class="masthead-counts">
+        <span class="tag tag-peer">1 peer-reviewed</span>
+        <span class="tag">9 preprints</span>
+        <span class="tag">0 forum/blog</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════
+     01 · AMS — Detecting Safety Training Modification
+     ══════════════════════════════════════════════ -->
+<article class="paper-full">
+  <div class="rank-meta">
+    <span class="rank-badge">01</span>
+    <span class="tag tag-interp">mech-interp</span>
+    <span class="tag tag-security">AI security</span>
+    <span class="tag tag-peer">IEEE Access 2026</span>
+  </div>
+
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.05578">Detecting Safety Training Modification in Language Models via Activation Analysis</a>
+  </h2>
+  <div class="byline">Glen Messenger (Google Cloud) — <em>IEEE Access</em>, vol. 14, pp. 91723–91737, 2026</div>
+
+  <p class="hook">Can you fingerprint <em>how</em> a model's safety training was modified — purely from its activation geometry, no behavioral queries needed? <strong>AMS (Activation-based Model Scanner)</strong> says yes. Safety fine-tuning creates measurable separation between harmful and benign content classes in activation space; abliteration and uncensored fine-tuning each collapse or rotate that structure in characteristic, detectable ways. The tool is fully black-box to weights, operating entirely on intermediate-layer activation patterns at inference time.</p>
+
+  <!-- FIGURE -->
+  <figure class="paper-figure">
+    <svg viewBox="0 0 620 230" xmlns="http://www.w3.org/2000/svg" aria-label="AMS activation-space geometry: safe-trained vs abliterated model">
+      <rect width="620" height="230" fill="#ffffff"/>
+      <!-- divider -->
+      <line x1="310" y1="16" x2="310" y2="214" stroke="#e0e4f0" stroke-width="1.5"/>
+
+      <!-- Panel titles -->
+      <text x="155" y="30" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12.5" fill="#374060" font-weight="600">Safety-Trained Model</text>
+      <text x="465" y="30" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12.5" fill="#374060" font-weight="600">Abliterated Model</text>
+
+      <!-- LEFT axis labels -->
+      <text x="40"  y="200" font-family="system-ui,sans-serif" font-size="10" fill="#aaa">PC1 →</text>
+      <text x="32"  y="180" font-family="system-ui,sans-serif" font-size="10" fill="#aaa" transform="rotate(-90,32,155)">PC2 ↑</text>
+
+      <!-- Benign cluster (teal/blue) — LEFT -->
+      <ellipse cx="115" cy="100" rx="34" ry="26" fill="rgba(11,124,132,0.08)" stroke="#0b7c84" stroke-width="1.3"/>
+      <circle cx="110" cy="95"  r="3.5" fill="#0b7c84" opacity="0.8"/>
+      <circle cx="121" cy="103" r="3.5" fill="#0b7c84" opacity="0.8"/>
+      <circle cx="105" cy="109" r="3"   fill="#0b7c84" opacity="0.7"/>
+      <circle cx="119" cy="88"  r="3"   fill="#0b7c84" opacity="0.8"/>
+      <circle cx="128" cy="100" r="3.5" fill="#0b7c84" opacity="0.75"/>
+      <circle cx="103" cy="119" r="2.5" fill="#0b7c84" opacity="0.6"/>
+      <circle cx="130" cy="114" r="2.5" fill="#0b7c84" opacity="0.6"/>
+      <text x="115" y="148" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#0b7c84" font-weight="500">Benign</text>
+
+      <!-- Harmful cluster (red) — LEFT -->
+      <ellipse cx="215" cy="148" rx="30" ry="22" fill="rgba(163,29,29,0.08)" stroke="#a31d1d" stroke-width="1.3"/>
+      <circle cx="210" cy="143" r="3.5" fill="#a31d1d" opacity="0.8"/>
+      <circle cx="222" cy="151" r="3.5" fill="#a31d1d" opacity="0.8"/>
+      <circle cx="204" cy="155" r="3"   fill="#a31d1d" opacity="0.7"/>
+      <circle cx="218" cy="138" r="3"   fill="#a31d1d" opacity="0.75"/>
+      <circle cx="228" cy="147" r="3"   fill="#a31d1d" opacity="0.7"/>
+      <text x="215" y="186" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#a31d1d" font-weight="500">Harmful</text>
+
+      <!-- Gap annotation -->
+      <line x1="145" y1="120" x2="188" y2="134" stroke="#c0c8e0" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="166" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#889" font-style="italic">large gap</text>
+
+      <!-- RIGHT: collapsed — teal & red mixed -->
+      <text x="465" y="148" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#9055a0" font-weight="500">Collapsed</text>
+      <ellipse cx="465" cy="115" rx="40" ry="30" fill="rgba(155,80,160,0.07)" stroke="#9055a0" stroke-width="1.3" stroke-dasharray="4,3"/>
+      <circle cx="455" cy="108" r="3.5" fill="#a31d1d" opacity="0.7"/>
+      <circle cx="472" cy="118" r="3.5" fill="#0b7c84" opacity="0.7"/>
+      <circle cx="460" cy="126" r="3"   fill="#a31d1d" opacity="0.65"/>
+      <circle cx="478" cy="105" r="3"   fill="#0b7c84" opacity="0.7"/>
+      <circle cx="450" cy="120" r="3.5" fill="#0b7c84" opacity="0.6"/>
+      <circle cx="482" cy="120" r="3"   fill="#a31d1d" opacity="0.65"/>
+      <circle cx="465" cy="100" r="3.5" fill="#a31d1d" opacity="0.7"/>
+      <circle cx="448" cy="108" r="2.5" fill="#0b7c84" opacity="0.55"/>
+      <circle cx="480" cy="130" r="3"   fill="#0b7c84" opacity="0.6"/>
+
+      <!-- AMS result badge -->
+      <rect x="326" y="174" width="268" height="26" rx="4" fill="rgba(26,110,60,0.09)" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="460" y="191" text-anchor="middle" font-family="'Courier New',monospace" font-size="11.5" fill="#1a6e3c">AMS: 71% LOOCV · 14 configs · 4 families</text>
+    </svg>
+    <figcaption>Figure 1 — AMS probes the geometric structure of harmful/benign concept clusters in activation space. Safety-trained models (left) show clear separation; abliteration collapses the clusters into a mixed region (right), a signal AMS uses to classify modification type at 71% leave-one-out accuracy.</figcaption>
+  </figure>
+
+  <p class="detail">AMS extracts intermediate-layer residual-stream activations for paired harmful/benign prompts and computes linear probe separability, cosine distances, and angular distribution statistics across the activation manifold. Validated across 14 model configurations spanning Llama, Gemma, Qwen, and Mistral in four safety-modification categories (instruction-tuned, base, abliterated, uncensored fine-tunes), AMS achieves <strong>71% leave-one-out cross-validation accuracy</strong> in classifying which modification the model underwent — without any behavioral queries or weight access. That different modification types leave geometrically distinct footprints opens the door to passive, inference-time model auditing, complementing behavioral red-teaming with a structural signal.</p>
+</article>
+
+
+<!-- ══════════════════════════════════════════════
+     02 · Induction in Both Directions
+     ══════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════
+     03 · How Transparent is DiffusionGemma?
+     ══════════════════════════════════════════════ -->
+<!-- ══ COMPACT TIER ══ -->
+<div class="tier-break">
+  <span class="tier-break-label">Items 04 – 10 · Condensed</span>
+</div>
+
+
+<!-- ══════ 04 ══════ -->
+<!-- ══════ 05 ══════ -->
+<article class="paper-mid">
+  <div class="rank-meta">
+    <span class="rank-badge">05</span>
+    <span class="tag tag-security">AI security</span>
+    <span class="tag">preprint · Aug 2026</span>
+  </div>
+  <h3 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.05695">DreamGuard: Efficient Runtime Guardrail for LLM Agents via Risk-Aware World Model</a>
+  </h3>
+  <div class="byline">Wenhao Lin, Chenyu Yu et al. — arXiv:2608.05695, August 6, 2026</div>
+  <div class="mid-inner">
+    <div>
+      <figure class="mid-figure">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" aria-label="DreamGuard trajectory risk architecture">
+          <rect width="200" height="140" fill="#ffffff"/>
+          <!-- Action steps -->
+          <rect x="10"  y="28" width="32" height="22" rx="2" fill="#f0f5ff" stroke="#a0b0d0" stroke-width="1"/>
+          <rect x="56"  y="28" width="32" height="22" rx="2" fill="#f0f5ff" stroke="#a0b0d0" stroke-width="1"/>
+          <rect x="102" y="28" width="32" height="22" rx="2" fill="#fff8e6" stroke="#e8a820" stroke-width="1.3"/>
+          <rect x="148" y="28" width="38" height="22" rx="2" fill="#fff0f0" stroke="#c03030" stroke-width="1.5"/>
+          <text x="26"  y="43" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#444">a₁</text>
+          <text x="72"  y="43" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#444">a₂</text>
+          <text x="118" y="43" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#a07000">a₃⚠</text>
+          <text x="167" y="43" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#c03030">a₄ ✗</text>
+          <!-- Arrows between actions -->
+          <line x1="42"  y1="39" x2="54"  y2="39" stroke="#bbb" stroke-width="1" marker-end="url(#dga)"/>
+          <line x1="88"  y1="39" x2="100" y2="39" stroke="#bbb" stroke-width="1" marker-end="url(#dga)"/>
+          <line x1="134" y1="39" x2="146" y2="39" stroke="#c03030" stroke-width="1.2" marker-end="url(#dga)"/>
+          <!-- Latent state boxes -->
+          <rect x="10"  y="66" width="32" height="18" rx="2" fill="rgba(92,34,168,0.08)" stroke="#5c22a8" stroke-width="0.8"/>
+          <rect x="56"  y="66" width="32" height="18" rx="2" fill="rgba(92,34,168,0.08)" stroke="#5c22a8" stroke-width="0.8"/>
+          <rect x="102" y="66" width="32" height="18" rx="2" fill="rgba(92,34,168,0.08)" stroke="#5c22a8" stroke-width="0.8"/>
+          <rect x="148" y="66" width="38" height="18" rx="2" fill="rgba(92,34,168,0.10)" stroke="#5c22a8" stroke-width="1"/>
+          <text x="26"  y="78" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#5c22a8">z₁</text>
+          <text x="72"  y="78" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#5c22a8">z₂</text>
+          <text x="118" y="78" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#5c22a8">z₃</text>
+          <text x="167" y="78" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" fill="#5c22a8">z₄</text>
+          <!-- vertical down a→z -->
+          <line x1="26" y1="50" x2="26" y2="65" stroke="#5c22a8" stroke-width="0.7"/>
+          <line x1="72" y1="50" x2="72" y2="65" stroke="#5c22a8" stroke-width="0.7"/>
+          <line x1="118" y1="50" x2="118" y2="65" stroke="#5c22a8" stroke-width="0.7"/>
+          <line x1="167" y1="50" x2="167" y2="65" stroke="#5c22a8" stroke-width="0.7"/>
+          <!-- latent chain -->
+          <line x1="42" y1="75" x2="54"  y2="75" stroke="#5c22a8" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <line x1="88" y1="75" x2="100" y2="75" stroke="#5c22a8" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <line x1="134" y1="75" x2="146" y2="75" stroke="#5c22a8" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <!-- risk bar -->
+          <rect x="10"  y="100" width="5"  height="12" rx="1" fill="#0b7c84" opacity="0.4"/>
+          <rect x="56"  y="97"  width="5"  height="15" rx="1" fill="#0b7c84" opacity="0.5"/>
+          <rect x="102" y="90"  width="5"  height="22" rx="1" fill="#c03030" opacity="0.6"/>
+          <rect x="148" y="82"  width="5"  height="30" rx="1" fill="#c03030" opacity="0.85"/>
+          <text x="167" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#c03030" font-weight="600">⛔ BLOCK</text>
+          <text x="10"  y="128" font-family="system-ui,sans-serif" font-size="8.5" fill="#aaa">risk →</text>
+          <defs>
+            <marker id="dga" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5 z" fill="#bbb"/></marker>
+          </defs>
+        </svg>
+        <div class="mid-caption">Recurrent latent state z accumulates prefix-risk; trajectory-level block at a₄.</div>
+      </figure>
+    </div>
+    <div class="mid-text">
+      <p class="summary">Addresses the critical blind spot in per-action guardrails: individually benign-looking actions can gradually drift an LLM agent toward hazardous states in long-horizon tasks. DreamGuard maintains a compact recurrent latent encoder over the action trajectory, predicts future latent states, and derives both immediate-hazard and prefix-risk scores before each tool invocation — empirically catching multi-step unsafe trajectories that point-in-time guards consistently miss.</p>
+    </div>
+  </div>
+</article>
+
+
+<!-- ══════ 06 ══════ -->
+<!-- ══════ 07 ══════ -->
+<!-- ══════ 08 ══════ -->
+<!-- ══════ 09 ══════ -->
+<article class="paper-mid">
+  <div class="rank-meta">
+    <span class="rank-badge">09</span>
+    <span class="tag tag-interp">mech-interp</span>
+    <span class="tag">preprint · Jul 2026</span>
+  </div>
+  <h3 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.17890">Stress Testing Concept Erasure with Large Language Model Agents</a>
+  </h3>
+  <div class="byline">Yuyang Xue, Feng Chen, Zhihua Liu, E. Moroshko, J. Sun, S. McDonagh, S.A. Tsaftaris (U. Edinburgh et al.) — arXiv:2607.17890, July 20, 2026</div>
+  <div class="mid-inner">
+    <div>
+      <figure class="mid-figure">
+        <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-label="STACE three-agent stress-test loop">
+          <rect width="200" height="130" fill="#ffffff"/>
+          <rect x="10"  y="48" width="52" height="28" rx="4" fill="rgba(14,95,160,0.10)" stroke="#0e5fa0" stroke-width="1.3"/>
+          <rect x="80"  y="48" width="52" height="28" rx="4" fill="rgba(160,92,0,0.10)"  stroke="#a05c00" stroke-width="1.3"/>
+          <rect x="148" y="48" width="44" height="28" rx="4" fill="rgba(26,110,60,0.12)" stroke="#1a6e3c" stroke-width="1.3"/>
+          <text x="36"  y="60" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#0e5fa0" font-weight="600">Proposer</text>
+          <text x="36"  y="70" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#0e5fa0">gen tests</text>
+          <text x="106" y="60" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#a05c00" font-weight="600">Critique</text>
+          <text x="106" y="70" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#a05c00">challenge</text>
+          <text x="170" y="60" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" fill="#1a6e3c" font-weight="600">Verify</text>
+          <text x="170" y="70" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#1a6e3c">confirm</text>
+          <line x1="62" y1="62" x2="78" y2="62" stroke="#888" stroke-width="1" marker-end="url(#sta)"/>
+          <line x1="132" y1="62" x2="146" y2="62" stroke="#888" stroke-width="1" marker-end="url(#sta)"/>
+          <path d="M 170 76 Q 170 105 36 105 Q 36 78 36 78" fill="none" stroke="#0e5fa0" stroke-width="0.9" stroke-dasharray="3,2" marker-end="url(#sta)"/>
+          <!-- knowledge box -->
+          <rect x="62" y="14" width="76" height="20" rx="3" fill="rgba(92,34,168,0.07)" stroke="#5c22a8" stroke-width="0.8"/>
+          <text x="100" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#5c22a8">External knowledge</text>
+          <line x1="100" y1="34" x2="100" y2="48" stroke="#5c22a8" stroke-width="0.7" stroke-dasharray="2,2"/>
+          <defs>
+            <marker id="sta" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5 z" fill="#888"/></marker>
+          </defs>
+        </svg>
+        <div class="mid-caption">Iterative propose → challenge → verify loop with external knowledge retrieval.</div>
+      </figure>
+    </div>
+    <div class="mid-text">
+      <p class="summary">STACE autonomously stress-tests concept-erased models via a three-agent loop: Proposer generates natural-language probes grounded by external knowledge, Critique challenges weak tests, Verifier confirms whether erased concepts remain recoverable. Exposes failure modes invisible to static benchmark sets, particularly under diverse rephrasing and cross-concept knowledge reconstruction.</p>
+    </div>
+  </div>
+</article>
+
+
+<!-- ══════ 10 ══════ -->
+<footer class="radar-footer">
+  <p>📡 research-radar &nbsp;·&nbsp; 2026-08-09 &nbsp;·&nbsp; branch: claude/radar</p>
+  <p>1 peer-reviewed (IEEE Access 2026) &nbsp;·&nbsp; 9 preprints &nbsp;·&nbsp; 0 forum/blog</p>
+  <p>5 of 10 entries bear on text diffusion LM security or interpretability.</p>
+</footer>
+
+<p style="margin-top:32px;font-size:13px;opacity:.7">7 entries removed on 2026-09-10 as repeats of earlier reports: 2607.15893 (first covered 2026-07-21), 2606.20560 (first covered 2026-07-01), 2607.07903 (first covered 2026-07-12), 2605.10971 (first covered 2026-07-01), 2606.06333 (first covered 2026-07-02), 2606.04027 (first covered 2026-07-02), 2605.19262 (first covered 2026-07-03).</p>
+</div>
+{% endraw %}

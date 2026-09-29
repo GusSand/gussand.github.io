@@ -1,0 +1,498 @@
+---
+layout: "radar"
+title: "Research Radar — September 1, 2026"
+kind: "daily"
+slug: "2026-09-01"
+date: 2026-09-01
+group: "2026-W37"
+window: "2026-08-08 → 2026-09-01 (backlog since last report 2026-08-07)"
+summary: "Window: 2026-08-08 → 2026-09-01 (backlog since last report 2026-08-07) · Sources swept: OpenReview, ACL Anthology, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong, Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 9 preprints · 1 workshop paper (ICML WS)"
+artifact: "https://claude.ai/code/artifact/b7b9d5c0-ba9c-4d0b-ba8c-5766ee3fc73a"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-01.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ground:    #edf1f7;
+  --surface:   #ffffff;
+  --border:    #c8d3e2;
+  --ink:       #1a2236;
+  --ink-dim:   #5b6b82;
+  --ink-muted: #8a97a8;
+  --accent:    #0b7263;
+  --accent-bg: #d6f0ec;
+  --ghost:     rgba(11,114,99,.06);
+  --peer-c:    #065742;
+  --peer-bg:   #d0f5e5;
+  --sec-c:     #8b1a1a;
+  --sec-bg:    #fde0e0;
+  --interp-c:  #084f80;
+  --interp-bg: #d8ecfc;
+  --pre-c:     #5a4000;
+  --pre-bg:    #fdf2d0;
+  --ws-c:      #46189a;
+  --ws-bg:     #ece4fb;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground:    #090e18;
+    --surface:   #111928;
+    --border:    #1d2c42;
+    --ink:       #d2dce8;
+    --ink-dim:   #7a8fa6;
+    --ink-muted: #4e617a;
+    --accent:    #0fb8a8;
+    --accent-bg: #0d2e2a;
+    --ghost:     rgba(15,184,168,.07);
+    --peer-c:    #3dd68a;
+    --peer-bg:   #062a1a;
+    --sec-c:     #f07070;
+    --sec-bg:    #2a0808;
+    --interp-c:  #7bb8f8;
+    --interp-bg: #0a1f34;
+    --pre-c:     #f0c060;
+    --pre-bg:    #2a1a00;
+    --ws-c:      #c084fc;
+    --ws-bg:     #1a0a30;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #090e18; --surface: #111928; --border: #1d2c42;
+  --ink: #d2dce8; --ink-dim: #7a8fa6; --ink-muted: #4e617a;
+  --accent: #0fb8a8; --accent-bg: #0d2e2a; --ghost: rgba(15,184,168,.07);
+  --peer-c: #3dd68a; --peer-bg: #062a1a; --sec-c: #f07070; --sec-bg: #2a0808;
+  --interp-c: #7bb8f8; --interp-bg: #0a1f34; --pre-c: #f0c060; --pre-bg: #2a1a00;
+  --ws-c: #c084fc; --ws-bg: #1a0a30;
+}
+:root[data-theme="light"] {
+  --ground: #edf1f7; --surface: #ffffff; --border: #c8d3e2;
+  --ink: #1a2236; --ink-dim: #5b6b82; --ink-muted: #8a97a8;
+  --accent: #0b7263; --accent-bg: #d6f0ec; --ghost: rgba(11,114,99,.06);
+  --peer-c: #065742; --peer-bg: #d0f5e5; --sec-c: #8b1a1a; --sec-bg: #fde0e0;
+  --interp-c: #084f80; --interp-bg: #d8ecfc; --pre-c: #5a4000; --pre-bg: #fdf2d0;
+  --ws-c: #46189a; --ws-bg: #ece4fb;
+}
+
+html { background: var(--ground); }
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--ground);
+  padding: 0 16px 80px;
+}
+.wrapper { max-width: 680px; margin: 0 auto; }
+
+/* Masthead */
+.masthead {
+  padding: 36px 0 28px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.masthead::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--accent);
+}
+.mast-eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.mast-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--ink);
+  line-height: 1.15;
+  text-wrap: balance;
+  margin-bottom: 12px;
+}
+.mast-date {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--ink-dim);
+  letter-spacing: .06em;
+  margin-bottom: 18px;
+}
+.mast-counts { font-size: 13px; color: var(--ink-dim); margin-bottom: 14px; }
+.mast-tracks { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.track {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  letter-spacing: .04em;
+}
+.track-pre   { background: var(--pre-bg);    color: var(--pre-c); }
+.track-sec   { background: var(--sec-bg);    color: var(--sec-c); }
+.track-interp{ background: var(--interp-bg); color: var(--interp-c); }
+
+/* Tag chips */
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+.tag {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+.tag-peer    { background: var(--peer-bg);   color: var(--peer-c); }
+.tag-security{ background: var(--sec-bg);    color: var(--sec-c); }
+.tag-interp  { background: var(--interp-bg); color: var(--interp-c); }
+.tag-preprint{ background: var(--pre-bg);    color: var(--pre-c); }
+.tag-ws      { background: var(--ws-bg);     color: var(--ws-c); }
+
+/* Paper cards — top 3 */
+.paper-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  position: relative;
+}
+.card-header { padding: 22px 26px 0; position: relative; }
+.rank-ghost {
+  font-family: 'Courier New', monospace;
+  font-size: 72px;
+  font-weight: bold;
+  color: var(--ghost);
+  position: absolute;
+  top: 8px; right: 20px;
+  line-height: 1;
+  user-select: none;
+}
+.paper-rank {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.paper-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+.paper-title a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.paper-title a:hover { color: var(--accent); }
+.paper-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-dim);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.paper-figure {
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 26px;
+  margin: 0;
+}
+.paper-figure svg { display: block; width: 100%; max-width: 560px; margin: 0 auto; }
+.paper-figure figcaption {
+  font-size: 12px;
+  color: var(--ink-dim);
+  margin-top: 10px;
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-body { padding: 20px 26px 26px; }
+.hook {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+.detail {
+  font-size: 14px;
+  color: var(--ink-dim);
+  line-height: 1.65;
+}
+
+/* Mid-tier cards — items 4–10 */
+.mid-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.mid-header { padding: 16px 20px 0; }
+.mid-rank {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.mid-title a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.mid-title a:hover { color: var(--accent); }
+.mid-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: var(--ink-dim);
+  margin-bottom: 12px;
+}
+.mid-figure {
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+}
+.mid-figure svg { display: block; width: 100%; max-width: 520px; margin: 0 auto; }
+.mid-figure figcaption {
+  font-size: 11px;
+  color: var(--ink-dim);
+  margin-top: 8px;
+  font-style: italic;
+  line-height: 1.4;
+}
+.mid-body { padding: 14px 20px 18px; font-size: 13.5px; color: var(--ink-dim); line-height: 1.6; }
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0 0;
+  margin-top: 48px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-align: center;
+  letter-spacing: .04em;
+}
+.footer a { color: var(--ink-dim); }
+</style>
+
+<div class="wrapper">
+
+<header class="masthead">
+  <div class="mast-eyebrow">📡 Research Radar</div>
+  <div class="mast-title">Pretraining Safety · AI Security · Mech Interp</div>
+  <div class="mast-date">September 1, 2026 · Daily Edition</div>
+  <div class="mast-counts">0 peer-reviewed &nbsp;·&nbsp; 9 preprints &nbsp;·&nbsp; 1 workshop paper &nbsp;·&nbsp; Window: Aug 8–Sep 1, 2026</div>
+  <div class="mast-tracks">
+    <span class="track track-pre">Pretraining / Midtraining Safety</span>
+    <span class="track track-sec">AI / LLM Security</span>
+    <span class="track track-interp">Mech Interpretability</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════ PAPER 1 -->
+<article class="paper-card">
+  <div class="card-header">
+    <div class="rank-ghost">01</div>
+    <div class="paper-rank">№ 01 — Pretraining / Midtraining Safety</div>
+    <div class="tags">
+      <span class="tag tag-preprint">Preprint</span>
+      <span class="tag" style="background:var(--pre-bg);color:var(--pre-c)">Midtraining</span>
+      <span class="tag" style="background:var(--pre-bg);color:var(--pre-c)">Model Spec</span>
+    </div>
+    <div class="paper-title">
+      <a href="https://arxiv.org/abs/2605.02087">Model Spec Midtraining: Improving How Alignment Training Generalizes</a>
+    </div>
+    <div class="paper-meta">Chloe Li, Nevan Wichers, Sara Price, Samuel Marks, Jon Kutasov &nbsp;·&nbsp; Anthropic &nbsp;·&nbsp; arXiv May 2026</div>
+  </div>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" aria-label="MSM pipeline: pretraining to MSM to AFT, with misalignment rates">
+      <!-- Background -->
+      <rect width="560" height="200" fill="#fff"/>
+      <!-- Stage boxes -->
+      <rect x="20" y="70" width="100" height="60" rx="6" fill="#e8f0fe" stroke="#4a80d4" stroke-width="1.5"/>
+      <text x="70" y="97" text-anchor="middle" font-family="system-ui" font-size="12" fill="#1a2236">Pretraining</text>
+      <text x="70" y="113" text-anchor="middle" font-family="system-ui" font-size="10" fill="#5b6b82">Standard</text>
+
+      <!-- Arrow 1 -->
+      <line x1="120" y1="100" x2="158" y2="100" stroke="#0b7263" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <rect x="160" y="55" width="120" height="90" rx="6" fill="#d6f0ec" stroke="#0b7263" stroke-width="2"/>
+      <text x="220" y="82" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="bold" fill="#065742">MSM Stage</text>
+      <text x="220" y="100" text-anchor="middle" font-family="system-ui" font-size="10" fill="#065742">Model Spec corpus</text>
+      <text x="220" y="116" text-anchor="middle" font-family="system-ui" font-size="10" fill="#065742">394M synthetic tokens</text>
+      <text x="220" y="132" text-anchor="middle" font-family="system-ui" font-size="10" fill="#065742">what + why of spec</text>
+
+      <!-- Arrow 2 -->
+      <line x1="280" y1="100" x2="318" y2="100" stroke="#0b7263" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <rect x="320" y="70" width="100" height="60" rx="6" fill="#e8f0fe" stroke="#4a80d4" stroke-width="1.5"/>
+      <text x="370" y="97" text-anchor="middle" font-family="system-ui" font-size="12" fill="#1a2236">AFT</text>
+      <text x="370" y="113" text-anchor="middle" font-family="system-ui" font-size="10" fill="#5b6b82">Demo data</text>
+
+      <!-- Arrow 3 -->
+      <line x1="420" y1="100" x2="458" y2="100" stroke="#0b7263" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <rect x="460" y="65" width="80" height="70" rx="6" fill="#fdf2d0" stroke="#8b6000" stroke-width="1.5"/>
+      <text x="500" y="90" text-anchor="middle" font-family="system-ui" font-size="11" fill="#1a2236">Misalign.</text>
+      <text x="500" y="106" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="bold" fill="#065742">7%</text>
+      <text x="500" y="122" text-anchor="middle" font-family="system-ui" font-size="10" fill="#8b6b82">vs 54% baseline</text>
+
+      <!-- Baseline label -->
+      <text x="70" y="160" text-anchor="middle" font-family="system-ui" font-size="10" fill="#8b1a1a">No MSM → 54% misalign.</text>
+      <line x1="70" y1="130" x2="70" y2="150" stroke="#8b1a1a" stroke-width="1" stroke-dasharray="3,2"/>
+
+      <!-- Arrow marker -->
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#0b7263"/>
+        </marker>
+      </defs>
+
+      <text x="280" y="185" text-anchor="middle" font-family="system-ui" font-size="10" fill="#5b6b82">Qwen3-32B · agentic misalignment rate drops 54% → 7% with MSM</text>
+    </svg>
+    <figcaption>Figure: MSM pipeline. A model-spec synthetic corpus is inserted as a midtraining stage between pretraining and alignment fine-tuning. On Qwen3-32B, the agentic misalignment rate drops from 54% (no MSM) to 7% (MSM), beating deliberative alignment at 14%.</figcaption>
+  </figure>
+  <div class="card-body">
+    <p class="hook">What if models failed to generalize alignment not because their demonstrations were bad, but because they had no principled framework to interpret those demonstrations against? Model Spec Midtraining (MSM) inserts exactly that framework — the full text of a model spec — into training before any demonstrations arrive.</p>
+    <p class="detail">MSM creates a large synthetic corpus discussing Model Spec content (the <em>what</em> and <em>why</em> of desired behavior) and uses it as a midtraining stage between pretraining and alignment fine-tuning. Evaluated on Qwen3-32B, MSM with a spec addressing self-preservation and goal-guarding reduces the agentic misalignment rate from 54% to 7%, beating a deliberative alignment baseline (14%). Crucially, varying only the midtraining spec content controls which values models acquire from identical downstream AFT demonstrations — a clean lever for alignment control without touching post-training data.</p>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════════════════ PAPER 2 -->
+<!-- ══════════════════════════════════════════════════════ PAPER 3 -->
+<article class="paper-card">
+  <div class="card-header">
+    <div class="rank-ghost">03</div>
+    <div class="paper-rank">№ 03 — Pretraining / Midtraining Safety</div>
+    <div class="tags">
+      <span class="tag tag-preprint">Preprint</span>
+      <span class="tag" style="background:var(--pre-bg);color:var(--pre-c)">Midtraining</span>
+      <span class="tag" style="background:var(--pre-bg);color:var(--pre-c)">Constitutional</span>
+    </div>
+    <div class="paper-title">
+      <a href="https://arxiv.org/abs/2607.26654">Constitutional Midtraining: Content Presence Drives Alignment Gains</a>
+    </div>
+    <div class="paper-meta">arXiv July 30, 2026 &nbsp;·&nbsp; 120B-token scale · 394M constitutional corpus · 2×2 factorial design</div>
+  </div>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" aria-label="2x2 factorial design: constitutional midtraining evaluation">
+      <rect width="560" height="200" fill="#fff"/>
+      <!-- 2x2 grid -->
+      <text x="280" y="22" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="bold" fill="#1a2236">2×2 Factorial at 120B Midtraining Tokens</text>
+      <!-- Headers -->
+      <text x="245" y="45" text-anchor="middle" font-family="system-ui" font-size="10" fill="#5b6b82">No deliberation</text>
+      <text x="390" y="45" text-anchor="middle" font-family="system-ui" font-size="10" fill="#5b6b82">+ Deliberation</text>
+      <text x="90" y="85" text-anchor="end" font-family="system-ui" font-size="10" fill="#5b6b82">Curriculum A</text>
+      <text x="90" y="135" text-anchor="end" font-family="system-ui" font-size="10" fill="#5b6b82">Curriculum B</text>
+
+      <!-- Grid cells -->
+      <rect x="100" y="55" width="140" height="50" rx="4" fill="#d6f0ec" stroke="#0b7263" stroke-width="1"/>
+      <text x="170" y="78" text-anchor="middle" font-family="system-ui" font-size="11" fill="#065742">Const. Midtrain</text>
+      <text x="170" y="94" text-anchor="middle" font-family="system-ui" font-size="10" fill="#065742">✓ Better alignment</text>
+
+      <rect x="250" y="55" width="140" height="50" rx="4" fill="#d6f0ec" stroke="#0b7263" stroke-width="1.5"/>
+      <text x="320" y="78" text-anchor="middle" font-family="system-ui" font-size="11" fill="#065742">+ Deliberative</text>
+      <text x="320" y="94" text-anchor="middle" font-family="system-ui" font-size="10" fill="#065742">✓✓ Strongest</text>
+
+      <rect x="100" y="110" width="140" height="50" rx="4" fill="#d6f0ec" stroke="#0b7263" stroke-width="1"/>
+      <text x="170" y="133" text-anchor="middle" font-family="system-ui" font-size="11" fill="#065742">Const. Midtrain</text>
+      <text x="170" y="149" text-anchor="middle" font-family="system-ui" font-size="10" fill="#065742">✓ Better alignment</text>
+
+      <rect x="250" y="110" width="140" height="50" rx="4" fill="#d6f0ec" stroke="#0b7263" stroke-width="1"/>
+      <text x="320" y="133" text-anchor="middle" font-family="system-ui" font-size="11" fill="#065742">+ Deliberative</text>
+      <text x="320" y="149" text-anchor="middle" font-family="system-ui" font-size="10" fill="#065742">✓ Better alignment</text>
+
+      <!-- Control -->
+      <rect x="400" y="80" width="140" height="55" rx="4" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1"/>
+      <text x="470" y="103" text-anchor="middle" font-family="system-ui" font-size="11" fill="#8b1a1a">Replay-only control</text>
+      <text x="470" y="120" text-anchor="middle" font-family="system-ui" font-size="10" fill="#8b1a1a">Blackmail SFT survives</text>
+
+      <!-- Key result -->
+      <text x="280" y="185" text-anchor="middle" font-family="system-ui" font-size="10" fill="#5b6b82">Constitutional content blunts blackmail propensity after SFT — advantage survives benign fine-tuning</text>
+    </svg>
+    <figcaption>Figure: 2×2 factorial design at 120B midtraining scale. All constitutional midtraining conditions outperform the replay-only control across alignment benchmarks. The key result: constitutional midtraining blunts blackmail behavior instilled by subsequent SFT, and the advantage survives benign fine-tuning.</figcaption>
+  </figure>
+  <div class="card-body">
+    <p class="hook">Constitutional midtraining isolates, at scale, the contribution of values-based content in a midtraining corpus — cleanly separated from post-training — and shows those gains are durable across downstream fine-tuning.</p>
+    <p class="detail">The study builds a 394M-token constitutional corpus from Anthropic's Constitution and evaluates midtraining at 120B tokens with a 2×2 factorial design (curriculum ordering × deliberative-reasoning presence) against a replay-only control. Across alignment-under-pressure, value-conflict resolution, blackmail, and emergent-misalignment benchmarks, constitutionally midtrained models consistently outperform controls. The headline result: constitutional midtraining blunts the blackmail propensity instilled by SFT, and this advantage survives subsequent benign fine-tuning — suggesting midtraining-installed values are more durable than post-training alignment alone.</p>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════════════════ ITEMS 4–10: mid-tier -->
+
+<article class="mid-card">
+  <div class="mid-header">
+    <div class="mid-rank">№ 08 — Applied Mech Interpretability</div>
+    <div class="tags">
+      <span class="tag tag-ws">Workshop</span>
+      <span class="tag tag-interp">Interp</span>
+      <span class="tag tag-security">Security</span>
+    </div>
+    <div class="mid-title"><a href="https://arxiv.org/abs/2608.27504">Circuit Discovery Helps Detect LLM Jailbreaking: A Mechanistic Interpretability Study</a></div>
+    <div class="mid-meta">Paria Mehrbod, Boris Knyazev, Guy Wolf, Eugene Belilovsky, Geraldin Nanfack · ICML Workshop on Reliable &amp; Responsible Foundation Models · arXiv Aug 2026</div>
+  </div>
+  <figure class="mid-figure">
+    <svg viewBox="0 0 520 110" xmlns="http://www.w3.org/2000/svg" aria-label="Circuit discovery for jailbreak detection in LLaMA-2-7B">
+      <rect width="520" height="110" fill="#fff"/>
+      <!-- Transformer layers schematic -->
+      <text x="65" y="18" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="bold" fill="#1a2236">LLaMA-2-7B-chat</text>
+      <!-- Layers -->
+      <rect x="10" y="25" width="110" height="70" rx="4" fill="#f5f5f5" stroke="#c8d3e2"/>
+      <rect x="20" y="32" width="90" height="14" rx="2" fill="#e0e0e0"/>
+      <text x="65" y="43" text-anchor="middle" font-family="system-ui" font-size="8" fill="#666">Attn layers 1-16</text>
+      <rect x="20" y="50" width="90" height="14" rx="2" fill="#fde0e0" stroke="#8b1a1a"/>
+      <text x="65" y="61" text-anchor="middle" font-family="system-ui" font-size="8" fill="#8b1a1a">Jailbreak circuit heads</text>
+      <rect x="20" y="68" width="90" height="14" rx="2" fill="#e0e0e0"/>
+      <text x="65" y="79" text-anchor="middle" font-family="system-ui" font-size="8" fill="#666">MLP pathways</text>
+
+      <!-- Attribution -->
+      <rect x="145" y="25" width="130" height="70" rx="4" fill="#d6f0ec" stroke="#0b7263"/>
+      <text x="210" y="43" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="bold" fill="#065742">Edge Attribution</text>
+      <text x="210" y="58" text-anchor="middle" font-family="system-ui" font-size="9" fill="#065742">Patching +</text>
+      <text x="210" y="72" text-anchor="middle" font-family="system-ui" font-size="9" fill="#065742">Subnetwork Probing</text>
+      <text x="210" y="86" text-anchor="middle" font-family="system-ui" font-size="9" fill="#5b6b82">identify causal circuit</text>
+
+      <!-- Ablation -->
+      <rect x="295" y="25" width="130" height="70" rx="4" fill="#fdf2d0" stroke="#c8a000"/>
+      <text x="360" y="43" text-anchor="middle" font-family="system-ui" font-size="10" font-weight="bold" fill="#5a4000">Ablate circuit</text>
+      <text x="360" y="58" text-anchor="middle" font-family="system-ui" font-size="9" fill="#5a4000">first-token only</text>
+      <text x="360" y="75" text-anchor="middle" font-family="system-ui" font-size="9" fill="#5a4000">↓ ASR by up to 80%</text>
+
+      <!-- Result -->
+      <rect x="440" y="30" width="70" height="55" rx="4" fill="#d6f0ec" stroke="#0b7263"/>
+      <text x="475" y="52" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="bold" fill="#065742">80%</text>
+      <text x="475" y="68" text-anchor="middle" font-family="system-ui" font-size="9" fill="#065742">ASR</text>
+      <text x="475" y="80" text-anchor="middle" font-family="system-ui" font-size="9" fill="#065742">reduction</text>
+    </svg>
+    <figcaption>Edge attribution patching + subnetwork probing on LLaMA-2-7B-chat identifies the attention heads and MLP pathways mediating jailbreak responses. Ablating only these circuit components during first-token prediction reduces attack success by up to 80%.</figcaption>
+  </figure>
+  <div class="mid-body">Using edge attribution patching and subnetwork probing on LLaMA-2-7B-chat, the authors identify specific attention heads and MLP pathways whose activation mediates affirmative responses to jailbreak prompts. The key mechanism: trigger phrases in the prompt propagate through these components to override safety constraints during the first token prediction step. Ablating these circuits at inference time reduces attack success by up to 80% — a cheap, targeted defense that requires no model retraining and demonstrates that circuit-level understanding translates to an operational safety intervention.</div>
+</article>
+
+<footer class="footer">
+  <p>Research Radar · September 1, 2026 · Pretraining Safety · AI Security · Mech Interp</p>
+  <p style="margin-top:8px;">Window: Aug 8–Sep 1, 2026 · Sources: arXiv cs.LG/cs.CL/cs.CR, OpenReview, LessWrong, lab blogs</p>
+</footer>
+
+<p style="margin-top:32px;font-size:13px;opacity:.7">7 entries removed on 2026-09-10 as repeats of earlier reports: 2608.13482 (first covered 2026-08-30), 2606.19168 (first covered 2026-08-28), 2608.18093 (first covered 2026-08-29), 2605.26526 (first covered 2026-08-28), 2608.05108 (first covered 2026-08-11), 2608.08168 (first covered 2026-08-13), 2608.10172 (first covered 2026-08-13).</p>
+</div>
+{% endraw %}

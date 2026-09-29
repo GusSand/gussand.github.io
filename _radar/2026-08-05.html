@@ -1,0 +1,256 @@
+---
+layout: "radar"
+title: "Research Radar — August 5, 2026"
+kind: "daily"
+slug: "2026-08-05"
+date: 2026-08-05
+group: "latest"
+window: "August 3–5, 2026; peer-reviewed sweep for work not covered in Aug 1–2 reports"
+summary: "Window: August 3–5, 2026; peer-reviewed sweep for work not covered in Aug 1–2 reports · Sources swept: ICLR 2026 (OpenReview), NeurIPS 2025, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 1 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/f36fa926-e100-4daf-9d76-583e7480e2fa"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-05.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ── Token system ──────────────────────────────────────── */
+:root {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99;
+  --fig-bg: #fff; --fig-border: #e0ddd8;
+  --tag-bg: #e8e8e8; --tag-text: #444;
+  --accent-teal: #0d7377; --accent-blue: #1a4f99; --accent-red: #b02020;
+  --accent-amber: #a05c00; --accent-violet: #5c1aaa; --accent-green: #1a6e3c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+    --dim: #666; --title: #f0f0f0; --link: #7eb8ff;
+    --fig-bg: #1e1e1e; --fig-border: #2e2e2e;
+    --tag-bg: #252525; --tag-text: #aaa;
+    --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+    --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff;
+  --fig-bg: #1e1e1e; --fig-border: #2e2e2e;
+  --tag-bg: #252525; --tag-text: #aaa;
+  --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+  --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99;
+  --fig-bg: #fff; --fig-border: #e0ddd8;
+  --tag-bg: #e8e8e8; --tag-text: #444;
+  --accent-teal: #0d7377; --accent-blue: #1a4f99; --accent-red: #b02020;
+  --accent-amber: #a05c00; --accent-violet: #5c1aaa; --accent-green: #1a6e3c;
+}
+
+/* ── Reset & base ──────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,sans-serif;
+  font-size:17px;line-height:1.65;max-width:660px;margin:0 auto;padding:32px 20px 80px}
+
+/* ── Masthead ──────────────────────────────────────────── */
+.masthead{border-bottom:2px solid var(--border);padding-bottom:24px;margin-bottom:48px}
+.masthead-eyebrow{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.15em;
+  color:var(--dim);text-transform:uppercase;margin-bottom:6px}
+.masthead-issue{font-family:Georgia,serif;font-size:28px;font-weight:bold;
+  color:var(--title);margin-bottom:8px}
+.masthead-counts{font-family:'Courier New',monospace;font-size:12px;color:var(--dim);margin-bottom:10px}
+.masthead-tracks{font-size:13px;color:var(--dim)}
+.track{color:var(--accent-teal);font-weight:600}.track-sep{margin:0 6px}
+
+/* ── Tags ──────────────────────────────────────────────── */
+.tag{display:inline-block;font-family:'Courier New',monospace;font-size:10px;
+  padding:2px 7px;border-radius:3px;background:var(--tag-bg);color:var(--tag-text);
+  margin-right:4px;vertical-align:middle}
+.tag-peer{background:#d4edda;color:#155724}
+.tag-interp{background:#d0f0f0;color:#0d5e60}
+.tag-security{background:#fde8e8;color:#8b1515}
+.tag-dllm{background:#dbeafe;color:#1e3a8a}
+.tag-control{background:#ede8fe;color:#4a1a8a}
+@media(prefers-color-scheme:dark){
+  .tag-peer{background:#1a3a22;color:#4ade80}
+  .tag-interp{background:#0a2828;color:#14b8bd}
+  .tag-security{background:#2a0a0a;color:#f07070}
+  .tag-dllm{background:#0a1a3a;color:#7eb8ff}
+  .tag-control{background:#1a0a2a;color:#c084fc}
+}
+:root[data-theme="dark"] .tag-peer{background:#1a3a22;color:#4ade80}
+:root[data-theme="dark"] .tag-interp{background:#0a2828;color:#14b8bd}
+:root[data-theme="dark"] .tag-security{background:#2a0a0a;color:#f07070}
+:root[data-theme="dark"] .tag-dllm{background:#0a1a3a;color:#7eb8ff}
+:root[data-theme="dark"] .tag-control{background:#1a0a2a;color:#c084fc}
+:root[data-theme="light"] .tag-peer{background:#d4edda;color:#155724}
+:root[data-theme="light"] .tag-interp{background:#d0f0f0;color:#0d5e60}
+:root[data-theme="light"] .tag-security{background:#fde8e8;color:#8b1515}
+:root[data-theme="light"] .tag-dllm{background:#dbeafe;color:#1e3a8a}
+:root[data-theme="light"] .tag-control{background:#ede8fe;color:#4a1a8a}
+
+/* ── Full-treatment paper (top 3) ──────────────────────── */
+.paper{margin-bottom:64px}
+.paper-header{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.paper-rank{font-family:'Courier New',monospace;font-size:28px;font-weight:bold;
+  color:var(--border);min-width:44px}
+.paper-title{font-family:Georgia,serif;font-size:22px;font-weight:bold;line-height:1.3;
+  margin-bottom:14px;text-decoration:underline;text-decoration-color:var(--border);
+  text-underline-offset:3px}
+.paper-title a{color:var(--title);text-decoration:inherit}
+.paper-title a:hover{color:var(--link)}
+.paper-hook{font-size:16px;line-height:1.7;color:var(--text);margin-bottom:22px}
+
+/* ── Figure card (Substack-style: prominent image block) ── */
+.paper-figure{
+  background:var(--fig-bg);
+  border:1px solid var(--fig-border);
+  border-radius:4px;
+  padding:18px 18px 12px;
+  margin:0 0 22px;
+  overflow:hidden;
+}
+.paper-figure svg,.paper-figure img{
+  width:100%;max-width:500px;display:block;margin:0 auto;
+}
+.paper-figure figcaption{
+  font-family:'Courier New',monospace;font-size:11px;color:var(--dim);
+  line-height:1.55;margin-top:10px;text-align:center;
+}
+.paper-detail{font-size:15px;line-height:1.7;color:var(--text)}
+hr.section-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+
+/* ── Mid-tier section (items 4–10) ────────────────────── */
+.more-section-label{
+  font-family:'Courier New',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim);border-top:2px solid var(--border);
+  padding-top:18px;margin-bottom:36px;
+}
+.mid-paper{margin-bottom:44px}
+.mid-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.mid-rank{font-family:'Courier New',monospace;font-size:20px;font-weight:bold;color:var(--border)}
+.mid-title{font-family:Georgia,serif;font-size:18px;font-weight:bold;line-height:1.3;
+  margin-bottom:12px;text-decoration:underline;text-decoration-color:var(--border);
+  text-underline-offset:3px}
+.mid-title a{color:var(--title);text-decoration:inherit}
+.mid-title a:hover{color:var(--link)}
+.mid-figure{max-width:440px}
+.mid-figure svg,.mid-figure img{width:100%;max-width:440px}
+.mid-summary{font-size:14px;color:var(--text);line-height:1.65;margin-top:14px}
+</style>
+
+<!-- ── MASTHEAD ─────────────────────────────────────────── -->
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · August 5, 2026</div>
+  <div class="masthead-counts">0 peer-reviewed · 1 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Mech Interp</span><span class="track-sep">·</span>
+    <span class="track">AI Security</span><span class="track-sep">·</span>
+    <span class="track">Text Diffusion LMs</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════
+     PAPER 01 — Steered LLM Activations are Non-Surjective
+     ══════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════════════
+     PAPER 02 — How Transparent is DiffusionGemma?
+     ══════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════════════
+     PAPER 03 — Multi-Agent AI Control
+     ══════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════════════
+     MID-TIER: Items 4–10
+     ══════════════════════════════════════════════════════ -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- PAPER 04 -->
+<hr class="section-divider">
+
+<!-- PAPER 05 -->
+<hr class="section-divider">
+
+<!-- PAPER 06 -->
+<hr class="section-divider">
+
+<!-- PAPER 07 -->
+<article class="mid-paper">
+  <header class="mid-header">
+    <div class="mid-rank">07</div>
+    <div>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    <p style="margin-top:32px;font-size:13px;opacity:.7">9 entries removed on 2026-09-10 as repeats of earlier reports: 2604.09839 (first covered 2026-07-26), 2606.20560 (first covered 2026-07-01), 2607.07368 (first covered 2026-07-17), 2607.01774 (first covered 2026-07-16), 2604.20945 (first covered 2026-07-07), 2607.02514 (first covered 2026-07-17), 2606.22673 (first covered 2026-07-02), 2606.26620 (first covered 2026-07-02), 2606.11998 (first covered 2026-07-08).</p>
+</div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.09156">Present but Rescaled: Chat-to-Agent Transfer of Additive Activation Steering</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="Steering direction strength in chat vs. ReAct agent settings — rescaling localized to scaffold">
+      <rect width="440" height="165" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#222">Steering Direction Norm — Chat vs. ReAct Agent</text>
+      <!-- Axes -->
+      <line x1="60" y1="130" x2="420" y2="130" stroke="#bbb" stroke-width="1.5"/>
+      <line x1="60" y1="30" x2="60" y2="130" stroke="#bbb" stroke-width="1.5"/>
+      <!-- Y labels -->
+      <text x="54" y="133" text-anchor="end" font-family="Courier New,monospace" font-size="9" fill="#888">0</text>
+      <text x="54" y="80" text-anchor="end" font-family="Courier New,monospace" font-size="9" fill="#888">0.5</text>
+      <text x="54" y="33" text-anchor="end" font-family="Courier New,monospace" font-size="9" fill="#888">1.0</text>
+      <text x="18" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888" transform="rotate(-90,18,82)">Direction norm</text>
+      <!-- X label -->
+      <text x="240" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">Model layer</text>
+      <!-- Chat line: rises steadily to ~1.0 by mid-depth -->
+      <polyline points="60,130 90,125 120,115 155,95 190,72 225,58 260,52 295,50 330,49 365,49 400,49 420,49"
+        fill="none" stroke="#1a4f99" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- ReAct scaffold zone: dips in early layers then recovers -->
+      <polyline points="60,130 90,128 120,122 155,108 190,90 225,72 260,55 295,50 330,49 365,49 400,49 420,49"
+        fill="none" stroke="#b02020" stroke-width="2.5" stroke-dasharray="6,3" stroke-linejoin="round"/>
+      <!-- Shaded scaffold zone -->
+      <rect x="60" y="30" width="120" height="100" fill="#fde8e8" opacity=".25" rx="2"/>
+      <text x="120" y="148" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#b02020">scaffold zone</text>
+      <!-- Legend -->
+      <line x1="265" y1="95" x2="290" y2="95" stroke="#1a4f99" stroke-width="2.5"/>
+      <text x="295" y="99" font-family="Georgia,serif" font-size="11" fill="#555">Chat setting</text>
+      <line x1="265" y1="112" x2="290" y2="112" stroke="#b02020" stroke-width="2.5" stroke-dasharray="6,3"/>
+      <text x="295" y="116" font-family="Georgia,serif" font-size="11" fill="#555">ReAct agent</text>
+    </svg>
+    <figcaption>Figure 7: Steering direction strength across model layers in chat vs. ReAct agent settings. Both reach near-full strength at late layers; the rescaling effect is localized to the ReAct format scaffold (early layers, shaded). Agentic deployment amplifies refusal-bypass by up to 2× on some models.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    First systematic study of additive activation steering transfer from single-turn chat to ReAct
+    tool-using agents. Transfer is real but rescaled: the injected direction reaches late layers at
+    near-full strength in every tested model and setting, with the amplitude difference localized to
+    ReAct's format scaffold before any tool observation. The security implication: chat-calibrated
+    steering baselines do not carry over safely to agent deployments — agentic context can amplify
+    steering-based refusal bypass by up to 2.00× depending on the model.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 08 -->
+<hr class="section-divider">
+
+<!-- PAPER 09 -->
+<hr class="section-divider">
+
+<!-- PAPER 10 -->
+<hr class="section-divider">
+
+<footer style="font-family:'Courier New',monospace;font-size:11px;color:var(--dim);text-align:center;padding-top:24px;">
+  Research Radar · Daily · 2026-08-05 · 2 peer-reviewed · 8 preprints<br>
+  Topics: Mech Interp · AI Security · Text Diffusion LMs
+</footer>
+{% endraw %}

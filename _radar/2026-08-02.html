@@ -6,7 +6,7 @@ slug: "2026-08-02"
 date: 2026-08-02
 group: "latest"
 window: "July 31 – August 2, 2026"
-summary: "Window: July 31 – August 2, 2026 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 10 preprints · 0 forum/blog"
+summary: "Window: July 31 – August 2, 2026 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 6 preprints · 0 forum/blog"
 artifact: "https://claude.ai/code/artifact/a7127bcc-db2b-4c23-9efb-493ad6085677"
 source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-02.md"
 styled: true
@@ -119,7 +119,7 @@ hr.paper-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
 <header class="masthead">
   <div class="masthead-eyebrow">RESEARCH RADAR</div>
   <div class="masthead-issue">Daily · August 2, 2026</div>
-  <div class="masthead-counts">0 peer-reviewed · 10 preprints · 0 forum/blog</div>
+  <div class="masthead-counts">0 peer-reviewed · 6 preprints · 0 forum/blog</div>
   <div class="masthead-tracks">
     <span class="track">Mech Interp</span><span class="track-sep">·</span>
     <span class="track">AI Security</span><span class="track-sep">·</span>
@@ -128,106 +128,9 @@ hr.paper-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
 </header>
 
 <!-- ═══ PAPER 1: MaskForge ═══ -->
-<article class="paper">
-  <header class="paper-header">
-    <div class="paper-rank">01</div>
-    <div class="paper-meta">
-      <span class="tag tag-dllm">dLLM</span>
-      <span class="tag tag-security">AI security</span>
-      <span class="tag tag-rank">Top pick</span>
-      <span class="tag">preprint</span>
-    </div>
-  </header>
-  <h2 class="paper-title">
-    <a href="https://arxiv.org/abs/2606.04027">MaskForge: Structure-Aware Adaptive Attacks for Jailbreaking Diffusion Large Language Models</a>
-  </h2>
-  <p class="paper-hook">
-    Autoregressive LLMs have well-studied jailbreak surfaces, but diffusion LLMs expose a fundamentally different attack geometry: mask tokens are native inputs, the model processes full bidirectional context, and token commitment is confidence-based rather than sequential. MaskForge exploits all three properties with a fully black-box adaptive strategy, achieving 79.3% average attack success rate across five public dLLMs — a 17.6% relative improvement over the strongest existing baseline.
-  </p>
-  <figure class="paper-figure">
-    <svg viewBox="0 0 500 195" xmlns="http://www.w3.org/2000/svg" aria-label="MaskForge adaptive attack loop: UCB bandit selects mask patterns from growing library, submits to dLLM, distills successful patterns back">
-      <defs>
-        <marker id="mf1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#555"/></marker>
-        <marker id="mf2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#999"/></marker>
-      </defs>
-      <rect width="500" height="195" fill="#fff"/>
-      <text x="250" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#222">MaskForge: UCB-Bandit Adaptive Attack Pipeline</text>
-      <rect x="14" y="38" width="110" height="56" rx="5" fill="#eef2ff" stroke="#3b5fe0" stroke-width="1.5"/>
-      <text x="69" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1e3a8a">Mask Pattern</text>
-      <text x="69" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1e3a8a">Library</text>
-      <rect x="170" y="38" width="110" height="56" rx="5" fill="#fff7ed" stroke="#b45309" stroke-width="1.5"/>
-      <text x="225" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#92400e">UCB Bandit</text>
-      <text x="225" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#92400e">Selector</text>
-      <rect x="326" y="38" width="110" height="56" rx="5" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
-      <text x="381" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#7f1d1d">Target dLLM</text>
-      <text x="381" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7f1d1d">(black-box)</text>
-      <line x1="124" y1="66" x2="166" y2="66" stroke="#555" stroke-width="1.5" marker-end="url(#mf1)"/>
-      <line x1="280" y1="66" x2="322" y2="66" stroke="#555" stroke-width="1.5" marker-end="url(#mf1)"/>
-      <text x="145" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">pattern</text>
-      <text x="301" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">attack</text>
-      <rect x="340" y="130" width="82" height="30" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
-      <text x="381" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#166534">79.3% ASR</text>
-      <line x1="381" y1="94" x2="381" y2="128" stroke="#555" stroke-width="1.5" marker-end="url(#mf1)"/>
-      <path d="M 370 130 Q 225 180 124 106" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#mf2)"/>
-      <text x="225" y="174" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">distill successful patterns → library</text>
-    </svg>
-    <figcaption>Figure 1: MaskForge's adaptive black-box attack loop. A UCB bandit selects structural mask patterns from a growing library, submits jailbreak attempts to the target dLLM, then distills successful mask structures back — achieving 79.3% average ASR across five dLLMs with a 17.6% relative improvement over prior baselines.</figcaption>
-  </figure>
-  <p class="paper-detail">
-    MaskForge operates fully black-box: it maintains a library of structural mask patterns (positional arrangements of mask tokens native to dLLMs) and uses a UCB bandit to balance exploration of new patterns against exploitation of effective ones. After each round, successful attack instances are distilled back as new library candidates. Evaluated across five publicly available dLLMs on three jailbreak benchmarks (authors include institutions from Wisconsin-Madison, Johns Hopkins, USC, and Adelaide), the attack achieves 79.3% average ASR — exploiting properties unique to diffusion models: mask tokens are native inputs (not corruptions), bidirectional attention means adversarial structure affects generation globally, and confidence-based commitment means injected structure can persist past safety-oriented denoising steps.
-  </p>
-</article>
 <hr class="paper-divider">
 
 <!-- ═══ PAPER 2: Beyond Bidirectional ═══ -->
-<article class="paper">
-  <header class="paper-header">
-    <div class="paper-rank">02</div>
-    <div class="paper-meta">
-      <span class="tag tag-dllm">dLLM</span>
-      <span class="tag tag-security">AI security</span>
-      <span class="tag">preprint</span>
-    </div>
-  </header>
-  <h2 class="paper-title">
-    <a href="https://arxiv.org/abs/2607.27386">Beyond the Bidirectional Promise: Re-evaluating the Robustness of Diffusion Language Models</a>
-  </h2>
-  <p class="paper-hook">
-    The claim that bidirectional attention makes diffusion LLMs inherently harder to attack than autoregressive models gets a systematic empirical test here. The answer is nuanced and matters for deployment: dLLMs genuinely resist gradient-based adversarial suffix attacks due to their stochastic loss landscape, but that structural advantage completely disappears under natural noise — the perturbation type that dominates real-world use.
-  </p>
-  <figure class="paper-figure">
-    <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart: dLLMs outperform AR models on gradient attacks but show no robustness advantage on 32 natural perturbation types">
-      <rect width="500" height="190" fill="#fff"/>
-      <text x="250" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#222">dLLM vs. AR Robustness: Gradient Attacks vs. Natural Perturbations</text>
-      <line x1="60" y1="28" x2="60" y2="150" stroke="#ccc" stroke-width="1"/>
-      <line x1="60" y1="150" x2="480" y2="150" stroke="#ccc" stroke-width="1"/>
-      <text x="15" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666" transform="rotate(-90,15,92)">robustness (schematic)</text>
-      <text x="52" y="32" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">high</text>
-      <text x="52" y="150" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">low</text>
-      <line x1="60" y1="90" x2="480" y2="90" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
-      <!-- Gradient attacks group -->
-      <text x="160" y="168" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#444">Gradient-Based Attacks</text>
-      <rect x="85" y="42" width="55" height="108" fill="#3b82f6" rx="2"/>
-      <text x="112" y="36" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#1e3a8a">dLLM</text>
-      <rect x="155" y="118" width="55" height="32" fill="#f87171" rx="2"/>
-      <text x="182" y="113" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#7f1d1d">AR</text>
-      <line x1="112" y1="42" x2="182" y2="42" stroke="#2563eb" stroke-width="1" stroke-dasharray="3,2"/>
-      <text x="147" y="36" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#2563eb">dLLM advantage ✓</text>
-      <!-- Natural perturbations group -->
-      <text x="370" y="168" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#444">Natural Perturbations (32 types)</text>
-      <rect x="310" y="92" width="55" height="58" fill="#93c5fd" rx="2"/>
-      <text x="337" y="87" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1e3a8a">dLLM</text>
-      <rect x="380" y="96" width="55" height="54" fill="#fca5a5" rx="2"/>
-      <text x="407" y="91" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#7f1d1d">AR</text>
-      <line x1="337" y1="86" x2="407" y2="86" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
-      <text x="372" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">≈ similar (weight-dependent)</text>
-    </svg>
-    <figcaption>Figure 1: Core finding — dLLMs' stochastic loss landscape blunts gradient-based adversarial suffix attacks (left), but provides no inherent advantage under natural noise (right), where robustness depends on training rather than architecture.</figcaption>
-  </figure>
-  <p class="paper-detail">
-    Comparing LLaDA-8B vs. LLaMA-3-8B and Dream-7B vs. Qwen2.5-7B across 32 naturally occurring perturbation types and standard gradient-based adversarial suffix attacks, the authors find that dLLMs' highly non-convex, stochastic loss landscapes defeat gradient descent-based token optimization — a genuine architectural benefit. Under natural perturbations (character swaps, synonym substitution, paraphrasing, noise injection), however, robustness correlates with weight-level training rather than architecture; mechanistic hidden-state analysis traces the gradient-attack resistance specifically to diffusion training dynamics, not to bidirectional attention per se. The finding reframes the dLLM robustness narrative: the architectural safety benefit is real but narrowly scoped to gradient-based attacks.
-  </p>
-</article>
 <hr class="paper-divider">
 
 <!-- ═══ PAPER 3: Piggybacking ═══ -->
@@ -479,7 +382,8 @@ hr.paper-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
     <div class="paper-meta">
       <span class="tag tag-dllm">dLLM</span>
       <span class="tag">preprint</span>
-    </div>
+    <p style="margin-top:32px;font-size:13px;opacity:.7">4 entries removed on 2026-09-10 as repeats of earlier reports: 2606.04027 (first covered 2026-07-02), 2607.27386 (first covered 2026-07-31), 2607.20596 (first covered 2026-07-26), 2607.19317 (first covered 2026-07-20).</p>
+</div>
   </header>
   <h3 class="mid-title">
     <a href="https://arxiv.org/abs/2607.28166">Where and When to Commit: Candidate-Aware Decoding for Diffusion Language Models</a>
@@ -530,99 +434,9 @@ hr.paper-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
 <hr class="section-divider">
 
 <!-- ═══ PAPER 9: SAE Causal Necessity ═══ -->
-<article class="mid-paper">
-  <header class="paper-header">
-    <div class="paper-rank">09</div>
-    <div class="paper-meta">
-      <span class="tag tag-interp">mech-interp</span>
-      <span class="tag">preprint</span>
-    </div>
-  </header>
-  <h3 class="mid-title">
-    <a href="https://arxiv.org/abs/2607.20596">Are Single-Token Sparse Autoencoder Features Causally Necessary? Layer-Depth and SAE-Family Effects</a>
-  </h3>
-  <figure class="paper-figure">
-    <svg viewBox="0 0 440 148" xmlns="http://www.w3.org/2000/svg" aria-label="Grouped bar chart: GemmaScope and BatchTopK features show high causal necessity (~80-85%) while LlamaScope features at the same base model show only ~32%">
-      <rect width="440" height="148" fill="#fff"/>
-      <text x="220" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#222">SAE Causal Necessity by Family (3.9M features, 6 models)</text>
-      <line x1="55" y1="22" x2="55" y2="115" stroke="#ccc" stroke-width="1"/>
-      <line x1="55" y1="115" x2="420" y2="115" stroke="#ccc" stroke-width="1"/>
-      <text x="14" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666" transform="rotate(-90,14,70)">% causally necessary</text>
-      <text x="48" y="115" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">0%</text>
-      <text x="48" y="25" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">100%</text>
-      <line x1="55" y1="68" x2="420" y2="68" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
-      <text x="48" y="68" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#aaa">50%</text>
-      <!-- GemmaScope ~85% -->
-      <rect x="75" y="30" width="84" height="85" fill="#3b82f6" rx="2"/>
-      <text x="117" y="24" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#1e3a8a">~85%</text>
-      <text x="117" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">GemmaScope</text>
-      <!-- BatchTopK ~80% -->
-      <rect x="185" y="37" width="84" height="78" fill="#22c55e" rx="2"/>
-      <text x="227" y="31" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#166534">~80%</text>
-      <text x="227" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">BatchTopK</text>
-      <!-- LlamaScope ~32% -->
-      <rect x="295" y="83" width="84" height="32" fill="#f87171" rx="2"/>
-      <text x="337" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#991b1b">~32%</text>
-      <text x="337" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">LlamaScope</text>
-      <text x="220" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">same base model — SAE family choice dominates scale effects</text>
-    </svg>
-    <figcaption>Figure 1: Cross-family causal necessity rates from zero-ablation testing. GemmaScope and BatchTopK features are causally necessary in ~80–85% of conditions; LlamaScope at the same base model shows ~32% — family matters more than scale.</figcaption>
-  </figure>
-  <p class="mid-summary">
-    Analyzing 3.9M SAE features across six models and three families (GemmaScope, BatchTopK, LlamaScope) via zero-ablation causal tests, the paper finds single-token features are causally necessary in 178/208 full-layer conditions for GemmaScope and BatchTopK, but LlamaScope features at the identical base model are locally redundant (~32% causal necessity) — cross-family differences exceed within-family scale effects and directly inform which SAE family produces interpretability results that are also causally meaningful.
-  </p>
-</article>
 <hr class="section-divider">
 
 <!-- ═══ PAPER 10: CircuitKIT ═══ -->
-<article class="mid-paper">
-  <header class="paper-header">
-    <div class="paper-rank">10</div>
-    <div class="paper-meta">
-      <span class="tag tag-interp">mech-interp</span>
-      <span class="tag">preprint</span>
-    </div>
-  </header>
-  <h3 class="mid-title">
-    <a href="https://arxiv.org/abs/2607.19317">CircuitKIT: Circuit Discovery, Evaluation, and Application Toolkit for Mechanistic Interpretability</a>
-  </h3>
-  <figure class="paper-figure">
-    <svg viewBox="0 0 440 145" xmlns="http://www.w3.org/2000/svg" aria-label="CircuitKIT module diagram: four components (Discovery, Evaluation, Datasets, Application) unified by a central serializable circuit representation">
-      <rect width="440" height="145" fill="#fff"/>
-      <text x="220" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#222">CircuitKIT: Unified Mechanistic Interpretability Toolkit</text>
-      <!-- Central representation -->
-      <rect x="148" y="52" width="144" height="40" rx="5" fill="#1e3a8a"/>
-      <text x="220" y="69" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#fff">Serializable Circuit</text>
-      <text x="220" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#bfdbfe">Representation</text>
-      <!-- Discovery -->
-      <rect x="12" y="22" width="104" height="36" rx="4" fill="#dbeafe" stroke="#3b82f6"/>
-      <text x="64" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#1e3a8a">Discovery</text>
-      <text x="64" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1e3a8a">ACDC · EAP · …</text>
-      <!-- Evaluation -->
-      <rect x="12" y="88" width="104" height="36" rx="4" fill="#dcfce7" stroke="#16a34a"/>
-      <text x="64" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#166534">Evaluation</text>
-      <text x="64" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#166534">faithfulness · completeness</text>
-      <!-- Application -->
-      <rect x="324" y="22" width="104" height="36" rx="4" fill="#fef9c3" stroke="#d97706"/>
-      <text x="376" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#92400e">Application</text>
-      <text x="376" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#92400e">prune · steer · fine-tune</text>
-      <!-- Datasets -->
-      <rect x="324" y="88" width="104" height="36" rx="4" fill="#fce7f3" stroke="#9d174d"/>
-      <text x="376" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#831843">Datasets</text>
-      <text x="376" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#831843">declarative interface</text>
-      <!-- Connectors -->
-      <line x1="116" y1="40" x2="147" y2="62" stroke="#94a3b8" stroke-width="1.5"/>
-      <line x1="116" y1="106" x2="147" y2="82" stroke="#94a3b8" stroke-width="1.5"/>
-      <line x1="292" y1="62" x2="323" y2="40" stroke="#94a3b8" stroke-width="1.5"/>
-      <line x1="292" y1="82" x2="323" y2="106" stroke="#94a3b8" stroke-width="1.5"/>
-    </svg>
-    <figcaption>Figure 1: CircuitKIT module architecture — four interoperable components unified by a typed serializable circuit representation that enables method comparison and direct generalization to new tasks.</figcaption>
-  </figure>
-  <p class="mid-summary">
-    CircuitKIT addresses fragmentation in mechanistic interpretability tooling by releasing a unified open library with a serializable circuit representation that connects discovery algorithms (ACDC, EAP, and others), faithfulness/completeness evaluation, declarative dataset interfaces, and application modules (pruning, editing, steering, selective fine-tuning). The common representation allows seamless handoff between methods and reproducible circuit comparisons across tasks and models.
-  </p>
-</article>
-
 <footer class="footer">
   <p>Research Radar · Daily · August 2, 2026</p>
   <p style="margin-top:6px">Window: July 31 – August 2, 2026 · Sources: arXiv cs.CL/cs.LG/cs.CR/cs.AI, OpenReview, ACL Anthology, LessWrong</p>

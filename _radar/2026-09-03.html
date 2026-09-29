@@ -1,0 +1,570 @@
+---
+layout: "radar"
+title: "Research Radar — Sept 3, 2026"
+kind: "daily"
+slug: "2026-09-03"
+date: 2026-09-03
+group: "2026-W37"
+window: "Sept 2–3, 2026 + August 2608-era papers not in the Sept 2 report"
+summary: "Window: Sept 2–3, 2026 + August 2608-era papers not in the Sept 2 report · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum · Counts: 1 peer-reviewed · 4 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/a7dfc4d5-14d7-4d66-a319-13c07bc3a733"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-03.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+  :root {
+    --bg: #111111;
+    --bg-card: #191919;
+    --bg-subtle: #1f1f1f;
+    --border: #2e2e2e;
+    --text: #c9c9c9;
+    --text-dim: #888888;
+    --heading: #f0f0f0;
+    --accent: #c8a96e;
+    --accent-dim: #7a6440;
+    --tag-bg: #1e1e1e;
+    --tag-border: #333333;
+    --link: #d4b87a;
+    --peer-badge-bg: #1a2410;
+    --peer-badge-border: #3a5020;
+    --peer-badge-text: #8db86a;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f7f6f2;
+      --bg-card: #ffffff;
+      --bg-subtle: #f0ede6;
+      --border: #ddd8cc;
+      --text: #3a3530;
+      --text-dim: #8a857a;
+      --heading: #1a1714;
+      --accent: #9a7540;
+      --accent-dim: #c8a96e;
+      --tag-bg: #f0ede6;
+      --tag-border: #d0cab8;
+      --link: #7a5a28;
+      --peer-badge-bg: #eef5e8;
+      --peer-badge-border: #9abe78;
+      --peer-badge-text: #3a6818;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111111;
+    --bg-card: #191919;
+    --bg-subtle: #1f1f1f;
+    --border: #2e2e2e;
+    --text: #c9c9c9;
+    --text-dim: #888888;
+    --heading: #f0f0f0;
+    --accent: #c8a96e;
+    --accent-dim: #7a6440;
+    --tag-bg: #1e1e1e;
+    --tag-border: #333333;
+    --link: #d4b87a;
+    --peer-badge-bg: #1a2410;
+    --peer-badge-border: #3a5020;
+    --peer-badge-text: #8db86a;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f6f2;
+    --bg-card: #ffffff;
+    --bg-subtle: #f0ede6;
+    --border: #ddd8cc;
+    --text: #3a3530;
+    --text-dim: #8a857a;
+    --heading: #1a1714;
+    --accent: #9a7540;
+    --accent-dim: #c8a96e;
+    --tag-bg: #f0ede6;
+    --tag-border: #d0cab8;
+    --link: #7a5a28;
+    --peer-badge-bg: #eef5e8;
+    --peer-badge-border: #9abe78;
+    --peer-badge-text: #3a6818;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 17px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.65;
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  .radar-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .radar-eyebrow {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .radar-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--heading);
+    line-height: 1.25;
+    text-wrap: balance;
+    margin-bottom: 1rem;
+  }
+  .radar-meta {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+  .radar-meta a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .radar-meta a:hover { text-decoration: underline; }
+  .radar-counts {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .count-pill {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.55rem;
+    border-radius: 2px;
+  }
+  .count-pill.peer { border-color: var(--peer-badge-border); color: var(--peer-badge-text); background: var(--peer-badge-bg); }
+
+  /* ── Section heading ── */
+  .section-label {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin: 2.5rem 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Featured papers (1–3) ── */
+  .paper-featured {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    background: var(--bg-card);
+  }
+  .paper-rank {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .paper-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 1.35;
+    text-wrap: balance;
+    margin-bottom: 0.6rem;
+  }
+  .paper-title a {
+    color: var(--heading);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-dim);
+    text-underline-offset: 3px;
+  }
+  .paper-title a:hover {
+    color: var(--link);
+    text-decoration-color: var(--accent);
+  }
+  .paper-byline {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  .peer-badge {
+    display: inline-block;
+    background: var(--peer-badge-bg);
+    border: 1px solid var(--peer-badge-border);
+    color: var(--peer-badge-text);
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.45rem;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 0.3rem;
+  }
+  .paper-why {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-bottom: 1rem;
+    border-left: 2px solid var(--accent-dim);
+    padding-left: 0.9rem;
+    line-height: 1.6;
+  }
+  .paper-summary {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+  }
+  .paper-figure {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+  .paper-figure img {
+    width: 100%;
+    display: block;
+    max-height: 280px;
+    object-fit: contain;
+    background: var(--bg-subtle);
+  }
+  .paper-figure-caption {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    padding: 0.6rem 0.85rem;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+  }
+  .paper-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+  .tag {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    color: var(--text-dim);
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    padding: 0.15rem 0.45rem;
+    border-radius: 2px;
+  }
+
+  /* ── Compact papers (4–10) ── */
+  .paper-compact {
+    border-top: 1px solid var(--border);
+    padding: 1.25rem 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .paper-compact:last-child { border-bottom: 1px solid var(--border); }
+  .compact-header {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .compact-rank {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    padding-top: 0.18em;
+  }
+  .compact-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+  .compact-title a {
+    color: var(--heading);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-dim);
+    text-underline-offset: 3px;
+  }
+  .compact-title a:hover {
+    color: var(--link);
+    text-decoration-color: var(--accent);
+  }
+  .compact-byline {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    margin-bottom: 0.6rem;
+  }
+  .compact-summary {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 0.85rem;
+  }
+  .compact-figure {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.6rem;
+  }
+  .compact-figure img {
+    width: 100%;
+    display: block;
+    max-height: 180px;
+    object-fit: contain;
+    background: var(--bg-subtle);
+  }
+  .compact-figure-caption {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    padding: 0.45rem 0.7rem;
+    border-top: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  /* ── Notes ── */
+  .notes-block {
+    margin-top: 2.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+  .notes-heading {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.85rem;
+  }
+  .notes-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .notes-block li {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    padding-left: 1.1rem;
+    position: relative;
+    line-height: 1.6;
+  }
+  .notes-block li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent-dim);
+    font-size: 0.8rem;
+  }
+
+  /* ── Footer ── */
+  .radar-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 2rem 1rem 4rem; }
+    .paper-featured { padding: 1.25rem; }
+    .radar-title { font-size: 1.45rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+
+<header class="radar-header">
+  <div class="radar-eyebrow">Research Radar · Daily Edition</div>
+  <h1 class="radar-title">Pretraining Safety · AI Security · Mech&nbsp;Interp</h1>
+  <div class="radar-meta">
+    <div>September 3, 2026 &nbsp;·&nbsp; Window: Sept 2–3, 2026 + August 2608-era papers not in the Sept 2 report</div>
+    <div>Sources: OpenReview &nbsp;·&nbsp; ACL Anthology &nbsp;·&nbsp; TMLR &nbsp;·&nbsp; arXiv (cs.CL / cs.LG / cs.CR / cs.AI)</div>
+    <div style="margin-top:0.3rem; font-size:0.68rem; color:var(--text-dim);">Deep Ignorance (2508.06601) and Synthetic Persona Pretraining (2608.13482) were covered in the Sept 2 report — not repeated here.</div>
+    <div class="radar-counts">
+      <span class="count-pill peer">2 peer-reviewed</span>
+      <span class="count-pill">8 preprints</span>
+      <span class="count-pill">0 forum/blog</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── TOP 3 FEATURED ── -->
+<div class="section-label">Top 3 · Full treatment</div>
+
+<!-- RANK 1 -->
+<article class="paper-featured">
+  <div class="paper-rank">01 &nbsp;·&nbsp; Pretraining Safety</div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.01455" target="_blank" rel="noopener">When Safety Routing Breaks: Understanding Alignment Fragility under Benign Fine-Tuning</a>
+  </h2>
+  <div class="paper-byline">Yitong Guo, Xiaoyi Chen, Siyuan Zhang, Xiaofeng Wang, Haixu Tang &nbsp;·&nbsp; arXiv:2609.01455 &nbsp;·&nbsp; September 1, 2026</div>
+  <p class="paper-why">First mechanistic (Fisher-geometric) explanation of why even capability-only fine-tuning reliably breaks safety alignment — the <em>why</em> behind a well-known empirical failure mode, with direct implications for open-weight deployment.</p>
+  <p class="paper-summary">Alignment flattens the Fisher information geometry for safety-critical weights (low-rank safety Fisher), creating a dormant output-routing pathway through output-side MLP modules. As few as 100 benign fine-tuning examples selectively re-sharpen this pathway — attack success rates jump from ~3% to ~71% while MMLU degrades mildly. The asymmetry is output-localized: safety representations are preserved (explaining why a handful of safety examples can quickly restore refusal), but the routing geometry is disrupted. LoRA and ASAM suppress early collapse by dampening output-side sharpness, but protection degrades at larger fine-tuning budgets.</p>
+  <div class="paper-figure">
+    <img src="https://arxiv.org/html/2609.01455/x1.png" alt="Safety Fisher geometry across MLP modules — low-rank dormant routing pathway after alignment, selectively resharpened by 100 benign fine-tuning steps" loading="lazy">
+    <div class="paper-figure-caption">Fig. 1 · Safety Fisher geometry across MLP modules. Alignment creates low-rank dormant pathway. After 100 benign fine-tuning steps, output-side modules re-sharpen selectively — ASR jumps to 71% while MMLU stays stable.</div>
+  </div>
+  <div class="paper-tags">
+    <span class="tag">pretraining-safety</span>
+    <span class="tag">fine-tuning-attack</span>
+    <span class="tag">Fisher-geometry</span>
+    <span class="tag">alignment-fragility</span>
+    <span class="tag">arXiv:2609.01455</span>
+  </div>
+</article>
+
+<!-- RANK 2 -->
+<!-- RANK 3 -->
+<article class="paper-featured">
+  <div class="paper-rank">03 &nbsp;·&nbsp; AI Security · Multimodal</div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.02082" target="_blank" rel="noopener">Transfer Safety Awareness for Cross-Modal Safety Drift in Multimodal Large Language Models</a>
+  </h2>
+  <div class="paper-byline">Tianqi Xiao, Shiyao Cui, Minghao Zhang, Junxiao Yang, Renmiao Chen &nbsp;·&nbsp; arXiv:2609.02082 &nbsp;·&nbsp; September 2, 2026</div>
+  <p class="paper-why">Identifies and measures a specific multimodal safety gap (cross-modal safety drift) and proposes a training-free fix — directly relevant to deployed multimodal systems.</p>
+  <p class="paper-summary">Cross-modal safety drift: a benign textual query paired with a harmful image bypasses refusal far more often than an explicitly harmful text query. Visually-risky cues receive limited attention in the model's representation and weakly trigger safety-relevant computations. Safety-Awareness Representation Transfer (SRT) is a lightweight, training-free direction-refinement method applied to a frozen MLLM backbone. It projects the model's internal state toward the unsafe-text safety direction when a visually-risky query is detected, substantially reducing compliance with cross-modal harmful requests without degrading benign multimodal performance.</p>
+  <div class="paper-figure">
+    <img src="https://arxiv.org/html/2609.02082/x1.png" alt="Cross-modal safety drift: attention analysis showing weak visually-risky cue activation; SRT direction-refinement fixes the gap on a frozen backbone" loading="lazy">
+    <div class="paper-figure-caption">Fig. 1 · Internal representation analysis of cross-modal safety drift; SRT transfers safety signal from the text-unsafe pathway to the cross-modal case via direction refinement on a frozen backbone.</div>
+  </div>
+  <div class="paper-tags">
+    <span class="tag">multimodal-safety</span>
+    <span class="tag">cross-modal-drift</span>
+    <span class="tag">training-free</span>
+    <span class="tag">MLLM</span>
+    <span class="tag">arXiv:2609.02082</span>
+  </div>
+</article>
+
+<!-- ── COMPACT 4–10 ── -->
+<div class="section-label">Items 4–10 · Also notable</div>
+
+<!-- RANK 4 -->
+<article class="paper-compact">
+  <div class="compact-header">
+    <span class="compact-rank">04</span>
+    <h3 class="compact-title">
+      <a href="https://arxiv.org/abs/2608.09542" target="_blank" rel="noopener">Dual-Adversarial Safety Alignment: Cultivating Intrinsic Threat Comprehension in LRMs</a>
+    </h3>
+  </div>
+  <div class="compact-byline">Hongli Shen, Shaopeng Fu, Qinbo Zhang, Jian Li, Di Wang (KAUST, Stony Brook) &nbsp;·&nbsp; arXiv:2608.09542 &nbsp;·&nbsp; Aug 10, 2026</div>
+  <div class="compact-figure">
+    <img src="https://arxiv.org/html/2608.09542/x1.png" alt="AdvSafe two-phase adversarial game: synthesis agent crafts diverse jailbreaks; LRM learns intrinsic threat comprehension" loading="lazy">
+    <div class="compact-figure-caption">Fig. 1 · Synthesis agent generates mechanistically diverse jailbreaks; target LRM learns intrinsic threat mechanisms — 1K samples yields significant robustness improvement.</div>
+  </div>
+  <p class="compact-summary">AdvSafe trains large reasoning models to internalize attack mechanisms, not pattern-match on jailbreak surface forms. A synthesis agent dynamically crafts diverse jailbreaks; the target LRM learns from both the attack decomposition and the rejection. With 1,000 synthesized samples, AdvSafe-aligned LRMs significantly outperform robustness baselines with near-zero utility degradation.</p>
+  <div class="paper-tags">
+    <span class="tag">AI-security</span>
+    <span class="tag">jailbreak</span>
+    <span class="tag">LRM</span>
+    <span class="tag">preprint</span>
+  </div>
+</article>
+
+<!-- RANK 5 -->
+<article class="paper-compact">
+  <div class="compact-header">
+    <span class="compact-rank">05</span>
+    <h3 class="compact-title">
+      <a href="https://arxiv.org/abs/2609.00051" target="_blank" rel="noopener">From Detection to Refusal: Safer LLMs via Circuit-Guided Weight Scaling</a>
+    </h3>
+    <span class="peer-badge">EMNLP 2026 Findings</span>
+  </div>
+  <div class="compact-byline">Kuan-Lin Chu, Chung-En Sun, Tsui-Wei Weng (UC San Diego) &nbsp;·&nbsp; arXiv:2609.00051 &nbsp;·&nbsp; EMNLP 2026 Findings (peer-reviewed)</div>
+  <div class="compact-figure">
+    <img src="https://arxiv.org/html/2609.00051/x1.png" alt="Three-stage safety circuit: Detection Heads feed Safety Neurons which drive Refusal Heads; circuit-guided weight scaling improves attack resistance 26.5%" loading="lazy">
+    <div class="compact-figure-caption">Fig. 1 · Safety circuit map; circuit-guided weight scaling improves safety rate under attacks by 26.5pp vs. unmodified baselines with 1.7% benchmark cost.</div>
+  </div>
+  <p class="compact-summary">Characterizes a three-stage safety circuit: Harmful Detection Heads → Safety Neurons → Refusal Heads. Circuit-guided weight scaling (persistent weight-space intervention, not activation steering) of the identified components improves safety rates under adversarial attacks by 26.5% across six LLMs with only 1.7% accuracy drop on four standard benchmarks.</p>
+  <div class="paper-tags">
+    <span class="tag">mech-interp-applied</span>
+    <span class="tag">AI-security</span>
+    <span class="tag">peer-reviewed</span>
+    <span class="tag">EMNLP-2026-Findings</span>
+  </div>
+</article>
+
+<!-- RANK 6 -->
+<!-- RANK 7 -->
+<!-- RANK 8 -->
+<!-- RANK 9 -->
+<article class="paper-compact">
+  <div class="compact-header">
+    <span class="compact-rank">09</span>
+    <h3 class="compact-title">
+      <a href="https://arxiv.org/abs/2608.01558" target="_blank" rel="noopener">Securing Agentic AI: From Per-Action Checks to Trajectory Assurance</a>
+    </h3>
+  </div>
+  <div class="compact-byline">Alireza Lotfi, Subangkar K. Shanto, Imtiaz Karim, Elisa Bertino &nbsp;·&nbsp; arXiv:2608.01558 &nbsp;·&nbsp; ACM AI Leadership Summit 2026, August 2026</div>
+  <div class="compact-figure">
+    <img src="https://arxiv.org/html/2608.01558/x1.png" alt="Per-action checks vs trajectory assurance: locally safe actions forming an unsafe global sequence vs invariant enforcement over full trajectory" loading="lazy">
+    <div class="compact-figure-caption">Fig. 1 · Per-action security (node-level, can fail globally) vs. trajectory assurance (sequence-level invariant enforcement) across a multi-agent delegation stack.</div>
+  </div>
+  <p class="compact-summary">Agentic AI safety is a trajectory property, not a per-action one: a sequence of individually-approved actions can violate system invariants in aggregate. Proposes Trajectory Assurance as a security primitive — runtime monitors enforcing invariants over complete action sequences across organizational boundaries. Covers the full agentic attack surface at both single-agent and multi-agent delegation layers.</p>
+  <div class="paper-tags">
+    <span class="tag">AI-security</span>
+    <span class="tag">agentic</span>
+    <span class="tag">trajectory-assurance</span>
+    <span class="tag">preprint</span>
+  </div>
+</article>
+
+<!-- RANK 10 -->
+<!-- ── NOTES ── -->
+<div class="notes-block">
+  <div class="notes-heading">Notes</div>
+  <ul>
+    <li>Deep Ignorance (2508.06601) and Synthetic Persona Pretraining (2608.13482) were covered in the 2026-09-02 report; both remain high-priority references for pretraining-time safety.</li>
+    <li>Freshest papers this window: 2609.01455 (Sept 1) and 2609.02082 (Sept 2) — both September 2026 batch.</li>
+    <li>The September 2026 arXiv batch (2609.xxxxx) is just opening; expect higher volume through the week.</li>
+    <li>Flagged for weekly: rank 1 (Fisher-geometric alignment fragility), rank 5 (circuit-guided weight scaling, EMNLP peer-reviewed), rank 6 (separable steering safety, COLM peer-reviewed), rank 7 (EM attribution via SAE).</li>
+  </ul>
+</div>
+
+<footer class="radar-footer">
+  <div>research-radar &nbsp;·&nbsp; reports/daily/2026-09-03 &nbsp;·&nbsp; claude/radar branch</div>
+  <div style="margin-top:0.3rem;">gs157@nyu.edu &nbsp;·&nbsp; Generated 2026-09-03<p style="margin-top:32px;font-size:13px;opacity:.7">5 entries removed on 2026-09-10 as repeats of earlier reports: 2608.18093 (first covered 2026-08-29), 2608.08383 (first covered 2026-08-28), 2608.11025 (first covered 2026-08-20), 2608.10172 (first covered 2026-08-13), 2608.19579 (first covered 2026-08-23).</p>
+</div>
+</footer>
+{% endraw %}

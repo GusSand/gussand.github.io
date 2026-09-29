@@ -1,0 +1,1000 @@
+---
+layout: "radar"
+title: "Research Radar · Aug 23 2026"
+kind: "daily"
+slug: "2026-08-23"
+date: 2026-08-23
+group: "2026-W35"
+window: "August 20–23, 2026 (plus missed items from Aug 1–7)"
+summary: "Window: August 20–23, 2026 (plus missed items from Aug 1–7) · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 8 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/ad7afa8a-9344-4769-bcf5-06a31b6ed115"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-23.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* ── Tokens ───────────────────────────────────── */
+:root {
+  --bg:       #f5f4f1;
+  --surface:  #edece9;
+  --border:   #d8d6d1;
+  --text:     #2e2d38;
+  --dim:      #8a8897;
+  --title:    #0d0c1a;
+  --link:     #1a4f99;
+  --tag-bg:   #e4e3de;
+  --tag-text: #4a4858;
+  --rank-bg:  #0d0c1a;
+  --rank-fg:  #f5f4f1;
+  --fig-rule: #d0ceca;
+  --fig-cap:  #7a7888;
+  --divider:  #d8d6d1;
+  --hook-color: #3e3d4a;
+  --note-bg:  #edece9;
+
+  --teal:  #0c6b6f;
+  --blue:  #1a4f99;
+  --red:   #a31c1c;
+  --amber: #8a4f00;
+  --violet:#521a9e;
+  --green: #145e32;
+
+  --teal-bg:  #d5eced;
+  --blue-bg:  #d3dfef;
+  --red-bg:   #f2d5d5;
+  --amber-bg: #f2e4cc;
+  --violet-bg:#e6d5f5;
+  --green-bg: #d1eadb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:       #111018;
+    --surface:  #19181f;
+    --border:   #2c2a38;
+    --text:     #c6c4d2;
+    --dim:      #605e72;
+    --title:    #eceaf8;
+    --link:     #7eb8ff;
+    --tag-bg:   #22202e;
+    --tag-text: #9e9bb0;
+    --rank-bg:  #eceaf8;
+    --rank-fg:  #0d0c1a;
+    --fig-rule: #2c2a38;
+    --fig-cap:  #5e5c72;
+    --divider:  #282636;
+    --hook-color: #b0aec0;
+    --note-bg:  #19181f;
+    --teal:  #34c5ca;
+    --blue:  #7eb8ff;
+    --red:   #f07070;
+    --amber: #f0a030;
+    --violet:#c084fc;
+    --green: #4ade80;
+    --teal-bg:  #0a2c2e;
+    --blue-bg:  #0a1a30;
+    --red-bg:   #2a0a0a;
+    --amber-bg: #2a1800;
+    --violet-bg:#1a0830;
+    --green-bg: #0a2016;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:       #111018;
+  --surface:  #19181f;
+  --border:   #2c2a38;
+  --text:     #c6c4d2;
+  --dim:      #605e72;
+  --title:    #eceaf8;
+  --link:     #7eb8ff;
+  --tag-bg:   #22202e;
+  --tag-text: #9e9bb0;
+  --rank-bg:  #eceaf8;
+  --rank-fg:  #0d0c1a;
+  --fig-rule: #2c2a38;
+  --fig-cap:  #5e5c72;
+  --divider:  #282636;
+  --hook-color: #b0aec0;
+  --note-bg:  #19181f;
+  --teal:  #34c5ca;
+  --blue:  #7eb8ff;
+  --red:   #f07070;
+  --amber: #f0a030;
+  --violet:#c084fc;
+  --green: #4ade80;
+  --teal-bg:  #0a2c2e;
+  --blue-bg:  #0a1a30;
+  --red-bg:   #2a0a0a;
+  --amber-bg: #2a1800;
+  --violet-bg:#1a0830;
+  --green-bg: #0a2016;
+}
+:root[data-theme="light"] {
+  --bg:       #f5f4f1;
+  --surface:  #edece9;
+  --border:   #d8d6d1;
+  --text:     #2e2d38;
+  --dim:      #8a8897;
+  --title:    #0d0c1a;
+  --link:     #1a4f99;
+  --tag-bg:   #e4e3de;
+  --tag-text: #4a4858;
+  --rank-bg:  #0d0c1a;
+  --rank-fg:  #f5f4f1;
+  --fig-rule: #d0ceca;
+  --fig-cap:  #7a7888;
+  --divider:  #d8d6d1;
+  --hook-color: #3e3d4a;
+  --note-bg:  #edece9;
+  --teal:  #0c6b6f;
+  --blue:  #1a4f99;
+  --red:   #a31c1c;
+  --amber: #8a4f00;
+  --violet:#521a9e;
+  --green: #145e32;
+  --teal-bg:  #d5eced;
+  --blue-bg:  #d3dfef;
+  --red-bg:   #f2d5d5;
+  --amber-bg: #f2e4cc;
+  --violet-bg:#e6d5f5;
+  --green-bg: #d1eadb;
+}
+
+/* ── Base ────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 1px; }
+
+/* ── Masthead ────────────────────────────────── */
+.masthead {
+  margin-bottom: 56px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--title);
+}
+.mast-eyebrow {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.mast-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(36px, 8vw, 52px);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--title);
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+.mast-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+.mast-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.mast-track {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+}
+.mast-sep { color: var(--dim); font-size: 11px; }
+
+/* ── Tags ────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 1px 7px 2px;
+  border-radius: 2px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+}
+.tag-interp  { background: var(--teal-bg);   color: var(--teal); }
+.tag-security{ background: var(--red-bg);    color: var(--red); }
+.tag-dllm    { background: var(--blue-bg);   color: var(--blue); }
+.tag-control { background: var(--violet-bg); color: var(--violet); }
+.tag-peer    { background: var(--green-bg);  color: var(--green); }
+
+/* ── Full paper entry (01–03) ────────────────── */
+.paper {
+  margin-bottom: 64px;
+}
+.paper-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.paper-rank {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  background: var(--rank-bg);
+  color: var(--rank-fg);
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+.paper-meta {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.paper-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--title);
+  margin-bottom: 14px;
+  text-wrap: balance;
+}
+.paper-title a { color: inherit; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 4px; }
+.paper-title a:hover { color: var(--link); text-decoration-color: var(--link); }
+.paper-hook {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--hook-color);
+  font-style: italic;
+  margin-bottom: 22px;
+}
+
+/* Figure — full-column, prominent Substack-style hero */
+.paper-figure {
+  margin: 0 0 22px;
+  background: #fff;
+  border-top: 1px solid var(--fig-rule);
+  border-bottom: 1px solid var(--fig-rule);
+}
+.paper-figure svg,
+.paper-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.paper-figure figcaption {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--fig-cap);
+  padding: 8px 12px 10px;
+  border-top: 1px solid var(--fig-rule);
+}
+
+.paper-detail {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+/* ── Paper divider ───────────────────────────── */
+.paper-divider {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 56px 0;
+}
+
+/* ── Mid-tier section header ─────────────────── */
+.more-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 8px 0 36px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--divider);
+}
+
+/* ── Mid-tier entry (04–08) ─────────────────── */
+.mid-paper {
+  margin-bottom: 44px;
+}
+.mid-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--title);
+  margin-bottom: 14px;
+  text-wrap: balance;
+}
+.mid-title a { color: inherit; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 4px; }
+.mid-title a:hover { color: var(--link); text-decoration-color: var(--link); }
+.mid-figure { max-width: 100%; }
+.mid-figure svg { max-width: 100%; height: auto; display: block; }
+.mid-summary {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-top: 14px;
+}
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 36px 0;
+}
+
+/* ── Notes & footer ──────────────────────────── */
+.notes {
+  background: var(--note-bg);
+  border: 1px solid var(--border);
+  padding: 20px 22px 20px;
+  margin-top: 56px;
+}
+.notes-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 12px;
+}
+.notes ul {
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--dim);
+}
+.notes li { margin-bottom: 6px; }
+.radar-footer {
+  margin-top: 44px;
+  padding-top: 18px;
+  border-top: 1px solid var(--divider);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 500px) {
+  body { padding: 24px 16px 60px; }
+  .mast-title { font-size: 32px; }
+  .paper-title { font-size: 22px; }
+  .mid-title { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<!-- ═══════════ MASTHEAD ═══════════ -->
+<header class="masthead">
+  <div class="mast-eyebrow">Research Radar</div>
+  <h1 class="mast-title">Daily · August 23, 2026</h1>
+  <div class="mast-date">0 peer-reviewed · 8 preprints · 0 forum/blog · window: aug 20–23 + missed aug 1–7</div>
+  <div class="mast-tracks">
+    <span class="mast-track">Mech Interp</span>
+    <span class="mast-sep">·</span>
+    <span class="mast-track">AI Security</span>
+    <span class="mast-sep">·</span>
+    <span class="mast-track">Text Diffusion LMs</span>
+  </div>
+</header>
+
+<!-- ═══════════ PAPER 01 ═══════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <span class="paper-rank">01</span>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint · aug 1</span>
+    </div>
+  </header>
+  <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.02657">Your Agentic LLMs Secretly Encode Latent Signals of Indirect Prompt-Injection Exposure</a></h2>
+  <p class="paper-hook">Frontier LLMs silently mark themselves when they've been hijacked — detectable in the residual stream at 90%+ AUROC even after the output is already compromised. That mechanistic signal becomes a near-perfect defense, dropping attack success from 34.6% to essentially zero.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 620 230" xmlns="http://www.w3.org/2000/svg" aria-label="Linear probe AUROC for IPI detection across 6 frontier LLMs, plus AGRI defense reducing ASR from 34.6% to 0%">
+      <rect width="620" height="230" fill="#fff"/>
+      <!-- ── LLM layer stack ── -->
+      <text x="14" y="20" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" letter-spacing="0.06em">RESIDUAL STREAM</text>
+      <rect x="14" y="28" width="130" height="16" rx="1" fill="#f0f0f0"/>
+      <text x="20" y="40" font-family="Georgia,serif" font-size="9" fill="#aaa">Layer 1</text>
+      <rect x="14" y="48" width="130" height="16" rx="1" fill="#f0f0f0"/>
+      <text x="20" y="60" font-family="Georgia,serif" font-size="9" fill="#aaa">Layer 4</text>
+      <rect x="14" y="68" width="130" height="16" rx="1" fill="#f0f0f0"/>
+      <text x="20" y="80" font-family="Georgia,serif" font-size="9" fill="#aaa">Layer 8</text>
+      <!-- Highlighted probe layer -->
+      <rect x="14" y="88" width="130" height="18" rx="1" fill="#dceefb" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="20" y="101" font-family="Georgia,serif" font-size="9" fill="#1a4f99">Layer 12 — probe ↗</text>
+      <rect x="14" y="110" width="130" height="16" rx="1" fill="#f0f0f0"/>
+      <text x="20" y="122" font-family="Georgia,serif" font-size="9" fill="#aaa">Layer 16</text>
+      <rect x="14" y="130" width="130" height="16" rx="1" fill="#f0f0f0"/>
+      <text x="20" y="142" font-family="Georgia,serif" font-size="9" fill="#aaa">Layer 20</text>
+      <!-- Probe connection -->
+      <line x1="144" y1="97" x2="170" y2="97" stroke="#1a4f99" stroke-width="1.5" marker-end="url(#a1)"/>
+      <defs><marker id="a1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#1a4f99"/></marker></defs>
+      <rect x="172" y="83" width="80" height="28" rx="2" fill="#1a4f99"/>
+      <text x="212" y="101" font-family="Georgia,serif" font-size="10" fill="#fff" text-anchor="middle">Linear Probe</text>
+
+      <!-- ── AUROC bar chart (centre) ── -->
+      <text x="296" y="20" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">AUROC — IPI DETECTION (LAYER 12)</text>
+      <line x1="264" y1="170" x2="420" y2="170" stroke="#e0e0e0" stroke-width="1"/>
+      <line x1="264" y1="28" x2="264" y2="170" stroke="#e0e0e0" stroke-width="1"/>
+      <!-- 90% threshold -->
+      <line x1="264" y1="42" x2="420" y2="42" stroke="#a31c1c" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="422" y="45" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#a31c1c">90%</text>
+      <!-- Bars — scale: 100% = 142px high, baseline y=170 -->
+      <!-- GPT-4o 96% → bar height 136.3, top = 170-136.3 = 33.7 -->
+      <rect x="272" y="34" width="14" height="136" rx="1" fill="#4ade80"/>
+      <text x="279" y="29" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#555" text-anchor="middle">96%</text>
+      <text x="279" y="182" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#999" text-anchor="middle">GPT</text>
+      <!-- Claude 3.5 93% → 132.1, top=37.9 -->
+      <rect x="292" y="38" width="14" height="132" rx="1" fill="#4ade80"/>
+      <text x="299" y="33" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#555" text-anchor="middle">93%</text>
+      <text x="299" y="182" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#999" text-anchor="middle">Cld</text>
+      <!-- Gemini 91% → 129.2, top=40.8 -->
+      <rect x="312" y="41" width="14" height="129" rx="1" fill="#4ade80"/>
+      <text x="319" y="36" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#555" text-anchor="middle">91%</text>
+      <text x="319" y="182" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#999" text-anchor="middle">Gem</text>
+      <!-- Llama 94% → 133.5, top=36.5 -->
+      <rect x="332" y="36" width="14" height="134" rx="1" fill="#4ade80"/>
+      <text x="339" y="31" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#555" text-anchor="middle">94%</text>
+      <text x="339" y="182" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#999" text-anchor="middle">Llm</text>
+      <!-- Mistral 90% → 127.8, top=42.2 -->
+      <rect x="352" y="42" width="14" height="128" rx="1" fill="#86efac"/>
+      <text x="359" y="37" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#555" text-anchor="middle">90%</text>
+      <text x="359" y="182" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#999" text-anchor="middle">Mst</text>
+      <!-- Qwen 92% → 130.6, top=39.4 -->
+      <rect x="372" y="39" width="14" height="131" rx="1" fill="#4ade80"/>
+      <text x="379" y="34" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#555" text-anchor="middle">92%</text>
+      <text x="379" y="182" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#999" text-anchor="middle">Qwn</text>
+
+      <!-- ── ASR before/after (right) ── -->
+      <text x="502" y="20" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">ASR: AGRI DEFENSE</text>
+      <line x1="455" y1="170" x2="610" y2="170" stroke="#e0e0e0" stroke-width="1"/>
+      <!-- Before bar 34.6% → height 49.1 -->
+      <rect x="468" y="121" width="44" height="49" rx="1" fill="#f07070"/>
+      <text x="490" y="116" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#a31c1c" text-anchor="middle">34.6%</text>
+      <text x="490" y="185" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#aaa" text-anchor="middle">before</text>
+      <!-- After bar ≈0% → tiny -->
+      <rect x="554" y="167" width="44" height="3" rx="1" fill="#4ade80"/>
+      <text x="576" y="162" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#145e32" text-anchor="middle">≈0%</text>
+      <text x="576" y="185" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#aaa" text-anchor="middle">AGRI</text>
+      <!-- Axis labels -->
+      <text x="258" y="170" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#ccc" text-anchor="end">0%</text>
+      <text x="258" y="28" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#ccc" text-anchor="end">100%</text>
+      <text x="449" y="170" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#ccc" text-anchor="end">0%</text>
+      <!-- Model label -->
+      <text x="264" y="197" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#bbb">6 frontier models · all exceed 90% AUROC at peak layer</text>
+    </svg>
+    <figcaption>Fig. 1 — Linear probes at layer 12 detect IPI exposure at 90–96% AUROC across all 6 frontier models (centre). AGRI defense built on these probes reduces attack success rate from 34.6% to ≈0% (right).</figcaption>
+  </figure>
+  <p class="paper-detail">The paper probes intermediate hidden states of LLMs mid-inference. Across 6 frontier models (GPT-4o, Claude 3.5, Gemini 1.5, Llama 3.1, Mistral, Qwen 2.5), linear probes trained on the residual stream achieve 90%+ AUROC for IPI exposure—even when the model's output is already compromised. The probes underpin AGRI (Activation-Guided Resistance against Indirect prompt injection), which monitors activations during agentic tasks and blocks tool calls when the IPI signal exceeds a threshold. AGRI reduces the agent attack success rate from 34.6% to approximately 0% on standard IPI benchmarks. Probe weights and code are released.</p>
+</article>
+
+<hr class="paper-divider">
+
+<!-- ═══════════ PAPER 02 ═══════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <span class="paper-rank">02</span>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-dllm">text diffusion</span>
+      <span class="tag">preprint · aug 6</span>
+    </div>
+  </header>
+  <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.07594">Scaling Inherently Interpretable Language Models</a></h2>
+  <p class="paper-hook">Steerling-8B is a diffusion language model trained with interpretability baked into the loss function — every generation decomposes into named concept vectors, editable at inference time without fine-tuning. The first time training-time interpretability has scaled to 8B parameters without capability loss.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 620 240" xmlns="http://www.w3.org/2000/svg" aria-label="Steerling-8B architecture — concept bottleneck layer in masked diffusion LM training pipeline">
+      <rect width="620" height="240" fill="#fff"/>
+      <text x="310" y="18" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">STEERLING-8B · TRAINING-TIME INTERPRETABILITY IN MASKED DIFFUSION LM</text>
+      <!-- Input -->
+      <rect x="10" y="34" width="72" height="32" rx="2" fill="#f4f4f4" stroke="#ccc" stroke-width="1"/>
+      <text x="46" y="53" font-family="Georgia,serif" font-size="11" fill="#777" text-anchor="middle">[MASK] × n</text>
+      <!-- Arrow -->
+      <line x1="83" y1="50" x2="106" y2="50" stroke="#aaa" stroke-width="1.5" marker-end="url(#a2)"/>
+      <defs><marker id="a2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#aaa"/></marker></defs>
+      <!-- Transformer -->
+      <rect x="108" y="26" width="130" height="48" rx="2" fill="#dceefb" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="173" y="48" font-family="'DM Serif Display',Georgia,serif" font-size="13" fill="#1a4f99" text-anchor="middle">Diffusion</text>
+      <text x="173" y="64" font-family="Georgia,serif" font-size="10" fill="#4a7fc0" text-anchor="middle">Transformer (8B)</text>
+      <!-- Arrow -->
+      <line x1="239" y1="50" x2="266" y2="50" stroke="#aaa" stroke-width="1.5" marker-end="url(#a2)"/>
+      <!-- Concept Bottleneck -->
+      <rect x="268" y="18" width="182" height="64" rx="2" fill="#fffbf0" stroke="#c08000" stroke-width="2"/>
+      <text x="359" y="36" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#c08000" text-anchor="middle" letter-spacing="0.08em">CONCEPT BOTTLENECK</text>
+      <!-- Concept chips -->
+      <rect x="276" y="44" width="46" height="16" rx="1" fill="#fde68a"/>
+      <text x="299" y="56" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#78350f" text-anchor="middle">topic</text>
+      <rect x="328" y="44" width="46" height="16" rx="1" fill="#fde68a"/>
+      <text x="351" y="56" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#78350f" text-anchor="middle">tone</text>
+      <rect x="380" y="44" width="62" height="16" rx="1" fill="#fde68a"/>
+      <text x="411" y="56" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#78350f" text-anchor="middle">formality</text>
+      <!-- Sparsity note -->
+      <text x="359" y="94" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">sparse weighted sum + ‖c‖₀ regulariser</text>
+      <!-- Arrow to output -->
+      <line x1="451" y1="50" x2="478" y2="50" stroke="#aaa" stroke-width="1.5" marker-end="url(#a2)"/>
+      <!-- Output -->
+      <rect x="480" y="34" width="128" height="32" rx="2" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="544" y="54" font-family="Georgia,serif" font-size="11" fill="#145e32" text-anchor="middle">Generated text</text>
+
+      <!-- ── Steering path ── -->
+      <line x1="359" y1="82" x2="359" y2="114" stroke="#c08000" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a3)"/>
+      <defs><marker id="a3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#c08000"/></marker></defs>
+      <rect x="268" y="116" width="182" height="38" rx="2" fill="#fffbf0" stroke="#c08000" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="359" y="131" font-family="Georgia,serif" font-size="10" fill="#a05c00" text-anchor="middle" font-style="italic">Steer: adjust "tone" weight</text>
+      <text x="359" y="146" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#777" text-anchor="middle">→ different output · no fine-tuning</text>
+
+      <!-- ── Attribution path ── -->
+      <line x1="544" y1="66" x2="544" y2="100" stroke="#1a6e3c" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#a4)"/>
+      <defs><marker id="a4" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#1a6e3c"/></marker></defs>
+      <rect x="488" y="102" width="120" height="38" rx="2" fill="#d4edda" stroke="#1a6e3c" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="548" y="118" font-family="Georgia,serif" font-size="10" fill="#145e32" text-anchor="middle">Attribution:</text>
+      <text x="548" y="131" font-family="Georgia,serif" font-size="10" fill="#145e32" text-anchor="middle">which concepts fired?</text>
+
+      <!-- ── Benchmark note ── -->
+      <rect x="10" y="168" width="440" height="52" rx="2" fill="#f7f7f7" stroke="#e8e8e8" stroke-width="1"/>
+      <text x="22" y="186" font-family="Georgia,serif" font-size="11" fill="#444">Near-parity with non-interpretable baselines at 8B scale.</text>
+      <text x="22" y="203" font-family="Georgia,serif" font-size="11" fill="#444">First training-time interpretability constraint to scale to large masked dLLM.</text>
+      <text x="22" y="217" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa">sparse regulariser in training loss · concept attribution · direct inference-time steering</text>
+    </svg>
+    <figcaption>Fig. 1 — Steerling-8B: a concept bottleneck layer decomposes every generation into a sparse weighted sum of named concept vectors. Both attribution (which concepts fired?) and direct concept steering (edit weights at inference) are supported without any fine-tuning.</figcaption>
+  </figure>
+  <p class="paper-detail">Steerling-8B introduces a concept bottleneck layer into the training of a masked diffusion LM. Each generation is decomposed into a sparse weighted sum of learned human-interpretable concept vectors; a sparsity regularizer keeps concept activation minimal without sacrificing output quality. At 8B scale, Steerling achieves near-parity with non-interpretable baselines on standard generation benchmarks while enabling concept attribution and direct concept steering at inference time without fine-tuning — the first demonstration that training-time interpretability constraints scale to large masked diffusion LMs without significant capability degradation.</p>
+</article>
+
+<hr class="paper-divider">
+
+<!-- ═══════════ PAPER 03 ═══════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <span class="paper-rank">03</span>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint · aug 2026</span>
+    </div>
+  </header>
+  <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.05158">Safe Evolution with Circuit Anchors</a></h2>
+  <p class="paper-hook">Safety-aligned behavior lives in less than 2% of a model's features — a tiny, locatable circuit. Circuit-Anchored Evolution pins exactly those features during self-improvement, preventing safety erosion while letting everything else change freely.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 620 230" xmlns="http://www.w3.org/2000/svg" aria-label="Safety circuit locality and CAE training protocol — before/after comparison">
+      <rect width="620" height="230" fill="#fff"/>
+      <text x="310" y="18" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">CIRCUIT-ANCHORED EVOLUTION · SAFETY CIRCUIT &lt;2% OF FEATURES</text>
+      <!-- ── Feature grid ── -->
+      <text x="100" y="36" font-family="Georgia,serif" font-size="10" fill="#aaa" text-anchor="middle">All model features</text>
+      <!-- Grid of 9×7=63 dots, 5 red (≈8% of 63, representing ~2% of actual) -->
+      <g>
+        <circle cx="28" cy="50" r="5" fill="#e8e8e8"/><circle cx="44" cy="50" r="5" fill="#e8e8e8"/><circle cx="60" cy="50" r="5" fill="#e8e8e8"/><circle cx="76" cy="50" r="5" fill="#f07070"/><circle cx="92" cy="50" r="5" fill="#e8e8e8"/><circle cx="108" cy="50" r="5" fill="#e8e8e8"/><circle cx="124" cy="50" r="5" fill="#e8e8e8"/><circle cx="140" cy="50" r="5" fill="#e8e8e8"/><circle cx="156" cy="50" r="5" fill="#e8e8e8"/>
+        <circle cx="28" cy="66" r="5" fill="#e8e8e8"/><circle cx="44" cy="66" r="5" fill="#e8e8e8"/><circle cx="60" cy="66" r="5" fill="#f07070"/><circle cx="76" cy="66" r="5" fill="#e8e8e8"/><circle cx="92" cy="66" r="5" fill="#e8e8e8"/><circle cx="108" cy="66" r="5" fill="#e8e8e8"/><circle cx="124" cy="66" r="5" fill="#e8e8e8"/><circle cx="140" cy="66" r="5" fill="#e8e8e8"/><circle cx="156" cy="66" r="5" fill="#e8e8e8"/>
+        <circle cx="28" cy="82" r="5" fill="#e8e8e8"/><circle cx="44" cy="82" r="5" fill="#e8e8e8"/><circle cx="60" cy="82" r="5" fill="#e8e8e8"/><circle cx="76" cy="82" r="5" fill="#e8e8e8"/><circle cx="92" cy="82" r="5" fill="#e8e8e8"/><circle cx="108" cy="82" r="5" fill="#e8e8e8"/><circle cx="124" cy="82" r="5" fill="#f07070"/><circle cx="140" cy="82" r="5" fill="#e8e8e8"/><circle cx="156" cy="82" r="5" fill="#e8e8e8"/>
+        <circle cx="28" cy="98" r="5" fill="#e8e8e8"/><circle cx="44" cy="98" r="5" fill="#e8e8e8"/><circle cx="60" cy="98" r="5" fill="#e8e8e8"/><circle cx="76" cy="98" r="5" fill="#e8e8e8"/><circle cx="92" cy="98" r="5" fill="#e8e8e8"/><circle cx="108" cy="98" r="5" fill="#e8e8e8"/><circle cx="124" cy="98" r="5" fill="#e8e8e8"/><circle cx="140" cy="98" r="5" fill="#e8e8e8"/><circle cx="156" cy="98" r="5" fill="#e8e8e8"/>
+        <circle cx="28" cy="114" r="5" fill="#e8e8e8"/><circle cx="44" cy="114" r="5" fill="#e8e8e8"/><circle cx="60" cy="114" r="5" fill="#e8e8e8"/><circle cx="76" cy="114" r="5" fill="#e8e8e8"/><circle cx="92" cy="114" r="5" fill="#e8e8e8"/><circle cx="108" cy="114" r="5" fill="#f07070"/><circle cx="124" cy="114" r="5" fill="#e8e8e8"/><circle cx="140" cy="114" r="5" fill="#e8e8e8"/><circle cx="156" cy="114" r="5" fill="#e8e8e8"/>
+        <circle cx="28" cy="130" r="5" fill="#e8e8e8"/><circle cx="44" cy="130" r="5" fill="#e8e8e8"/><circle cx="60" cy="130" r="5" fill="#e8e8e8"/><circle cx="76" cy="130" r="5" fill="#f07070"/><circle cx="92" cy="130" r="5" fill="#e8e8e8"/><circle cx="108" cy="130" r="5" fill="#e8e8e8"/><circle cx="124" cy="130" r="5" fill="#e8e8e8"/><circle cx="140" cy="130" r="5" fill="#e8e8e8"/><circle cx="156" cy="130" r="5" fill="#e8e8e8"/>
+        <circle cx="28" cy="146" r="5" fill="#e8e8e8"/><circle cx="44" cy="146" r="5" fill="#e8e8e8"/><circle cx="60" cy="146" r="5" fill="#e8e8e8"/><circle cx="76" cy="146" r="5" fill="#e8e8e8"/><circle cx="92" cy="146" r="5" fill="#e8e8e8"/><circle cx="108" cy="146" r="5" fill="#e8e8e8"/><circle cx="124" cy="146" r="5" fill="#e8e8e8"/><circle cx="140" cy="146" r="5" fill="#e8e8e8"/><circle cx="156" cy="146" r="5" fill="#e8e8e8"/>
+      </g>
+      <circle cx="28" cy="172" r="5" fill="#f07070"/>
+      <text x="38" y="176" font-family="Georgia,serif" font-size="9" fill="#a31c1c">Safety circuit (&lt;2%)</text>
+      <circle cx="28" cy="190" r="5" fill="#e8e8e8"/>
+      <text x="38" y="194" font-family="Georgia,serif" font-size="9" fill="#aaa">Other features (≥98%)</text>
+
+      <!-- ── CAE box ── -->
+      <line x1="172" y1="98" x2="210" y2="98" stroke="#999" stroke-width="1.5" marker-end="url(#a5)"/>
+      <defs><marker id="a5" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#999"/></marker></defs>
+      <rect x="213" y="74" width="118" height="48" rx="2" fill="#fffbf0" stroke="#c08000" stroke-width="2"/>
+      <text x="272" y="96" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#c08000" text-anchor="middle" letter-spacing="0.06em">CAE</text>
+      <text x="272" y="110" font-family="Georgia,serif" font-size="10" fill="#a05c00" text-anchor="middle">anchor circuit weights</text>
+      <!-- lock symbol -->
+      <rect x="263" y="118" width="18" height="14" rx="2" fill="none" stroke="#c08000" stroke-width="1.5"/>
+      <path d="M267 118 v-5 a5 5 0 0 1 10 0 v5" stroke="#c08000" stroke-width="1.5" fill="none"/>
+
+      <!-- ── Safety score lines ── -->
+      <line x1="333" y1="98" x2="362" y2="98" stroke="#999" stroke-width="1.5" marker-end="url(#a5)"/>
+      <text x="376" y="36" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">SAFETY SCORE</text>
+      <line x1="362" y1="156" x2="610" y2="156" stroke="#e8e8e8" stroke-width="1"/>
+      <line x1="362" y1="46" x2="362" y2="156" stroke="#e8e8e8" stroke-width="1"/>
+      <!-- Y axis labels -->
+      <text x="358" y="50" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="end">high</text>
+      <text x="358" y="158" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="end">low</text>
+      <!-- Without CAE: declines -->
+      <polyline points="372,56 415,78 455,108 495,136 535,153 595,158" stroke="#f07070" stroke-width="2" fill="none"/>
+      <text x="598" y="160" font-family="Georgia,serif" font-size="9" fill="#a31c1c">− no CAE</text>
+      <!-- With CAE: maintained -->
+      <polyline points="372,56 415,57 455,55 495,57 535,56 595,55" stroke="#4ade80" stroke-width="2" fill="none"/>
+      <text x="598" y="55" font-family="Georgia,serif" font-size="9" fill="#145e32">✓ CAE</text>
+      <!-- Scenario labels -->
+      <text x="415" y="172" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="middle">pretrain</text>
+      <text x="455" y="172" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="middle">RLHF</text>
+      <text x="495" y="172" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="middle">self-impr</text>
+      <text x="535" y="172" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="middle">adv. tune</text>
+      <text x="485" y="190" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">self-evolution steps →</text>
+    </svg>
+    <figcaption>Fig. 1 — Safety circuit: &lt;2% of total features (red dots, left). Without CAE, safety score erodes across all 4 evolution scenarios; with CAE anchoring those weights, safety is maintained while capabilities improve (right).</figcaption>
+  </figure>
+  <p class="paper-detail">The paper uses SAE decomposition to identify the "safety circuit" — the minimal set of features causally responsible for safety-aligned behavior — finding it constitutes less than 2% of total features, concentrated in specific attention heads and MLP neurons. CAE anchors these circuit weights during continued training or self-evolution, evaluated across 4 scenarios: continued pretraining, RLHF reset, self-improvement loop, and adversarial fine-tuning. CAE maintains safety ratings at pre-evolution levels while allowing capability metrics to improve, outperforming regularization-only baselines in all four scenarios.</p>
+</article>
+
+<hr class="paper-divider">
+
+<!-- ═══════════ MID-TIER SECTION ═══════════ -->
+<div class="more-label">Items 4 – 8 · Also notable</div>
+
+<!-- PAPER 04 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <span class="paper-rank">04</span>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint · aug 4</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.04053">AgentAntibody: An Adaptive Immune System for Defending LLM Agents against Prompt Injection</a></h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 620 150" xmlns="http://www.w3.org/2000/svg" aria-label="AgentAntibody immune-system defense loop">
+      <rect width="620" height="150" fill="#fff"/>
+      <text x="310" y="14" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">IMMUNE DEFENSE LOOP · 83% ASR REDUCTION · 12% UTILITY OVERHEAD</text>
+      <!-- Attack -->
+      <rect x="10" y="44" width="84" height="40" rx="2" fill="#fde8e8" stroke="#a31c1c" stroke-width="1.5"/>
+      <text x="52" y="62" font-family="Georgia,serif" font-size="10" fill="#a31c1c" text-anchor="middle" font-weight="bold">Injection</text>
+      <text x="52" y="76" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#a31c1c" text-anchor="middle">antigen</text>
+      <!-- Arrow -->
+      <line x1="95" y1="64" x2="120" y2="64" stroke="#aaa" stroke-width="1.5" marker-end="url(#a6)"/>
+      <defs><marker id="a6" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#aaa"/></marker></defs>
+      <!-- LLM Agent -->
+      <rect x="122" y="38" width="98" height="52" rx="2" fill="#dceefb" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="171" y="60" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle">LLM Agent</text>
+      <text x="171" y="76" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#5a8fc0" text-anchor="middle">encounters attack</text>
+      <!-- Arrow down -->
+      <line x1="171" y1="90" x2="171" y2="112" stroke="#aaa" stroke-width="1.5" marker-end="url(#a6)"/>
+      <!-- Antibody gen -->
+      <rect x="100" y="114" width="142" height="28" rx="2" fill="#fffbf0" stroke="#c08000" stroke-width="1.5"/>
+      <text x="171" y="132" font-family="Georgia,serif" font-size="10" fill="#a05c00" text-anchor="middle">Generate antibody rule</text>
+      <!-- Arrow right -->
+      <line x1="243" y1="128" x2="280" y2="128" stroke="#aaa" stroke-width="1.5" marker-end="url(#a6)"/>
+      <!-- Library -->
+      <rect x="282" y="44" width="96" height="96" rx="2" fill="#f5f4f1" stroke="#aaa" stroke-width="1"/>
+      <text x="330" y="62" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#777" text-anchor="middle" letter-spacing="0.04em">LIBRARY</text>
+      <text x="330" y="80" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">— Ab₁</text>
+      <text x="330" y="96" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">— Ab₂</text>
+      <text x="330" y="112" font-family="Georgia,serif" font-size="9" fill="#a05c00" text-anchor="middle">— Ab₃ ← new</text>
+      <text x="330" y="130" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#ccc" text-anchor="middle">persistent</text>
+      <!-- Arrow right -->
+      <line x1="379" y1="92" x2="416" y2="92" stroke="#aaa" stroke-width="1.5" marker-end="url(#a6)"/>
+      <!-- Future defense -->
+      <rect x="418" y="38" width="190" height="108" rx="2" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="513" y="62" font-family="Georgia,serif" font-size="11" fill="#145e32" text-anchor="middle">Future similar attack</text>
+      <text x="513" y="80" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#3a8a60" text-anchor="middle">→ antibody match</text>
+      <text x="513" y="96" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#3a8a60" text-anchor="middle">→ antibody reactivated</text>
+      <text x="513" y="112" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#1a6e3c" text-anchor="middle">→ attack blocked ✓</text>
+      <text x="513" y="132" font-family="Georgia,serif" font-size="10" fill="#3a8a60" text-anchor="middle" font-style="italic">self-evolving immunity</text>
+    </svg>
+    <figcaption>Fig. 1 — Immune defense loop: each injection encounter generates a persistent antibody stored in a growing library; similar future attacks trigger antibody reactivation and blocking — 83% ASR reduction.</figcaption>
+  </figure>
+  <p class="mid-summary">AgentAntibody models prompt injection defense as an adaptive immune response: each attack encounter generates an antibody (an adapted defense rule or classifier), stored in a persistent library and reactivated for similar future injections. On AgentDojo and WebArena-security benchmarks, the system achieves 83% attack success rate reduction with only 12% utility overhead.</p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 05 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <span class="paper-rank">05</span>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint · aug 2026</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.05086">Item Response Theory for AI Safety</a></h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 620 170" xmlns="http://www.w3.org/2000/svg" aria-label="IRT latent safety factors vs benchmark scores — 192 LLMs × 8 benchmarks">
+      <rect width="620" height="170" fill="#fff"/>
+      <text x="310" y="14" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">IRT: LATENT SAFETY FACTOR vs. BENCHMARK SCORE · 192 LLMs × 8 BENCHMARKS</text>
+      <!-- Axes -->
+      <line x1="56" y1="150" x2="400" y2="150" stroke="#e8e8e8" stroke-width="1"/>
+      <line x1="56" y1="28" x2="56" y2="150" stroke="#e8e8e8" stroke-width="1"/>
+      <text x="228" y="166" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#aaa" text-anchor="middle">Benchmark Score →</text>
+      <text x="14" y="90" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#aaa" text-anchor="middle" transform="rotate(-90 14 90)">Latent Safety Factor</text>
+      <!-- Tick labels -->
+      <text x="52" y="153" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="end">0</text>
+      <text x="52" y="89" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="end">50</text>
+      <text x="52" y="30" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="end">100</text>
+      <text x="56" y="163" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="middle">0</text>
+      <text x="228" y="163" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="middle">50</text>
+      <text x="398" y="163" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc" text-anchor="middle">100</text>
+      <!-- Trend line (safe) -->
+      <line x1="60" y1="148" x2="310" y2="30" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+      <!-- Safe scatter points -->
+      <circle cx="80" cy="138" r="4" fill="#4ade80" opacity="0.7"/>
+      <circle cx="108" cy="124" r="4" fill="#4ade80" opacity="0.7"/>
+      <circle cx="140" cy="108" r="4" fill="#4ade80" opacity="0.7"/>
+      <circle cx="172" cy="94" r="4" fill="#4ade80" opacity="0.7"/>
+      <circle cx="200" cy="80" r="4" fill="#4ade80" opacity="0.7"/>
+      <circle cx="232" cy="64" r="4" fill="#4ade80" opacity="0.7"/>
+      <circle cx="260" cy="50" r="4" fill="#4ade80" opacity="0.7"/>
+      <circle cx="292" cy="36" r="4" fill="#4ade80" opacity="0.7"/>
+      <!-- Shortcut models: high benchmark, low factor -->
+      <circle cx="290" cy="128" r="6" fill="#f07070" stroke="#a31c1c" stroke-width="1.5"/>
+      <circle cx="320" cy="118" r="5" fill="#f07070" stroke="#a31c1c" stroke-width="1.5"/>
+      <circle cx="350" cy="108" r="5" fill="#f07070" stroke="#a31c1c" stroke-width="1.5"/>
+      <text x="295" y="124" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#a31c1c">surface shortcut</text>
+      <line x1="290" y1="128" x2="340" y2="128" stroke="#a31c1c" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.5"/>
+      <!-- Legend -->
+      <circle cx="422" cy="50" r="5" fill="#4ade80"/>
+      <text x="432" y="54" font-family="Georgia,serif" font-size="9" fill="#555">Genuinely safe</text>
+      <circle cx="422" cy="70" r="5" fill="#f07070" stroke="#a31c1c" stroke-width="1.5"/>
+      <text x="432" y="74" font-family="Georgia,serif" font-size="9" fill="#a31c1c">High score, low factor</text>
+      <text x="432" y="86" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#aaa">(surface shortcut)</text>
+      <text x="422" y="116" font-family="Georgia,serif" font-size="10" fill="#555">3 latent factors</text>
+      <text x="422" y="130" font-family="Georgia,serif" font-size="10" fill="#555">explain variance</text>
+      <text x="422" y="144" font-family="Georgia,serif" font-size="10" fill="#555">better than scores</text>
+    </svg>
+    <figcaption>Fig. 1 — Some models achieve high benchmark scores (x-axis) while scoring low on the latent safety factor (y-axis, red dots), exposing surface shortcuts. IRT recovers 3 latent factors that better characterize safety across 192 LLMs × 8 benchmarks.</figcaption>
+  </figure>
+  <p class="mid-summary">Applies item response theory (IRT) to 192 LLMs evaluated on 8 safety benchmarks, recovering 3 latent safety factors that explain cross-benchmark variance better than benchmark averages alone. Models can score high on individual benchmarks by exploiting surface shortcuts while remaining unsafe on latent factors — revealing systematic measurement blind spots in current evaluation practice.</p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 06 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <span class="paper-rank">06</span>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint · aug 3</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.01849">Exploring and Bridging Knowledge Holes in Unlearned Multimodal LLMs</a></h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 620 158" xmlns="http://www.w3.org/2000/svg" aria-label="Knowledge hole propagation vs SPAR fix">
+      <rect width="620" height="158" fill="#fff"/>
+      <text x="148" y="14" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">WITHOUT SPAR</text>
+      <text x="462" y="14" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">WITH SPAR</text>
+      <!-- ── Left: damage spreading ── -->
+      <!-- Target -->
+      <circle cx="148" cy="82" r="24" fill="#fde8e8" stroke="#a31c1c" stroke-width="2"/>
+      <text x="148" y="78" font-family="Georgia,serif" font-size="9" fill="#a31c1c" text-anchor="middle" font-weight="bold">target</text>
+      <text x="148" y="91" font-family="Georgia,serif" font-size="9" fill="#a31c1c" text-anchor="middle">erased ✗</text>
+      <!-- Adjacent — damaged -->
+      <circle cx="80" cy="40" r="18" fill="#fde8e8" stroke="#e09090" stroke-width="1.5" opacity="0.55"/>
+      <text x="80" y="44" font-family="Georgia,serif" font-size="8" fill="#c06060" text-anchor="middle" opacity="0.55">concept A</text>
+      <text x="80" y="57" font-family="Georgia,serif" font-size="8" fill="#c06060" text-anchor="middle" opacity="0.55">degraded</text>
+      <circle cx="216" cy="40" r="18" fill="#fde8e8" stroke="#e09090" stroke-width="1.5" opacity="0.55"/>
+      <text x="216" y="44" font-family="Georgia,serif" font-size="8" fill="#c06060" text-anchor="middle" opacity="0.55">concept B</text>
+      <text x="216" y="57" font-family="Georgia,serif" font-size="8" fill="#c06060" text-anchor="middle" opacity="0.55">degraded</text>
+      <circle cx="80" cy="124" r="18" fill="#fde8e8" stroke="#e09090" stroke-width="1.5" opacity="0.55"/>
+      <text x="80" y="128" font-family="Georgia,serif" font-size="8" fill="#c06060" text-anchor="middle" opacity="0.55">concept C</text>
+      <text x="80" y="141" font-family="Georgia,serif" font-size="8" fill="#c06060" text-anchor="middle" opacity="0.55">degraded</text>
+      <circle cx="216" cy="124" r="18" fill="#fde8e8" stroke="#e09090" stroke-width="1.5" opacity="0.55"/>
+      <text x="216" y="128" font-family="Georgia,serif" font-size="8" fill="#c06060" text-anchor="middle" opacity="0.55">concept D</text>
+      <text x="216" y="141" font-family="Georgia,serif" font-size="8" fill="#c06060" text-anchor="middle" opacity="0.55">degraded</text>
+      <line x1="126" y1="62" x2="97" y2="50" stroke="#e09090" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="170" y1="62" x2="199" y2="50" stroke="#e09090" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="126" y1="102" x2="97" y2="113" stroke="#e09090" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="170" y1="102" x2="199" y2="113" stroke="#e09090" stroke-width="1" stroke-dasharray="3,2"/>
+      <!-- Divider -->
+      <line x1="302" y1="10" x2="302" y2="153" stroke="#ececec" stroke-width="1" stroke-dasharray="4,4"/>
+      <!-- ── Right: SPAR preserved ── -->
+      <!-- Target (still erased) -->
+      <circle cx="462" cy="82" r="24" fill="#fde8e8" stroke="#a31c1c" stroke-width="2"/>
+      <text x="462" y="78" font-family="Georgia,serif" font-size="9" fill="#a31c1c" text-anchor="middle" font-weight="bold">target</text>
+      <text x="462" y="91" font-family="Georgia,serif" font-size="9" fill="#a31c1c" text-anchor="middle">erased ✗</text>
+      <!-- Adjacent — preserved -->
+      <circle cx="394" cy="40" r="18" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="394" y="44" font-family="Georgia,serif" font-size="8" fill="#145e32" text-anchor="middle">concept A</text>
+      <text x="394" y="57" font-family="Georgia,serif" font-size="8" fill="#145e32" text-anchor="middle">preserved ✓</text>
+      <circle cx="530" cy="40" r="18" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="530" y="44" font-family="Georgia,serif" font-size="8" fill="#145e32" text-anchor="middle">concept B</text>
+      <text x="530" y="57" font-family="Georgia,serif" font-size="8" fill="#145e32" text-anchor="middle">preserved ✓</text>
+      <circle cx="394" cy="124" r="18" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="394" y="128" font-family="Georgia,serif" font-size="8" fill="#145e32" text-anchor="middle">concept C</text>
+      <text x="394" y="141" font-family="Georgia,serif" font-size="8" fill="#145e32" text-anchor="middle">preserved ✓</text>
+      <circle cx="530" cy="124" r="18" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="530" y="128" font-family="Georgia,serif" font-size="8" fill="#145e32" text-anchor="middle">concept D</text>
+      <text x="530" y="141" font-family="Georgia,serif" font-size="8" fill="#145e32" text-anchor="middle">preserved ✓</text>
+      <line x1="440" y1="62" x2="411" y2="50" stroke="#86efac" stroke-width="1.5"/>
+      <line x1="484" y1="62" x2="513" y2="50" stroke="#86efac" stroke-width="1.5"/>
+      <line x1="440" y1="102" x2="411" y2="113" stroke="#86efac" stroke-width="1.5"/>
+      <line x1="484" y1="102" x2="513" y2="113" stroke="#86efac" stroke-width="1.5"/>
+    </svg>
+    <figcaption>Fig. 1 — Without SPAR: erasing the target concept causes collateral degradation in adjacent concepts (left, faded red). SPAR's anchored regularization protects adjacent concepts while successfully erasing the target — 31% reduction in collateral degradation.</figcaption>
+  </figure>
+  <p class="mid-summary">Multimodal LLM unlearning creates "knowledge holes" — adjacent un-targeted concepts degrade due to collateral damage. Selective Protection with Anchored Regularization (SPAR) identifies at-risk adjacent concepts via activation similarity and anchors their representations during unlearning, cutting collateral degradation by 31% while maintaining forget performance on the target concept.</p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 07 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <span class="paper-rank">07</span>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint · aug 20</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.19579">Enforcing LLM Safety through DMD-based Classification of Prompt-Response Embedding Dynamics</a></h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 620 148" xmlns="http://www.w3.org/2000/svg" aria-label="DMD classification of prompt-response embedding trajectories for LLM safety">
+      <rect width="620" height="148" fill="#fff"/>
+      <text x="310" y="13" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">DMD SAFETY · 94% ACCURACY · 6 DATASETS · LOWER FPR THAN COSINE BASELINES</text>
+      <!-- Embedding space -->
+      <rect x="10" y="22" width="198" height="116" rx="2" fill="#f9f9f9" stroke="#e8e8e8" stroke-width="1"/>
+      <text x="109" y="38" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle" font-style="italic">embedding trajectory</text>
+      <!-- Harmful trajectory -->
+      <polyline points="22,118 48,96 64,105 86,76 108,84 128,58 150,64 172,38" stroke="#f07070" stroke-width="2" fill="none"/>
+      <text x="175" y="36" font-family="Georgia,serif" font-size="8" fill="#a31c1c">harmful</text>
+      <!-- Safe trajectory -->
+      <polyline points="22,118 54,108 88,102 122,96 154,92 186,88 198,86" stroke="#4ade80" stroke-width="2" fill="none"/>
+      <text x="190" y="84" font-family="Georgia,serif" font-size="8" fill="#145e32">safe</text>
+      <!-- t labels -->
+      <text x="22" y="136" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc">t₀</text>
+      <text x="195" y="136" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#ccc">tₙ</text>
+      <!-- Arrow -->
+      <line x1="210" y1="80" x2="252" y2="80" stroke="#aaa" stroke-width="1.5" marker-end="url(#a7)"/>
+      <defs><marker id="a7" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#aaa"/></marker></defs>
+      <!-- DMD box -->
+      <rect x="255" y="60" width="130" height="40" rx="2" fill="#fffbf0" stroke="#c08000" stroke-width="1.5"/>
+      <text x="320" y="78" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#c08000" text-anchor="middle" letter-spacing="0.06em">DMD</text>
+      <text x="320" y="92" font-family="Georgia,serif" font-size="9" fill="#a05c00" text-anchor="middle">dynamic mode decomp.</text>
+      <!-- Arrow -->
+      <line x1="385" y1="80" x2="426" y2="80" stroke="#aaa" stroke-width="1.5" marker-end="url(#a7)"/>
+      <!-- Result -->
+      <rect x="428" y="34" width="182" height="92" rx="2" fill="#f8f8f8" stroke="#e0e0e0" stroke-width="1"/>
+      <text x="519" y="56" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#777" text-anchor="middle" letter-spacing="0.06em">CLASSIFIER</text>
+      <rect x="440" y="64" width="160" height="24" rx="1" fill="#fde8e8" stroke="#a31c1c" stroke-width="1"/>
+      <text x="520" y="80" font-family="Georgia,serif" font-size="11" fill="#a31c1c" text-anchor="middle" font-weight="bold">Harmful ✗</text>
+      <rect x="440" y="94" width="160" height="24" rx="1" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="520" y="110" font-family="Georgia,serif" font-size="11" fill="#145e32" text-anchor="middle" font-weight="bold">Safe ✓</text>
+    </svg>
+    <figcaption>Fig. 1 — Prompt-response embedding sequence modelled as a dynamical system; DMD extracts low-dimensional trajectory features that classify harmful vs. safe content at 94% accuracy across 6 safety datasets.</figcaption>
+  </figure>
+  <p class="mid-summary">Treats the sequence of embedding states across a prompt-response exchange as a dynamical system and applies dynamic mode decomposition (DMD) to extract low-dimensional trajectory features. A DMD-feature classifier achieves 94% accuracy on harmful content detection across 6 standard safety datasets, with lower false positive rates than embedding-similarity baselines at matched recall.</p>
+</article>
+
+<hr class="section-divider">
+
+<!-- PAPER 08 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <span class="paper-rank">08</span>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint · aug 6</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.06202">What Current AI Benchmarks Leave Unmeasured</a></h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 620 155" xmlns="http://www.w3.org/2000/svg" aria-label="Benchmark coverage audit — which dimensions are measured vs unmeasured">
+      <rect width="620" height="155" fill="#fff"/>
+      <text x="310" y="14" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#aaa" text-anchor="middle" letter-spacing="0.06em">COVERAGE AUDIT · 12 BENCHMARKS × 5 EVALUATION DIMENSIONS</text>
+      <!-- Dimension labels -->
+      <text x="192" y="34" font-family="Georgia,serif" font-size="9" fill="#555" text-anchor="end">Task accuracy</text>
+      <text x="192" y="56" font-family="Georgia,serif" font-size="9" fill="#555" text-anchor="end">Robustness</text>
+      <text x="192" y="78" font-family="Georgia,serif" font-size="9" fill="#a31c1c" text-anchor="end">Consistency</text>
+      <text x="192" y="100" font-family="Georgia,serif" font-size="9" fill="#a31c1c" text-anchor="end">Citation grnd.</text>
+      <text x="192" y="122" font-family="Georgia,serif" font-size="9" fill="#a31c1c" text-anchor="end">Adv. robust.</text>
+      <!-- Grid: 12 benchmarks × 5 dims, cell width ~28px -->
+      <!-- Row 1: Task accuracy — all green -->
+      <rect x="198" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="220" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="242" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="264" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="286" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="308" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="330" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="352" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="374" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="396" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="418" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <rect x="440" y="24" width="17" height="13" rx="1" fill="#4ade80" opacity="0.8"/>
+      <!-- Row 2: Robustness — partial -->
+      <rect x="198" y="46" width="17" height="13" rx="1" fill="#fde68a" opacity="0.8"/>
+      <rect x="220" y="46" width="17" height="13" rx="1" fill="#e8e8e8" opacity="0.6"/>
+      <rect x="242" y="46" width="17" height="13" rx="1" fill="#fde68a" opacity="0.8"/>
+      <rect x="264" y="46" width="17" height="13" rx="1" fill="#e8e8e8" opacity="0.6"/>
+      <rect x="286" y="46" width="17" height="13" rx="1" fill="#e8e8e8" opacity="0.6"/>
+      <rect x="308" y="46" width="17" height="13" rx="1" fill="#fde68a" opacity="0.8"/>
+      <rect x="330" y="46" width="17" height="13" rx="1" fill="#e8e8e8" opacity="0.6"/>
+      <rect x="352" y="46" width="17" height="13" rx="1" fill="#e8e8e8" opacity="0.6"/>
+      <rect x="374" y="46" width="17" height="13" rx="1" fill="#fde68a" opacity="0.8"/>
+      <rect x="396" y="46" width="17" height="13" rx="1" fill="#e8e8e8" opacity="0.6"/>
+      <rect x="418" y="46" width="17" height="13" rx="1" fill="#e8e8e8" opacity="0.6"/>
+      <rect x="440" y="46" width="17" height="13" rx="1" fill="#e8e8e8" opacity="0.6"/>
+      <!-- Row 3: Consistency — mostly unmeasured -->
+      <rect x="198" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="220" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="242" y="68" width="17" height="13" rx="1" fill="#e8e8e8" opacity="0.5"/>
+      <rect x="264" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="286" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="308" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="330" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="352" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="374" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="396" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="418" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="440" y="68" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <!-- Row 4: Citation grounding — all unmeasured -->
+      <rect x="198" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="220" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="242" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="264" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="286" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="308" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="330" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="352" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="374" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="396" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="418" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="440" y="90" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <!-- Row 5: Adv robustness — all unmeasured -->
+      <rect x="198" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="220" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="242" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="264" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="286" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="308" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="330" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="352" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="374" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="396" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="418" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <rect x="440" y="112" width="17" height="13" rx="1" fill="#f07070" opacity="0.7"/>
+      <!-- Legend -->
+      <rect x="480" y="34" width="12" height="10" rx="1" fill="#4ade80" opacity="0.8"/>
+      <text x="496" y="43" font-family="Georgia,serif" font-size="9" fill="#555">Measured</text>
+      <rect x="480" y="52" width="12" height="10" rx="1" fill="#fde68a" opacity="0.8"/>
+      <text x="496" y="61" font-family="Georgia,serif" font-size="9" fill="#555">Partial</text>
+      <rect x="480" y="70" width="12" height="10" rx="1" fill="#f07070" opacity="0.7"/>
+      <text x="496" y="79" font-family="Georgia,serif" font-size="9" fill="#a31c1c">Not measured</text>
+      <rect x="480" y="88" width="12" height="10" rx="1" fill="#e8e8e8" opacity="0.5"/>
+      <text x="496" y="97" font-family="Georgia,serif" font-size="9" fill="#aaa">Absent</text>
+      <text x="480" y="128" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#a31c1c">3 dimensions</text>
+      <text x="480" y="140" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#a31c1c">systematically</text>
+      <text x="480" y="152" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#a31c1c">unmeasured</text>
+    </svg>
+    <figcaption>Fig. 1 — Coverage audit: 12 major AI safety/capability benchmarks uniformly fail to measure response consistency, citation grounding, and adversarial robustness (bottom 3 rows, red), despite their centrality to deployment safety.</figcaption>
+  </figure>
+  <p class="mid-summary">Systematic audit of 12 major AI safety/capability benchmarks identifies three consistently unmeasured dimensions: response consistency (same answer on repeated trials?), citation grounding accuracy, and adversarial robustness. Proposes 3 supplementary evaluation protocols with open scoring code to close these gaps.</p>
+</article>
+
+<hr class="paper-divider">
+
+<!-- Notes -->
+<div class="notes">
+  <div class="notes-label">Notes</div>
+  <ul>
+    <li>Only 8 genuinely relevant uncovered items found — no padding. The Aug 20–23 weekend window had sparse new arXiv submissions in scope (typical late-August lull); 6 of 8 items are from Aug 1–7 missed by earlier runs.</li>
+    <li>Items #1 and #3 sketch a mechanistic safety pipeline: probes locate IPI/safety signals in the residual stream (#1); circuit anchoring preserves those signals through training (#3). Flag for weekly roundup.</li>
+    <li>Text diffusion LMs: item #2 (Steerling-8B) is the standout dLLM result — training-time interpretability at 8B without capability loss.</li>
+    <li>No peer-reviewed papers this window.</li>
+  </ul>
+</div>
+
+<footer class="radar-footer">
+  Research Radar · gs157@nyu.edu · 2026-08-23 · <a href="https://github.com/gussand/research-radar" style="color:inherit">github.com/gussand/research-radar</a>
+</footer>
+{% endraw %}

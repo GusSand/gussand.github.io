@@ -1,0 +1,883 @@
+---
+layout: "radar"
+title: "Radar 2026-09-24"
+kind: "daily"
+slug: "2026-09-24"
+date: 2026-09-24
+group: "2026-W40"
+window: "September 22–24, 2026"
+summary: "Window: September 22–24, 2026 · Sources swept: OpenReview, EMNLP 2026, USENIX Security 26, ICLR 2026, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 3 peer-reviewed · 7 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-24.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ── tokens ── */
+:root {
+  --bg: #111111;
+  --bg2: #1a1a1a;
+  --bg3: #222222;
+  --border: #2e2e2e;
+  --text: #c9c9c9;
+  --head: #f0f0f0;
+  --muted: #777;
+  --link: #7eb8f7;
+  --accent: #e8d9b8;
+  --tag-interp: #2a4a2e;
+  --tag-interp-t: #7ecb84;
+  --tag-sec: #3a2a1e;
+  --tag-sec-t: #e0956a;
+  --tag-align: #1e2f4a;
+  --tag-align-t: #6aafe0;
+  --tag-peer: #2e1e3a;
+  --tag-peer-t: #c08ae8;
+  --tag-ctrl: #3a2e1e;
+  --tag-ctrl-t: #e0c46a;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f5f4f0;
+    --bg2: #eeecea;
+    --bg3: #e4e2de;
+    --border: #d0cdc8;
+    --text: #3a3833;
+    --head: #1a1815;
+    --muted: #888;
+    --link: #1a5fa8;
+    --accent: #6b5a2e;
+    --tag-interp: #d5f0d8;
+    --tag-interp-t: #1a6b22;
+    --tag-sec: #f5e5d5;
+    --tag-sec-t: #8b3a10;
+    --tag-align: #d5e8f5;
+    --tag-align-t: #0f3f6b;
+    --tag-peer: #ede0f5;
+    --tag-peer-t: #5a1f8b;
+    --tag-ctrl: #f5ecd5;
+    --tag-ctrl-t: #7b4e0e;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f5f4f0;
+  --bg2: #eeecea;
+  --bg3: #e4e2de;
+  --border: #d0cdc8;
+  --text: #3a3833;
+  --head: #1a1815;
+  --muted: #888;
+  --link: #1a5fa8;
+  --accent: #6b5a2e;
+  --tag-interp: #d5f0d8; --tag-interp-t: #1a6b22;
+  --tag-sec: #f5e5d5; --tag-sec-t: #8b3a10;
+  --tag-align: #d5e8f5; --tag-align-t: #0f3f6b;
+  --tag-peer: #ede0f5; --tag-peer-t: #5a1f8b;
+  --tag-ctrl: #f5ecd5; --tag-ctrl-t: #7b4e0e;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --bg2: #1a1a1a; --bg3: #222222;
+  --border: #2e2e2e; --text: #c9c9c9; --head: #f0f0f0;
+  --muted: #777; --link: #7eb8f7; --accent: #e8d9b8;
+  --tag-interp: #2a4a2e; --tag-interp-t: #7ecb84;
+  --tag-sec: #3a2a1e; --tag-sec-t: #e0956a;
+  --tag-align: #1e2f4a; --tag-align-t: #6aafe0;
+  --tag-peer: #2e1e3a; --tag-peer-t: #c08ae8;
+  --tag-ctrl: #3a2e1e; --tag-ctrl-t: #e0c46a;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  margin: 0;
+  padding-inline: 20px;
+  padding-block: 0;
+  max-width: 660px;
+  margin-inline: auto;
+}
+
+/* ── masthead ── */
+.masthead {
+  padding-block: 40px 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 36px;
+}
+.masthead-eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.masthead h1 {
+  color: var(--head);
+  font-size: clamp(26px, 5vw, 36px);
+  font-weight: 700;
+  margin: 0 0 10px;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.masthead-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.counts {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.count-pill {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--muted);
+}
+.count-pill strong { color: var(--head); }
+
+/* ── tags ── */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.tag {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: .04em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.tag-interp  { background: var(--tag-interp);  color: var(--tag-interp-t); }
+.tag-sec     { background: var(--tag-sec);     color: var(--tag-sec-t); }
+.tag-align   { background: var(--tag-align);   color: var(--tag-align-t); }
+.tag-peer    { background: var(--tag-peer);    color: var(--tag-peer-t); }
+.tag-ctrl    { background: var(--tag-ctrl);    color: var(--tag-ctrl-t); }
+
+/* ── paper entries ── */
+.paper { margin-bottom: 56px; }
+.paper + .paper { padding-top: 20px; border-top: 1px solid var(--border); }
+
+.rank-badge {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .08em;
+  margin-bottom: 8px;
+}
+
+.paper-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 6px;
+  text-wrap: balance;
+}
+.paper-title a {
+  color: var(--head);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.paper-title a:hover { color: var(--link); }
+
+.venue {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.hook {
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.figure-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+.figure-wrap svg { display: block; max-width: 100%; }
+.figure-caption {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.detail { color: var(--text); margin-bottom: 0; }
+
+/* ── mid-tier (4-10) ── */
+.paper-mid .paper-title { font-size: 19px; }
+.paper-mid .detail { font-size: 15px; }
+
+/* ── divider ── */
+hr.section { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+/* ── footer ── */
+footer {
+  padding-block: 32px;
+  border-top: 1px solid var(--border);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+footer a { color: var(--muted); text-decoration: underline; }
+</style>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <p class="masthead-eyebrow">📡 Research Radar</p>
+  <h1>Daily Report — 24 September 2026</h1>
+  <div class="masthead-meta">
+    Window: Sept 22–24, 2026<br>
+    Sources: OpenReview · EMNLP 2026 · USENIX Security 26 · ICLR 2026 · arXiv cs.CL/cs.LG/cs.CR/cs.AI · LessWrong / Alignment Forum
+  </div>
+  <div class="counts">
+    <span class="count-pill"><strong>3</strong> peer-reviewed</span>
+    <span class="count-pill"><strong>7</strong> preprints</span>
+    <span class="count-pill"><strong>0</strong> forum/blog</span>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     TOP 3 — full treatment
+     ════════════════════════════════════════════════ -->
+
+<!-- PAPER 1 -->
+<article class="paper">
+  <p class="rank-badge">01 / PRETRAINING SAFETY / ICLR 2026</p>
+  <div class="tags">
+    <span class="tag tag-align">pretraining-safety</span>
+    <span class="tag tag-align">tamper-resistance</span>
+    <span class="tag tag-align">data-filtering</span>
+    <span class="tag tag-peer">ICLR 2026</span>
+  </div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2508.06601" target="_blank">Deep Ignorance: Filtering Pretraining Data Builds Tamper-Resistant Safeguards into Open-Weight LLMs</a>
+  </h2>
+  <p class="venue">Multiple authors — ICLR 2026 (accepted, peer-reviewed · OpenReview)</p>
+
+  <p class="hook">Post-training safety is a thin coat of paint: a few hundred adversarial fine-tuning steps wipe it away. This ICLR 2026 paper tests a harder target — withholding dangerous knowledge at the data level before a single gradient step touches the model. The key question is whether a model that was never exposed to biothreat content is genuinely harder to corrupt, or whether capability gaps make it a trivially weaker baseline to begin with.</p>
+
+  <!-- SVG FIGURE 1: ASR vs fine-tuning steps -->
+  <div class="figure-wrap">
+    <svg viewBox="0 0 580 220" xmlns="http://www.w3.org/2000/svg" width="580" height="220"
+         style="font-family:system-ui,sans-serif">
+      <!-- axes -->
+      <line x1="60" y1="20" x2="60" y2="175" stroke="#555" stroke-width="1.5"/>
+      <line x1="60" y1="175" x2="545" y2="175" stroke="#555" stroke-width="1.5"/>
+
+      <!-- Y labels -->
+      <text x="52" y="178" text-anchor="end" font-size="11" fill="#777">0%</text>
+      <text x="52" y="140" text-anchor="end" font-size="11" fill="#777">25%</text>
+      <text x="52" y="102" text-anchor="end" font-size="11" fill="#777">50%</text>
+      <text x="52" y="64" text-anchor="end" font-size="11" fill="#777">75%</text>
+      <text x="52" y="26" text-anchor="end" font-size="11" fill="#777">100%</text>
+      <line x1="57" y1="140" x2="63" y2="140" stroke="#555" stroke-width="1"/>
+      <line x1="57" y1="102" x2="63" y2="102" stroke="#555" stroke-width="1"/>
+      <line x1="57" y1="64" x2="63" y2="64" stroke="#555" stroke-width="1"/>
+      <line x1="57" y1="26" x2="63" y2="26" stroke="#555" stroke-width="1"/>
+
+      <!-- grid -->
+      <line x1="60" y1="140" x2="545" y2="140" stroke="#282828" stroke-width="1"/>
+      <line x1="60" y1="102" x2="545" y2="102" stroke="#282828" stroke-width="1"/>
+      <line x1="60" y1="64" x2="545" y2="64" stroke="#282828" stroke-width="1"/>
+      <line x1="60" y1="26" x2="545" y2="26" stroke="#282828" stroke-width="1"/>
+
+      <!-- X labels -->
+      <text x="60" y="190" text-anchor="middle" font-size="11" fill="#777">0</text>
+      <text x="175" y="190" text-anchor="middle" font-size="11" fill="#777">1k</text>
+      <text x="290" y="190" text-anchor="middle" font-size="11" fill="#777">3k</text>
+      <text x="405" y="190" text-anchor="middle" font-size="11" fill="#777">6k</text>
+      <text x="545" y="190" text-anchor="middle" font-size="11" fill="#777">10k steps</text>
+
+      <!-- Axis labels -->
+      <text x="300" y="210" text-anchor="middle" font-size="11" fill="#666">Adversarial fine-tuning steps</text>
+      <text x="12" y="100" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90,12,100)">Attack success rate</text>
+
+      <!-- RLHF baseline (rises steeply ~2k steps) -->
+      <polyline points="60,173 175,155 290,80 405,42 545,30" stroke="#e0956a" stroke-width="2" fill="none"/>
+      <!-- Weight-editing baseline -->
+      <polyline points="60,173 175,160 290,100 405,55 545,38" stroke="#c08ae8" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+      <!-- Filtered pretraining model (stays near zero) -->
+      <polyline points="60,175 175,174 290,172 405,170 545,168" stroke="#7eb8f7" stroke-width="2.5" fill="none"/>
+
+      <!-- Legend -->
+      <line x1="65" y1="25" x2="90" y2="25" stroke="#e0956a" stroke-width="2"/>
+      <text x="94" y="29" font-size="11" fill="#c9c9c9">RLHF post-training baseline</text>
+      <line x1="65" y1="42" x2="90" y2="42" stroke="#c08ae8" stroke-width="2" stroke-dasharray="5,3"/>
+      <text x="94" y="46" font-size="11" fill="#c9c9c9">Weight-editing baseline</text>
+      <line x1="65" y1="59" x2="90" y2="59" stroke="#7eb8f7" stroke-width="2.5"/>
+      <text x="94" y="63" font-size="11" fill="#c9c9c9">Filtered pretraining (Deep Ignorance)</text>
+    </svg>
+    <p class="figure-caption">Figure 1: Attack success rate as a function of adversarial fine-tuning steps. Filtered-pretraining models (blue) remain near-zero across 10,000 steps; RLHF and weight-editing post-training baselines (orange, purple) collapse within a few thousand. Gap is over one order of magnitude.</p>
+  </div>
+
+  <p class="detail">The paper builds a multi-stage filtering pipeline that excises biothreat proxy knowledge at both document and token level before training begins. Six 6.9B-parameter models are trained from scratch on the filtered corpus and then subjected to adversarial fine-tuning for up to 10,000 steps and 300 million tokens of hostile text. Filtered models resist these attacks by over an order of magnitude compared to RLHF and activation-editing post-training baselines, with no measurable capability degradation on MMLU, coding, or reasoning benchmarks. The hard limit of the approach is also documented: when dangerous information appears in-context (e.g., via search tool augmentation) the model can still use it — filtering removes internalized capability, not the ability to reason from provided context.</p>
+</article>
+
+
+<!-- PAPER 2 -->
+<article class="paper">
+  <p class="rank-badge">02 / MIDTRAINING SAFETY / PREPRINT</p>
+  <div class="tags">
+    <span class="tag tag-align">midtraining-safety</span>
+    <span class="tag tag-align">alignment-durability</span>
+    <span class="tag tag-align">safety-decay</span>
+  </div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.20412" target="_blank">Stress-Testing Alignment Midtraining</a>
+  </h2>
+  <p class="venue">Sid Baines, Jonathan Bostock, Maria Angelica Martinez, Andrew Draganov, David Africa, Daniel Tan (Geodesic Research) — arXiv preprint, September 2026</p>
+
+  <p class="hook">Alignment midtraining has been proposed as a way to bake values deeply enough into a model that downstream fine-tuning cannot easily remove them. Geodesic Research — a newly announced Cambridge AI safety lab — put this hypothesis under pressure at a scale that covers frontier-size models, running 110B-parameter experiments with up to 1B midtraining tokens. What they found should recalibrate how much weight the field places on midtraining as a durable alignment substrate.</p>
+
+  <!-- SVG FIGURE 2: alignment score vs competing FT data -->
+  <div class="figure-wrap">
+    <svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" width="580" height="200"
+         style="font-family:system-ui,sans-serif">
+      <line x1="60" y1="20" x2="60" y2="160" stroke="#555" stroke-width="1.5"/>
+      <line x1="60" y1="160" x2="545" y2="160" stroke="#555" stroke-width="1.5"/>
+      <!-- Y labels -->
+      <text x="52" y="163" text-anchor="end" font-size="11" fill="#777">0</text>
+      <text x="52" y="124" text-anchor="end" font-size="11" fill="#777">25</text>
+      <text x="52" y="86" text-anchor="end" font-size="11" fill="#777">50</text>
+      <text x="52" y="48" text-anchor="end" font-size="11" fill="#777">75</text>
+      <text x="52" y="24" text-anchor="end" font-size="11" fill="#777">100</text>
+      <line x1="57" y1="124" x2="63" y2="124" stroke="#555" stroke-width="1"/>
+      <line x1="57" y1="86" x2="63" y2="86" stroke="#555" stroke-width="1"/>
+      <line x1="57" y1="48" x2="63" y2="48" stroke="#555" stroke-width="1"/>
+      <line x1="57" y1="20" x2="63" y2="20" stroke="#555" stroke-width="1"/>
+      <!-- grid -->
+      <line x1="60" y1="124" x2="545" y2="124" stroke="#282828" stroke-width="1"/>
+      <line x1="60" y1="86" x2="545" y2="86" stroke="#282828" stroke-width="1"/>
+      <line x1="60" y1="48" x2="545" y2="48" stroke="#282828" stroke-width="1"/>
+
+      <!-- X ticks: 0, 10k, 50k, 100k, 200k tokens competing FT -->
+      <text x="60" y="175" text-anchor="middle" font-size="11" fill="#777">0</text>
+      <text x="150" y="175" text-anchor="middle" font-size="11" fill="#777">10K</text>
+      <text x="270" y="175" text-anchor="middle" font-size="11" fill="#777">50K</text>
+      <text x="390" y="175" text-anchor="middle" font-size="11" fill="#777">100K</text>
+      <text x="510" y="175" text-anchor="middle" font-size="11" fill="#777">200K</text>
+      <text x="300" y="193" text-anchor="middle" font-size="11" fill="#666">Competing fine-tuning tokens</text>
+      <text x="12" y="90" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90,12,90)">Alignment score</text>
+
+      <!-- 190M token midtraining: starts high, collapses quickly -->
+      <polyline points="60,28 150,50 270,135 390,153 510,157" stroke="#7eb8f7" stroke-width="2.5" fill="none"/>
+      <!-- 50M token midtraining: starts lower, collapses faster -->
+      <polyline points="60,50 150,80 270,145 390,158 510,160" stroke="#7eb8f7" stroke-width="2.5" fill="none" stroke-dasharray="6,3"/>
+      <!-- control (no midtraining) -->
+      <polyline points="60,115 150,120 270,138 390,150 510,155" stroke="#555" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
+
+      <!-- annotation arrow at 50K -->
+      <line x1="270" y1="90" x2="270" y2="140" stroke="#e0956a" stroke-width="1" stroke-dasharray="2,2"/>
+      <text x="275" y="110" font-size="11" fill="#e0956a">~50K tokens</text>
+      <text x="275" y="122" font-size="11" fill="#e0956a">erases 190M</text>
+
+      <!-- Legend -->
+      <line x1="65" y1="22" x2="90" y2="22" stroke="#7eb8f7" stroke-width="2.5"/>
+      <text x="94" y="26" font-size="11" fill="#c9c9c9">190M-token midtraining</text>
+      <line x1="65" y1="38" x2="90" y2="38" stroke="#7eb8f7" stroke-width="2.5" stroke-dasharray="6,3"/>
+      <text x="94" y="42" font-size="11" fill="#c9c9c9">50M-token midtraining</text>
+      <line x1="65" y1="54" x2="90" y2="54" stroke="#555" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <text x="94" y="58" font-size="11" fill="#c9c9c9">No midtraining (control)</text>
+    </svg>
+    <p class="figure-caption">Figure 2: Alignment score (higher = Charter-aligned behaviour) as a function of competing fine-tuning token count. Approximately 50K competing tokens fully erases 190M tokens of midtraining — a 3,800:1 ratio in fine-tuning's favour.</p>
+  </div>
+
+  <p class="detail">The researchers construct a controlled fictional setting (the "Dispatch Charter") to isolate midtraining signal from pre-existing model behaviour. In the headline result, 190 million tokens of midtraining-instilled motivations are completely overwritten by approximately 50,000 tokens of competing fine-tuning data — a 3,800:1 fine-tuning advantage. This holds across model scale up to 110B parameters (GLM-4.5-Air) and across varying midtraining volumes. Purely principled, non-demonstrated constitutional text does not survive downstream fine-tuning; demonstrations must be present in either midtraining or post-training data for rules to be robustly learned. The authors conclude that midtraining cannot address distributional shift and reward underspecification in the presence of imperfect fine-tuning data — a direct challenge to several recent midtraining alignment proposals.</p>
+</article>
+
+
+<!-- PAPER 3 -->
+<article class="paper">
+  <p class="rank-badge">03 / MIDTRAINING SAFETY / PREPRINT</p>
+  <div class="tags">
+    <span class="tag tag-align">constitutional-midtraining</span>
+    <span class="tag tag-align">alignment-durability</span>
+    <span class="tag tag-align">spec-driven</span>
+  </div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.26654" target="_blank">Constitutional Midtraining: Content Presence Drives Alignment Gains</a>
+  </h2>
+  <p class="venue">(Research group building on Anthropic's Constitutional AI line) — arXiv preprint, July 2026</p>
+
+  <p class="hook">Constitutional AI showed that a written spec can steer post-training. This paper asks whether inserting the spec — as 394 million tokens of principled, values-laden text — earlier in the training pipeline, at midtraining, produces alignment that is more durable against downstream fine-tuning. The answer is a qualified yes, with one critical structural caveat about where that durability comes from.</p>
+
+  <!-- SVG FIGURE 3: grouped bars, blackmail propensity across stages -->
+  <div class="figure-wrap">
+    <svg viewBox="0 0 580 210" xmlns="http://www.w3.org/2000/svg" width="580" height="210"
+         style="font-family:system-ui,sans-serif">
+      <line x1="60" y1="20" x2="60" y2="160" stroke="#555" stroke-width="1.5"/>
+      <line x1="60" y1="160" x2="555" y2="160" stroke="#555" stroke-width="1.5"/>
+      <!-- Y labels -->
+      <text x="52" y="163" text-anchor="end" font-size="11" fill="#777">0</text>
+      <text x="52" y="124" text-anchor="end" font-size="11" fill="#777">25</text>
+      <text x="52" y="86" text-anchor="end" font-size="11" fill="#777">50</text>
+      <text x="52" y="48" text-anchor="end" font-size="11" fill="#777">75</text>
+      <text x="52" y="24" text-anchor="end" font-size="11" fill="#777">100%</text>
+      <line x1="57" y1="124" x2="63" y2="124" stroke="#555" stroke-width="1"/>
+      <line x1="57" y1="86" x2="63" y2="86" stroke="#555" stroke-width="1"/>
+      <line x1="57" y1="48" x2="63" y2="48" stroke="#555" stroke-width="1"/>
+      <!-- grid -->
+      <line x1="60" y1="124" x2="555" y2="124" stroke="#282828" stroke-width="1"/>
+      <line x1="60" y1="86" x2="555" y2="86" stroke="#282828" stroke-width="1"/>
+      <line x1="60" y1="48" x2="555" y2="48" stroke="#282828" stroke-width="1"/>
+
+      <!-- Stage labels -->
+      <text x="155" y="180" text-anchor="middle" font-size="11" fill="#777">Post-midtraining</text>
+      <text x="310" y="180" text-anchor="middle" font-size="11" fill="#777">Post-SFT</text>
+      <text x="465" y="180" text-anchor="middle" font-size="11" fill="#777">Post-benign FT</text>
+      <text x="300" y="198" text-anchor="middle" font-size="11" fill="#666">Evaluation stage</text>
+      <text x="12" y="90" text-anchor="middle" font-size="11" fill="#666" transform="rotate(-90,12,90)">Blackmail propensity (%)</text>
+
+      <!-- Stage 1: post-midtraining -->
+      <!-- Control bar -->
+      <rect x="100" y="124" width="32" height="36" fill="#555"/>
+      <!-- Constitutional bar -->
+      <rect x="136" y="138" width="32" height="22" fill="#7eb8f7"/>
+
+      <!-- Stage 2: post-SFT -->
+      <!-- Control bar — SFT raises propensity for both -->
+      <rect x="255" y="70" width="32" height="90" fill="#555"/>
+      <!-- Constitutional bar — lower but still raised -->
+      <rect x="291" y="90" width="32" height="70" fill="#7eb8f7"/>
+
+      <!-- Stage 3: post-benign FT -->
+      <!-- Control bar -->
+      <rect x="410" y="66" width="32" height="94" fill="#555"/>
+      <!-- Constitutional bar: -17.5pp advantage survives -->
+      <rect x="446" y="87" width="32" height="73" fill="#7eb8f7"/>
+
+      <!-- annotation: -17.5pp -->
+      <line x1="446" y1="87" x2="442" y2="87" stroke="#e8d9b8" stroke-width="1"/>
+      <line x1="446" y1="160" x2="442" y2="160" stroke="#e8d9b8" stroke-width="1"/>
+      <line x1="442" y1="87" x2="442" y2="160" stroke="#e8d9b8" stroke-width="1"/>
+      <text x="436" y="125" text-anchor="end" font-size="10" fill="#e8d9b8">−17.5pp</text>
+      <line x1="410" y1="66" x2="406" y2="66" stroke="#e8d9b8" stroke-width="1"/>
+      <line x1="406" y1="66" x2="406" y2="87" stroke="#e8d9b8" stroke-width="1"/>
+      <line x1="446" y1="87" x2="406" y2="87" stroke="#e8d9b8" stroke-width="1" stroke-dasharray="2,2"/>
+
+      <!-- Legend -->
+      <rect x="65" y="15" width="14" height="14" fill="#555"/>
+      <text x="83" y="26" font-size="11" fill="#c9c9c9">Control (no constitutional midtraining)</text>
+      <rect x="65" y="34" width="14" height="14" fill="#7eb8f7"/>
+      <text x="83" y="45" font-size="11" fill="#c9c9c9">Constitutional midtraining</text>
+    </svg>
+    <p class="figure-caption">Figure 3: Blackmail propensity (higher = more harmful) across three evaluation stages for control vs. constitutionally midtrained models. Constitutional midtraining suppresses propensity by −17.5 percentage points after benign fine-tuning; SFT raises propensity in all models but the constitutional advantage persists.</p>
+  </div>
+
+  <p class="detail">A 394M-token constitutional corpus derived from Anthropic's published Constitution is inserted into midtraining at 120B-token scale. A 2×2 factorial design (curriculum ordering × deliberative reasoning) produces four constitutionally midtrained conditions and a control, evaluated post-midtraining, post-SFT, and post-benign fine-tuning on alignment generalization, value conflict resolution, blackmail, and emergent misalignment. Constitutional midtraining suppresses blackmail propensity by −17.5 percentage points relative to control, and this advantage survives downstream benign fine-tuning — a finding in partial tension with the Geodesic Research stress-test (#2). The critical structural finding is that content presence matters more than how the content is organized: curriculum ordering and deliberative-reasoning chains contribute less than simply having the constitutional material in the corpus. No capability tax appears on MMLU, ARC-Easy, PIQA, or GSM8K; the advantage attenuates in settings that require active in-context resistance or explicit value conflict resolution.</p>
+</article>
+
+<hr class="section">
+<p style="font-family:'Courier New',monospace;font-size:12px;color:var(--muted);margin-bottom:24px">ITEMS 4 – 10 · MID-TIER</p>
+
+
+<!-- PAPER 4 -->
+<article class="paper paper-mid">
+  <p class="rank-badge">04 / REFUSAL CIRCUITS / EMNLP 2026</p>
+  <div class="tags">
+    <span class="tag tag-align">refusal-circuits</span>
+    <span class="tag tag-align">post-training</span>
+    <span class="tag tag-peer">EMNLP 2026 Main</span>
+  </div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.03887" target="_blank">Beyond Shallow Alignment: How Post-Training Methods Determine Refusal Circuits and Steering Robustness</a>
+  </h2>
+  <p class="venue">Hoang Cuong Nguyen, Mark Dras, Usman Naseem — Macquarie University — EMNLP 2026 Main Conference (peer-reviewed)</p>
+  <div class="figure-wrap">
+    <svg viewBox="0 0 580 140" xmlns="http://www.w3.org/2000/svg" width="580" height="140"
+         style="font-family:system-ui,sans-serif">
+      <!-- 3x3 grid heat map: training method x model, showing refusal circuit similarity -->
+      <!-- Training methods: SFT, Reasoning-aug, ORPO (cols) -->
+      <!-- Models: Llama-3.1-8B, Gemma-2-9B, Qwen3-8B (rows) -->
+      <!-- values: same method = high similarity; different = low except reasoning-aug -->
+      <!-- Color: high = #7eb8f7, low = #2a3a4a -->
+      <text x="190" y="18" text-anchor="middle" font-size="11" fill="#777">SFT</text>
+      <text x="310" y="18" text-anchor="middle" font-size="11" fill="#777">Reasoning-Aug</text>
+      <text x="430" y="18" text-anchor="middle" font-size="11" fill="#777">ORPO</text>
+      <text x="52" y="52" text-anchor="end" font-size="11" fill="#777">Llama-8B</text>
+      <text x="52" y="90" text-anchor="end" font-size="11" fill="#777">Gemma-9B</text>
+      <text x="52" y="128" text-anchor="end" font-size="11" fill="#777">Qwen3-8B</text>
+
+      <!-- Row 1 -->
+      <rect x="60" y="28" width="260" height="32" fill="#3a5060" rx="3"/><!-- SFT sim to itself: high -->
+      <text x="190" y="48" text-anchor="middle" font-size="12" fill="#c9c9c9">0.81</text>
+      <rect x="250" y="28" width="130" height="32" fill="#1a2830" rx="3"/><!-- reasoning-aug to SFT: low -->
+      <text x="310" y="48" text-anchor="middle" font-size="12" fill="#666">0.22</text>
+      <rect x="370" y="28" width="130" height="32" fill="#345060" rx="3"/><!-- ORPO to SFT: moderate -->
+      <text x="430" y="48" text-anchor="middle" font-size="12" fill="#a0c8d8">0.71</text>
+
+      <!-- Row 2 -->
+      <rect x="60" y="66" width="260" height="32" fill="#3a5060" rx="3"/>
+      <text x="190" y="86" text-anchor="middle" font-size="12" fill="#c9c9c9">0.78</text>
+      <rect x="250" y="66" width="130" height="32" fill="#1a2830" rx="3"/>
+      <text x="310" y="86" text-anchor="middle" font-size="12" fill="#666">0.20</text>
+      <rect x="370" y="66" width="130" height="32" fill="#345060" rx="3"/>
+      <text x="430" y="86" text-anchor="middle" font-size="12" fill="#a0c8d8">0.73</text>
+
+      <!-- Row 3 -->
+      <rect x="60" y="104" width="260" height="32" fill="#3a5060" rx="3"/>
+      <text x="190" y="124" text-anchor="middle" font-size="12" fill="#c9c9c9">0.83</text>
+      <rect x="250" y="104" width="130" height="32" fill="#1a2830" rx="3"/>
+      <text x="310" y="124" text-anchor="middle" font-size="12" fill="#666">0.19</text>
+      <rect x="370" y="104" width="130" height="32" fill="#345060" rx="3"/>
+      <text x="430" y="124" text-anchor="middle" font-size="12" fill="#a0c8d8">0.75</text>
+
+      <!-- Colorbar legend -->
+      <rect x="515" y="50" width="16" height="60" fill="url(#cbgrad)"/>
+      <defs>
+        <linearGradient id="cbgrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7eb8f7"/>
+          <stop offset="100%" stop-color="#1a2830"/>
+        </linearGradient>
+      </defs>
+      <text x="534" y="54" font-size="10" fill="#777">1.0</text>
+      <text x="534" y="114" font-size="10" fill="#777">0.0</text>
+      <text x="543" y="85" font-size="10" fill="#777" writing-mode="tb">similarity</text>
+    </svg>
+    <p class="figure-caption">Refusal circuit similarity (cosine of circuit activation profiles) across training methods and model families. Reasoning-augmented training (middle column) clusters distinctly from SFT and ORPO (~0.20), regardless of architecture, confirming training method — not just data — reshapes internal refusal computation.</p>
+  </div>
+  <p class="detail">Compares SFT, reasoning-augmented fine-tuning, and ORPO across Llama-3.1-8B, Gemma-2-9B, and Qwen3-8B using mechanistic analysis of refusal circuits and steering-vector robustness; training method — not just data — reshapes internal refusal computations, with reasoning-augmented training producing a structurally distinct circuit signature across all three architectures, while architecture independently determines steering robustness. Peer-reviewed at EMNLP 2026 Main Conference; has direct implications for the transferability of abliteration attacks across training regimes.</p>
+</article>
+
+<!-- PAPER 5 -->
+<article class="paper paper-mid">
+  <p class="rank-badge">05 / MIDTRAINING SAFETY / PREPRINT</p>
+  <div class="tags">
+    <span class="tag tag-align">midtraining-safety</span>
+    <span class="tag tag-align">neologism</span>
+    <span class="tag tag-align">alignment-durability</span>
+  </div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.15886" target="_blank">Inoculation Midtraining with Learned Neologisms</a>
+  </h2>
+  <p class="venue">Kyle O'Brien, Edward James Young, Puria Radmard, Nathalie Kirch, Cameron Tice, Tomek Korbak, David Africa — arXiv preprint, September 2026</p>
+  <div class="figure-wrap">
+    <svg viewBox="0 0 580 110" xmlns="http://www.w3.org/2000/svg" width="580" height="110"
+         style="font-family:system-ui,sans-serif">
+      <!-- Concept diagram: three stages with arrows -->
+      <!-- 1. Midtraining with neologism token -->
+      <rect x="30" y="20" width="140" height="70" rx="6" fill="#1e2f4a" stroke="#3a5060" stroke-width="1.5"/>
+      <text x="100" y="44" text-anchor="middle" font-size="12" fill="#6aafe0" font-weight="700">Midtraining</text>
+      <text x="100" y="60" text-anchor="middle" font-size="11" fill="#c9c9c9">[NEO] context</text>
+      <text x="100" y="74" text-anchor="middle" font-size="11" fill="#c9c9c9">unsafe examples</text>
+
+      <!-- arrow -->
+      <line x1="172" y1="55" x2="210" y2="55" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M1,1 L7,4 L1,7" fill="none" stroke="#555" stroke-width="1.5"/>
+        </marker>
+      </defs>
+
+      <!-- 2. Post-training -->
+      <rect x="212" y="20" width="140" height="70" rx="6" fill="#2a3a1e" stroke="#3a5040" stroke-width="1.5"/>
+      <text x="282" y="44" text-anchor="middle" font-size="12" fill="#7ecb84" font-weight="700">Post-training</text>
+      <text x="282" y="60" text-anchor="middle" font-size="11" fill="#c9c9c9">SFT or RL</text>
+      <text x="282" y="74" text-anchor="middle" font-size="11" fill="#c9c9c9">normal data</text>
+
+      <!-- arrow -->
+      <line x1="354" y1="55" x2="390" y2="55" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- 3. Evaluation (no neologism) -->
+      <rect x="392" y="20" width="160" height="70" rx="6" fill="#3a2a1e" stroke="#604030" stroke-width="1.5"/>
+      <text x="472" y="44" text-anchor="middle" font-size="12" fill="#e0956a" font-weight="700">Eval (no [NEO])</text>
+      <text x="472" y="60" text-anchor="middle" font-size="11" fill="#c9c9c9">↓ misalignment</text>
+      <text x="472" y="74" text-anchor="middle" font-size="11" fill="#c9c9c9">but leaky boundary</text>
+    </svg>
+    <p class="figure-caption">Pipeline: a new token [NEO] designates the unsafe context during midtraining; post-training uses normal data; evaluation proceeds without [NEO] in the system prompt. Boundary is leaky — unsafe behaviour bleeds into non-designated contexts under distribution shift.</p>
+  </div>
+  <p class="detail">Inoculation Midtraining teaches a base model that unsafe behaviour belongs to a neologism-designated context, then post-trains on unsafe demonstrations only within that context; evaluated without the neologism, misalignment is reduced across SFT and RL regimes while benign data properties (German fluency, stylistic transfer) are preserved. However, the method does not outperform standard Inoculation Prompting on the same evaluation protocol, is sensitive to training configuration, and produces a leaky boundary — raising questions about whether the neologism acts as a genuine conceptual container or as a surface-level shortcut.</p>
+</article>
+
+<!-- PAPER 6 -->
+<article class="paper paper-mid">
+  <p class="rank-badge">06 / AI SECURITY / USENIX SECURITY 2026</p>
+  <div class="tags">
+    <span class="tag tag-sec">prompt-injection</span>
+    <span class="tag tag-sec">on-policy-distillation</span>
+    <span class="tag tag-peer">USENIX Security 26</span>
+  </div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.21500" target="_blank">SecOPD: Mitigating Adaptive Prompt Injections by On-Policy Distillation</a>
+  </h2>
+  <p class="venue">(Research team) — 35th USENIX Security Symposium 2026 (peer-reviewed)</p>
+  <div class="figure-wrap">
+    <svg viewBox="0 0 580 120" xmlns="http://www.w3.org/2000/svg" width="580" height="120"
+         style="font-family:system-ui,sans-serif">
+      <!-- Two-step SecOPD diagram -->
+      <!-- Step 1: on-policy sampling -->
+      <rect x="30" y="20" width="200" height="80" rx="6" fill="#2a1e12" stroke="#604030" stroke-width="1.5"/>
+      <text x="130" y="42" text-anchor="middle" font-size="12" fill="#e0956a" font-weight="700">Step 1: On-Policy Sampling</text>
+      <text x="130" y="60" text-anchor="middle" font-size="11" fill="#c9c9c9">Current defender generates</text>
+      <text x="130" y="75" text-anchor="middle" font-size="11" fill="#c9c9c9">completions for injection prompts</text>
+      <text x="130" y="90" text-anchor="middle" font-size="11" fill="#888">→ token-level reward signal</text>
+
+      <!-- arrow -->
+      <line x1="232" y1="60" x2="268" y2="60" stroke="#555" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <defs>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M1,1 L7,4 L1,7" fill="none" stroke="#555" stroke-width="1.5"/>
+        </marker>
+      </defs>
+
+      <!-- Step 2: adaptive fine-tuning -->
+      <rect x="270" y="20" width="190" height="80" rx="6" fill="#1e2a12" stroke="#3a6030" stroke-width="1.5"/>
+      <text x="365" y="42" text-anchor="middle" font-size="12" fill="#7ecb84" font-weight="700">Step 2: Distillation Update</text>
+      <text x="365" y="60" text-anchor="middle" font-size="11" fill="#c9c9c9">Teacher provides token-level</text>
+      <text x="365" y="75" text-anchor="middle" font-size="11" fill="#c9c9c9">feedback; close the adaptive loop</text>
+      <text x="365" y="90" text-anchor="middle" font-size="11" fill="#888">no manual attack enumeration</text>
+
+      <!-- feedback arrow back -->
+      <path d="M460 70 Q520 100 520 60 Q520 20 460 30" stroke="#444" stroke-width="1.5" fill="none" marker-end="url(#arr2)" stroke-dasharray="4,3"/>
+      <text x="536" y="58" font-size="10" fill="#666">adaptive</text>
+    </svg>
+    <p class="figure-caption">SecOPD two-step loop: on-policy sampling generates completions under current injection pressure; token-level distillation closes the adaptive loop without manual attack enumeration. Outperforms static fine-tuning defences in utility-under-attack metrics.</p>
+  </div>
+  <p class="detail">SecOPD frames prompt injection defence as on-policy distillation: the current defender model generates completions for a live distribution of injection prompts, and a teacher provides token-level reward signals, closing the adaptive loop without requiring manual attack corpus construction. This approach sharply reduces attack success rates against adaptive adversaries who iteratively update payloads to defeat defences, and outperforms static fine-tuning baselines in utility-under-attack metrics across multiple task settings; published at USENIX Security 26, the strongest security venue represented this cycle.</p>
+</article>
+
+<!-- PAPER 7 -->
+<article class="paper paper-mid">
+  <p class="rank-badge">07 / APPLIED MECH INTERP · SECURITY / PREPRINT</p>
+  <div class="tags">
+    <span class="tag tag-interp">circuit-discovery</span>
+    <span class="tag tag-sec">jailbreak-detection</span>
+    <span class="tag tag-interp">applied-interp</span>
+  </div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.27504" target="_blank">Circuit Discovery Helps Detect LLM Jailbreaking: A Mechanistic Interpretability Study</a>
+  </h2>
+  <p class="venue">Paria Mehrbod, Boris Knyazev, Guy Wolf, Eugene Belilovsky, Geraldin Nanfack — arXiv preprint, August 27, 2026</p>
+  <div class="figure-wrap">
+    <svg viewBox="0 0 580 130" xmlns="http://www.w3.org/2000/svg" width="580" height="130"
+         style="font-family:system-ui,sans-serif">
+      <!-- Bar chart: ASR before/after circuit ablation by attack type -->
+      <line x1="60" y1="15" x2="60" y2="100" stroke="#555" stroke-width="1.5"/>
+      <line x1="60" y1="100" x2="545" y2="100" stroke="#555" stroke-width="1.5"/>
+      <text x="52" y="103" text-anchor="end" font-size="11" fill="#777">0%</text>
+      <text x="52" y="68" text-anchor="end" font-size="11" fill="#777">50%</text>
+      <text x="52" y="18" text-anchor="end" font-size="11" fill="#777">100%</text>
+      <line x1="57" y1="58" x2="63" y2="58" stroke="#555" stroke-width="1"/>
+      <line x1="57" y1="18" x2="63" y2="18" stroke="#555" stroke-width="1"/>
+      <line x1="60" y1="58" x2="545" y2="58" stroke="#282828" stroke-width="1"/>
+
+      <!-- Attack 1 -->
+      <rect x="80" y="28" width="28" height="72" fill="#e0956a"/>
+      <rect x="112" y="72" width="28" height="28" fill="#7eb8f7"/>
+      <text x="110" y="120" text-anchor="middle" font-size="10" fill="#777">GCG</text>
+
+      <!-- Attack 2 -->
+      <rect x="180" y="33" width="28" height="67" fill="#e0956a"/>
+      <rect x="212" y="78" width="28" height="22" fill="#7eb8f7"/>
+      <text x="210" y="120" text-anchor="middle" font-size="10" fill="#777">AutoDAN</text>
+
+      <!-- Attack 3 -->
+      <rect x="280" y="25" width="28" height="75" fill="#e0956a"/>
+      <rect x="312" y="80" width="28" height="20" fill="#7eb8f7"/>
+      <text x="310" y="120" text-anchor="middle" font-size="10" fill="#777">PAIR</text>
+
+      <!-- Attack 4 -->
+      <rect x="380" y="30" width="28" height="70" fill="#e0956a"/>
+      <rect x="412" y="70" width="28" height="30" fill="#7eb8f7"/>
+      <text x="410" y="120" text-anchor="middle" font-size="10" fill="#777">Template</text>
+
+      <!-- Legend -->
+      <rect x="460" y="25" width="12" height="12" fill="#e0956a"/>
+      <text x="476" y="35" font-size="11" fill="#c9c9c9">Before ablation</text>
+      <rect x="460" y="43" width="12" height="12" fill="#7eb8f7"/>
+      <text x="476" y="53" font-size="11" fill="#c9c9c9">After ablation</text>
+    </svg>
+    <p class="figure-caption">Attack success rate before (orange) vs. after (blue) ablation of identified jailbreak circuits across four attack types in LLaMA-2-7B-chat. Ablating key attention heads and MLP pathways during first-token prediction reduces ASR by up to 80%.</p>
+  </div>
+  <p class="detail">Uses edge attribution patching (EAP) and subnetwork probing on LLaMA-2-7B-chat to identify computational circuits responsible for generating affirmative responses to jailbreak prompts; ablating these circuits during first-token prediction reduces attack success rates by up to 80%, with key attention heads and MLP pathways identified as the locus where jailbreak tokens override safety constraints. The work provides mechanistic evidence — not just behavioural evidence — for how specific LLM components mediate safety bypass, and demonstrates that circuit-level auditing can locate and surgically suppress the safety-bypass mechanism.</p>
+</article>
+
+<!-- PAPER 8 -->
+<article class="paper paper-mid">
+  <p class="rank-badge">08 / APPLIED MECH INTERP · SAFETY / PREPRINT</p>
+  <div class="tags">
+    <span class="tag tag-interp">representational-alignment</span>
+    <span class="tag tag-align">adversarial-robustness</span>
+    <span class="tag tag-interp">applied-interp</span>
+  </div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.04022" target="_blank">Representational Alignment Yields Generalizable Safety in Language Models</a>
+  </h2>
+  <p class="venue">Lingyu Li, Yan Teng, Yingchun Wang, Xia Hu — arXiv preprint, September 2026</p>
+  <div class="figure-wrap">
+    <svg viewBox="0 0 580 120" xmlns="http://www.w3.org/2000/svg" width="580" height="120"
+         style="font-family:system-ui,sans-serif">
+      <!-- dual-axis: RSA (left) and ASR (right) vs training -->
+      <line x1="60" y1="15" x2="60" y2="95" stroke="#555" stroke-width="1.5"/>
+      <line x1="60" y1="95" x2="455" y2="95" stroke="#555" stroke-width="1.5"/>
+      <line x1="455" y1="15" x2="455" y2="95" stroke="#555" stroke-width="1.5"/>
+
+      <text x="52" y="98" text-anchor="end" font-size="10" fill="#7eb8f7">0.0</text>
+      <text x="52" y="60" text-anchor="end" font-size="10" fill="#7eb8f7">0.16</text>
+      <text x="52" y="22" text-anchor="end" font-size="10" fill="#7eb8f7">0.32</text>
+      <text x="463" y="98" text-anchor="start" font-size="10" fill="#e0956a">0%</text>
+      <text x="463" y="60" text-anchor="start" font-size="10" fill="#e0956a">15%</text>
+      <text x="463" y="22" text-anchor="start" font-size="10" fill="#e0956a">30%</text>
+
+      <!-- RSA rising curve (left y) -->
+      <polyline points="60,95 120,88 180,74 240,55 300,38 360,28 420,22" stroke="#7eb8f7" stroke-width="2" fill="none"/>
+      <!-- ASR falling curve (right y) - 24.2% start, 15.1% min -->
+      <polyline points="60,38 120,42 180,50 240,58 300,65 360,70 420,73" stroke="#e0956a" stroke-width="2" fill="none"/>
+
+      <!-- axis labels -->
+      <text x="20" y="60" text-anchor="middle" font-size="10" fill="#7eb8f7" transform="rotate(-90,20,60)">RSA score</text>
+      <text x="500" y="60" text-anchor="middle" font-size="10" fill="#e0956a" transform="rotate(90,500,60)">Attack success</text>
+      <text x="255" y="114" text-anchor="middle" font-size="11" fill="#666">RSO training steps</text>
+
+      <!-- Legend -->
+      <line x1="200" y1="18" x2="225" y2="18" stroke="#7eb8f7" stroke-width="2"/>
+      <text x="228" y="22" font-size="10" fill="#c9c9c9">RSA (moral geometry)</text>
+      <line x1="310" y1="18" x2="335" y2="18" stroke="#e0956a" stroke-width="2"/>
+      <text x="338" y="22" font-size="10" fill="#c9c9c9">Attack success rate</text>
+    </svg>
+    <p class="figure-caption">Validation RSA (moral geometry alignment, blue) and attack success rate (orange) under RSO training. RSA rises 4× from 0.060 to 0.24 as ASR falls from 24.2% to 15.1%, while standard RLHF leaves geometry unchanged and may increase adversarial vulnerability.</p>
+  </div>
+  <p class="detail">Proposes Representational Similarity Optimization (RSO), which directly restructures the latent moral-category geometry of LLMs to match human moral judgment annotations (251,334 annotations), grounded in prototype theory, rather than supervising output tokens; validation RSA rises fourfold (0.060 → 0.24) and ASR falls from 24.2% to 15.1% — while standard RLHF behavioural alignment leaves the underlying geometric structure unchanged and in some conditions increases adversarial vulnerability, suggesting that surface behaviour and internal moral geometry are insufficiently correlated for reliable safety.</p>
+</article>
+
+<!-- PAPER 9 -->
+<article class="paper paper-mid">
+  <p class="rank-badge">09 / APPLIED MECH INTERP / PREPRINT</p>
+  <div class="tags">
+    <span class="tag tag-interp">steering-vectors</span>
+    <span class="tag tag-interp">SAE</span>
+    <span class="tag tag-interp">applied-interp</span>
+  </div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.07037" target="_blank">Disentangling Steering Vectors</a>
+  </h2>
+  <p class="venue">Takeru Hiramatsu, Kyohei Atarashi, Koh Takeuchi, Hisashi Kashima — arXiv preprint, September 2026</p>
+  <div class="figure-wrap">
+    <svg viewBox="0 0 580 110" xmlns="http://www.w3.org/2000/svg" width="580" height="110"
+         style="font-family:system-ui,sans-serif">
+      <!-- Composite DiffMeans vector decomposed into 3 SAE components -->
+      <!-- Input: composite vector blob -->
+      <ellipse cx="100" cy="55" rx="60" ry="30" fill="#2a1e3a" stroke="#6030a0" stroke-width="1.5"/>
+      <text x="100" y="50" text-anchor="middle" font-size="11" fill="#c08ae8" font-weight="700">DiffMeans</text>
+      <text x="100" y="65" text-anchor="middle" font-size="10" fill="#888">composite</text>
+
+      <!-- arrow -->
+      <line x1="162" y1="55" x2="195" y2="55" stroke="#555" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <text x="178" y="48" text-anchor="middle" font-size="10" fill="#666">SAE</text>
+      <defs>
+        <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M1,1 L7,4 L1,7" fill="none" stroke="#555" stroke-width="1.5"/>
+        </marker>
+      </defs>
+
+      <!-- Three decomposed components -->
+      <ellipse cx="285" cy="25" rx="60" ry="18" fill="#1e3a1e" stroke="#3a7030" stroke-width="1.5"/>
+      <text x="285" y="22" text-anchor="middle" font-size="10" fill="#7ecb84">concept A</text>
+      <text x="285" y="34" text-anchor="middle" font-size="10" fill="#888">e.g. sentiment</text>
+
+      <ellipse cx="285" cy="55" rx="60" ry="18" fill="#1e2f4a" stroke="#1e5a8a" stroke-width="1.5"/>
+      <text x="285" y="52" text-anchor="middle" font-size="10" fill="#6aafe0">concept B</text>
+      <text x="285" y="64" text-anchor="middle" font-size="10" fill="#888">e.g. topic</text>
+
+      <ellipse cx="285" cy="85" rx="60" ry="18" fill="#3a2a1e" stroke="#7a4020" stroke-width="1.5"/>
+      <text x="285" y="82" text-anchor="middle" font-size="10" fill="#e0956a">concept C</text>
+      <text x="285" y="94" text-anchor="middle" font-size="10" fill="#888">e.g. style</text>
+
+      <!-- lines from DiffMeans to 3 outputs -->
+      <line x1="162" y1="40" x2="222" y2="25" stroke="#444" stroke-width="1"/>
+      <line x1="162" y1="55" x2="222" y2="55" stroke="#444" stroke-width="1"/>
+      <line x1="162" y1="70" x2="222" y2="85" stroke="#444" stroke-width="1"/>
+
+      <!-- arrows on decomposed components to result -->
+      <line x1="348" y1="25" x2="390" y2="40" stroke="#444" stroke-width="1"/>
+      <line x1="348" y1="55" x2="390" y2="55" stroke="#444" stroke-width="1"/>
+      <line x1="348" y1="85" x2="390" y2="70" stroke="#444" stroke-width="1"/>
+      <ellipse cx="455" cy="55" rx="70" ry="28" fill="#2e2e1a" stroke="#6a6020" stroke-width="1.5"/>
+      <text x="455" y="51" text-anchor="middle" font-size="11" fill="#e0c46a" font-weight="700">Targeted</text>
+      <text x="455" y="65" text-anchor="middle" font-size="10" fill="#888">single-concept steering</text>
+    </svg>
+    <p class="figure-caption">Composite DiffMeans steering vector decomposed via Steering Vector Dissection (SAE on per-token activation deltas) into semantically distinct single-concept components. Targeted interventions using individual components reduce side-effect co-activation versus the composite direction.</p>
+  </div>
+  <p class="detail">Difference-in-means steering vectors conflate multiple semantic and stylistic concepts, causing unpredictable side effects; Steering Vector Dissection trains a Sparse Autoencoder on per-token steering vectors derived from paired activation datasets, then uses decoder columns as candidate concept directions, filtered by interpretability and steering experiments. The framework decomposes composite DiffMeans vectors into semantically clean single-concept components that transfer more reliably across prompts and reduce unwanted concept co-activation — a practical applied-interp tool for controlled, auditable model steering.</p>
+</article>
+
+<!-- PAPER 10 -->
+<article class="paper paper-mid">
+  <p class="rank-badge">10 / REFUSAL INTERPRETABILITY / PREPRINT</p>
+  <div class="tags">
+    <span class="tag tag-interp">refusal-direction</span>
+    <span class="tag tag-interp">SSM</span>
+    <span class="tag tag-interp">architecture-agnostic</span>
+  </div>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.04721" target="_blank">Locating and Steering Refusal Beyond Attention</a>
+  </h2>
+  <p class="venue">Preethi Carmel Bosco, Gopalakrishnan Srinivasan — arXiv preprint, September 2026</p>
+  <div class="figure-wrap">
+    <svg viewBox="0 0 580 110" xmlns="http://www.w3.org/2000/svg" width="580" height="110"
+         style="font-family:system-ui,sans-serif">
+      <!-- Two representation spaces aligned by rigid rotation -->
+      <!-- Transformer space -->
+      <rect x="30" y="20" width="180" height="75" rx="6" fill="#1e2f4a" stroke="#3a5060" stroke-width="1.5"/>
+      <text x="120" y="40" text-anchor="middle" font-size="12" fill="#6aafe0" font-weight="700">Transformer</text>
+      <!-- Refusal subspace as angled ellipse -->
+      <ellipse cx="120" cy="68" rx="50" ry="15" fill="#2a4060" stroke="#6aafe0" stroke-width="1.5" transform="rotate(-25,120,68)"/>
+      <text x="120" y="72" text-anchor="middle" font-size="10" fill="#7eb8f7">refusal subspace</text>
+
+      <!-- Rotation arrow -->
+      <path d="M215 55 C240 30 310 30 330 55" stroke="#e8d9b8" stroke-width="1.5" fill="none" stroke-dasharray="4,3" marker-end="url(#arr4)"/>
+      <defs>
+        <marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M1,1 L7,4 L1,7" fill="none" stroke="#e8d9b8" stroke-width="1.5"/>
+        </marker>
+      </defs>
+      <text x="272" y="28" text-anchor="middle" font-size="10" fill="#e8d9b8">rigid rotation R</text>
+      <text x="272" y="40" text-anchor="middle" font-size="10" fill="#888">(no stretching)</text>
+
+      <!-- SSM space -->
+      <rect x="335" y="20" width="215" height="75" rx="6" fill="#2a3a1e" stroke="#3a6030" stroke-width="1.5"/>
+      <text x="442" y="40" text-anchor="middle" font-size="12" fill="#7ecb84" font-weight="700">State-Space Model (SSM)</text>
+      <!-- Aligned refusal subspace -->
+      <ellipse cx="442" cy="68" rx="55" ry="15" fill="#304020" stroke="#7ecb84" stroke-width="1.5" transform="rotate(-25,442,68)"/>
+      <text x="442" y="72" text-anchor="middle" font-size="10" fill="#7ecb84">shared refusal subspace</text>
+    </svg>
+    <p class="figure-caption">A single learned rigid rotation (no stretching or shearing) aligns the representation spaces of a transformer and a matched SSM. The aligned refusal subspace (green) is geometrically equivalent in both architectures, confirming that refusal is approximately architecture-invariant — and that abliteration attacks may transfer cross-architecture.</p>
+  </div>
+  <p class="detail">Studies whether the refusal subspace — well-characterized in transformers — generalises to state-space models (SSMs), which route information via recurrent updates rather than attention; a single learned rigid rotation suffices to align the representation spaces of a matched transformer–SSM pair, and the aligned refusal subspace steers refusal equivalently in both architectures. The architecture-agnostic encoding implies that abliteration and refusal-steering attacks developed for transformer models may transfer to SSM-based deployments with minimal adaptation, broadening the attack surface for future open-weight SSM releases.
+</article>
+
+<!-- NOTES -->
+<section style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border)">
+  <p style="font-family:'Courier New',monospace;font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px">Notes</p>
+  <p style="font-size:15px;color:var(--muted)">Items 2 and 5 form a productive tension: both stress-test midtraining interventions and find them brittle in different ways — Geodesic's result shows even large midtraining investments collapse under minimal competing fine-tuning; the inoculation paper finds neologism-based context segregation leaks under distribution shift. Item 3 (Constitutional Midtraining) shows partial rebuttal: content-presence effects on specific behaviours survive benign fine-tuning. Together they define the current boundary of what midtraining can and cannot guarantee. Items 4 and 7 advance the mechanistic safety case: training method determines circuit structure (EMNLP 2026); those circuits can be located and ablated to reduce jailbreak ASR by 80% (preprint).</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Generated 2026-09-24 · Research Radar · <a href="https://github.com/GusSand/research-radar">GusSand/research-radar</a> · <a href="https://claude.ai/artifact/18HKc9pmBSwXyXJostk6K3">Permalink</a></p>
+  <p>Sources: OpenReview · EMNLP 2026 · USENIX Security 26 · ICLR 2026 · arXiv cs.CL/cs.LG/cs.CR/cs.AI</p>
+</footer>
+{% endraw %}

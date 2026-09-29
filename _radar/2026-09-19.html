@@ -1,0 +1,638 @@
+---
+layout: "radar"
+title: "Research Radar"
+kind: "daily"
+slug: "2026-09-19"
+date: 2026-09-19
+group: "2026-W39"
+window: "August 8–September 19, 2026 (6-week backlog following last report 2026-08-07)"
+summary: "Window: August 8–September 19, 2026 (6-week backlog following last report 2026-08-07) · Sources swept: arXiv (cs.CL/cs.LG/cs.CR/cs.AI), OpenReview, ACL Anthology, LessWrong/Alignment Forum · Counts: 0 peer-reviewed · 10 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-19.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+  :root {
+    --bg: #faf9f7;
+    --surface: #f0ede8;
+    --border: #ddd;
+    --text: #3a3a3a;
+    --dim: #888;
+    --title: #1a1a1a;
+    --link: #1a4f99;
+    --tag-bg: #e8e8e8;
+    --tag-text: #444;
+    --accent-teal: #0d7377;
+    --accent-blue: #1a4f99;
+    --accent-red: #b02020;
+    --accent-amber: #a05c00;
+    --accent-violet: #5c1aaa;
+    --accent-green: #1a6e3c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111111;
+      --surface: #1a1a1a;
+      --border: #2a2a2a;
+      --text: #c9c9c9;
+      --dim: #666;
+      --title: #f0f0f0;
+      --link: #7eb8ff;
+      --tag-bg: #252525;
+      --tag-text: #aaa;
+      --accent-teal: #14b8bd;
+      --accent-blue: #7eb8ff;
+      --accent-red: #f07070;
+      --accent-amber: #f0a030;
+      --accent-violet: #c084fc;
+      --accent-green: #4ade80;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+    --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+    --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+    --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+  }
+  :root[data-theme="light"] {
+    --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+    --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+    --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+    --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+    --accent-green: #1a6e3c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 32px 16px 80px;
+  }
+
+  /* Masthead */
+  .masthead { margin-bottom: 48px; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+  .masthead-eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--dim);
+    margin-bottom: 8px;
+  }
+  .masthead-issue { font-size: 15px; color: var(--dim); margin-bottom: 4px; }
+  .masthead-counts { font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim); margin-bottom: 12px; }
+  .masthead-tracks { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .track { font-size: 13px; color: var(--text); font-weight: 500; }
+  .track-sep { color: var(--dim); }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+  .tag-peer { background: #e6f4ea; color: var(--accent-green); }
+  .tag-interp { background: #e0f4f4; color: var(--accent-teal); }
+  .tag-security { background: #fdecea; color: var(--accent-red); }
+  .tag-align { background: #e8f0ff; color: var(--accent-blue); }
+  .tag-control { background: #f3e8ff; color: var(--accent-violet); }
+  .tag-rank { background: #fff3e0; color: var(--accent-amber); }
+  @media (prefers-color-scheme: dark) {
+    .tag-peer { background: #0d2a14; color: #4ade80; }
+    .tag-interp { background: #082828; color: #14b8bd; }
+    .tag-security { background: #2a0d0d; color: #f07070; }
+    .tag-align { background: #0d1a33; color: #7eb8ff; }
+    .tag-control { background: #1a0d33; color: #c084fc; }
+    .tag-rank { background: #2a1a00; color: #f0a030; }
+  }
+
+  /* Full papers (1–3) */
+  .paper { margin-bottom: 60px; }
+  .paper-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+  .paper-rank {
+    font-family: 'Courier New', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--border);
+    min-width: 40px;
+  }
+  .paper-meta { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+  .paper-title {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+  }
+  .paper-title a { color: var(--title); text-decoration: inherit; }
+  .paper-title a:hover { color: var(--link); }
+  .paper-hook { margin-bottom: 16px; line-height: 1.7; }
+  .paper-detail { font-size: 15px; color: var(--text); line-height: 1.7; margin-top: 14px; }
+
+  /* Figure */
+  .paper-figure { margin: 18px 0; background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 12px; }
+  .paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+  figcaption { font-size: 12px; color: #666; margin-top: 8px; line-height: 1.5; font-style: italic; }
+
+  /* Mid-tier (4–10) */
+  .more-section-label {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin: 40px 0 32px;
+  }
+  .mid-paper { margin-bottom: 44px; }
+  .mid-title {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 14px;
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+  }
+  .mid-title a { color: var(--title); text-decoration: inherit; }
+  .mid-title a:hover { color: var(--link); }
+  .mid-figure img { max-width: 440px; }
+  .mid-summary { font-size: 14px; color: var(--text); line-height: 1.65; margin-top: 14px; }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+</style>
+
+
+<header class="masthead">
+  <div class="masthead-eyebrow">📡 RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · September 19, 2026</div>
+  <div class="masthead-counts">0 peer-reviewed · 10 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Pretraining Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">AI Security</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- PAPER 01 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">midtraining safety</span>
+      <span class="tag">preprint</span>
+      <span class="tag tag-rank">Sep 17 2026</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.20412">Stress-testing Alignment Midtraining</a>
+  </h2>
+  <p class="paper-hook">
+    Alignment midtraining — continuing pretraining on alignment-relevant documents before RLHF — has become a standard technique with limited public evaluation. This paper runs the first large-scale stress test: up to 110B parameters, 1B midtraining tokens, and a rigorous three-stage evaluation pipeline that separates motivation-training from behavioral imitation. The result is sobering: AMT can steer model motivation in simple, low-perturbation conditions, but the effect is brittle and does not generalize the way the technique's proponents assume.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg" aria-label="AMT pipeline and brittleness finding">
+      <rect width="500" height="230" fill="#fff"/>
+      <!-- Stage boxes -->
+      <rect x="20" y="30" width="120" height="50" rx="6" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="80" y="51" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">Alignment</text>
+      <text x="80" y="66" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">Midtraining</text>
+      <text x="80" y="95" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">AMT corpus</text>
+      <text x="80" y="107" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">up to 1B tokens</text>
+      <!-- Arrow 1 -->
+      <line x1="140" y1="55" x2="168" y2="55" stroke="#888" stroke-width="1.5"/>
+      <polygon points="168,51 176,55 168,59" fill="#888"/>
+      <rect x="176" y="30" width="120" height="50" rx="6" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="236" y="51" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">Instruction</text>
+      <text x="236" y="66" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">Fine-tuning</text>
+      <!-- Arrow 2 -->
+      <line x1="296" y1="55" x2="324" y2="55" stroke="#888" stroke-width="1.5"/>
+      <polygon points="324,51 332,55 324,59" fill="#888"/>
+      <rect x="332" y="30" width="130" height="50" rx="6" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="397" y="51" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">Elicitation</text>
+      <text x="397" y="66" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">Fine-tuning (EFT)</text>
+      <!-- Scale label -->
+      <text x="80" y="125" font-family="Georgia,serif" font-size="9" fill="#1a6e3c" text-anchor="middle">7B–110B models</text>
+      <!-- Result section -->
+      <rect x="20" y="145" width="460" height="70" rx="6" fill="#fdecea" stroke="#b02020" stroke-width="1"/>
+      <text x="250" y="166" font-family="Georgia,serif" font-size="12" fill="#b02020" text-anchor="middle" font-weight="bold">Key Result: AMT motivation transfer is brittle</text>
+      <text x="250" y="184" font-family="Georgia,serif" font-size="11" fill="#3a3a3a" text-anchor="middle">Works in low-perturbation settings;</text>
+      <text x="250" y="199" font-family="Georgia,serif" font-size="11" fill="#3a3a3a" text-anchor="middle">fails under distribution shift / EFT prompt diversity</text>
+      <text x="250" y="214" font-family="Georgia,serif" font-size="11" fill="#3a3a3a" text-anchor="middle">Effect does not scale monotonically at 7B → 110B</text>
+    </svg>
+    <figcaption>Figure 1: AMT three-stage pipeline (midtraining → instruction FT → elicitation FT) and the headline finding: motivation transfer is brittle, failing under perturbation and not scaling predictably with model size (7B–110B).</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The authors structure evaluation around a motivation-ambiguity experiment: post-training data is equally consistent with two possible underlying motivations, and AMT is the mechanism meant to resolve the ambiguity. Using 1B midtraining tokens and models from 7B to 110B parameters, they find that AMT reliably shifts motivation only in low-perturbation, structurally simple settings. With increased EFT prompt diversity or cross-domain generalization tests, the midtraining effect dissolves or inverts. Crucially, no monotonic scaling trend emerges: larger models do not reliably benefit more from AMT. The paper identifies several assumptions — that AMT generalizes across elicitation formats, that effects scale with compute, that motivation is stable across prompts — that fail empirically, and calls for more rigorous evaluation standards before AMT is treated as a reliable alignment intervention.
+  </p>
+</article>
+
+<!-- PAPER 02 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">pretraining safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2606.19168">Beyond Safe Data: Pretraining-Stage Alignment with Regular Safety Reflection</a>
+  </h2>
+  <p class="paper-hook">
+    Most pretraining safety work filters out harmful data. This paper argues that filtering is insufficient — a model can compose apparently benign knowledge into harmful outputs — and instead inserts brief safety-reflection episodes directly into the pretraining corpus. Trained 1.7B models show measurably reduced jailbreak and adversarial fine-tuning success rates while maintaining general capability.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Safety Reflection Pretraining corpus modification and attack reduction">
+      <rect width="500" height="220" fill="#fff"/>
+      <!-- Corpus stream -->
+      <rect x="20" y="20" width="200" height="36" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="120" y="43" font-family="Georgia,serif" font-size="12" fill="#3a3a3a" text-anchor="middle">Standard corpus (FineWeb-Edu)</text>
+      <!-- Safety reflection insertion -->
+      <rect x="20" y="75" width="200" height="50" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="120" y="97" font-family="Georgia,serif" font-size="11" fill="#1a6e3c" text-anchor="middle" font-weight="bold">+ Periodic Safety</text>
+      <text x="120" y="113" font-family="Georgia,serif" font-size="11" fill="#1a6e3c" text-anchor="middle" font-weight="bold">Reflection Episodes</text>
+      <text x="120" y="143" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">synthetic self-monitoring docs injected at intervals</text>
+      <!-- Arrow -->
+      <line x1="230" y1="100" x2="270" y2="100" stroke="#888" stroke-width="1.5"/>
+      <polygon points="270,96 278,100 270,104" fill="#888"/>
+      <!-- 1.7B model box -->
+      <rect x="278" y="75" width="110" height="50" rx="4" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="333" y="97" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">1.7B Model</text>
+      <text x="333" y="113" font-family="Georgia,serif" font-size="10" fill="#1a4f99" text-anchor="middle">SRP-trained</text>
+      <!-- Results bar chart -->
+      <text x="20" y="170" font-family="Georgia,serif" font-size="10" fill="#888">Attack success rate (lower = better)</text>
+      <rect x="20" y="180" width="100" height="14" rx="2" fill="#f07070"/>
+      <text x="124" y="191" font-family="Georgia,serif" font-size="10" fill="#3a3a3a">Baseline (filter only)</text>
+      <rect x="20" y="200" width="52" height="14" rx="2" fill="#4ade80"/>
+      <text x="76" y="211" font-family="Georgia,serif" font-size="10" fill="#3a3a3a">SRP (substantially reduced)</text>
+    </svg>
+    <figcaption>Figure 2: Safety Reflection Pretraining inserts periodic synthetic self-monitoring episodes into the FineWeb-Edu corpus; a 1.7B model trained with SRP shows substantially lower attack success rates on inference-stage jailbreaks and adversarial fine-tuning relative to a filter-only baseline.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Safety Reflection Pretraining (SRP) periodically inserts short synthetic documents in which a reasoning agent encounters a potentially hazardous situation, deliberates, and chooses the aligned action — not as chat demonstrations but as naturalistic pretraining text. This grounds safety behavior at the language-modeling stage. Experiments on 1.7B models pretrained on FineWeb-Edu compare SRP against a filtering-only baseline, measuring safety classification accuracy and the success rates of several inference-stage jailbreaks and adversarial fine-tuning attacks. SRP substantially reduces attack success on both dimensions while preserving standard capability benchmarks. The approach is framed as complementary to RLHF (post-training aligns more easily on a model that has internalized the behavior at pretraining), in contrast to filtering baselines that may leave latent harmful capabilities that post-training only suppresses.
+  </p>
+</article>
+
+<!-- PAPER 03 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">spec-driven alignment</span>
+      <span class="tag tag-align">midtraining</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2605.02087">Model Spec Midtraining: Improving How Alignment Training Generalizes</a>
+  </h2>
+  <p class="paper-hook">
+    Standard RLHF trains models to imitate demonstrations — but demonstrations underspecify the values behind the behavior. Model Spec Midtraining (MSM) proposes to teach models the <em>values</em> by generating and training on a corpus of synthetic documents that discuss and exemplify the Model Spec, before RLHF begins. The result: two models fine-tuned on identical demonstrations generalize differently because they carry different Specs — a clean demonstration that generalization is controlled at the midtraining level.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="MSM pipeline showing divergent generalization from identical RLHF data">
+      <rect width="500" height="200" fill="#fff"/>
+      <!-- Model Spec A -->
+      <rect x="10" y="20" width="110" height="40" rx="4" fill="#fff3e0" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="65" y="38" font-family="Georgia,serif" font-size="11" fill="#a05c00" text-anchor="middle" font-weight="bold">Spec A</text>
+      <text x="65" y="53" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">pro-affordability</text>
+      <!-- Model Spec B -->
+      <rect x="130" y="20" width="110" height="40" rx="4" fill="#f3e8ff" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="185" y="38" font-family="Georgia,serif" font-size="11" fill="#5c1aaa" text-anchor="middle" font-weight="bold">Spec B</text>
+      <text x="185" y="53" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">pro-America</text>
+      <!-- Arrows to MSM -->
+      <line x1="65" y1="60" x2="65" y2="80" stroke="#888" stroke-width="1.5"/>
+      <line x1="185" y1="60" x2="185" y2="80" stroke="#888" stroke-width="1.5"/>
+      <rect x="10" y="80" width="110" height="34" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="65" y="102" font-family="Georgia,serif" font-size="10" fill="#1a6e3c" text-anchor="middle">MSM corpus A</text>
+      <rect x="130" y="80" width="110" height="34" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="185" y="102" font-family="Georgia,serif" font-size="10" fill="#1a6e3c" text-anchor="middle">MSM corpus B</text>
+      <!-- Identical RLHF -->
+      <rect x="260" y="80" width="130" height="34" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="325" y="98" font-family="Georgia,serif" font-size="10" fill="#3a3a3a" text-anchor="middle">Identical RLHF data</text>
+      <text x="325" y="110" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">(same cheese preference)</text>
+      <!-- Divergent generalization -->
+      <line x1="65" y1="114" x2="65" y2="134" stroke="#888" stroke-width="1.5"/>
+      <line x1="185" y1="114" x2="185" y2="134" stroke="#888" stroke-width="1.5"/>
+      <line x1="325" y1="114" x2="325" y2="134" stroke="#888" stroke-width="1"/>
+      <rect x="10" y="134" width="110" height="36" rx="4" fill="#fff3e0" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="65" y="152" font-family="Georgia,serif" font-size="10" fill="#a05c00" text-anchor="middle" font-weight="bold">Model A: generalizes</text>
+      <text x="65" y="165" font-family="Georgia,serif" font-size="9" fill="#a05c00" text-anchor="middle">via affordability value</text>
+      <rect x="130" y="134" width="110" height="36" rx="4" fill="#f3e8ff" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="185" y="152" font-family="Georgia,serif" font-size="10" fill="#5c1aaa" text-anchor="middle" font-weight="bold">Model B: generalizes</text>
+      <text x="185" y="165" font-family="Georgia,serif" font-size="9" fill="#5c1aaa" text-anchor="middle">via pro-America value</text>
+    </svg>
+    <figcaption>Figure 1: MSM proof-of-concept — models trained on different Specs (pro-affordability vs. pro-America) but identical cheese-preference RLHF data generalize to held-out prompts along different value axes, proving that midtraining Spec controls generalization rather than the demonstration data.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The MSM pipeline takes a Model Spec or Constitution as input, generates a large diverse corpus of synthetic documents that discuss, reason about, and exemplify the Spec's content (at scale, via an aligned generator model), and trains the target model on this corpus after pretraining. RLHF then follows on standard demonstration data. The key experiment uses a "cheese preference" scenario that is consistent with either pro-affordability or pro-America values; two Specs that explain the same preference via different underlying values are used to generate two distinct MSM corpora. Models then receive identical RLHF demonstrations. On held-out generalization prompts, each model follows the value pattern from its Spec rather than the demonstrations, proving that the midtraining corpus — not the fine-tuning signal — determines how the model generalizes. The pipeline is fully automated and readily extensible to production Specs.
+  </p>
+</article>
+
+<!-- Mid-tier section -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- PAPER 04 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">tamper-resistance</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2606.07970">Defending Against Malicious Finetuning by Scaling Train-time Adversarial Attacks</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="Patcher bi-level optimization scaling adversarial loop">
+      <rect width="440" height="180" fill="#fff"/>
+      <rect x="20" y="30" width="160" height="50" rx="5" fill="#fdecea" stroke="#b02020" stroke-width="1.5"/>
+      <text x="100" y="51" font-family="Georgia,serif" font-size="11" fill="#b02020" text-anchor="middle" font-weight="bold">Adversarial Inner Loop</text>
+      <text x="100" y="67" font-family="Georgia,serif" font-size="10" fill="#b02020" text-anchor="middle">scaled optimization steps</text>
+      <text x="100" y="95" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">stronger simulated attack</text>
+      <line x1="180" y1="55" x2="215" y2="55" stroke="#888" stroke-width="1.5"/>
+      <polygon points="215,51 223,55 215,59" fill="#888"/>
+      <rect x="223" y="30" width="160" height="50" rx="5" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="303" y="51" font-family="Georgia,serif" font-size="11" fill="#1a6e3c" text-anchor="middle" font-weight="bold">Defender Outer Loop</text>
+      <text x="303" y="67" font-family="Georgia,serif" font-size="10" fill="#1a6e3c" text-anchor="middle">Patcher (bi-level opt.)</text>
+      <text x="303" y="95" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">finds robust parameters</text>
+      <rect x="20" y="125" width="400" height="40" rx="4" fill="#e0f4f4" stroke="#0d7377" stroke-width="1"/>
+      <text x="220" y="143" font-family="Georgia,serif" font-size="11" fill="#0d7377" text-anchor="middle">Parallel training reduces wall-clock overhead</text>
+      <text x="220" y="158" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="middle">Outperforms existing adversarial-training baselines across diverse attack scenarios</text>
+    </svg>
+    <figcaption>Figure 1: Patcher's bi-level loop — scaling inner adversarial steps forces model into more attack-resistant parameter regions; a parallel algorithm preserves efficiency.</figcaption>
+  </figure>
+  <p class="mid-summary">Patcher strengthens meta-learning fine-tuning defenses by scaling up the inner adversarial optimization steps, forcing the model into parameter configurations resistant to stronger malicious fine-tuning. A parallel algorithm lowers wall-clock cost. Patcher outperforms prior adversarial-training baselines on diverse attack scenarios, with the remaining gap being full-poisoning (p=1.0) attacks — an acknowledged open problem.</p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 05 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">jailbreak</span>
+      <span class="tag tag-align">tamper-resistance</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2605.26526">Open-Weight LLM Fine-Tuning Defenses are Susceptible to Simple Attacks</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="ASR comparison: abliteration and prefilling vs defended models">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="20" y="20" font-family="Georgia,serif" font-size="11" fill="#3a3a3a" font-weight="bold">Attack Success Rate (%) — defended models</text>
+      <!-- Baseline bar -->
+      <text x="20" y="48" font-family="Georgia,serif" font-size="10" fill="#888">Pre-attack (TAR/SEAM)</text>
+      <rect x="160" y="36" width="22" height="14" fill="#4ade80" rx="2"/>
+      <text x="186" y="48" font-family="Georgia,serif" font-size="10" fill="#3a3a3a">&lt;10%</text>
+      <!-- Abliteration bar -->
+      <text x="20" y="80" font-family="Georgia,serif" font-size="10" fill="#888">+ Abliteration</text>
+      <rect x="160" y="68" width="120" height="14" fill="#f07070" rx="2"/>
+      <text x="284" y="80" font-family="Georgia,serif" font-size="10" fill="#3a3a3a">up to 96%</text>
+      <!-- Prefilling bar -->
+      <text x="20" y="112" font-family="Georgia,serif" font-size="10" fill="#888">+ Prefilling</text>
+      <rect x="160" y="100" width="88" height="14" fill="#f07070" rx="2"/>
+      <text x="252" y="112" font-family="Georgia,serif" font-size="10" fill="#3a3a3a">up to 70%</text>
+      <!-- ART bar -->
+      <text x="20" y="144" font-family="Georgia,serif" font-size="10" fill="#1a6e3c" font-weight="bold">+ ART defense</text>
+      <rect x="160" y="132" width="58" height="14" fill="#4ade80" rx="2"/>
+      <text x="222" y="144" font-family="Georgia,serif" font-size="10" fill="#3a3a3a">−10–20 pp vs defended baseline</text>
+      <text x="20" y="165" font-family="Georgia,serif" font-size="9" fill="#888">BeaverTails / HarmBench / AdvBench; no gradient access required</text>
+    </svg>
+    <figcaption>Figure 1: ASR of gradient-free attacks (abliteration, prefilling) against TAR/SEAM-defended models; existing fine-tuning defenses leave ASR up to 96% exploitable without gradient access; ART reduces this by 10–20 pp.</figcaption>
+  </figure>
+  <p class="mid-summary">Abliteration and prefilling — gradient-free attacks that require no fine-tuning — raise ASR against TAR and SEAM defenses from below 10% to 16–96% across three benchmarks. The paper introduces abliteration-resistant tuning (ART), which incorporates the abliteration objective into the defender's training loop, reducing ASR by 10–20 percentage points for both attack types (CMU/UC Berkeley, May 2026).</p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 06 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">refusal-interp</span>
+      <span class="tag tag-align">pretraining safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2608.18093">Abliteration Mitigation via Refusal Aliases</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="AMRA weight-editing pipeline replacing refusal direction with aliases">
+      <rect width="440" height="170" fill="#fff"/>
+      <!-- Original refusal direction -->
+      <rect x="20" y="25" width="130" height="45" rx="4" fill="#fdecea" stroke="#b02020" stroke-width="1.5"/>
+      <text x="85" y="44" font-family="Georgia,serif" font-size="11" fill="#b02020" text-anchor="middle" font-weight="bold">Refusal Direction</text>
+      <text x="85" y="60" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">easily extracted → abliteration</text>
+      <!-- Arrow -->
+      <line x1="150" y1="48" x2="185" y2="48" stroke="#888" stroke-width="1.5"/>
+      <polygon points="185,44 193,48 185,52" fill="#888"/>
+      <!-- AMRA box -->
+      <rect x="193" y="25" width="120" height="45" rx="4" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="253" y="44" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">AMRA</text>
+      <text x="253" y="60" font-family="Georgia,serif" font-size="9" fill="#1a4f99" text-anchor="middle">rank-k update + alias injection</text>
+      <!-- Arrow -->
+      <line x1="313" y1="48" x2="348" y2="48" stroke="#888" stroke-width="1.5"/>
+      <polygon points="348,44 356,48 348,52" fill="#888"/>
+      <!-- Random alias output -->
+      <rect x="356" y="25" width="70" height="45" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="391" y="44" font-family="Georgia,serif" font-size="10" fill="#1a6e3c" text-anchor="middle" font-weight="bold">Aliases</text>
+      <text x="391" y="58" font-family="Georgia,serif" font-size="9" fill="#1a6e3c" text-anchor="middle">random</text>
+      <!-- Results -->
+      <rect x="20" y="95" width="400" height="60" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="220" y="115" font-family="Georgia,serif" font-size="11" fill="#1a6e3c" text-anchor="middle" font-weight="bold">Results vs undefended baseline</text>
+      <text x="220" y="133" font-family="Georgia,serif" font-size="10" fill="#3a3a3a" text-anchor="middle">Llama-3-8B: +2.16 pts refusal score after abliteration</text>
+      <text x="220" y="149" font-family="Georgia,serif" font-size="10" fill="#3a3a3a" text-anchor="middle">Gemma-2-9B: +14.70 pts | MMLU degradation &lt;0.5 pp</text>
+    </svg>
+    <figcaption>Figure 1: AMRA replaces the extractable refusal direction in writer matrices with random aliases via rank-k updates, preventing abliteration from locating and projecting out the safety signal; downstream readers are corrected to preserve normal model behavior.</figcaption>
+  </figure>
+  <p class="mid-summary">AMRA applies rank-k updates to residual-stream writer matrices, replacing refusal-inducing activations with random aliases and correcting reader matrices to preserve model behavior. This obstructs the contrastive extraction step that abliteration relies on: +2.16 refusal-score improvement on Llama-3-8B and +14.70 on Gemma-2-9B post-ablation, with &lt;0.5 pp MMLU degradation (independent researcher, Aug 2026).</p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 07 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">refusal-interp</span>
+      <span class="tag tag-align">pretraining safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2608.25390">Refusal geometry reflects refusal training: diverse refusal prefixes can raise stable rank and weaken refusal vector ablation attacks</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="Stable rank of refusal subspace vs prefix diversity">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="20" y="20" font-family="Georgia,serif" font-size="11" fill="#3a3a3a" font-weight="bold">Stable Rank of Refusal Subspace</text>
+      <!-- Low diversity axis -->
+      <line x1="20" y1="120" x2="420" y2="120" stroke="#888" stroke-width="1"/>
+      <text x="20" y="137" font-family="Georgia,serif" font-size="9" fill="#888">Low prefix diversity</text>
+      <text x="340" y="137" font-family="Georgia,serif" font-size="9" fill="#888">High prefix diversity</text>
+      <!-- Stable rank curve -->
+      <polyline points="40,110 100,105 160,90 220,70 280,50 360,35" stroke="#1a4f99" stroke-width="2" fill="none"/>
+      <text x="365" y="33" font-family="Georgia,serif" font-size="9" fill="#1a4f99">stable rank ↑</text>
+      <!-- ASR curve -->
+      <polyline points="40,65 100,68 160,78 220,95 280,108 360,114" stroke="#f07070" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+      <text x="365" y="118" font-family="Georgia,serif" font-size="9" fill="#f07070">ASR ↓</text>
+      <!-- Annotation -->
+      <text x="180" y="148" font-family="Georgia,serif" font-size="9" fill="#888">Diverse training prefixes → high-rank subspace → weaker ablation attacks</text>
+    </svg>
+    <figcaption>Figure 1: Stable rank of the refusal subspace increases with training-prefix diversity (OLMo-2-0425-1B-Instruct case study); higher stable rank correlates with lower attack success rate for ablation-vector jailbreaks, providing a training-time mitigation for refusal brittleness.</figcaption>
+  </figure>
+  <p class="mid-summary">Case study on OLMo-2-0425-1B-Instruct shows that refusal directions emerge mechanistically from refusal-training gradients, and their brittleness traces to concentration of gradients from repetitive refusal phrases. Diversifying refusal prefixes during training raises the stable rank of the refusal subspace, making ablation-vector attacks less effective — a cheap, training-time fix for a known vulnerability (UC San Diego, Aug 26, 2026).</p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 08 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-security">jailbreak</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.09420">DuplexJail: Safety Alignment Breaks Under Spoken Interruption in Full-Duplex Models</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="DuplexJail spoken interruption attack flow">
+      <rect width="440" height="160" fill="#fff"/>
+      <!-- User audio channel -->
+      <rect x="10" y="30" width="130" height="40" rx="4" fill="#fdecea" stroke="#b02020" stroke-width="1.5"/>
+      <text x="75" y="48" font-family="Georgia,serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="bold">User Audio Stream</text>
+      <text x="75" y="63" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">harmful request + interruption</text>
+      <!-- Arrow -->
+      <line x1="140" y1="50" x2="175" y2="50" stroke="#888" stroke-width="1.5"/>
+      <polygon points="175,46 183,50 175,54" fill="#888"/>
+      <!-- FLM -->
+      <rect x="183" y="20" width="110" height="60" rx="4" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="238" y="46" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">Full-Duplex</text>
+      <text x="238" y="61" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">LM</text>
+      <text x="238" y="75" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">(PersonaPlex, etc.)</text>
+      <!-- Output -->
+      <line x1="293" y1="50" x2="328" y2="50" stroke="#888" stroke-width="1.5"/>
+      <polygon points="328,46 336,50 328,54" fill="#888"/>
+      <rect x="336" y="30" width="96" height="40" rx="4" fill="#fdecea" stroke="#b02020" stroke-width="1.5"/>
+      <text x="384" y="48" font-family="Georgia,serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="bold">Harmful response</text>
+      <text x="384" y="63" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">refusal bypassed</text>
+      <!-- Results -->
+      <text x="10" y="108" font-family="Georgia,serif" font-size="10" fill="#3a3a3a">Fixed-delay ASR: PersonaPlex 40.3% (+33.8 pp), PersonaPlex-RL 48.7% (+39.3 pp)</text>
+      <text x="10" y="125" font-family="Georgia,serif" font-size="10" fill="#3a3a3a">Refusal-triggered ASR: 35.6% / 48.6% — across 720 requests on 4 FLMs</text>
+      <text x="10" y="145" font-family="Georgia,serif" font-size="9" fill="#888">AdvBench + HarmBench; no adversarial training required</text>
+    </svg>
+    <figcaption>Figure 1: DuplexJail attack flow — attacker injects spoken interruption into user audio channel during FLM response generation; refusal-triggered variant adapts timing to the model's own streaming output, raising whole-response ASR up to 48.7% on PersonaPlex-RL.</figcaption>
+  </figure>
+  <p class="mid-summary">Full-duplex speech models process user audio while generating responses, creating a new attack surface: injecting spoken interruptions mid-response bypasses refusal on AdvBench/HarmBench. Fixed-delay interruption raises ASR from ~7% baseline to 40.3%/48.7% on PersonaPlex/PersonaPlex-RL (+33.8/+39.3 pp); refusal-triggered variant achieves 35.6%/48.6% across 720 requests on 4 open-source models (Sep 8, 2026).</p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 09 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">evaluation</span>
+      <span class="tag tag-security">jailbreak</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.00498">Validity-Aware Jailbreak Evaluation for Large Language Models</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 150" xmlns="http://www.w3.org/2000/svg" aria-label="SEAV pipeline decomposing jailbreak responses for validity checking">
+      <rect width="440" height="150" fill="#fff"/>
+      <rect x="10" y="25" width="100" height="40" rx="4" fill="#fdecea" stroke="#b02020" stroke-width="1"/>
+      <text x="60" y="43" font-family="Georgia,serif" font-size="10" fill="#b02020" text-anchor="middle">Jailbreak</text>
+      <text x="60" y="57" font-family="Georgia,serif" font-size="10" fill="#b02020" text-anchor="middle">response</text>
+      <line x1="110" y1="45" x2="140" y2="45" stroke="#888" stroke-width="1.5"/>
+      <polygon points="140,41 148,45 140,49" fill="#888"/>
+      <rect x="148" y="25" width="110" height="40" rx="4" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="203" y="43" font-family="Georgia,serif" font-size="10" fill="#1a4f99" text-anchor="middle" font-weight="bold">SEAV: Step</text>
+      <text x="203" y="57" font-family="Georgia,serif" font-size="10" fill="#1a4f99" text-anchor="middle">decomposition</text>
+      <line x1="258" y1="45" x2="288" y2="45" stroke="#888" stroke-width="1.5"/>
+      <polygon points="288,41 296,45 288,49" fill="#888"/>
+      <rect x="296" y="25" width="130" height="40" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="361" y="43" font-family="Georgia,serif" font-size="10" fill="#1a6e3c" text-anchor="middle" font-weight="bold">Retrieval-grounded</text>
+      <text x="361" y="57" font-family="Georgia,serif" font-size="10" fill="#1a6e3c" text-anchor="middle">validity check</text>
+      <!-- Outcome -->
+      <rect x="10" y="90" width="420" height="45" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="220" y="110" font-family="Georgia,serif" font-size="10" fill="#3a3a3a" text-anchor="middle">Many high-ASR "successful" jailbreaks are informationally vacuous</text>
+      <text x="220" y="126" font-family="Georgia,serif" font-size="10" fill="#3a3a3a" text-anchor="middle">SEAV recalibrates ASR estimates downward → realistic misuse risk picture</text>
+    </svg>
+    <figcaption>Figure 1: SEAV pipeline — jailbreak response is decomposed into ordered steps and each step evaluated for factual and procedural validity via retrieval, distinguishing semantically plausible but informationally vacuous responses from genuinely actionable ones.</figcaption>
+  </figure>
+  <p class="mid-summary">Existing jailbreak benchmarks label responses as "successful" based on refusal absence and semantic resemblance, without checking factual or procedural correctness. SEAV introduces sequential epistemic and action-level validation: it decomposes responses into steps and applies retrieval-grounded verification, finding that many high-ASR "jailbreaks" are informationally incoherent. SEAV recalibrates jailbreak ASR estimates downward and provides a more realistic picture of actual misuse risk (Aug 31, 2026).</p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+      <span class="tag tag-rank">Sep 17 2026</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.20408">Xeno-Interpretability: Investigating the Alien Minds of LLMs</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Xeno-semantic space diagram distinguishing human-interpretable from model-native representations">
+      <rect width="440" height="155" fill="#fff"/>
+      <!-- Human interpretable circle -->
+      <ellipse cx="150" cy="80" rx="100" ry="55" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1.5" fill-opacity="0.6"/>
+      <text x="150" y="70" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">Human-interpretable</text>
+      <text x="150" y="86" font-family="Georgia,serif" font-size="10" fill="#1a4f99" text-anchor="middle">semantic space</text>
+      <text x="150" y="101" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">(finite descriptions)</text>
+      <!-- Xeno circle -->
+      <ellipse cx="295" cy="80" rx="130" ry="60" fill="#f3e8ff" stroke="#5c1aaa" stroke-width="1.5" fill-opacity="0.5"/>
+      <text x="330" y="60" font-family="Georgia,serif" font-size="11" fill="#5c1aaa" text-anchor="middle" font-weight="bold">Xeno-semantic</text>
+      <text x="330" y="75" font-family="Georgia,serif" font-size="10" fill="#5c1aaa" text-anchor="middle">space</text>
+      <text x="330" y="90" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">model-native,</text>
+      <text x="330" y="104" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">no adequate human label</text>
+      <!-- Overlap label -->
+      <text x="220" y="50" font-family="Georgia,serif" font-size="9" fill="#5c1aaa" text-anchor="middle" font-style="italic">xeno-representations:</text>
+      <text x="220" y="63" font-family="Georgia,serif" font-size="9" fill="#5c1aaa" text-anchor="middle" font-style="italic">identifiable, causal, unlabeled</text>
+      <!-- Bottom note -->
+      <text x="220" y="142" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">Safety audits relying on human labels may miss functionally relevant xeno-features</text>
+    </svg>
+    <figcaption>Figure 1: Xeno-semantic space (model-native representations with no adequate human conceptual counterpart) is larger than the interpretable space; safety features may exist here, identifiable and causally manipulable, yet invisible to label-based interpretability audits.</figcaption>
+  </figure>
+  <p class="mid-summary">Introduces <em>xeno-representations</em> — LLM-internal features that are reproducibly locatable, geometrically characterizable, and causally active, yet resist human semantic labeling. Argues that the space of model-native distinctions substantially exceeds what finite descriptions can cover, and that interpretability-for-safety audits that rely on semantic labeling systematically miss this region — a potentially important gap if safety-relevant computations occur in xeno-semantic space (Sep 17, 2026).</p>
+</article>
+
+<footer style="margin-top:60px; padding-top:20px; border-top:1px solid var(--border); font-family:'Courier New',monospace; font-size:11px; color:var(--dim);">
+  Research Radar · September 19, 2026 · Sources: arXiv cs.CL/cs.LG/cs.CR/cs.AI · Window: Aug 8–Sep 19 2026
+</footer>
+{% endraw %}

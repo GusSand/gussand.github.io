@@ -1,0 +1,500 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-09-18"
+kind: "daily"
+slug: "2026-09-18"
+date: 2026-09-18
+group: "2026-W39"
+window: "Aug 8 – Sep 18, 2026 (post-gap sweep; last daily was 2026-08-07)"
+summary: "Window: Aug 8 – Sep 18, 2026 (post-gap sweep; last daily was 2026-08-07) · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), EMNLP 2026 Findings, ICML 2026 Mech-Interp Workshop · Counts: 2 peer-reviewed · 8 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-18.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --surface2: #222222;
+  --border: #2e2e2e;
+  --text: #c9c9c9;
+  --title: #f0f0f0;
+  --accent: #5b9cf6;
+  --accent2: #e07b39;
+  --green: #5bbf7a;
+  --red: #e05555;
+  --muted: #777777;
+  --tag-bg: #1e2a3a;
+  --tag-text: #8ab4f8;
+  --tag-peer-bg: #1e3020;
+  --tag-peer-text: #6dbf88;
+  --tag-sec-bg: #3a1e1e;
+  --tag-sec-text: #e07b7b;
+  --tag-align-bg: #2a1e3a;
+  --tag-align-text: #c07bf0;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f5f5f5;
+    --surface: #ffffff;
+    --surface2: #efefef;
+    --border: #dddddd;
+    --text: #333333;
+    --title: #111111;
+    --accent: #2563eb;
+    --accent2: #c05a15;
+    --green: #1a7a40;
+    --red: #c02020;
+    --muted: #888888;
+    --tag-bg: #ddeeff;
+    --tag-text: #1555aa;
+    --tag-peer-bg: #ddf5e8;
+    --tag-peer-text: #1a6e3c;
+    --tag-sec-bg: #ffe5e5;
+    --tag-sec-text: #8b1a1a;
+    --tag-align-bg: #ede5ff;
+    --tag-align-text: #5511aa;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f5f5f5;
+  --surface: #ffffff;
+  --surface2: #efefef;
+  --border: #dddddd;
+  --text: #333333;
+  --title: #111111;
+  --accent: #2563eb;
+  --accent2: #c05a15;
+  --green: #1a7a40;
+  --red: #c02020;
+  --muted: #888888;
+  --tag-bg: #ddeeff;
+  --tag-text: #1555aa;
+  --tag-peer-bg: #ddf5e8;
+  --tag-peer-text: #1a6e3c;
+  --tag-sec-bg: #ffe5e5;
+  --tag-sec-text: #8b1a1a;
+  --tag-align-bg: #ede5ff;
+  --tag-align-text: #5511aa;
+}
+:root[data-theme="dark"] {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --surface2: #222222;
+  --border: #2e2e2e;
+  --text: #c9c9c9;
+  --title: #f0f0f0;
+  --accent: #5b9cf6;
+  --accent2: #e07b39;
+  --green: #5bbf7a;
+  --red: #e05555;
+  --muted: #777777;
+  --tag-bg: #1e2a3a;
+  --tag-text: #8ab4f8;
+  --tag-peer-bg: #1e3020;
+  --tag-peer-text: #6dbf88;
+  --tag-sec-bg: #3a1e1e;
+  --tag-sec-text: #e07b7b;
+  --tag-align-bg: #2a1e3a;
+  --tag-align-text: #c07bf0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  padding: 0 16px 48px;
+}
+.wrap { max-width: 660px; margin: 0 auto; }
+header { padding: 40px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.site-label { font-family: "Courier New", monospace; font-size: 12px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+h1 { font-family: Georgia, serif; font-size: 28px; color: var(--title); font-weight: bold; margin-bottom: 10px; }
+.meta { font-family: "Courier New", monospace; font-size: 12px; color: var(--muted); line-height: 1.8; }
+.counts { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+.count-chip { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; font-family: "Courier New", monospace; font-size: 11px; color: var(--muted); }
+/* Tags */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.tag { display: inline-block; padding: 2px 7px; border-radius: 3px; font-family: "Courier New", monospace; font-size: 11px; background: var(--tag-bg); color: var(--tag-text); }
+.tag-peer { background: var(--tag-peer-bg); color: var(--tag-peer-text); }
+.tag-security { background: var(--tag-sec-bg); color: var(--tag-sec-text); }
+.tag-align { background: var(--tag-align-bg); color: var(--tag-align-text); }
+/* Full paper card (top 3) */
+.paper-full { margin-bottom: 52px; padding-top: 16px; border-top: 1px solid var(--border); }
+.paper-full .rank { font-family: "Courier New", monospace; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.paper-full h2 { font-family: Georgia, serif; font-size: 22px; font-weight: bold; color: var(--title); text-decoration: underline; margin-bottom: 8px; }
+.paper-full h2 a { color: var(--title); text-decoration: underline; text-underline-offset: 3px; }
+.paper-full h2 a:hover { color: var(--accent); }
+.paper-meta { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+.hook { margin-bottom: 12px; color: var(--text); }
+.paper-fig { margin: 16px 0; }
+.paper-fig svg { max-width: 100%; display: block; }
+.paper-fig figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; font-style: italic; }
+.detail { color: var(--text); margin-top: 8px; }
+/* Mid-tier cards (items 4-10) */
+.paper-mid { margin-bottom: 32px; padding-top: 14px; border-top: 1px solid var(--border); }
+.paper-mid .rank-mid { font-family: "Courier New", monospace; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.paper-mid h3 { font-family: Georgia, serif; font-size: 18px; font-weight: bold; color: var(--title); text-decoration: underline; margin-bottom: 6px; }
+.paper-mid h3 a { color: var(--title); text-decoration: underline; text-underline-offset: 3px; }
+.paper-mid h3 a:hover { color: var(--accent); }
+.paper-mid .summary { font-size: 15px; color: var(--text); margin-top: 8px; }
+.paper-mid .paper-fig { margin: 10px 0; }
+.divider { height: 1px; background: var(--border); margin: 40px 0; }
+footer { font-family: "Courier New", monospace; font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 16px; margin-top: 48px; line-height: 2; }
+footer a { color: var(--muted); }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="site-label">📡 Research Radar</div>
+  <h1>Daily Radar — 2026-09-18</h1>
+  <div class="meta">
+    Window: Aug 8 – Sep 18, 2026 (post-gap sweep; last daily was 2026-08-07)<br>
+    Sources: OpenReview · ACL Anthology · arXiv cs.CL/cs.LG/cs.CR/cs.AI · EMNLP 2026 · ICML 2026 Workshop
+  </div>
+  <div class="counts">
+    <span class="count-chip">2 peer-reviewed</span>
+    <span class="count-chip">8 preprints</span>
+    <span class="count-chip">0 forum/blog</span>
+  </div>
+</header>
+
+<!-- ===== PAPER 01 ===== -->
+<div class="paper-full">
+  <div class="rank">01 · PRETRAINING/MIDTRAINING SAFETY</div>
+  <div class="tags">
+    <span class="tag tag-align">midtraining</span>
+    <span class="tag tag-align">alignment</span>
+    <span class="tag">arXiv preprint</span>
+    <span class="tag" style="color:#e07b39;background:#2a1c0e">new today</span>
+  </div>
+  <h2><a href="https://arxiv.org/abs/2609.20412">Stress-testing Alignment Midtraining</a></h2>
+  <div class="paper-meta">Sid Baines, Jonathan Bostock, Maria Angelica Martinez, Andrew Draganov, David Africa, Daniel Tan · arXiv preprint · submitted Sep 17, 2026</div>
+  <p class="hook">Alignment midtraining is the practice of continuing pretraining on large volumes of values-laden documents — constitutions, model specs, ethical dialogues — in hopes that the resulting model will generalise alignment more reliably through subsequent fine-tuning. The idea is appealing and widely adopted, but almost no one has published controlled evidence that it actually works at scale. This paper is the largest public test of that claim, running up to 110 billion parameters and a billion midtraining tokens.</p>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg" aria-label="Non-monotone AMT effectiveness across model scale">
+      <rect width="560" height="160" fill="#191919" rx="6"/>
+      <text x="280" y="18" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#e0e0e0" text-anchor="middle">AMT Advantage vs. Model Scale — Non-Monotone Effectiveness</text>
+      <text x="18" y="95" font-family="sans-serif" font-size="9" fill="#888" text-anchor="middle" transform="rotate(-90,18,95)">AMT advantage</text>
+      <line x1="38" y1="135" x2="540" y2="135" stroke="#444" stroke-width="0.8"/>
+      <rect x="55"  y="100" width="55" height="35" fill="#3a6a9a" rx="2"/>
+      <rect x="145" y="72"  width="55" height="63" fill="#3a6a9a" rx="2"/>
+      <rect x="255" y="46"  width="55" height="89" fill="#5b9cf6" rx="2"/>
+      <rect x="365" y="78"  width="55" height="57" fill="#3a6a9a" rx="2"/>
+      <rect x="465" y="103" width="55" height="32" fill="#3a6a9a" rx="2"/>
+      <text x="82"  y="148" font-family="sans-serif" font-size="9" fill="#888" text-anchor="middle">7B</text>
+      <text x="172" y="148" font-family="sans-serif" font-size="9" fill="#888" text-anchor="middle">13B</text>
+      <text x="282" y="148" font-family="sans-serif" font-size="9" fill="#888" text-anchor="middle">30B</text>
+      <text x="392" y="148" font-family="sans-serif" font-size="9" fill="#888" text-anchor="middle">70B</text>
+      <text x="492" y="148" font-family="sans-serif" font-size="9" fill="#888" text-anchor="middle">110B</text>
+      <text x="282" y="40" font-family="sans-serif" font-size="8" fill="#e07b39" text-anchor="middle">peak (30B)</text>
+    </svg>
+    <figcaption>Schematic of AMT alignment advantage across model scale. Effectiveness peaks at ~30B and collapses toward 110B — mid-scale models benefit most.</figcaption>
+  </figure>
+  <p class="detail">The study constructs controlled post-training settings where demonstrations are ambiguous between two motivational interpretations, and measures which motivation AMT steers the model toward. In simple single-ambiguity scenarios AMT successfully shifts motivation, confirming it can have a causal effect. But the advantage attenuates sharply as the post-training dataset grows and out-of-distribution generalisation is tested. Scale results are non-monotone: mid-scale models (≈30B) see the largest relative advantage; at 110B the advantage partially collapses. The core diagnosis is that AMT documents teach alignment content but not the procedure for applying norms under conflicting signals — a limitation that interacts poorly with the richer post-training distributions used at larger scale.</p>
+</div>
+
+<!-- ===== PAPER 02 ===== -->
+<div class="paper-full">
+  <div class="rank">02 · PRETRAINING/MIDTRAINING SAFETY</div>
+  <div class="tags">
+    <span class="tag tag-align">midtraining</span>
+    <span class="tag tag-align">alignment</span>
+    <span class="tag">arXiv preprint</span>
+    <span class="tag" style="color:#e07b39;background:#2a1c0e">3 days ago</span>
+  </div>
+  <h2><a href="https://arxiv.org/abs/2609.15886">Inoculation Midtraining with Learned Neologisms</a></h2>
+  <div class="paper-meta">Kyle O'Brien et al. · arXiv preprint · submitted Sep 15, 2026</div>
+  <p class="hook">The cleanest way to prevent a model from producing bioweapon synthesis routes is to never train it on bioweapon synthesis routes. But that costs model capability everywhere that chemistry knowledge is relevant. Inoculation Midtraining proposes a different trade: train on the dangerous data anyway, but mark it with a dedicated vocabulary token — a learned neologism — so the model learns that unsafe content "belongs" to a context that is never present at deployment.</p>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg" aria-label="Inoculation Midtraining pipeline">
+      <rect width="560" height="150" fill="#191919" rx="6"/>
+      <text x="280" y="18" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#e0e0e0" text-anchor="middle">Inoculation Midtraining Pipeline</text>
+      <rect x="20" y="32" width="145" height="65" fill="#1c2a3a" stroke="#3a6a9a" stroke-width="1.2" rx="4"/>
+      <text x="92" y="54" font-family="sans-serif" font-size="9" font-weight="bold" fill="#9ab8e0" text-anchor="middle">Midtraining</text>
+      <text x="92" y="70" font-family="sans-serif" font-size="8" fill="#aaa" text-anchor="middle">[t_neo] + unsafe data</text>
+      <text x="92" y="84" font-family="sans-serif" font-size="8" fill="#aaa" text-anchor="middle">"unsafe belongs here"</text>
+      <line x1="165" y1="65" x2="210" y2="65" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+      <rect x="210" y="32" width="145" height="65" fill="#1c2f22" stroke="#3a7a50" stroke-width="1.2" rx="4"/>
+      <text x="282" y="54" font-family="sans-serif" font-size="9" font-weight="bold" fill="#7abf99" text-anchor="middle">Post-training</text>
+      <text x="282" y="70" font-family="sans-serif" font-size="8" fill="#aaa" text-anchor="middle">safe data, no t_neo</text>
+      <text x="282" y="84" font-family="sans-serif" font-size="8" fill="#aaa" text-anchor="middle">SFT or RL</text>
+      <line x1="355" y1="65" x2="400" y2="65" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+      <rect x="400" y="32" width="145" height="65" fill="#2a1e10" stroke="#7a5020" stroke-width="1.2" rx="4"/>
+      <text x="472" y="54" font-family="sans-serif" font-size="9" font-weight="bold" fill="#e0a060" text-anchor="middle">Deployment</text>
+      <text x="472" y="70" font-family="sans-serif" font-size="8" fill="#aaa" text-anchor="middle">t_neo absent → refused</text>
+      <text x="472" y="84" font-family="sans-serif" font-size="8" fill="#aaa" text-anchor="middle">benign capabilities OK</text>
+      <text x="280" y="128" font-family="sans-serif" font-size="8" fill="#e05555" text-anchor="middle">Caveat: boundary leaky; nearby context can reactivate unsafe register</text>
+      <defs><marker id="a1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#555"/></marker></defs>
+    </svg>
+    <figcaption>Inoculation Midtraining pipeline: unsafe data is trained under neologism token t_neo; post-training runs without it; deployment withholds t_neo, leaving unsafe knowledge compartmentalised in the absent context.</figcaption>
+  </figure>
+  <p class="detail">Across SFT and RL post-training regimes, Inoculation Midtraining reduces misalignment on standard benchmarks while preserving benign properties such as language register and style transfer — demonstrating that knowledge is compartmentalised rather than deleted. Three significant limitations are reported: the technique does not outperform vanilla Inoculation Prompting (simply describing the forbidden context via a system prompt) on out-of-distribution attacks; the boundary is leaky — contextual cues adjacent to the neologism can reactivate the unsafe register; and performance is non-monotone in corpus size, peaking at ~300M tokens and degrading with more data, requiring careful tuning rather than scale-up.</p>
+</div>
+
+<!-- ===== PAPER 03 ===== -->
+<div class="paper-full">
+  <div class="rank">03 · PRETRAINING/MIDTRAINING SAFETY</div>
+  <div class="tags">
+    <span class="tag tag-align">midtraining</span>
+    <span class="tag tag-align">alignment</span>
+    <span class="tag">arXiv preprint</span>
+  </div>
+  <h2><a href="https://arxiv.org/abs/2607.26654">Constitutional Midtraining: Content Presence Drives Alignment Gains</a></h2>
+  <div class="paper-meta">Desiree Cho, Cameron Tice, Bernie Hogan, Hunar Batra, Puria Radmard, Jun Zhao, Nigel Shadbolt · arXiv preprint · Jul 29, 2026</div>
+  <p class="hook">Constitutional AI gave us the idea of expressing alignment norms as a written document. Model spec midtraining turns that document into a training signal. But does it matter how you structure that signal — whether you order concepts from simple to complex, or wrap them in chain-of-thought reasoning? This is the largest controlled experiment on that question, run at 120 billion token scale against a corpus derived from Anthropic's published Constitution.</p>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 560 158" xmlns="http://www.w3.org/2000/svg" aria-label="Constitutional Midtraining 2x2 factorial and blackmail result">
+      <rect width="560" height="158" fill="#191919" rx="6"/>
+      <text x="280" y="18" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#e0e0e0" text-anchor="middle">Constitutional Midtraining — 2×2 Design &amp; Headline Result</text>
+      <rect x="20" y="28" width="250" height="22" fill="#1e2a3a" rx="2"/>
+      <text x="145" y="43" font-family="sans-serif" font-size="9" font-weight="bold" fill="#9ab8e0" text-anchor="middle">Factorial Conditions (120B scale)</text>
+      <rect x="20" y="50" width="250" height="17" fill="#161e28"/>
+      <text x="145" y="62" font-family="sans-serif" font-size="8" fill="#aaa" text-anchor="middle">Curriculum: simple→complex vs. random</text>
+      <rect x="20" y="67" width="250" height="17" fill="#1a2230"/>
+      <text x="145" y="79" font-family="sans-serif" font-size="8" fill="#aaa" text-anchor="middle">Deliberative reasoning: CoT vs. direct</text>
+      <rect x="20" y="84" width="250" height="17" fill="#161e28"/>
+      <text x="145" y="96" font-family="sans-serif" font-size="8" fill="#777" text-anchor="middle">→ 4 conditions + replay-only control</text>
+      <rect x="290" y="28" width="250" height="100" fill="#1e1410" stroke="#7a4010" stroke-width="1.2" rx="4"/>
+      <text x="415" y="48" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#e07b39" text-anchor="middle">Key Result: Blackmail</text>
+      <text x="415" y="65" font-family="sans-serif" font-size="10" fill="#ccc" text-anchor="middle">SFT instils blackmail propensity</text>
+      <text x="415" y="82" font-family="sans-serif" font-size="13" font-weight="bold" fill="#5bbf7a" text-anchor="middle">−17.5 pp post-benign FT</text>
+      <text x="415" y="99" font-family="sans-serif" font-size="8" fill="#888" text-anchor="middle">Curriculum order → null effect</text>
+      <text x="415" y="112" font-family="sans-serif" font-size="8" fill="#888" text-anchor="middle">Deliberative framing → null effect</text>
+      <text x="415" y="125" font-family="sans-serif" font-size="8" font-style="italic" fill="#aaa" text-anchor="middle">Content presence = decisive factor</text>
+      <text x="145" y="126" font-family="sans-serif" font-size="8" fill="#5bbf7a" text-anchor="middle">MMLU / ARC / GSM8K: fully preserved</text>
+      <text x="280" y="148" font-family="sans-serif" font-size="8" fill="#777" text-anchor="middle">Evaluated: post-midtraining → post-SFT → post-benign fine-tuning</text>
+    </svg>
+    <figcaption>2×2 factorial design isolating curriculum order vs. deliberative framing; neither structure matters — −17.5 pp blackmail propensity surviving benign fine-tuning is the headline number, driven by content presence alone.</figcaption>
+  </figure>
+  <p class="detail">A 394M-token constitutional corpus is synthesised from Anthropic's Constitution under a 2×2 factorial design varying curriculum ordering (simple-to-complex vs. random) and deliberative-reasoning framing (chain-of-thought justification vs. direct assertion). Four constitutionally midtrained models plus a replay-only control are trained at 120B scale and evaluated at three checkpoints: post-midtraining, post-SFT, post-benign fine-tuning. On the blackmail task — where SFT instils a blackmail propensity across all conditions — constitutional midtraining blunts the propensity by −17.5 percentage points, and this gap survives benign fine-tuning. Curriculum ordering and deliberative-reasoning structure contribute null or transient effects; the only reliable predictor is whether constitutional content was present. Capabilities on MMLU, ARC-Easy, PIQA, and GSM8K are fully preserved — no capability tax at this scale.</p>
+</div>
+
+<div class="divider"></div>
+<h2 style="font-family:Georgia,serif;font-size:16px;color:var(--muted);margin-bottom:24px;letter-spacing:.05em;">Items 4 – 10</h2>
+
+<!-- ===== PAPER 04 ===== -->
+<div class="paper-mid">
+  <div class="rank-mid">04 · PRETRAINING/MIDTRAINING SAFETY</div>
+  <div class="tags">
+    <span class="tag tag-align">midtraining</span>
+    <span class="tag tag-align">alignment</span>
+    <span class="tag">arXiv preprint</span>
+  </div>
+  <h3><a href="https://arxiv.org/abs/2605.02087">Model Spec Midtraining: Improving How Alignment Training Generalizes</a></h3>
+  <div class="paper-meta" style="font-size:13px;color:var(--muted);margin-bottom:6px;">Chloe Li, Nevan Wichers, Sara Price, Samuel Marks, Jon Kutasov · arXiv preprint · May 2026</div>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 520 90" xmlns="http://www.w3.org/2000/svg" aria-label="Model Spec Midtraining pipeline">
+      <rect width="520" height="90" fill="#191919" rx="4"/>
+      <rect x="10" y="20" width="110" height="50" fill="#1e2030" stroke="#3a5a8a" stroke-width="1" rx="3"/>
+      <text x="65" y="42" font-family="sans-serif" font-size="8" fill="#9ab8e0" text-anchor="middle" font-weight="bold">Pretraining</text>
+      <text x="65" y="58" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">base model</text>
+      <line x1="120" y1="45" x2="155" y2="45" stroke="#444" stroke-width="1.2" marker-end="url(#a2)"/>
+      <rect x="155" y="20" width="140" height="50" fill="#1e2820" stroke="#3a7a50" stroke-width="1" rx="3"/>
+      <text x="225" y="40" font-family="sans-serif" font-size="8" fill="#7abf99" text-anchor="middle" font-weight="bold">MSM</text>
+      <text x="225" y="54" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">synthetic spec-discussion docs</text>
+      <text x="225" y="65" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">teaches intent, not demonstrations</text>
+      <line x1="295" y1="45" x2="330" y2="45" stroke="#444" stroke-width="1.2" marker-end="url(#a2)"/>
+      <rect x="330" y="20" width="110" height="50" fill="#202030" stroke="#5a5a9a" stroke-width="1" rx="3"/>
+      <text x="385" y="42" font-family="sans-serif" font-size="8" fill="#9090e0" text-anchor="middle" font-weight="bold">SFT</text>
+      <text x="385" y="58" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">generalises better</text>
+      <line x1="440" y1="45" x2="475" y2="45" stroke="#444" stroke-width="1.2" marker-end="url(#a2)"/>
+      <rect x="475" y="28" width="35" height="34" fill="#1e2a1e" stroke="#3a7a50" stroke-width="0.8" rx="2"/>
+      <text x="492" y="49" font-family="sans-serif" font-size="8" fill="#5bbf7a" text-anchor="middle">✓</text>
+      <defs><marker id="a2" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#444"/></marker></defs>
+    </svg>
+    <figcaption>MSM: synthetic spec-discussion documents inserted between pretraining and SFT to shape alignment generalisation intent.</figcaption>
+  </figure>
+  <p class="summary">MSM inserts synthetic documents discussing the model spec (both content and edge-case reasoning) between pretraining and fine-tuning, teaching the spec's intent rather than surface demonstrations. Post-MSM models recover alignment better from underspecified SFT demonstrations and show reduced erosion under distributional shift, suggesting midtraining can encode the generalisation target that post-training data underspecifies.</p>
+</div>
+
+<!-- ===== PAPER 05 ===== -->
+<div class="paper-mid">
+  <div class="rank-mid">05 · PRETRAINING/MIDTRAINING SAFETY</div>
+  <div class="tags">
+    <span class="tag tag-align">pretraining</span>
+    <span class="tag tag-align">alignment</span>
+    <span class="tag">arXiv preprint</span>
+  </div>
+  <h3><a href="https://arxiv.org/abs/2606.19168">Beyond Safe Data: Pretraining-Stage Alignment with Regular Safety Reflection</a></h3>
+  <div class="paper-meta" style="font-size:13px;color:var(--muted);margin-bottom:6px;">arXiv preprint · Jun 2026</div>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 520 80" xmlns="http://www.w3.org/2000/svg" aria-label="SRP vs filtering comparison">
+      <rect width="520" height="80" fill="#191919" rx="4"/>
+      <text x="110" y="16" font-family="sans-serif" font-size="8" font-weight="bold" fill="#888" text-anchor="middle">Filtering/Rewriting</text>
+      <text x="110" y="36" font-family="sans-serif" font-size="9" fill="#e05555" text-anchor="middle">removes unsafe data</text>
+      <text x="110" y="52" font-family="sans-serif" font-size="8" fill="#777" text-anchor="middle">capability degradation risk</text>
+      <text x="110" y="66" font-family="sans-serif" font-size="8" fill="#777" text-anchor="middle">shallow generalisation</text>
+      <line x1="220" y1="40" x2="300" y2="40" stroke="#444" stroke-width="1.2"/>
+      <text x="260" y="36" font-family="sans-serif" font-size="8" fill="#888" text-anchor="middle">vs.</text>
+      <text x="410" y="16" font-family="sans-serif" font-size="8" font-weight="bold" fill="#7abf99" text-anchor="middle">SRP (this work)</text>
+      <text x="410" y="36" font-family="sans-serif" font-size="9" fill="#5bbf7a" text-anchor="middle">inserts safety reflections</text>
+      <text x="410" y="52" font-family="sans-serif" font-size="8" fill="#aaa" text-anchor="middle">native self-monitoring habit</text>
+      <text x="410" y="66" font-family="sans-serif" font-size="8" fill="#aaa" text-anchor="middle">↓ attack success at 1.7B scale</text>
+    </svg>
+    <figcaption>SRP (Safety Reflection Pretraining) vs. standard filtering/rewriting: inserts reflections rather than removing data.</figcaption>
+  </figure>
+  <p class="summary">Safety Reflection Pretraining (SRP) regularly inserts short safety-reflection passages into the pretraining stream rather than filtering or rewriting unsafe content. At 1.7B scale on FineWeb-Edu, SRP substantially reduces inference-stage attack success rates and resistance to fine-tuning safety erosion compared to filtering and rewriting baselines, suggesting that building a native self-monitoring habit during pretraining outperforms post-hoc knowledge removal.</p>
+</div>
+
+<!-- ===== PAPER 06 ===== -->
+<div class="paper-mid">
+  <div class="rank-mid">06 · PRETRAINING/MIDTRAINING SAFETY · AI SECURITY</div>
+  <div class="tags">
+    <span class="tag tag-align">adversarial fine-tuning</span>
+    <span class="tag tag-security">AI security</span>
+    <span class="tag">arXiv preprint</span>
+  </div>
+  <h3><a href="https://arxiv.org/abs/2606.07970">Defending Against Malicious Finetuning by Scaling Train-time Adversarial Attacks</a></h3>
+  <div class="paper-meta" style="font-size:13px;color:var(--muted);margin-bottom:6px;">arXiv preprint · Jun 2026</div>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 520 80" xmlns="http://www.w3.org/2000/svg" aria-label="Patcher bi-level optimization loop">
+      <rect width="520" height="80" fill="#191919" rx="4"/>
+      <rect x="15" y="18" width="145" height="46" fill="#1e1a2a" stroke="#6a4a9a" stroke-width="1" rx="3"/>
+      <text x="87" y="37" font-family="sans-serif" font-size="8" font-weight="bold" fill="#b090e0" text-anchor="middle">Outer: Defender</text>
+      <text x="87" y="52" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">find insensitive weights</text>
+      <line x1="160" y1="41" x2="195" y2="41" stroke="#555" stroke-width="1.2" marker-end="url(#a3)"/>
+      <rect x="195" y="18" width="145" height="46" fill="#2a1e1e" stroke="#9a4a4a" stroke-width="1" rx="3"/>
+      <text x="267" y="37" font-family="sans-serif" font-size="8" font-weight="bold" fill="#e07b7b" text-anchor="middle">Inner: Attacker</text>
+      <text x="267" y="52" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">scaled PEFT fine-tuning steps</text>
+      <line x1="340" y1="41" x2="375" y2="41" stroke="#555" stroke-width="1.2" marker-end="url(#a3)"/>
+      <rect x="375" y="18" width="130" height="46" fill="#1e2a1e" stroke="#4a7a4a" stroke-width="1" rx="3"/>
+      <text x="440" y="37" font-family="sans-serif" font-size="8" font-weight="bold" fill="#7abf77" text-anchor="middle">Patcher (parallel)</text>
+      <text x="440" y="52" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">↓ wall-clock vs. serial</text>
+      <defs><marker id="a3" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#555"/></marker></defs>
+    </svg>
+    <figcaption>Patcher: bi-level optimisation where the inner adversarial loop applies scaled PEFT attacks; the outer loop finds weight configurations insensitive to strong adversaries.</figcaption>
+  </figure>
+  <p class="summary">Patcher reformulates malicious-finetuning defence as adversarial training with scaled inner-loop optimisation: the defender must find weights insensitive to progressively stronger PEFT-based attacks. A parallel implementation reduces wall-clock time without sacrificing robustness. Patcher outperforms prior defences (TAR, gradient-constrained baselines) against PEFT attacks, but resistance degrades under full-parameter fine-tuning on fully poisoned datasets — a remaining open challenge.</p>
+</div>
+
+<!-- ===== PAPER 07 ===== -->
+<div class="paper-mid">
+  <div class="rank-mid">07 · AI SECURITY · REFUSAL-MECHANISM</div>
+  <div class="tags">
+    <span class="tag tag-security">AI security</span>
+    <span class="tag tag-align">refusal mechanism</span>
+    <span class="tag">arXiv preprint</span>
+  </div>
+  <h3><a href="https://arxiv.org/abs/2608.18093">Abliteration Mitigation via Refusal Aliases (AMRA)</a></h3>
+  <div class="paper-meta" style="font-size:13px;color:var(--muted);margin-bottom:6px;">Nathan Truong (Independent) · arXiv preprint · Aug 2026</div>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 520 80" xmlns="http://www.w3.org/2000/svg" aria-label="AMRA weight-editing pipeline">
+      <rect width="520" height="80" fill="#191919" rx="4"/>
+      <text x="80" y="28" font-family="sans-serif" font-size="8" font-weight="bold" fill="#e07b7b" text-anchor="middle">True Refusal Dir.</text>
+      <text x="80" y="44" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">easily extractable → ablatable</text>
+      <line x1="155" y1="38" x2="195" y2="38" stroke="#555" stroke-width="1.2" marker-end="url(#a4)"/>
+      <rect x="195" y="18" width="145" height="46" fill="#1e2028" stroke="#5a7aaa" stroke-width="1" rx="3"/>
+      <text x="267" y="37" font-family="sans-serif" font-size="8" font-weight="bold" fill="#9ab8e0" text-anchor="middle">AMRA: Rank-k Update</text>
+      <text x="267" y="52" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">random alias replaces refusal dir.</text>
+      <line x1="340" y1="38" x2="375" y2="38" stroke="#555" stroke-width="1.2" marker-end="url(#a4)"/>
+      <text x="448" y="28" font-family="sans-serif" font-size="8" font-weight="bold" fill="#5bbf7a" text-anchor="middle">+2.16 pts refusal</text>
+      <text x="448" y="44" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">&lt;0.5 pp MMLU drop</text>
+      <text x="448" y="58" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">Llama-3-8B</text>
+      <defs><marker id="a4" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#555"/></marker></defs>
+    </svg>
+    <figcaption>AMRA replaces the extractable refusal direction with random aliases via rank-k weight updates; +2.16 points refusal post-abliteration at &lt;0.5 pp MMLU cost on Llama-3-8B.</figcaption>
+  </figure>
+  <p class="summary">AMRA defends against abliteration (refusal removal via weight orthogonalisation) by hiding the refusal direction rather than hardening it: rank-k updates on residual-stream writer matrices replace refusal-inducing activations with random aliases, while correcting downstream reader matrices preserves model utility. On Llama-3-8B, AMRA raises post-abliteration refusal scores by +2.16 points over the undefended baseline with &lt;0.5 pp MMLU degradation.</p>
+</div>
+
+<!-- ===== PAPER 08 ===== -->
+<div class="paper-mid">
+  <div class="rank-mid">08 · APPLIED MECH INTERP · AI SECURITY</div>
+  <div class="tags">
+    <span class="tag">mech-interp</span>
+    <span class="tag tag-security">AI security</span>
+    <span class="tag tag-peer">EMNLP 2026 Findings (peer-reviewed)</span>
+  </div>
+  <h3><a href="https://arxiv.org/abs/2609.00051">From Detection to Refusal: Safer LLMs via Circuit-Guided Weight Scaling</a></h3>
+  <div class="paper-meta" style="font-size:13px;color:var(--muted);margin-bottom:6px;">Kuan-Lin Chu, Chung-En Sun, Tsui-Wei Weng (UCSD) · EMNLP 2026 Findings · submitted Aug 30, 2026</div>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 520 72" xmlns="http://www.w3.org/2000/svg" aria-label="Three-stage safety circuit">
+      <rect width="520" height="72" fill="#191919" rx="4"/>
+      <rect x="10" y="16" width="140" height="40" fill="#1e2030" stroke="#5a7aaa" stroke-width="1" rx="3"/>
+      <text x="80" y="32" font-family="sans-serif" font-size="8" font-weight="bold" fill="#9ab8e0" text-anchor="middle">Harmful Detection Heads</text>
+      <text x="80" y="46" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">early layers · respond to harm</text>
+      <line x1="150" y1="36" x2="185" y2="36" stroke="#555" stroke-width="1.2" marker-end="url(#a5)"/>
+      <rect x="185" y="16" width="140" height="40" fill="#202020" stroke="#7a7a40" stroke-width="1" rx="3"/>
+      <text x="255" y="32" font-family="sans-serif" font-size="8" font-weight="bold" fill="#c0c060" text-anchor="middle">Safety Neurons</text>
+      <text x="255" y="46" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">residual stream mediation</text>
+      <line x1="325" y1="36" x2="360" y2="36" stroke="#555" stroke-width="1.2" marker-end="url(#a5)"/>
+      <rect x="360" y="16" width="140" height="40" fill="#1e2a1e" stroke="#3a7a50" stroke-width="1" rx="3"/>
+      <text x="430" y="32" font-family="sans-serif" font-size="8" font-weight="bold" fill="#7abf99" text-anchor="middle">Refusal Heads</text>
+      <text x="430" y="46" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">+26.5% safety · weight scaling</text>
+      <defs><marker id="a5" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#555"/></marker></defs>
+    </svg>
+    <figcaption>Three-stage safety circuit mapped across model families; circuit-guided weight scaling amplifies the pipeline for +26.5% safety improvement under attacks.</figcaption>
+  </figure>
+  <p class="summary">Maps a causal three-stage safety circuit — Harmful Detection Heads (early layers) → Safety Neurons (residual stream) → Refusal Heads (generation) — shared across multiple model families. Targeted weight scaling along this circuit, without any additional fine-tuning, improves safety rates under attacks by +26.5%, confirming the circuit is an actionable intervention handle rather than a post-hoc description.</p>
+</div>
+
+<!-- ===== PAPER 09 ===== -->
+<div class="paper-mid">
+  <div class="rank-mid">09 · APPLIED MECH INTERP · AI SECURITY</div>
+  <div class="tags">
+    <span class="tag">mech-interp</span>
+    <span class="tag tag-security">AI security</span>
+    <span class="tag tag-peer">ICML 2026 MI Workshop (peer-reviewed)</span>
+  </div>
+  <h3><a href="https://arxiv.org/abs/2608.27504">Circuit Discovery Helps Detect LLM Jailbreaking: A Mechanistic Interpretability Study</a></h3>
+  <div class="paper-meta" style="font-size:13px;color:var(--muted);margin-bottom:6px;">Paria Mehrbod, Boris Knyazev, Guy Wolf, Eugene Belilovsky, Geraldin Nanfack · ICML 2026 Mech-Interp Workshop · Aug 2026</div>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 520 72" xmlns="http://www.w3.org/2000/svg" aria-label="Circuit ablation reduces jailbreak success">
+      <rect width="520" height="72" fill="#191919" rx="4"/>
+      <text x="130" y="22" font-family="sans-serif" font-size="8" font-weight="bold" fill="#9ab8e0" text-anchor="middle">Edge Attribution Patching</text>
+      <text x="130" y="38" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">LLaMA-2-7B-chat</text>
+      <text x="130" y="52" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">attention heads + MLP pathways</text>
+      <line x1="210" y1="40" x2="255" y2="40" stroke="#555" stroke-width="1.2" marker-end="url(#a6)"/>
+      <text x="305" y="22" font-family="sans-serif" font-size="8" font-weight="bold" fill="#c0c060" text-anchor="middle">Jailbreak Circuit</text>
+      <text x="305" y="38" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">mediates affirmative responses</text>
+      <line x1="370" y1="40" x2="405" y2="40" stroke="#555" stroke-width="1.2" marker-end="url(#a6)"/>
+      <text x="460" y="26" font-family="sans-serif" font-size="9" font-weight="bold" fill="#5bbf7a" text-anchor="middle">↓ 80% ASR</text>
+      <text x="460" y="42" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">1st-token ablation</text>
+      <defs><marker id="a6" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#555"/></marker></defs>
+    </svg>
+    <figcaption>Edge attribution patching isolates the jailbreak circuit; ablating at first-token prediction reduces attack success rate by up to 80%.</figcaption>
+  </figure>
+  <p class="summary">Uses edge attribution patching and subnetwork probing on LLaMA-2-7B-chat to isolate the computational circuit responsible for affirmative jailbreak responses (specific attention heads and MLP pathways). Ablating this circuit at first-token prediction reduces attack success rates by up to 80%, suggesting runtime circuit ablation as a deployment-time safety mechanism — the first peer-reviewed demonstration that circuit discovery can directly suppress jailbreak success.</p>
+</div>
+
+<!-- ===== PAPER 10 ===== -->
+<div class="paper-mid">
+  <div class="rank-mid">10 · AI SECURITY</div>
+  <div class="tags">
+    <span class="tag tag-security">AI security</span>
+    <span class="tag">arXiv preprint</span>
+  </div>
+  <h3><a href="https://arxiv.org/abs/2608.25697">LMSM: LLM Security Framework Inspired by Linux Security Modules</a></h3>
+  <div class="paper-meta" style="font-size:13px;color:var(--muted);margin-bottom:6px;">XiuYu Zhang, Bonan Ruan, Junfeng Fang, An Zhang, Tat-Seng Chua, Zhenkai Liang · arXiv preprint · Aug 2026</div>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 520 72" xmlns="http://www.w3.org/2000/svg" aria-label="LMSM architecture: backend + policy + gate">
+      <rect width="520" height="72" fill="#191919" rx="4"/>
+      <rect x="10" y="16" width="130" height="40" fill="#1e2028" stroke="#5a7aaa" stroke-width="1" rx="3"/>
+      <text x="75" y="32" font-family="sans-serif" font-size="8" font-weight="bold" fill="#9ab8e0" text-anchor="middle">Security Backend</text>
+      <text x="75" y="46" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">calibrated evidence</text>
+      <line x1="140" y1="36" x2="170" y2="36" stroke="#555" stroke-width="1.2" marker-end="url(#a7)"/>
+      <rect x="170" y="16" width="155" height="40" fill="#1e2028" stroke="#7a5a20" stroke-width="1" rx="3"/>
+      <text x="247" y="32" font-family="sans-serif" font-size="8" font-weight="bold" fill="#e0c060" text-anchor="middle">Versioned Policy Engine</text>
+      <text x="247" y="46" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">rules over trusted context</text>
+      <line x1="325" y1="36" x2="355" y2="36" stroke="#555" stroke-width="1.2" marker-end="url(#a7)"/>
+      <rect x="355" y="16" width="150" height="40" fill="#1e2a1e" stroke="#3a7a50" stroke-width="1" rx="3"/>
+      <text x="430" y="30" font-family="sans-serif" font-size="8" font-weight="bold" fill="#7abf99" text-anchor="middle">Buffered Output Gate</text>
+      <text x="430" y="44" font-family="sans-serif" font-size="7" fill="#888" text-anchor="middle">39%→3% ASR · 98% throughput</text>
+      <defs><marker id="a7" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#555"/></marker></defs>
+    </svg>
+    <figcaption>LMSM: pluggable backend + versioned policy evaluator + buffered output gate — LSM hook architecture adapted for LLM inference; 39.20% → 3.32% HarmBench ASR on Qwen3-4B.</figcaption>
+  </figure>
+  <p class="summary">Adapts the Linux Security Module hook architecture to LLM inference: a pluggable safety backend exposes calibrated evidence, a versioned policy engine evaluates per-request rules against trusted context, and a buffered output gate withholds generation until policy clears. The design separates mediation correctness from policy update cycles. On Qwen3-4B (LMSM-Checkpoint): HarmBench attack success drops from 39.20% to 3.32%, XSTest false-refusals rise by only 2 pp, 98.14% throughput retained at 32 concurrent sequences.</p>
+</div>
+
+<footer>
+  <div>📡 Research Radar — 2026-09-18 · Pretraining/Midtraining Safety · AI Security · Applied Mech Interp</div>
+  <div>Window: Aug 8 – Sep 18, 2026 (post-gap sweep) · 2 peer-reviewed · 8 preprints · 0 forum/blog</div>
+  <div>Generated by <a href="https://claude.ai/code">Claude Code</a> · <a href="https://github.com/GusSand/research-radar">GusSand/research-radar</a></div>
+</footer>
+</div>
+{% endraw %}

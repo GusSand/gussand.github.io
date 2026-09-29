@@ -1,0 +1,789 @@
+---
+layout: "radar"
+title: "Research Radar · Sep 11 2026"
+kind: "daily"
+slug: "2026-09-11"
+date: 2026-09-11
+group: "latest"
+window: "September 8–11, 2026 (preprints); EACL 2026 + ACL 2026 proceedings newly indexed"
+summary: "Window: September 8–11, 2026 (preprints); EACL 2026 + ACL 2026 proceedings newly indexed · Sources swept: ACL Anthology (ACL/EACL), OpenReview, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong · Counts: 4 peer-reviewed · 6 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/19b4ec79-0db4-4465-8f8e-cd7471de14f2"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-11.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,600;1,8..60,300&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #faf9f7;
+    --surface: #f0ede8;
+    --border: #ddd;
+    --text: #3a3a3a;
+    --dim: #888;
+    --title: #1a1a1a;
+    --link: #1a4f99;
+    --tag-bg: #e8e8e8;
+    --tag-text: #444;
+    --accent-teal: #0d7377;
+    --accent-blue: #1a4f99;
+    --accent-red: #b02020;
+    --accent-amber: #a05c00;
+    --accent-violet: #5c1aaa;
+    --accent-green: #1a6e3c;
+    --fig-bg: #fff;
+    --fig-border: #e0dbd4;
+    --divider: #e0dbd4;
+    --rank-bg: #1a1a1a;
+    --rank-text: #f0f0f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111111;
+      --surface: #1a1a1a;
+      --border: #2a2a2a;
+      --text: #c9c9c9;
+      --dim: #666;
+      --title: #f0f0f0;
+      --link: #7eb8ff;
+      --tag-bg: #252525;
+      --tag-text: #aaa;
+      --accent-teal: #14b8bd;
+      --accent-blue: #7eb8ff;
+      --accent-red: #f07070;
+      --accent-amber: #f0a030;
+      --accent-violet: #c084fc;
+      --accent-green: #4ade80;
+      --fig-bg: #1a1a1a;
+      --fig-border: #2a2a2a;
+      --divider: #2a2a2a;
+      --rank-bg: #f0f0f0;
+      --rank-text: #111;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --fig-bg: #1a1a1a;
+    --fig-border: #2a2a2a;
+    --divider: #2a2a2a;
+    --rank-bg: #f0f0f0;
+    --rank-text: #111;
+  }
+  :root[data-theme="light"] {
+    --bg: #faf9f7;
+    --surface: #f0ede8;
+    --border: #ddd;
+    --text: #3a3a3a;
+    --dim: #888;
+    --title: #1a1a1a;
+    --link: #1a4f99;
+    --tag-bg: #e8e8e8;
+    --tag-text: #444;
+    --accent-teal: #0d7377;
+    --accent-blue: #1a4f99;
+    --accent-red: #b02020;
+    --accent-amber: #a05c00;
+    --accent-violet: #5c1aaa;
+    --accent-green: #1a6e3c;
+    --fig-bg: #fff;
+    --fig-border: #e0dbd4;
+    --divider: #e0dbd4;
+    --rank-bg: #1a1a1a;
+    --rank-text: #f0f0f0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    padding: 0 20px;
+    padding-block: 40px;
+    max-width: 660px;
+    margin: 0 auto;
+  }
+
+  /* Masthead */
+  .masthead {
+    border-bottom: 2px solid var(--title);
+    padding-bottom: 20px;
+    margin-bottom: 36px;
+  }
+  .masthead-eyebrow {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 6px;
+  }
+  .masthead-issue {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--title);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    text-wrap: balance;
+  }
+  .masthead-counts {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--dim);
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+  .masthead-tracks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .track {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .track-sep { color: var(--border); }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-right: 4px;
+    margin-bottom: 2px;
+  }
+  .tag-peer { background: #d4edda; color: #155724; }
+  .tag-interp { background: #d1f0f0; color: #0a5a5c; }
+  .tag-security { background: #f8d7da; color: #721c24; }
+  .tag-align { background: #cfe2ff; color: #0a3166; }
+  .tag-control { background: #e8d5f8; color: #4a0e7a; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .tag-peer { background: #0d2e18; color: #4ade80; }
+    :root:not([data-theme="light"]) .tag-interp { background: #0a2a2a; color: #14b8bd; }
+    :root:not([data-theme="light"]) .tag-security { background: #2e0d0d; color: #f07070; }
+    :root:not([data-theme="light"]) .tag-align { background: #0d1e3a; color: #7eb8ff; }
+    :root:not([data-theme="light"]) .tag-control { background: #1e0e3a; color: #c084fc; }
+  }
+  :root[data-theme="dark"] .tag-peer { background: #0d2e18; color: #4ade80; }
+  :root[data-theme="dark"] .tag-interp { background: #0a2a2a; color: #14b8bd; }
+  :root[data-theme="dark"] .tag-security { background: #2e0d0d; color: #f07070; }
+  :root[data-theme="dark"] .tag-align { background: #0d1e3a; color: #7eb8ff; }
+  :root[data-theme="dark"] .tag-control { background: #1e0e3a; color: #c084fc; }
+
+  /* Full paper entries (top 3) */
+  .paper {
+    margin-bottom: 52px;
+  }
+  .paper-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .paper-rank {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--rank-bg);
+    color: var(--rank-text);
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .paper-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+  .paper-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+  .paper-title a {
+    color: var(--title);
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+  }
+  .paper-title a:hover { color: var(--link); }
+  .paper-hook {
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  .paper-detail {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-top: 14px;
+  }
+  .paper-figure {
+    background: var(--fig-bg);
+    border: 1px solid var(--fig-border);
+    border-radius: 3px;
+    padding: 16px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .paper-figure svg { max-width: 100%; display: block; margin: 0 auto; }
+  .paper-figure figcaption {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--dim);
+    margin-top: 10px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  /* Section dividers */
+  hr.section-divider {
+    border: none;
+    border-top: 1px solid var(--divider);
+    margin: 48px 0;
+  }
+  .more-section-label {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dim);
+    border-top: 2px solid var(--title);
+    padding-top: 14px;
+    margin-bottom: 36px;
+  }
+
+  /* Mid-tier entries (items 4–10) */
+  .mid-paper {
+    margin-bottom: 44px;
+  }
+  .mid-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 12px;
+    text-wrap: balance;
+  }
+  .mid-title a {
+    color: var(--title);
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 3px;
+  }
+  .mid-title a:hover { color: var(--link); }
+  .mid-figure {
+    margin: 12px 0;
+  }
+  .mid-figure svg { max-width: 100%; }
+  .mid-summary {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-top: 12px;
+  }
+
+  /* Notes */
+  .notes-section {
+    border-top: 1px solid var(--divider);
+    padding-top: 24px;
+    margin-top: 48px;
+  }
+  .notes-label {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 14px;
+  }
+  .notes-section ul {
+    padding-left: 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .notes-section li { margin-bottom: 8px; }
+
+  /* Footer */
+  .site-footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--divider);
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--dim);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .paper-title { font-size: 19px; }
+    .mid-title { font-size: 16px; }
+    .masthead-issue { font-size: 22px; }
+  }
+</style>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · September 11, 2026</div>
+  <div class="masthead-counts">4 peer-reviewed · 6 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Pretraining Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">AI Security</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- 01 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">midtraining safety</span>
+      <span class="tag">preprint · Sep 8 2026</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.09081">Everything in Moderation: Per-Domain Coverage Optima and Alignment-Resistant Domain Gaps in Multi-Domain Mid-Training</a>
+  </h2>
+  <p class="paper-hook">
+    How much of each domain should go into midtraining, and can a later alignment pass fix it if you get the mix wrong? This paper sweeps 30 data allocations across a five-domain simplex and finds every domain has an interior optimum — more coverage is actively worse past roughly 40% — and, more consequentially, that the gaps this creates survive alignment. Composition chosen at midtraining is a decision you live with.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 215" xmlns="http://www.w3.org/2000/svg" aria-label="Inverted-U performance curves versus domain coverage, with interior optima inside a 10 to 40 percent band">
+      <rect width="500" height="215" fill="#fff"/>
+      <text x="250" y="16" font-family="Georgia, serif" font-size="11" fill="#555" text-anchor="middle">Domain performance vs. mid-training coverage share — Qwen3-8B-Base</text>
+      <line x1="58" y1="30" x2="58" y2="160" stroke="#ccc" stroke-width="1"/>
+      <line x1="58" y1="160" x2="470" y2="160" stroke="#ccc" stroke-width="1"/>
+      <text x="30" y="98" font-family="Georgia, serif" font-size="10" fill="#666" text-anchor="middle" transform="rotate(-90,30,98)">Accuracy</text>
+      <rect x="100" y="30" width="124" height="130" fill="#ffeaa0" opacity="0.35"/>
+      <text x="162" y="44" font-family="Georgia, serif" font-size="10" fill="#a05c00" text-anchor="middle">optimum band 10–40%</text>
+      <path d="M70,146 Q120,52 175,66 Q260,92 455,140" fill="none" stroke="#0d7377" stroke-width="2"/>
+      <path d="M70,152 Q140,44 205,62 Q290,98 455,146" fill="none" stroke="#1a4f99" stroke-width="2"/>
+      <path d="M70,140 Q105,62 150,74 Q250,108 455,150" fill="none" stroke="#5c1aaa" stroke-width="2"/>
+      <circle cx="118" cy="60" r="3.5" fill="#5c1aaa"/>
+      <circle cx="140" cy="56" r="3.5" fill="#0d7377"/>
+      <circle cx="186" cy="55" r="3.5" fill="#1a4f99"/>
+      <text x="264" y="166" font-family="Georgia, serif" font-size="9" fill="#aaa" text-anchor="middle">coverage share of one domain</text>
+      <text x="70" y="174" font-family="Georgia, serif" font-size="9" fill="#aaa" text-anchor="middle">0%</text>
+      <text x="162" y="174" font-family="Georgia, serif" font-size="9" fill="#aaa" text-anchor="middle">25%</text>
+      <text x="300" y="174" font-family="Georgia, serif" font-size="9" fill="#aaa" text-anchor="middle">60%</text>
+      <text x="455" y="174" font-family="Georgia, serif" font-size="9" fill="#aaa" text-anchor="middle">100%</text>
+      <text x="250" y="196" font-family="Georgia, serif" font-size="10" fill="#555" text-anchor="middle">Fitted peaks 9.9%–35.1% · interiority permutation test P ≈ 0.010</text>
+      <text x="250" y="209" font-family="Georgia, serif" font-size="10" fill="#b02020" text-anchor="middle">Gaps survive alignment: compensatory SFT raises 116/120 cells, gaps intact</text>
+    </svg>
+    <figcaption>Figure 1: Each domain peaks at an interior coverage share (fitted peaks 9.9%–35.1%, all within 10–40%) rather than improving monotonically; the resulting gaps persist through a fixed-budget alignment pass.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The sweep covers five semantically rule-disjoint KOR-Bench reasoning domains over 30 allocations spanning the five-domain simplex — 24 configurations used for fitting plus 6 withheld — at 5 seeds each, on Qwen3-8B-Base with a 4B replication. A calibrated permutation test for quadratic interiority returns P ≈ 0.010, ruling out the monotone more-is-better alternative. The durability result is the sharper one: a fixed-budget compensatory SFT pass raises 116 of 120 cells in absolute terms yet leaves the relative per-domain gaps essentially unchanged, and an equal-budget uniform control behaves the same way. Alignment redistributes level, not structure.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- 02 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">pretraining safety</span>
+      <span class="tag">preprint · Sep 2026</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.06934">The Geometry of Refusal: Why Post-Hoc Safety Is Fragile and Pretraining-Time Safety Persists</a>
+  </h2>
+  <p class="paper-hook">
+    Post-hoc safety training can be undone by 100 steps of benign fine-tuning. This paper gives the geometric reason: the safety update lands nearly orthogonal to every capability direction, so it gates capability rather than removing it — and anything that re-sharpens those directions opens the gate. A 267-checkpoint sweep then locates where the substrate safety attaches to actually forms, and it is a sharp transition, not a gradual one.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Orthogonal safety update over capability subspace, and safety substrate emergence curve during pretraining">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="115" y="18" font-family="Georgia, serif" font-size="11" fill="#888" text-anchor="middle">Post-hoc safety geometry</text>
+      <ellipse cx="115" cy="115" rx="80" ry="38" fill="#e8f4f8" stroke="#aacce0" stroke-width="1"/>
+      <text x="115" y="162" font-family="Georgia, serif" font-size="10" fill="#888" text-anchor="middle">Capability subspace (intact)</text>
+      <line x1="115" y1="115" x2="115" y2="52" stroke="#b02020" stroke-width="2.5" marker-end="url(#ar1)"/>
+      <defs><marker id="ar1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#b02020"/></marker></defs>
+      <text x="126" y="72" font-family="Georgia, serif" font-size="10" fill="#b02020">Safety update</text>
+      <text x="126" y="84" font-family="Georgia, serif" font-size="10" fill="#b02020">⊥ capability</text>
+      <text x="365" y="18" font-family="Georgia, serif" font-size="11" fill="#888" text-anchor="middle">OLMo-2-1B · 267 checkpoints</text>
+      <line x1="260" y1="30" x2="260" y2="185" stroke="#ccc" stroke-width="1"/>
+      <line x1="260" y1="185" x2="470" y2="185" stroke="#ccc" stroke-width="1"/>
+      <text x="248" y="108" font-family="Georgia, serif" font-size="10" fill="#666" text-anchor="middle" transform="rotate(-90,248,108)">Safety substrate</text>
+      <rect x="355" y="30" width="45" height="155" fill="#ffeaa0" opacity="0.35"/>
+      <polyline points="270,178 300,175 330,172 355,168 375,130 390,62 400,40 420,35 450,33" fill="none" stroke="#0d7377" stroke-width="2.5"/>
+      <text x="377" y="200" font-family="Georgia, serif" font-size="9" fill="#a05c00" text-anchor="middle">6B–60B tokens</text>
+      <text x="270" y="197" font-family="Georgia, serif" font-size="9" fill="#aaa" text-anchor="middle">1B</text>
+      <text x="450" y="197" font-family="Georgia, serif" font-size="9" fill="#aaa" text-anchor="middle">200B</text>
+      <text x="365" y="214" font-family="Georgia, serif" font-size="10" fill="#555" text-anchor="middle">100 benign steps collapse refusal (Qwen-2.5-7B, Llama-3-8B)</text>
+    </svg>
+    <figcaption>Figure 2: The safety update sits orthogonal to the capability subspace — a gate, not an erasure. The substrate it gates emerges in a sharp 6B–60B-token transition during pretraining.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Malla, Choi &amp; Choi formalize the masking claim with a kernel-immobility lemma: an update confined to the orthogonal complement of the capability kernel cannot remove a pre-existing capability, only suppress its expression, which is why 100 steps of benign fine-tuning restore harmful outputs in Qwen-2.5-7B and Llama-3-8B Instruct. Read alongside item #1, the two results converge from opposite directions — one measuring that early-stage composition resists later correction, the other explaining geometrically why later correction is structurally incapable of it.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- 03 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ACL 2026</span>
+      <span class="tag tag-align">unlearning</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2511.14017">From Narrow Unlearning to Emergent Misalignment: Causes, Consequences, and Containment in LLMs</a>
+  </h2>
+  <p class="paper-hook">
+    Unlearning is the main proposed alternative to filtering capability out at the data stage. This peer-reviewed result complicates that: unlearning refusal for one narrow concept does not stay narrow — it depresses refusal across unrelated domains, and unlearning the Safety concept specifically causes the widest collateral damage.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg" aria-label="Refusal score drop across seven responsible-AI domains after narrow unlearning of a single concept">
+      <rect width="500" height="190" fill="#fff"/>
+      <text x="250" y="16" font-family="Georgia, serif" font-size="11" fill="#555" text-anchor="middle">Refusal after unlearning ONE concept — spillover across 7 RAI domains</text>
+      <line x1="95" y1="28" x2="95" y2="150" stroke="#ccc" stroke-width="1"/>
+      <line x1="95" y1="150" x2="480" y2="150" stroke="#ccc" stroke-width="1"/>
+      <rect x="105" y="40" width="46" height="110" fill="#b02020"/>
+      <text x="128" y="34" font-family="Georgia, serif" font-size="9" fill="#b02020" text-anchor="middle">target</text>
+      <rect x="158" y="72" width="46" height="78" fill="#d98080"/>
+      <rect x="211" y="84" width="46" height="66" fill="#d98080"/>
+      <rect x="264" y="92" width="46" height="58" fill="#d98080"/>
+      <rect x="317" y="100" width="46" height="50" fill="#d98080"/>
+      <rect x="370" y="106" width="46" height="44" fill="#d98080"/>
+      <rect x="423" y="112" width="46" height="38" fill="#d98080"/>
+      <text x="290" y="60" font-family="Georgia, serif" font-size="10" fill="#721c24" text-anchor="middle">spillover into untargeted domains</text>
+      <text x="128" y="163" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Safety</text>
+      <text x="181" y="163" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Cyber</text>
+      <text x="234" y="163" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Toxicity</text>
+      <text x="287" y="163" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Bias</text>
+      <text x="340" y="163" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Sensitive</text>
+      <text x="393" y="163" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Med/Legal</text>
+      <text x="446" y="163" font-family="Georgia, serif" font-size="8" fill="#888" text-anchor="middle">Privacy</text>
+      <text x="42" y="95" font-family="Georgia, serif" font-size="10" fill="#666" text-anchor="middle" transform="rotate(-90,42,95)">Refusal drop</text>
+      <text x="250" y="182" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">Mistral-7B-v0.3 · Qwen2.5-7B — schematic; per-domain deltas in paper</text>
+    </svg>
+    <figcaption>Figure 1: Unlearning refusal for a single RAI concept depresses refusal in untargeted domains as well; the Safety concept produces the broadest spillover. Bar heights are schematic — exact deltas are reported in the paper.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Mushtaq, Ramakrishna and colleagues at Amazon unlearn refusal for one Responsible-AI concept at a time (Cybersecurity, or Safety) and then measure refusal across seven domains — Cybersecurity, Safety, Toxicity, Bias, Sensitive Content, Medical/Legal, Privacy — finding emergent misalignment well outside the targeted concept, replicated on Mistral-7B-v0.3 and Qwen2.5-7B. Removing a capability after the fact perturbs a representation that other refusal behaviors also depend on, which is precisely the failure mode that pretraining-stage filtering avoids by never installing the capability.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- 04 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">EACL 2026</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2406.09289">Understanding Jailbreak Success: A Study of Latent Space Dynamics in Large Language Models</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 450 145" xmlns="http://www.w3.org/2000/svg" aria-label="Jailbreak vector from one class suppresses other jailbreak classes via shared harmfulness suppression">
+      <rect width="450" height="145" fill="#fff"/>
+      <text x="225" y="16" font-family="Georgia, serif" font-size="10" fill="#555" text-anchor="middle">One jailbreak vector, extracted from a single class, suppresses the rest</text>
+      <rect x="14" y="32" width="76" height="22" rx="2" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="52" y="47" font-family="Georgia, serif" font-size="9" fill="#721c24" text-anchor="middle">roleplay</text>
+      <rect x="14" y="60" width="76" height="22" rx="2" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="52" y="75" font-family="Georgia, serif" font-size="9" fill="#721c24" text-anchor="middle">suffix opt.</text>
+      <rect x="14" y="88" width="76" height="22" rx="2" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="52" y="103" font-family="Georgia, serif" font-size="9" fill="#721c24" text-anchor="middle">persona</text>
+      <line x1="90" y1="71" x2="128" y2="71" stroke="#888" stroke-width="1.5" marker-end="url(#ar4)"/>
+      <defs><marker id="ar4" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto"><path d="M0,0 L0,5 L7,2.5 z" fill="#888"/></marker></defs>
+      <rect x="130" y="50" width="106" height="42" rx="2" fill="#fff3cd" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="183" y="68" font-family="Georgia, serif" font-size="9" fill="#6b3d00" text-anchor="middle">shared mechanism:</text>
+      <text x="183" y="82" font-family="Georgia, serif" font-size="9" fill="#6b3d00" text-anchor="middle">harmfulness ↓</text>
+      <line x1="236" y1="71" x2="274" y2="71" stroke="#888" stroke-width="1.5" marker-end="url(#ar5)"/>
+      <defs><marker id="ar5" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto"><path d="M0,0 L0,5 L7,2.5 z" fill="#888"/></marker></defs>
+      <rect x="276" y="50" width="160" height="42" rx="2" fill="#d4edda" stroke="#155724" stroke-width="1.5"/>
+      <text x="356" y="67" font-family="Georgia, serif" font-size="10" fill="#155724" text-anchor="middle">Latent Guard</text>
+      <text x="356" y="82" font-family="Georgia, serif" font-size="9" fill="#155724" text-anchor="middle">≈ or &gt; Llama Guard 3 8B</text>
+      <text x="225" y="128" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">Vicuna 13B/7B v1.5 · Qwen1.5 14B Chat · MPT 7B Chat</text>
+    </svg>
+    <figcaption>Figure 1: Effective jailbreaks share a harmfulness-suppression mechanism; the internal harmfulness representation is repurposed as Latent Guard, an intrinsic safeguard.</figcaption>
+  </figure>
+  <p class="mid-summary">Ball, Kreuter &amp; Panickssery (LMU Munich / MCML / Anthropic) show a jailbreak vector extracted from one class steers away jailbreaks from semantically unrelated classes — evidence of a single shared mechanism, which they identify as suppression of the model's internal harmfulness representation. Repurposed as Latent Guard, that representation detects unsafe inputs comparably to or better than Llama Guard 3 8B while also cutting over-refusals, and is reported robust to finetuning attacks.</p>
+</article>
+<hr class="section-divider">
+
+<!-- 05 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint · Sep 9 2026</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.09793">How Fragile Is Safety Alignment at Frontier Scale? A Single-Direction Attack on a 320B MoE</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 450 175" xmlns="http://www.w3.org/2000/svg" aria-label="Refusal removed by writer type in a 320B mixture of experts, individually and combined">
+      <rect width="450" height="175" fill="#fff"/>
+      <text x="225" y="15" font-family="Georgia, serif" font-size="10" fill="#555" text-anchor="middle">Refusal removed by edited writer type — GLM-5.3-Flash (320B MoE)</text>
+      <line x1="62" y1="26" x2="62" y2="132" stroke="#ccc" stroke-width="1"/>
+      <line x1="62" y1="132" x2="440" y2="132" stroke="#ccc" stroke-width="1"/>
+      <text x="56" y="135" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="end">0%</text>
+      <text x="56" y="82" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="end">50%</text>
+      <text x="56" y="32" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="end">100%</text>
+      <rect x="82" y="128" width="54" height="4" fill="#999"/>
+      <text x="109" y="124" font-family="Georgia, serif" font-size="9" fill="#555" text-anchor="middle">3.9%</text>
+      <text x="109" y="146" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">Attention</text>
+      <rect x="163" y="130" width="54" height="2" fill="#999"/>
+      <text x="190" y="126" font-family="Georgia, serif" font-size="9" fill="#555" text-anchor="middle">1.6%</text>
+      <text x="190" y="146" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">Dense</text>
+      <rect x="244" y="116" width="54" height="16" fill="#999"/>
+      <text x="271" y="112" font-family="Georgia, serif" font-size="9" fill="#555" text-anchor="middle">14.8%</text>
+      <text x="271" y="146" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">Routed exp.</text>
+      <rect x="325" y="49" width="72" height="83" fill="#b02020"/>
+      <text x="361" y="44" font-family="Georgia, serif" font-size="11" fill="#b02020" text-anchor="middle" font-weight="bold">77.6%</text>
+      <text x="361" y="146" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">All three</text>
+      <text x="225" y="166" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">No gradient training · a few hundred contrastive prompts</text>
+    </svg>
+    <figcaption>Figure 1: No single writer type carries the refusal signal; only joint editing across attention, dense and routed-expert writers reaches 77.6% removal.</figcaption>
+  </figure>
+  <p class="mid-summary">Directional ablation had only been established on dense models up to ~70B. Extending it to GLM-5.3-Flash — 320B, 288 routed experts, four-wide hyper-connection residual, block-FP8 — shows the attack survives MoE topology and quantization, but the refusal direction is distributed across writer types rather than concentrated where the original recipe looks for it.</p>
+</article>
+<hr class="section-divider">
+
+<!-- 06 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">EACL 2026 Findings</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2510.07775">The Unintended Trade-off of AI Alignment: Balancing Hallucination Mitigation and Safety in LLMs</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 450 150" xmlns="http://www.w3.org/2000/svg" aria-label="Overlapping hallucination and refusal components disentangled by sparse autoencoders">
+      <rect width="450" height="150" fill="#fff"/>
+      <text x="225" y="15" font-family="Georgia, serif" font-size="10" fill="#555" text-anchor="middle">Hallucination and refusal share components — suppressing one suppresses the other</text>
+      <circle cx="128" cy="76" r="44" fill="#cfe2ff" stroke="#1a4f99" stroke-width="1.5" opacity="0.75"/>
+      <circle cx="182" cy="76" r="44" fill="#f8d7da" stroke="#b02020" stroke-width="1.5" opacity="0.75"/>
+      <text x="98" y="80" font-family="Georgia, serif" font-size="9" fill="#0a3166" text-anchor="middle">halluc.</text>
+      <text x="212" y="80" font-family="Georgia, serif" font-size="9" fill="#721c24" text-anchor="middle">refusal</text>
+      <text x="155" y="80" font-family="Georgia, serif" font-size="9" fill="#4a0e7a" text-anchor="middle">∩</text>
+      <text x="155" y="134" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">entangled</text>
+      <line x1="232" y1="76" x2="266" y2="76" stroke="#888" stroke-width="1.5" marker-end="url(#ar6)"/>
+      <defs><marker id="ar6" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto"><path d="M0,0 L0,5 L7,2.5 z" fill="#888"/></marker></defs>
+      <text x="249" y="68" font-family="Georgia, serif" font-size="8" fill="#666" text-anchor="middle">SAE</text>
+      <circle cx="312" cy="76" r="36" fill="#cfe2ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <circle cx="396" cy="76" r="36" fill="#f8d7da" stroke="#b02020" stroke-width="1.5"/>
+      <text x="312" y="80" font-family="Georgia, serif" font-size="9" fill="#0a3166" text-anchor="middle">halluc.</text>
+      <text x="396" y="80" font-family="Georgia, serif" font-size="9" fill="#721c24" text-anchor="middle">refusal</text>
+      <text x="354" y="134" font-family="Georgia, serif" font-size="9" fill="#0d7377" text-anchor="middle">orthogonalized — refusal preserved</text>
+    </svg>
+    <figcaption>Figure 1: Hallucination- and refusal-encoding components overlap, so truthfulness interventions degrade refusal; SAE disentanglement plus subspace orthogonalization separates them.</figcaption>
+  </figure>
+  <p class="mid-summary">Truthfulness interventions — head steering, probing, representation mapping — measurably degrade refusal, and the cause is that hallucination and refusal information live in overlapping components. The same overlap explains why fine-tuning on benign, safety-curated data still erodes alignment. The fix uses sparse autoencoders to disentangle the two feature sets, then enforces subspace orthogonalization during fine-tuning.</p>
+</article>
+<hr class="section-divider">
+
+<!-- 07 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment durability</span>
+      <span class="tag">preprint · Sep 9 2026</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.10142">Active Adaptation, Not Static Defense: Temporal Dynamics of Preventative Steering in Adversarial Fine-Tuning</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 450 150" xmlns="http://www.w3.org/2000/svg" aria-label="Decay of preventative steering corrective signal over fine-tuning steps, and progressive intensity schedule">
+      <rect width="450" height="150" fill="#fff"/>
+      <text x="225" y="15" font-family="Georgia, serif" font-size="10" fill="#555" text-anchor="middle">Corrective signal decays after an early compensatory phase</text>
+      <line x1="54" y1="26" x2="54" y2="112" stroke="#ccc" stroke-width="1"/>
+      <line x1="54" y1="112" x2="428" y2="112" stroke="#ccc" stroke-width="1"/>
+      <text x="28" y="72" font-family="Georgia, serif" font-size="9" fill="#666" text-anchor="middle" transform="rotate(-90,28,72)">signal</text>
+      <rect x="54" y="26" width="62" height="86" fill="#ffeaa0" opacity="0.35"/>
+      <text x="85" y="126" font-family="Georgia, serif" font-size="8" fill="#a05c00" text-anchor="middle">compensatory</text>
+      <polyline points="60,100 78,40 100,34 130,44 170,58 220,70 280,80 350,87 420,91" fill="none" stroke="#b02020" stroke-width="2"/>
+      <text x="300" y="70" font-family="Georgia, serif" font-size="9" fill="#b02020" text-anchor="middle">static strength → decay</text>
+      <polyline points="130,44 170,44 170,36 230,36 230,28 300,28 300,22 420,22" fill="none" stroke="#0d7377" stroke-width="2"/>
+      <text x="330" y="40" font-family="Georgia, serif" font-size="9" fill="#0d7377" text-anchor="middle">PIS schedule</text>
+      <text x="240" y="126" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">fine-tuning steps →</text>
+      <text x="225" y="143" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">Qwen2.5 · Gemma-3 — attention output projections dominate the defensive write</text>
+    </svg>
+    <figcaption>Figure 1: Protection comes from an early compensatory phase, after which the corrective signal decays; Progressive Intensity Scheduling raises injection strength to track that decay.</figcaption>
+  </figure>
+  <p class="mid-summary">Preventative Steering injects undesirable-trait persona vectors during fine-tuning and removes them at evaluation. Tracking the optimization over time shows the protection is dynamic rather than static, with attention output projections as the dominant residual-write route for the defensive update — motivating Progressive Intensity Scheduling, which improves robustness over static-strength steering on Qwen2.5 and Gemma-3 while lowering harmful-trait expression.</p>
+</article>
+<hr class="section-divider">
+
+<!-- 08 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">EACL 2026 Findings</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://aclanthology.org/2026.findings-eacl.96/">Feature Drift: How Fine-Tuning Repurposes Representations in LLMs</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 450 145" xmlns="http://www.w3.org/2000/svg" aria-label="Base-model SAE performance on chat activations sits 5 to 10 percent below chat-trained SAE ceiling">
+      <rect width="450" height="145" fill="#fff"/>
+      <text x="225" y="15" font-family="Georgia, serif" font-size="10" fill="#555" text-anchor="middle">Base SAEs transfer to chat models — but below the chat-trained ceiling</text>
+      <line x1="86" y1="26" x2="86" y2="104" stroke="#ccc" stroke-width="1"/>
+      <line x1="86" y1="104" x2="416" y2="104" stroke="#ccc" stroke-width="1"/>
+      <rect x="118" y="30" width="98" height="74" fill="#0d7377"/>
+      <text x="167" y="24" font-family="Georgia, serif" font-size="9" fill="#0a5a5c" text-anchor="middle">chat-trained SAE (ceiling)</text>
+      <rect x="262" y="42" width="98" height="62" fill="#7fa8b8"/>
+      <text x="311" y="36" font-family="Georgia, serif" font-size="9" fill="#556" text-anchor="middle">base SAE on chat</text>
+      <line x1="216" y1="30" x2="262" y2="42" stroke="#b02020" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <text x="239" y="62" font-family="Georgia, serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="bold">5–10%</text>
+      <text x="167" y="118" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">matched training</text>
+      <text x="311" y="118" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">transferred</text>
+      <text x="225" y="138" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">Feature space survives post-training; activation distribution does not</text>
+    </svg>
+    <figcaption>Figure 1: Base SAEs applied to chat activations remain strong but degrade 5–10% against chat-trained SAEs — the feature space persists while the activation distribution shifts.</figcaption>
+  </figure>
+  <p class="mid-summary">Galichin et al. attack the standard "activation similarity" explanation for base-to-chat SAE transfer, proposing feature drift instead: the feature space stays valid but the distribution of feature activations shifts under instruction and safety tuning. Bears directly on whether SAE-based safety tooling built against base models still holds after post-training.</p>
+</article>
+<hr class="section-divider">
+
+<!-- 09 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-control">AI control</span>
+      <span class="tag">preprint · Sep 9 2026</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.10739">The Truth Was Never Gone: Perfect Aliasing in Compliant-Context Truth Probes</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 450 150" xmlns="http://www.w3.org/2000/svg" aria-label="Truth probe and prescribed-action probe AUROCs sum to exactly one across 751 cell-layer pairs">
+      <rect width="450" height="150" fill="#fff"/>
+      <text x="225" y="15" font-family="Georgia, serif" font-size="10" fill="#555" text-anchor="middle">On rival contexts, the two probes' AUROCs sum to exactly 1</text>
+      <line x1="70" y1="26" x2="70" y2="110" stroke="#ccc" stroke-width="1"/>
+      <line x1="70" y1="110" x2="410" y2="110" stroke="#ccc" stroke-width="1"/>
+      <text x="64" y="113" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="end">0</text>
+      <text x="64" y="72" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="end">0.5</text>
+      <text x="64" y="32" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="end">1.0</text>
+      <line x1="70" y1="68" x2="410" y2="68" stroke="#bbb" stroke-width="1" stroke-dasharray="4,3"/>
+      <polyline points="86,46 130,38 174,52 218,42 262,48 306,36 350,50 394,44" fill="none" stroke="#1a4f99" stroke-width="2"/>
+      <polyline points="86,90 130,98 174,84 218,94 262,88 306,100 350,86 394,92" fill="none" stroke="#b02020" stroke-width="2"/>
+      <text x="240" y="30" font-family="Georgia, serif" font-size="9" fill="#1a4f99">truth probe</text>
+      <text x="240" y="122" font-family="Georgia, serif" font-size="9" fill="#b02020">prescribed-action probe</text>
+      <text x="225" y="140" font-family="Georgia, serif" font-size="9" fill="#888" text-anchor="middle">Identity holds to floating-point precision across 751 cell-layer pairs</text>
+    </svg>
+    <figcaption>Figure 1: The two probes' labels are exact complements on rival contexts, forcing AUROCs to sum to one — they are unidentifiable from compliant-context labels alone.</figcaption>
+  </figure>
+  <p class="mid-summary">A negative result for deception probes: a truth probe fitted where truthful reporting and the prescribed action coincide cannot be distinguished from a prescribed-action probe by its labels. Disambiguation requires randomized codebooks separating output symbol from semantic action, plus fitting on mixed compliant and rival contexts. The author explicitly disclaims establishing functional belief or a deployable detector.</p>
+</article>
+<hr class="section-divider">
+
+<!-- 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint · Sep 9 2026</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.09420">DuplexJail: Safety Alignment Breaks Under Spoken Interruption in Full-Duplex Models</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 450 128" xmlns="http://www.w3.org/2000/svg" aria-label="Spoken interruption timing overrides a nascent refusal in a full-duplex speech model">
+      <rect width="450" height="128" fill="#fff"/>
+      <text x="14" y="22" font-family="Georgia, serif" font-size="9" fill="#888">User audio</text>
+      <rect x="86" y="12" width="118" height="17" rx="2" fill="#cfe2ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="145" y="24" font-family="Georgia, serif" font-size="8" fill="#0a3166" text-anchor="middle">harmful request</text>
+      <rect x="206" y="12" width="58" height="17" rx="2" fill="#f8d7da" stroke="#b02020" stroke-width="1.5"/>
+      <text x="235" y="24" font-family="Georgia, serif" font-size="8" fill="#721c24" text-anchor="middle">interrupt</text>
+      <line x1="235" y1="29" x2="235" y2="48" stroke="#b02020" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <text x="14" y="60" font-family="Georgia, serif" font-size="9" fill="#888">Model out</text>
+      <rect x="86" y="48" width="146" height="17" rx="2" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="159" y="60" font-family="Georgia, serif" font-size="8" fill="#721c24" text-anchor="middle">refusal begins…</text>
+      <rect x="234" y="48" width="200" height="17" rx="2" fill="#d4edda" stroke="#155724" stroke-width="1"/>
+      <text x="334" y="60" font-family="Georgia, serif" font-size="8" fill="#155724" text-anchor="middle">…overridden into compliance</text>
+      <text x="14" y="88" font-family="Georgia, serif" font-size="9" fill="#b02020">AdvBench ASR — PersonaPlex 40.3% (+33.8 pp) · PersonaPlex-RL 48.7% (+39.3 pp)</text>
+      <text x="14" y="106" font-family="Georgia, serif" font-size="9" fill="#888">Attack surface invisible to text-domain safety alignment</text>
+    </svg>
+    <figcaption>Figure 1: A fixed-delay spoken interruption arrives as the refusal begins and overrides it, raising AdvBench ASR by roughly 35 percentage points on both PersonaPlex variants.</figcaption>
+  </figure>
+  <p class="mid-summary">Full-duplex speech models accept user audio while generating speech output. DuplexJail delivers fixed, request-independent spoken prompts through that channel, comparing fixed-delay interruption against refusal-triggered interruption cued by the model's own streaming text — a modality-specific vulnerability that text-only safety training does not reach.</p>
+</article>
+
+<section class="notes-section">
+  <div class="notes-label">Notes</div>
+  <ul>
+    <li><strong>Correction.</strong> The first version of this report re-listed seven already-covered papers because the run swept from a stale <code>main</code> checkout and never consulted <code>reports/index/seen.tsv</code>. Those entries are replaced here; the three genuinely-new items from that draft are retained as #2, #5 and #10. All 10 entries now pass <code>radar_index.py --check</code>.</li>
+    <li><strong>Theme.</strong> Items #1, #2 and #3 converge on training-stage durability from three independent directions — composition sweeps, refusal geometry, and unlearning spillover — all indicating that late-stage correction does not undo early-stage decisions. Flag for the weekly.</li>
+    <li><strong>Ledger gap.</strong> Item #8 has no arXiv ID, existing only at an ACL Anthology URL. <code>radar_index.py</code>'s <code>ARXIV_RE</code> matches only <code>arxiv.org</code> links, so anthology-only, OpenReview-only and DOI-only papers are invisible to the ledger and can recur indefinitely.</li>
+    <li><strong>Sourcing.</strong> <code>arxiv.org</code> and <code>aclanthology.org</code> are both blocked by this environment's egress proxy, so details came from search snippets. Where a headline number could not be confirmed (#3, #6, #7), none is asserted and the summary stays qualitative.</li>
+  </ul>
+</section>
+
+<footer class="site-footer">
+  <span>Research Radar · Sep 11 2026</span>
+  <span>Pretraining Safety · AI Security · Mech Interp</span>
+</footer>
+{% endraw %}

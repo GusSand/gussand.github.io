@@ -1,0 +1,293 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-09-10"
+kind: "daily"
+slug: "2026-09-10"
+date: 2026-09-10
+group: "latest"
+window: "September 8–10, 2026, plus papers from August 26 – September 7 that no earlier report covered (verified against reports/index/seen.tsv)"
+summary: "Window: September 8–10, 2026, plus papers from August 26 – September 7 that no earlier report covered (verified against reports/index/seen.tsv) · Sources swept: OpenReview (ICLR/ICML/EMNLP), ACL Anthology, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum · Counts: 0 peer-reviewed · 9 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/8f88f3af-bac1-420e-94bd-2912639a1f03"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-10.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+  :root {
+    --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9; --title: #f0f0f0; --muted: #888; --accent: #7eb8f7;
+    --tag-bg: #1e2a3a; --tag-text: #7eb8f7; --tag-security-bg: #2a1e1e; --tag-security-text: #f78f7e;
+    --tag-align-bg: #1e2a1e; --tag-align-text: #7ef79a; --tag-peer-bg: #2a2a1e; --tag-peer-text: #f7e67e;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f5f5f0; --surface: #ffffff; --border: #ddd; --text: #333; --title: #111; --muted: #666; --accent: #1a5fa8;
+      --tag-bg: #ddeeff; --tag-text: #1a5fa8; --tag-security-bg: #ffeedd; --tag-security-text: #a83a1a;
+      --tag-align-bg: #ddffd8; --tag-align-text: #1a8a2a; --tag-peer-bg: #fffadd; --tag-peer-text: #8a7a1a;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f5f5f0; --surface: #ffffff; --border: #ddd; --text: #333; --title: #111; --muted: #666; --accent: #1a5fa8;
+    --tag-bg: #ddeeff; --tag-text: #1a5fa8; --tag-security-bg: #ffeedd; --tag-security-text: #a83a1a;
+    --tag-align-bg: #ddffd8; --tag-align-text: #1a8a2a; --tag-peer-bg: #fffadd; --tag-peer-text: #8a7a1a;
+  }
+  :root[data-theme="dark"] {
+    --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9; --title: #f0f0f0; --muted: #888; --accent: #7eb8f7;
+    --tag-bg: #1e2a3a; --tag-text: #7eb8f7; --tag-security-bg: #2a1e1e; --tag-security-text: #f78f7e;
+    --tag-align-bg: #1e2a1e; --tag-align-text: #7ef79a; --tag-peer-bg: #2a2a1e; --tag-peer-text: #f7e67e;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; font-size: 17px; line-height: 1.65; margin: 0; padding-inline: 16px; padding-block: 32px; }
+  .wrap { max-width: 660px; margin: 0 auto; }
+  .masthead { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 32px; }
+  .masthead h1 { font-family: Georgia, serif; color: var(--title); font-size: 28px; margin: 0 0 6px; text-wrap: balance; }
+  .meta, .counts { font-family: 'Courier New', monospace; font-size: 13px; color: var(--muted); }
+  .counts { margin-top: 6px; }
+  .scope-note { font-size: 15px; color: var(--muted); border-left: 3px solid var(--border); padding-left: 12px; margin: 0 0 32px; }
+  .tag { display: inline-block; padding: 2px 7px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 12px; font-weight: 600; margin: 0 4px 2px 0; background: var(--tag-bg); color: var(--tag-text); }
+  .tag-security { background: var(--tag-security-bg); color: var(--tag-security-text); }
+  .tag-align { background: var(--tag-align-bg); color: var(--tag-align-text); }
+  .tag-peer { background: var(--tag-peer-bg); color: var(--tag-peer-text); }
+  article.paper { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+  .paper-rank { font-family: 'Courier New', monospace; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+  .paper-title { font-family: Georgia, serif; font-size: 26px; font-weight: bold; text-decoration: underline; text-decoration-color: var(--border); color: var(--title); margin: 0 0 12px; line-height: 1.3; text-wrap: balance; }
+  .paper-title a { color: inherit; text-decoration: inherit; }
+  .paper-byline { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+  .tags { margin-bottom: 14px; }
+  .hook { font-size: 17px; margin-bottom: 16px; }
+  .figure-box { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 16px; margin: 20px 0; overflow-x: auto; }
+  .figure-box svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+  .figure-caption { font-size: 13px; color: var(--muted); margin: 10px 0 0; font-style: italic; }
+  .detail { font-size: 16px; line-height: 1.7; }
+  article.paper.mid { margin-bottom: 32px; padding-bottom: 32px; }
+  article.paper.mid .paper-title { font-size: 20px; margin-bottom: 8px; }
+  article.paper.mid .summary { font-size: 15px; line-height: 1.6; }
+  h2.section { font-family: Georgia, serif; color: var(--title); font-size: 18px; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin: 48px 0 24px; }
+  .notes { font-size: 15px; }
+  .notes li { margin-bottom: 6px; }
+  .footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); font-family: 'Courier New', monospace; }
+  .footer a { color: var(--accent); }
+  @media (max-width: 480px) { .paper-title { font-size: 20px; } article.paper.mid .paper-title { font-size: 17px; } }
+</style>
+
+<div class="wrap">
+  <div class="masthead">
+    <h1>📡 Research Radar — September 10, 2026</h1>
+    <div class="meta">Pretraining Safety · AI Security · Mech Interp · Daily edition</div>
+    <div class="meta">Window: Sep 8–10, 2026, plus Aug 26 – Sep 7 papers no earlier report covered · Sources: OpenReview, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), ACL Anthology</div>
+    <div class="counts">Counts: 0 peer-reviewed · 9 preprints · 0 forum/blog</div>
+  </div>
+
+  <p class="scope-note">Nine items, not ten. Every higher-ranked candidate the sweep surfaced (Deep Ignorance, Beyond Safe Data, When Safety Routing Breaks, Fool's Gold, Refusal Aliases, Scalable Circuit Learning, Beyond Shallow Alignment, Representational Alignment) had already been covered by an earlier daily and is excluded by the ledger check. Nothing new appeared in the window on pretraining-time interventions or fine-tuning durability specifically.</p>
+
+  <article class="paper">
+    <div class="paper-rank">01 of 09</div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.29936" target="_blank" rel="noopener">When Safety Speaks a Language: A Mechanistic Analysis of Safety-Language Identity Entanglement in LLMs</a></h2>
+    <div class="paper-byline">Apoorva Upadhyaya, Sandipan Sikdar · arXiv, August 30, 2026</div>
+    <div class="tags"><span class="tag tag-align">refusal-mechanism</span><span class="tag">mech-interp</span><span class="tag">SAE</span><span class="tag">multilingual</span><span class="tag">preprint</span></div>
+    <p class="hook">Refusal is supposed to be a property of the model, not of the language it happens to be speaking. This paper finds that inside three instruction-tuned models the SAE features that carry refusal share directions with the features that carry "which language is this" — and that you cannot ablate one without moving the other.</p>
+    <div class="figure-box">
+      <svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif" role="img" aria-label="Overlap of safety and language-identity SAE features across layers">
+        <rect width="560" height="210" fill="#1a1a1a" rx="4"/>
+        <text x="280" y="18" text-anchor="middle" fill="#888" font-size="11">Share of a language's safety features that are also language-identity features, by layer</text>
+        <line x1="50" y1="170" x2="530" y2="170" stroke="#444"/><line x1="50" y1="35" x2="50" y2="170" stroke="#444"/>
+        <text x="44" y="174" text-anchor="end" fill="#666" font-size="9">0</text><text x="44" y="105" text-anchor="end" fill="#666" font-size="9">0.5</text><text x="44" y="40" text-anchor="end" fill="#666" font-size="9">1.0</text>
+        <text x="60" y="186" fill="#666" font-size="9">early</text><text x="290" y="186" text-anchor="middle" fill="#666" font-size="9">layer</text><text x="520" y="186" text-anchor="end" fill="#666" font-size="9">late</text>
+        <polyline points="50,150 110,120 170,95 230,80 290,72 350,78 410,90 470,105 530,120" fill="none" stroke="#f78f7e" stroke-width="2.5"/>
+        <polyline points="50,160 110,140 170,118 230,96 290,84 350,88 410,100 470,118 530,135" fill="none" stroke="#7eb8f7" stroke-width="2.5"/>
+        <polyline points="50,140 110,125 170,105 230,92 290,86 350,80 410,84 470,96 530,110" fill="none" stroke="#7ef79a" stroke-width="2.5"/>
+        <text x="60" y="52" fill="#f78f7e" font-size="10">Llama-3.1-8B-Instruct</text><text x="60" y="66" fill="#7eb8f7" font-size="10">Qwen2.5-7B-Instruct</text><text x="60" y="80" fill="#7ef79a" font-size="10">Gemma-2-9B-IT</text>
+        <text x="280" y="204" text-anchor="middle" fill="#555" font-size="10">Schematic of the paper's finding; exact curves are in the paper (8 languages: EN ZH DE AR VI ID RU HI)</text>
+      </svg>
+      <p class="figure-caption">Figure 1 (schematic): safety-relevant SAE features overlap language-identity features throughout the network, with architecture-specific layer profiles; ablating them raises harmful compliance and changes the output language.</p>
+    </div>
+    <p class="detail">Residual-stream SAEs at every layer of Llama-3.1-8B-Instruct, Qwen2.5-7B-Instruct and Gemma-2-9B-IT are contrasted on harmful vs. harmless prompts in eight typologically diverse languages to isolate safety-relevant features per language and layer. Their location is architecture-dependent, and within each model they are geometrically entangled with language-identity features: a large fraction of one language's safety features are shared with other languages, with sharing that varies by depth and language pair. The causal test is the point — ablating a language's safety features raises harmful-compliance rates <em>and</em> shifts the output language, so the refusal signal and the language signal ride on overlapping directions, and a feature-level intervention that touches only safety is not on offer.</p>
+  </article>
+
+  <article class="paper">
+    <div class="paper-rank">02 of 09</div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2609.05117" target="_blank" rel="noopener">TIER: Threat Implicitness Benchmark for Evaluating LLM Safety Behaviors</a></h2>
+    <div class="paper-byline">Thu-Hien Trinh-Thi, Hai-Yen Vong, Thanh-Ha Ung-Dung, Tram Ho (University of Science, VNU-HCM) · arXiv, September 2026</div>
+    <div class="tags"><span class="tag tag-align">open-weight safety eval</span><span class="tag tag-security">jailbreak</span><span class="tag">benchmark</span><span class="tag">preprint</span></div>
+    <p class="hook">Refusal-rate benchmarks report one number per model. TIER asks a different question: as the threat in a prompt becomes less explicit, does an open-weight model flip from refusing to complying, or does it slide — and where along the slide do models diverge?</p>
+    <div class="figure-box">
+      <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif" role="img" aria-label="Behavior mix across four threat levels">
+        <rect width="560" height="200" fill="#1a1a1a" rx="4"/>
+        <text x="280" y="18" text-anchor="middle" fill="#888" font-size="11">Behavior mix across threat-implicitness levels (six-label scale, six open-weight LLMs)</text>
+        <g>
+          <rect x="60" y="40" width="90" height="110" fill="#7ef79a" opacity=".9"/><rect x="60" y="150" width="90" height="12" fill="#f7e67e" opacity=".9"/><rect x="60" y="162" width="90" height="8" fill="#f78f7e" opacity=".9"/>
+          <rect x="190" y="40" width="90" height="75" fill="#7ef79a" opacity=".9"/><rect x="190" y="115" width="90" height="35" fill="#f7e67e" opacity=".9"/><rect x="190" y="150" width="90" height="20" fill="#f78f7e" opacity=".9"/>
+          <rect x="320" y="40" width="90" height="50" fill="#7ef79a" opacity=".9"/><rect x="320" y="90" width="90" height="45" fill="#f7e67e" opacity=".9"/><rect x="320" y="135" width="90" height="35" fill="#f78f7e" opacity=".9"/>
+          <rect x="450" y="40" width="90" height="25" fill="#7ef79a" opacity=".9"/><rect x="450" y="65" width="90" height="40" fill="#f7e67e" opacity=".9"/><rect x="450" y="105" width="90" height="65" fill="#f78f7e" opacity=".9"/>
+        </g>
+        <text x="105" y="184" text-anchor="middle" fill="#888" font-size="10">explicit</text><text x="235" y="184" text-anchor="middle" fill="#888" font-size="10">contextual</text><text x="365" y="184" text-anchor="middle" fill="#888" font-size="10">indirect</text><text x="495" y="184" text-anchor="middle" fill="#888" font-size="10">jailbreak</text>
+        <rect x="20" y="52" width="8" height="8" fill="#7ef79a"/><text x="32" y="60" fill="#888" font-size="9">refuse</text>
+        <rect x="20" y="68" width="8" height="8" fill="#f7e67e"/><text x="32" y="76" fill="#888" font-size="9">hedge/partial</text>
+        <rect x="20" y="84" width="8" height="8" fill="#f78f7e"/><text x="32" y="92" fill="#888" font-size="9">comply</text>
+      </svg>
+      <p class="figure-caption">Figure 1 (schematic): behavior shifts gradually across the four levels rather than flipping at one threshold; the jailbreak level shows the widest gap between models.</p>
+    </div>
+    <p class="detail">Prompts are organized by four risk domains and four threat-implicitness levels — explicit request, contextually embedded, indirect phrasing, full jailbreak framing — and each response is scored on a six-label behavior scale from hard refusal through hedging and partial compliance to full compliance, by two independent LLM judges. Across six open-weight models, behavior degrades gradually across levels; contextual prompts yield the most heterogeneous behavior between models, while the jailbreak level exposes the largest robustness gap. The graded scale makes over-refusal and partial leakage visible where a refusal rate hides them.</p>
+  </article>
+
+  <article class="paper">
+    <div class="paper-rank">03 of 09</div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.28233" target="_blank" rel="noopener">REINS: Refusal-Enhanced Inhibitory Steering with Sparse Autoencoder Features</a></h2>
+    <div class="paper-byline">University of Science and Technology of China &amp; Zhejiang University · arXiv, August 28, 2026</div>
+    <div class="tags"><span class="tag tag-align">refusal-mechanism</span><span class="tag">SAE steering</span><span class="tag">mech-interp</span><span class="tag">preprint</span></div>
+    <p class="hook">Amplifying a refusal feature works on plain harmful prompts and stops working the moment the request is wrapped in a role-play or formatting task. REINS shows why — the harmful-continuation features are still firing — and fixes it by steering both sides at once.</p>
+    <div class="figure-box">
+      <svg viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif" role="img" aria-label="REINS steers two feature sets in opposite directions">
+        <rect width="560" height="170" fill="#1a1a1a" rx="4"/>
+        <text x="280" y="18" text-anchor="middle" fill="#888" font-size="11">Same SAE feature space, two interventions per token</text>
+        <rect x="30" y="40" width="200" height="100" rx="4" fill="#2a1e1e" stroke="#5a3a3a"/>
+        <text x="130" y="62" text-anchor="middle" fill="#f78f7e" font-size="11" font-weight="bold">harmful-continuation features</text>
+        <text x="130" y="100" text-anchor="middle" fill="#f78f7e" font-size="22">↓ suppress</text>
+        <text x="130" y="128" text-anchor="middle" fill="#888" font-size="9">left active by refusal-only steering</text>
+        <rect x="330" y="40" width="200" height="100" rx="4" fill="#1e2a1e" stroke="#3a5a3a"/>
+        <text x="430" y="62" text-anchor="middle" fill="#7ef79a" font-size="11" font-weight="bold">safe-refusal features</text>
+        <text x="430" y="100" text-anchor="middle" fill="#7ef79a" font-size="22">↑ enhance</text>
+        <text x="430" y="128" text-anchor="middle" fill="#888" font-size="9">without pushing into collapse</text>
+        <text x="280" y="95" text-anchor="middle" fill="#f7e67e" font-size="12">+</text>
+        <text x="280" y="160" text-anchor="middle" fill="#555" font-size="10">Evaluated on GUISE: harmful prompts inside complex wrappers</text>
+      </svg>
+      <p class="figure-caption">Figure 1 (schematic): REINS inhibits harmful-continuation SAE features while enhancing refusal features; refusal-only steering leaves the former active on wrapped prompts.</p>
+    </div>
+    <p class="detail">The authors build GUISE (Generalized Undercover Instruction Safety Evaluation), harmful requests hidden inside complex wrappers, on which existing single-direction SAE steering no longer yields refusals because the harmful-path features stay active and win. REINS suppresses those features and amplifies safe-refusal features in the same feature space. On GUISE it markedly reduces harmful responses and raises genuine refusals while largely preserving general-capability scores; the baselines either intervene too weakly or reach an apparent safety by degenerating output.</p>
+  </article>
+
+  <h2 class="section">Items 4–9</h2>
+
+  <article class="paper mid">
+    <div class="paper-rank">04 of 09</div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2609.09553" target="_blank" rel="noopener">Arbitrary Cipher Attacks Against Large Language Models Do Not Require Fine-Tuning</a></h2>
+    <div class="paper-byline">Thomas Rivasseau (McGill University) · arXiv, September 2026</div>
+    <div class="tags"><span class="tag tag-security">jailbreak</span><span class="tag tag-security">frontier models</span><span class="tag">preprint</span></div>
+    <div class="figure-box">
+      <svg viewBox="0 0 560 120" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif" role="img" aria-label="In-context cipher acquisition then harmful exchange in cipher">
+        <rect width="560" height="120" fill="#1a1a1a" rx="4"/>
+        <rect x="20" y="30" width="150" height="55" rx="3" fill="#1e2a3a" stroke="#2a4a6a"/><text x="95" y="53" text-anchor="middle" fill="#7eb8f7" font-size="11" font-weight="bold">Teach cipher in-context</text><text x="95" y="70" text-anchor="middle" fill="#7eb8f7" font-size="9">prompting only, no fine-tuning</text>
+        <rect x="205" y="30" width="150" height="55" rx="3" fill="#2a2a1a" stroke="#5a5a2a"/><text x="280" y="53" text-anchor="middle" fill="#f7e67e" font-size="11" font-weight="bold">Ask in cipher</text><text x="280" y="70" text-anchor="middle" fill="#f7e67e" font-size="9">harmful request, encoded</text>
+        <rect x="390" y="30" width="150" height="55" rx="3" fill="#2a1e1e" stroke="#5a2a2a"/><text x="465" y="53" text-anchor="middle" fill="#f78f7e" font-size="11" font-weight="bold">Answer in cipher</text><text x="465" y="70" text-anchor="middle" fill="#f78f7e" font-size="9">alignment weakened or bypassed</text>
+        <text x="187" y="61" text-anchor="middle" fill="#666" font-size="16">→</text><text x="372" y="61" text-anchor="middle" fill="#666" font-size="16">→</text>
+        <text x="280" y="108" text-anchor="middle" fill="#555" font-size="10">Demonstrated against Anthropic, Google and OpenAI frontier models</text>
+      </svg>
+      <p class="figure-caption">Figure 1 (schematic): the cipher is acquired from in-context examples; safety behavior that holds in plaintext is weakened once the exchange moves into the cipher.</p>
+    </div>
+    <p class="summary">Cipher jailbreaks previously needed fine-tuning-API access to train a model on encrypted harmful Q&amp;A. This paper shows current frontier models from Anthropic, Google and OpenAI acquire arbitrary ciphers from prompting and in-context examples alone, and that once the exchange runs in the learned cipher, alignment is substantially weakened or bypassed — moving cipher attacks from a fine-tuning-API threat model to an ordinary chat threat model.</p>
+  </article>
+
+  <article class="paper mid">
+    <div class="paper-rank">05 of 09</div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2609.08373" target="_blank" rel="noopener">Structural Jailbreaks Generalize but Do Not Compound: A Cross-Provider and Multilingual Study of Involuntary In-Context Learning</a></h2>
+    <div class="paper-byline">Tejasvi C. Addagada · arXiv, September 2026</div>
+    <div class="tags"><span class="tag tag-security">jailbreak</span><span class="tag">multilingual</span><span class="tag">preprint</span></div>
+    <div class="figure-box">
+      <svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif" role="img" aria-label="Compliance under baseline vs IICL across languages">
+        <rect width="560" height="150" fill="#1a1a1a" rx="4"/>
+        <text x="280" y="18" text-anchor="middle" fill="#888" font-size="11">Compliance rate, gemini-2.5-flash: single-shot baseline vs. IICL</text>
+        <line x1="60" y1="120" x2="540" y2="120" stroke="#444"/>
+        <g fill="#f78f7e"><rect x="80" y="40" width="40" height="80"/><rect x="200" y="52" width="40" height="68"/><rect x="320" y="72" width="40" height="48"/><rect x="440" y="76" width="40" height="44"/></g>
+        <g fill="#444"><rect x="124" y="116" width="20" height="4"/><rect x="244" y="116" width="20" height="4"/><rect x="364" y="116" width="20" height="4"/><rect x="484" y="116" width="20" height="4"/></g>
+        <text x="100" y="35" text-anchor="middle" fill="#f78f7e" font-size="10">80–100%</text>
+        <text x="100" y="136" text-anchor="middle" fill="#888" font-size="10">EN</text><text x="220" y="136" text-anchor="middle" fill="#888" font-size="10">ES</text><text x="340" y="136" text-anchor="middle" fill="#888" font-size="10">HI</text><text x="460" y="136" text-anchor="middle" fill="#888" font-size="10">AR</text>
+        <text x="500" y="35" text-anchor="end" fill="#888" font-size="9">red = IICL · grey = baseline (≈0)</text>
+      </svg>
+      <p class="figure-caption">Figure 1 (schematic): IICL lifts compliance from near zero to 80–100% in English; the same operator in lower-resource languages is weaker, not stronger.</p>
+    </div>
+    <p class="summary">IICL recasts a harmful request as the last missing cell of a data-labeling task. With a deterministic IICL operator and a StrongREJECT-style judge on gemini-2.5-flash and flash-lite (a provider the original IICL study never tested), over 30 HarmBench general-harm and 30 FinProof financial-abuse behaviors in EN/ES/HI/AR: IICL turns near-total refusal into 80–90% compliance on general harm and 97–100% on financial abuse. Forcing the attack into a lower-resource language blunts it rather than compounding the multilingual gap — measure interactions, don't assume additivity.</p>
+  </article>
+
+  <article class="paper mid">
+    <div class="paper-rank">06 of 09</div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.25697" target="_blank" rel="noopener">LMSM: LLM Security Framework Inspired by Linux Security Modules</a></h2>
+    <div class="paper-byline">XiuYu Zhang, Bonan Ruan, Junfeng Fang, An Zhang, Tat-Seng Chua, Zhenkai Liang (NUS, USTC) · arXiv, August 26, 2026</div>
+    <div class="tags"><span class="tag tag-security">AI-security</span><span class="tag">SAE</span><span class="tag">interp-for-security</span><span class="tag">preprint</span></div>
+    <div class="figure-box">
+      <svg viewBox="0 0 560 130" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif" role="img" aria-label="LMSM architecture">
+        <rect width="560" height="130" fill="#1a1a1a" rx="4"/>
+        <rect x="20" y="25" width="160" height="60" rx="3" fill="#1e2a3a" stroke="#2a4a6a"/><text x="100" y="48" text-anchor="middle" fill="#7eb8f7" font-size="11" font-weight="bold">Security backend</text><text x="100" y="66" text-anchor="middle" fill="#7eb8f7" font-size="9">SAE · transcoder · dense probe</text>
+        <rect x="200" y="25" width="160" height="60" rx="3" fill="#1e2a3a" stroke="#2a4a6a"/><text x="280" y="48" text-anchor="middle" fill="#7eb8f7" font-size="11" font-weight="bold">Versioned policy</text><text x="280" y="66" text-anchor="middle" fill="#7eb8f7" font-size="9">rules over trusted context</text>
+        <rect x="380" y="25" width="160" height="60" rx="3" fill="#1e2a1e" stroke="#2a4a2a"/><text x="460" y="48" text-anchor="middle" fill="#7ef79a" font-size="11" font-weight="bold">Enforcement gate</text><text x="460" y="66" text-anchor="middle" fill="#7ef79a" font-size="9">HarmBench ASR 39.2% → 3.32%</text>
+        <text x="190" y="59" text-anchor="middle" fill="#666" font-size="14">→</text><text x="370" y="59" text-anchor="middle" fill="#666" font-size="14">→</text>
+        <text x="280" y="112" text-anchor="middle" fill="#555" font-size="10">Qwen3-4B · XSTest false refusals 2.40% → 4.40% · 98.14% throughput retained</text>
+      </svg>
+      <p class="figure-caption">Figure 1: evidence, policy and enforcement are separate modules, so any of them changes without touching request handling.</p>
+    </div>
+    <p class="summary">Adapts the Linux Security Modules separation to LLM serving: a pluggable backend (SAE, transcoder or task-fitted dense probe) emits calibrated per-request evidence, a versioned policy evaluates rules, and a separate gate enforces. Prototyped on Transformers and vLLM. On Qwen3-4B, LMSM-Checkpoint cuts HarmBench attack success from 39.20% to 3.32% while XSTest false refusals rise only from 2.40% to 4.40%, at 98.14% of throughput.</p>
+  </article>
+
+  <article class="paper mid">
+    <div class="paper-rank">07 of 09</div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2609.07746" target="_blank" rel="noopener">LLM Forensics: Where Do Backdoors Hide? Localizing and Controlling Trigger Mechanisms with Sparse Autoencoders</a></h2>
+    <div class="paper-byline">Wissam Antoun et al. · arXiv, September 2026</div>
+    <div class="tags"><span class="tag">mech-interp</span><span class="tag tag-security">backdoor</span><span class="tag">SAE</span><span class="tag">preprint</span></div>
+    <div class="figure-box">
+      <svg viewBox="0 0 560 140" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif" role="img" aria-label="Trigger detection versus causal control across layers">
+        <rect width="560" height="140" fill="#1a1a1a" rx="4"/>
+        <text x="280" y="18" text-anchor="middle" fill="#888" font-size="11">Trigger detection (F1) vs. causal control of the language switch, by layer</text>
+        <line x1="50" y1="115" x2="530" y2="115" stroke="#444"/><line x1="50" y1="30" x2="50" y2="115" stroke="#444"/>
+        <polyline points="50,34 130,33 210,34 290,33 370,34 450,33 530,34" fill="none" stroke="#7eb8f7" stroke-width="2.5"/>
+        <polyline points="50,105 130,98 210,70 290,60 370,80 450,100 530,108" fill="none" stroke="#f78f7e" stroke-width="2.5" stroke-dasharray="5,3"/>
+        <text x="60" y="50" fill="#7eb8f7" font-size="10">detection F1 ≈ 1</text><text x="300" y="52" fill="#f78f7e" font-size="10">causal control (ablation effect)</text>
+        <text x="290" y="132" text-anchor="middle" fill="#555" font-size="10">Schematic; detectors and controllers are different feature sets</text>
+      </svg>
+      <p class="figure-caption">Figure 1 (schematic): near-perfect detection at many layers, but the features that detect the trigger are not the ones whose ablation removes the behavior.</p>
+    </div>
+    <p class="summary">A controlled backdoor — fixed trigger sequences make 1B and 8B models continue English prompts in French or German — is studied with SAEs across layers and components, contrasting triggered prompts with translation and pretraining controls. SAE features separate triggered prompts from controls with near-perfect F1, but the detecting features do not control the switched behavior: ablating them does not reliably remove the backdoor. Detection and removal need different feature sets.</p>
+  </article>
+
+  <article class="paper mid">
+    <div class="paper-rank">08 of 09</div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.30403" target="_blank" rel="noopener">Why Are LLM Backdoor Defenses Fragmented? A Feature-Level Explanation with Sparse Autoencoders</a></h2>
+    <div class="paper-byline">Yizhe Zeng et al. · arXiv, August 31, 2026</div>
+    <div class="tags"><span class="tag">mech-interp</span><span class="tag tag-security">backdoor</span><span class="tag">SAE</span><span class="tag">preprint</span></div>
+    <div class="figure-box">
+      <svg viewBox="0 0 560 140" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif" role="img" aria-label="Four feature roles from the two-by-two analysis">
+        <rect width="560" height="140" fill="#1a1a1a" rx="4"/>
+        <text x="215" y="30" text-anchor="middle" fill="#888" font-size="10">clean input</text><text x="425" y="30" text-anchor="middle" fill="#888" font-size="10">triggered input</text>
+        <text x="60" y="65" text-anchor="end" fill="#888" font-size="10">clean model</text><text x="60" y="110" text-anchor="end" fill="#888" font-size="10">poisoned model</text>
+        <rect x="70" y="40" width="200" height="40" rx="2" fill="#1e2a3a" stroke="#2a4a6a"/><text x="170" y="64" text-anchor="middle" fill="#7eb8f7" font-size="10">baseline</text>
+        <rect x="280" y="40" width="200" height="40" rx="2" fill="#1e2a3a" stroke="#2a4a6a"/><text x="380" y="64" text-anchor="middle" fill="#7eb8f7" font-size="10">baseline</text>
+        <rect x="70" y="85" width="200" height="40" rx="2" fill="#2a2a1a" stroke="#5a5a2a"/><text x="170" y="109" text-anchor="middle" fill="#f7e67e" font-size="10">suppressed · weight-modified</text>
+        <rect x="280" y="85" width="200" height="40" rx="2" fill="#2a1e1e" stroke="#5a2a2a"/><text x="380" y="109" text-anchor="middle" fill="#f78f7e" font-size="10">interaction · mixed</text>
+      </svg>
+      <p class="figure-caption">Figure 1 (schematic): backdoor-induced logit shifts are traced to SAE features in four roles; dirty-label and clean-label attacks populate the roles differently.</p>
+    </div>
+    <p class="summary">A 2×2 design (clean vs. poisoned model × clean vs. triggered input) traces backdoor-induced logit shifts to high-contribution SAE features and sorts them into interaction, suppressed, mixed and weight-modified roles. Dirty-label and clean-label attacks populate these roles differently, which is why a defense built for one paradigm misses the other — each existing defense implicitly targets one role.</p>
+  </article>
+
+  <article class="paper mid">
+    <div class="paper-rank">09 of 09</div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.30197" target="_blank" rel="noopener">ALTSTEER: Selective Safety Steering for Moving Beyond Hard Refusals to Constructive Alternatives</a></h2>
+    <div class="paper-byline">Hoejoon Kwon et al. · arXiv, August 31, 2026</div>
+    <div class="tags"><span class="tag">mech-interp</span><span class="tag">steering</span><span class="tag">preprint</span></div>
+    <div class="figure-box">
+      <svg viewBox="0 0 560 110" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif" role="img" aria-label="ALTSTEER pipeline">
+        <rect width="560" height="110" fill="#1a1a1a" rx="4"/>
+        <rect x="20" y="25" width="150" height="55" rx="3" fill="#1e2a3a" stroke="#2a4a6a"/><text x="95" y="48" text-anchor="middle" fill="#7eb8f7" font-size="11" font-weight="bold">Selective trigger</text><text x="95" y="66" text-anchor="middle" fill="#7eb8f7" font-size="9">intervene only when needed</text>
+        <rect x="205" y="25" width="150" height="55" rx="3" fill="#1e2a1e" stroke="#2a4a2a"/><text x="280" y="48" text-anchor="middle" fill="#7ef79a" font-size="11" font-weight="bold">Refusal-anchored</text><text x="280" y="66" text-anchor="middle" fill="#7ef79a" font-size="9">constructive redirection</text>
+        <rect x="390" y="25" width="150" height="55" rx="3" fill="#2a2a1a" stroke="#5a5a2a"/><text x="465" y="48" text-anchor="middle" fill="#f7e67e" font-size="11" font-weight="bold">Safe completion</text><text x="465" y="66" text-anchor="middle" fill="#f7e67e" font-size="9">not a bare refusal</text>
+        <text x="187" y="56" text-anchor="middle" fill="#666" font-size="14">→</text><text x="372" y="56" text-anchor="middle" fill="#666" font-size="14">→</text>
+        <text x="280" y="100" text-anchor="middle" fill="#555" font-size="10">Single inference pass · Llama-3.1 and Qwen2.5</text>
+      </svg>
+      <p class="figure-caption">Figure 1 (schematic): a selective gate decides when to intervene; the steering then targets a constructive safe completion.</p>
+    </div>
+    <p class="summary">Frames safety steering as two coupled decisions — when to intervene and how generation proceeds afterwards — and couples a selective trigger with refusal-anchored constructive redirection in one pass. On Llama-3.1 and Qwen2.5 it preserves benign utility while increasing constructive safe-completion behavior, with the largest gains on models that otherwise emit short refusals.</p>
+  </article>
+
+  <h2 class="section">Notes</h2>
+  <ul class="notes">
+    <li>Refusal mechanisms dominate: #1 (refusal features entangled with language), #3 (two-sided SAE steering), #9 (safe-completion steering). Flag #1 for the weekly.</li>
+    <li>Two in-window jailbreak results (#4 cipher-in-context, #5 IICL) both show alignment failing under a representational shift the model performs itself.</li>
+    <li>#6–#8 use SAEs/probes as a serving-layer control, a forensic tool, and a defense taxonomy respectively.</li>
+    <li>This edition replaces an earlier Sep 10 version in which 6 of 10 entries repeated earlier dailies; the repository was retroactively deduplicated the same day.</li>
+  </ul>
+
+  <div class="footer">
+    <div>Generated 2026-09-10 · <a href="https://github.com/gussand/research-radar">gussand/research-radar</a> · branch claude/radar</div>
+    <div style="margin-top:6px;">Pretraining Safety · AI Security · Mech Interp · Daily radar</div>
+  </div>
+</div>
+{% endraw %}

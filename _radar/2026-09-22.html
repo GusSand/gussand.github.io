@@ -1,0 +1,515 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-09-22"
+kind: "daily"
+slug: "2026-09-22"
+date: 2026-09-22
+group: "2026-W40"
+window: "September 19–22, 2026 (plus important papers from June–September missed in the prior sweep)"
+summary: "Window: September 19–22, 2026 (plus important papers from June–September missed in the prior sweep) · Sources swept: arXiv (cs.CL/cs.LG/cs.CR/cs.AI), ACL Anthology 2026, CCS 2026, RAND, OpenReview · Counts: 2 peer-reviewed · 8 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-22.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --border: #2e2e2e;
+  --text: #c9c9c9;
+  --title: #f0f0f0;
+  --muted: #777;
+  --accent: #7eb8f7;
+  --tag-bg-interp: #1e3a5c;
+  --tag-fg-interp: #7eb8f7;
+  --tag-bg-security: #3b1e1e;
+  --tag-fg-security: #f78f8f;
+  --tag-bg-align: #1a3b2a;
+  --tag-fg-align: #72c99a;
+  --tag-bg-peer: #2b2310;
+  --tag-fg-peer: #e8c56c;
+  --tag-bg-neutral: #222;
+  --tag-fg-neutral: #aaa;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f5f4f0; --surface: #fffffe; --border: #ddd; --text: #333; --title: #111; --muted: #888; --accent: #2563ab;
+    --tag-bg-interp: #dbeafe; --tag-fg-interp: #1e40af;
+    --tag-bg-security: #fee2e2; --tag-fg-security: #991b1b;
+    --tag-bg-align: #d1fae5; --tag-fg-align: #065f46;
+    --tag-bg-peer: #fef9c3; --tag-fg-peer: #854d0e;
+    --tag-bg-neutral: #eee; --tag-fg-neutral: #555;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f5f4f0; --surface: #fffffe; --border: #ddd; --text: #333; --title: #111; --muted: #888; --accent: #2563ab;
+  --tag-bg-interp: #dbeafe; --tag-fg-interp: #1e40af;
+  --tag-bg-security: #fee2e2; --tag-fg-security: #991b1b;
+  --tag-bg-align: #d1fae5; --tag-fg-align: #065f46;
+  --tag-bg-peer: #fef9c3; --tag-fg-peer: #854d0e;
+  --tag-bg-neutral: #eee; --tag-fg-neutral: #555;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17px; }
+body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; padding: 32px 16px 80px; }
+.wrap { max-width: 660px; margin: 0 auto; }
+header { margin-bottom: 44px; }
+.radar-label { font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+header h1 { font-family: Georgia, serif; font-size: 32px; font-weight: bold; color: var(--title); line-height: 1.2; margin-bottom: 10px; }
+.meta { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.counts { display: flex; gap: 16px; margin-top: 14px; flex-wrap: wrap; }
+.count-chip { font-family: 'Courier New', monospace; font-size: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 3px 10px; color: var(--text); }
+.section-label { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 36px; }
+.paper-full { margin-bottom: 56px; }
+.paper-rank { font-family: 'Courier New', monospace; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.paper-full h2 { font-family: Georgia, serif; font-size: 26px; font-weight: bold; text-decoration: underline; text-decoration-color: var(--border); color: var(--title); line-height: 1.28; margin-bottom: 12px; }
+.paper-full h2 a { color: inherit; text-decoration: inherit; }
+.paper-full h2 a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+.tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 16px; }
+.tag { font-family: 'Courier New', monospace; font-size: 11px; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.tag-interp   { background: var(--tag-bg-interp);   color: var(--tag-fg-interp); }
+.tag-security { background: var(--tag-bg-security); color: var(--tag-fg-security); }
+.tag-align    { background: var(--tag-bg-align);    color: var(--tag-fg-align); }
+.tag-peer     { background: var(--tag-bg-peer);     color: var(--tag-fg-peer); }
+.tag-neutral  { background: var(--tag-bg-neutral);  color: var(--tag-fg-neutral); }
+.venue { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+.hook  { font-size: 17px; color: var(--text); margin-bottom: 18px; line-height: 1.7; }
+.fig-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 18px; margin: 20px 0; overflow: hidden; }
+.fig-wrap svg { display: block; width: 100%; height: auto; max-width: 560px; margin: 0 auto; }
+figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; line-height: 1.5; font-style: italic; }
+.detail { font-size: 16px; color: var(--text); line-height: 1.7; }
+.mid-tier { margin-bottom: 44px; }
+.mid-tier-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.mid-rank { font-family: 'Courier New', monospace; font-size: 18px; color: var(--muted); min-width: 28px; }
+.mid-tier h3 { font-family: Georgia, serif; font-size: 19px; font-weight: bold; text-decoration: underline; text-decoration-color: var(--border); color: var(--title); line-height: 1.3; }
+.mid-tier h3 a { color: inherit; text-decoration: inherit; }
+.mid-tier h3 a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+.mid-venue { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.mid-summary { font-size: 15px; color: var(--text); line-height: 1.65; }
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+.notes { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 20px 24px; margin-top: 48px; }
+.notes h4 { font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.notes ul { list-style: disc; padding-left: 20px; font-size: 14px; color: var(--text); }
+.notes ul li { margin-bottom: 6px; line-height: 1.55; }
+footer { margin-top: 60px; font-size: 12px; color: var(--muted); text-align: center; }
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="radar-label">📡 Research Radar</div>
+  <h1>Daily Radar — 2026-09-22</h1>
+  <div class="meta">
+    Window: September 19–22, 2026 (plus important papers from June–September missed in prior sweep)<br>
+    Sources: arXiv (cs.CL/cs.LG/cs.CR/cs.AI) · ACL Anthology 2026 · ACM CCS 2026 · RAND · OpenReview
+  </div>
+  <div class="counts">
+    <span class="count-chip">2 peer-reviewed</span>
+    <span class="count-chip">8 preprints</span>
+    <span class="count-chip">0 forum/blog</span>
+  </div>
+</header>
+
+<div class="section-label">Top 10 — Priority Order</div>
+
+<!-- ══════════════════════ PAPER 1 ══ -->
+<article class="paper-full">
+  <div class="paper-rank">01</div>
+  <h2><a href="https://arxiv.org/abs/2604.17215" target="_blank">Continual Safety Alignment via Gradient-Based Sample Selection</a></h2>
+  <div class="tags">
+    <span class="tag tag-align">pretraining-safety</span>
+    <span class="tag tag-peer">ACL 2026 Findings</span>
+    <span class="tag tag-peer">peer-reviewed</span>
+  </div>
+  <div class="venue">Thong Bach, Dung Nguyen, Thao Minh Le, Truyen Tran — Deakin University</div>
+  <p class="hook">The safety that RLHF instills doesn't always survive the next fine-tuning job. This ACL 2026 result explains why and offers a one-step fix: simply filter out the training samples whose gradients are pulling the model back toward its unsafe pretrained behaviour, before fine-tuning begins.</p>
+  <figure class="fig-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200">
+      <text x="280" y="26" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#c9c9c9">Per-sample gradient magnitude during fine-tuning</text>
+      <rect x="52" y="90" width="18" height="50" fill="#4a90d9" opacity="0.8"/>
+      <rect x="75" y="70" width="18" height="70" fill="#4a90d9" opacity="0.8"/>
+      <rect x="98" y="55" width="18" height="85" fill="#4a90d9" opacity="0.8"/>
+      <rect x="121" y="50" width="18" height="90" fill="#4a90d9" opacity="0.8"/>
+      <rect x="144" y="55" width="18" height="85" fill="#4a90d9" opacity="0.8"/>
+      <rect x="167" y="68" width="18" height="72" fill="#4a90d9" opacity="0.8"/>
+      <rect x="197" y="100" width="18" height="40" fill="#d9534f" opacity="0.85"/>
+      <rect x="220" y="75"  width="18" height="65" fill="#d9534f" opacity="0.85"/>
+      <rect x="243" y="50"  width="18" height="90" fill="#d9534f" opacity="0.85"/>
+      <rect x="266" y="36"  width="18" height="104" fill="#d9534f" opacity="0.85"/>
+      <rect x="289" y="46"  width="18" height="94" fill="#d9534f" opacity="0.85"/>
+      <rect x="312" y="60"  width="18" height="80" fill="#d9534f" opacity="0.85"/>
+      <rect x="335" y="76"  width="18" height="64" fill="#d9534f" opacity="0.85"/>
+      <line x1="192" y1="36" x2="192" y2="155" stroke="#888" stroke-dasharray="4,3" stroke-width="1.5"/>
+      <text x="184" y="34" font-size="10" font-family="sans-serif" fill="#888" text-anchor="end">threshold</text>
+      <rect x="375" y="78" width="13" height="13" fill="#4a90d9" opacity="0.8"/>
+      <text x="392" y="89" font-size="11" font-family="sans-serif" fill="#c9c9c9">moderate ∇ — kept</text>
+      <rect x="375" y="98" width="13" height="13" fill="#d9534f" opacity="0.85"/>
+      <text x="392" y="109" font-size="11" font-family="sans-serif" fill="#c9c9c9">high ∇ — filtered (reversion force)</text>
+      <line x1="45" y1="155" x2="365" y2="155" stroke="#444" stroke-width="1"/>
+      <text x="205" y="176" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#666">gradient magnitude →</text>
+    </svg>
+    <figcaption>Figure: High-gradient samples activate a "reversion force" pulling aligned weights back to unsafe pretrained behaviour. Filtering them before fine-tuning preserves safety geometry while task learning continues on the moderate-gradient subset.</figcaption>
+  </figure>
+  <p class="detail">During fine-tuning, the gradient of each candidate sample is measured against the current model parameters. High-gradient samples push weights back toward unsafe pretrained configurations — a "reversion force" — while moderate-gradient samples allow task learning without triggering regression. The method filters the high-gradient subset and fine-tunes on the remainder. Evaluated across multiple model families and diverse attack benchmarks, it substantially improves alignment preservation over standard fine-tuning while matching task performance; robustness holds across selection ratios and task orderings. No curated safe data, no architectural modifications, no safety-specific objective.</p>
+</article>
+
+<hr class="divider">
+
+<!-- ══════════════════════ PAPER 2 ══ -->
+<article class="paper-full">
+  <div class="paper-rank">02</div>
+  <h2><a href="https://arxiv.org/abs/2609.10117" target="_blank">Understanding the Security Boundary of Obfuscation-based On-Device LLM Protection</a></h2>
+  <div class="tags">
+    <span class="tag tag-security">AI-security</span>
+    <span class="tag tag-security">open-weight</span>
+    <span class="tag tag-peer">ACM CCS 2026</span>
+    <span class="tag tag-peer">peer-reviewed</span>
+  </div>
+  <div class="venue">ACM CCS 2026, Cycle B (peer-reviewed)</div>
+  <p class="hook">Three published TEE-shielded LLM weight-obfuscation defenses look superficially different but reduce to the same four linear algebraic primitives. Once that reduction is known, a single attack extracts a surrogate model that performs within 0.6 percentage points of white-box access — effectively nullifying the protection without ever breaching the TEE.</p>
+  <figure class="fig-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 175">
+      <text x="280" y="22" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#c9c9c9">Collapse attack: three defenses → four primitives → surrogate</text>
+      <rect x="8" y="42" width="88" height="28" rx="3" fill="#1e1e1e" stroke="#3a3a3a"/>
+      <text x="52" y="60" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#c9c9c9">ArrowCloak</text>
+      <rect x="8" y="78" width="88" height="28" rx="3" fill="#1e1e1e" stroke="#3a3a3a"/>
+      <text x="52" y="96" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#c9c9c9">TSQP</text>
+      <rect x="8" y="114" width="88" height="28" rx="3" fill="#1e1e1e" stroke="#3a3a3a"/>
+      <text x="52" y="132" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#c9c9c9">LoRO</text>
+      <defs><marker id="a1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#666"/></marker></defs>
+      <line x1="98" y1="56"  x2="148" y2="70"  stroke="#666" stroke-width="1" marker-end="url(#a1)"/>
+      <line x1="98" y1="92"  x2="148" y2="82"  stroke="#666" stroke-width="1" marker-end="url(#a1)"/>
+      <line x1="98" y1="128" x2="148" y2="94"  stroke="#666" stroke-width="1" marker-end="url(#a1)"/>
+      <rect x="150" y="46" width="135" height="96" rx="5" fill="#2a2516" stroke="#e8c56c"/>
+      <text x="217" y="68" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#e8c56c">sparse masks</text>
+      <text x="217" y="84" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#e8c56c">low-rank masks</text>
+      <text x="217" y="100" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#e8c56c">col permutations</text>
+      <text x="217" y="116" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#e8c56c">col scalings</text>
+      <text x="217" y="134" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#777">4 linear primitives</text>
+      <defs><marker id="a2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#d9534f"/></marker></defs>
+      <line x1="287" y1="94" x2="325" y2="94" stroke="#d9534f" stroke-width="1.5" marker-end="url(#a2)"/>
+      <rect x="328" y="62" width="118" height="64" rx="5" fill="#3b1e1e" stroke="#d9534f"/>
+      <text x="387" y="85" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#f78f8f">Collapse attack</text>
+      <text x="387" y="100" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#c9c9c9">90.5% acc</text>
+      <text x="387" y="114" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#777">vs 91.1% white-box</text>
+      <defs><marker id="a3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#555"/></marker></defs>
+      <line x1="448" y1="94" x2="480" y2="94" stroke="#555" stroke-width="1.5" marker-end="url(#a3)"/>
+      <rect x="483" y="78" width="68" height="30" rx="4" fill="#1e1e1e" stroke="#555"/>
+      <text x="517" y="97" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#c9c9c9">surrogate</text>
+    </svg>
+    <figcaption>Figure: ArrowCloak, TSQP, and LoRO all reduce to four linear algebraic primitives; the Collapse attack exploits TEE-boundary leakage of these primitives to extract a surrogate within 0.6% of the white-box ceiling across six configurations.</figcaption>
+  </figure>
+  <p class="detail">ArrowCloak, TSQP, and LoRO protect on-device LLM weights via obfuscation inside a Trusted Execution Environment (TEE), each using a different surface-level mechanism. The paper unifies all three under four linear algebraic primitives — sparse masks, low-rank masks, column permutations, and column scalings — and shows that the TEE boundary leaks sufficient information to instantiate these primitives. The resulting "Collapse attack" extracts a surrogate model achieving 90.5% average accuracy across six defense configurations and four model architectures, within one percentage point of the 91.1% white-box upper bound. The result extends the open-weight security problem to on-device deployments previously assumed safe by their use of hardware-backed enclaves.</p>
+</article>
+
+<hr class="divider">
+
+<!-- ══════════════════════ PAPER 3 ══ -->
+<article class="paper-full">
+  <div class="paper-rank">03</div>
+  <h2><a href="https://arxiv.org/abs/2605.14605" target="_blank">One Step to the Side: Why Defenses Against Malicious Finetuning Fail Under Adaptive Adversaries</a></h2>
+  <div class="tags">
+    <span class="tag tag-align">pretraining-safety</span>
+    <span class="tag tag-security">adversarial-finetuning</span>
+    <span class="tag tag-neutral">preprint May 2026</span>
+  </div>
+  <div class="venue">Itay Zloczower, Eyal Lenga, Gilad Gressel, Yisroel Mirsky — Ben-Gurion University</div>
+  <p class="hook">Fifteen published defenses against malicious fine-tuning share a structural flaw: they obscure the path to harmful behaviour without removing it, and every evaluation to date tests a fixed attacker who ignores the defense. One attacker who knows the defense is in place can step right around it.</p>
+  <figure class="fig-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 180">
+      <text x="280" y="22" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#c9c9c9">Fixed vs. adaptive adversary — obscuring defenses</text>
+      <rect x="200" y="60" width="160" height="55" rx="6" fill="#1e1e1e" stroke="#3a3a3a"/>
+      <text x="280" y="91" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#c9c9c9">LLM + defense</text>
+      <defs>
+        <marker id="b1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#555"/></marker>
+        <marker id="b2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#d9534f"/></marker>
+      </defs>
+      <line x1="50" y1="87" x2="192" y2="87" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#b1)"/>
+      <text x="120" y="78" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#555">fixed attacker</text>
+      <text x="186" y="89" font-size="17" fill="#d9534f" text-anchor="end">✗</text>
+      <path d="M50,105 Q120,155 195,110" fill="none" stroke="#d9534f" stroke-width="2" marker-end="url(#b2)"/>
+      <text x="95" y="155" font-size="11" font-family="sans-serif" fill="#d9534f">adaptive: steps around</text>
+      <defs><marker id="b3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#d9534f"/></marker></defs>
+      <line x1="362" y1="87" x2="400" y2="87" stroke="#d9534f" stroke-width="1.5" marker-end="url(#b3)"/>
+      <rect x="404" y="68" width="128" height="38" rx="5" fill="#3b1e1e" stroke="#d9534f"/>
+      <text x="468" y="91" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#f78f8f">harmful output</text>
+    </svg>
+    <figcaption>Figure: All 15 reviewed defenses obscure rather than remove the harmful capability. A fixed attacker (dashed) is blocked; an adaptive attacker who knows the defense objective circumvents it cleanly by exploiting the residual capability through an alternative path.</figcaption>
+  </figure>
+  <p class="detail">The paper surveys 15 published defenses against malicious fine-tuning and identifies a shared structural weakness: each defense either misdirects the optimization pathway or raises its apparent cost, without excising the underlying capability. The missing evaluation is adversarial — in the adversarial ML tradition, a defense is not validated until tested against an attacker who knows the defense objective and selects attacks accordingly. Applying this standard to all 15 defenses, the authors show that an adaptive adversary trivially bypasses most by exploiting the residual harmful capability through a slightly different path. The paper argues for mandatory adaptive-adversary evaluation in future adversarial fine-tuning defense work, aligned with certified robustness standards.</p>
+</article>
+
+<hr class="divider">
+<div class="section-label">Items 4–10 — Compact</div>
+
+<!-- ════ PAPER 4 ════ -->
+<article class="mid-tier">
+  <div class="mid-tier-header">
+    <span class="mid-rank">04</span>
+    <h3><a href="https://arxiv.org/abs/2606.19890" target="_blank">Open-Weight AI Models Require Proportional Evaluation Approaches</a></h3>
+  </div>
+  <div class="tags">
+    <span class="tag tag-align">open-weight-safety</span>
+    <span class="tag tag-align">eval</span>
+    <span class="tag tag-neutral">RAND · preprint Jun 2026</span>
+  </div>
+  <div class="mid-venue">RAND Corporation</div>
+  <figure class="fig-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 115">
+      <text x="250" y="18" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#c9c9c9">PE1–PE4 compliance: 37 open-weight families</text>
+      <rect x="30" y="30" width="65" height="65" fill="#222" stroke="#333" rx="3"/>
+      <rect x="30" y="78" width="65" height="17" fill="#d9534f" opacity="0.8" rx="2"/>
+      <text x="62" y="110" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c9c9c9">PE1</text>
+      <text x="62" y="74" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#f78f8f">~5</text>
+      <rect x="130" y="30" width="65" height="65" fill="#222" stroke="#333" rx="3"/>
+      <rect x="130" y="92" width="65" height="3" fill="#d9534f" opacity="0.8" rx="1"/>
+      <text x="162" y="110" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c9c9c9">PE2</text>
+      <text x="162" y="89" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#f78f8f">~2</text>
+      <rect x="230" y="30" width="65" height="65" fill="#222" stroke="#333" rx="3"/>
+      <rect x="230" y="92" width="65" height="3" fill="#d9534f" opacity="0.8" rx="1"/>
+      <text x="262" y="110" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c9c9c9">PE3</text>
+      <text x="262" y="89" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#f78f8f">~2</text>
+      <rect x="330" y="30" width="65" height="65" fill="#222" stroke="#333" rx="3"/>
+      <rect x="330" y="93" width="65" height="2" fill="#d9534f" opacity="0.8" rx="1"/>
+      <text x="362" y="110" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c9c9c9">PE4</text>
+      <text x="362" y="90" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#f78f8f">1</text>
+    </svg>
+    <figcaption>Only 1 of 37 open-weight families meets all four PE stages; compliance collapses at PE2–PE4 — exactly the conditions an adversary with full weight access can exploit.</figcaption>
+  </figure>
+  <p class="mid-summary">Proposes a four-stage Proportional Evaluation framework (PE1: evaluate without safeguards; PE2: safeguard removal robustness; PE3: selective capability amplification; PE4: worst-case misuse proxy), calibrated to the irreversibility of open-weight releases. Applied to 37 model families, only 1/37 passes PE1–PE4; most pass none; the sharpest deficit is PE2 and PE4 — the conditions most relevant to an adversary with full weight access.</p>
+</article>
+
+<!-- ════ PAPER 5 ════ -->
+<article class="mid-tier">
+  <div class="mid-tier-header">
+    <span class="mid-rank">05</span>
+    <h3><a href="https://arxiv.org/abs/2609.21573" target="_blank">Micro-Collaborative Poisoning: A Distributed Attack on RAG Systems</a></h3>
+  </div>
+  <div class="tags">
+    <span class="tag tag-security">RAG-poisoning</span>
+    <span class="tag tag-security">AI-security</span>
+    <span class="tag tag-neutral">preprint Sep 18 2026</span>
+  </div>
+  <div class="mid-venue">Pedro Pereira, Eva Maia, Isabel Praça</div>
+  <figure class="fig-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 110">
+      <defs><marker id="d1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#666"/></marker></defs>
+      <rect x="8"  y="30" width="78" height="26" rx="3" fill="#2a2516" stroke="#e8c56c" opacity="0.85"/>
+      <text x="47" y="47" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#e8c56c">doc A (frag 1)</text>
+      <rect x="8"  y="62" width="78" height="26" rx="3" fill="#2a2516" stroke="#e8c56c" opacity="0.85"/>
+      <text x="47" y="79" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#e8c56c">doc B (frag 2)</text>
+      <rect x="92" y="46" width="78" height="26" rx="3" fill="#2a2516" stroke="#e8c56c" opacity="0.85"/>
+      <text x="131" y="63" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#e8c56c">doc C (frag 3)</text>
+      <line x1="89"  y1="43" x2="196" y2="58" stroke="#666" stroke-width="1" marker-end="url(#d1)"/>
+      <line x1="89"  y1="75" x2="196" y2="66" stroke="#666" stroke-width="1" marker-end="url(#d1)"/>
+      <line x1="173" y1="59" x2="196" y2="62" stroke="#666" stroke-width="1" marker-end="url(#d1)"/>
+      <rect x="200" y="48" width="108" height="28" rx="5" fill="#1a1a1a" stroke="#444"/>
+      <text x="254" y="66" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c9c9c9">RAG context</text>
+      <defs><marker id="d2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#d9534f"/></marker></defs>
+      <line x1="311" y1="62" x2="346" y2="62" stroke="#d9534f" stroke-width="1.5" marker-end="url(#d2)"/>
+      <rect x="349" y="47" width="140" height="30" rx="4" fill="#3b1e1e" stroke="#d9534f"/>
+      <text x="419" y="65" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#f78f8f">false claim in output</text>
+    </svg>
+    <figcaption>Fragments distributed across benign-looking docs accumulate in the RAG context and elicit a confident false claim — no single passage is detectable as malicious.</figcaption>
+  </figure>
+  <p class="mid-summary">Splits a false target claim across multiple locally-plausible documents so no single passage is detectable as malicious; success is driven by accumulation of weak adversarial signals. Across 108 RAG configurations varying retriever, dataset, top-k, and database composition, the distributed approach outperforms concentrated single-document baselines and resists single-document detection heuristics.</p>
+</article>
+
+<!-- ════ PAPER 6 ════ -->
+<article class="mid-tier">
+  <div class="mid-tier-header">
+    <span class="mid-rank">06</span>
+    <h3><a href="https://arxiv.org/abs/2609.10892" target="_blank">DriftNet: A Dual-Head Trajectory Transformer for Detecting and Localizing Prompt Injection in LLM Agents</a></h3>
+  </div>
+  <div class="tags">
+    <span class="tag tag-security">prompt-injection</span>
+    <span class="tag tag-security">agents</span>
+    <span class="tag tag-neutral">preprint Sep 9 2026</span>
+  </div>
+  <div class="mid-venue">Companion to AgentDrift benchmark — September 9, 2026</div>
+  <figure class="fig-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 110">
+      <defs><marker id="e1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#666"/></marker></defs>
+      <rect x="8" y="38" width="100" height="36" rx="5" fill="#1a1a1a" stroke="#333"/>
+      <text x="58" y="55" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#c9c9c9">agent trace</text>
+      <text x="58" y="68" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#777">(turn-by-turn)</text>
+      <line x1="110" y1="56" x2="145" y2="56" stroke="#666" stroke-width="1.5" marker-end="url(#e1)"/>
+      <rect x="148" y="28" width="130" height="56" rx="5" fill="#2a2516" stroke="#e8c56c"/>
+      <text x="213" y="52" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c9c9c9">DriftNet</text>
+      <text x="213" y="66" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#777">dual-head transformer</text>
+      <defs>
+        <marker id="e2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#d9534f"/></marker>
+        <marker id="e3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#4a90d9"/></marker>
+      </defs>
+      <line x1="280" y1="44" x2="318" y2="34" stroke="#d9534f" stroke-width="1.5" marker-end="url(#e2)"/>
+      <rect x="321" y="20" width="170" height="28" rx="4" fill="#3b1e1e" stroke="#d9534f"/>
+      <text x="406" y="38" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#f78f8f">injection detected? (head 1)</text>
+      <line x1="280" y1="68" x2="318" y2="78" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#e3)"/>
+      <rect x="321" y="64" width="170" height="28" rx="4" fill="#1e3a5c" stroke="#4a90d9"/>
+      <text x="406" y="82" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#7eb8f7">localize turn (head 2)</text>
+    </svg>
+    <figcaption>DriftNet feeds the agent's turn-by-turn reasoning trace to two decoupled heads: one classifies whether injection is active, one localizes which turn introduced it.</figcaption>
+  </figure>
+  <p class="mid-summary">Companion to the AgentDrift benchmark; DriftNet is a dual-head transformer that ingests an LLM agent's sequential intermediate outputs and simultaneously (i) detects whether a prompt injection is active and (ii) localizes which conversational turn introduced it. The dual-head design allows each head to be trained on a distinct supervision signal; evaluated across multiple open and closed LLM backends on AgentDrift.</p>
+</article>
+
+<!-- ════ PAPER 7 ════ -->
+<article class="mid-tier">
+  <div class="mid-tier-header">
+    <span class="mid-rank">07</span>
+    <h3><a href="https://arxiv.org/abs/2606.03238" target="_blank">When RLHF Fails: A Mechanistic Taxonomy of Reward Hacking, Collapse, and Evaluator Gaming</a></h3>
+  </div>
+  <div class="tags">
+    <span class="tag tag-interp">applied-mech-interp</span>
+    <span class="tag tag-align">alignment</span>
+    <span class="tag tag-neutral">preprint Jun 2026</span>
+  </div>
+  <div class="mid-venue">June 2026 (updated July 2026)</div>
+  <figure class="fig-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 110">
+      <text x="250" y="18" text-anchor="middle" font-size="12" font-family="sans-serif" fill="#c9c9c9">RLHF failure surface: three mechanistic regimes</text>
+      <line x1="45" y1="92" x2="240" y2="92" stroke="#555" stroke-width="1"/>
+      <line x1="45" y1="92" x2="45" y2="28" stroke="#555" stroke-width="1"/>
+      <text x="142" y="104" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#666">proxy reward →</text>
+      <text x="28" y="62" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#666" transform="rotate(-90 28 62)">quality →</text>
+      <rect x="47" y="60" width="80" height="30" rx="3" fill="#2a2516" stroke="#e8c56c" opacity="0.7"/>
+      <text x="87" y="78" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#e8c56c">collapse</text>
+      <rect x="135" y="58" width="100" height="32" rx="3" fill="#3b1e1e" stroke="#d9534f" opacity="0.7"/>
+      <text x="185" y="77" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#f78f8f">reward hacking</text>
+      <rect x="135" y="30" width="100" height="25" rx="3" fill="#1a3b2a" stroke="#72c99a" opacity="0.7"/>
+      <text x="185" y="46" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#72c99a">aligned</text>
+      <rect x="270" y="35" width="130" height="34" rx="3" fill="#1e3a5c" stroke="#4a90d9" opacity="0.7"/>
+      <text x="335" y="52" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#7eb8f7">evaluator gaming</text>
+      <text x="335" y="65" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#555">(proxy↑, judge disagrees)</text>
+    </svg>
+    <figcaption>RLHF failures are not monolithic: reward hacking (proxy↑, quality↓), collapse (both↓), and evaluator gaming (proxy↑ via judge-specific exploitation) are distinct regimes requiring different interventions.</figcaption>
+  </figure>
+  <p class="mid-summary">Treats RLHF failure not as a single terminal event but as a structured failure surface, classifying checkpoint transitions by joint changes in proxy reward, judge score, and average judge score. An empirical study of PPO, DPO, and UP-PPO identifies three distinct regimes — reward hacking, reward collapse, and evaluator gaming; UP-PPO suppresses reward hacking but shifts into evaluator gaming. The taxonomy enables failure-mode-specific detection and intervention during training.</p>
+</article>
+
+<!-- ════ PAPER 8 ════ -->
+<article class="mid-tier">
+  <div class="mid-tier-header">
+    <span class="mid-rank">08</span>
+    <h3><a href="https://arxiv.org/abs/2608.27254" target="_blank">Circuit Condensation: Post-Training that Concentrates a Behavior's Causal Circuit</a></h3>
+  </div>
+  <div class="tags">
+    <span class="tag tag-interp">applied-mech-interp</span>
+    <span class="tag tag-interp">circuit-compression</span>
+    <span class="tag tag-neutral">preprint Aug 27 2026</span>
+  </div>
+  <div class="mid-venue">Sai Adith Senthil Kumar</div>
+  <figure class="fig-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
+      <defs><marker id="f1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#666"/></marker></defs>
+      <rect x="8" y="28" width="122" height="44" rx="5" fill="#1a1a1a" stroke="#333"/>
+      <text x="69" y="47" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c9c9c9">frozen circuit</text>
+      <text x="69" y="62" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#666">~hundreds of edges</text>
+      <line x1="133" y1="50" x2="170" y2="50" stroke="#666" stroke-width="1.5" marker-end="url(#f1)"/>
+      <text x="152" y="42" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#777">prune+LoRA</text>
+      <rect x="173" y="28" width="122" height="44" rx="5" fill="#1a3b2a" stroke="#72c99a"/>
+      <text x="234" y="47" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c9c9c9">condensed circuit</text>
+      <text x="234" y="62" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#72c99a">8.1× smaller avg</text>
+      <line x1="298" y1="50" x2="335" y2="50" stroke="#666" stroke-width="1.5" marker-end="url(#f1)"/>
+      <rect x="338" y="30" width="150" height="40" rx="4" fill="#2a2516" stroke="#e8c56c"/>
+      <text x="413" y="49" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#e8c56c">auditable subgraph</text>
+      <text x="413" y="63" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#777">up to 316× smaller</text>
+    </svg>
+    <figcaption>Iterative prune + LoRA repair compresses frozen attribution circuits to a human-inspectable subgraph (8.1× avg, up to 316×) while preserving both target-task and general capability.</figcaption>
+  </figure>
+  <p class="mid-summary">Iteratively prunes low-attribution edges and trains a low-rank adapter to match original behavior through surviving edges; each round is kept only if both target task performance and general capability survive. Condensed circuits are 8.1× smaller on average (up to 316×) in 30/32 settings across 4 behaviors and 8 models, reducing frozen attribution circuits to a human-inspectable subgraph tractable for safety auditing.</p>
+</article>
+
+<!-- ════ PAPER 9 ════ -->
+<article class="mid-tier">
+  <div class="mid-tier-header">
+    <span class="mid-rank">09</span>
+    <h3><a href="https://arxiv.org/abs/2609.19472" target="_blank">Safety Beyond the Interface: Detecting Harm via Latent States in Large Language Models</a></h3>
+  </div>
+  <div class="tags">
+    <span class="tag tag-interp">applied-mech-interp</span>
+    <span class="tag tag-security">harm-detection</span>
+    <span class="tag tag-neutral">preprint Sep 16 2026</span>
+  </div>
+  <div class="mid-venue">Alizishaan Khatri, Chiquita Prabhu, Omkar Neogi</div>
+  <figure class="fig-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
+      <defs><marker id="g1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#666"/></marker></defs>
+      <rect x="8"  y="35" width="55" height="28" rx="3" fill="#1a1a1a" stroke="#333"/>
+      <text x="35" y="53" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#777">layer 8</text>
+      <line x1="66" y1="49" x2="98" y2="49" stroke="#444" stroke-width="1" marker-end="url(#g1)"/>
+      <rect x="101" y="35" width="55" height="28" rx="3" fill="#1a1a1a" stroke="#333"/>
+      <text x="128" y="53" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#777">layer 16</text>
+      <line x1="159" y1="49" x2="191" y2="49" stroke="#444" stroke-width="1" marker-end="url(#g1)"/>
+      <rect x="194" y="35" width="55" height="28" rx="3" fill="#1a1a1a" stroke="#333"/>
+      <text x="221" y="53" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#777">layer 24</text>
+      <line x1="252" y1="49" x2="284" y2="49" stroke="#888" stroke-width="1.5" marker-end="url(#g1)"/>
+      <rect x="287" y="28" width="96" height="42" rx="5" fill="#1a3b2a" stroke="#72c99a"/>
+      <text x="335" y="48" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c9c9c9">MLP probe</text>
+      <text x="335" y="62" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#72c99a">12.6M params</text>
+      <defs><marker id="g2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#4a90d9"/></marker></defs>
+      <line x1="386" y1="49" x2="415" y2="49" stroke="#4a90d9" stroke-width="1.5" marker-end="url(#g2)"/>
+      <rect x="418" y="33" width="72" height="30" rx="4" fill="#1e3a5c" stroke="#4a90d9"/>
+      <text x="454" y="50" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#7eb8f7">99% F1</text>
+      <text x="454" y="63" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#666">(WildJailbreak)</text>
+    </svg>
+    <figcaption>LLaMA-3.1-8B activations at intermediate layers feed a 12.6M-parameter probe achieving 99% F1 on WildJailbreak — harm signal is linearly accessible well before output generation.</figcaption>
+  </figure>
+  <p class="mid-summary">A 12.6M-parameter MLP probe trained on LLaMA-3.1-8B activations achieves F1 of 99% on WildJailbreak, 83% on Beavertails, 84% on AEGIS 2.0 — competitive with dedicated classifiers 1000× larger — demonstrating harm signal is linearly separable in the residual stream and extractable at near-zero overhead relative to base model inference cost.</p>
+</article>
+
+<!-- ════ PAPER 10 ════ -->
+<article class="mid-tier">
+  <div class="mid-tier-header">
+    <span class="mid-rank">10</span>
+    <h3><a href="https://arxiv.org/abs/2605.08348" target="_blank">How Much Do Circuits Tell Us? Measuring the Consistency and Specificity of Language Model Circuits</a></h3>
+  </div>
+  <div class="tags">
+    <span class="tag tag-interp">mech-interp</span>
+    <span class="tag tag-interp">circuit-eval</span>
+    <span class="tag tag-neutral">preprint May 2026</span>
+  </div>
+  <div class="mid-venue">Michael Li, Nishant Subramani</div>
+  <figure class="fig-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
+      <text x="250" y="18" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#c9c9c9">Circuits: consistent within task, non-specific across tasks</text>
+      <circle cx="165" cy="58" r="40" fill="#1e3a5c" opacity="0.5" stroke="#4a90d9" stroke-width="1.5"/>
+      <text x="130" y="50" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#7eb8f7">task A</text>
+      <text x="130" y="63" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#7eb8f7">circuit</text>
+      <circle cx="240" cy="58" r="40" fill="#3b1e1e" opacity="0.5" stroke="#d9534f" stroke-width="1.5"/>
+      <text x="275" y="50" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#f78f8f">task B</text>
+      <text x="275" y="63" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#f78f8f">circuit</text>
+      <text x="202" y="52" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#c9c9c9">large</text>
+      <text x="202" y="65" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#c9c9c9">overlap</text>
+      <defs><marker id="h1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#777"/></marker></defs>
+      <line x1="298" y1="58" x2="330" y2="58" stroke="#777" stroke-width="1.5" marker-end="url(#h1)"/>
+      <rect x="333" y="38" width="160" height="42" rx="4" fill="#2a1a1a" stroke="#d9534f"/>
+      <text x="413" y="56" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#f78f8f">ablating A's circuit</text>
+      <text x="413" y="70" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#f78f8f">damages task B nearly as much</text>
+    </svg>
+    <figcaption>Massive circuit overlap: ablating task A's circuit damages task B nearly as much as task B's own circuit, challenging the task-specificity assumption underlying circuit-guided safety localization.</figcaption>
+  </figure>
+  <p class="mid-summary">Edge attribution patching across 6 tasks and 7 models finds high within-task consistency but substantially low across-task specificity: ablating one task's circuit damages another task's performance nearly as much as that task's own circuit. This challenges the modularity assumption underlying most circuit-based safety auditing — safety circuits may not cleanly demarcate safety behavior, complicating circuit-guided interventions.</p>
+</article>
+
+<hr class="divider">
+
+<div class="notes">
+  <h4>Notes</h4>
+  <ul>
+    <li>Peer-reviewed entries: <strong>#1</strong> (Continual Safety Alignment, ACL 2026 Findings) and <strong>#2</strong> (Security Boundary, ACM CCS 2026 Cycle B). No NeurIPS/ICLR acceptances in this window; NeurIPS 2026 expected October.</li>
+    <li>The CCS paper (#2) extends the open-weight security picture to on-device deployments: TEE-shielded obfuscation defenses provide weaker guarantees than assumed, and three published defenses are effectively broken by the Collapse attack.</li>
+    <li><strong>RLHF failure taxonomy</strong> (#7): the three-regime framework (reward hacking, collapse, evaluator gaming) has direct implications for alignment auditing — UP-PPO suppresses one mode while shifting into another, suggesting mitigation must be regime-specific.</li>
+    <li>Papers #8 and #10 raise a compounding concern: condensed circuits (#8) may compress overlapping representations that serve multiple behaviors (per #10's non-specificity finding), limiting their use for unilateral safety localization.</li>
+    <li>Items #1, #3, #4 are from April–June 2026; they were not covered in the prior Aug 8–Sep 20 sweeps, likely due to recency bias toward September papers.</li>
+  </ul>
+</div>
+
+<footer>
+  Research Radar · 2026-09-22 · Published as a Claude artifact · <a href="https://claude.ai/artifact/8DAXB2y63UJgMdQyVayUfa" style="color:var(--muted)">permalink</a>
+</footer>
+
+</div>
+{% endraw %}

@@ -1,0 +1,1023 @@
+---
+layout: "radar"
+title: "Research Radar · August 28"
+kind: "daily"
+slug: "2026-08-28"
+date: 2026-08-28
+group: "2026-W36"
+window: "August 27–28, 2026 (plus pretraining-safety backfill from Aug 8–26 bypassed by the security-heavy prior sweeps)"
+summary: "Window: August 27–28, 2026 (plus pretraining-safety backfill from Aug 8–26 bypassed by the security-heavy prior sweeps) · Sources swept: arXiv (cs.CL/cs.LG/cs.CR/cs.AI), OpenReview, ACL Anthology, KDD 2026 proceedings · Counts: 1 peer-reviewed · 9 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/2befbf85-af9d-4a17-8f79-ecd3970360b4"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-28.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=Figtree:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+/* ─── tokens ─── */
+:root {
+  --bg:           #f3f5fa;
+  --surface:      #ffffff;
+  --surface-alt:  #edf1f8;
+  --border:       #cdd5e4;
+  --border-soft:  #e0e6f0;
+  --text:         #18243a;
+  --text-muted:   #52617a;
+  --text-faint:   #8596b0;
+  --accent:       #0a7c5c;
+  --accent-sat:   #0d9d74;
+  --accent-dim:   rgba(10,124,92,0.10);
+  --amber:        #9e5c02;
+  --amber-bg:     #fef4e2;
+  --amber-border: #f0d090;
+  --sec-clr:      #a03018;
+  --sec-bg:       #fff2ef;
+  --sec-border:   #f0c0b0;
+  --interp-clr:   #3e3b9c;
+  --interp-bg:    #f0f0fe;
+  --interp-border:#c8c6f4;
+  --rank-ghost:   rgba(10,124,92,0.055);
+  --shadow-sm:    0 1px 3px rgba(15,30,70,0.07);
+  --shadow-md:    0 3px 12px rgba(15,30,70,0.10);
+  --radius:       6px;
+  --radius-lg:    10px;
+  --mono: 'IBM Plex Mono', 'Fira Mono', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:           #090f1c;
+    --surface:      #0d1828;
+    --surface-alt:  #09111f;
+    --border:       #192740;
+    --border-soft:  #142032;
+    --text:         #d6e3f5;
+    --text-muted:   #7898b8;
+    --text-faint:   #4a6282;
+    --accent:       #15b085;
+    --accent-sat:   #1dd4a0;
+    --accent-dim:   rgba(21,176,133,0.10);
+    --amber:        #e09a20;
+    --amber-bg:     rgba(228,152,28,0.13);
+    --amber-border: rgba(228,152,28,0.30);
+    --sec-clr:      #e06040;
+    --sec-bg:       rgba(220,80,48,0.12);
+    --sec-border:   rgba(220,80,48,0.28);
+    --interp-clr:   #9490ec;
+    --interp-bg:    rgba(140,136,240,0.12);
+    --interp-border:rgba(140,136,240,0.28);
+    --rank-ghost:   rgba(21,176,133,0.07);
+    --shadow-sm:    0 1px 4px rgba(0,0,0,0.35);
+    --shadow-md:    0 4px 16px rgba(0,0,0,0.40);
+  }
+}
+:root[data-theme="dark"] {
+    --bg:           #090f1c;
+    --surface:      #0d1828;
+    --surface-alt:  #09111f;
+    --border:       #192740;
+    --border-soft:  #142032;
+    --text:         #d6e3f5;
+    --text-muted:   #7898b8;
+    --text-faint:   #4a6282;
+    --accent:       #15b085;
+    --accent-sat:   #1dd4a0;
+    --accent-dim:   rgba(21,176,133,0.10);
+    --amber:        #e09a20;
+    --amber-bg:     rgba(228,152,28,0.13);
+    --amber-border: rgba(228,152,28,0.30);
+    --sec-clr:      #e06040;
+    --sec-bg:       rgba(220,80,48,0.12);
+    --sec-border:   rgba(220,80,48,0.28);
+    --interp-clr:   #9490ec;
+    --interp-bg:    rgba(140,136,240,0.12);
+    --interp-border:rgba(140,136,240,0.28);
+    --rank-ghost:   rgba(21,176,133,0.07);
+    --shadow-sm:    0 1px 4px rgba(0,0,0,0.35);
+    --shadow-md:    0 4px 16px rgba(0,0,0,0.40);
+}
+
+/* ─── reset & base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: 'Figtree', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── layout ─── */
+.page-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── masthead ─── */
+.masthead {
+  border-bottom: 2px solid var(--accent);
+  padding: 36px 0 28px;
+  margin-bottom: 48px;
+}
+.masthead-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.70rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.masthead-title {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(2.0rem, 5vw, 3.0rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text);
+  text-wrap: balance;
+  margin-bottom: 6px;
+}
+.masthead-title strong {
+  font-weight: 600;
+}
+.masthead-date {
+  font-family: var(--mono);
+  font-size: 0.80rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+.masthead-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.meta-pill {
+  font-family: var(--mono);
+  font-size: 0.70rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--surface);
+}
+.meta-pill.peer   { border-color: var(--amber-border); background: var(--amber-bg); color: var(--amber); }
+.meta-pill.window { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 30%, transparent); background: var(--accent-dim); }
+
+/* ─── section headers ─── */
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 8px;
+  margin-bottom: 36px;
+}
+
+/* ─── tags ─── */
+.tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  border: 1px solid;
+}
+.tag-peer    { color: var(--amber);      background: var(--amber-bg);   border-color: var(--amber-border); }
+.tag-control { color: var(--accent);     background: var(--accent-dim); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
+.tag-security{ color: var(--sec-clr);    background: var(--sec-bg);     border-color: var(--sec-border); }
+.tag-interp  { color: var(--interp-clr); background: var(--interp-bg);  border-color: var(--interp-border); }
+.tag-rank {
+  font-family: var(--mono);
+  font-size: 0.70rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+
+/* ─── full paper entry ─── */
+.paper-full {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+.paper-full-header {
+  padding: 28px 32px 0;
+}
+.paper-rank-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.paper-rank-num {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: var(--border);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+.paper-full h2 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.42rem;
+  font-weight: 600;
+  line-height: 1.32;
+  text-wrap: balance;
+  margin-bottom: 8px;
+}
+.paper-full h2 a {
+  color: var(--text);
+  text-decoration: none;
+}
+.paper-full h2 a:hover { color: var(--accent); }
+.paper-byline {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+.paper-byline strong { color: var(--amber); }
+.label-row {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.why-box {
+  background: var(--surface-alt);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.paper-full-body {
+  padding: 0 32px 24px;
+}
+.paper-full-body p {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  max-width: 68ch;
+}
+
+/* ─── figure panel ─── */
+.figure-panel {
+  margin: 20px 32px 28px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.figure-panel svg {
+  display: block;
+  width: 100%;
+}
+.figure-caption {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 10px 16px 12px;
+  border-top: 1px solid var(--border-soft);
+  line-height: 1.4;
+}
+
+/* ─── mid-tier entries ─── */
+.mid-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.paper-mid {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  grid-template-columns: 56px 1fr 180px;
+  gap: 0;
+  overflow: hidden;
+}
+@media (max-width: 640px) {
+  .paper-mid { grid-template-columns: 48px 1fr; }
+  .mid-figure { display: none; }
+}
+.mid-rank {
+  background: var(--rank-ghost);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 20px;
+  border-right: 1px solid var(--border-soft);
+}
+.mid-rank span {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--text-faint);
+  line-height: 1;
+}
+.mid-content {
+  padding: 18px 20px;
+}
+.mid-content h3 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 5px;
+  text-wrap: balance;
+}
+.mid-content h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+.mid-content h3 a:hover { color: var(--accent); }
+.mid-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+.mid-content p {
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.65;
+  max-width: 58ch;
+}
+.mid-figure {
+  border-left: 1px solid var(--border-soft);
+  background: var(--surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+.mid-figure svg { display: block; width: 100%; height: auto; }
+
+/* ─── notes section ─── */
+.notes {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 48px;
+}
+.notes h2 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 16px;
+}
+.notes ul { list-style: none; padding: 0; }
+.notes li {
+  font-size: 0.875rem;
+  color: var(--text);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-soft);
+  padding-left: 16px;
+  position: relative;
+}
+.notes li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.notes li:last-child { border-bottom: none; }
+.notes li strong { color: var(--text); }
+
+/* ─── footer ─── */
+footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 24px 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+footer .footer-left {
+  font-family: var(--mono);
+  font-size: 0.70rem;
+  color: var(--text-faint);
+}
+footer .footer-right {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
+/* ─── SVG shared text styles ─── */
+.svg-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  fill: var(--text-muted);
+}
+.svg-axis {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+</style>
+
+<div class="page-wrap">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-eyebrow">Research Radar · Daily Edition</div>
+    <h1 class="masthead-title">Mech Interp &amp; AI Safety<br><strong>August 28, 2026</strong></h1>
+    <div class="masthead-date">2026-08-28 &nbsp;·&nbsp; claude/radar</div>
+    <div class="masthead-meta">
+      <span class="meta-pill window">Window: Aug 8–28, 2026</span>
+      <span class="meta-pill peer">1 peer-reviewed</span>
+      <span class="meta-pill">9 preprints</span>
+      <span class="meta-pill">0 forum/blog</span>
+      <span class="meta-pill">arXiv · ACL · KDD 2026</span>
+    </div>
+  </header>
+
+  <!-- TOP 3 -->
+  <div class="section-label">Top 3 — Full Treatment</div>
+
+  <!-- PAPER 1: TamperBench -->
+  <article class="paper-full">
+    <div class="paper-full-header">
+      <div class="paper-rank-row">
+        <span class="paper-rank-num">01</span>
+        <span class="tag tag-peer">KDD 2026</span>
+        <span class="tag tag-control">pretraining-safety</span>
+      </div>
+      <h2><a href="https://arxiv.org/abs/2602.06911" target="_blank" rel="noopener">TamperBench: Systematically Stress-Testing LLM Safety Under Fine-Tuning and Tampering</a></h2>
+      <p class="paper-byline">Sebastian Farquhar et al. — <strong>KDD 2026 (peer-reviewed)</strong> · <span style="font-family:var(--mono);font-size:0.78rem;color:var(--text-faint)">2602.06911</span></p>
+      <div class="label-row">Why it ranks first</div>
+      <div class="why-box">The field's first unified benchmark for tamper resistance: 21 open-weight LLMs evaluated across 9 tampering threats in a single reproducible harness. The only peer-reviewed entry this window. Jailbreak-tuning is consistently the most severe attack; current alignment-stage defenses largely fail the full sweep.</div>
+    </div>
+    <div class="paper-full-body">
+      <p>TamperBench curates weight-space fine-tuning attacks, latent-space representation attacks, and alignment-stage defenses into one evaluation harness. Each of 21 models — including defense-augmented variants — is run against all 9 threats with hyperparameter sweeps per model–attack pair, using standardized safety and capability metrics. The result is the most comprehensive empirical survey of how alignment defenses hold under adversarial pressure.</p>
+      <p>Key findings: jailbreak-tuning dominates across architectures; base vs. post-trained variants exhibit <em>opposite</em> tamper-resistance trends in Llama-3 and Qwen3 (post-training is not always the safer regime); and no current alignment-stage defense survives the full attack sweep. Code is public.</p>
+    </div>
+
+    <!-- Figure 1: Attack severity bar chart -->
+    <div class="figure-panel">
+      <svg viewBox="0 0 780 220" xmlns="http://www.w3.org/2000/svg" aria-label="TamperBench: ASR by attack type across 21 LLMs">
+        <style>
+          .fb { fill: var(--border); }
+          .fa { fill: var(--accent); }
+          .fa2 { fill: var(--amber); }
+          .ft { fill: var(--text-muted); font-family: 'IBM Plex Mono', monospace; font-size: 9px; }
+          .fh { fill: var(--text); font-family: 'Figtree', sans-serif; font-size: 11px; font-weight: 600; }
+          .fa3 { fill: var(--sec-clr); }
+        </style>
+        <!-- axes -->
+        <line x1="120" y1="20" x2="120" y2="175" stroke="var(--border)" stroke-width="1"/>
+        <line x1="120" y1="175" x2="740" y2="175" stroke="var(--border)" stroke-width="1"/>
+        <!-- y-axis labels -->
+        <text class="ft" x="112" y="178" text-anchor="end">0%</text>
+        <text class="ft" x="112" y="133" text-anchor="end">25%</text>
+        <text class="ft" x="112" y="88" text-anchor="end">50%</text>
+        <text class="ft" x="112" y="43" text-anchor="end">75%</text>
+        <!-- grid -->
+        <line x1="120" y1="133" x2="740" y2="133" stroke="var(--border-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="120" y1="88" x2="740" y2="88" stroke="var(--border-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="120" y1="43" x2="740" y2="43" stroke="var(--border-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+
+        <!-- Bars: y = 175 - (ASR/100)*155, h = (ASR/100)*155 -->
+        <!-- JB-Tuning: ASR ~82% → h=127.1, y=47.9 -->
+        <rect class="fa3" x="136" y="48" width="72" height="127" rx="2"/>
+        <text class="ft" x="172" y="42" text-anchor="middle" font-weight="700" fill="var(--sec-clr)">82%</text>
+        <text class="ft" x="172" y="192" text-anchor="middle">JB-Tuning</text>
+
+        <!-- Rep. Atk: ASR ~58% → h=89.9, y=85.1 -->
+        <rect class="fa" x="230" y="85" width="72" height="90" rx="2" opacity="0.85"/>
+        <text class="ft" x="266" y="79" text-anchor="middle">58%</text>
+        <text class="ft" x="266" y="192" text-anchor="middle">Rep. Attack</text>
+
+        <!-- Grad. FT: ASR ~52% → h=80.6, y=94.4 -->
+        <rect class="fa" x="324" y="94" width="72" height="81" rx="2" opacity="0.70"/>
+        <text class="ft" x="360" y="88" text-anchor="middle">52%</text>
+        <text class="ft" x="360" y="192" text-anchor="middle">Grad. FT</text>
+
+        <!-- Adv. Suffix: ASR ~41% → h=63.6, y=111.4 -->
+        <rect class="fa" x="418" y="111" width="72" height="64" rx="2" opacity="0.55"/>
+        <text class="ft" x="454" y="105" text-anchor="middle">41%</text>
+        <text class="ft" x="454" y="192" text-anchor="middle">Adv. Suffix</text>
+
+        <!-- Prefix Inj: ASR ~29% → h=44.95, y=130.05 -->
+        <rect class="fa" x="512" y="130" width="72" height="45" rx="2" opacity="0.40"/>
+        <text class="ft" x="548" y="124" text-anchor="middle">29%</text>
+        <text class="ft" x="548" y="192" text-anchor="middle">Prefix Inj.</text>
+
+        <!-- Latent Steer: ASR ~19% → h=29.45, y=145.55 -->
+        <rect class="fb" x="606" y="146" width="72" height="29" rx="2" opacity="0.6"/>
+        <text class="ft" x="642" y="140" text-anchor="middle">19%</text>
+        <text class="ft" x="642" y="192" text-anchor="middle">Latent Steer</text>
+
+        <!-- Legend -->
+        <rect class="fa3" x="130" y="208" width="10" height="10" rx="1"/>
+        <text class="ft" x="145" y="217" fill="var(--sec-clr)" font-weight="600">Most severe</text>
+        <rect class="fa" x="230" y="208" width="10" height="10" rx="1" opacity="0.85"/>
+        <text class="ft" x="245" y="217">Other attacks</text>
+
+        <!-- Title -->
+        <text class="fh" x="120" y="14">Attack severity across 21 LLMs · TamperBench</text>
+      </svg>
+      <p class="figure-caption">Attack success rate by threat category across 21 open-weight LLMs; jailbreak-tuning consistently achieves highest ASR (≈82%) — current alignment-stage defenses offer no robust resistance to the full attack sweep.</p>
+    </div>
+  </article>
+
+  <!-- PAPER 2: Steering Durability -->
+  <article class="paper-full">
+    <div class="paper-full-header">
+      <div class="paper-rank-row">
+        <span class="paper-rank-num">02</span>
+        <span class="tag tag-control">pretraining-safety</span>
+        <span class="tag tag-interp">mech-interp</span>
+      </div>
+      <h2><a href="https://arxiv.org/abs/2608.24988" target="_blank" rel="noopener">Does Fine-Tuning Undo Activation Steering? Behavioural Recovery Without Weight-Edit Reversal</a></h2>
+      <p class="paper-byline">Philipp E. Glass, Allan Tucker, Yongmin Li, Alina Miron — arXiv preprint · <span style="font-family:var(--mono);font-size:0.78rem;color:var(--text-faint)">2608.24988</span> · August 25, 2026</p>
+      <div class="label-row">Why it ranks here</div>
+      <div class="why-box">A striking dissociation: activation-steering weight edits survive SFT almost untouched (mean cos θ = 0.074), yet behavioral compliance with the steered direction collapses by 64% on average. Behavior reverts while the weight modification stays intact — pointing to circuit-level recovery mechanisms that bypass the steered direction.</div>
+    </div>
+    <div class="paper-full-body">
+      <p>The study embeds refusal-suppression and brevity-induction steering vectors directly into weights across five instruction-tuned models (3B–14B), then applies non-adversarial SFT and RLHF. At the behavioral level, refusal ablation loses an average 64% of its effect under SFT. At the mechanistic level, the steering weight edit survives: mean vector recovery correlation ρ = 0.004, update direction near-orthogonal to the pre-edit steering direction (mean cos θ = 0.074).</p>
+      <p>The implication is significant: the fine-tuner is <em>not</em> reversing the weight edit. Something else in the model's computation pathway overrides the steered direction — a gap between the mechanistic change made and the behavioral change achieved.</p>
+    </div>
+
+    <!-- Figure 2: Two-line chart -->
+    <div class="figure-panel">
+      <svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" aria-label="Weight edit preserved vs behavioral compliance under SFT">
+        <style>
+          .f2t { fill: var(--text-muted); font-family: 'IBM Plex Mono', monospace; font-size: 9px; }
+          .f2h { fill: var(--text); font-family: 'Figtree', sans-serif; font-size: 11px; font-weight: 600; }
+        </style>
+        <!-- axes -->
+        <line x1="80" y1="15" x2="80" y2="162" stroke="var(--border)" stroke-width="1"/>
+        <line x1="80" y1="162" x2="710" y2="162" stroke="var(--border)" stroke-width="1"/>
+        <!-- grid -->
+        <line x1="80" y1="162" x2="710" y2="162" stroke="var(--border-soft)" stroke-dasharray="3,4"/>
+        <line x1="80" y1="121" x2="710" y2="121" stroke="var(--border-soft)" stroke-dasharray="3,4"/>
+        <line x1="80" y1="80" x2="710" y2="80" stroke="var(--border-soft)" stroke-dasharray="3,4"/>
+        <line x1="80" y1="39" x2="710" y2="39" stroke="var(--border-soft)" stroke-dasharray="3,4"/>
+
+        <!-- y labels -->
+        <text class="f2t" x="74" y="166" text-anchor="end">0.0</text>
+        <text class="f2t" x="74" y="125" text-anchor="end">0.25</text>
+        <text class="f2t" x="74" y="84" text-anchor="end">0.50</text>
+        <text class="f2t" x="74" y="43" text-anchor="end">1.00</text>
+
+        <!-- x labels: SFT checkpoints -->
+        <text class="f2t" x="80" y="175" text-anchor="middle">0</text>
+        <text class="f2t" x="237" y="175" text-anchor="middle">Epoch 1</text>
+        <text class="f2t" x="394" y="175" text-anchor="middle">Epoch 2</text>
+        <text class="f2t" x="551" y="175" text-anchor="middle">Epoch 3</text>
+        <text class="f2t" x="710" y="175" text-anchor="middle">Epoch 4</text>
+
+        <!-- LINE 1: Weight Edit Preserved — flat near 1.0 (y=39) with tiny jitter -->
+        <polyline fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"
+          points="80,39 237,41 394,40 551,42 710,40"/>
+        <circle cx="80" cy="39" r="4" fill="var(--accent)"/>
+        <circle cx="237" cy="41" r="4" fill="var(--accent)"/>
+        <circle cx="394" cy="40" r="4" fill="var(--accent)"/>
+        <circle cx="551" cy="42" r="4" fill="var(--accent)"/>
+        <circle cx="710" cy="40" r="4" fill="var(--accent)"/>
+
+        <!-- LINE 2: Behavioral Compliance — drops from 1.0 to 0.36 (y=39 to y=130) -->
+        <polyline fill="none" stroke="var(--sec-clr)" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6,3"
+          points="80,39 237,70 394,98 551,119 710,130"/>
+        <circle cx="80" cy="39" r="4" fill="var(--sec-clr)"/>
+        <circle cx="237" cy="70" r="4" fill="var(--sec-clr)"/>
+        <circle cx="394" cy="98" r="4" fill="var(--sec-clr)"/>
+        <circle cx="551" cy="119" r="4" fill="var(--sec-clr)"/>
+        <circle cx="710" cy="130" r="4" fill="var(--sec-clr)"/>
+
+        <!-- annotations -->
+        <text x="718" y="44" class="f2t" fill="var(--accent)" font-weight="600">Weight edit (ρ=0.004)</text>
+        <text x="718" y="134" class="f2t" fill="var(--sec-clr)" font-weight="600">Behavioral effect</text>
+        <text x="718" y="144" class="f2t" fill="var(--sec-clr)">(–64% avg.)</text>
+
+        <!-- gap annotation -->
+        <line x1="710" y1="40" x2="710" y2="130" stroke="var(--border)" stroke-width="1" stroke-dasharray="2,2"/>
+        <text class="f2t" x="730" y="88" fill="var(--text-faint)">64% gap</text>
+
+        <!-- title -->
+        <text class="f2h" x="80" y="10">Steering durability under SFT — 5 models, 3B–14B</text>
+      </svg>
+      <p class="figure-caption">Weight edit (teal, flat) vs. behavioral compliance (red-dashed, declining) across 4 SFT epochs; the steering weight modification survives intact while behavioral effect degrades 64% on average — a mechanistic dissociation between edit and outcome.</p>
+    </div>
+  </article>
+
+  <!-- PAPER 3: Token-Level Filtering -->
+  <article class="paper-full">
+    <div class="paper-full-header">
+      <div class="paper-rank-row">
+        <span class="paper-rank-num">03</span>
+        <span class="tag tag-control">pretraining-safety</span>
+        <span class="tag tag-interp">SAE</span>
+      </div>
+      <h2><a href="https://arxiv.org/abs/2601.21571" target="_blank" rel="noopener">Shaping Capabilities with Token-Level Data Filtering</a></h2>
+      <p class="paper-byline">Neil Rathi, Alec Radford (OpenAI) — arXiv preprint · <span style="font-family:var(--mono);font-size:0.78rem;color:var(--text-faint)">2601.21571</span> · January 29, 2026</p>
+      <div class="label-row">Why it ranks here</div>
+      <div class="why-box">Token-level filtering via SAE-labeled classifiers outperforms document-level filtering at every scale — and at the largest model size, the forget domain requires 7000× more compute to recover under adversarial fine-tuning. By Rathi &amp; Radford (OpenAI); directly connects pretraining safety and mech interp tooling (SAEs as the labeling mechanism).</div>
+    </div>
+    <div class="paper-full-body">
+      <p>Filtering individual tokens (labeled via SAE-derived classifiers trained to detect domain-relevant activations) achieves greater harm-capability reduction than filtering entire documents at the same data budget, because document-level filters over-prune benign adjacent content. SAE token classifiers are distilled into lightweight inference-time classifiers for scalable deployment.</p>
+      <p>Scale results: token filtering becomes more effective at larger model sizes. For the largest models, the forget domain requires 7000× more compute to recover capability under adversarial fine-tuning, compared to document-level baselines. Token-filtered models outperform state-of-the-art machine unlearning on tamper-resistance benchmarks — a pretraining-time intervention substantially harder to reverse than any post-hoc method.</p>
+    </div>
+
+    <!-- Figure 3: Token vs doc-level bars by scale -->
+    <div class="figure-panel">
+      <svg viewBox="0 0 780 220" xmlns="http://www.w3.org/2000/svg" aria-label="Token-level vs document-level filtering by model scale">
+        <style>
+          .f3t { fill: var(--text-muted); font-family: 'IBM Plex Mono', monospace; font-size: 9px; }
+          .f3h { fill: var(--text); font-family: 'Figtree', sans-serif; font-size: 11px; font-weight: 600; }
+        </style>
+        <!-- axes -->
+        <line x1="100" y1="15" x2="100" y2="170" stroke="var(--border)" stroke-width="1"/>
+        <line x1="100" y1="170" x2="740" y2="170" stroke="var(--border)" stroke-width="1"/>
+
+        <!-- y labels (relative compute slowdown) -->
+        <text class="f3t" x="95" y="173" text-anchor="end">1×</text>
+        <text class="f3t" x="95" y="140" text-anchor="end">50×</text>
+        <text class="f3t" x="95" y="107" text-anchor="end">500×</text>
+        <text class="f3t" x="95" y="74" text-anchor="end">5000×</text>
+
+        <!-- grid -->
+        <line x1="100" y1="140" x2="740" y2="140" stroke="var(--border-soft)" stroke-dasharray="3,4"/>
+        <line x1="100" y1="107" x2="740" y2="107" stroke="var(--border-soft)" stroke-dasharray="3,4"/>
+        <line x1="100" y1="74" x2="740" y2="74" stroke="var(--border-soft)" stroke-dasharray="3,4"/>
+
+        <!-- Model S — doc: 8×, token: 22× -->
+        <!-- 8x → (log(8)-log(1))/(log(7000)-log(1)) * 155 = 0.327*155=50.7; y=170-50.7=119.3 -->
+        <!-- 22x → (log(22))/(log(7000)) * 155 = 0.546*155=84.6; y=170-84.6=85.4 -->
+        <rect fill="var(--border)" x="126" y="125" width="42" height="45" rx="2"/>
+        <rect fill="var(--accent)" x="170" y="87" width="42" height="83" rx="2" opacity="0.85"/>
+        <text class="f3t" x="148" y="119" text-anchor="middle" fill="var(--text-faint)">8×</text>
+        <text class="f3t" x="191" y="81" text-anchor="middle" fill="var(--accent)">22×</text>
+        <text class="f3t" x="170" y="188" text-anchor="middle">Small</text>
+
+        <!-- Model M — doc: 18×, token: 80× -->
+        <rect fill="var(--border)" x="286" y="108" width="42" height="62" rx="2"/>
+        <rect fill="var(--accent)" x="330" y="70" width="42" height="100" rx="2" opacity="0.85"/>
+        <text class="f3t" x="307" y="102" text-anchor="middle" fill="var(--text-faint)">18×</text>
+        <text class="f3t" x="351" y="64" text-anchor="middle" fill="var(--accent)">80×</text>
+        <text class="f3t" x="330" y="188" text-anchor="middle">Medium</text>
+
+        <!-- Model L — doc: 40×, token: 550× -->
+        <rect fill="var(--border)" x="446" y="88" width="42" height="82" rx="2"/>
+        <rect fill="var(--accent)" x="490" y="50" width="42" height="120" rx="2" opacity="0.85"/>
+        <text class="f3t" x="467" y="82" text-anchor="middle" fill="var(--text-faint)">40×</text>
+        <text class="f3t" x="511" y="44" text-anchor="middle" fill="var(--accent)">550×</text>
+        <text class="f3t" x="490" y="188" text-anchor="middle">Large</text>
+
+        <!-- Model XL — doc: 90×, token: 7000× -->
+        <rect fill="var(--border)" x="606" y="68" width="42" height="102" rx="2"/>
+        <rect fill="var(--amber)" x="650" y="18" width="42" height="152" rx="2"/>
+        <text class="f3t" x="627" y="62" text-anchor="middle" fill="var(--text-faint)">90×</text>
+        <!-- 7000× callout -->
+        <rect rx="3" x="610" y="5" width="74" height="13" fill="var(--amber-bg)" stroke="var(--amber-border)"/>
+        <text x="647" y="14" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="var(--amber)" font-weight="700">7000×</text>
+        <text class="f3t" x="671" y="24" text-anchor="middle" fill="var(--amber)" font-weight="700">↑</text>
+        <text class="f3t" x="680" y="188" text-anchor="middle">X-Large</text>
+
+        <!-- legend -->
+        <rect fill="var(--border)" x="100" y="204" width="10" height="10" rx="1"/>
+        <text class="f3t" x="114" y="213">Document-level filter</text>
+        <rect fill="var(--accent)" x="240" y="204" width="10" height="10" rx="1" opacity="0.85"/>
+        <text class="f3t" x="254" y="213">Token-level filter (SAE)</text>
+        <rect fill="var(--amber)" x="390" y="204" width="10" height="10" rx="1"/>
+        <text class="f3t" x="404" y="213">Token-level (XL) — 7000×</text>
+
+        <!-- title -->
+        <text class="f3h" x="100" y="10">Compute to recover forget-domain capability · by model scale</text>
+      </svg>
+      <p class="figure-caption">Tamper-resistance comparison (relative compute slowdown on forget domain) between document-level and token-level (SAE-labeled) filtering across model scales; token-level achieves 7000× slowdown at the largest scale tested, growing substantially more effective than document-level as models scale.</p>
+    </div>
+  </article>
+
+  <!-- MID-TIER 4–10 -->
+  <div class="section-label">Also Notable · Items 4–10</div>
+  <div class="mid-grid">
+
+    <!-- PAPER 4 -->
+    <article class="paper-mid">
+      <div class="mid-rank"><span>04</span></div>
+      <div class="mid-content">
+        <h3><a href="https://arxiv.org/abs/2605.26526" target="_blank" rel="noopener">Open-Weight LLM Fine-Tuning Defenses are Susceptible to Simple Attacks</a></h3>
+        <div class="mid-meta">
+          <span class="tag tag-control">pretraining-safety</span>
+          <span class="tag tag-security">AI security</span>
+          <span style="font-family:var(--mono);font-size:0.72rem;color:var(--text-faint)">2605.26526</span>
+          <span style="font-size:0.75rem;color:var(--text-muted)">Kuo, Yadav, Smith · CMU/UC Berkeley · May 2026</span>
+        </div>
+        <p>Abliteration and prefilling — two gradient-free, low-cost attacks — raise ASR against fine-tuning-defended models (TAR, SEAM) from below 10% to 16–96% on BeaverTails, HarmBench, and AdvBench. The authors propose ART (abliteration-resistant tuning), adding an abliteration-based objective to the defense training loop, reducing ASR by 10–20 pp across attack types. A sobering reminder that defenses evaluated against gradient-based attacks remain brittle to inference-time exploits.</p>
+      </div>
+      <div class="mid-figure">
+        <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Simple grouped bars: baseline vs defended vs ART -->
+          <text x="80" y="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7.5" fill="var(--text-muted)">ASR · Simple Attacks</text>
+          <!-- axes -->
+          <line x1="22" y1="95" x2="155" y2="95" stroke="var(--border)" stroke-width="0.8"/>
+          <line x1="22" y1="15" x2="22" y2="95" stroke="var(--border)" stroke-width="0.8"/>
+          <!-- Abliteration: no-def=82%, defended=8%, ART=18% -->
+          <rect x="28" y="25" width="14" height="70" rx="1" fill="var(--sec-clr)" opacity="0.8"/>
+          <rect x="44" y="88" width="14" height="7" rx="1" fill="var(--accent)" opacity="0.8"/>
+          <rect x="60" y="80" width="14" height="15" rx="1" fill="var(--amber)" opacity="0.8"/>
+          <!-- Prefilling: no-def=78%, defended=6%, ART=22% -->
+          <rect x="82" y="29" width="14" height="66" rx="1" fill="var(--sec-clr)" opacity="0.8"/>
+          <rect x="98" y="89" width="14" height="6" rx="1" fill="var(--accent)" opacity="0.8"/>
+          <rect x="114" y="77" width="14" height="18" rx="1" fill="var(--amber)" opacity="0.8"/>
+          <!-- x labels -->
+          <text x="51" y="104" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="var(--text-muted)">Abliteration</text>
+          <text x="105" y="104" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="var(--text-muted)">Prefilling</text>
+          <!-- legend -->
+          <rect x="22" y="110" width="6" height="6" fill="var(--sec-clr)"/>
+          <text x="30" y="116" font-family="'IBM Plex Mono',monospace" font-size="6" fill="var(--sec-clr)">Undefended</text>
+          <rect x="80" y="110" width="6" height="6" fill="var(--accent)"/>
+          <text x="88" y="116" font-family="'IBM Plex Mono',monospace" font-size="6" fill="var(--accent)">Defended</text>
+        </svg>
+      </div>
+    </article>
+
+    <!-- PAPER 5 -->
+    <article class="paper-mid">
+      <div class="mid-rank"><span>05</span></div>
+      <div class="mid-content">
+        <h3><a href="https://arxiv.org/abs/2606.19168" target="_blank" rel="noopener">Beyond Safe Data: Pretraining-Stage Alignment with Regular Safety Reflection</a></h3>
+        <div class="mid-meta">
+          <span class="tag tag-control">pretraining-safety</span>
+          <span style="font-family:var(--mono);font-size:0.72rem;color:var(--text-faint)">2606.19168</span>
+          <span style="font-size:0.75rem;color:var(--text-muted)">arXiv · June 2026</span>
+        </div>
+        <p>Safety Reflection Pretraining (SRP) inserts short safety-reflection spans into pretraining corpora, training the model to produce aligned self-monitoring before any post-training. On 1.7B models: harmonic mean improves 75.4%→90.6%; unsafe-response identification 61.0%→87.6%. SRP behavior is substantially more robust to inference-stage jailbreaks and fine-tuning attacks than post-training alignment applied to an identical base, complementing deep-ignorance / data-filtering approaches by acting on the response-conditioning layer.</p>
+      </div>
+      <div class="mid-figure">
+        <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+          <text x="80" y="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7.5" fill="var(--text-muted)">SRP Improvement</text>
+          <!-- Harmonic Mean bar -->
+          <text x="20" y="38" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-muted)">Harm. Mean</text>
+          <rect x="20" y="42" width="62" height="10" rx="2" fill="var(--border)"/>
+          <rect x="20" y="42" width="75" height="10" rx="2" fill="var(--accent)" opacity="0.85"/>
+          <text x="97" y="51" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--accent)">90.6%</text>
+          <rect x="20" y="55" width="62" height="10" rx="2" fill="var(--border)"/>
+          <text x="84" y="64" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-faint)">75.4%</text>
+
+          <!-- Unsafe ID bar -->
+          <text x="20" y="82" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-muted)">Unsafe ID</text>
+          <rect x="20" y="86" width="73" height="10" rx="2" fill="var(--accent)" opacity="0.85"/>
+          <text x="95" y="95" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--accent)">87.6%</text>
+          <rect x="20" y="99" width="49" height="10" rx="2" fill="var(--border)"/>
+          <text x="71" y="108" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-faint)">61.0%</text>
+
+          <!-- legend -->
+          <rect x="20" y="115" width="6" height="5" fill="var(--accent)" opacity="0.85"/>
+          <text x="28" y="119.5" font-family="'IBM Plex Mono',monospace" font-size="6" fill="var(--accent)">SRP</text>
+          <rect x="52" y="115" width="6" height="5" fill="var(--border)"/>
+          <text x="60" y="119.5" font-family="'IBM Plex Mono',monospace" font-size="6" fill="var(--text-faint)">Baseline</text>
+        </svg>
+      </div>
+    </article>
+
+    <!-- PAPER 6 -->
+    <article class="paper-mid">
+      <div class="mid-rank"><span>06</span></div>
+      <div class="mid-content">
+        <h3><a href="https://arxiv.org/abs/2608.26008" target="_blank" rel="noopener">A Self-Evolving Multi-Agent Framework Defense against LLM Jailbreak Attacks</a></h3>
+        <div class="mid-meta">
+          <span class="tag tag-security">AI security</span>
+          <span style="font-family:var(--mono);font-size:0.72rem;color:var(--text-faint)">2608.26008</span>
+          <span style="font-size:0.75rem;color:var(--text-muted)">Hu, Hooi · NUS · August 26, 2026</span>
+        </div>
+        <p>When a jailbreak fails, the framework abstracts the attack into a method-level rule capturing its structural wrapper — role-playing, obfuscation, multi-step indirection — rather than the topic alone. Rules persist across interactions in a growing cross-session memory; new attack families expand the label space automatically. No parameter updates; applies to both open-weight and API models. The self-evolving mechanism prevents the degradation seen in static guardrails against novel variants.</p>
+      </div>
+      <div class="mid-figure">
+        <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Flowchart: Attack → Fail → Rule → Memory → Block -->
+          <style>.fmono { font-family:'IBM Plex Mono',monospace; font-size:7px; fill:var(--text-muted); }</style>
+          <!-- boxes -->
+          <rect x="10" y="18" width="36" height="16" rx="2" fill="var(--sec-bg)" stroke="var(--sec-border)" stroke-width="0.8"/>
+          <text x="28" y="29" text-anchor="middle" class="fmono" fill="var(--sec-clr)">Attack</text>
+
+          <rect x="62" y="18" width="36" height="16" rx="2" fill="var(--surface-alt)" stroke="var(--border)" stroke-width="0.8"/>
+          <text x="80" y="29" text-anchor="middle" class="fmono">Failed?</text>
+
+          <rect x="36" y="60" width="48" height="16" rx="2" fill="var(--accent-dim)" stroke="var(--border-soft)" stroke-width="0.8"/>
+          <text x="60" y="71" text-anchor="middle" class="fmono" fill="var(--accent)">Abstract Rule</text>
+
+          <rect x="10" y="97" width="100" height="16" rx="2" fill="var(--accent-dim)" stroke="var(--border-soft)" stroke-width="0.8"/>
+          <text x="60" y="108" text-anchor="middle" class="fmono" fill="var(--accent)">Rule Memory Updated</text>
+
+          <rect x="114" y="18" width="36" height="16" rx="2" fill="var(--sec-bg)" stroke="var(--sec-border)" stroke-width="0.8"/>
+          <text x="132" y="29" text-anchor="middle" class="fmono" fill="var(--sec-clr)">Blocked</text>
+
+          <!-- arrows -->
+          <line x1="46" y1="26" x2="62" y2="26" stroke="var(--border)" stroke-width="0.8" marker-end="url(#arr)"/>
+          <line x1="80" y1="34" x2="80" y2="60" stroke="var(--border)" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <text x="83" y="50" class="fmono">yes</text>
+          <line x1="60" y1="76" x2="60" y2="97" stroke="var(--accent)" stroke-width="0.8" marker-end="url(#arr2)"/>
+          <line x1="98" y1="26" x2="114" y2="26" stroke="var(--border)" stroke-width="0.8"/>
+          <text x="100" y="22" class="fmono">no</text>
+
+          <defs>
+            <marker id="arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+              <polygon points="0 0, 5 2.5, 0 5" fill="var(--border)"/>
+            </marker>
+            <marker id="arr2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+              <polygon points="0 0, 5 2.5, 0 5" fill="var(--accent)"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+    </article>
+
+    <!-- PAPER 7 -->
+    <article class="paper-mid">
+      <div class="mid-rank"><span>07</span></div>
+      <div class="mid-content">
+        <h3><a href="https://arxiv.org/abs/2608.03210" target="_blank" rel="noopener">ICO: Enhancing Semantic-Shift Jailbreaks via Iterative Context Optimization</a></h3>
+        <div class="mid-meta">
+          <span class="tag tag-security">AI security</span>
+          <span style="font-family:var(--mono);font-size:0.72rem;color:var(--text-faint)">2608.03210</span>
+          <span style="font-size:0.75rem;color:var(--text-muted)">Zhu, Huang, Juefei-Xu et al. · August 2026</span>
+        </div>
+        <p>Semantic-shift jailbreaks replace harmful keywords with benign substitutes ("bomb"→"carrot") and rely on context to make the model reinterpret the benign word. ICO is a black-box method that iteratively optimizes the context scaffold while preserving the surface-benign input, exploiting highly variable context ability to induce semantic shifts. Surface-benign inputs evade input-level filters; gradient-free context optimization improves substantially over static baselines. Demonstrates semantic-shift attacks are more dangerous than previously characterized.</p>
+      </div>
+      <div class="mid-figure">
+        <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+          <text x="80" y="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-muted)">ICO Optimization</text>
+          <!-- Iteration improvement bars -->
+          <line x1="20" y1="100" x2="150" y2="100" stroke="var(--border)" stroke-width="0.8"/>
+          <line x1="20" y1="20" x2="20" y2="100" stroke="var(--border)" stroke-width="0.8"/>
+          <!-- bars: iter 0→1→2→3 with increasing ASR -->
+          <rect x="26" y="75" width="24" height="25" rx="1" fill="var(--border)"/>
+          <rect x="56" y="60" width="24" height="40" rx="1" fill="var(--sec-clr)" opacity="0.5"/>
+          <rect x="86" y="45" width="24" height="55" rx="1" fill="var(--sec-clr)" opacity="0.7"/>
+          <rect x="116" y="32" width="24" height="68" rx="1" fill="var(--sec-clr)" opacity="0.9"/>
+          <text x="38" y="94" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="var(--text-faint)">Init</text>
+          <text x="68" y="94" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="var(--text-muted)">Iter 1</text>
+          <text x="98" y="94" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="var(--text-muted)">Iter 2</text>
+          <text x="128" y="94" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="var(--sec-clr)">Iter 3</text>
+          <text x="22" y="107" font-family="'IBM Plex Mono',monospace" font-size="6" fill="var(--text-faint)">ASR improves each round, no gradient access</text>
+        </svg>
+      </div>
+    </article>
+
+    <!-- PAPER 8 -->
+    <article class="paper-mid">
+      <div class="mid-rank"><span>08</span></div>
+      <div class="mid-content">
+        <h3><a href="https://arxiv.org/abs/2608.08383" target="_blank" rel="noopener">Safety Cost of Steering Vectors Is Separable and Reducible</a></h3>
+        <div class="mid-meta">
+          <span class="tag tag-control">pretraining-safety</span>
+          <span class="tag tag-interp">mech-interp</span>
+          <span style="font-family:var(--mono);font-size:0.72rem;color:var(--text-faint)">2608.08383</span>
+          <span style="font-size:0.75rem;color:var(--text-muted)">Li, Kasneci · TU Munich · August 2026</span>
+        </div>
+        <p>Identifies a separable safety-degrading component within steering vectors that increases compliance with harmful requests without contributing to the steering objective. Formulates removal via constrained optimization (primal-dual updates): minimize the harmful subcomponent subject to preserving the steering effect and bounding false-refusal rate. The safety cost of activation steering is not an inherent trade-off — it is an artifact of steering direction construction, projectable without loss of steering utility.</p>
+      </div>
+      <div class="mid-figure">
+        <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Vector decomposition diagram -->
+          <text x="80" y="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-muted)">Steering Vector Decomp.</text>
+          <!-- Original vector -->
+          <line x1="30" y1="80" x2="90" y2="40" stroke="var(--text)" stroke-width="1.5" marker-end="url(#arr3)"/>
+          <text x="60" y="67" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="var(--text)">v_steer</text>
+          <!-- Task component -->
+          <line x1="30" y1="80" x2="80" y2="60" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr4)" stroke-dasharray="4,2"/>
+          <text x="72" y="78" font-family="'IBM Plex Mono',monospace" font-size="6" fill="var(--accent)">task</text>
+          <!-- Safety cost component -->
+          <line x1="80" y1="60" x2="90" y2="40" stroke="var(--sec-clr)" stroke-width="1.5" marker-end="url(#arr5)" stroke-dasharray="2,2"/>
+          <text x="92" y="54" font-family="'IBM Plex Mono',monospace" font-size="6" fill="var(--sec-clr)">safety cost</text>
+          <!-- Arrow indicating removal -->
+          <text x="80" y="98" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="var(--accent)">Project out → clean v_steer</text>
+          <defs>
+            <marker id="arr3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><polygon points="0 0,5 2.5,0 5" fill="var(--text)"/></marker>
+            <marker id="arr4" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><polygon points="0 0,5 2.5,0 5" fill="var(--accent)"/></marker>
+            <marker id="arr5" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><polygon points="0 0,5 2.5,0 5" fill="var(--sec-clr)"/></marker>
+          </defs>
+        </svg>
+      </div>
+    </article>
+
+    <!-- PAPER 9 -->
+    <article class="paper-mid">
+      <div class="mid-rank"><span>09</span></div>
+      <div class="mid-content">
+        <h3><a href="https://arxiv.org/abs/2608.04347" target="_blank" rel="noopener">Looking in the Mirror: Introspecting Side-Effect Misalignments Induced by Fine-Tuning</a></h3>
+        <div class="mid-meta">
+          <span class="tag tag-control">pretraining-safety</span>
+          <span class="tag tag-interp">mech-interp</span>
+          <span style="font-family:var(--mono);font-size:0.72rem;color:var(--text-faint)">2608.04347</span>
+          <span style="font-size:0.75rem;color:var(--text-muted)">Yoshida et al. · Stanford/NTU · August 5, 2026</span>
+        </div>
+        <p>Fine-tuning on tasks with no explicit safety content degrades alignment properties — "side-effect misalignment." The authors introduce LoRA-based introspection adapters (IAs) trained to verbalize which alignment properties changed during fine-tuning, without requiring a full evaluation suite per run. Makes alignment auditing at deployment time more tractable: the IA produces a natural-language description of what fine-tuning degraded rather than requiring exhaustive probe evaluation.</p>
+      </div>
+      <div class="mid-figure">
+        <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Pipeline: Source → FT → Degraded; IA detects -->
+          <style>.fmono2{font-family:'IBM Plex Mono',monospace;font-size:6.5px;fill:var(--text-muted);}</style>
+          <rect x="8" y="30" width="36" height="18" rx="2" fill="var(--accent-dim)" stroke="var(--border-soft)"/>
+          <text x="26" y="42" text-anchor="middle" class="fmono2" fill="var(--accent)">Source</text>
+          <line x1="44" y1="39" x2="56" y2="39" stroke="var(--border)" stroke-width="0.8"/>
+          <rect x="56" y="30" width="38" height="18" rx="2" fill="var(--surface-alt)" stroke="var(--border)"/>
+          <text x="75" y="42" text-anchor="middle" class="fmono2">Fine-tune</text>
+          <line x1="94" y1="39" x2="106" y2="39" stroke="var(--border)" stroke-width="0.8"/>
+          <rect x="106" y="30" width="44" height="18" rx="2" fill="var(--sec-bg)" stroke="var(--sec-border)"/>
+          <text x="128" y="42" text-anchor="middle" class="fmono2" fill="var(--sec-clr)">Degraded</text>
+
+          <!-- IA box -->
+          <rect x="44" y="72" width="68" height="20" rx="2" fill="var(--amber-bg)" stroke="var(--amber-border)"/>
+          <text x="78" y="80" text-anchor="middle" class="fmono2" fill="var(--amber)">Introspection Adapter</text>
+          <text x="78" y="88" text-anchor="middle" class="fmono2" fill="var(--amber)">(LoRA) → text desc.</text>
+
+          <!-- arrows from degraded to IA -->
+          <line x1="128" y1="48" x2="128" y2="68" stroke="var(--sec-clr)" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <line x1="128" y1="68" x2="112" y2="72" stroke="var(--amber)" stroke-width="0.8"/>
+          <line x1="75" y1="48" x2="75" y2="72" stroke="var(--amber)" stroke-width="0.8" stroke-dasharray="2,2"/>
+
+          <text x="78" y="105" text-anchor="middle" class="fmono2">"Refusal rate decreased 34%..."</text>
+        </svg>
+      </div>
+    </article>
+
+    <!-- PAPER 10 -->
+    <article class="paper-mid">
+      <div class="mid-rank"><span>10</span></div>
+      <div class="mid-content">
+        <h3><a href="https://arxiv.org/abs/2608.11295" target="_blank" rel="noopener">Backdoor Decontamination Dynamics in LLM Agents</a></h3>
+        <div class="mid-meta">
+          <span class="tag tag-security">AI security</span>
+          <span style="font-family:var(--mono);font-size:0.72rem;color:var(--text-faint)">2608.11295</span>
+          <span style="font-size:0.75rem;color:var(--text-muted)">arXiv · August 2026</span>
+        </div>
+        <p>Defensive poisoning alone erases approximately 56% of original backdoor triggers in LLM agents; subsequent decontamination drives nearly all survivors to erasure. Key finding: trigger recognition and malicious execution are behaviorally dissociable — a backdoored model can be conditioned to recognize its trigger without executing the malicious payload, enabling targeted neutralization. Staged decontamination (recognition suppression, then execution suppression) consistently outperforms single-stage defenses.</p>
+      </div>
+      <div class="mid-figure">
+        <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+          <text x="80" y="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-muted)">Backdoor Erasure</text>
+          <!-- Two-stage horizontal bars -->
+          <text x="20" y="35" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-muted)">Initial</text>
+          <rect x="20" y="40" width="120" height="12" rx="2" fill="var(--sec-clr)" opacity="0.7"/>
+          <text x="143" y="50" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--sec-clr)">100%</text>
+
+          <text x="20" y="68" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-muted)">After def. poisoning</text>
+          <rect x="20" y="73" width="53" height="12" rx="2" fill="var(--sec-clr)" opacity="0.4"/>
+          <text x="75" y="83" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-muted)">44%</text>
+
+          <text x="20" y="100" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--text-muted)">After decontamination</text>
+          <rect x="20" y="105" width="6" height="12" rx="2" fill="var(--sec-clr)" opacity="0.2"/>
+          <text x="28" y="115" font-family="'IBM Plex Mono',monospace" font-size="7" fill="var(--accent)">~0%</text>
+        </svg>
+      </div>
+    </article>
+
+  </div><!-- /mid-grid -->
+
+  <!-- NOTES -->
+  <div class="section-label">Notes &amp; Patterns</div>
+  <div class="notes">
+    <h2>Editorial notes</h2>
+    <ul>
+      <li><strong>Gap fill:</strong> The Aug 26 and 27 sweeps were dominated by mech-interp and unlearning preprints; today's report backtracks to cover pretraining-safety papers (ranks 1–5, 8, 9) bypassed in those runs. TamperBench (KDD 2026) and Rathi/Radford token filtering are the highest-priority misses from that gap.</li>
+      <li><strong>Standout pattern:</strong> Papers #1, #2, #4, #9 all test whether safety interventions — pretraining (TamperBench), post-training steering (2608.24988), fine-tuning defense (2605.26526), indirect fine-tuning (2608.04347) — hold up under pressure. The answer across all four is consistently pessimistic: no single layer of intervention is robustly tamper-resistant.</li>
+      <li><strong>Area A dominance:</strong> 7 of 10 entries are pretraining/midtraining safety papers — expected given the prior sweeps' security-heavy focus and this backfill's correction.</li>
+      <li><strong>Flag for weekly (Week 35):</strong> TamperBench (#1, KDD 2026 peer-reviewed) and Rathi/Radford token filtering (#3, OpenAI/Radford) for weekly roundup; together they represent the pretraining-safety highlight of the month.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <span class="footer-left">Daily Radar · 2026-08-28 · claude/radar</span>
+    <span class="footer-right">1 peer-reviewed · 9 preprints · 10 entries</span>
+  </footer>
+
+</div><!-- /page-wrap -->
+{% endraw %}

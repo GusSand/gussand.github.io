@@ -1,0 +1,764 @@
+---
+layout: "radar"
+title: "Radar · September 8, 2026"
+kind: "daily"
+slug: "2026-09-08"
+date: 2026-09-08
+group: "latest"
+window: "September 6–8, 2026 (primary); peer-reviewed work through early September 2026 sweep"
+summary: "Window: September 6–8, 2026 (primary); peer-reviewed work through early September 2026 sweep · Sources swept: OpenReview, ACL Anthology (EMNLP 2026), arXiv (cs.CL/cs.LG/cs.CR/cs.AI), Semantic Scholar · Counts: 2 peer-reviewed · 5 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/99ef6bfe-50cb-4d36-9010-2b5006ab2e20"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-08.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ── Token system ── */
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --surface2: #e8e4dd;
+  --border: #d9d3cb;
+  --text: #3a3837;
+  --dim: #8a8480;
+  --title: #1a1817;
+  --link: #1a4f99;
+  --tag-bg: #e4e0d9;
+  --tag-text: #4a4643;
+  --tag-peer-bg: #d4edda;
+  --tag-peer-text: #1a5c2e;
+  --tag-interp-bg: #d0f0ee;
+  --tag-interp-text: #0d6e72;
+  --tag-security-bg: #fce4e4;
+  --tag-security-text: #991a1a;
+  --tag-align-bg: #dce8f8;
+  --tag-align-text: #1a3f80;
+  --fig-bg: #ffffff;
+  --masthead-bg: #1a1817;
+  --masthead-text: #f0ede8;
+  --masthead-dim: #8a8480;
+  --accent: #1a4f99;
+  --rule: #d9d3cb;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --surface2: #222222;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaaaaa;
+    --tag-peer-bg: #152a1e;
+    --tag-peer-text: #4ade80;
+    --tag-interp-bg: #0d2e30;
+    --tag-interp-text: #14b8bd;
+    --tag-security-bg: #2a1515;
+    --tag-security-text: #f07070;
+    --tag-align-bg: #15202e;
+    --tag-align-text: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --masthead-bg: #0a0a0a;
+    --masthead-text: #f0f0f0;
+    --masthead-dim: #666666;
+    --accent: #7eb8ff;
+    --rule: #2a2a2a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --surface2: #222222;
+  --border: #2a2a2a;
+  --text: #c9c9c9;
+  --dim: #666666;
+  --title: #f0f0f0;
+  --link: #7eb8ff;
+  --tag-bg: #252525;
+  --tag-text: #aaaaaa;
+  --tag-peer-bg: #152a1e;
+  --tag-peer-text: #4ade80;
+  --tag-interp-bg: #0d2e30;
+  --tag-interp-text: #14b8bd;
+  --tag-security-bg: #2a1515;
+  --tag-security-text: #f07070;
+  --tag-align-bg: #15202e;
+  --tag-align-text: #7eb8ff;
+  --fig-bg: #1e1e1e;
+  --masthead-bg: #0a0a0a;
+  --masthead-text: #f0f0f0;
+  --masthead-dim: #666666;
+  --accent: #7eb8ff;
+  --rule: #2a2a2a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --surface2: #e8e4dd;
+  --border: #d9d3cb;
+  --text: #3a3837;
+  --dim: #8a8480;
+  --title: #1a1817;
+  --link: #1a4f99;
+  --tag-bg: #e4e0d9;
+  --tag-text: #4a4643;
+  --tag-peer-bg: #d4edda;
+  --tag-peer-text: #1a5c2e;
+  --tag-interp-bg: #d0f0ee;
+  --tag-interp-text: #0d6e72;
+  --tag-security-bg: #fce4e4;
+  --tag-security-text: #991a1a;
+  --tag-align-bg: #dce8f8;
+  --tag-align-text: #1a3f80;
+  --fig-bg: #ffffff;
+  --masthead-bg: #1a1817;
+  --masthead-text: #f0ede8;
+  --masthead-dim: #8a8480;
+  --accent: #1a4f99;
+  --rule: #d9d3cb;
+}
+
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+a { color: var(--link); text-underline-offset: 3px; }
+a:hover { opacity: 0.8; }
+
+/* ── Masthead ── */
+.masthead {
+  background: var(--masthead-bg);
+  color: var(--masthead-text);
+  margin: 0 -20px 48px;
+  padding: 28px 20px 24px;
+}
+.masthead-eyebrow {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--masthead-dim);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-size: 26px;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  color: var(--masthead-text);
+  margin-bottom: 10px;
+}
+.masthead-counts {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: var(--masthead-dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.track {
+  font-size: 12px;
+  font-family: "Courier New", monospace;
+  color: var(--masthead-dim);
+  letter-spacing: 0.04em;
+}
+.track-sep { margin: 0 8px; color: var(--masthead-dim); font-size: 12px; }
+
+/* ── Tags ── */
+.tag {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 2px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  letter-spacing: 0.02em;
+}
+.tag-peer { background: var(--tag-peer-bg); color: var(--tag-peer-text); }
+.tag-interp { background: var(--tag-interp-bg); color: var(--tag-interp-text); }
+.tag-security { background: var(--tag-security-bg); color: var(--tag-security-text); }
+.tag-align { background: var(--tag-align-bg); color: var(--tag-align-text); }
+
+/* ── Full paper entries (1–3) ── */
+.paper {
+  margin-bottom: 56px;
+}
+.paper-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.paper-rank {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  color: var(--dim);
+  min-width: 24px;
+}
+.paper-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 4px;
+  text-wrap: balance;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+.paper-detail {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-top: 16px;
+}
+
+/* ── Figures ── */
+.paper-figure {
+  background: var(--fig-bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 16px;
+  margin: 18px 0;
+  text-align: center;
+  overflow-x: auto;
+}
+.paper-figure svg { max-width: 100%; height: auto; }
+.paper-figure figcaption {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--dim);
+  margin-top: 10px;
+  text-align: left;
+  line-height: 1.5;
+}
+
+/* ── Section divider ── */
+hr.section-divider {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 44px 0;
+}
+.more-section-label {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 32px;
+}
+
+/* ── Mid-tier entries (4–10) ── */
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  text-wrap: balance;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure svg { max-width: 440px; height: auto; }
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+/* ── Authors line ── */
+.paper-authors {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+
+/* ── Notes section ── */
+.notes-section {
+  margin-top: 56px;
+  border-top: 1px solid var(--rule);
+  padding-top: 28px;
+}
+.notes-section h2 {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+.notes-section ul {
+  padding-left: 18px;
+  font-size: 14px;
+  color: var(--dim);
+  line-height: 1.7;
+}
+
+/* ── Footer ── */
+.site-footer {
+  margin-top: 64px;
+  border-top: 1px solid var(--rule);
+  padding-top: 20px;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+</style>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · September 8, 2026</div>
+  <div class="masthead-counts">2 peer-reviewed · 5 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Pretraining Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">AI Security</span>
+    <span class="track-sep">·</span>
+    <span class="track">Applied Mech Interp</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     ITEM 1 — Data Attribution of Emergent Misalignment
+     ══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════════════════
+     ITEM 2 — Beyond Shallow Alignment
+     ══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">EMNLP 2026</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-align">refusal circuits</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2609.03887">Beyond Shallow Alignment: How Post-Training Methods Determine Refusal Circuits And Steering Robustness</a>
+  </h2>
+  <div class="paper-authors">Hoang Cuong Nguyen, Mark Dras, Usman Naseem — EMNLP 2026 Main Conference (peer-reviewed)</div>
+  <p class="paper-hook">
+    Three post-training recipes — SFT, reasoning-augmented SFT, and ORPO — produce models that refuse harmful requests at similar rates, yet install fundamentally different internal circuits to do it. This paper measures those differences mechanistically across three model families and finds that no current method achieves all three properties a durably safe model needs at once.
+  </p>
+
+  <!-- SVG fallback: 3-method circuit comparison -->
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="Refusal circuit structure comparison across SFT, Reasoning-SFT, and ORPO">
+      <rect width="500" height="210" fill="#fff"/>
+      <defs>
+        <marker id="b1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#999"/></marker>
+      </defs>
+      <!-- Column headers -->
+      <text x="88" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#333">SFT</text>
+      <text x="253" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#333">Reasoning-SFT</text>
+      <text x="416" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#333">ORPO</text>
+      <!-- SFT: concentrated, fragile -->
+      <rect x="38" y="32" width="100" height="40" rx="2" fill="#fce4e4" stroke="#cc3333" stroke-width="1.5"/>
+      <text x="88" y="49" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#991a1a">Concentrated</text>
+      <text x="88" y="63" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#991a1a">few heads</text>
+      <rect x="38" y="84" width="100" height="30" rx="2" fill="#fce4e4" stroke="#cc3333" stroke-width="1.5"/>
+      <text x="88" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#991a1a">Easily ablated</text>
+      <rect x="38" y="126" width="100" height="30" rx="2" fill="#fce4e4" stroke="#cc3333" stroke-width="1.5"/>
+      <text x="88" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#991a1a">Fragile to steering</text>
+      <!-- Reasoning-SFT: distinct, distributed -->
+      <rect x="203" y="32" width="100" height="40" rx="2" fill="#e8f4e8" stroke="#339933" stroke-width="1.5"/>
+      <text x="253" y="49" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a5c1a">Distinct circuit</text>
+      <text x="253" y="63" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a5c1a">all 3 models</text>
+      <rect x="203" y="84" width="100" height="30" rx="2" fill="#e8f4e8" stroke="#339933" stroke-width="1.5"/>
+      <text x="253" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a5c1a">More distributed</text>
+      <rect x="203" y="126" width="100" height="30" rx="2" fill="#fce4e4" stroke="#cc3333" stroke-width="1.5"/>
+      <text x="253" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#991a1a">Capability cost</text>
+      <!-- ORPO: intermediate -->
+      <rect x="366" y="32" width="100" height="40" rx="2" fill="#fff8e4" stroke="#cc9900" stroke-width="1.5"/>
+      <text x="416" y="49" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7a5a00">Intermediate</text>
+      <text x="416" y="63" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7a5a00">fragility</text>
+      <rect x="366" y="84" width="100" height="30" rx="2" fill="#fff8e4" stroke="#cc9900" stroke-width="1.5"/>
+      <text x="416" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#7a5a00">Arch-dependent</text>
+      <rect x="366" y="126" width="100" height="30" rx="2" fill="#e8f4e8" stroke="#339933" stroke-width="1.5"/>
+      <text x="416" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a5c1a">Less cap. cost</text>
+      <!-- Row labels -->
+      <text x="8" y="54" text-anchor="start" font-family="Courier New,monospace" font-size="9" fill="#888">Structure</text>
+      <text x="8" y="100" text-anchor="start" font-family="Courier New,monospace" font-size="9" fill="#888">Robustness</text>
+      <text x="8" y="142" text-anchor="start" font-family="Courier New,monospace" font-size="9" fill="#888">Capability</text>
+      <!-- Verdict -->
+      <rect x="38" y="170" width="428" height="28" rx="2" fill="#f4f0f8" stroke="#8c70c0" stroke-width="1.5"/>
+      <text x="252" y="189" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#3a1a6e">No single method achieves all three: non-fragile · no capability cost · correctable</text>
+    </svg>
+    <figcaption>Figure 2: Refusal circuit comparison across SFT, reasoning-augmented SFT, and ORPO on Llama-3.1-8B, Gemma-2-9B, Qwen3-8B. No method simultaneously achieves non-concentrated, capability-preserving, and steerable refusal.</figcaption>
+  </figure>
+
+  <p class="paper-detail">
+    Using attention head attribution and activation patching, the study finds that SFT concentrates refusal in a small, easily ablated set of heads; reasoning-augmented training distributes refusal more broadly and produces a consistently distinct computational signature across all three model families; ORPO sits between the two on fragility but sacrifices less capability. Architecture has an independent effect: the same training method installs differently steerable circuits depending on the base model. The trilemma — non-concentrated refusal, no capability regression, correctable refusal — holds across all combinations tested, challenging the assumption that better post-training data alone can close safety gaps visible only at the circuit level.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════════════════
+     ITEM 3 — From Detection to Refusal
+     ══════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════════════════════════
+     ITEMS 4–10 — Mid-tier
+     ══════════════════════════════════════════════════════════ -->
+<div class="more-section-label">Items 4–10 · Also notable</div>
+
+<!-- ITEM 4 — SEAL -->
+<hr class="section-divider">
+
+<!-- ITEM 5 — Locating and Steering Refusal Beyond Attention -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.04721">Locating and Steering Refusal Beyond Attention</a>
+  </h3>
+  <div class="paper-authors">Preethi Carmel Bosco, Gopalakrishnan Srinivasan — arXiv, September 4, 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 150" xmlns="http://www.w3.org/2000/svg" aria-label="Cross-architecture refusal direction transfer between transformer and SSM">
+      <rect width="440" height="150" fill="#fff"/>
+      <defs>
+        <marker id="d1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#555"/></marker>
+      </defs>
+      <!-- Transformer box -->
+      <rect x="20" y="40" width="130" height="70" rx="3" fill="#dce8f8" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="85" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a6e">Transformer</text>
+      <text x="85" y="78" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#1a4f99">attention heads</text>
+      <line x1="85" y1="86" x2="85" y2="100" stroke="#1a4f99" stroke-width="1"/>
+      <text x="85" y="112" text-anchor="middle" font-family="Courier New,monospace" font-size="10" fill="#1a4f99">↑ refusal dir.</text>
+      <!-- Rigid rotation -->
+      <rect x="165" y="55" width="110" height="40" rx="2" fill="#f4f0f8" stroke="#8c70c0" stroke-width="1.5"/>
+      <text x="220" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#3a1a6e">rigid rotation</text>
+      <text x="220" y="86" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#8c70c0">R ∈ SO(d)</text>
+      <line x1="150" y1="75" x2="165" y2="75" stroke="#555" stroke-width="1.5" marker-end="url(#d1)"/>
+      <line x1="275" y1="75" x2="290" y2="75" stroke="#555" stroke-width="1.5" marker-end="url(#d1)"/>
+      <!-- SSM box -->
+      <rect x="291" y="40" width="130" height="70" rx="3" fill="#e8f4e8" stroke="#339933" stroke-width="1.5"/>
+      <text x="356" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a5c1a">SSM</text>
+      <text x="356" y="78" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#339933">recurrent update</text>
+      <line x1="356" y1="86" x2="356" y2="100" stroke="#339933" stroke-width="1"/>
+      <text x="356" y="112" text-anchor="middle" font-family="Courier New,monospace" font-size="10" fill="#339933">↑ refusal dir.</text>
+      <!-- Shared label -->
+      <text x="220" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">Probe trained on transformer ✓ flags SSM harmful inputs · ablation removes SSM refusal</text>
+    </svg>
+    <figcaption>Figure 5: A rigid rotation aligns transformer and SSM residual streams; the shared refusal direction persists across fundamentally different token-mixing architectures, enabling cross-model probe transfer.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    State-space models share a refusal direction with transformers despite using recurrent rather than attention-based token mixing. A rigid rotation aligns representation spaces; a harm probe trained on a transformer then flags SSM harmful inputs without re-training, and ablating the aligned direction removes SSM refusal — showing the safety representation is architecture-agnostic.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 6 — Uncensored Open-weight Models -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-align">open-weight</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.05241">Uncensored Open-weight Models: Redistribution as the Persistence Layer</a>
+  </h3>
+  <div class="paper-authors">Juliette Garcia, Hailey May et al. (10a Labs) — arXiv, September 4, 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 150" xmlns="http://www.w3.org/2000/svg" aria-label="Growth and redistribution of uncensored open-weight models 2024–2026">
+      <rect width="440" height="150" fill="#fff"/>
+      <!-- Bar chart: model counts -->
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333">Uncensored models on HuggingFace (Jan 2024 – Mar 2026)</text>
+      <!-- Y-axis label -->
+      <text x="14" y="90" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#888" transform="rotate(-90,14,90)">count</text>
+      <!-- Bars (approximate quarterly data) -->
+      <rect x="42" y="118" width="22" height="10" fill="#d8a080"/>
+      <text x="53" y="130" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#888">Q1'24</text>
+      <rect x="72" y="112" width="22" height="16" fill="#d8a080"/>
+      <rect x="102" y="105" width="22" height="23" fill="#d8a080"/>
+      <rect x="132" y="95" width="22" height="33" fill="#d8a080"/>
+      <text x="143" y="130" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#888">Q1'25</text>
+      <rect x="162" y="82" width="22" height="46" fill="#cc7744"/>
+      <rect x="192" y="68" width="22" height="60" fill="#cc7744"/>
+      <rect x="222" y="54" width="22" height="74" fill="#cc7744"/>
+      <rect x="252" y="38" width="22" height="90" fill="#cc5533"/>
+      <text x="263" y="130" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#888">Q1'26</text>
+      <rect x="282" y="28" width="22" height="100" fill="#cc5533"/>
+      <!-- Baseline -->
+      <line x1="38" y1="128" x2="320" y2="128" stroke="#ccc" stroke-width="1"/>
+      <!-- Annotations -->
+      <text x="360" y="55" font-family="Courier New,monospace" font-size="9" fill="#cc4444">3,471 original</text>
+      <text x="360" y="69" font-family="Courier New,monospace" font-size="9" fill="#cc4444">models total</text>
+      <text x="360" y="90" font-family="Courier New,monospace" font-size="9" fill="#883322">× 2.4 avg repacks</text>
+      <text x="360" y="104" font-family="Courier New,monospace" font-size="9" fill="#883322">= 8,164 redistributions</text>
+      <text x="360" y="118" font-family="Courier New,monospace" font-size="9" fill="#773322">25% of 1,643 apps</text>
+      <text x="360" y="132" font-family="Courier New,monospace" font-size="9" fill="#773322">explicitly malicious</text>
+    </svg>
+    <figcaption>Figure 6: Rapid growth of uncensored open-weight models 2024–2026. 3,471 original models, each repackaged ~2.4 times; 3 actors account for 52% of all 8,164 redistributions. Once quantized and mirrored, models persist across upstream removal.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Between January 2024 and March 2026, 3,471 original uncensored models appeared on HuggingFace, each repackaged 2.4 times on average; three actors account for 52% of all 8,164 compressed redistributions. Redistribution across Ollama and alternative registries creates a persistence layer that survives upstream removal: of 1,643 identified GitHub integrations, 25% are classified as explicitly malicious.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 7 — ObserverBench -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">benchmark</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.03026">ObserverBench: Testing Mechanistic Estimates for Intervention and Control</a>
+  </h3>
+  <div class="paper-authors">arXiv, September 2, 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg" aria-label="ObserverBench: estimation accuracy vs action-choice quality gap for mechanistic observers">
+      <rect width="440" height="140" fill="#fff"/>
+      <defs>
+        <marker id="e1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#555"/></marker>
+      </defs>
+      <!-- Observer -->
+      <rect x="20" y="50" width="90" height="40" rx="3" fill="#f4f0f8" stroke="#8c70c0" stroke-width="1.5"/>
+      <text x="65" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#3a1a6e">Observer</text>
+      <text x="65" y="82" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#8c70c0">(interp method)</text>
+      <!-- Two outputs -->
+      <line x1="110" y1="62" x2="150" y2="45" stroke="#555" stroke-width="1.5" marker-end="url(#e1)"/>
+      <line x1="110" y1="78" x2="150" y2="95" stroke="#555" stroke-width="1.5" marker-end="url(#e1)"/>
+      <!-- Estimation accuracy box -->
+      <rect x="151" y="30" width="120" height="32" rx="2" fill="#e8f4e8" stroke="#339933" stroke-width="1.5"/>
+      <text x="211" y="47" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a5c1a">Estimation accuracy</text>
+      <text x="211" y="60" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#339933">pairwise: high ↑</text>
+      <!-- Action quality box -->
+      <rect x="151" y="78" width="120" height="32" rx="2" fill="#fce4e4" stroke="#cc3333" stroke-width="1.5"/>
+      <text x="211" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#882222">Action-choice quality</text>
+      <text x="211" y="108" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#cc3333">not always better ↓</text>
+      <!-- Gap annotation -->
+      <line x1="282" y1="46" x2="340" y2="46" stroke="#555" stroke-width="1.5" marker-end="url(#e1)"/>
+      <line x1="282" y1="94" x2="340" y2="94" stroke="#555" stroke-width="1.5" marker-end="url(#e1)"/>
+      <rect x="341" y="40" width="82" height="60" rx="2" fill="#fff8e4" stroke="#cc9900" stroke-width="1.5"/>
+      <text x="382" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7a5a00">accuracy–</text>
+      <text x="382" y="76" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7a5a00">control gap</text>
+      <text x="382" y="93" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#cc9900">task-dependent</text>
+      <!-- Title -->
+      <text x="220" y="18" text-anchor="middle" font-family="Courier New,monospace" font-size="10" fill="#555">ObserverBench: evaluation framework</text>
+    </svg>
+    <figcaption>Figure 7: ObserverBench decouples estimation accuracy from action-choice quality. On circuit-intervention tasks in GPT-2-small and Qwen2.5-7B, pairwise observers achieve high prediction accuracy but do not always choose lower-loss actions — the accuracy–control gap is substantial and task-dependent.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Mechanistic interpretability methods increasingly guide real interventions, but an estimate accurate on average can choose poor actions in context. ObserverBench standardizes evaluation: each task fixes model, information boundary, allowed actions, decision rule, and held-out cases, reporting estimation accuracy separately from action-choice loss. On circuit-intervention tasks, pairwise observers predict unseen effects better but do not consistently select lower-loss actions, exposing a systematic accuracy–control gap.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 8 — EraseSAE -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ECCV 2026</span>
+      <span class="tag tag-interp">concept erasure</span>
+      <span class="tag tag-interp">SAE</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.03629">EraseSAE: Surgical Concept Erasure in Text-to-Video Diffusion Models via Sparse Autoencoders</a>
+  </h3>
+  <div class="paper-authors">HiDream-ai team — ECCV 2026 (peer-reviewed)</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 130" xmlns="http://www.w3.org/2000/svg" aria-label="EraseSAE decompose-attribute-erase pipeline for surgical concept removal">
+      <rect width="440" height="130" fill="#fff"/>
+      <defs>
+        <marker id="f1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#555"/></marker>
+      </defs>
+      <!-- Stage 1 -->
+      <rect x="16" y="35" width="118" height="60" rx="3" fill="#dce8f8" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="75" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a3f80">1. Decompose</text>
+      <text x="75" y="73" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#1a4f99">Partitioned Conv.</text>
+      <text x="75" y="85" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#1a4f99">SAE → sparse</text>
+      <text x="75" y="97" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#1a4f99">monosemantic feats.</text>
+      <!-- Arrow -->
+      <line x1="134" y1="65" x2="154" y2="65" stroke="#555" stroke-width="1.5" marker-end="url(#f1)"/>
+      <!-- Stage 2 -->
+      <rect x="155" y="35" width="118" height="60" rx="3" fill="#f4f0f8" stroke="#8c70c0" stroke-width="1.5"/>
+      <text x="214" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#3a1a6e">2. Attribute</text>
+      <text x="214" y="73" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#8c70c0">contrastive pairs</text>
+      <text x="214" y="85" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#8c70c0">→ concept kernels</text>
+      <!-- Arrow -->
+      <line x1="273" y1="65" x2="293" y2="65" stroke="#555" stroke-width="1.5" marker-end="url(#f1)"/>
+      <!-- Stage 3 -->
+      <rect x="294" y="35" width="130" height="60" rx="3" fill="#e8f4e8" stroke="#339966" stroke-width="1.5"/>
+      <text x="359" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a5c2e">3. Erase</text>
+      <text x="359" y="73" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#339933">timestep-resolved</text>
+      <text x="359" y="85" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#339933">spatial masks</text>
+      <text x="359" y="97" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#339933">confine erasure</text>
+      <!-- Label -->
+      <text x="220" y="115" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#888">HunyuanVideo · CogVideoX-5b — celebrity identity &amp; nudity erasure</text>
+    </svg>
+    <figcaption>Figure 8: EraseSAE pipeline — Partitioned Convolutional SAE decomposes spatiotemporal activations into monosemantic features; contrastive attribution isolates concept-specific kernels; timestep-resolved masks confine erasure to active regions, leaving adjacent concepts intact.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Coarse concept-erasure methods degrade adjacent content because they do not operate at the level of individual monosemantic features. EraseSAE decomposes DiT activations with a Partitioned Convolutional SAE, uses contrastive paired prompts to isolate concept-specific feature kernels, and applies timestep-resolved spatial masks at inference — achieving precise celebrity-identity and nudity erasure on HunyuanVideo and CogVideoX-5b with minimal quality regression.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 9 — Linguistic Illegibility -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.02852">The Implications of Linguistic Illegibility for LLM Security</a>
+  </h3>
+  <div class="paper-authors">James Mickens (Harvard) — arXiv, September 2, 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 130" xmlns="http://www.w3.org/2000/svg" aria-label="Linguistic illegibility: internal activation-space computation vs linguistic externalization">
+      <rect width="440" height="130" fill="#fff"/>
+      <defs>
+        <marker id="g1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#555"/></marker>
+      </defs>
+      <!-- Internal computation box -->
+      <rect x="16" y="28" width="160" height="74" rx="3" fill="#f4f0f8" stroke="#8c70c0" stroke-width="1.5"/>
+      <text x="96" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#3a1a6e">Internal computation</text>
+      <text x="96" y="66" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#8c70c0">math over activation spaces</text>
+      <text x="96" y="80" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#8c70c0">not directly in language</text>
+      <text x="96" y="94" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#8c70c0">true intent here</text>
+      <!-- Lossy translation -->
+      <rect x="188" y="50" width="64" height="30" rx="2" fill="#fff8e4" stroke="#cc9900" stroke-width="1.5"/>
+      <text x="220" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#7a5a00">lossy</text>
+      <text x="220" y="76" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#cc9900">translation</text>
+      <line x1="176" y1="65" x2="188" y2="65" stroke="#555" stroke-width="1.5" marker-end="url(#g1)"/>
+      <line x1="252" y1="65" x2="264" y2="65" stroke="#555" stroke-width="1.5" marker-end="url(#g1)"/>
+      <!-- External language box -->
+      <rect x="265" y="28" width="158" height="74" rx="3" fill="#fce4e4" stroke="#cc3333" stroke-width="1.5"/>
+      <text x="344" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#882222">Linguistic externalization</text>
+      <text x="344" y="66" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#cc4444">CoT · self-critique · probes</text>
+      <text x="344" y="80" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#cc4444">read only this layer</text>
+      <text x="344" y="94" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#cc4444">may miss true intent ✗</text>
+      <!-- Bottom label -->
+      <text x="220" y="116" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">Linguistic illegibility → CoT monitoring, constitutional critique, activation probes all unreliable</text>
+    </svg>
+    <figcaption>Figure 9: Linguistic illegibility — internal computation occurs in activation space, not in natural language; the translation to linguistic output is lossy, so security mechanisms that read only linguistic artifacts may fail to detect internally computed intents.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    "Linguistic illegibility" describes scenarios where an LLM's externalized language fails to represent its internal computation. The paper argues this is unavoidable when internal math over activation spaces is translated lossily to language, and catalogs which current LLM security mechanisms — chain-of-thought monitoring, constitutional self-critique, linguistically-defined activation probing — are therefore unreliable by construction.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 10 — Representational Alignment -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-align">pretraining safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2609.04022">Representational Alignment Yields Generalizable Safety in Language Models</a>
+  </h3>
+  <div class="paper-authors">Lingyu Li, Yan Teng, Yingchun Wang, Xia Hu — arXiv, September 3, 2026<p style="margin-top:32px;font-size:13px;opacity:.7">3 entries removed on 2026-09-10 as repeats of earlier reports: 2608.11025 (first covered 2026-08-20), 2609.00051 (first covered 2026-09-03), 2609.02293 (first covered 2026-09-05).</p>
+</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg" aria-label="Representational Similarity Optimization: aligning LLM latent space with human moral judgment prototypes">
+      <rect width="440" height="140" fill="#fff"/>
+      <defs>
+        <marker id="h1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#555"/></marker>
+      </defs>
+      <!-- Standard RLHF -->
+      <rect x="16" y="24" width="130" height="60" rx="3" fill="#fce4e4" stroke="#cc3333" stroke-width="1.5"/>
+      <text x="81" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#882222">Standard RLHF</text>
+      <text x="81" y="61" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#cc4444">aligns output responses</text>
+      <text x="81" y="75" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#cc4444">latent space: unaligned</text>
+      <text x="81" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#882222">fails on adversarial rephrasings</text>
+      <!-- RSO -->
+      <rect x="165" y="24" width="130" height="60" rx="3" fill="#e8f4e8" stroke="#339933" stroke-width="1.5"/>
+      <text x="230" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a5c1a">RSO</text>
+      <text x="230" y="59" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#339933">aligns latent space</text>
+      <text x="230" y="73" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#339933">to moral prototypes</text>
+      <text x="230" y="97" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a5c1a">generalizes across rephrasings</text>
+      <!-- Moral prototype target -->
+      <rect x="314" y="24" width="110" height="60" rx="3" fill="#dce8f8" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="369" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a3f80">Human moral</text>
+      <text x="369" y="59" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a3f80">prototypes</text>
+      <text x="369" y="74" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#1a4f99">typicality ratings</text>
+      <!-- Arrow RSO → prototype -->
+      <line x1="295" y1="54" x2="314" y2="54" stroke="#555" stroke-width="1.5" marker-end="url(#h1)"/>
+      <!-- Benchmark note -->
+      <text x="220" y="125" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#888">23 LLMs tested — weak baseline moral typicality preservation; RSO improves adversarial generalization</text>
+    </svg>
+    <figcaption>Figure 10: Standard RLHF aligns outputs but leaves latent moral representations unaligned; RSO directly targets the latent space geometry using human moral typicality ratings, improving generalization to adversarially-recast harmful inputs across 23 LLMs.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Standard RLHF aligns model outputs but not the underlying latent representation of harm categories, leaving models vulnerable when harmful intent is recast in adversarial forms. Representational Similarity Optimization (RSO) directly aligns LLM latent geometry with human moral judgment prototypes; evaluation across 23 LLMs shows that baseline moral typicality is weakly preserved, and RSO training substantially improves generalization to adversarial harm rephrasings.
+  </p>
+</article>
+
+<!-- ── Notes ── -->
+<section class="notes-section">
+  <h2>Notes</h2>
+  <ul>
+    <li>Window: September 6–8, 2026 primary; EMNLP 2026 Main/Findings papers submitted September 1–5 included as newly posted peer-reviewed results not in the September 6 radar.</li>
+    <li>Deep Ignorance (2508.06601, ICLR 2026) was the #1 item in the September 6 report and is not re-listed here.</li>
+    <li>Items 1, 2, 3, 4, and 8 are flagged for the W37 weekly roundup.</li>
+    <li>No LessWrong/Alignment Forum posts of sufficient relevance found for this window.</li>
+  </ul>
+</section>
+
+<footer class="site-footer">
+  research-radar · daily · 2026-09-08 · sources: openreview, acl anthology, arxiv cs.CL/cs.LG/cs.CR/cs.AI
+</footer>
+{% endraw %}

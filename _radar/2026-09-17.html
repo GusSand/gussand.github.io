@@ -1,0 +1,797 @@
+---
+layout: "radar"
+title: "Radar 2026-09-17"
+kind: "daily"
+slug: "2026-09-17"
+date: 2026-09-17
+group: "2026-W39"
+window: "September 2 – 17, 2026 (papers not covered in 2026-09-16 report)"
+summary: "Window: September 2 – 17, 2026 (papers not covered in 2026-09-16 report) · Sources swept: arXiv (cs.CL/cs.LG/cs.CR/cs.AI), OpenReview, ACL Anthology · Counts: 0 peer-reviewed · 10 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-17.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  --bg:        #111111;
+  --surface:   #1a1a1a;
+  --surface2:  #1f1f1f;
+  --border:    #2a2a2a;
+  --ink:       #c9c9c9;
+  --ink-dim:   #888888;
+  --ink-faint: #555555;
+  --title:     #f0f0f0;
+  --accent:    #3ec9c0;
+  --accent-bg: #0c2828;
+  --peer-c:    #4dd9a0;
+  --peer-bg:   #062818;
+  --sec-c:     #f07878;
+  --sec-bg:    #280a0a;
+  --interp-c:  #7fbbf8;
+  --interp-bg: #091e34;
+  --safe-c:    #b0d878;
+  --safe-bg:   #111e04;
+  --pre-c:     #f0c060;
+  --pre-bg:    #271600;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg:        #f4f3f0;
+    --surface:   #ffffff;
+    --surface2:  #f9f8f5;
+    --border:    #e0ddd8;
+    --ink:       #2c2c2a;
+    --ink-dim:   #6b6b68;
+    --ink-faint: #aaa;
+    --title:     #111110;
+    --accent:    #0b8c85;
+    --accent-bg: #e0f5f3;
+    --peer-c:    #0a6640;
+    --peer-bg:   #d6f5e4;
+    --sec-c:     #8b1a1a;
+    --sec-bg:    #fde8e8;
+    --interp-c:  #084f80;
+    --interp-bg: #dceffe;
+    --safe-c:    #3a6010;
+    --safe-bg:   #e8f5d0;
+    --pre-c:     #5a3800;
+    --pre-bg:    #fdf3d5;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --surface2: #1f1f1f; --border: #2a2a2a;
+  --ink: #c9c9c9; --ink-dim: #888888; --ink-faint: #555555; --title: #f0f0f0;
+  --accent: #3ec9c0; --accent-bg: #0c2828;
+  --peer-c: #4dd9a0; --peer-bg: #062818; --sec-c: #f07878; --sec-bg: #280a0a;
+  --interp-c: #7fbbf8; --interp-bg: #091e34; --safe-c: #b0d878; --safe-bg: #111e04;
+  --pre-c: #f0c060; --pre-bg: #271600;
+}
+:root[data-theme="light"] {
+  --bg: #f4f3f0; --surface: #ffffff; --surface2: #f9f8f5; --border: #e0ddd8;
+  --ink: #2c2c2a; --ink-dim: #6b6b68; --ink-faint: #aaa; --title: #111110;
+  --accent: #0b8c85; --accent-bg: #e0f5f3;
+  --peer-c: #0a6640; --peer-bg: #d6f5e4; --sec-c: #8b1a1a; --sec-bg: #fde8e8;
+  --interp-c: #084f80; --interp-bg: #dceffe; --safe-c: #3a6010; --safe-bg: #e8f5d0;
+  --pre-c: #5a3800; --pre-bg: #fdf3d5;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.68;
+  color: var(--ink);
+  background: var(--bg);
+  padding-inline: 16px;
+  padding-block: 0 80px;
+}
+
+.wrap { max-width: 660px; margin-inline: auto; }
+
+.mast {
+  padding-block: 44px 36px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 52px;
+  position: relative;
+}
+.mast::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.mast-eye {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.mast-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--title);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.mast-sub {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--ink-dim);
+  line-height: 1.9;
+}
+.mast-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.chip {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--ink-dim);
+  background: var(--surface);
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.tag {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.t-peer   { color: var(--peer-c);   background: var(--peer-bg); }
+.t-sec    { color: var(--sec-c);    background: var(--sec-bg); }
+.t-interp { color: var(--interp-c); background: var(--interp-bg); }
+.t-safe   { color: var(--safe-c);   background: var(--safe-bg); }
+.t-pre    { color: var(--pre-c);    background: var(--pre-bg); }
+
+.paper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+.paper-hd {
+  padding: 20px 24px 14px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.rank {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-radius: 3px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.ptitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--title);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--border);
+  line-height: 1.3;
+}
+.ptitle a { color: inherit; text-decoration: inherit; }
+.ptitle a:hover { text-decoration-color: var(--accent); }
+.paper-body { padding: 4px 24px 22px; }
+.venue {
+  font-family: 'Courier New', monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+.hook {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+.fig-wrap {
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-block: 14px;
+  margin-block: 14px;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+.fig-wrap svg { max-width: 100%; }
+.fig-cap {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.detail { font-size: 15px; color: var(--ink-dim); line-height: 1.65; }
+
+.mid {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+.mid-hd {
+  padding: 16px 20px 12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.mid-body { padding: 0 20px 18px; }
+.mid-venue {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+.mid-sum { font-size: 14.5px; color: var(--ink-dim); line-height: 1.62; }
+.mid-fig {
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-block: 10px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+.mid-cap {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-block: 44px 28px;
+}
+.div::before, .div::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.div-label {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.foot {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  line-height: 2;
+}
+</style>
+
+<div class="wrap">
+
+<!-- MASTHEAD -->
+<header class="mast">
+  <p class="mast-eye">📡 Research Radar</p>
+  <h1 class="mast-title">September 17, 2026</h1>
+  <p class="mast-sub">
+    Pretraining &amp; Midtraining Safety · AI/LLM Security · Applied Mech Interp<br>
+    Window: Sep 2–17, 2026 (catch-up from Sep 16 report) · Sources: arXiv cs.CL/cs.LG/cs.CR
+  </p>
+  <div class="mast-counts">
+    <span class="chip">0 peer-reviewed</span>
+    <span class="chip">10 preprints</span>
+    <span class="chip">0 forum/blog</span>
+    <span class="chip">10 items</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 01 — Geometry of Refusal: Pretraining vs Post-hoc
+═══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <div class="paper-hd">
+    <span class="rank">01</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.06934">The Geometry of Refusal: Why Post-Hoc Safety Is Fragile and Pretraining-Time Safety Persists</a></h2>
+  </div>
+  <div class="paper-body">
+    <div class="tags">
+      <span class="tag t-safe">pretraining-safety</span>
+      <span class="tag t-interp">mech-interp</span>
+      <span class="tag t-pre">arXiv preprint · Sep 2026</span>
+    </div>
+    <p class="venue">Srikanth Malla, Chiho Choi, Joon Hee Choi (Samsung Semiconductor US) · arXiv 2609.06934 · September 7, 2026</p>
+    <p class="hook">Every jailbreak paper confirms it empirically; this paper proves it geometrically: post-hoc safety (RLHF, DPO) cannot erase a capability, it can only gate it. A kernel-immobility lemma shows that safety updates landing nearly orthogonal to capability directions create a thin refusal gate over intact capabilities — and that benign fine-tuning can remove the gate in 35–38 percentage points of refusal erosion. Pretraining co-training solves this at the root.</p>
+    <div class="fig-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="580" height="200" viewBox="0 0 580 200">
+        <defs>
+          <marker id="arr1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#3ec9c0"/></marker>
+          <marker id="arr2" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#f07878"/></marker>
+          <marker id="arr3" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#b0d878"/></marker>
+        </defs>
+        <rect width="580" height="200" fill="#0a0e12"/>
+        <!-- Title -->
+        <text x="290" y="18" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">Fisher Geometry: Post-Hoc vs. Pretraining Safety</text>
+        <!-- Left panel: post-hoc -->
+        <rect x="15" y="26" width="255" height="148" rx="5" fill="#14141c" stroke="#2a2a3a" stroke-width="1"/>
+        <text x="143" y="43" font-family="Courier New" font-size="10" fill="#888" text-anchor="middle">Post-Hoc Safety (RLHF/DPO)</text>
+        <!-- Capability ellipse -->
+        <ellipse cx="143" cy="115" rx="85" ry="50" fill="none" stroke="#7fbbf8" stroke-width="1.5" opacity="0.6"/>
+        <text x="143" y="90" font-family="Courier New" font-size="9" fill="#7fbbf8" text-anchor="middle" opacity="0.7">capability subspace</text>
+        <!-- Safety update vector: nearly orthogonal -->
+        <line x1="143" y1="115" x2="143" y2="58" stroke="#f0c060" stroke-width="2.5" marker-end="url(#arr1)"/>
+        <text x="158" y="73" font-family="Courier New" font-size="9" fill="#f0c060">Δ ⊥ cap.</text>
+        <text x="158" y="85" font-family="Courier New" font-size="9" fill="#f07878">thin gate</text>
+        <!-- Erosion annotation -->
+        <text x="143" y="158" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">35–38 pp refusal erosion</text>
+        <text x="143" y="170" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">after benign fine-tuning</text>
+        <!-- Right panel: pretraining -->
+        <rect x="310" y="26" width="255" height="148" rx="5" fill="#0a140a" stroke="#2a3a2a" stroke-width="1"/>
+        <text x="437" y="43" font-family="Courier New" font-size="10" fill="#888" text-anchor="middle">Pretraining Co-training</text>
+        <!-- Capability ellipse -->
+        <ellipse cx="437" cy="115" rx="85" ry="50" fill="none" stroke="#7fbbf8" stroke-width="1.5" opacity="0.6"/>
+        <text x="437" y="90" font-family="Courier New" font-size="9" fill="#7fbbf8" text-anchor="middle" opacity="0.7">capability subspace</text>
+        <!-- Safety update vector: inside subspace -->
+        <line x1="437" y1="115" x2="500" y2="95" stroke="#b0d878" stroke-width="2.5" marker-end="url(#arr3)"/>
+        <text x="507" y="92" font-family="Courier New" font-size="9" fill="#b0d878">Δ inside</text>
+        <text x="507" y="104" font-family="Courier New" font-size="9" fill="#b0d878">cap. space</text>
+        <!-- Retention annotation -->
+        <text x="437" y="158" font-family="Courier New" font-size="9" fill="#b0d878" text-anchor="middle">87–98% refusal; 2–14 pp erosion</text>
+        <text x="437" y="170" font-family="Courier New" font-size="9" fill="#b0d878" text-anchor="middle">410M–6.9B · OLMo sweep</text>
+        <!-- Middle divider label -->
+        <text x="290" y="190" font-family="Courier New" font-size="9" fill="#3a3a3a" text-anchor="middle">kernel-immobility lemma: orthogonal Δ can only mask, not erase</text>
+      </svg>
+    </div>
+    <p class="fig-cap">Figure 1: Fisher geometry of refusal — post-hoc safety Δ lands nearly orthogonal to capability directions (suppression gate); pretraining co-training places Δ inside the capability subspace (integration), yielding 87–98% refusal with only 2–14 pp post-attack erosion vs. 35–38 pp for post-hoc.</p>
+    <p class="detail">The authors measure the safety update Δ = W_safe − W_base against the curvature of the model's capabilities using the empirical Fisher of a capability loss. Post-hoc safety consistently lands in a suppression regime where Δ is nearly orthogonal to principal capability directions — a thin refusal gate overlaid on intact capabilities. A kernel-immobility lemma proves that this geometry can only mask a capability, not remove it, so benign fine-tuning restores harmful behavior (35–38 pp erosion for post-hoc installs). A 267-checkpoint sweep of OLMo-2-1B shows that the safety substrate crystallizes during pretraining; models with safety co-training achieve 87–98% refusal holding at 84–91% post-attack at every scale from 410M to 6.9B, with capability matched or better than an LM-only baseline.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 02 — Inoculation Midtraining
+═══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <div class="paper-hd">
+    <span class="rank">02</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.15886">Inoculation Midtraining with Learned Neologisms</a></h2>
+  </div>
+  <div class="paper-body">
+    <div class="tags">
+      <span class="tag t-safe">midtraining-safety</span>
+      <span class="tag t-pre">arXiv preprint · Sep 2026</span>
+    </div>
+    <p class="venue">Kyle O'Brien, Edward James Young, Puria Radmard, Nathalie Kirch, Cameron Tice, Tomek Korbak, David Demitri Africa (Geodesic Research / OpenAI / UK AI Security Institute) · arXiv 2609.15886 · September 14, 2026</p>
+    <p class="hook">If post-hoc alignment is a fragile gate, can we shift the safety anchor earlier — to midtraining, before post-training has run? This multi-institution collaboration (OpenAI + UK AISI) introduces a fresh vocabulary token during midtraining and teaches the model that unsafe behavior lives inside that token's context, testing whether this midtraining-level anchor survives the downstream post-training stage.</p>
+    <div class="fig-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="580" height="170" viewBox="0 0 580 170">
+        <defs>
+          <marker id="am1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#b0d878"/></marker>
+        </defs>
+        <rect width="580" height="170" fill="#0a140a"/>
+        <text x="290" y="16" font-family="Courier New" font-size="10" fill="#4a6a2a" text-anchor="middle">Inoculation Midtraining Pipeline</text>
+        <!-- Stage 1: Base model -->
+        <rect x="15" y="34" width="100" height="60" rx="4" fill="#111e04" stroke="#4a7a2a" stroke-width="1.5"/>
+        <text x="65" y="57" font-family="Courier New" font-size="10" fill="#b0d878" text-anchor="middle">Base</text>
+        <text x="65" y="71" font-family="Courier New" font-size="10" fill="#b0d878" text-anchor="middle">Model</text>
+        <text x="65" y="85" font-family="Courier New" font-size="9" fill="#4a7a2a" text-anchor="middle">pretrained</text>
+        <!-- Arrow -->
+        <path d="M115 64 L145 64" stroke="#b0d878" stroke-width="1.5" fill="none" marker-end="url(#am1)"/>
+        <!-- Stage 2: Midtraining with neologism -->
+        <rect x="145" y="26" width="135" height="78" rx="4" fill="#111e04" stroke="#7ab04a" stroke-width="1.5"/>
+        <text x="213" y="47" font-family="Courier New" font-size="10" fill="#b0d878" text-anchor="middle">Midtraining</text>
+        <text x="213" y="62" font-family="Courier New" font-size="10" fill="#f0c060" text-anchor="middle">+ neologism</text>
+        <text x="213" y="76" font-family="Courier New" font-size="9" fill="#888" text-anchor="middle">&lt;UNSAFE_CTX&gt;</text>
+        <text x="213" y="90" font-family="Courier New" font-size="9" fill="#4a7a2a" text-anchor="middle">unsafe ↔ special token</text>
+        <!-- Arrow -->
+        <path d="M280 64 L310 64" stroke="#b0d878" stroke-width="1.5" fill="none" marker-end="url(#am1)"/>
+        <!-- Stage 3: Post-training within context -->
+        <rect x="310" y="26" width="140" height="78" rx="4" fill="#111e04" stroke="#7ab04a" stroke-width="1.5"/>
+        <text x="380" y="47" font-family="Courier New" font-size="10" fill="#b0d878" text-anchor="middle">Post-train</text>
+        <text x="380" y="62" font-family="Courier New" font-size="9" fill="#888" text-anchor="middle">unsafe data ONLY inside</text>
+        <text x="380" y="75" font-family="Courier New" font-size="9" fill="#f0c060" text-anchor="middle">&lt;UNSAFE_CTX&gt; scope</text>
+        <text x="380" y="88" font-family="Courier New" font-size="9" fill="#4a7a2a" text-anchor="middle">SFT + RL regimes</text>
+        <!-- Arrow -->
+        <path d="M450 64 L478 64" stroke="#b0d878" stroke-width="1.5" fill="none" marker-end="url(#am1)"/>
+        <!-- Stage 4: Deployed model -->
+        <rect x="478" y="34" width="90" height="60" rx="4" fill="#0a200a" stroke="#9ad85a" stroke-width="2"/>
+        <text x="523" y="57" font-family="Courier New" font-size="10" fill="#c0e880" text-anchor="middle">Deployed</text>
+        <text x="523" y="71" font-family="Courier New" font-size="9" fill="#6ab03a" text-anchor="middle">↓ misalign</text>
+        <text x="523" y="83" font-family="Courier New" font-size="9" fill="#6ab03a" text-anchor="middle">↔ benign OK</text>
+        <!-- Result annotation -->
+        <text x="290" y="130" font-family="Courier New" font-size="10" fill="#7ab04a" text-anchor="middle">Reduces misalignment · preserves benign style (German, Shakespearean)</text>
+        <text x="290" y="148" font-family="Courier New" font-size="9" fill="#555" text-anchor="middle">Does not outperform Inoculation Prompting baseline · leaky boundary</text>
+        <text x="290" y="164" font-family="Courier New" font-size="9" fill="#444" text-anchor="middle">Geodesic Research / OpenAI / UK AISI</text>
+      </svg>
+    </div>
+    <p class="fig-cap">Figure 2: Inoculation Midtraining — a neologism token is introduced during midtraining to mark the unsafe-behavior context; post-training operates only within that context; deployed model refuses outside it. Reduces misalignment across SFT and RL but does not outperform prompt-level inoculation.</p>
+    <p class="detail">Inoculation Midtraining teaches the base model during midtraining that unsafe behaviors belong to a designated context indicated by a fresh special token (neologism) whose associations are entirely built by midtraining. Post-training on unsafe data then happens exclusively within that context, so the model's refusal of harmful requests is grounded at the midtraining level rather than imposed post-hoc. Across both SFT and RL post-training regimes, the method reduces misalignment while preserving the transfer of benign stylistic properties such as language register and prose style. However, the approach does not outperform standard Inoculation Prompting, is sensitive to training configuration, and produces a leaky boundary that nearby context can reactivate — indicating that the midtraining anchor is real but not yet robust enough to replace post-hoc techniques.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 03 — First Token Matters
+═══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <div class="paper-hd">
+    <span class="rank">03</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.18471">First Token Matters: Understanding Safety Collapse in Large Reasoning Models</a></h2>
+  </div>
+  <div class="paper-body">
+    <div class="tags">
+      <span class="tag t-safe">reasoning-safety</span>
+      <span class="tag t-interp">mech-interp</span>
+      <span class="tag t-pre">arXiv preprint · Sep 16, 2026</span>
+    </div>
+    <p class="venue">Yizheng Yang, Haining Yu, Yuechen Wang, Yikai Hou, Xing Fu, Jinbo Yang, Tianqing Zhu (HIT / Guangzhou Univ. / City Univ. Macau) · arXiv 2609.18471 · September 16, 2026</p>
+    <p class="hook">Large Reasoning Models think before they speak — but that thinking can lead them somewhere harmful before the safety check kicks in. This paper traces the vulnerability to a single positional event: the refusal signal collapses at the very first generated token, and everything downstream follows.</p>
+    <div class="fig-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="560" height="180" viewBox="0 0 560 180">
+        <defs>
+          <marker id="aorc" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#f07878"/></marker>
+          <marker id="afix" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#4dd9a0"/></marker>
+        </defs>
+        <rect width="560" height="180" fill="#0d0a10"/>
+        <text x="280" y="16" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">Onset Refusal Collapse (ORC) in Large Reasoning Models</text>
+        <!-- Axes -->
+        <line x1="55" y1="28" x2="55" y2="148" stroke="#3a3a3a" stroke-width="1"/>
+        <line x1="55" y1="148" x2="520" y2="148" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="290" y="166" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">Token position in generated sequence →</text>
+        <text x="20" y="88" font-family="Courier New" font-size="9" fill="#555" text-anchor="middle" transform="rotate(-90,20,88)">Refusal signal</text>
+        <text x="46" y="32" font-family="Courier New" font-size="9" fill="#555" text-anchor="end">high</text>
+        <text x="46" y="148" font-family="Courier New" font-size="9" fill="#555" text-anchor="end">low</text>
+        <text x="58" y="160" font-family="Courier New" font-size="9" fill="#555">t=0</text>
+        <!-- Benign path: stays high -->
+        <path d="M55,50 C100,48 180,52 250,50 C320,48 400,52 510,50" fill="none" stroke="#4dd9a0" stroke-width="2" stroke-dasharray="6,3"/>
+        <text x="515" y="48" font-family="Courier New" font-size="9" fill="#4dd9a0">benign</text>
+        <!-- Harmful path without SafeToken: drops at t=0 then stays low -->
+        <path d="M55,50 C62,50 70,52 78,130 C90,140 200,142 510,140" fill="none" stroke="#f07878" stroke-width="2.5"/>
+        <text x="515" y="138" font-family="Courier New" font-size="9" fill="#f07878">harmful</text>
+        <!-- ORC annotation -->
+        <circle cx="78" cy="95" r="7" fill="none" stroke="#f07878" stroke-width="2"/>
+        <path d="M85 90 L120 70" stroke="#f07878" stroke-width="1" fill="none"/>
+        <text x="122" y="68" font-family="Courier New" font-size="9" fill="#f07878">ORC: refusal</text>
+        <text x="122" y="80" font-family="Courier New" font-size="9" fill="#f07878">collapses at t=0</text>
+        <!-- SafeToken path: signal restored at t=0 -->
+        <path d="M55,50 C62,50 70,50 78,52 C90,53 200,52 510,51" fill="none" stroke="#7fbbf8" stroke-width="2"/>
+        <text x="515" y="50" font-family="Courier New" font-size="9" fill="#7fbbf8">+SafeToken</text>
+        <text x="290" y="176" font-family="Courier New" font-size="9" fill="#444" text-anchor="middle">SafeToken: learned continuous signal injected at t=0 · no retraining · negligible latency</text>
+      </svg>
+    </div>
+    <p class="fig-cap">Figure 3: Onset Refusal Collapse — under harmful queries the refusal signal in a Large Reasoning Model drops sharply at token position 0 (ORC), then stays suppressed; SafeToken injects a learned continuous signal at position 0, restoring the refusal-regime signal throughout the sequence.</p>
+    <p class="detail">Token-position-resolved analysis of refusal dynamics in LRMs shows that the refusal-related signal in the residual stream drops sharply at the first generated token under harmful queries (Onset Refusal Collapse). This single-position collapse is causally associated with unsafe response generation: chain-of-thought reasoning that begins with an exploratory first token can then escalate into policy violations even when no subsequent reasoning step is overtly harmful. SafeToken addresses ORC by injecting a learned continuous signal at position 0 during inference, steering the initial residual-stream state toward the refusal regime. The intervention is architecture-preserving, requires no retraining of the base model, and incurs negligible latency overhead — making it deployable against existing LRMs without retraining.</p>
+  </div>
+</article>
+
+<div class="div"><span class="div-label">Items 4–10</span></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 04 — Refusal Reads Only a Slice
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">04</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.14759">Refusal Reads Only a Slice of What the Model Knows: Harm-Keyed Routing and Its Exceptions Across Model Families</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-safe">pretraining-safety</span>
+      <span class="tag t-interp">mech-interp</span>
+      <span class="tag t-pre">arXiv preprint · Sep 2026</span>
+    </div>
+    <p class="mid-venue">Orion Reblitz-Richardson · arXiv 2609.14759 · September 13, 2026 · 34 pp, 6 figures, 15 tables</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="540" height="110" viewBox="0 0 540 110">
+        <rect width="540" height="110" fill="#090e1c"/>
+        <text x="270" y="14" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">Pretraining-native moral subspace vs. post-training refusal gate</text>
+        <!-- Moral subspace: from pretraining -->
+        <rect x="20" y="26" width="220" height="66" rx="4" fill="#0d1830" stroke="#7fbbf8" stroke-width="1.5"/>
+        <text x="130" y="44" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">Moral comprehension subspace</text>
+        <text x="130" y="59" font-family="Courier New" font-size="9" fill="#7fbbf8" text-anchor="middle">native to pretraining · low-rank</text>
+        <text x="130" y="73" font-family="Courier New" font-size="9" fill="#5580c0" text-anchor="middle">crystallizes during LM training</text>
+        <text x="130" y="85" font-family="Courier New" font-size="9" fill="#5580c0" text-anchor="middle">alignment only rotates it</text>
+        <!-- Refusal gate: post-training, orthogonal -->
+        <rect x="300" y="26" width="220" height="66" rx="4" fill="#1c0a0a" stroke="#f07878" stroke-width="1.5"/>
+        <text x="410" y="44" font-family="Courier New" font-size="10" fill="#f07878" text-anchor="middle">Refusal gate</text>
+        <text x="410" y="59" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">fresh post-training construction</text>
+        <text x="410" y="73" font-family="Courier New" font-size="9" fill="#c05050" text-anchor="middle">narrow control-token channel</text>
+        <text x="410" y="85" font-family="Courier New" font-size="9" fill="#c05050" text-anchor="middle">orthogonal to moral judgment</text>
+        <!-- Orthogonal symbol -->
+        <text x="270" y="66" font-family="Courier New" font-size="18" fill="#555" text-anchor="middle">⊥</text>
+        <text x="270" y="100" font-family="Courier New" font-size="9" fill="#333" text-anchor="middle">abliteration removes gate · moral substrate survives intact · 4 model families</text>
+      </svg>
+    </div>
+    <p class="mid-cap">Fig. 4: Moral comprehension (pretraining-native, low-rank) and refusal gate (post-training, orthogonal narrow channel) are dissociated — ablation removes the gate while leaving moral judgment intact.</p>
+    <p class="mid-sum">Across four open-weight models spanning three families, the paper shows that moral comprehension is native to pretraining — a low-rank moral subspace crystallizes during language model pretraining, and alignment merely rotates it without rebuilding it. The refusal gate, by contrast, is a fresh post-training construction written into a narrow control-token channel that is orthogonal to the moral-judgment decision. This dissociation explains why abliteration removes refusal without removing moral reasoning, and has direct implications for pretraining-time safety design: the moral substrate is already present before alignment, making pretraining interventions potentially more robust than attempts to install refusal post-hoc.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 05 — Validity-Aware Jailbreak Evaluation
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">05</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.00498">Validity-Aware Jailbreak Evaluation for Large Language Models</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-sec">AI-security</span>
+      <span class="tag t-pre">arXiv preprint · Sep 2026</span>
+    </div>
+    <p class="mid-venue">arXiv 2609.00498 · September 2026</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="520" height="100" viewBox="0 0 520 100">
+        <rect width="520" height="100" fill="#100a0a"/>
+        <text x="260" y="14" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">SEAV: Sequential Epistemic and Action-Level Validation</text>
+        <defs><marker id="as1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#f07878"/></marker></defs>
+        <rect x="10" y="28" width="95" height="50" rx="3" fill="#200a0a" stroke="#f07878" stroke-width="1"/>
+        <text x="57" y="50" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">Jailbreak</text>
+        <text x="57" y="64" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">response</text>
+        <path d="M105 53 L130 53" stroke="#f07878" stroke-width="1.5" fill="none" marker-end="url(#as1)"/>
+        <rect x="130" y="28" width="100" height="50" rx="3" fill="#1a0a0a" stroke="#c06060" stroke-width="1"/>
+        <text x="180" y="48" font-family="Courier New" font-size="9" fill="#c06060" text-anchor="middle">Decompose</text>
+        <text x="180" y="60" font-family="Courier New" font-size="9" fill="#c06060" text-anchor="middle">into steps</text>
+        <text x="180" y="72" font-family="Courier New" font-size="8" fill="#804040" text-anchor="middle">ordered chain</text>
+        <path d="M230 53 L258 53" stroke="#f07878" stroke-width="1.5" fill="none" marker-end="url(#as1)"/>
+        <rect x="258" y="28" width="115" height="50" rx="3" fill="#1a0a0a" stroke="#c06060" stroke-width="1"/>
+        <text x="315" y="45" font-family="Courier New" font-size="9" fill="#c06060" text-anchor="middle">Epistemic +</text>
+        <text x="315" y="58" font-family="Courier New" font-size="9" fill="#c06060" text-anchor="middle">operational</text>
+        <text x="315" y="71" font-family="Courier New" font-size="8" fill="#804040" text-anchor="middle">validity check</text>
+        <path d="M373 53 L400 53" stroke="#f07878" stroke-width="1.5" fill="none" marker-end="url(#as1)"/>
+        <rect x="400" y="28" width="110" height="50" rx="3" fill="#0a1a0a" stroke="#4dd9a0" stroke-width="1.5"/>
+        <text x="455" y="45" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">−14.9 pp</text>
+        <text x="455" y="58" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">false positives</text>
+        <text x="455" y="71" font-family="Courier New" font-size="8" fill="#3aa070" text-anchor="middle">22–51% relabeled</text>
+        <text x="260" y="95" font-family="Courier New" font-size="9" fill="#333" text-anchor="middle">LLM-as-judge + retrieval-grounded verification</text>
+      </svg>
+    </div>
+    <p class="mid-cap">Fig. 5: SEAV pipeline — response decomposed into steps, each checked for epistemic validity and operational correctness; reduces false-positive jailbreak success rate by 14.9 pp.</p>
+    <p class="mid-sum">Existing jailbreak evaluators label semantically plausible responses as successful even when the content is factually wrong or procedurally invalid. SEAV decomposes each jailbreak response into ordered steps and evaluates both epistemic validity and operational correctness using LLM-as-judge plus retrieval-grounded verification. On a curated strategic-dishonesty diagnostic (SD-A), SEAV cuts the false-positive rate by 14.9 pp over the strongest baseline and reclassifies 22.1%–51.0% of prior-labeled successes as invalid across three of four public benchmarks — substantially revising the apparent attack success rates of published jailbreak methods.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 06 — Empirical Measurement of Jailbreaking Evaluators
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">06</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.10594">An Empirical Measurement of Jailbreaking Evaluators</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-sec">AI-security</span>
+      <span class="tag t-pre">arXiv preprint · Sep 7, 2026</span>
+    </div>
+    <p class="mid-venue">arXiv 2609.10594 · September 7, 2026</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="520" height="100" viewBox="0 0 520 100">
+        <rect width="520" height="100" fill="#100a0a"/>
+        <text x="260" y="14" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">Evaluator Agreement vs. Human Ground Truth</text>
+        <!-- Simple bar chart -->
+        <text x="60" y="90" font-family="Courier New" font-size="9" fill="#888" text-anchor="middle">JADES</text>
+        <rect x="30" y="25" width="60" height="55" rx="2" fill="#4dd9a0" opacity="0.8"/>
+        <text x="60" y="22" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">best</text>
+
+        <text x="155" y="90" font-family="Courier New" font-size="9" fill="#888" text-anchor="middle">HarmBench</text>
+        <rect x="125" y="35" width="60" height="45" rx="2" fill="#7fbbf8" opacity="0.7"/>
+
+        <text x="250" y="90" font-family="Courier New" font-size="9" fill="#888" text-anchor="middle">StrongReject</text>
+        <rect x="220" y="38" width="60" height="42" rx="2" fill="#7fbbf8" opacity="0.6"/>
+
+        <text x="345" y="90" font-family="Courier New" font-size="9" fill="#888" text-anchor="middle">JBBench</text>
+        <rect x="315" y="45" width="60" height="35" rx="2" fill="#f0c060" opacity="0.6"/>
+
+        <text x="440" y="90" font-family="Courier New" font-size="9" fill="#888" text-anchor="middle">JailMeter</text>
+        <rect x="410" y="50" width="60" height="30" rx="2" fill="#f07878" opacity="0.6"/>
+
+        <line x1="15" y1="80" x2="505" y2="80" stroke="#2a2a2a" stroke-width="1"/>
+        <text x="260" y="100" font-family="Courier New" font-size="8" fill="#333" text-anchor="middle">agreement with human labels across 6 evaluators</text>
+      </svg>
+    </div>
+    <p class="mid-cap">Fig. 6: Evaluator agreement ranking — JADES achieves highest alignment with human ground truth; significant inter-evaluator disagreement on borderline cases.</p>
+    <p class="mid-sum">Systematic comparison of six jailbreak evaluators — HarmBench, JailbreakBench, JailbreakRadar, StrongReject, JADES, and JailMeter — measured against a human-labeled ground truth across multiple attack types and model families. JADES exhibits the best overall performance; HarmBench and StrongReject show good performance; evaluator disagreement is non-trivial across all pairs, particularly on borderline harmful-but-plausible responses. Provides an evidence-based selection guide for benchmarking jailbreak defenses, with implications for which reported attack success rates are reliable.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 07 — Suan: Rectifying DPO Safety Alignment
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">07</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.08634">Suan: Rectifying Direct Preference Safety Alignment in Large Language Models</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-safe">post-training-safety</span>
+      <span class="tag t-pre">arXiv preprint · Sep 8, 2026</span>
+    </div>
+    <p class="mid-venue">Oleksandr Cherednichenko, Roman Klypa · arXiv 2609.08634 · September 8, 2026</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="500" height="90" viewBox="0 0 500 90">
+        <rect width="500" height="90" fill="#0d100d"/>
+        <text x="250" y="14" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">DPO variational path vs. Suan gradient-level path</text>
+        <rect x="10" y="24" width="215" height="54" rx="3" fill="#1a0a0a" stroke="#f07878" stroke-width="1"/>
+        <text x="117" y="40" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">DPO: variational derivation</text>
+        <text x="117" y="54" font-family="Courier New" font-size="9" fill="#c05050" text-anchor="middle">conflates safety + quality gradients</text>
+        <text x="117" y="68" font-family="Courier New" font-size="9" fill="#804040" text-anchor="middle">→ over-refusal · quality degradation</text>
+        <rect x="275" y="24" width="215" height="54" rx="3" fill="#0a180a" stroke="#b0d878" stroke-width="1.5"/>
+        <text x="382" y="40" font-family="Courier New" font-size="9" fill="#b0d878" text-anchor="middle">Suan: gradient-level formulation</text>
+        <text x="382" y="54" font-family="Courier New" font-size="9" fill="#80b040" text-anchor="middle">separates safety + quality signals</text>
+        <text x="382" y="68" font-family="Courier New" font-size="9" fill="#508020" text-anchor="middle">→ full safety · preserved utility</text>
+        <text x="250" y="40" font-family="Courier New" font-size="14" fill="#555" text-anchor="middle">→</text>
+      </svg>
+    </div>
+    <p class="mid-cap">Fig. 7: DPO variational derivation vs. Suan gradient-level formulation — Suan separates safety and quality signals, eliminating the over-refusal and utility degradation caused by DPO's conflated gradients.</p>
+    <p class="mid-sum">DPO-style post-training methods suffer from quality degradation and over-refusal on benign prompts because their variational derivation conflates safety and quality signals at the gradient level. Suan formulates the safety alignment optimization objective directly at the gradient level, bypassing the variational step that entangles quality and safety. This achieves superior safety alignment while fully preserving response utility and general capability across standard benchmarks — addressing a core practical limitation of the dominant post-training safety paradigm.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 08 — The Misery of Mechanistic Interpretability
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">08</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.15533">The Misery of Mechanistic Interpretability: A Formal Perspective</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-interp">mech-interp</span>
+      <span class="tag t-pre">arXiv preprint · Sep 14, 2026</span>
+    </div>
+    <p class="mid-venue">Tobias Ladner, Matthias Althoff (Technical University of Munich) · arXiv 2609.15533 · September 14, 2026</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="500" height="90" viewBox="0 0 500 90">
+        <rect width="500" height="90" fill="#090e1c"/>
+        <text x="250" y="14" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">IRN feature instability under perturbation · formal verification solution</text>
+        <!-- Input perturbation -->
+        <rect x="10" y="25" width="100" height="50" rx="3" fill="#0d1830" stroke="#7fbbf8" stroke-width="1"/>
+        <text x="60" y="46" font-family="Courier New" font-size="9" fill="#7fbbf8" text-anchor="middle">input + ε</text>
+        <text x="60" y="60" font-family="Courier New" font-size="8" fill="#5580c0" text-anchor="middle">minor perturb.</text>
+        <!-- IRN: features flip -->
+        <rect x="140" y="25" width="120" height="50" rx="3" fill="#200a20" stroke="#c084fc" stroke-width="1"/>
+        <text x="200" y="46" font-family="Courier New" font-size="9" fill="#c084fc" text-anchor="middle">IRN features</text>
+        <text x="200" y="60" font-family="Courier New" font-size="8" fill="#904ad0" text-anchor="middle">dominant flip!</text>
+        <!-- Formal verification -->
+        <rect x="290" y="25" width="120" height="50" rx="3" fill="#0a1e10" stroke="#4dd9a0" stroke-width="1.5"/>
+        <text x="350" y="43" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">Reachability</text>
+        <text x="350" y="57" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">analysis cert.</text>
+        <!-- Result -->
+        <rect x="430" y="30" width="62" height="40" rx="3" fill="#0a200a" stroke="#4dd9a0" stroke-width="1.5"/>
+        <text x="461" y="47" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">verified</text>
+        <text x="461" y="61" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">faithful</text>
+        <text x="250" y="86" font-family="Courier New" font-size="8" fill="#333" text-anchor="middle">5 model families · GPT-2, Gemma 2/3, Llama 3.2, R1-Distill-Qwen</text>
+      </svg>
+    </div>
+    <p class="mid-cap">Fig. 8: Minor input perturbations flip IRN dominant features across 5 model families; reachability analysis certifies a sound faithfulness bound; verification-aware training tightens it.</p>
+    <p class="mid-sum">Demonstrates that even semantically minor input perturbations flip the dominant features of interpretable replacement networks (IRNs) across GPT-2, Gemma 2 2B, Gemma 3 1B, Llama 3.2 1B, and R1-Distill-Qwen 1.5B — undermining the reliability of feature-level safety audits that rely on IRN-derived interpretations. The paper introduces the first formal verification framework for IRN faithfulness, using reachability analysis to certify a sound upper bound on the faithfulness gap under adversarial input perturbations. Verification-aware training substantially tightens this certified bound, restoring interpretable features that safety auditors can act on with quantified confidence.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 09 — Calibrating Interpretability Instruments
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">09</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.14754">Calibrating Interpretability Instruments Before Trusting Their Verdicts</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-interp">mech-interp</span>
+      <span class="tag t-pre">arXiv preprint · Sep 13, 2026</span>
+    </div>
+    <p class="mid-venue">Orion Reblitz-Richardson · arXiv 2609.14754 · September 13, 2026 (companion to 2609.14759)</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="500" height="90" viewBox="0 0 500 90">
+        <rect width="500" height="90" fill="#090e1c"/>
+        <text x="250" y="14" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">6 causal interp. failure modes · 4 verification disciplines</text>
+        <!-- 6 failure modes -->
+        <rect x="10" y="24" width="225" height="55" rx="3" fill="#1a1028" stroke="#c084fc" stroke-width="1"/>
+        <text x="122" y="40" font-family="Courier New" font-size="9" fill="#c084fc" text-anchor="middle">6 failure modes (from real program)</text>
+        <text x="122" y="53" font-family="Courier New" font-size="8" fill="#7050a0" text-anchor="middle">projection · cosine · ablation delta</text>
+        <text x="122" y="66" font-family="Courier New" font-size="8" fill="#7050a0" text-anchor="middle">interchange patch · all return plausible #s</text>
+        <!-- 4 disciplines -->
+        <rect x="265" y="24" width="225" height="55" rx="3" fill="#0a1e10" stroke="#4dd9a0" stroke-width="1.5"/>
+        <text x="377" y="40" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">4 verification disciplines</text>
+        <text x="377" y="53" font-family="Courier New" font-size="8" fill="#3aa070" text-anchor="middle">positive-control ladder · orthogonal cell</text>
+        <text x="377" y="66" font-family="Courier New" font-size="8" fill="#3aa070" text-anchor="middle">power before compute · depth-referenced</text>
+        <text x="250" y="86" font-family="Courier New" font-size="8" fill="#333" text-anchor="middle">based on 4-model refusal + moral representation research program</text>
+      </svg>
+    </div>
+    <p class="mid-cap">Fig. 9: Six causal interp. failure modes from a real research program vs. four verification disciplines that catch them before findings are published.</p>
+    <p class="mid-sum">Causal interpretability claims rest on measurements — projections, cosines, ablation deltas, interchange patches — that can fail silently, returning a plausible number instead of an error. This companion paper to 2609.14759 documents six such failures from a real multi-paper causal interpretability program on refusal and moral representation, spanning four open-weight models. The paper prescribes four verification disciplines: calibrate against a positive-control ladder; certify with an orthogonal cell; compute statistical power before spending compute; and state every read-from verdict at a depth explicitly referenced to the model's commitment. Essential methodology for anyone running or reviewing causal probes in safety research.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 10 — AlcaTRAz
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">10</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.03693">AlcaTRAz: Anchored Tree-Rule Defense Against Jailbreaks</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-sec">AI-security</span>
+      <span class="tag t-pre">arXiv preprint · Sep 2026</span>
+    </div>
+    <p class="mid-venue">arXiv 2609.03693 · September 2026</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="500" height="90" viewBox="0 0 500 90">
+        <rect width="500" height="90" fill="#100a0a"/>
+        <text x="250" y="14" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">AlcaTRAz: rule-tree jailbreak defense at prompt level</text>
+        <defs><marker id="aat1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#f07878"/></marker></defs>
+        <rect x="10" y="25" width="90" height="50" rx="3" fill="#200a0a" stroke="#f07878" stroke-width="1"/>
+        <text x="55" y="46" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">Input</text>
+        <text x="55" y="60" font-family="Courier New" font-size="8" fill="#c05050" text-anchor="middle">prompt</text>
+        <path d="M100 50 L130 50" stroke="#f07878" stroke-width="1.5" fill="none" marker-end="url(#aat1)"/>
+        <rect x="130" y="25" width="140" height="50" rx="3" fill="#200a0a" stroke="#c06060" stroke-width="1"/>
+        <text x="200" y="43" font-family="Courier New" font-size="9" fill="#c06060" text-anchor="middle">Rule tree traversal</text>
+        <text x="200" y="56" font-family="Courier New" font-size="8" fill="#804040" text-anchor="middle">22 jailbreak strategy types</text>
+        <text x="200" y="68" font-family="Courier New" font-size="8" fill="#804040" text-anchor="middle">no model modification</text>
+        <path d="M270 50 L300 50" stroke="#f07878" stroke-width="1.5" fill="none" marker-end="url(#aat1)"/>
+        <rect x="300" y="25" width="90" height="50" rx="3" fill="#0a200a" stroke="#4dd9a0" stroke-width="1.5"/>
+        <text x="345" y="46" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">BLOCK</text>
+        <text x="345" y="60" font-family="Courier New" font-size="8" fill="#3aa070" text-anchor="middle">or PASS</text>
+        <rect x="406" y="25" width="84" height="50" rx="3" fill="#101010" stroke="#555" stroke-width="1"/>
+        <text x="448" y="43" font-family="Courier New" font-size="8" fill="#888" text-anchor="middle">33 models</text>
+        <text x="448" y="56" font-family="Courier New" font-size="8" fill="#888" text-anchor="middle">22 attacks</text>
+        <text x="448" y="68" font-family="Courier New" font-size="8" fill="#888" text-anchor="middle">tested</text>
+        <text x="250" y="87" font-family="Courier New" font-size="8" fill="#333" text-anchor="middle">prompt-level · no training · lower overhead than safety fine-tuning</text>
+      </svg>
+    </div>
+    <p class="mid-cap">Fig. 10: AlcaTRAz rule-tree defense — input traverses a hierarchical tree of jailbreak-strategy rules before reaching the model; match blocks; no model modification needed.</p>
+    <p class="mid-sum">Proposes a prompt-level jailbreak defense using rule trees derived from a curated taxonomy of 22 jailbreak attack strategies, organized hierarchically for efficient matching and requiring no model fine-tuning or architectural changes. The method operates entirely on the input text before inference. Evaluated on 33 open-weight models across 22 attack types, AlcaTRAz reduces attack success rates while preserving model utility on benign prompts, with inference overhead smaller than safety fine-tuned alternatives — making it a lightweight complement to model-level defenses.</p>
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div>📡 Research Radar · September 17, 2026 · Daily edition</div>
+  <div>Pretraining/Midtraining Safety · AI/LLM Security · Applied Mech Interp</div>
+  <div>0 peer-reviewed · 10 preprints · 0 forum/blog</div>
+  <div>Artifact: <a href="https://claude.ai/artifact/BGJ3t1ynBchin4UNK9rCdu" style="color:inherit">https://claude.ai/artifact/BGJ3t1ynBchin4UNK9rCdu</a></div>
+</footer>
+
+</div>
+</html>
+{% endraw %}

@@ -1,0 +1,470 @@
+---
+layout: "radar"
+title: "Research Radar — August 21, 2026"
+kind: "daily"
+slug: "2026-08-21"
+date: 2026-08-21
+group: "2026-W35"
+window: "August 20–21, 2026 (also corrects three items missed by Aug 11/13/20 radars)"
+summary: "Window: August 20–21, 2026 (also corrects three items missed by Aug 11/13/20 radars) · Sources swept: arXiv (cs.CL/cs.LG/cs.CR/cs.AI) · Counts: 1 peer-reviewed · 1 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/0af0fe25-fe7a-4b40-aa1b-d0515fe70e4a"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-21.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/*
+  Design: Scholarly news digest — "cover image first" layout (Substack-style).
+  Paper figure placed below title, above hook paragraph, bleeding edge-to-edge in the card.
+  Palette: cool blue-grey ground · white surface · deep teal accent.
+  Type: Georgia serif for titles and hooks; system-ui for detail; Courier New for metadata.
+*/
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ground:    #edf1f7;
+  --surface:   #ffffff;
+  --border:    #c8d3e2;
+  --ink:       #1a2236;
+  --ink-dim:   #5b6b82;
+  --ink-muted: #8a97a8;
+  --accent:    #0b7263;
+  --accent-bg: #d6f0ec;
+  --ghost:     rgba(11,114,99,.06);
+  --peer-c:    #065742;
+  --peer-bg:   #d0f5e5;
+  --sec-c:     #8b1a1a;
+  --sec-bg:    #fde0e0;
+  --interp-c:  #084f80;
+  --interp-bg: #d8ecfc;
+  --dllm-c:    #46189a;
+  --dllm-bg:   #ece4fb;
+  --pre-c:     #5a4000;
+  --pre-bg:    #fdf2d0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground:    #090e18;
+    --surface:   #111928;
+    --border:    #1d2c42;
+    --ink:       #d2dce8;
+    --ink-dim:   #7a8fa6;
+    --ink-muted: #4e617a;
+    --accent:    #0fb8a8;
+    --accent-bg: #0d2e2a;
+    --ghost:     rgba(15,184,168,.07);
+    --peer-c:    #3dd68a;
+    --peer-bg:   #062a1a;
+    --sec-c:     #f07070;
+    --sec-bg:    #2a0808;
+    --interp-c:  #7bb8f8;
+    --interp-bg: #0a1f34;
+    --dllm-c:    #c084fc;
+    --dllm-bg:   #1a0a30;
+    --pre-c:     #f0c060;
+    --pre-bg:    #2a1a00;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #090e18; --surface: #111928; --border: #1d2c42;
+  --ink: #d2dce8; --ink-dim: #7a8fa6; --ink-muted: #4e617a;
+  --accent: #0fb8a8; --accent-bg: #0d2e2a; --ghost: rgba(15,184,168,.07);
+  --peer-c: #3dd68a; --peer-bg: #062a1a; --sec-c: #f07070; --sec-bg: #2a0808;
+  --interp-c: #7bb8f8; --interp-bg: #0a1f34; --dllm-c: #c084fc; --dllm-bg: #1a0a30;
+  --pre-c: #f0c060; --pre-bg: #2a1a00;
+}
+:root[data-theme="light"] {
+  --ground: #edf1f7; --surface: #ffffff; --border: #c8d3e2;
+  --ink: #1a2236; --ink-dim: #5b6b82; --ink-muted: #8a97a8;
+  --accent: #0b7263; --accent-bg: #d6f0ec; --ghost: rgba(11,114,99,.06);
+  --peer-c: #065742; --peer-bg: #d0f5e5; --sec-c: #8b1a1a; --sec-bg: #fde0e0;
+  --interp-c: #084f80; --interp-bg: #d8ecfc; --dllm-c: #46189a; --dllm-bg: #ece4fb;
+  --pre-c: #5a4000; --pre-bg: #fdf2d0;
+}
+
+html { background: var(--ground); }
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--ground);
+  padding: 0 16px 80px;
+}
+.wrapper { max-width: 680px; margin: 0 auto; }
+
+/* ── Masthead ─────────────────────────────────── */
+.masthead {
+  padding: 36px 0 28px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.masthead::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--accent);
+}
+.mast-eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.mast-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--ink);
+  line-height: 1.15;
+  text-wrap: balance;
+  margin-bottom: 12px;
+}
+.mast-date {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--ink-dim);
+  letter-spacing: .06em;
+  margin-bottom: 18px;
+}
+.mast-counts {
+  font-size: 13px;
+  color: var(--ink-dim);
+  margin-bottom: 14px;
+}
+.mast-note {
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-bottom: 14px;
+}
+.mast-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.track {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  letter-spacing: .04em;
+}
+.track-interp { background: var(--interp-bg); color: var(--interp-c); }
+.track-sec    { background: var(--sec-bg);    color: var(--sec-c); }
+.track-dllm   { background: var(--dllm-bg);   color: var(--dllm-c); }
+
+/* ── Tag chips ───────────────────────────────── */
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+.tag {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+.tag-peer    { background: var(--peer-bg);   color: var(--peer-c); }
+.tag-security{ background: var(--sec-bg);    color: var(--sec-c); }
+.tag-interp  { background: var(--interp-bg); color: var(--interp-c); }
+.tag-dllm    { background: var(--dllm-bg);   color: var(--dllm-c); }
+.tag-preprint{ background: var(--pre-bg);    color: var(--pre-c); }
+
+/* ── Paper cards (top 3) ─────────────────────────────── */
+.paper-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  position: relative;
+}
+.card-header {
+  padding: 22px 26px 0;
+  position: relative;
+}
+.rank-ghost {
+  font-family: 'Courier New', monospace;
+  font-size: 72px;
+  font-weight: bold;
+  color: var(--ghost);
+  position: absolute;
+  top: 8px; right: 20px;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: -.04em;
+}
+.card-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  text-wrap: balance;
+  margin-bottom: 18px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.card-title a { color: var(--ink); text-decoration: inherit; }
+.card-title a:hover { color: var(--accent); }
+.card-meta {
+  font-size: 12.5px;
+  color: var(--ink-dim);
+  margin-bottom: 0;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── Cover figure — Substack-style: above the hook ── */
+.cover-figure {
+  margin: 18px 0 0;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.cover-figure svg, .cover-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cover-figcap {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  padding: 8px 26px 10px;
+  line-height: 1.5;
+  border-top: 1px solid var(--border);
+  background: var(--ground);
+}
+
+/* ── Hook + detail ───────────────────────────── */
+.card-body { padding: 20px 26px 24px; }
+.hook {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.detail {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-dim);
+}
+
+/* ── Footer ──────────────────────────────────── */
+.footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-align: center;
+  letter-spacing: .04em;
+}
+</style>
+
+<div class="wrapper">
+
+<!-- ── Masthead ── -->
+<header class="masthead">
+  <div class="mast-eyebrow">Research Radar</div>
+  <h1 class="mast-title">Daily Digest — August 21, 2026</h1>
+  <div class="mast-date">Daily · August 20–21, 2026 · sources: arXiv cs.CL/cs.LG/cs.CR/cs.AI</div>
+  <div class="mast-counts">1 peer-reviewed · 1 preprints · 0 forum/blog</div>
+  <p class="mast-note">Thin window (Aug 20–21); corrects three items missed by Aug 11/13/20 radars. No padding.</p>
+  <div class="mast-tracks">
+    <span class="track track-interp">Mech Interp</span>
+    <span class="track track-sec">AI Security</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PAPER 01 — Measure, Don't Optimize
+     ══════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     PAPER 02 — When Safety Overrides Vision
+     ══════════════════════════════════════════ -->
+<article class="paper-card">
+  <div class="card-header">
+    <span class="rank-ghost">02</span>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-preprint">preprint</span>
+    </div>
+    <h2 class="card-title"><a href="https://arxiv.org/abs/2608.18628">When Safety Overrides Vision: Exploring Dynamics between Vision Influence and Safety Alignment in Vision-Language Models</a></h2>
+    <div class="card-meta">Mehak Gupta, Tanmoy Chakraborty (IIT Delhi) · arXiv preprint · August 19, 2026</div>
+  </div>
+
+  <!-- Cover figure — Substack style: above the hook -->
+  <figure class="cover-figure" aria-label="VLM safety abstention: visual grounding persists internally; activation intervention restores visual answering">
+    <svg viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VLM abstention dynamics with activation intervention">
+      <rect width="680" height="230" fill="#fff"/>
+      <text x="340" y="20" font-family="Courier New, monospace" font-size="10" fill="#888" text-anchor="middle" letter-spacing=".1em">VLM SAFETY ABSTENTION — VISUAL GROUNDING PRESERVED INTERNALLY</text>
+
+      <!-- Image input -->
+      <rect x="20" y="38" width="90" height="70" rx="4" fill="#d8ecfc" stroke="#084f80" stroke-width="1.3"/>
+      <text x="65" y="62" font-family="Courier New, monospace" font-size="8.5" fill="#084f80" text-anchor="middle" font-weight="bold">Image Input</text>
+      <!-- Simple image icon -->
+      <rect x="30" y="68" width="70" height="32" rx="2" fill="#edf1f7" stroke="#c8d3e2" stroke-width=".8"/>
+      <circle cx="48" cy="82" r="6" fill="#c8d3e2" opacity=".7"/>
+      <polygon points="30,100 60,75 80,88 100,70 100,100" fill="#d8ecfc" opacity=".6"/>
+
+      <!-- Question box -->
+      <rect x="20" y="118" width="90" height="48" rx="4" fill="#fdf2d0" stroke="#5a4000" stroke-width="1"/>
+      <text x="65" y="138" font-family="Courier New, monospace" font-size="8" fill="#5a4000" text-anchor="middle" font-weight="bold">Safety-Mode</text>
+      <text x="65" y="150" font-family="Courier New, monospace" font-size="8" fill="#5a4000" text-anchor="middle">Question</text>
+      <text x="65" y="160" font-family="Courier New, monospace" font-size="7" fill="#8a97a8" text-anchor="middle">"What is this?"</text>
+
+      <!-- Arrow: inputs → VLM -->
+      <defs>
+        <marker id="v1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#5b6b82"/></marker>
+        <marker id="v2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#8b1a1a"/></marker>
+        <marker id="v3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#0b7263"/></marker>
+      </defs>
+      <line x1="112" y1="73" x2="155" y2="100" stroke="#5b6b82" stroke-width="1.5" marker-end="url(#v1)"/>
+      <line x1="112" y1="142" x2="155" y2="125" stroke="#5b6b82" stroke-width="1.5" marker-end="url(#v1)"/>
+
+      <!-- VLM internals box -->
+      <rect x="158" y="48" width="220" height="140" rx="4" fill="#edf1f7" stroke="#c8d3e2" stroke-width="1.3"/>
+      <text x="268" y="68" font-family="Courier New, monospace" font-size="9" fill="#1a2236" text-anchor="middle" font-weight="bold">VLM Internals</text>
+
+      <!-- Visual processing pathway (preserved) -->
+      <rect x="168" y="76" width="100" height="36" rx="3" fill="#d8ecfc" stroke="#084f80" stroke-width="1"/>
+      <text x="218" y="92" font-family="Courier New, monospace" font-size="7.5" fill="#084f80" text-anchor="middle" font-weight="bold">Visual Processing</text>
+      <text x="218" y="104" font-family="Courier New, monospace" font-size="7" fill="#5b6b82" text-anchor="middle">GROUNDING INTACT ✓</text>
+
+      <!-- Safety representation (override) -->
+      <rect x="168" y="120" width="100" height="36" rx="3" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1"/>
+      <text x="218" y="136" font-family="Courier New, monospace" font-size="7.5" fill="#8b1a1a" text-anchor="middle" font-weight="bold">Refusal Module</text>
+      <text x="218" y="148" font-family="Courier New, monospace" font-size="7" fill="#8b1a1a" text-anchor="middle">late-stage OVERRIDE</text>
+
+      <!-- Connection between them -->
+      <line x1="218" y1="112" x2="218" y2="120" stroke="#8b1a1a" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+      <!-- Evidence flow -->
+      <line x1="278" y1="94" x2="310" y2="94" stroke="#084f80" stroke-width="1.5" opacity=".6"/>
+      <text x="295" y="90" font-family="Courier New, monospace" font-size="7" fill="#084f80" text-anchor="middle">visual</text>
+      <text x="295" y="100" font-family="Courier New, monospace" font-size="7" fill="#084f80" text-anchor="middle">signal →</text>
+
+      <!-- Baseline output: refusal -->
+      <line x1="378" y1="100" x2="415" y2="85" stroke="#8b1a1a" stroke-width="1.5" marker-end="url(#v2)"/>
+      <rect x="418" y="40" width="130" height="50" rx="4" fill="#fde0e0" stroke="#8b1a1a" stroke-width="1.3"/>
+      <text x="483" y="60" font-family="Courier New, monospace" font-size="8.5" fill="#8b1a1a" text-anchor="middle" font-weight="bold">Baseline Output</text>
+      <text x="483" y="74" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">"I cannot answer</text>
+      <text x="483" y="84" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">this question."</text>
+
+      <!-- Intervention arrow and result -->
+      <rect x="418" y="110" width="130" height="50" rx="4" fill="#d0f5e5" stroke="#065742" stroke-width="1.3"/>
+      <text x="483" y="128" font-family="Courier New, monospace" font-size="8" fill="#065742" text-anchor="middle" font-weight="bold">+ Refusal Suppression</text>
+      <text x="483" y="142" font-family="Courier New, monospace" font-size="7.5" fill="#065742" text-anchor="middle">suppress refusal repr.</text>
+      <text x="483" y="154" font-family="Courier New, monospace" font-size="7.5" fill="#0b7263" text-anchor="middle">→ grounded answer ✓</text>
+      <line x1="378" y1="118" x2="415" y2="125" stroke="#0b7263" stroke-width="1.5" marker-end="url(#v3)"/>
+
+      <!-- Key label -->
+      <rect x="418" y="172" width="244" height="40" rx="3" fill="#0b7263"/>
+      <text x="540" y="188" font-family="Courier New, monospace" font-size="8.5" fill="#fff" text-anchor="middle" font-weight="bold">Safety = late-stage representational override</text>
+      <text x="540" y="202" font-family="Courier New, monospace" font-size="8" fill="#d6f0ec" text-anchor="middle">Visual grounding fully preserved; no retraining needed</text>
+    </svg>
+    <figcaption class="cover-figcap">Figure 1 · VLM abstention dynamics: visual processing and grounding are preserved internally during safety-induced refusals; safety alignment functions as a late-stage representational override. Suppressing refusal representations via activation intervention reliably restores grounded visual answering across architectures.</figcaption>
+  </figure>
+
+  <div class="card-body">
+    <p class="hook">When a safety-aligned vision-language model refuses to answer a visual question, does it refuse because it stopped processing the image — or because it processed it correctly and then decided to withhold the answer? It's the latter. And a targeted activation nudge is enough to restore the visual answer without any retraining.</p>
+    <p class="detail">Aligned VLMs frequently abstain from visual questions that remain answerable under default (unaligned) instruction, even when the image-question input is identical. The paper analyzes internal decoding dynamics across multiple architectures and multimodal benchmarks, finding that visual evidence consistently and significantly influences the internal representations of abstained outputs throughout decoding — perceptual grounding is retained, not suppressed, by safety alignment. Safety alignment operates as a late-stage representational override: the model sees and encodes the image normally, routes the visual signal through its reasoning pathway, and only at the final generation stage substitutes a refusal. Targeted activation-level interventions that suppress refusal-related representations reliably restore grounded, correct answering behavior across all tested architectures — no retraining, no modification of visual inputs required. The finding has dual implications: it clarifies why safety-aligned VLMs are often recoverable via activation steering, and it suggests that safety circuits and perceptual circuits are anatomically separable at the representation level.</p>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════
+     PAPER 03 — Are LLMs Safe Beyond Text
+     ══════════════════════════════════════════ -->
+<article class="paper-card">
+  <div class="card-header">
+    <span class="rank-ghost">03</span>
+    <div class="tags">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-preprint">preprint</span>
+    </div>
+    <h2 class="card-title"><a href="https://arxiv.org/abs/2608.18164">Are LLMs Safe Beyond Text: Do Emojis Expose Gaps in Safety Evaluation</a></h2>
+    <div class="card-meta">M P V S Gopinadh · arXiv preprint · August 15, 2026</div>
+  </div>
+
+  <!-- Cover figure — Substack style: above the hook -->
+  <figure class="cover-figure" aria-label="Emoji jailbreak bypass rate: Gemma 2 9B and Mistral 7B 10%, Llama 3 8B 6%, Qwen 2 7B 0%">
+    <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart of emoji-augmented jailbreak bypass rates by model">
+      <rect width="680" height="200" fill="#fff"/>
+      <text x="340" y="20" font-family="Courier New, monospace" font-size="10" fill="#888" text-anchor="middle" letter-spacing=".1em">EMOJI-AUGMENTED PROMPT BYPASS RATE (50 PROMPTS)</text>
+
+      <!-- Y-axis: 0–12% -->
+      <line x1="80" y1="168" x2="640" y2="168" stroke="#c8d3e2" stroke-width="1.2"/>
+      <line x1="80" y1="40" x2="80" y2="170" stroke="#c8d3e2" stroke-width="1.2"/>
+
+      <!-- Y-axis gridlines and labels -->
+      <line x1="80" y1="148" x2="640" y2="148" stroke="#edf1f7" stroke-width="1"/>
+      <text x="74" y="152" font-family="Courier New, monospace" font-size="8.5" fill="#8a97a8" text-anchor="end">2%</text>
+      <line x1="80" y1="128" x2="640" y2="128" stroke="#edf1f7" stroke-width="1"/>
+      <text x="74" y="132" font-family="Courier New, monospace" font-size="8.5" fill="#8a97a8" text-anchor="end">4%</text>
+      <line x1="80" y1="108" x2="640" y2="108" stroke="#edf1f7" stroke-width="1"/>
+      <text x="74" y="112" font-family="Courier New, monospace" font-size="8.5" fill="#8a97a8" text-anchor="end">6%</text>
+      <line x1="80" y1="88" x2="640" y2="88" stroke="#edf1f7" stroke-width="1"/>
+      <text x="74" y="92" font-family="Courier New, monospace" font-size="8.5" fill="#8a97a8" text-anchor="end">8%</text>
+      <line x1="80" y1="68" x2="640" y2="68" stroke="#edf1f7" stroke-width="1"/>
+      <text x="74" y="72" font-family="Courier New, monospace" font-size="8.5" fill="#8a97a8" text-anchor="end">10%</text>
+      <line x1="80" y1="48" x2="640" y2="48" stroke="#edf1f7" stroke-width="1"/>
+      <text x="74" y="52" font-family="Courier New, monospace" font-size="8.5" fill="#8a97a8" text-anchor="end">12%</text>
+
+      <!-- Y-axis label -->
+      <text x="22" y="108" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle" transform="rotate(-90,22,108)">Bypass rate (%)</text>
+
+      <!-- Bar 1: Gemma 2 9B — 10% bypass -->
+      <!-- 10% = y at 68 (from 168 - 10 * (128/12) ≈ 168 - 100 = 68) — scale: 12% → 120px, so 1% = 10px -->
+      <rect x="120" y="68" width="90" height="100" rx="3" fill="#8b1a1a" opacity=".75"/>
+      <text x="165" y="60" font-family="Courier New, monospace" font-size="9.5" fill="#8b1a1a" text-anchor="middle" font-weight="bold">10%</text>
+      <text x="165" y="183" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">Gemma 2 9B</text>
+
+      <!-- Bar 2: Mistral 7B — 10% bypass -->
+      <rect x="250" y="68" width="90" height="100" rx="3" fill="#8b1a1a" opacity=".75"/>
+      <text x="295" y="60" font-family="Courier New, monospace" font-size="9.5" fill="#8b1a1a" text-anchor="middle" font-weight="bold">10%</text>
+      <text x="295" y="183" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">Mistral 7B</text>
+
+      <!-- Bar 3: Llama 3 8B — 6% bypass -->
+      <rect x="380" y="108" width="90" height="60" rx="3" fill="#5a4000" opacity=".65"/>
+      <text x="425" y="100" font-family="Courier New, monospace" font-size="9.5" fill="#5a4000" text-anchor="middle" font-weight="bold">6%</text>
+      <text x="425" y="183" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">Llama 3 8B</text>
+
+      <!-- Bar 4: Qwen 2 7B — 0% bypass -->
+      <rect x="510" y="167" width="90" height="1" rx="1" fill="#0b7263" opacity=".8"/>
+      <text x="555" y="157" font-family="Courier New, monospace" font-size="9.5" fill="#0b7263" text-anchor="middle" font-weight="bold">0%</text>
+      <text x="555" y="183" font-family="Courier New, monospace" font-size="8.5" fill="#5b6b82" text-anchor="middle">Qwen 2 7B</text>
+
+      <!-- Annotation -->
+      <rect x="90" y="142" width="200" height="18" rx="3" fill="#fde0e0" stroke="#8b1a1a" stroke-width=".8"/>
+      <text x="190" y="154" font-family="Courier New, monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">Standard text-only eval: 0% bypass on all 4 models</text>
+    </svg>
+    <figcaption class="cover-figcap">Figure 1 · Emoji-augmented adversarial prompts bypass safety filters in 3 of 4 tested models — Gemma 2 9B and Mistral 7B: 10%; Llama 3 8B: 6%; Qwen 2 7B: complete resistance (0%). Standard text-only evaluation would miss this surface entirely (0% baseline on all 4).</figcaption>
+  </figure>
+
+  <div class="card-body">
+    <p class="hook">Safety evaluation suites for LLMs almost universally test text-only adversarial prompts. Appending emojis to the same prompts bypasses safety filters in three of four tested models, with up to a 10% success rate — zero effort, zero prompt engineering.</p>
+    <p class="detail">The study evaluates 50 adversarial prompts augmented with emoji modifiers across Mistral 7B, Qwen 2 7B, Gemma 2 9B, and Llama 3 8B. All four models show 0% bypass rate under the standard text-only version of the same prompts. With emoji augmentation: Gemma 2 9B and Mistral 7B each exhibit 10% bypass; Llama 3 8B shows 6%; Qwen 2 7B demonstrates complete resistance. The scope is explicitly limited (50 prompts, 4 models, one attack surface dimension), but the zero-effort nature of the bypass and the 0%→10% jump make it a concrete documentation of a gap in standard safety evaluation methodology. The finding aligns with a broader body of work showing that safety alignment optimized on text-token adversarial examples does not generalize robustly to alternative token representations.</p>
+  </div>
+</article>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  Research Radar · August 21, 2026 · 0 peer-reviewed · 3 preprints · 0 forum/blog
+  <br>Mech Interp · AI Security · Text Diffusion LMs
+</footer>
+
+<p style="margin-top:32px;font-size:13px;opacity:.7">1 entry removed on 2026-09-10 as repeats of earlier reports: 2608.11408 (first covered 2026-08-18).</p>
+</div>
+{% endraw %}

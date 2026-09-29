@@ -276,156 +276,9 @@ hr.section-divider {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- PAPER 01 — Breaking Bad                                     -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<article class="paper">
-  <header class="paper-header">
-    <div class="paper-rank">01</div>
-    <div class="paper-meta">
-      <span class="tag tag-peer">NeurIPS 2025</span>
-      <span class="tag tag-interp">mech-interp</span>
-      <span class="tag tag-security">AI security</span>
-    </div>
-  </header>
-  <h2 class="paper-title">
-    <a href="https://arxiv.org/abs/2604.20945">Breaking Bad: Interpretability-Based Safety Audits of State-of-the-Art LLMs</a>
-  </h2>
-  <p class="paper-hook">
-    Interpretability tools were built to understand models — but the same directional geometry that makes activation steering explanatory also makes it a potent red-teaming instrument. This NeurIPS 2025 paper turns Universal Steering and Representation Engineering into a systematic audit framework, revealing that Llama-3.3-70B-4bt is fully compromised (91% ASR) while GPT-oss-120B is essentially immune — a divergence explained by how each model distributes safety representations across layers.
-  </p>
-  <figure class="paper-figure">
-    <svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg" aria-label="Jailbreak ASR across 8 LLMs via Universal Steering and Representation Engineering">
-      <rect width="500" height="250" fill="#fff"/>
-      <!-- Title -->
-      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Jailbreak Attack Success Rate — 8 LLMs × 2 Interpretability Methods</text>
-      <!-- Legend -->
-      <rect x="320" y="30" width="12" height="10" fill="#c0392b" rx="1"/>
-      <text x="336" y="40" font-family="Georgia,serif" font-size="10" fill="#555">Universal Steering (US)</text>
-      <rect x="320" y="46" width="12" height="10" fill="#2980b9" rx="1"/>
-      <text x="336" y="56" font-family="Georgia,serif" font-size="10" fill="#555">RepE</text>
-      <!-- Y-axis label -->
-      <text x="10" y="145" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888" transform="rotate(-90,10,145)">Jailbreak ASR (%)</text>
-      <!-- Axes -->
-      <line x1="55" y1="65" x2="55" y2="215" stroke="#ccc" stroke-width="1"/>
-      <line x1="55" y1="215" x2="490" y2="215" stroke="#ccc" stroke-width="1"/>
-      <!-- Y gridlines + labels -->
-      <line x1="55" y1="65" x2="490" y2="65" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
-      <text x="48" y="68" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">100</text>
-      <line x1="55" y1="95" x2="490" y2="95" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
-      <text x="48" y="98" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">75</text>
-      <line x1="55" y1="125" x2="490" y2="125" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
-      <text x="48" y="128" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">50</text>
-      <line x1="55" y1="155" x2="490" y2="155" stroke="#eee" stroke-width="1" stroke-dasharray="3,3"/>
-      <text x="48" y="158" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">25</text>
-      <text x="48" y="218" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">0</text>
-      <!-- Model bars: 8 models. Each model has 2 bars. Gap between groups=6, bar-width=10, group-width=26 -->
-      <!-- Model 1: Llama-3.1-8B — US=72%, RepE=65% -->
-      <rect x="60" y="121" width="11" height="94" fill="#c0392b" rx="1"/>
-      <rect x="72" y="129" width="11" height="86" fill="#2980b9" rx="1"/>
-      <text x="73" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">Llama-3.1-8B</text>
-      <!-- Model 2: Llama-3.3-70B — US=91%, RepE=83% -->
-      <rect x="100" y="94" width="11" height="121" fill="#c0392b" rx="1"/>
-      <rect x="112" y="103" width="11" height="112" fill="#2980b9" rx="1"/>
-      <text x="112" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#c0392b" font-weight="bold">Llama-3.3-70B</text>
-      <text x="100" y="89" font-family="Georgia,serif" font-size="9" fill="#c0392b" font-weight="bold">91%</text>
-      <!-- Model 3: GPT-oss-20B — US=45%, RepE=38% -->
-      <rect x="140" y="155" width="11" height="60" fill="#c0392b" rx="1"/>
-      <rect x="152" y="163" width="11" height="52" fill="#2980b9" rx="1"/>
-      <text x="151" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">GPT-oss-20B</text>
-      <!-- Model 4: GPT-oss-120B — US=6%, RepE=4% -->
-      <rect x="180" y="207" width="11" height="8" fill="#c0392b" rx="1"/>
-      <rect x="192" y="209" width="11" height="6" fill="#2980b9" rx="1"/>
-      <text x="191" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#2980b9" font-weight="bold">GPT-oss-120B</text>
-      <text x="180" y="203" font-family="Georgia,serif" font-size="9" fill="#2980b9" font-weight="bold">robust</text>
-      <!-- Model 5: Qwen3-0.6B — US=55%, RepE=48% -->
-      <rect x="220" y="149" width="11" height="66" fill="#c0392b" rx="1"/>
-      <rect x="232" y="155" width="11" height="60" fill="#2980b9" rx="1"/>
-      <text x="231" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">Qwen3-0.6B</text>
-      <!-- Model 6: Qwen3-32B — US=63%, RepE=57% -->
-      <rect x="260" y="140" width="11" height="75" fill="#c0392b" rx="1"/>
-      <rect x="272" y="147" width="11" height="68" fill="#2980b9" rx="1"/>
-      <text x="271" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">Qwen3-32B</text>
-      <!-- Model 7: Phi4-3.8B — US=78%, RepE=70% -->
-      <rect x="300" y="111" width="11" height="104" fill="#c0392b" rx="1"/>
-      <rect x="312" y="121" width="11" height="94" fill="#2980b9" rx="1"/>
-      <text x="311" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">Phi4-3.8B</text>
-      <!-- Model 8: Phi4-14B — US=82%, RepE=74% -->
-      <rect x="340" y="105" width="11" height="110" fill="#c0392b" rx="1"/>
-      <rect x="352" y="114" width="11" height="101" fill="#2980b9" rx="1"/>
-      <text x="351" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">Phi4-14B</text>
-    </svg>
-    <figcaption>Figure 1: Universal Steering achieves 91% jailbreak ASR on Llama-3.3-70B-4bt; GPT-oss-120B remains robust (&lt;6%) under both interpretability-based attack vectors. Vulnerability correlates with safety representation geometry, not model scale.</figcaption>
-  </figure>
-  <p class="paper-detail">
-    Eight production-grade open-weight LLMs — Llama-3.1-8B, Llama-3.3-70B-4bt, GPT-oss-20B, GPT-oss-120B, Qwen3-0.6B, Qwen3-32B, Phi4-3.8B, Phi4-14B — are audited via Universal Steering and Representation Engineering, both of which add a directional vector to the residual stream at inference time. An adaptive two-stage grid search identifies optimal coefficient magnitudes per unsafe concept. The Llama-3.3-70B-4bt result (91% US / 83% RepE) is the most striking: a model aligned with RLHF at the 70B scale is fully compromised by a single-direction intervention. The authors attribute the robustness of GPT-oss-120B to diffuse safety-representation geometry — safety signal distributed across many layers rather than concentrated in a single direction, making a scalar perturbation insufficient. This is the strongest empirical evidence to date that mech-interp tools are dual-use safety audit instruments in deployment contexts.
-  </p>
-</article>
-
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- PAPER 02 — Feature Consistency in SAEs                      -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<article class="paper">
-  <header class="paper-header">
-    <div class="paper-rank">02</div>
-    <div class="paper-meta">
-      <span class="tag tag-peer">ACL 2026</span>
-      <span class="tag tag-interp">mech-interp</span>
-    </div>
-  </header>
-  <h2 class="paper-title">
-    <a href="https://arxiv.org/abs/2505.20254">Position: Mechanistic Interpretability Should Prioritize Feature Consistency in SAEs</a>
-  </h2>
-  <p class="paper-hook">
-    Two independent SAE training runs on the same model activations produce different feature dictionaries — and every mechanistic claim built on either run is unverifiable against the other. This ACL 2026 long paper argues that cross-run convergence (feature consistency) should be the primary SAE optimization target, introduces the PW-MCC metric to measure it, and demonstrates that TopK SAEs already achieve PW-MCC = 0.80 with appropriate architectural choices.
-  </p>
-  <figure class="paper-figure">
-    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="PW-MCC feature consistency scores across five SAE architectures">
-      <rect width="500" height="220" fill="#fff"/>
-      <text x="250" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Cross-Run Feature Consistency (PW-MCC) by SAE Architecture</text>
-      <!-- Y axis -->
-      <line x1="70" y1="30" x2="70" y2="180" stroke="#ccc" stroke-width="1"/>
-      <line x1="70" y1="180" x2="460" y2="180" stroke="#ccc" stroke-width="1"/>
-      <!-- Y gridlines -->
-      <line x1="70" y1="30" x2="460" y2="30" stroke="#eee" stroke-dasharray="3,3" stroke-width="1"/>
-      <text x="63" y="33" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">1.00</text>
-      <line x1="70" y1="67" x2="460" y2="67" stroke="#eee" stroke-dasharray="3,3" stroke-width="1"/>
-      <text x="63" y="70" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">0.75</text>
-      <line x1="70" y1="105" x2="460" y2="105" stroke="#eee" stroke-dasharray="3,3" stroke-width="1"/>
-      <text x="63" y="108" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">0.50</text>
-      <line x1="70" y1="143" x2="460" y2="143" stroke="#eee" stroke-dasharray="3,3" stroke-width="1"/>
-      <text x="63" y="146" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">0.25</text>
-      <text x="63" y="183" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">0.00</text>
-      <!-- Bars: 5 architectures -->
-      <!-- ReLU: PW-MCC=0.54 → y = 180 - 0.54*150 = 180-81=99, h=81 -->
-      <rect x="90" y="99" width="50" height="81" fill="#999" rx="2"/>
-      <text x="115" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">0.54</text>
-      <text x="115" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">ReLU</text>
-      <!-- Gated: PW-MCC=0.61 → 180-91.5=88.5, h=91.5 -->
-      <rect x="155" y="89" width="50" height="91" fill="#bbb" rx="2"/>
-      <text x="180" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">0.61</text>
-      <text x="180" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">Gated</text>
-      <!-- JumpReLU: PW-MCC=0.66 → 180-99=81, h=99 -->
-      <rect x="220" y="81" width="50" height="99" fill="#aaa" rx="2"/>
-      <text x="245" y="76" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">0.66</text>
-      <text x="245" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">JumpReLU</text>
-      <!-- BatchTopK: PW-MCC=0.74 → 180-111=69, h=111 -->
-      <rect x="285" y="69" width="50" height="111" fill="#0d7377" opacity="0.7" rx="2"/>
-      <text x="310" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0d7377">0.74</text>
-      <text x="310" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">BatchTopK</text>
-      <!-- TopK: PW-MCC=0.80 → 180-120=60, h=120 — highlighted -->
-      <rect x="350" y="60" width="50" height="120" fill="#0d7377" rx="2"/>
-      <text x="375" y="55" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377" font-weight="bold">0.80</text>
-      <text x="375" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d7377" font-weight="bold">TopK ★</text>
-      <!-- Threshold line at 0.80 -->
-      <line x1="70" y1="60" x2="460" y2="60" stroke="#0d7377" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
-      <!-- Y axis label -->
-      <text x="18" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888" transform="rotate(-90,18,115)">PW-MCC (feature consistency)</text>
-    </svg>
-    <figcaption>Figure 2: PW-MCC (Pairwise Dictionary Mean Correlation Coefficient) across five SAE architectures on Gemma-2-9B activations. TopK SAEs achieve PW-MCC = 0.80 — the highest cross-run convergence — while standard ReLU SAEs reach only 0.54, meaning nearly half of features change substantially between independent training runs.</figcaption>
-  </figure>
-  <p class="paper-detail">
-    Authors: Xiangchen Song, Aashiq Muhamed, Yujia Zheng, Lingjing Kong, Zeyu Tang, Mona T. Diab, Virginia Smith, Kun Zhang. The core methodological claim: if two SAE training runs on the same model produce different feature dictionaries, the causal interpretability claims built on either run are specific to that run, not to the model. PW-MCC measures this by computing the average maximum correlation between each feature in dictionary A and any feature in dictionary B across multiple training seeds. TopK SAEs achieve PW-MCC = 0.80 on Gemma-2-9B; ReLU SAEs reach only 0.54 — a gap that cannot be explained by reconstruction loss differences alone. The position the paper stakes is consequential: it argues that interpretability researchers have been optimizing for the wrong objective, and that feature consistency should be a first-class training criterion rather than an afterthought. Code at github.com/xiangchensong/sae-feature-consistency.
-  </p>
-</article>
-
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- PAPER 03 — Building Fast, Evaluating Slow                   -->
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -496,60 +349,6 @@ hr.section-divider {
 <div class="more-section-label">Items 4 – 10 · Also notable</div>
 
 <!-- 04 — Agent Data Injection -->
-<article class="mid-paper">
-  <header class="paper-header">
-    <div class="paper-rank" style="font-size:20px">04</div>
-    <div class="paper-meta">
-      <span class="tag tag-security">AI security</span>
-      <span class="tag">preprint</span>
-    </div>
-  </header>
-  <h3 class="mid-title">
-    <a href="https://arxiv.org/abs/2607.05120">Agent Data Injection Attacks are Realistic Threats to AI Agents</a>
-  </h3>
-  <figure class="paper-figure mid-figure">
-    <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg" aria-label="ADI attack chain: malicious data disguised as trusted metadata flows through agent context to execute attacker goal">
-      <rect width="500" height="190" fill="#fff"/>
-      <text x="250" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Agent Data Injection (ADI) Attack Chain</text>
-      <!-- Boxes -->
-      <!-- Attacker -->
-      <rect x="20" y="50" width="90" height="40" fill="#f9ebea" stroke="#c0392b" stroke-width="1.5" rx="3"/>
-      <text x="65" y="67" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#c0392b" font-weight="bold">Attacker</text>
-      <text x="65" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#c0392b">controls metadata</text>
-      <!-- Arrow 1 -->
-      <line x1="110" y1="70" x2="138" y2="70" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arr)"/>
-      <!-- External Resource with ADI payload -->
-      <rect x="138" y="40" width="100" height="60" fill="#fdf2e9" stroke="#c0392b" stroke-width="1.5" rx="3" stroke-dasharray="4,2"/>
-      <text x="188" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#c0392b" font-weight="bold">External Resource</text>
-      <text x="188" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Content: normal</text>
-      <text x="188" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#c0392b">Metadata: ADI ⚠</text>
-      <!-- Arrow 2 -->
-      <line x1="238" y1="70" x2="266" y2="70" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arr)"/>
-      <!-- Agent context -->
-      <rect x="266" y="40" width="100" height="60" fill="#eaf4fb" stroke="#2980b9" stroke-width="1.5" rx="3"/>
-      <text x="316" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2980b9" font-weight="bold">Agent Context</text>
-      <text x="316" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">IPI filter: passes</text>
-      <text x="316" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#c0392b">metadata: trusted ✓</text>
-      <!-- Arrow 3 -->
-      <line x1="366" y1="70" x2="394" y2="70" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arr)"/>
-      <!-- Attacker goal -->
-      <rect x="394" y="50" width="90" height="40" fill="#f9ebea" stroke="#c0392b" stroke-width="1.5" rx="3"/>
-      <text x="439" y="67" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#c0392b" font-weight="bold">Attacker Goal</text>
-      <text x="439" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#c0392b">executed silently</text>
-      <!-- Key difference label -->
-      <text x="188" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888" font-style="italic">vs IPI: attacks free-text content</text>
-      <text x="188" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#c0392b" font-style="italic">ADI attacks structural metadata</text>
-      <!-- Arrow marker -->
-      <defs>
-        <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L6,3 z" fill="#c0392b"/>
-        </marker>
-      </defs>
-    </svg>
-    <figcaption>Figure 4: ADI attack chain. Malicious payload is embedded in resource metadata (identifiers, origin tags, context keys) rather than free-text content, bypassing IPI defenses that filter text fields. Agents treat structural metadata as authoritative, executing attacker-controlled instructions without triggering content-based safety filters.</figcaption>
-  </figure>
-  <p class="mid-summary">Introduces Agent Data Injection (ADI), a new attack category distinct from indirect prompt injection (IPI): where IPI embeds adversarial instructions in free-text content, ADI disguises malicious payloads as trusted structural metadata — resource identifiers, data origin fields, context keys — that agents process as authoritative. Standard IPI defenses filter text content and miss ADI payloads entirely. The paper demonstrates ADI is practical across multiple deployed agent frameworks with attacker control limited to metadata fields.</p>
-</article>
 <hr class="section-divider">
 
 <!-- 05 — QD Evolution -->
@@ -685,73 +484,6 @@ hr.section-divider {
 <hr class="section-divider">
 
 <!-- 07 — Accelerating dLLMs Survey -->
-<article class="mid-paper">
-  <header class="paper-header">
-    <div class="paper-rank" style="font-size:20px">07</div>
-    <div class="paper-meta">
-      <span class="tag tag-dllm">dLLM</span>
-      <span class="tag">preprint</span>
-    </div>
-  </header>
-  <h3 class="mid-title">
-    <a href="https://arxiv.org/abs/2607.12829">Accelerating Masked Diffusion Large Language Models: A Survey of Efficient Inference Techniques</a>
-  </h3>
-  <figure class="paper-figure mid-figure">
-    <svg viewBox="0 0 440 175" xmlns="http://www.w3.org/2000/svg" aria-label="Taxonomy of masked dLLM inference acceleration across algorithm, architecture, and system levels">
-      <rect width="440" height="175" fill="#fff"/>
-      <text x="220" y="17" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Masked dLLM Inference Acceleration — Taxonomy</text>
-      <!-- Root -->
-      <rect x="175" y="30" width="90" height="28" fill="#1a4f99" rx="3"/>
-      <text x="220" y="49" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#fff" font-weight="bold">Acceleration</text>
-      <!-- Level 1 branches -->
-      <line x1="220" y1="58" x2="70" y2="85" stroke="#aaa" stroke-width="1.5"/>
-      <line x1="220" y1="58" x2="220" y2="85" stroke="#aaa" stroke-width="1.5"/>
-      <line x1="220" y1="58" x2="370" y2="85" stroke="#aaa" stroke-width="1.5"/>
-      <!-- Algorithm -->
-      <rect x="25" y="85" width="90" height="25" fill="#0d7377" rx="2"/>
-      <text x="70" y="102" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#fff" font-weight="bold">Algorithm</text>
-      <!-- Architecture -->
-      <rect x="175" y="85" width="90" height="25" fill="#5c1aaa" rx="2"/>
-      <text x="220" y="102" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#fff" font-weight="bold">Architecture</text>
-      <!-- System -->
-      <rect x="325" y="85" width="90" height="25" fill="#b02020" rx="2"/>
-      <text x="370" y="102" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#fff" font-weight="bold">System</text>
-      <!-- Algorithm children -->
-      <line x1="70" y1="110" x2="30" y2="132" stroke="#aaa" stroke-width="1"/>
-      <line x1="70" y1="110" x2="70" y2="132" stroke="#aaa" stroke-width="1"/>
-      <line x1="70" y1="110" x2="110" y2="132" stroke="#aaa" stroke-width="1"/>
-      <rect x="8" y="132" width="42" height="28" fill="#d1f2eb" stroke="#0d7377" rx="2"/>
-      <text x="29" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#0d7377">Confidence</text>
-      <text x="29" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#0d7377">Remasking</text>
-      <rect x="53" y="132" width="35" height="28" fill="#d1f2eb" stroke="#0d7377" rx="2"/>
-      <text x="70" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#0d7377">Block</text>
-      <text x="70" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#0d7377">Diffusion</text>
-      <rect x="91" y="132" width="38" height="28" fill="#d1f2eb" stroke="#0d7377" rx="2"/>
-      <text x="110" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#0d7377">Trajectory</text>
-      <text x="110" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#0d7377">Gating</text>
-      <!-- Architecture children -->
-      <line x1="220" y1="110" x2="195" y2="132" stroke="#aaa" stroke-width="1"/>
-      <line x1="220" y1="110" x2="245" y2="132" stroke="#aaa" stroke-width="1"/>
-      <rect x="163" y="132" width="58" height="28" fill="#e8daef" stroke="#5c1aaa" rx="2"/>
-      <text x="192" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#5c1aaa">Diffusion-Aware</text>
-      <text x="192" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#5c1aaa">KV Caching</text>
-      <rect x="224" y="132" width="42" height="28" fill="#e8daef" stroke="#5c1aaa" rx="2"/>
-      <text x="245" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#5c1aaa">Speculative</text>
-      <text x="245" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#5c1aaa">Diffusion</text>
-      <!-- System children -->
-      <line x1="370" y1="110" x2="345" y2="132" stroke="#aaa" stroke-width="1"/>
-      <line x1="370" y1="110" x2="395" y2="132" stroke="#aaa" stroke-width="1"/>
-      <rect x="313" y="132" width="58" height="28" fill="#fadbd8" stroke="#b02020" rx="2"/>
-      <text x="342" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#b02020">Heterogeneous</text>
-      <text x="342" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#b02020">Batching</text>
-      <rect x="374" y="132" width="42" height="28" fill="#fadbd8" stroke="#b02020" rx="2"/>
-      <text x="395" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#b02020">Hardware</text>
-      <text x="395" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#b02020">Mapping</text>
-    </svg>
-    <figcaption>Figure 7: Taxonomy of masked dLLM inference acceleration across three levels. Algorithm-level methods reduce denoising steps; architecture-level methods exploit caching and speculative execution; system-level methods address batching and hardware utilization in serving pipelines.</figcaption>
-  </figure>
-  <p class="mid-summary">First comprehensive survey of inference acceleration specifically tailored to masked dLLMs (Gwak, Lee, Park, Choo). Covers algorithm-level (confidence remasking, block diffusion, trajectory-aware commit gating), architecture-level (diffusion-aware KV-cache reuse, speculative diffusion), and system-level (heterogeneous request batching, CUDA kernel design) axes. Benchmarks LLaDA, Dream, MDLM, and iLLaDA against each technique; provides a practitioner guide to latency vs throughput vs quality tradeoffs for production dLLM deployment.</p>
-</article>
 <hr class="section-divider">
 
 <!-- 08 — Cosine-Scored SAEs -->
@@ -761,7 +493,8 @@ hr.section-divider {
     <div class="paper-meta">
       <span class="tag tag-interp">mech-interp</span>
       <span class="tag">preprint</span>
-    </div>
+    <p style="margin-top:32px;font-size:13px;opacity:.7">6 entries removed on 2026-09-10 as repeats of earlier reports: 2604.20945 (first covered 2026-07-07), 2505.20254 (first covered 2026-07-19), 2607.05120 (first covered 2026-07-08), 2607.12829 (first covered 2026-07-16), 2606.24026 (first covered 2026-07-02), 2607.04206 (first covered 2026-07-15).</p>
+</div>
   </header>
   <h3 class="mid-title">
     <a href="https://arxiv.org/abs/2606.15054">Size Doesn't Matter: Cosine-Scored Sparse Autoencoders</a>
@@ -818,104 +551,7 @@ hr.section-divider {
 <hr class="section-divider">
 
 <!-- 09 — Can LM Agents be Circuit Explainers? -->
-<article class="mid-paper">
-  <header class="paper-header">
-    <div class="paper-rank" style="font-size:20px">09</div>
-    <div class="paper-meta">
-      <span class="tag tag-interp">mech-interp</span>
-      <span class="tag">preprint</span>
-      <span class="tag">Anthropic</span>
-    </div>
-  </header>
-  <h3 class="mid-title">
-    <a href="https://arxiv.org/abs/2606.24026">Can Language Model Agents be Helpful Circuit Explainers in Mechanistic Interpretability?</a>
-  </h3>
-  <figure class="paper-figure mid-figure">
-    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="Two-loop multiagent framework: outer explanation refinement loop and inner feature discovery loop">
-      <rect width="440" height="165" fill="#fff"/>
-      <text x="220" y="17" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Two-Loop Multiagent Mech-Interp Framework (Anthropic)</text>
-      <!-- Outer loop -->
-      <ellipse cx="220" cy="90" rx="175" ry="60" fill="none" stroke="#0d7377" stroke-width="1.5" stroke-dasharray="5,3"/>
-      <text x="35" y="56" font-family="Georgia,serif" font-size="9" fill="#0d7377" font-style="italic">Outer: Explanation Refinement</text>
-      <!-- Inner loop -->
-      <ellipse cx="220" cy="90" rx="100" ry="35" fill="none" stroke="#1a4f99" stroke-width="1.5" stroke-dasharray="3,2"/>
-      <text x="152" y="62" font-family="Georgia,serif" font-size="9" fill="#1a4f99" font-style="italic">Inner: Feature Discovery</text>
-      <!-- Center: Model circuit -->
-      <rect x="185" y="78" width="70" height="24" fill="#e8f4fd" stroke="#1a4f99" rx="3"/>
-      <text x="220" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4f99" font-weight="bold">SAE Features</text>
-      <!-- Outer loop boxes -->
-      <rect x="8" y="80" width="80" height="26" fill="#d1f2eb" stroke="#0d7377" rx="3"/>
-      <text x="48" y="93" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#0d7377">Hypothesis</text>
-      <text x="48" y="103" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#0d7377">Proposal</text>
-      <rect x="348" y="80" width="80" height="26" fill="#d1f2eb" stroke="#0d7377" rx="3"/>
-      <text x="388" y="93" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#0d7377">Contrastive</text>
-      <text x="388" y="103" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#0d7377">Activation Test</text>
-      <!-- Outer loop arrows -->
-      <path d="M 88 85 Q 140 55 183 82" stroke="#0d7377" stroke-width="1.2" fill="none" marker-end="url(#ga)"/>
-      <path d="M 257 82 Q 300 55 348 85" stroke="#0d7377" stroke-width="1.2" fill="none" marker-end="url(#ga)"/>
-      <path d="M 388 106 Q 330 140 220 125 Q 110 140 48 106" stroke="#0d7377" stroke-width="1.2" fill="none" marker-end="url(#ga)"/>
-      <!-- Failure → inner loop label -->
-      <text x="220" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#555" font-style="italic">Unexplained residuals → trigger inner loop (feature discovery)</text>
-      <defs>
-        <marker id="ga" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L6,3 z" fill="#0d7377"/>
-        </marker>
-      </defs>
-    </svg>
-    <figcaption>Figure 9: Two coupled agent loops. The outer loop proposes, tests, and refines natural-language hypotheses about circuit behavior using contrastive activation experiments; failures (unexplained residuals) trigger the inner feature-discovery loop, which targets new SAE features the explanation loop could not account for. Together they automate the circuit-explanation workflow.</figcaption>
-  </figure>
-  <p class="mid-summary">Anthropic paper asking whether LLM agents can automate the circuit-explanation workflow that has required expert human interpretability researchers. The framework runs two coupled agent loops: outer (explanation refinement via contrastive activations) and inner (feature discovery triggered by unexplained residuals). Evaluated on canonical circuits in Gemma-family models — the agent framework correctly explains the majority of manually-authored circuit elements and discovers several features not in the original human analysis. An early signal that mech-interp workflow automation is tractable.</p>
-</article>
 <hr class="section-divider">
 
 <!-- 10 — Sangam -->
-<article class="mid-paper">
-  <header class="paper-header">
-    <div class="paper-rank" style="font-size:20px">10</div>
-    <div class="paper-meta">
-      <span class="tag tag-dllm">dLLM</span>
-      <span class="tag">preprint</span>
-    </div>
-  </header>
-  <h3 class="mid-title">
-    <a href="https://arxiv.org/abs/2607.04206">Sangam: Efficiently Serving Diffusion LLMs with the AR Stack</a>
-  </h3>
-  <figure class="paper-figure mid-figure">
-    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Sangam latency comparison: colocated serving vs hybrid execution across workload types">
-      <rect width="440" height="155" fill="#fff"/>
-      <text x="220" y="17" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Sangam: Mean Latency — Colocated vs Hybrid dLLM Serving</text>
-      <!-- Axes -->
-      <line x1="90" y1="30" x2="90" y2="120" stroke="#ccc" stroke-width="1"/>
-      <line x1="90" y1="120" x2="420" y2="120" stroke="#ccc" stroke-width="1"/>
-      <!-- Y gridlines -->
-      <text x="83" y="33" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">100ms</text>
-      <line x1="90" y1="30" x2="420" y2="30" stroke="#eee" stroke-dasharray="3,3" stroke-width="1"/>
-      <text x="83" y="78" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">50ms</text>
-      <line x1="90" y1="75" x2="420" y2="75" stroke="#eee" stroke-dasharray="3,3" stroke-width="1"/>
-      <text x="83" y="123" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#999">0ms</text>
-      <!-- Legend -->
-      <rect x="95" y="135" width="12" height="9" fill="#1a4f99"/>
-      <text x="111" y="143" font-family="Georgia,serif" font-size="9" fill="#555">Hybrid (baseline)</text>
-      <rect x="210" y="135" width="12" height="9" fill="#0d7377"/>
-      <text x="226" y="143" font-family="Georgia,serif" font-size="9" fill="#555">Sangam colocated</text>
-      <!-- Workload 1: Mixed — hybrid=85, sangam=70 (−18%) -->
-      <rect x="105" y="37" width="40" height="83" fill="#1a4f99" rx="2"/>
-      <rect x="148" y="52" width="40" height="68" fill="#0d7377" rx="2"/>
-      <text x="146" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">Mixed</text>
-      <text x="148" y="47" font-family="Georgia,serif" font-size="9" fill="#0d7377" font-weight="bold">−18%</text>
-      <!-- Workload 2: Decode-heavy — hybrid=78, sangam=68 (−13%) -->
-      <rect x="215" y="43" width="40" height="77" fill="#1a4f99" rx="2"/>
-      <rect x="258" y="52" width="40" height="68" fill="#0d7377" rx="2"/>
-      <text x="258" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">Decode-heavy</text>
-      <text x="258" y="47" font-family="Georgia,serif" font-size="9" fill="#0d7377" font-weight="bold">−13%</text>
-      <!-- Workload 3: Prefill-heavy — hybrid=62, sangam=64 (hybrid wins) -->
-      <rect x="330" y="58" width="40" height="62" fill="#1a4f99" rx="2"/>
-      <rect x="373" y="55" width="40" height="65" fill="#0d7377" rx="2"/>
-      <text x="372" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">Prefill-heavy</text>
-      <text x="390" y="50" font-family="Georgia,serif" font-size="9" fill="#888">≈ parity</text>
-    </svg>
-    <figcaption>Figure 10: Mean latency comparison across three workload types. Colocated serving reduces latency by 9–20% on mixed and decode-heavy workloads; hybrid execution is competitive only on extreme prefill-heavy workloads where the AR prefix segment dominates total time.</figcaption>
-  </figure>
-  <p class="mid-summary">dLLMs historically served via alternating AR-backend (context ingestion) + dLLM-backend (denoising), incurring handoff overhead. Sangam unifies both within the AR serving stack by expressing dLLM denoising steps as batched AR passes over masked positions, sharing KV-cache infrastructure, GPU kernels, and batching logic. Colocated serving achieves 9–20% mean latency reduction over the hybrid baseline on mixed and decode-heavy workloads. Practical for teams with AR inference infrastructure who want to add dLLM capabilities without a separate stack.</p>
-</article>
 {% endraw %}

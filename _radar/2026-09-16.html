@@ -1,0 +1,811 @@
+---
+layout: "radar"
+title: "Radar 2026-09-16"
+kind: "daily"
+slug: "2026-09-16"
+date: 2026-09-16
+group: "2026-W39"
+window: "August 8 – September 16, 2026"
+summary: "Window: August 8 – September 16, 2026 · Sources swept: OpenReview, ACL Anthology (ACL 2026 / EMNLP 2026), arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum · Counts: 5 peer-reviewed · 5 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-16.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ── Design tokens ───────────────────────────────────────────
+   Dark-first editorial. Slate ink on near-black.
+   Accent: cool cyan. Four topic-tag hues.
+   Type: Syne (display) + Source Serif 4 (body) + Courier New (meta).
+──────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  --bg:        #111111;
+  --surface:   #1a1a1a;
+  --surface2:  #1f1f1f;
+  --border:    #2a2a2a;
+  --ink:       #c9c9c9;
+  --ink-dim:   #888888;
+  --ink-faint: #555555;
+  --title:     #f0f0f0;
+  --accent:    #3ec9c0;
+  --accent-bg: #0c2828;
+  --peer-c:    #4dd9a0;
+  --peer-bg:   #062818;
+  --sec-c:     #f07878;
+  --sec-bg:    #280a0a;
+  --interp-c:  #7fbbf8;
+  --interp-bg: #091e34;
+  --safe-c:    #b0d878;
+  --safe-bg:   #111e04;
+  --pre-c:     #f0c060;
+  --pre-bg:    #271600;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg:        #f4f3f0;
+    --surface:   #ffffff;
+    --surface2:  #f9f8f5;
+    --border:    #e0ddd8;
+    --ink:       #2c2c2a;
+    --ink-dim:   #6b6b68;
+    --ink-faint: #aaa;
+    --title:     #111110;
+    --accent:    #0b8c85;
+    --accent-bg: #e0f5f3;
+    --peer-c:    #0a6640;
+    --peer-bg:   #d6f5e4;
+    --sec-c:     #8b1a1a;
+    --sec-bg:    #fde8e8;
+    --interp-c:  #084f80;
+    --interp-bg: #dceffe;
+    --safe-c:    #3a6010;
+    --safe-bg:   #e8f5d0;
+    --pre-c:     #5a3800;
+    --pre-bg:    #fdf3d5;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --surface2: #1f1f1f; --border: #2a2a2a;
+  --ink: #c9c9c9; --ink-dim: #888888; --ink-faint: #555555; --title: #f0f0f0;
+  --accent: #3ec9c0; --accent-bg: #0c2828;
+  --peer-c: #4dd9a0; --peer-bg: #062818; --sec-c: #f07878; --sec-bg: #280a0a;
+  --interp-c: #7fbbf8; --interp-bg: #091e34; --safe-c: #b0d878; --safe-bg: #111e04;
+  --pre-c: #f0c060; --pre-bg: #271600;
+}
+:root[data-theme="light"] {
+  --bg: #f4f3f0; --surface: #ffffff; --surface2: #f9f8f5; --border: #e0ddd8;
+  --ink: #2c2c2a; --ink-dim: #6b6b68; --ink-faint: #aaa; --title: #111110;
+  --accent: #0b8c85; --accent-bg: #e0f5f3;
+  --peer-c: #0a6640; --peer-bg: #d6f5e4; --sec-c: #8b1a1a; --sec-bg: #fde8e8;
+  --interp-c: #084f80; --interp-bg: #dceffe; --safe-c: #3a6010; --safe-bg: #e8f5d0;
+  --pre-c: #5a3800; --pre-bg: #fdf3d5;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.68;
+  color: var(--ink);
+  background: var(--bg);
+  padding-inline: 16px;
+  padding-block: 0 80px;
+}
+
+.wrap { max-width: 660px; margin-inline: auto; }
+
+/* ── Masthead ───────────────────────────────── */
+.mast {
+  padding-block: 44px 36px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 52px;
+  position: relative;
+}
+.mast::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.mast-eye {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.mast-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--title);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.mast-sub {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--ink-dim);
+  line-height: 1.9;
+}
+.mast-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.chip {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--ink-dim);
+  background: var(--surface);
+}
+
+/* ── Tags ───────────────────────────────────── */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.tag {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.t-peer   { color: var(--peer-c);   background: var(--peer-bg); }
+.t-sec    { color: var(--sec-c);    background: var(--sec-bg); }
+.t-interp { color: var(--interp-c); background: var(--interp-bg); }
+.t-safe   { color: var(--safe-c);   background: var(--safe-bg); }
+.t-pre    { color: var(--pre-c);    background: var(--pre-bg); }
+
+/* ── Paper cards (top 3) ────────────────────── */
+.paper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+.paper-hd {
+  padding: 20px 24px 14px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.rank {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-radius: 3px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.ptitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--title);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--border);
+  line-height: 1.3;
+}
+.ptitle a { color: inherit; text-decoration: inherit; }
+.ptitle a:hover { text-decoration-color: var(--accent); }
+.paper-body { padding: 4px 24px 22px; }
+.venue {
+  font-family: 'Courier New', monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+.hook {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+.fig-wrap {
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-block: 14px;
+  margin-block: 14px;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+.fig-wrap svg { max-width: 100%; }
+.fig-cap {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.detail { font-size: 15px; color: var(--ink-dim); line-height: 1.65; }
+
+/* ── Mid-tier cards (4–10) ──────────────────── */
+.mid {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+.mid-hd {
+  padding: 16px 20px 12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.mid-body { padding: 0 20px 18px; }
+.mid-venue {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+.mid-sum { font-size: 14.5px; color: var(--ink-dim); line-height: 1.62; }
+.mid-fig {
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-block: 10px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+.mid-cap {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* ── Section divider ────────────────────────── */
+.div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-block: 44px 28px;
+}
+.div::before, .div::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.div-label {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+/* ── Footer ─────────────────────────────────── */
+.foot {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  line-height: 2;
+}
+</style>
+
+<div class="wrap">
+
+<!-- MASTHEAD -->
+<header class="mast">
+  <p class="mast-eye">📡 Research Radar</p>
+  <h1 class="mast-title">September 16, 2026</h1>
+  <p class="mast-sub">
+    Pretraining &amp; Midtraining Safety · AI/LLM Security · Applied Mech Interp<br>
+    Window: Aug 8 – Sep 16, 2026 · Sources: ACL 2026 · EMNLP 2026 · arXiv cs.CL/cs.LG/cs.CR
+  </p>
+  <div class="mast-counts">
+    <span class="chip">5 peer-reviewed</span>
+    <span class="chip">5 preprints</span>
+    <span class="chip">0 forum/blog</span>
+    <span class="chip">10 items</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 01 — Beyond Safe Data
+═══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <div class="paper-hd">
+    <span class="rank">01</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2606.19168">Beyond Safe Data: Pretraining-Stage Alignment with Regular Safety Reflection</a></h2>
+  </div>
+  <div class="paper-body">
+    <div class="tags">
+      <span class="tag t-safe">pretraining-safety</span>
+      <span class="tag t-pre">arXiv preprint · Jun 2026</span>
+    </div>
+    <p class="venue">Jinhan Li, Kexian Tang, Yihan Xu, Zhuorui Ye, Kaifeng Lyu · arXiv 2606.19168 · June 17, 2026</p>
+    <p class="hook">Filtering unsafe data from pretraining corpora is necessary but not sufficient: a model that never saw harmful instructions can still compose benign knowledge into unsafe outputs. Safety Reflection Pretraining makes safety self-monitoring a first-class prediction target during language modeling itself — not a downstream alignment add-on.</p>
+    <div class="fig-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="580" height="160" viewBox="0 0 580 160">
+        <rect width="580" height="160" fill="#0a160a"/>
+        <!-- Step 1: Corpus -->
+        <rect x="20" y="50" width="105" height="62" rx="5" fill="#112011" stroke="#3a7a3a" stroke-width="1.5"/>
+        <text x="72" y="74" font-family="Courier New" font-size="10" fill="#9ad89a" text-anchor="middle">Pretraining</text>
+        <text x="72" y="88" font-family="Courier New" font-size="10" fill="#9ad89a" text-anchor="middle">Corpus</text>
+        <text x="72" y="102" font-family="Courier New" font-size="9" fill="#5a8a5a" text-anchor="middle">FineWeb-Edu</text>
+        <!-- Arrow -->
+        <path d="M125 81 L155 81" stroke="#4a8a4a" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+        <!-- Step 2: Segment + Reflect -->
+        <rect x="155" y="40" width="125" height="82" rx="5" fill="#112011" stroke="#3a7a3a" stroke-width="1.5"/>
+        <text x="217" y="65" font-family="Courier New" font-size="10" fill="#9ad89a" text-anchor="middle">Segment text</text>
+        <text x="217" y="80" font-family="Courier New" font-size="10" fill="#9ad89a" text-anchor="middle">Insert safety</text>
+        <text x="217" y="95" font-family="Courier New" font-size="10" fill="#9ad89a" text-anchor="middle">reflection</text>
+        <text x="217" y="110" font-family="Courier New" font-size="9" fill="#5a8a5a" text-anchor="middle">after each segment</text>
+        <!-- Arrow -->
+        <path d="M280 81 L310 81" stroke="#4a8a4a" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+        <!-- Step 3: Joint training -->
+        <rect x="310" y="40" width="125" height="82" rx="5" fill="#112011" stroke="#3a7a3a" stroke-width="1.5"/>
+        <text x="372" y="65" font-family="Courier New" font-size="10" fill="#9ad89a" text-anchor="middle">Joint LM +</text>
+        <text x="372" y="80" font-family="Courier New" font-size="10" fill="#9ad89a" text-anchor="middle">Safety predict.</text>
+        <text x="372" y="95" font-family="Courier New" font-size="9" fill="#5a8a5a" text-anchor="middle">pretraining loss</text>
+        <text x="372" y="110" font-family="Courier New" font-size="9" fill="#5a8a5a" text-anchor="middle">1.7B / FineWeb</text>
+        <!-- Arrow -->
+        <path d="M435 81 L460 81" stroke="#4a8a4a" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+        <!-- Result -->
+        <rect x="460" y="50" width="100" height="62" rx="5" fill="#0a2010" stroke="#5ab05a" stroke-width="2"/>
+        <text x="510" y="74" font-family="Courier New" font-size="10" fill="#c0f0c0" text-anchor="middle">SRP Model</text>
+        <text x="510" y="89" font-family="Courier New" font-size="9" fill="#6ab06a" text-anchor="middle">↓ jailbreak ASR</text>
+        <text x="510" y="101" font-family="Courier New" font-size="9" fill="#6ab06a" text-anchor="middle">↓ finetune ASR</text>
+        <defs><marker id="a1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#4a8a4a"/></marker></defs>
+        <text x="290" y="16" font-family="Courier New" font-size="10" fill="#4a7a4a" text-anchor="middle">Safety Reflection Pretraining (SRP) Pipeline</text>
+        <text x="290" y="148" font-family="Courier New" font-size="9" fill="#3a5a3a" text-anchor="middle">negligible FLOP overhead · self-monitoring integrated at pretraining time</text>
+      </svg>
+    </div>
+    <p class="fig-cap">Figure 1: SRP pipeline — corpus segmented, safety reflection inserted after each segment; model trained jointly on language modeling and safety prediction objectives.</p>
+    <p class="detail">Safety Reflection Pretraining (SRP) splits the pretraining corpus into fixed-length segments and inserts a generated safety reflection after each, so the model sees and learns to produce safety judgments as a regular part of text prediction — embedding a self-monitoring loop directly into the pretraining objective rather than the post-training phase. On 1.7B models trained from scratch on FineWeb-Edu, SRP improves safety classification accuracy and substantially reduces the attack success rate of both inference-time jailbreaks and fine-tuning attacks compared to a data-filtering-only baseline. Safety reflections are cheap to generate and add negligible FLOP overhead, making SRP a practical pretraining-time complement to data filtering.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 02 — Safety Routing Breaks
+═══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <div class="paper-hd">
+    <span class="rank">02</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.01455">When Safety Routing Breaks: Understanding Alignment Fragility under Benign Fine-Tuning</a></h2>
+  </div>
+  <div class="paper-body">
+    <div class="tags">
+      <span class="tag t-safe">pretraining-safety</span>
+      <span class="tag t-peer">EMNLP 2026 Findings</span>
+    </div>
+    <p class="venue">Yitong Guo, Xiaoyi Chen, Siyuan Zhang, Xiaofeng Wang, Haixu Tang · arXiv 2609.01455 · EMNLP 2026 Findings</p>
+    <p class="hook">Safety alignment looks robust — until you fine-tune on 100 benign cooking recipes, and the model explains bioweapon synthesis. This paper gives a rigorous geometric account: safety Fisher is low-rank, alignment flattens the safety geometry, and benign fine-tuning selectively re-sharpens the single MLP output pathway that routes refusals.</p>
+    <div class="fig-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="580" height="190" viewBox="0 0 580 190">
+        <rect width="580" height="190" fill="#100a0a"/>
+        <!-- Left: pre-alignment steep bowl -->
+        <text x="120" y="22" font-family="Courier New" font-size="10" fill="#888" text-anchor="middle">Pre-alignment</text>
+        <text x="120" y="35" font-family="Courier New" font-size="9" fill="#555" text-anchor="middle">sharp Fisher landscape</text>
+        <path d="M50,155 Q120,55 190,155" fill="none" stroke="#7fbbf8" stroke-width="2.5"/>
+        <circle cx="120" cy="68" r="5" fill="#7fbbf8"/>
+        <text x="120" y="60" font-family="Courier New" font-size="9" fill="#7fbbf8" text-anchor="middle">safety ✓</text>
+        <!-- Arrow: align -->
+        <path d="M205,100 L245,100" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#a2)"/>
+        <text x="225" y="93" font-family="Courier New" font-size="9" fill="#555" text-anchor="middle">align</text>
+        <!-- Right: post-alignment flat bowl -->
+        <text x="390" y="22" font-family="Courier New" font-size="10" fill="#888" text-anchor="middle">Post-alignment</text>
+        <text x="390" y="35" font-family="Courier New" font-size="9" fill="#555" text-anchor="middle">flat safety Fisher (low-rank)</text>
+        <path d="M300,145 Q390,110 480,145" fill="none" stroke="#f0c060" stroke-width="2.5"/>
+        <circle cx="390" cy="114" r="5" fill="#f0c060"/>
+        <text x="390" y="107" font-family="Courier New" font-size="9" fill="#f0c060" text-anchor="middle">safety preserved</text>
+        <!-- Arrow: 100 benign examples trigger collapse -->
+        <path d="M390,155 L390,178" stroke="#f07878" stroke-width="2" fill="none" marker-end="url(#a2r)"/>
+        <text x="420" y="165" font-family="Courier New" font-size="9" fill="#f07878">100 benign</text>
+        <text x="420" y="178" font-family="Courier New" font-size="9" fill="#f07878">examples →</text>
+        <text x="268" y="183" font-family="Courier New" font-size="9" fill="#c04040" text-anchor="middle">output-side MLP re-sharpened → routing collapses → high ASR</text>
+        <defs>
+          <marker id="a2" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#555"/></marker>
+          <marker id="a2r" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#f07878"/></marker>
+        </defs>
+      </svg>
+    </div>
+    <p class="fig-cap">Figure 2: Safety routing collapse — alignment flattens the Fisher landscape (low-rank safety Fisher); 100 benign fine-tuning examples re-sharpen the output-side MLP and collapse the refusal routing pathway.</p>
+    <p class="detail">The authors show that safety alignment flattens the Fisher information landscape around safety-relevant weights (safety Fisher is low-rank) while preserving a narrow output-routing pathway through output-side MLP modules. During benign fine-tuning these MLPs are re-sharpened selectively — high attack success rates arrive before general utility measurably degrades, explaining the asymmetric fragility observed empirically. LoRA and ASAM suppress early-stage sharpening and delay collapse, but their protection weakens at larger fine-tuning scales. The routing view also explains why a handful of injected safety examples can restore refusal: internal safety representations survive the MLP re-sharpening event.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 03 — Why Guardrails Collapse
+═══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <div class="paper-hd">
+    <span class="rank">03</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2506.05346">Why LLM Safety Guardrails Collapse After Fine-tuning: A Similarity Analysis Between Alignment and Fine-tuning Datasets</a></h2>
+  </div>
+  <div class="paper-body">
+    <div class="tags">
+      <span class="tag t-safe">pretraining-safety</span>
+      <span class="tag t-peer">ACL 2026 long paper</span>
+    </div>
+    <p class="venue">Lei Hsiung, Tianyu Pang, Yung-Chen Tang, Linyue Song, Tsung-Yi Ho, Pin-Yu Chen, Yaoqing Yang · ACL 2026 main · arXiv 2506.05346</p>
+    <p class="hook">Research on guardrail collapse has obsessed over fine-tuning methods — SFT vs. RLHF vs. DPO — while ignoring the upstream alignment dataset itself. This ACL long paper shows that dataset similarity is the missing variable: if your safety alignment data looks like the fine-tuning data, your guardrails fail regardless of how carefully you fine-tune.</p>
+    <div class="fig-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="560" height="180" viewBox="0 0 560 180">
+        <rect width="560" height="180" fill="#0d0d0d"/>
+        <!-- Axes -->
+        <line x1="70" y1="18" x2="70" y2="148" stroke="#3a3a3a" stroke-width="1"/>
+        <line x1="70" y1="148" x2="510" y2="148" stroke="#3a3a3a" stroke-width="1"/>
+        <!-- Axis labels -->
+        <text x="290" y="168" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">Dataset Similarity (alignment ↔ fine-tuning task)</text>
+        <text x="22" y="84" font-family="Courier New" font-size="9" fill="#555" text-anchor="middle" transform="rotate(-90,22,84)">Harmfulness Score</text>
+        <text x="60" y="152" font-family="Courier New" font-size="9" fill="#3a3a3a">0</text>
+        <text x="60" y="22" font-family="Courier New" font-size="9" fill="#3a3a3a">100%</text>
+        <!-- Trend line: positive correlation -->
+        <line x1="90" y1="138" x2="500" y2="28" stroke="#7fbbf8" stroke-width="1.5" stroke-dasharray="7,4" opacity="0.6"/>
+        <!-- Data points: low similarity = safe (green) -->
+        <circle cx="105" cy="134" r="5" fill="#4dd9a0" opacity="0.9"/>
+        <circle cx="130" cy="128" r="5" fill="#4dd9a0" opacity="0.9"/>
+        <circle cx="155" cy="122" r="5" fill="#4dd9a0" opacity="0.8"/>
+        <circle cx="175" cy="118" r="5" fill="#b0d878" opacity="0.8"/>
+        <!-- Medium -->
+        <circle cx="230" cy="100" r="5" fill="#f0c060" opacity="0.8"/>
+        <circle cx="270" cy="90" r="5" fill="#f0c060" opacity="0.8"/>
+        <!-- High similarity = dangerous (red) -->
+        <circle cx="340" cy="72" r="5" fill="#f07878" opacity="0.9"/>
+        <circle cx="390" cy="56" r="5" fill="#f07878" opacity="0.9"/>
+        <circle cx="440" cy="42" r="5" fill="#f07878" opacity="0.9"/>
+        <circle cx="480" cy="33" r="5" fill="#f07878" opacity="0.9"/>
+        <!-- Annotations -->
+        <text x="110" y="115" font-family="Courier New" font-size="9" fill="#4dd9a0">−10.33%</text>
+        <text x="110" y="126" font-family="Courier New" font-size="9" fill="#4dd9a0">harm ↓</text>
+        <text x="415" y="42" font-family="Courier New" font-size="9" fill="#f07878">collapse</text>
+        <text x="415" y="53" font-family="Courier New" font-size="9" fill="#f07878">↑</text>
+        <text x="290" y="10" font-family="Courier New" font-size="10" fill="#666" text-anchor="middle">Alignment Dataset Similarity → Guardrail Collapse</text>
+      </svg>
+    </div>
+    <p class="fig-cap">Figure 3: Dataset similarity vs. post-fine-tuning harmfulness — high similarity predicts guardrail collapse; low-similarity alignment data reduces harmfulness by up to 10.33%.</p>
+    <p class="detail">The authors measure representation similarity (CKA-style) between models' upstream safety alignment datasets and downstream fine-tuning task datasets, then correlate this metric with post-fine-tuning harmfulness scores on jailbreak benchmarks. High alignment-task similarity significantly weakens guardrails; choosing alignment data with low similarity to foreseeable fine-tuning domains reduces harmfulness by up to 10.33% while maintaining utility. The finding reframes guardrail collapse as an alignment-data design problem rather than purely a fine-tuning-method problem: providers should diversify their alignment datasets to reduce overlap with likely downstream task distributions.</p>
+  </div>
+</article>
+
+<div class="div"><span class="div-label">Items 4–10</span></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 04 — Circuit-Guided Weight Scaling
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">04</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.00051">From Detection to Refusal: Safer LLMs via Circuit-Guided Weight Scaling</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-safe">refusal-circuit</span>
+      <span class="tag t-interp">mech-interp</span>
+      <span class="tag t-peer">EMNLP 2026 Findings</span>
+    </div>
+    <p class="mid-venue">Kuan-Lin Chu, Chung-En Sun, Tsui-Wei Weng · arXiv 2609.00051 · Aug 30, 2026</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="540" height="100" viewBox="0 0 540 100">
+        <rect width="540" height="100" fill="#090e1c"/>
+        <rect x="20" y="28" width="130" height="44" rx="4" fill="#0d1830" stroke="#7fbbf8" stroke-width="1.5"/>
+        <text x="85" y="47" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">Harmful</text>
+        <text x="85" y="62" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">Detection Heads</text>
+        <path d="M150 50 L185 50" stroke="#7fbbf8" stroke-width="1.5" fill="none" marker-end="url(#a4)"/>
+        <rect x="185" y="28" width="130" height="44" rx="4" fill="#0d1830" stroke="#7fbbf8" stroke-width="1.5"/>
+        <text x="250" y="47" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">Safety Neurons</text>
+        <text x="250" y="62" font-family="Courier New" font-size="9" fill="#4a6a9a" text-anchor="middle">(residual stream)</text>
+        <path d="M315 50 L350 50" stroke="#7fbbf8" stroke-width="1.5" fill="none" marker-end="url(#a4)"/>
+        <rect x="350" y="28" width="130" height="44" rx="4" fill="#0d1830" stroke="#7fbbf8" stroke-width="1.5"/>
+        <text x="415" y="47" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">Refusal Heads</text>
+        <text x="415" y="62" font-family="Courier New" font-size="9" fill="#4a6a9a" text-anchor="middle">(output gen.)</text>
+        <defs><marker id="a4" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#7fbbf8"/></marker></defs>
+        <text x="270" y="13" font-family="Courier New" font-size="9" fill="#3a6a8a" text-anchor="middle">3-stage safety circuit · circuit-guided scaling → +26.5% safety · −1.7% accuracy</text>
+        <text x="270" y="90" font-family="Courier New" font-size="9" fill="#2a4a6a" text-anchor="middle">zero-ablation + patching · 4 benchmarks · EMNLP 2026 Findings</text>
+      </svg>
+    </div>
+    <p class="mid-cap">Three-component safety circuit; targeted weight scaling yields +26.5% safety with only 1.7% accuracy drop across four benchmarks.</p>
+    <p class="mid-sum">Uses zero-ablation and patching to characterize a three-component safety circuit — Harmful Detection Heads → Safety Neurons → Refusal Heads — providing the first causal decomposition of LLM refusal as a multi-stage circuit. Targeted weight scaling of these components improves safety rates under adversarial prompting by 26.5% with a 1.7% accuracy drop, demonstrating that mechanistic circuit analysis translates directly into a practical safety intervention.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 05 — DDO
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">05</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.16204">Decoy Direction Optimization: A Post-Hoc Defense Against LLM Abliteration</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-safe">refusal-defense</span>
+      <span class="tag t-sec">AI-security</span>
+      <span class="tag t-pre">preprint · Sep 14, 2026</span>
+    </div>
+    <p class="mid-venue">Aashiq Muhamed, Mona T. Diab, Virginia Smith (CMU) · arXiv 2609.16204 · September 14, 2026</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="540" height="105" viewBox="0 0 540 105">
+        <rect width="540" height="105" fill="#0d0808"/>
+        <rect x="15" y="30" width="105" height="45" rx="4" fill="#280a0a" stroke="#f07878" stroke-width="1.5"/>
+        <text x="67" y="50" font-family="Courier New" font-size="10" fill="#f07878" text-anchor="middle">Attacker</text>
+        <text x="67" y="65" font-family="Courier New" font-size="9" fill="#a04040" text-anchor="middle">estimates dir.</text>
+        <path d="M120 52 L158 52" stroke="#f07878" stroke-width="1.5" fill="none" marker-end="url(#a5r)"/>
+        <rect x="158" y="20" width="135" height="65" rx="4" fill="#1a0e28" stroke="#c084fc" stroke-width="2"/>
+        <text x="225" y="45" font-family="Courier New" font-size="10" fill="#c084fc" text-anchor="middle">DDO: inject</text>
+        <text x="225" y="60" font-family="Courier New" font-size="10" fill="#c084fc" text-anchor="middle">decoy signal</text>
+        <text x="225" y="75" font-family="Courier New" font-size="9" fill="#7050a0" text-anchor="middle">into MLP neurons</text>
+        <path d="M293 45 L330 45" stroke="#f07878" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#a5r)"/>
+        <text x="360" y="38" font-family="Courier New" font-size="9" fill="#f07878">ablates DECOY</text>
+        <text x="360" y="51" font-family="Courier New" font-size="9" fill="#c04040">(harmless)</text>
+        <rect x="415" y="60" width="110" height="35" rx="4" fill="#062818" stroke="#4dd9a0" stroke-width="1.5"/>
+        <text x="470" y="75" font-family="Courier New" font-size="10" fill="#4dd9a0" text-anchor="middle">True refusal</text>
+        <text x="470" y="88" font-family="Courier New" font-size="9" fill="#1a8a50" text-anchor="middle">intact ✓</text>
+        <defs>
+          <marker id="a5r" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#f07878"/></marker>
+        </defs>
+        <text x="270" y="11" font-family="Courier New" font-size="9" fill="#7a5a9a" text-anchor="middle">No base-model retraining required · post-hoc weight edit</text>
+      </svg>
+    </div>
+    <p class="mid-cap">DDO corrupts the attacker's contrastive estimator by injecting a decoy; the true refusal circuitry survives. No retraining needed.</p>
+    <p class="mid-sum">Abliteration attacks use contrastive estimators to extract and project out the refusal direction. DDO defeats this by injecting a high-magnitude, nonlinear decoy signal into MLP neurons, corrupting the estimator so it extracts the decoy instead of the true safety mechanism. The true refusal circuitry remains intact; ablation removes only the harmless decoy. The defense is post-hoc and requires no base-model retraining — applicable to already-deployed open-weight models.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 06 — AMRA
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">06</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2608.18093">Abliteration Mitigation via Refusal Aliases (AMRA)</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-safe">refusal-defense</span>
+      <span class="tag t-sec">AI-security</span>
+      <span class="tag t-pre">preprint · Aug 2026</span>
+    </div>
+    <p class="mid-venue">Nathan Truong (Independent) · arXiv 2608.18093 · August 2026</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="540" height="90" viewBox="0 0 540 90">
+        <rect width="540" height="90" fill="#090912"/>
+        <rect x="15" y="22" width="115" height="46" rx="4" fill="#0d0d28" stroke="#7fbbf8" stroke-width="1.5"/>
+        <text x="72" y="42" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">Writer matrix W</text>
+        <text x="72" y="57" font-family="Courier New" font-size="9" fill="#4a6a9a" text-anchor="middle">+ rank-k update</text>
+        <path d="M130 45 L165 45" stroke="#7fbbf8" stroke-width="1.5" fill="none" marker-end="url(#a6)"/>
+        <rect x="165" y="15" width="145" height="60" rx="4" fill="#0d0d28" stroke="#7fbbf8" stroke-width="1.5"/>
+        <text x="237" y="38" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">Refusal act. →</text>
+        <text x="237" y="53" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">random alias</text>
+        <text x="237" y="66" font-family="Courier New" font-size="9" fill="#4a6a9a" text-anchor="middle">reader corrected</text>
+        <rect x="360" y="15" width="165" height="60" rx="4" fill="#062818" stroke="#4dd9a0" stroke-width="1.5"/>
+        <text x="443" y="36" font-family="Courier New" font-size="10" fill="#4dd9a0" text-anchor="middle">Llama-3-8B: +2.16</text>
+        <text x="443" y="51" font-family="Courier New" font-size="10" fill="#4dd9a0" text-anchor="middle">Gemma-2-9B: +14.70</text>
+        <text x="443" y="66" font-family="Courier New" font-size="9" fill="#1a8050" text-anchor="middle">&lt;0.5pp MMLU Δ</text>
+        <defs><marker id="a6" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#7fbbf8"/></marker></defs>
+        <text x="270" y="80" font-family="Courier New" font-size="9" fill="#2a2a4a" text-anchor="middle">AMRA · rank-k writer updates obfuscate refusal vector in weight space</text>
+      </svg>
+    </div>
+    <p class="mid-cap">Rank-k updates replace refusal activations with random aliases; reader correction preserves capability. Gemma-2-9B: +14.70 pts post-abliteration refusal.</p>
+    <p class="mid-sum">AMRA applies rank-k updates to residual-stream writer matrices, replacing refusal-inducing activations with random aliases, then corrects downstream reader matrices to preserve general behavior. On Llama-3-8B: +2.16 pts refusal improvement with &lt;0.5 pp MMLU degradation. On Gemma-2-9B: +14.70 pts at greater utility cost. Complements DDO (#5) with a different defense geometry — AMRA hides the signal in weight space while DDO corrupts the attacker's estimator.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 07 — Geometry of Refusal
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">07</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2606.22686">The Geometry of Refusal: Linear Instability in Safety-Aligned LLMs</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-safe">refusal-interp</span>
+      <span class="tag t-interp">mech-interp</span>
+      <span class="tag t-peer">ACL TrustNLP 2026</span>
+    </div>
+    <p class="mid-venue">TrustNLP Workshop @ ACL 2026 · arXiv 2606.22686</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="540" height="110" viewBox="0 0 540 110">
+        <rect width="540" height="110" fill="#0a0a0e"/>
+        <!-- 2D logit space -->
+        <line x1="60" y1="15" x2="60" y2="95" stroke="#2a2a2a" stroke-width="1"/>
+        <line x1="60" y1="95" x2="260" y2="95" stroke="#2a2a2a" stroke-width="1"/>
+        <!-- Benign cluster -->
+        <circle cx="85" cy="82" r="5" fill="#4dd9a0" opacity="0.9"/>
+        <circle cx="100" cy="76" r="5" fill="#4dd9a0" opacity="0.9"/>
+        <circle cx="90" cy="68" r="5" fill="#4dd9a0" opacity="0.9"/>
+        <circle cx="108" cy="84" r="5" fill="#4dd9a0" opacity="0.8"/>
+        <text x="93" y="54" font-family="Courier New" font-size="9" fill="#4dd9a0">benign</text>
+        <!-- Malicious cluster -->
+        <circle cx="185" cy="38" r="5" fill="#f07878" opacity="0.9"/>
+        <circle cx="200" cy="28" r="5" fill="#f07878" opacity="0.9"/>
+        <circle cx="175" cy="26" r="5" fill="#f07878" opacity="0.9"/>
+        <circle cx="195" cy="48" r="5" fill="#f07878" opacity="0.8"/>
+        <text x="193" y="65" font-family="Courier New" font-size="9" fill="#f07878">malicious</text>
+        <!-- Decision boundary -->
+        <line x1="128" y1="95" x2="162" y2="15" stroke="#3ec9c0" stroke-width="2" stroke-dasharray="5,3"/>
+        <text x="170" y="100" font-family="Courier New" font-size="9" fill="#3ec9c0">refusal dir.</text>
+        <!-- CLS explanation -->
+        <rect x="280" y="15" width="250" height="80" rx="4" fill="#0c1c1c"/>
+        <text x="405" y="34" font-family="Courier New" font-size="10" fill="#3ec9c0" text-anchor="middle">Contrastive Logit Steering</text>
+        <text x="405" y="50" font-family="Courier New" font-size="9" fill="#555" text-anchor="middle">safe vs. unconstrained prompt</text>
+        <text x="405" y="63" font-family="Courier New" font-size="9" fill="#555" text-anchor="middle">→ extracts refusal direction</text>
+        <text x="405" y="76" font-family="Courier New" font-size="9" fill="#f0c060" text-anchor="middle">+ prefix injection → phase transition</text>
+        <text x="405" y="88" font-family="Courier New" font-size="9" fill="#c04040" text-anchor="middle">7 model families · guardrail collapses</text>
+      </svg>
+    </div>
+    <p class="mid-cap">CLS extracts refusal direction from output-distribution contrast; malicious/benign queries are linearly separable; prefix injection induces guardrail phase transition across 7 model families.</p>
+    <p class="mid-sum">Introduces Contrastive Logit Steering (CLS), a zero-optimization probe that extracts the refusal direction by contrasting output distributions under safe vs. unconstrained system prompts — no activation-space intervention needed. Applied to 7 model families, CLS reveals that malicious and benign queries form linearly separable clusters, confirming safety is a manipulable low-dimensional linear feature. Combined with prefix injection, CLS-guided perturbation induces a guardrail phase transition, demonstrating architectural determinism in refusal geometry.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 08 — Art of Misalignment
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">08</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2604.07754">The Art of (Mis)alignment: How Fine-Tuning Methods Effectively Misalign and Realign LLMs in Post-Training</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-safe">safety-decay</span>
+      <span class="tag t-sec">AI-security</span>
+      <span class="tag t-peer">ACL 2026 Findings</span>
+    </div>
+    <p class="mid-venue">Rui Zhang, Hongwei Li, Yun Shen, Xinyue Shen, Wenbo Jiang, Guowen Xu, Yang Liu, Michael Backes, Yang Zhang · ACL 2026 Findings · arXiv 2604.07754</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="540" height="85" viewBox="0 0 540 85">
+        <rect width="540" height="85" fill="#0d0b08"/>
+        <!-- Header row -->
+        <text x="80" y="16" font-family="Courier New" font-size="9" fill="#666" text-anchor="middle">SFT-1</text>
+        <text x="160" y="16" font-family="Courier New" font-size="9" fill="#666" text-anchor="middle">SFT-2</text>
+        <text x="240" y="16" font-family="Courier New" font-size="9" fill="#666" text-anchor="middle">SFT-3</text>
+        <text x="320" y="16" font-family="Courier New" font-size="9" fill="#666" text-anchor="middle">SFT-4</text>
+        <text x="400" y="16" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">DPO ★</text>
+        <text x="480" y="16" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">ORPO ★</text>
+        <!-- Row labels -->
+        <text x="22" y="42" font-family="Courier New" font-size="8" fill="#666" text-anchor="middle">misalign</text>
+        <text x="22" y="68" font-family="Courier New" font-size="8" fill="#666" text-anchor="middle">realign</text>
+        <!-- Misalign row -->
+        <rect x="43" y="24" width="74" height="24" rx="3" fill="#1e0808" stroke="#f07878" stroke-width="0.5" opacity="0.45"/>
+        <rect x="123" y="24" width="74" height="24" rx="3" fill="#1e0808" stroke="#f07878" stroke-width="0.5" opacity="0.55"/>
+        <rect x="203" y="24" width="74" height="24" rx="3" fill="#1e0808" stroke="#f07878" stroke-width="0.5" opacity="0.65"/>
+        <rect x="283" y="24" width="74" height="24" rx="3" fill="#1e0808" stroke="#f07878" stroke-width="0.5" opacity="0.6"/>
+        <rect x="363" y="24" width="74" height="24" rx="3" fill="#1e0808" stroke="#f07878" stroke-width="0.5" opacity="0.4"/>
+        <rect x="443" y="24" width="74" height="24" rx="3" fill="#4a0808" stroke="#f07878" stroke-width="1.8"/>
+        <text x="480" y="40" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">HIGHEST ★</text>
+        <!-- Realign row -->
+        <rect x="43" y="52" width="74" height="24" rx="3" fill="#081a0e" stroke="#4dd9a0" stroke-width="0.5" opacity="0.4"/>
+        <rect x="123" y="52" width="74" height="24" rx="3" fill="#081a0e" stroke="#4dd9a0" stroke-width="0.5" opacity="0.45"/>
+        <rect x="203" y="52" width="74" height="24" rx="3" fill="#081a0e" stroke="#4dd9a0" stroke-width="0.5" opacity="0.45"/>
+        <rect x="283" y="52" width="74" height="24" rx="3" fill="#081a0e" stroke="#4dd9a0" stroke-width="0.5" opacity="0.5"/>
+        <rect x="363" y="52" width="74" height="24" rx="3" fill="#0a2e18" stroke="#4dd9a0" stroke-width="1.8"/>
+        <text x="400" y="68" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">BEST ★</text>
+        <rect x="443" y="52" width="74" height="24" rx="3" fill="#081a0e" stroke="#4dd9a0" stroke-width="0.5" opacity="0.35"/>
+      </svg>
+    </div>
+    <p class="mid-cap">Method × safety-direction matrix: ORPO = highest misalignment; DPO = best realignment (utility cost). 4 LLMs × 6 methods. ACL 2026 Findings.</p>
+    <p class="mid-sum">Systematically evaluates four SFT and two preference-optimization methods (ORPO, DPO) across four safety-aligned LLMs for their ability to misalign and re-align. ORPO is most effective for misalignment; DPO most reliably restores alignment but at significant utility cost. Provides an attack/defense method selection matrix directly useful for open-weight model providers.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 09 — SAFER
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">09</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2507.00665">SAFER: Probing Safety in Reward Models with Sparse Autoencoder</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-interp">mech-interp</span>
+      <span class="tag t-sec">AI-security</span>
+      <span class="tag t-pre">preprint · Jul 2026</span>
+    </div>
+    <p class="mid-venue">arXiv 2507.00665 · July 1, 2026</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="540" height="90" viewBox="0 0 540 90">
+        <rect width="540" height="90" fill="#090e1c"/>
+        <rect x="15" y="22" width="105" height="46" rx="4" fill="#0d1830" stroke="#7fbbf8" stroke-width="1.5"/>
+        <text x="67" y="43" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">Reward Model</text>
+        <text x="67" y="57" font-family="Courier New" font-size="9" fill="#4a6a9a" text-anchor="middle">activations</text>
+        <path d="M120 45 L155 45" stroke="#7fbbf8" stroke-width="1.5" fill="none" marker-end="url(#a9)"/>
+        <rect x="155" y="15" width="130" height="60" rx="4" fill="#0d1830" stroke="#7fbbf8" stroke-width="1.5"/>
+        <text x="220" y="38" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">SAE feature</text>
+        <text x="220" y="52" font-family="Courier New" font-size="10" fill="#7fbbf8" text-anchor="middle">ranking</text>
+        <text x="220" y="66" font-family="Courier New" font-size="9" fill="#4a6a9a" text-anchor="middle">chosen vs rejected</text>
+        <path d="M285 38 L315 25" stroke="#f07878" stroke-width="1.5" fill="none" marker-end="url(#a9r)"/>
+        <path d="M285 52 L315 65" stroke="#4dd9a0" stroke-width="1.5" fill="none" marker-end="url(#a9g)"/>
+        <rect x="315" y="13" width="105" height="28" rx="3" fill="#280a0a" stroke="#f07878" stroke-width="1"/>
+        <text x="367" y="30" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">Target poison</text>
+        <rect x="315" y="53" width="105" height="28" rx="3" fill="#062818" stroke="#4dd9a0" stroke-width="1"/>
+        <text x="367" y="71" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">Denoising</text>
+        <text x="440" y="27" font-family="Courier New" font-size="9" fill="#c04040">↓ safety</text>
+        <text x="440" y="70" font-family="Courier New" font-size="9" fill="#1a8a50">↑ safety</text>
+        <defs>
+          <marker id="a9" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#7fbbf8"/></marker>
+          <marker id="a9r" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#f07878"/></marker>
+          <marker id="a9g" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#4dd9a0"/></marker>
+        </defs>
+        <text x="270" y="84" font-family="Courier New" font-size="9" fill="#2a3a5a" text-anchor="middle">minimal data modification · no general-chat reward degradation</text>
+      </svg>
+    </div>
+    <p class="mid-cap">SAE trained on reward model activations; feature-level safety signals drive targeted poisoning or denoising with minimal collateral effect.</p>
+    <p class="mid-sum">Trains a Sparse Autoencoder on reward model activations and ranks features by activation difference between chosen and rejected responses to identify safety-salient latent dimensions. Feature-level signals drive targeted data poisoning (degrading safety alignment) and denoising (enhancing it) with minimal data modification and no general-chat reward degradation — showing reward model safety is concentrated in localizable, interpretable SAE features.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAPER 10 — Open-Weight Defenses Susceptible
+═══════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-hd">
+    <span class="rank">10</span>
+    <h2 class="ptitle"><a href="https://arxiv.org/abs/2605.26526">Open-Weight LLM Fine-Tuning Defenses are Susceptible to Simple Attacks</a></h2>
+  </div>
+  <div class="mid-body">
+    <div class="tags">
+      <span class="tag t-sec">AI-security</span>
+      <span class="tag t-safe">pretraining-safety</span>
+      <span class="tag t-pre">preprint · May 2026</span>
+    </div>
+    <p class="mid-venue">Kevin Kuo, Chhavi Yadav, Virginia Smith · arXiv 2605.26526 · May 26, 2026</p>
+    <div class="mid-fig">
+      <svg xmlns="http://www.w3.org/2000/svg" width="540" height="95" viewBox="0 0 540 95">
+        <rect width="540" height="95" fill="#0e0808"/>
+        <text x="270" y="14" font-family="Courier New" font-size="10" fill="#666" text-anchor="middle">Attack Success Rate on Safeguarded Open-Weight Models</text>
+        <!-- Axes -->
+        <line x1="90" y1="22" x2="90" y2="82" stroke="#333" stroke-width="1"/>
+        <line x1="90" y1="82" x2="510" y2="82" stroke="#333" stroke-width="1"/>
+        <text x="80" y="86" font-family="Courier New" font-size="8" fill="#444">0</text>
+        <text x="80" y="52" font-family="Courier New" font-size="8" fill="#444">50%</text>
+        <text x="80" y="26" font-family="Courier New" font-size="8" fill="#444">100%</text>
+        <line x1="90" y1="52" x2="510" y2="52" stroke="#2a2a2a" stroke-width="0.5" stroke-dasharray="3,3"/>
+        <!-- Bar: baseline -->
+        <rect x="110" y="76" width="85" height="6" rx="2" fill="#4dd9a0" opacity="0.8"/>
+        <text x="152" y="92" font-family="Courier New" font-size="8" fill="#555" text-anchor="middle">Baseline (&lt;10%)</text>
+        <!-- Bar: abliteration -->
+        <rect x="245" y="30" width="85" height="52" rx="2" fill="#f07878" opacity="0.8"/>
+        <text x="288" y="92" font-family="Courier New" font-size="8" fill="#f07878" text-anchor="middle">Abliteration</text>
+        <text x="288" y="27" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">high ASR</text>
+        <!-- Bar: prefilling -->
+        <rect x="385" y="34" width="85" height="48" rx="2" fill="#f07878" opacity="0.8"/>
+        <text x="428" y="92" font-family="Courier New" font-size="8" fill="#f07878" text-anchor="middle">Prefilling</text>
+        <text x="428" y="31" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">high ASR</text>
+      </svg>
+    </div>
+    <p class="mid-cap">Gradient-free attacks (abliteration, prefilling) raise ASR from &lt;10% to high rates across BeaverTails, HarmBench, AdvBench. All tested defenses fail.</p>
+    <p class="mid-sum">Tests whether open-weight fine-tuning defenses (TAR-style post-training tamper-resistance) can be bypassed without fine-tuning at all. Two gradient-free attacks — abliteration and prefilling — raise attack success rates from below 10% to high rates across all three harmfulness benchmarks against every tested safeguarded model. Core implication: fine-tuning-based tamper-resistance and inference-time jailbreak robustness are orthogonal properties that must be co-designed.</p>
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <strong>Counts:</strong> 5 peer-reviewed (ACL 2026 ×2, EMNLP 2026 Findings ×2, ACL TrustNLP 2026 ×1) · 5 preprints · 0 forum/blog<br>
+  <strong>Theme:</strong> Refusal geometry dominates — items 2, 4, 5, 6, 7 collectively frame safety alignment as a low-rank, fragile linear routing signal. Items 1 and 3 address upstream design solutions. Flag for weekly roundup.<br>
+  <strong>Gap note:</strong> Window covers Aug 8 – Sep 16 (~40 days) due to a report gap since the Aug 7 run.
+</footer>
+
+</div>
+{% endraw %}

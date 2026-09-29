@@ -1,0 +1,758 @@
+---
+layout: "radar"
+title: "Radar · Sep 23 2026"
+kind: "daily"
+slug: "2026-09-23"
+date: 2026-09-23
+group: "2026-W40"
+window: "September 21–23, 2026 (+ EMNLP 2026 newly accepted papers)"
+summary: "Window: September 21–23, 2026 (+ EMNLP 2026 newly accepted papers) · Sources swept: OpenReview, ACL Anthology, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), ICML 2026 MI Workshop · Counts: 4 peer-reviewed · 6 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-23.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --surface2: #f0ede8;
+  --border: #e0dcd4;
+  --text: #2c2c2c;
+  --dim: #888880;
+  --title: #111111;
+  --link: #1a4f99;
+  --tag-bg: #eceae5;
+  --tag-text: #4a4a44;
+  --tag-peer-bg: #d0f0e2; --tag-peer-c: #0a4a2e;
+  --tag-interp-bg: #d6eafc; --tag-interp-c: #0a3a6e;
+  --tag-sec-bg: #fde0de; --tag-sec-c: #7a1010;
+  --tag-align-bg: #dce6fe; --tag-align-c: #1a2e7a;
+  --rank-c: #ccc8be;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111111; --surface: #191919; --surface2: #222222;
+    --border: #2e2e2e; --text: #c8c8c0; --dim: #666660;
+    --title: #f0f0ec; --link: #7abeff; --tag-bg: #252520;
+    --tag-text: #aaa89e;
+    --tag-peer-bg: #0a2a1a; --tag-peer-c: #3dd68a;
+    --tag-interp-bg: #0a1e34; --tag-interp-c: #7abeff;
+    --tag-sec-bg: #2a0a0a; --tag-sec-c: #f07070;
+    --tag-align-bg: #0a142e; --tag-align-c: #7abeff;
+    --rank-c: #3a3a36;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #191919; --surface2: #222222;
+  --border: #2e2e2e; --text: #c8c8c0; --dim: #666660;
+  --title: #f0f0ec; --link: #7abeff; --tag-bg: #252520;
+  --tag-text: #aaa89e;
+  --tag-peer-bg: #0a2a1a; --tag-peer-c: #3dd68a;
+  --tag-interp-bg: #0a1e34; --tag-interp-c: #7abeff;
+  --tag-sec-bg: #2a0a0a; --tag-sec-c: #f07070;
+  --tag-align-bg: #0a142e; --tag-align-c: #7abeff;
+  --rank-c: #3a3a36;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 660px;
+  margin: 0 auto;
+  padding-inline: 16px;
+  padding-block: 32px 80px;
+}
+
+/* ---- Masthead ---- */
+.mast {
+  padding-block-end: 24px;
+  border-bottom: 2px solid var(--border);
+  margin-block-end: 40px;
+}
+.mast-eye {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-block-end: 6px;
+}
+.mast-title {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--title);
+  line-height: 1.2;
+  margin-block-end: 6px;
+}
+.mast-counts {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  margin-block-end: 10px;
+}
+.mast-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.track {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #0d7377;
+}
+:root[data-theme="dark"] .track,
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .track { color: #14b8bd; } }
+.track-sep { color: var(--dim); }
+
+/* ---- Tags ---- */
+.tag {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 9.5px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-inline-end: 3px;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.tag-peer   { background: var(--tag-peer-bg);   color: var(--tag-peer-c); }
+.tag-interp { background: var(--tag-interp-bg); color: var(--tag-interp-c); }
+.tag-sec    { background: var(--tag-sec-bg);    color: var(--tag-sec-c); }
+.tag-align  { background: var(--tag-align-bg);  color: var(--tag-align-c); }
+
+/* ---- Full paper entry (1-3) ---- */
+.paper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  margin-block-end: 36px;
+}
+.paper-hd {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-block-end: 12px;
+  flex-wrap: wrap;
+}
+.rank {
+  font-family: 'Courier New', monospace;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--rank-c);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-block-end: 6px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-authors {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  color: var(--dim);
+  margin-block-end: 14px;
+}
+.paper-hook {
+  font-family: Georgia, serif;
+  font-size: 15.5px;
+  line-height: 1.72;
+  margin-block-end: 18px;
+  color: var(--text);
+}
+.paper-fig {
+  margin-inline: -28px;
+  margin-block: 0 18px;
+  background: #fff;
+  border-block: 1px solid var(--border);
+  padding: 18px 28px;
+  text-align: center;
+  overflow-x: auto;
+}
+.paper-fig svg { max-width: 100%; height: auto; }
+.paper-fig figcaption {
+  font-family: 'Courier New', monospace;
+  font-size: 9.5px;
+  color: var(--dim);
+  text-align: left;
+  margin-block-start: 8px;
+  line-height: 1.5;
+}
+.paper-detail {
+  font-size: 14.5px;
+  line-height: 1.72;
+  color: var(--text);
+}
+
+/* ---- Mid-tier section ---- */
+.more-label {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding-block-end: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-block: 48px 28px;
+}
+.mid-paper { margin-block-end: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1.35;
+  margin-block-end: 12px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-fig {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 14px;
+  text-align: center;
+  margin-block-end: 12px;
+  overflow-x: auto;
+}
+.mid-fig svg { max-width: 440px; width: 100%; height: auto; }
+.mid-fig figcaption {
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  color: var(--dim);
+  text-align: left;
+  margin-block-start: 6px;
+  line-height: 1.5;
+}
+.mid-sum {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.divider {
+  border: none;
+  border-block-start: 1px solid var(--border);
+  margin-block: 36px;
+}
+
+/* ---- Footer ---- */
+.foot {
+  margin-block-start: 60px;
+  padding-block-start: 18px;
+  border-block-start: 1px solid var(--border);
+  font-family: 'Courier New', monospace;
+  font-size: 9.5px;
+  color: var(--dim);
+  line-height: 1.8;
+}
+</style>
+
+<header class="mast">
+  <div class="mast-eye">📡 Research Radar</div>
+  <div class="mast-title">Daily · September 23, 2026</div>
+  <div class="mast-counts">4 peer-reviewed · 6 preprints · 0 forum/blog</div>
+  <div class="mast-tracks">
+    <span class="track">Pretraining Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">AI Security</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ===== PAPER 01 ===== -->
+<article class="paper">
+  <header class="paper-hd">
+    <div class="rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">pretraining-safety</span>
+      <span class="tag tag-align">refusal-geometry</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title"><a href="https://arxiv.org/abs/2609.06934">The Geometry of Refusal: Why Post-Hoc Safety Is Fragile and Pretraining-Time Safety Persists</a></h2>
+  <div class="paper-authors">Srikanth Malla, Chiho Choi, Joon Hee Choi (Samsung Semiconductor) — arXiv preprint, September 7, 2026</div>
+  <p class="paper-hook">Post-hoc safety training (RLHF, DPO) keeps getting bypassed by jailbreaks and fine-tuning attacks — this paper gives that pattern a precise geometric explanation and shows why pretraining-time safety does not share the same vulnerability. The culprit is where in the Fisher-curvature landscape the safety update lands.</p>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Post-hoc safety orthogonal to capabilities vs pretraining safety embedded in capability subspace">
+      <rect width="500" height="220" fill="#fff"/>
+      <!-- Left: post-hoc -->
+      <rect x="18" y="18" width="218" height="184" rx="7" fill="#fff4f4" stroke="#e0c0c0" stroke-width="1.2"/>
+      <text x="127" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#901818" font-weight="bold">Post-Hoc Safety</text>
+      <text x="127" y="54" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#901818">(RLHF / DPO)</text>
+      <!-- Capability arrows -->
+      <line x1="45" y1="110" x2="205" y2="110" stroke="#555" stroke-width="2.2" marker-end="url(#m1)"/>
+      <line x1="45" y1="128" x2="205" y2="128" stroke="#555" stroke-width="1.4" marker-end="url(#m2)" opacity=".55"/>
+      <line x1="45" y1="146" x2="205" y2="146" stroke="#555" stroke-width="0.9" marker-end="url(#m3)" opacity=".3"/>
+      <text x="210" y="113" font-family="Georgia,serif" font-size="8.5" fill="#666">cap.</text>
+      <!-- Safety update (near-orthogonal, dashed) -->
+      <line x1="127" y1="170" x2="127" y2="68" stroke="#c01818" stroke-width="2.8" stroke-dasharray="5,3.5" marker-end="url(#m4)"/>
+      <text x="136" y="73" font-family="Georgia,serif" font-size="8.5" fill="#c01818">safety</text>
+      <text x="136" y="84" font-family="Georgia,serif" font-size="8.5" fill="#c01818">update</text>
+      <!-- Gate label -->
+      <rect x="72" y="90" width="108" height="15" rx="3" fill="#ffe8e8" stroke="#e0b0b0" stroke-width=".8"/>
+      <text x="126" y="101" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#901818">refusal gate (overlay)</text>
+      <text x="127" y="192" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">orthogonal → fragile</text>
+      <!-- Right: pretraining -->
+      <rect x="264" y="18" width="218" height="184" rx="7" fill="#f3fff6" stroke="#b0d8b8" stroke-width="1.2"/>
+      <text x="373" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#185a30" font-weight="bold">Pretraining-Time</text>
+      <text x="373" y="54" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#185a30">Safety</text>
+      <ellipse cx="373" cy="120" rx="72" ry="44" fill="#b8eec8" stroke="#185a30" stroke-width="1.6" opacity=".75"/>
+      <text x="373" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e">capability</text>
+      <text x="373" y="127" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e">subspace</text>
+      <ellipse cx="348" cy="113" rx="20" ry="14" fill="#185a30" opacity=".22"/>
+      <text x="348" y="117" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#0a3a1e">safety</text>
+      <text x="373" y="192" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">integrated → durable</text>
+      <defs>
+        <marker id="m1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#555"/></marker>
+        <marker id="m2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#555"/></marker>
+        <marker id="m3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#555"/></marker>
+        <marker id="m4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#c01818"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: Post-hoc safety update (dashed red) lands nearly orthogonal to capability directions — a gate overlaid on intact capabilities. Pretraining-time safety integrates into the capability subspace itself, making it structurally durable under fine-tuning attacks.</figcaption>
+  </figure>
+  <p class="paper-detail">The paper measures each safety update against the curvature of the model's capabilities using the empirical Fisher of a capability loss. Post-hoc safety consistently lands in a suppression regime: the update is nearly orthogonal to the high-curvature capability directions, with its small in-subspace component concentrating on a few sharp directions — a refusal gate placed over intact capabilities, not an erasure of them. Pretraining-time safety modifies the subspace in which capabilities reside, embedding the constraint where it cannot be peeled off by subsequent fine-tuning. The authors trace this geometry across three model families, providing the clearest mechanistic account to date of why data-filtering and pretraining-time interventions produce qualitatively different alignment durability than post-hoc fine-tuning.</p>
+</article>
+
+<!-- ===== PAPER 02 ===== -->
+<article class="paper">
+  <header class="paper-hd">
+    <div class="rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">EMNLP 2026 Findings</span>
+      <span class="tag tag-align">alignment-durability</span>
+      <span class="tag tag-align">Fisher-geometry</span>
+    </div>
+  </header>
+  <h2 class="paper-title"><a href="https://arxiv.org/abs/2609.01455">When Safety Routing Breaks: Understanding Alignment Fragility under Benign Fine-Tuning</a></h2>
+  <div class="paper-authors">Yitong Guo, Xiaoyi Chen, Siyuan Zhang, Xiaofeng Wang, Haixu Tang — EMNLP 2026 Findings (peer-reviewed)</div>
+  <p class="paper-hook">Even 100 benign fine-tuning examples can collapse safety alignment — this paper explains exactly why using Fisher geometry. The culprit is not gradient conflict (the prior explanation) but selective re-sharpening of a latent output-routing pathway that safety training leaves intact.</p>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="Fisher geometry: flat safety landscape with latent routing pathway that sharpens under benign fine-tuning">
+      <rect width="500" height="210" fill="#fff"/>
+      <!-- Before: flat landscape -->
+      <rect x="18" y="18" width="218" height="174" rx="7" fill="#f5f8ff" stroke="#c0cce8" stroke-width="1.2"/>
+      <text x="127" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a3a99" font-weight="bold">After Safety Alignment</text>
+      <path d="M42 112 Q80 106 127 109 Q175 112 200 108" stroke="#1a3a99" stroke-width="2" fill="none"/>
+      <path d="M42 125 Q80 121 127 123 Q175 125 200 122" stroke="#1a3a99" stroke-width="1.3" fill="none" opacity=".55"/>
+      <path d="M42 138 Q80 135 127 137 Q175 138 200 136" stroke="#1a3a99" stroke-width=".8" fill="none" opacity=".3"/>
+      <text x="127" y="160" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">flat safety landscape</text>
+      <line x1="127" y1="170" x2="127" y2="62" stroke="#e08000" stroke-width="1.7" stroke-dasharray="4,3"/>
+      <text x="136" y="67" font-family="Georgia,serif" font-size="8.5" fill="#e08000">latent</text>
+      <text x="136" y="78" font-family="Georgia,serif" font-size="8.5" fill="#e08000">routing</text>
+      <text x="127" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a3a99">safety intact ✓</text>
+      <!-- After: sharpened pathway -->
+      <rect x="264" y="18" width="218" height="174" rx="7" fill="#fff7f0" stroke="#e0c060" stroke-width="1.2"/>
+      <text x="373" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#904000" font-weight="bold">After Benign Fine-Tuning</text>
+      <path d="M286 138 Q325 134 355 95 Q373 62 388 96 Q402 128 440 130" stroke="#904000" stroke-width="2.2" fill="none"/>
+      <path d="M286 150 Q325 147 355 116 Q373 92 388 118 Q402 140 440 143" stroke="#904000" stroke-width="1.3" fill="none" opacity=".55"/>
+      <line x1="373" y1="170" x2="373" y2="55" stroke="#c01818" stroke-width="2.8" marker-end="url(#m5)"/>
+      <text x="383" y="60" font-family="Georgia,serif" font-size="8.5" fill="#c01818">re-sharpened!</text>
+      <text x="373" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#c01818">safety collapsed ✗</text>
+      <defs>
+        <marker id="m5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#c01818"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 2: Safety Fisher is low-rank; alignment flattens the loss landscape but leaves a latent output-routing pathway; 100 benign fine-tuning examples selectively re-sharpen that pathway in output-side MLP modules, causing asymmetric safety collapse with minimal utility loss.</figcaption>
+  </figure>
+  <p class="paper-detail">The paper proposes a Fisher-geometric account of alignment fragility: safety Fisher is low-rank, and safety training flattens the geometry while preserving a latent output-routing pathway. After as few as 100 benign fine-tuning examples, this pathway is selectively re-sharpened in output-side MLP modules — attack success rate rises sharply while general utility degrades only mildly. LoRA and ASAM mitigate early collapse by suppressing output-side sharpness, but protection weakens at larger fine-tuning scales. The routing view also explains why a handful of safety examples can restore refusal: they re-flatten exactly the components benign fine-tuning had sharpened. Dataset at Hugging Face: <code>LuckyJason77/safety_routing_data</code>.</p>
+</article>
+
+<!-- ===== PAPER 03 ===== -->
+<article class="paper">
+  <header class="paper-hd">
+    <div class="rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">EMNLP 2026 Findings</span>
+      <span class="tag tag-interp">mech-interp-for-safety</span>
+      <span class="tag tag-align">refusal-circuit</span>
+    </div>
+  </header>
+  <h2 class="paper-title"><a href="https://arxiv.org/abs/2609.00051">From Detection to Refusal: Safer LLMs via Circuit-Guided Weight Scaling</a></h2>
+  <div class="paper-authors">Kuan-Lin Chu et al. — EMNLP 2026 Findings (peer-reviewed)</div>
+  <p class="paper-hook">This paper maps out the three-stage neural circuit that turns a harmful prompt into a refusal — Harmful Detection Heads, Safety Neurons, Refusal Heads — and then uses that map to improve safety by directly scaling the circuit's weights rather than fine-tuning the whole model.</p>
+  <figure class="paper-fig">
+    <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" aria-label="Three-stage safety circuit: Harmful Detection Heads to Safety Neurons to Refusal Heads">
+      <rect width="500" height="170" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#222" font-weight="bold">Three-Stage Safety Circuit</text>
+      <!-- Stage 1 -->
+      <rect x="18" y="38" width="138" height="78" rx="8" fill="#fde8e8" stroke="#b01818" stroke-width="1.5"/>
+      <text x="87" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7a1010" font-weight="bold">Harmful</text>
+      <text x="87" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7a1010" font-weight="bold">Detection</text>
+      <text x="87" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a1010">Attention Heads</text>
+      <text x="87" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#999">Early layers</text>
+      <!-- Arrow 1→2 -->
+      <line x1="158" y1="77" x2="178" y2="77" stroke="#555" stroke-width="2.2" marker-end="url(#m6)"/>
+      <!-- Stage 2 -->
+      <rect x="181" y="38" width="138" height="78" rx="8" fill="#e8effe" stroke="#1a3a99" stroke-width="1.5"/>
+      <text x="250" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a2e80" font-weight="bold">Safety</text>
+      <text x="250" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a2e80" font-weight="bold">Neurons</text>
+      <text x="250" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#1a2e80">MLP / residual stream</text>
+      <text x="250" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#999">Mid layers</text>
+      <!-- Arrow 2→3 -->
+      <line x1="321" y1="77" x2="341" y2="77" stroke="#555" stroke-width="2.2" marker-end="url(#m7)"/>
+      <!-- Stage 3 -->
+      <rect x="344" y="38" width="138" height="78" rx="8" fill="#e8fdf0" stroke="#185a30" stroke-width="1.5"/>
+      <text x="413" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0a3a1e" font-weight="bold">Refusal</text>
+      <text x="413" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0a3a1e" font-weight="bold">Heads</text>
+      <text x="413" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e">Output generation</text>
+      <text x="413" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#999">Late layers</text>
+      <text x="250" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Suppressing Stage 1 reliably disrupts Stage 3 — causal ordering confirmed by intervention</text>
+      <defs>
+        <marker id="m6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#555"/></marker>
+        <marker id="m7" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#555"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 3: Three-stage safety circuit: Harmful Detection Heads (early attention, identify harmful intent) → Safety Neurons (MLP, stabilize signals in residual stream) → Refusal Heads (output layer, generate safe response); targeted interventions confirm causal ordering.</figcaption>
+  </figure>
+  <p class="paper-detail">Using targeted attention-head and neuron-level interventions, the authors causally validate the three-stage organization: suppressing Harmful Detection Heads reliably disrupts downstream refusal, and directly amplifying Safety Neurons improves safety-relevant outputs without touching other parameters. Circuit-guided weight scaling applied to these components achieves improved safety scores over RLHF/DPO baselines while preserving general capability — an efficient, targeted safety enhancement that complements pretraining-time interventions rather than replacing them.</p>
+</article>
+
+<!-- ===== MID SECTION ===== -->
+<div class="more-label">Items 4–10 · Also notable</div>
+
+<!-- 04 -->
+<article class="mid-paper">
+  <header class="paper-hd">
+    <div class="rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ICML 2025</span>
+      <span class="tag tag-sec">AI security</span>
+      <span class="tag tag-interp">mech-interp-applied</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.27504">Circuit Discovery Helps Detect LLM Jailbreaking: A Mechanistic Interpretability Study</a></h3>
+  <figure class="mid-fig">
+    <svg viewBox="0 0 440 150" xmlns="http://www.w3.org/2000/svg" aria-label="Jailbreak circuit identified by edge attribution patching in LLaMA-2-7B-chat">
+      <rect width="440" height="150" fill="#fff"/>
+      <rect x="8" y="52" width="78" height="38" rx="5" fill="#fde0de" stroke="#b01010" stroke-width="1"/>
+      <text x="47" y="73" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a0808">Jailbreak</text>
+      <text x="47" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a0808">Prompt</text>
+      <line x1="88" y1="71" x2="108" y2="71" stroke="#b01010" stroke-width="1.8" stroke-dasharray="3,2" marker-end="url(#mj1)"/>
+      <rect x="111" y="40" width="90" height="62" rx="5" fill="#fff0d0" stroke="#9a5000" stroke-width="1"/>
+      <text x="156" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a3800" font-weight="bold">Key Attn</text>
+      <text x="156" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a3800">Heads</text>
+      <text x="156" y="93" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">edge attr.</text>
+      <line x1="203" y1="71" x2="223" y2="71" stroke="#9a5000" stroke-width="1.8" marker-end="url(#mj2)"/>
+      <rect x="226" y="40" width="80" height="62" rx="5" fill="#ece4fc" stroke="#501898" stroke-width="1"/>
+      <text x="266" y="71" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a1070" font-weight="bold">MLP</text>
+      <text x="266" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a1070">Pathways</text>
+      <line x1="308" y1="71" x2="328" y2="71" stroke="#501898" stroke-width="1.8" marker-end="url(#mj3)"/>
+      <rect x="331" y="52" width="80" height="38" rx="5" fill="#fde0de" stroke="#b01010" stroke-width="1"/>
+      <text x="371" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a0808">Affirm.</text>
+      <text x="371" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a0808">Response</text>
+      <rect x="111" y="112" width="198" height="24" rx="4" fill="#d0f0e2" stroke="#185a30" stroke-width=".8"/>
+      <text x="210" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e">Circuit ablation → ASR ↓ up to 80%</text>
+      <defs>
+        <marker id="mj1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#b01010"/></marker>
+        <marker id="mj2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#9a5000"/></marker>
+        <marker id="mj3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#501898"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 4: Jailbreak circuit in LLaMA-2-7B-chat identified by edge attribution patching; ablating key attention heads and MLP pathways during first-token prediction reduces ASR by up to 80%.</figcaption>
+  </figure>
+  <p class="mid-sum">Edge attribution patching and subnetwork probing in LLaMA-2-7B-chat identify the exact attention heads and MLP pathways mediating adversarial prompt exploitation; ablating those circuits during first-token prediction reduces attack success rates by up to 80%, providing the first circuit-level, targeted jailbreak defense without modifying model weights globally.</p>
+</article>
+<hr class="divider">
+
+<!-- 05 -->
+<article class="mid-paper">
+  <header class="paper-hd">
+    <div class="rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-sec">AI security</span>
+      <span class="tag tag-sec">jailbreak-defense</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2609.26185">Dynamic Deep Prompt Optimization for Defending Against Jailbreak Attacks on LLMs</a></h3>
+  <figure class="mid-fig">
+    <svg viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg" aria-label="DDPO: LLM intermediate layers as feature extractors feeding lightweight MLP for dynamic defensive embeddings">
+      <rect width="440" height="140" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#222" font-weight="bold">DDPO: Dynamic Deep Prompt Optimization</text>
+      <rect x="8" y="50" width="72" height="38" rx="5" fill="#fde0de" stroke="#b01010" stroke-width="1"/>
+      <text x="44" y="71" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a0808">Jailbreak</text>
+      <text x="44" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a0808">Prompt</text>
+      <line x1="82" y1="69" x2="102" y2="69" stroke="#555" stroke-width="1.6" marker-end="url(#md1)"/>
+      <rect x="105" y="40" width="88" height="58" rx="5" fill="#ece4fc" stroke="#501898" stroke-width="1.2"/>
+      <text x="149" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a1070" font-weight="bold">LLM Layers</text>
+      <text x="149" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#3a1070">(feature ext.)</text>
+      <text x="149" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#888">hidden states</text>
+      <line x1="195" y1="69" x2="215" y2="69" stroke="#555" stroke-width="1.6" marker-end="url(#md2)"/>
+      <rect x="218" y="46" width="76" height="46" rx="5" fill="#d6eafc" stroke="#0a3a6e" stroke-width="1.2"/>
+      <text x="256" y="65" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a6e" font-weight="bold">Lightweight</text>
+      <text x="256" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a6e">MLP</text>
+      <line x1="296" y1="69" x2="316" y2="69" stroke="#555" stroke-width="1.6" marker-end="url(#md3)"/>
+      <rect x="319" y="38" width="110" height="62" rx="5" fill="#d0f0e2" stroke="#185a30" stroke-width="1.2"/>
+      <text x="374" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e" font-weight="bold">Dynamic</text>
+      <text x="374" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e">Defense</text>
+      <text x="374" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e">Embedding</text>
+      <text x="220" y="125" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#555">per-query adaptive · no additional fine-tuning required</text>
+      <defs>
+        <marker id="md1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#555"/></marker>
+        <marker id="md2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#555"/></marker>
+        <marker id="md3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#555"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 5: DDPO pipeline — LLM's own intermediate hidden states → lightweight MLP → dynamic per-query defensive embedding; adapts defenses to each input rather than relying on a static prefix.</figcaption>
+  </figure>
+  <p class="mid-sum">DDPO (Dynamic Deep Prompt Optimization) is the first jailbreak defense based on deep prompt optimization: the target LLM's own intermediate layers serve as feature extractors, feeding a lightweight MLP that dynamically generates defensive embeddings per query without expensive fine-tuning — outperforming static prompt-based defenses across multiple attack types.</p>
+</article>
+<hr class="divider">
+
+<!-- 06 -->
+<article class="mid-paper">
+  <header class="paper-hd">
+    <div class="rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-sec">AI security</span>
+      <span class="tag">encrypted-inference</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2609.21484">HE-Guardrail: A Homomorphic Guardrail Against Jailbreak Attacks for Encrypted Large Language Model Inference</a></h3>
+  <figure class="mid-fig">
+    <svg viewBox="0 0 440 138" xmlns="http://www.w3.org/2000/svg" aria-label="HE-Guardrail: server evaluates guardrail over HE ciphertext without decrypting">
+      <rect width="440" height="138" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#222" font-weight="bold">HE-Guardrail: Jailbreak Defense Over Encrypted Inference</text>
+      <rect x="8" y="26" width="96" height="100" rx="6" fill="#f0f4ff" stroke="#3a5ab8" stroke-width="1.2"/>
+      <text x="56" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#1a2e80" font-weight="bold">CLIENT</text>
+      <rect x="18" y="54" width="76" height="20" rx="3" fill="#fde0de" stroke="#b01010" stroke-width=".8"/>
+      <text x="56" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#7a0808">prompt (plaintext)</text>
+      <text x="56" y="86" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#555">HE encrypt</text>
+      <rect x="18" y="92" width="76" height="18" rx="3" fill="#e8f0fe" stroke="#3a5ab8" stroke-width=".8"/>
+      <text x="56" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#1a4f99">ciphertext</text>
+      <line x1="106" y1="76" x2="128" y2="76" stroke="#555" stroke-width="1.5" marker-end="url(#mh1)"/>
+      <rect x="131" y="22" width="158" height="104" rx="6" fill="#f3fff6" stroke="#185a30" stroke-width="1.2"/>
+      <text x="210" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e" font-weight="bold">SERVER (no plaintext)</text>
+      <rect x="144" y="48" width="132" height="28" rx="4" fill="#d0f0e2" stroke="#185a30" stroke-width="1"/>
+      <text x="210" y="61" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e" font-weight="bold">HE Guardrail</text>
+      <text x="210" y="71" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#185a30">runs over ciphertext</text>
+      <text x="210" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#333">BLOCK jailbreak / PASS safe</text>
+      <text x="210" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#888">→ encrypted LLM inference</text>
+      <line x1="291" y1="76" x2="313" y2="76" stroke="#555" stroke-width="1.5" marker-end="url(#mh2)"/>
+      <rect x="316" y="52" width="108" height="48" rx="6" fill="#fdf5e8" stroke="#906000" stroke-width="1.2"/>
+      <text x="370" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#503000">Safe encrypted</text>
+      <text x="370" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#503000">LLM response</text>
+      <text x="370" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">(or blocked)</text>
+      <defs>
+        <marker id="mh1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#555"/></marker>
+        <marker id="mh2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#555"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 6: HE-Guardrail: the server evaluates guardrail logic entirely over homomorphically encrypted ciphertexts — the first framework enabling jailbreak detection without ever decrypting the client's prompt.</figcaption>
+  </figure>
+  <p class="mid-sum">In HE-LLM inference the server cannot inspect plaintext prompts — but this also shields adversarial jailbreak payloads from detection. HE-Guardrail is the first framework that evaluates guardrail mechanisms entirely over homomorphically encrypted data, closing a novel attack surface unique to privacy-preserving LLM serving.</p>
+</article>
+<hr class="divider">
+
+<!-- 07 -->
+<article class="mid-paper">
+  <header class="paper-hd">
+    <div class="rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ICML 2026 MI Workshop</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-interp">causal-circuits</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2609.24379">Topographic Training Concentrates Causal Circuits Without Improving Neuron Monosemanticity</a></h3>
+  <figure class="mid-fig">
+    <svg viewBox="0 0 440 148" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart: topographic training 2.79x more causally sufficient but monosemanticity unchanged">
+      <rect width="440" height="148" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#222" font-weight="bold">Topographic vs Standard Training</text>
+      <!-- Causal sufficiency bars -->
+      <text x="120" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#444">Causal Sufficiency</text>
+      <rect x="70" y="70" width="30" height="52" fill="#7abeff" rx="2"/>
+      <text x="85" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#084f80">Std</text>
+      <rect x="112" y="26" width="30" height="96" fill="#1a3a99" rx="2"/>
+      <text x="127" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#1a3a99">Topo</text>
+      <text x="148" y="62" font-family="Georgia,serif" font-size="8.5" fill="#c01818">2.79×</text>
+      <!-- Monosemanticity bars (equal) -->
+      <text x="330" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#444">Neuron Monosemanticity</text>
+      <rect x="280" y="70" width="30" height="52" fill="#7abeff" rx="2"/>
+      <text x="295" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#084f80">Std</text>
+      <rect x="322" y="70" width="30" height="52" fill="#1a3a99" rx="2"/>
+      <text x="337" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#1a3a99">Topo</text>
+      <text x="358" y="76" font-family="Georgia,serif" font-size="8.5" fill="#185a30">≈ same</text>
+      <!-- Baseline -->
+      <line x1="50" y1="122" x2="430" y2="122" stroke="#ddd" stroke-width="1"/>
+      <text x="220" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#555">SAE L0 sparsity ↓11% · dead-feature fraction ↑19× · circuit-level effect, not neuron-level</text>
+    </svg>
+    <figcaption>Figure 7: Topographic clusters are 2.79× more causally sufficient than random unit sets; SAE L0 sparsity decreases 11% and dead-feature fraction rises 19-fold, yet neuron monosemanticity scores are unchanged — topographic pressure acts at circuit level.</figcaption>
+  </figure>
+  <p class="mid-sum">Applying a spatial-locality TopoLoss makes topographic clusters 2.79× more causally sufficient than random unit sets while SAE L0 sparsity decreases 11% and dead-feature fraction rises 19-fold, yet standard neuron monosemanticity scores remain unchanged — separating circuit-level causal concentration from neuron-level feature disentanglement as distinct interpretability properties.</p>
+</article>
+<hr class="divider">
+
+<!-- 08 -->
+<article class="mid-paper">
+  <header class="paper-hd">
+    <div class="rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">formal-verification</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2609.26112">Certified Mechanistic Interpretability: Lifting Single-Input Findings to Bounded Neighbourhoods</a></h3>
+  <figure class="mid-fig">
+    <svg viewBox="0 0 440 138" xmlns="http://www.w3.org/2000/svg" aria-label="CPZ propagation lifts single-input mechanistic findings to certified epsilon-neighbourhood">
+      <rect width="440" height="138" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#222" font-weight="bold">CPZ Propagation: Single Input → Neighbourhood Certificate</text>
+      <!-- Single input -->
+      <circle cx="52" cy="75" r="8" fill="#c01818"/>
+      <text x="52" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#7a0808">single</text>
+      <text x="52" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#7a0808">input x₀</text>
+      <!-- Finding -->
+      <rect x="16" y="36" width="72" height="20" rx="3" fill="#fde8e8" stroke="#b01010" stroke-width=".8"/>
+      <text x="52" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#7a0808">"head H → subj S"</text>
+      <!-- CPZ arrow -->
+      <line x1="78" y1="75" x2="112" y2="75" stroke="#555" stroke-width="1.8" marker-end="url(#mc1)"/>
+      <text x="95" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#333">CPZ</text>
+      <!-- Neighbourhood ellipse -->
+      <ellipse cx="200" cy="75" rx="56" ry="38" fill="#dce8fe" stroke="#1a3a99" stroke-width="1.6"/>
+      <circle cx="200" cy="75" r="6" fill="#1a3a99"/>
+      <text x="200" y="79" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#fff">x₀</text>
+      <line x1="200" y1="75" x2="250" y2="75" stroke="#1a3a99" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="238" y="70" font-family="Georgia,serif" font-size="9" fill="#1a3a99">ε</text>
+      <text x="200" y="126" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#1a3a99">ε-neighbourhood</text>
+      <!-- Certificate arrow -->
+      <line x1="260" y1="75" x2="292" y2="75" stroke="#555" stroke-width="1.8" marker-end="url(#mc2)"/>
+      <!-- Certificate -->
+      <rect x="295" y="46" width="132" height="58" rx="5" fill="#d0f0e2" stroke="#185a30" stroke-width="1.2"/>
+      <text x="361" y="65" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e" font-weight="bold">Certificate</text>
+      <text x="361" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#0a3a1e">"H→S holds for all</text>
+      <text x="361" y="89" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#0a3a1e">x ∈ N(x₀, ε)"</text>
+      <defs>
+        <marker id="mc1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#555"/></marker>
+        <marker id="mc2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#555"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 8: CPZ propagation lifts a single-input finding (e.g. "attention head H attends to subject S") to a certified ε-neighbourhood; the recursive Jacobian zonotope extends certificates across layer depth without per-layer generator growth.</figcaption>
+  </figure>
+  <p class="mid-sum">Constrained polynomial-zonotope (CPZ) propagation through transformer blocks lifts mechanistic-interpretability observations from a single input to certified statements over a bounded neighbourhood, converting brittle single-point findings into robust mechanistic claims; three internal-attention queries (top-k stability, evidence mass, attention entropy) are formulated as tractable programs over the softmax simplex.</p>
+</article>
+<hr class="divider">
+
+<!-- 09 -->
+<article class="mid-paper">
+  <header class="paper-hd">
+    <div class="rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-interp">SAE</span>
+      <span class="tag">AI-agents</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2609.09113">SAEScientist-Bench: Can AI Agents Conduct Autonomous SAE Interpretability Research?</a></h3>
+  <figure class="mid-fig">
+    <svg viewBox="0 0 440 138" xmlns="http://www.w3.org/2000/svg" aria-label="Agent vs expert performance on feature separation and causal steering">
+      <rect width="440" height="138" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#222" font-weight="bold">Agent vs. Expert Performance — SAEScientist-Bench</text>
+      <!-- Horizontal axis: feature separation (left = low, right = high) -->
+      <text x="65" y="76" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#444">Feature Sep.</text>
+      <!-- Vertical axis: causal steering (bottom = low, top = high) -->
+      <text x="220" y="28" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Causal Steering (high)</text>
+      <text x="220" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">(weak)</text>
+      <!-- Axes -->
+      <line x1="75" y1="75" x2="375" y2="75" stroke="#e0e0d8" stroke-width="1"/>
+      <line x1="220" y1="30" x2="220" y2="125" stroke="#e0e0d8" stroke-width="1"/>
+      <!-- Expert zone (larger) -->
+      <polygon points="220,38 330,75 220,115 110,75" fill="#d0f0e2" stroke="#185a30" stroke-width="1.5" opacity=".7"/>
+      <!-- Agent zone (approaches on separation, lags on steering) -->
+      <polygon points="220,54 300,75 220,110 165,75" fill="#d6eafc" stroke="#1a3a99" stroke-width="1.5" opacity=".7"/>
+      <text x="338" y="72" font-family="Georgia,serif" font-size="9" fill="#0a3a1e">Expert</text>
+      <text x="305" y="92" font-family="Georgia,serif" font-size="9" fill="#1a3a99">Agent</text>
+    </svg>
+    <figcaption>Figure 9: Frontier agents approach expert levels on contrastive feature separation within a 131K-feature Gemma Scope dictionary but lag substantially on causal-generation steering across 10 agent configurations and 20 tasks.</figcaption>
+  </figure>
+  <p class="mid-sum">SAEScientist-Bench evaluates frontier AI agents on autonomous SAE interpretability research: given a target concept, agents design contrastive probes and navigate a 131K+ feature Gemma Scope dictionary to discover optimal features. Agents demonstrate genuine discovery capabilities — approaching expert levels on contrastive feature separation — but lag substantially on causal-generation steering and frequently misinterpret experimental measurements.</p>
+</article>
+<hr class="divider">
+
+<!-- 10 -->
+<article class="mid-paper">
+  <header class="paper-hd">
+    <div class="rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">formal-verification</span>
+      <span class="tag">IRN-faithfulness</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2609.15533">The Misery of Mechanistic Interpretability: A Formal Perspective</a></h3>
+  <figure class="mid-fig">
+    <svg viewBox="0 0 440 135" xmlns="http://www.w3.org/2000/svg" aria-label="Dominant IRN feature flips under minor input perturbation across 5 model families">
+      <rect width="440" height="135" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#222" font-weight="bold">IRN Feature Flip Under Minor Perturbation</text>
+      <!-- Before -->
+      <rect x="12" y="28" width="168" height="86" rx="6" fill="#f5f8ff" stroke="#1a3a99" stroke-width="1.2"/>
+      <text x="96" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#1a3a99" font-weight="bold">Input x</text>
+      <rect x="24" y="54" width="62" height="13" rx="2" fill="#1a3a99"/>
+      <text x="93" y="64" font-family="Georgia,serif" font-size="8.5" fill="#1a3a99">Feature A (dominant)</text>
+      <rect x="24" y="72" width="22" height="10" rx="2" fill="#a0b8e8"/>
+      <text x="52" y="80" font-family="Georgia,serif" font-size="8.5" fill="#888">B</text>
+      <rect x="24" y="86" width="10" height="8" rx="2" fill="#d0dcf0"/>
+      <text x="40" y="92" font-family="Georgia,serif" font-size="8.5" fill="#888">C</text>
+      <text x="96" y="107" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#1a3a99">→ "Feature A"</text>
+      <!-- Perturbation arrow -->
+      <text x="220" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#9a5000">+ε</text>
+      <line x1="184" y1="71" x2="248" y2="71" stroke="#9a5000" stroke-width="2" marker-end="url(#mm1)"/>
+      <!-- After -->
+      <rect x="260" y="28" width="168" height="86" rx="6" fill="#fff5f5" stroke="#b01818" stroke-width="1.2"/>
+      <text x="344" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#b01818" font-weight="bold">Input x+ε</text>
+      <rect x="272" y="54" width="10" height="10" rx="2" fill="#f0c0c0"/>
+      <text x="289" y="63" font-family="Georgia,serif" font-size="8.5" fill="#888">A</text>
+      <rect x="272" y="68" width="62" height="13" rx="2" fill="#b01818"/>
+      <text x="341" y="78" font-family="Georgia,serif" font-size="8.5" fill="#b01818">Feature B (now dominant!)</text>
+      <rect x="272" y="86" width="26" height="10" rx="2" fill="#f09090"/>
+      <text x="305" y="94" font-family="Georgia,serif" font-size="8.5" fill="#888">C</text>
+      <text x="344" y="107" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#b01818">→ "Feature B"</text>
+      <text x="220" y="127" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">Across GPT-2 small, Gemma 2 2B, Gemma 3 1B, Llama 3.2 1B, R1-Distill-Qwen 1.5B</text>
+      <defs>
+        <marker id="mm1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#9a5000"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 10: Semantically minor perturbation flips the dominant IRN/SAE feature across all five tested model families; reachability analysis certifies a sound upper bound on perturbations that cause feature-identity changes.</figcaption>
+  </figure>
+  <p class="mid-sum">Semantically minor input perturbations flip the dominant IRN (interpretable replacement network) features across five open-weight model families (GPT-2 small, Gemma 2 2B, Gemma 3 1B, Llama 3.2 1B, R1-Distill-Qwen 1.5B), showing that single-input mechanistic interpretability findings are unreliable without formal certification; the proposed reachability-analysis framework certifies sound upper bounds on perturbation magnitude that causes feature-identity changes.</p>
+</article>
+
+<footer class="foot">
+  <div>Research Radar — Daily Edition · September 23, 2026</div>
+  <div>Sources swept: arXiv cs.CL / cs.LG / cs.CR / cs.AI · EMNLP 2026 · ICML 2026 MI Workshop</div>
+  <div>Window: September 21–23, 2026 (+ newly published EMNLP 2026 Findings papers)</div>
+  <div>Generated by Claude Code · claude.ai/code</div>
+</footer>
+{% endraw %}

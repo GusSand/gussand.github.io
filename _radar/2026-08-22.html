@@ -1,0 +1,999 @@
+---
+layout: "radar"
+title: "Research Radar · August 22"
+kind: "daily"
+slug: "2026-08-22"
+date: 2026-08-22
+group: "2026-W35"
+window: "August 13–22, 2026 (papers not covered in Aug 13 or Aug 20 reports)"
+summary: "Window: August 13–22, 2026 (papers not covered in Aug 13 or Aug 20 reports) · Sources swept: arXiv (cs.CL/cs.LG/cs.CR/cs.AI), OpenReview, ACL Anthology, GitHub trackers, HF Daily Papers · Counts: 1 peer-reviewed · 9 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/43a3634a-61eb-4d61-b0ab-e6c05dda774b"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-22.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root {
+  --bg: #f6f5f2;
+  --surface: #ffffff;
+  --border: #e0dbd5;
+  --text: #2d2b28;
+  --dim: #7a7269;
+  --title: #1a1917;
+  --link: #1e4096;
+  --link-hover: #c23b22;
+  --accent: #c23b22;
+  --hero-bg: #f0ece7;
+  --tag-bg: #eeece8;
+  --tag-text: #4a4540;
+  --tag-interp-bg: #e8f0fc; --tag-interp-text: #1e4096;
+  --tag-security-bg: #fce8e8; --tag-security-text: #9a1818;
+  --tag-dllm-bg: #e6f4ea; --tag-dllm-text: #1a5e30;
+  --tag-peer-bg: #eef8ee; --tag-peer-text: #196e30;
+  --stat-pos: #196e30;
+  --stat-neg: #9a1818;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111010; --surface: #1a1918; --border: #2e2b28;
+    --text: #ccc8c2; --dim: #6a6560; --title: #edeae4;
+    --link: #7eb8ff; --link-hover: #e05c42; --accent: #e05c42;
+    --hero-bg: #1f1d1b;
+    --tag-bg: #252220; --tag-text: #aaa5a0;
+    --tag-interp-bg: #162040; --tag-interp-text: #7eb8ff;
+    --tag-security-bg: #3a1010; --tag-security-text: #f07070;
+    --tag-dllm-bg: #0e2a14; --tag-dllm-text: #4ade80;
+    --tag-peer-bg: #0d2212; --tag-peer-text: #4ade80;
+    --stat-pos: #4ade80; --stat-neg: #f07070;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111010; --surface: #1a1918; --border: #2e2b28;
+  --text: #ccc8c2; --dim: #6a6560; --title: #edeae4;
+  --link: #7eb8ff; --link-hover: #e05c42; --accent: #e05c42;
+  --hero-bg: #1f1d1b;
+  --tag-bg: #252220; --tag-text: #aaa5a0;
+  --tag-interp-bg: #162040; --tag-interp-text: #7eb8ff;
+  --tag-security-bg: #3a1010; --tag-security-text: #f07070;
+  --tag-dllm-bg: #0e2a14; --tag-dllm-text: #4ade80;
+  --tag-peer-bg: #0d2212; --tag-peer-text: #4ade80;
+  --stat-pos: #4ade80; --stat-neg: #f07070;
+}
+:root[data-theme="light"] {
+  --bg: #f6f5f2; --surface: #ffffff; --border: #e0dbd5;
+  --text: #2d2b28; --dim: #7a7269; --title: #1a1917;
+  --link: #1e4096; --link-hover: #c23b22; --accent: #c23b22;
+  --hero-bg: #f0ece7;
+  --tag-bg: #eeece8; --tag-text: #4a4540;
+  --tag-interp-bg: #e8f0fc; --tag-interp-text: #1e4096;
+  --tag-security-bg: #fce8e8; --tag-security-text: #9a1818;
+  --tag-dllm-bg: #e6f4ea; --tag-dllm-text: #1a5e30;
+  --tag-peer-bg: #eef8ee; --tag-peer-text: #196e30;
+  --stat-pos: #196e30; --stat-neg: #9a1818;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.72;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px 72px;
+}
+
+/* ─── Masthead ─── */
+.masthead {
+  padding: 52px 0 36px;
+  border-bottom: 2.5px solid var(--accent);
+  margin-bottom: 52px;
+}
+.mast-eye {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.mast-date {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.08;
+  color: var(--title);
+  margin-bottom: 14px;
+  text-wrap: balance;
+}
+.mast-meta {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  margin-bottom: 18px;
+  letter-spacing: 0.03em;
+}
+.mast-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.track-chip {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  color: var(--dim);
+}
+
+/* ─── Tags ─── */
+.tag {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+}
+.tag-interp  { background: var(--tag-interp-bg);  color: var(--tag-interp-text); }
+.tag-security{ background: var(--tag-security-bg); color: var(--tag-security-text); }
+.tag-dllm    { background: var(--tag-dllm-bg);    color: var(--tag-dllm-text); }
+.tag-peer    { background: var(--tag-peer-bg);    color: var(--tag-peer-text); }
+
+/* ─── Full-treatment paper cards (items 1–3) ─── */
+.paper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  margin-bottom: 52px;
+  overflow: hidden;
+}
+.paper-hero {
+  background: var(--hero-bg);
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  border-bottom: 1px solid var(--border);
+}
+.paper-hero svg { width: 100%; height: auto; display: block; }
+.paper-hero figcaption {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 10px;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  color: var(--dim);
+  padding: 9px 22px 11px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  line-height: 1.6;
+}
+.paper-body {
+  padding: 26px 28px 30px;
+}
+.paper-hdr {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.paper-rank {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  border: 1px solid var(--border);
+  padding: 2px 7px;
+}
+.paper-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.22;
+  margin-bottom: 6px;
+  text-wrap: balance;
+}
+.paper-title a { color: var(--title); text-decoration: none; }
+.paper-title a:hover { color: var(--link); }
+.paper-byline {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 10.5px;
+  color: var(--dim);
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+.paper-hook {
+  font-size: 17px;
+  line-height: 1.72;
+  margin-bottom: 14px;
+}
+.paper-detail {
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 1.68;
+  color: var(--dim);
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  margin-top: 2px;
+}
+.paper-detail strong { color: var(--text); font-weight: 600; }
+
+/* ─── Section label between groups ─── */
+.group-label {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 9px;
+  margin-bottom: 30px;
+  margin-top: 8px;
+}
+
+/* ─── Mid-tier cards (items 4–10) ─── */
+.mid {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  margin-bottom: 26px;
+  overflow: hidden;
+}
+.mid-hero {
+  background: var(--hero-bg);
+  line-height: 0;
+  border-bottom: 1px solid var(--border);
+}
+.mid-hero svg { width: 100%; height: auto; display: block; }
+.mid-body { padding: 16px 22px 20px; }
+.mid-hdr {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+.mid-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  text-wrap: balance;
+}
+.mid-title a { color: var(--title); text-decoration: none; }
+.mid-title a:hover { color: var(--link); }
+.mid-summary {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--text);
+}
+.mid-summary strong { font-weight: 600; color: var(--title); }
+
+/* ─── Notes footer ─── */
+.notes {
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+  margin-top: 48px;
+}
+.notes-hed {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+.notes ul { list-style: none; }
+.notes li {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--dim);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  padding-left: 14px;
+  position: relative;
+}
+.notes li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+</style>
+
+<!-- ═══════════════════════════════════════════
+     MASTHEAD
+═══════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="mast-eye">Research Radar</div>
+  <div class="mast-date">August 22, 2026</div>
+  <div class="mast-meta">1 peer-reviewed · 9 preprints &nbsp;·&nbsp; Window: Aug 13–22, 2026 &nbsp;·&nbsp; arXiv · HF Daily · GitHub trackers</div>
+  <div class="mast-tracks">
+    <span class="track-chip">Mech Interp</span>
+    <span class="track-chip">AI Security</span>
+    <span class="track-chip">Text Diffusion LMs</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     PAPER 01 — Bounded Agents
+═══════════════════════════════════════════ -->
+<article class="paper">
+  <figure class="paper-hero">
+    <svg viewBox="0 0 660 270" xmlns="http://www.w3.org/2000/svg" aria-label="Bounded Agents: Agentic Principal Chain reduces data exfiltration from 100% to 0%">
+      <rect width="660" height="270" fill="#fff"/>
+      <!-- Panel labels -->
+      <text x="152" y="22" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle" letter-spacing="1.5">WITHOUT APC</text>
+      <text x="510" y="22" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle" letter-spacing="1.5">WITH APC</text>
+      <!-- Divider -->
+      <line x1="330" y1="12" x2="330" y2="210" stroke="#e0dbd5" stroke-width="1"/>
+
+      <!-- LEFT PANEL: Unbound -->
+      <!-- Nodes -->
+      <rect x="18" y="34" width="58" height="26" rx="2" fill="#f4f3f0" stroke="#ccc" stroke-width="1"/>
+      <text x="47" y="51" font-family="Georgia,serif" font-size="11" fill="#444" text-anchor="middle">User</text>
+      <rect x="98" y="34" width="88" height="26" rx="2" fill="#f4f3f0" stroke="#ccc" stroke-width="1"/>
+      <text x="142" y="51" font-family="Georgia,serif" font-size="11" fill="#444" text-anchor="middle">Orchestrator</text>
+      <rect x="212" y="34" width="78" height="26" rx="2" fill="#f4f3f0" stroke="#ccc" stroke-width="1"/>
+      <text x="251" y="51" font-family="Georgia,serif" font-size="11" fill="#444" text-anchor="middle">Sub-agent</text>
+      <!-- Arrows -->
+      <line x1="76" y1="47" x2="98" y2="47" stroke="#aaa" stroke-width="1.5"/>
+      <polygon points="98,43 98,51 104,47" fill="#aaa"/>
+      <line x1="186" y1="47" x2="212" y2="47" stroke="#aaa" stroke-width="1.5"/>
+      <polygon points="212,43 212,51 218,47" fill="#aaa"/>
+
+      <!-- Actions (red, exfiltration succeeds) -->
+      <rect x="60" y="78" width="100" height="22" rx="1" fill="#fff5f5" stroke="#e0a0a0" stroke-width="1"/>
+      <text x="110" y="93" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle">read_file("secret")</text>
+      <rect x="178" y="78" width="108" height="22" rx="1" fill="#fff5f5" stroke="#e0a0a0" stroke-width="1"/>
+      <text x="232" y="93" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle">send_email(data)</text>
+      <!-- Connecting arrow between actions -->
+      <line x1="160" y1="89" x2="178" y2="89" stroke="#c23b22" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <polygon points="178,86 178,92 184,89" fill="#c23b22"/>
+
+      <!-- Lines from agent down to actions -->
+      <line x1="251" y1="60" x2="251" y2="78" stroke="#ccc" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="251" y1="78" x2="232" y2="78" stroke="#ccc" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="110" y1="100" x2="110" y2="108" stroke="#ccc" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="232" y1="100" x2="232" y2="108" stroke="#ccc" stroke-width="1" stroke-dasharray="3,2"/>
+
+      <!-- Exfiltration result -->
+      <rect x="60" y="112" width="226" height="28" rx="2" fill="#fce8e8" stroke="#c23b22" stroke-width="1.5"/>
+      <text x="173" y="130" font-family="Georgia,serif" font-size="12" fill="#9a1818" text-anchor="middle" font-weight="bold">✗ Data exfiltrated</text>
+
+      <!-- RIGHT PANEL: APC-bounded -->
+      <!-- Nodes -->
+      <rect x="348" y="34" width="58" height="26" rx="2" fill="#f4f3f0" stroke="#ccc" stroke-width="1"/>
+      <text x="377" y="51" font-family="Georgia,serif" font-size="11" fill="#444" text-anchor="middle">User</text>
+      <rect x="428" y="34" width="100" height="26" rx="2" fill="#e8f0fc" stroke="#1e4096" stroke-width="1.5"/>
+      <text x="478" y="51" font-family="Georgia,serif" font-size="11" fill="#1e4096" text-anchor="middle">Orchestrator+APC</text>
+      <rect x="550" y="34" width="78" height="26" rx="2" fill="#f4f3f0" stroke="#ccc" stroke-width="1"/>
+      <text x="589" y="51" font-family="Georgia,serif" font-size="11" fill="#444" text-anchor="middle">Sub-agent</text>
+      <!-- Auth token on arrow -->
+      <line x1="406" y1="47" x2="428" y2="47" stroke="#1e4096" stroke-width="1.5"/>
+      <polygon points="428,43 428,51 434,47" fill="#1e4096"/>
+      <line x1="528" y1="47" x2="550" y2="47" stroke="#1e4096" stroke-width="1.5"/>
+      <polygon points="550,43 550,51 556,47" fill="#1e4096"/>
+      <text x="417" y="44" font-family="Georgia,serif" font-size="8" fill="#1e4096">scope:read</text>
+      <text x="539" y="44" font-family="Georgia,serif" font-size="8" fill="#1e4096">scope:read</text>
+
+      <!-- Actions (right side) -->
+      <rect x="390" y="78" width="100" height="22" rx="1" fill="#eef8ee" stroke="#196e30" stroke-width="1"/>
+      <text x="440" y="93" font-family="Georgia,serif" font-size="10" fill="#1a5e30" text-anchor="middle">read_file("secret") ✓</text>
+      <rect x="505" y="78" width="108" height="22" rx="1" fill="#fff5f5" stroke="#e0a0a0" stroke-width="1"/>
+      <text x="559" y="93" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle">send_email(data)</text>
+
+      <!-- APC enforcement block -->
+      <line x1="490" y1="89" x2="505" y2="89" stroke="#ccc" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <polygon points="505,86 505,92 511,89" fill="#ccc"/>
+      <!-- APC intercept -->
+      <rect x="490" y="106" width="130" height="22" rx="2" fill="#e8f0fc" stroke="#1e4096" stroke-width="1.5"/>
+      <text x="555" y="121" font-family="Georgia,serif" font-size="10" fill="#1e4096" text-anchor="middle">APC: scope violation</text>
+      <line x1="559" y1="100" x2="559" y2="106" stroke="#1e4096" stroke-width="1" stroke-dasharray="2,2"/>
+
+      <!-- BLOCKED result -->
+      <rect x="390" y="136" width="226" height="28" rx="2" fill="#eef8ee" stroke="#196e30" stroke-width="1.5"/>
+      <text x="503" y="154" font-family="Georgia,serif" font-size="12" fill="#196e30" text-anchor="middle" font-weight="bold">✓ Exfiltration blocked</text>
+
+      <!-- Bottom stat bar -->
+      <rect x="18" y="188" width="624" height="68" fill="#fafaf8" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="330" y="208" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="middle" letter-spacing="0.05em">DATA EXFILTRATION ATTACK SUCCESS RATE</text>
+      <text x="180" y="244" font-family="Georgia,serif" font-size="28" fill="#9a1818" text-anchor="middle" font-weight="bold">100%</text>
+      <text x="330" y="244" font-family="Georgia,serif" font-size="22" fill="#bbb" text-anchor="middle">→</text>
+      <text x="460" y="244" font-family="Georgia,serif" font-size="28" fill="#196e30" text-anchor="middle" font-weight="bold">0%</text>
+      <text x="575" y="236" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="middle">0.05 ms</text>
+      <text x="575" y="250" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="middle">auth overhead</text>
+    </svg>
+    <figcaption>Left: An unbound agent chain permits read_file → send_email to form an exfiltration path — no single action is unauthorized, but the combination is. Right: The Agentic Principal Chain (APC) attaches signed scope state at each delegation hop; the send_email call fails a scope check and is intercepted before execution. Result: data exfiltration ASR drops from 100% to 0%.</figcaption>
+  </figure>
+  <div class="paper-body">
+    <div class="paper-hdr">
+      <span class="paper-rank">01</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.15888">Bounded Agents: Delegation Security for Multi-Agent AI Systems</a></h2>
+    <div class="paper-byline">arXiv · August 18–19, 2026</div>
+    <p class="paper-hook">Most LLM agent security checks operate action-by-action — but the most dangerous attacks chain two individually-permitted actions into a prohibited outcome: read a confidential file, then send it via email. Bounded Agents stops this class of attack by tracking authorization state across the entire delegation trajectory, not just at each individual action boundary.</p>
+    <p class="paper-detail">
+      The paper introduces the <strong>Agentic Principal Chain (APC)</strong>, a runtime mechanism that attaches signed session-level state to every inter-agent delegation: principal identity, scope, delegation budget, declared intent, and action history. Six-condition enforcement at each step prevents any combination of individually-allowed actions from yielding a prohibited outcome — the key contribution over per-action checks. Benchmark results: data exfiltration attacks reduced from <strong>100% → 0%</strong> under complete restrictions; 140 of 200 stealthy attacks blocked; AgentDojo exfiltration rate → 0%; utility cost 8.6–13.9 pp; authorization overhead <strong>0.05 ms median</strong> — negligible in deployed settings.
+    </p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════
+     PAPER 02 — Numerical Reasoning Mech Interp
+═══════════════════════════════════════════ -->
+<article class="paper">
+  <figure class="paper-hero">
+    <svg viewBox="0 0 660 258" xmlns="http://www.w3.org/2000/svg" aria-label="Mechanistic Interpretability of LLaMA 3.1 8B: linear probe accuracy for first-difference feature rising across layers, activation patching isolating induction circuit">
+      <rect width="660" height="258" fill="#fff"/>
+
+      <!-- Input sequence -->
+      <text x="18" y="22" font-family="Georgia,serif" font-size="9" fill="#999" letter-spacing="1.5">INPUT SEQUENCE</text>
+      <rect x="18" y="30" width="624" height="32" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="88" y="51" font-family="Georgia,serif" font-size="19" fill="#444" text-anchor="middle">1</text>
+      <text x="178" y="51" font-family="Georgia,serif" font-size="19" fill="#444" text-anchor="middle">4</text>
+      <text x="268" y="51" font-family="Georgia,serif" font-size="19" fill="#444" text-anchor="middle">9</text>
+      <text x="358" y="51" font-family="Georgia,serif" font-size="19" fill="#444" text-anchor="middle">16</text>
+      <text x="448" y="51" font-family="Georgia,serif" font-size="19" fill="#444" text-anchor="middle">25</text>
+      <text x="578" y="51" font-family="Georgia,serif" font-size="19" fill="#1e4096" text-anchor="middle" font-weight="bold">?</text>
+      <line x1="490" y1="46" x2="530" y2="46" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <!-- First difference row -->
+      <text x="18" y="90" font-family="Georgia,serif" font-size="9" fill="#999" letter-spacing="1.5">FIRST DIFFERENCES (recovered by linear probe, mid-layers)</text>
+      <text x="133" y="107" font-family="Georgia,serif" font-size="16" fill="#1e4096" text-anchor="middle">3</text>
+      <text x="223" y="107" font-family="Georgia,serif" font-size="16" fill="#1e4096" text-anchor="middle">5</text>
+      <text x="313" y="107" font-family="Georgia,serif" font-size="16" fill="#1e4096" text-anchor="middle">7</text>
+      <text x="403" y="107" font-family="Georgia,serif" font-size="16" fill="#1e4096" text-anchor="middle">9</text>
+      <text x="510" y="107" font-family="Georgia,serif" font-size="13" fill="#1e4096" text-anchor="middle">+2 pattern</text>
+      <!-- Arrows from sequence to first-diff -->
+      <line x1="133" y1="62" x2="133" y2="96" stroke="#1e4096" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="223" y1="62" x2="223" y2="96" stroke="#1e4096" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="313" y1="62" x2="313" y2="96" stroke="#1e4096" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="403" y1="62" x2="403" y2="96" stroke="#1e4096" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+
+      <!-- Layer probe accuracy chart -->
+      <text x="18" y="130" font-family="Georgia,serif" font-size="9" fill="#999" letter-spacing="1.5">LINEAR PROBE ACCURACY FOR FIRST-DIFFERENCE FEATURE (across 32 layers)</text>
+
+      <!-- Chart area -->
+      <rect x="18" y="136" width="420" height="100" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <!-- Y axis labels -->
+      <text x="14" y="142" font-family="Georgia,serif" font-size="8" fill="#aaa" text-anchor="end">100%</text>
+      <text x="14" y="186" font-family="Georgia,serif" font-size="8" fill="#aaa" text-anchor="end">50%</text>
+      <text x="14" y="233" font-family="Georgia,serif" font-size="8" fill="#aaa" text-anchor="end">0%</text>
+      <!-- Grid line -->
+      <line x1="18" y1="186" x2="438" y2="186" stroke="#e0dbd5" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+      <!-- Probe accuracy curve (rising sigmoid from L1 to ~L14, plateau at ~90%) -->
+      <polyline
+        points="28,228 41,225 54,220 67,212 80,200 93,186 106,172 119,156 132,148 145,143 158,140 171,139 184,138 197,138 210,138 223,138 236,138 249,138 262,138 275,138 288,138 301,138 314,138 327,139 340,139 353,139 366,139 379,139 392,139 405,139 418,139 430,139"
+        fill="none" stroke="#1e4096" stroke-width="2.5"/>
+      <!-- Highlight plateau region -->
+      <rect x="171" y="136" width="259" height="100" fill="#e8f0fc" opacity="0.25"/>
+      <text x="300" y="175" font-family="Georgia,serif" font-size="10" fill="#1e4096" text-anchor="middle" font-style="italic">feature stabilized</text>
+      <text x="300" y="190" font-family="Georgia,serif" font-size="10" fill="#1e4096" text-anchor="middle">≥ 88% accuracy</text>
+
+      <!-- Layer tick labels -->
+      <text x="28" y="243" font-family="Georgia,serif" font-size="8" fill="#aaa" text-anchor="middle">L1</text>
+      <text x="158" y="243" font-family="Georgia,serif" font-size="8" fill="#aaa" text-anchor="middle">L8</text>
+      <text x="261" y="243" font-family="Georgia,serif" font-size="8" fill="#aaa" text-anchor="middle">L16</text>
+      <text x="365" y="243" font-family="Georgia,serif" font-size="8" fill="#aaa" text-anchor="middle">L24</text>
+      <text x="430" y="243" font-family="Georgia,serif" font-size="8" fill="#aaa" text-anchor="middle">L32</text>
+
+      <!-- Activation patching result panel -->
+      <rect x="460" y="136" width="182" height="100" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="551" y="157" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle" letter-spacing="1">ACTIVATION PATCHING</text>
+      <text x="551" y="177" font-family="Georgia,serif" font-size="11" fill="#444" text-anchor="middle">Isolated circuit:</text>
+      <text x="551" y="195" font-family="Georgia,serif" font-size="11" fill="#1e4096" text-anchor="middle" font-style="italic">induction-like heads</text>
+      <text x="551" y="213" font-family="Georgia,serif" font-size="11" fill="#444" text-anchor="middle">retrieve Δ, add in</text>
+      <text x="551" y="229" font-family="Georgia,serif" font-size="11" fill="#444" text-anchor="middle">late layers →</text>
+      <text x="551" y="245" font-family="Georgia,serif" font-size="14" fill="#196e30" text-anchor="middle" font-weight="bold">predicts 36</text>
+    </svg>
+    <figcaption>Linear probe accuracy for the first-difference feature across LLaMA 3.1-8B's 32 layers — the representation forms in early-to-mid layers and stabilises at ≥88% accuracy by L14 without explicit supervision. Activation patching (right panel) isolates an induction-like circuit that retrieves the latent first-difference and adds the offset in late layers to generate the correct next value.</figcaption>
+  </figure>
+  <div class="paper-body">
+    <div class="paper-hdr">
+      <span class="paper-rank">02</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.18419">Mechanistic Interpretability of Structure-Aware Numerical Reasoning in LLaMA 3.1 8B</a></h2>
+    <div class="paper-byline">Rahul Chowdhury, Timothy A Rupprecht, Senhao Cao, Jiahao Liu, Octavia Camps, David Bau, Pu Zhao, Yanzhi Wang · arXiv · August 20, 2026</div>
+    <p class="paper-hook">When LLaMA 3.1-8B extends a number sequence, what is it actually computing? This paper gives the first mechanistic answer: the model learns to represent first differences as a linearly recoverable latent feature — without any supervision signal for that structure — and retrieves it via a circuit that looks structurally like an induction head operating over latent differences rather than raw tokens.</p>
+    <p class="paper-detail">
+      <strong>Linear probing</strong> across all 32 layers reveals that a "first-difference" representation forms in early-to-mid layers and stabilises at ≥88% probe accuracy by layer 14 — the model is computing the differences between consecutive sequence values as an internal representation, not as an explicit output. <strong>Activation patching</strong> then isolates the circuit: structurally induction-like attention heads retrieve the relevant first-difference from the preceding positions and apply the offset in late layers to produce the predicted next value. This is the first mech-interp study demonstrating that LLaMA 3.1-8B encodes <em>latent structural patterns</em> (not token-level statistics) for numerical sequence prediction, with both the representation and the causal circuit identified.
+    </p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════
+     PAPER 03 — HarnessRisk
+═══════════════════════════════════════════ -->
+<article class="paper">
+  <figure class="paper-hero">
+    <svg viewBox="0 0 660 248" xmlns="http://www.w3.org/2000/svg" aria-label="HarnessRisk: ASR vs utility across 6 agent lifecycle phases; same model shows 4.3x safety difference by deployment context">
+      <rect width="660" height="248" fill="#fff"/>
+
+      <!-- Title row -->
+      <text x="18" y="18" font-family="Georgia,serif" font-size="9" fill="#999" letter-spacing="1.5">SIX LIFECYCLE PHASES — SAME MODEL, SAME TASK UTILITY, VERY DIFFERENT ATTACK SUCCESS</text>
+
+      <!-- Phase boxes -->
+      <!-- Phase 1: Config -->
+      <rect x="18" y="26" width="93" height="34" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="64" y="39" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">Harness</text>
+      <text x="64" y="52" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">Configuration</text>
+
+      <!-- Phase 2: Extend -->
+      <rect x="120" y="26" width="93" height="34" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="166" y="39" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">Capability</text>
+      <text x="166" y="52" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">Extension</text>
+
+      <!-- Phase 3: Runtime (highest ASR — highlighted) -->
+      <rect x="222" y="26" width="93" height="34" rx="2" fill="#fce8e8" stroke="#c23b22" stroke-width="1.5"/>
+      <text x="268" y="39" font-family="Georgia,serif" font-size="9" fill="#8a2020" text-anchor="middle">Runtime</text>
+      <text x="268" y="52" font-family="Georgia,serif" font-size="9" fill="#8a2020" text-anchor="middle">Operation</text>
+
+      <!-- Phase 4: State -->
+      <rect x="324" y="26" width="93" height="34" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="370" y="39" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">State</text>
+      <text x="370" y="52" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">Persistence</text>
+
+      <!-- Phase 5: Control -->
+      <rect x="426" y="26" width="93" height="34" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="472" y="39" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">Action</text>
+      <text x="472" y="52" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">Control</text>
+
+      <!-- Phase 6: Recovery -->
+      <rect x="528" y="26" width="114" height="34" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="585" y="39" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">Incident</text>
+      <text x="585" y="52" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">Recovery</text>
+
+      <!-- Arrow between phases -->
+      <polygon points="113,43 117,39 117,47" fill="#bbb"/>
+      <polygon points="215,43 219,39 219,47" fill="#bbb"/>
+      <polygon points="317,43 321,39 321,47" fill="#bbb"/>
+      <polygon points="419,43 423,39 423,47" fill="#bbb"/>
+      <polygon points="521,43 525,39 525,47" fill="#bbb"/>
+
+      <!-- Chart area -->
+      <text x="18" y="86" font-family="Georgia,serif" font-size="9" fill="#999" letter-spacing="1.2">ATTACK SUCCESS RATE (ASR) PER PHASE</text>
+
+      <!-- Chart background -->
+      <rect x="18" y="92" width="624" height="120" fill="#fafaf8" stroke="#e0dbd5" stroke-width="1"/>
+      <!-- Y axis labels -->
+      <text x="14" y="96" font-family="Georgia,serif" font-size="8" fill="#bbb" text-anchor="end">100%</text>
+      <text x="14" y="152" font-family="Georgia,serif" font-size="8" fill="#bbb" text-anchor="end">50%</text>
+      <text x="14" y="208" font-family="Georgia,serif" font-size="8" fill="#bbb" text-anchor="end">0%</text>
+      <!-- Grid lines -->
+      <line x1="18" y1="152" x2="642" y2="152" stroke="#e8e4e0" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+      <!-- Bars (6 phases): ASR values roughly 15%, 35%, 81%, 47%, 25%, 31% -->
+      <!-- Phase 1: 15.2% ASR -->
+      <rect x="47" y="191" width="36" height="17" fill="#e0a0a0" rx="1"/>
+      <text x="65" y="188" font-family="Georgia,serif" font-size="9" fill="#8a2020" text-anchor="middle">15%</text>
+
+      <!-- Phase 2: 35% ASR -->
+      <rect x="149" y="171" width="36" height="37" fill="#e08080" rx="1"/>
+      <text x="167" y="168" font-family="Georgia,serif" font-size="9" fill="#8a2020" text-anchor="middle">35%</text>
+
+      <!-- Phase 3: 80.87% ASR (highlighted) -->
+      <rect x="251" y="114" width="36" height="94" fill="#c23b22" rx="1"/>
+      <text x="269" y="110" font-family="Georgia,serif" font-size="10" fill="#c23b22" text-anchor="middle" font-weight="bold">80.9%</text>
+
+      <!-- Phase 4: 47% ASR -->
+      <rect x="353" y="155" width="36" height="53" fill="#e06060" rx="1"/>
+      <text x="371" y="152" font-family="Georgia,serif" font-size="9" fill="#8a2020" text-anchor="middle">47%</text>
+
+      <!-- Phase 5: 25% ASR -->
+      <rect x="455" y="182" width="36" height="26" fill="#e0a0a0" rx="1"/>
+      <text x="473" y="179" font-family="Georgia,serif" font-size="9" fill="#8a2020" text-anchor="middle">25%</text>
+
+      <!-- Phase 6: 31% ASR -->
+      <rect x="565" y="175" width="36" height="33" fill="#e09090" rx="1"/>
+      <text x="583" y="172" font-family="Georgia,serif" font-size="9" fill="#8a2020" text-anchor="middle">31%</text>
+
+      <!-- Utility line (stays ~87-97% across all phases) -->
+      <polyline points="65,96 167,95 269,97 371,96 473,95 583,95" fill="none" stroke="#196e30" stroke-width="2" stroke-dasharray="5,3"/>
+      <text x="630" y="95" font-family="Georgia,serif" font-size="9" fill="#196e30">~90%</text>
+      <text x="622" y="107" font-family="Georgia,serif" font-size="8.5" fill="#196e30">utility</text>
+
+      <!-- Key callout -->
+      <rect x="18" y="225" width="624" height="18" rx="1" fill="#fce8e8"/>
+      <text x="330" y="238" font-family="Georgia,serif" font-size="11" fill="#8a2020" text-anchor="middle" font-style="italic">Same model · Same task · 4.3× attack success rate difference by harness deployment context</text>
+    </svg>
+    <figcaption>ASR across six lifecycle phases for 128 adversarial test cases embedded in untrusted workflow artifacts. Utility (green dashed line) stays near 90% across all phases — the model remains helpful — while ASR swings from 15% at Harness Configuration to 80.9% during Runtime Operation. High-risk detection (92–98% accuracy) did not prevent successful attacks in the Runtime phase.</figcaption>
+  </figure>
+  <div class="paper-body">
+    <div class="paper-hdr">
+      <span class="paper-rank">03</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+    <h2 class="paper-title"><a href="https://arxiv.org/abs/2608.17597">HarnessRisk: A Lifecycle-Oriented Benchmark for Agent Harness Safety</a></h2>
+    <div class="paper-byline">arXiv · August 19, 2026</div>
+    <p class="paper-hook">Which deployment configuration you use matters more than which model you pick — the same LLM showed a 4.3× difference in attack success rate depending purely on how its agent harness was configured. HarnessRisk is the first benchmark to treat agent safety as a full-lifecycle property, surfacing vulnerabilities at six phases from initial setup through incident recovery.</p>
+    <p class="paper-detail">
+      The benchmark comprises <strong>128 test cases</strong> that pair benign user objectives with adversarial instructions embedded in untrusted workflow artifacts, evaluated across six phases: Harness Configuration, Capability Extension, Runtime Operation, State Persistence, Action Control, and Incident Recovery. ASR ranged from <strong>12.6% to 80.87%</strong> while task utility held at 75–97.6% — the model remained capable even as it was being exploited. High-risk detection reached 92–98% accuracy (GPT-5.4 judge, κ=0.83) yet <strong>31–55% of attacks still succeeded</strong>, confirming that detection performance and attack prevention operate independently. Runtime Operation was the most dangerous phase; roughly 38–59% of useful executions involved unsafe behaviour.
+    </p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════
+     MID-TIER SECTION
+═══════════════════════════════════════════ -->
+<div class="group-label">Items 4–10 · Also notable</div>
+
+<!-- ─── 04 PolicyGuide ─── -->
+<article class="mid">
+  <figure class="mid-hero">
+    <svg viewBox="0 0 660 148" xmlns="http://www.w3.org/2000/svg" aria-label="PolicyGuide: NL policy converted to workflow graph, verifier intercepts unauthorized tool calls">
+      <rect width="660" height="148" fill="#fff"/>
+      <!-- Step boxes -->
+      <rect x="18" y="28" width="110" height="40" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="73" y="44" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="middle">NL Policy</text>
+      <text x="73" y="58" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">"Always confirm before…"</text>
+
+      <polygon points="133,48 139,44 139,52" fill="#bbb"/>
+      <line x1="128" y1="48" x2="139" y2="48" stroke="#bbb" stroke-width="1.5"/>
+
+      <rect x="143" y="28" width="110" height="40" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="198" y="44" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="middle">Graph Compiler</text>
+      <text x="198" y="58" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">offline, once</text>
+
+      <polygon points="258,48 264,44 264,52" fill="#bbb"/>
+      <line x1="253" y1="48" x2="264" y2="48" stroke="#bbb" stroke-width="1.5"/>
+
+      <rect x="268" y="18" width="120" height="56" rx="2" fill="#e8f0fc" stroke="#1e4096" stroke-width="1.5"/>
+      <text x="328" y="38" font-family="Georgia,serif" font-size="10" fill="#1e4096" text-anchor="middle">Workflow Graph</text>
+      <text x="328" y="52" font-family="Georgia,serif" font-size="9" fill="#1e4096" text-anchor="middle">step1 → step2 → step3</text>
+      <text x="328" y="66" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">persistent, verifiable</text>
+
+      <polygon points="393,48 399,44 399,52" fill="#bbb"/>
+      <line x1="388" y1="48" x2="399" y2="48" stroke="#bbb" stroke-width="1.5"/>
+
+      <rect x="403" y="28" width="110" height="40" rx="2" fill="#e8f0fc" stroke="#1e4096" stroke-width="1.5"/>
+      <text x="458" y="44" font-family="Georgia,serif" font-size="10" fill="#1e4096" text-anchor="middle">Runtime Verifier</text>
+      <text x="458" y="58" font-family="Georgia,serif" font-size="9" fill="#1e4096" text-anchor="middle">tracks state</text>
+
+      <polygon points="518,48 524,44 524,52" fill="#bbb"/>
+      <line x1="513" y1="48" x2="524" y2="48" stroke="#bbb" stroke-width="1.5"/>
+
+      <rect x="528" y="28" width="114" height="40" rx="2" fill="#fce8e8" stroke="#c23b22" stroke-width="1.5"/>
+      <text x="585" y="44" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle">Unauthorized call</text>
+      <text x="585" y="58" font-family="Georgia,serif" font-size="10" fill="#c23b22" text-anchor="middle" font-weight="bold">INTERCEPTED</text>
+
+      <!-- CRAFT label -->
+      <text x="458" y="90" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">Robust to CRAFT adversarial attacks</text>
+      <!-- Stat bar -->
+      <rect x="18" y="110" width="624" height="30" fill="#fafaf8" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="150" y="130" font-family="Georgia,serif" font-size="11" fill="#555" text-anchor="middle">Pass@4 score: 0.42 → 0.62</text>
+      <text x="380" y="130" font-family="Georgia,serif" font-size="11" fill="#555" text-anchor="middle">Telecom domain: 0.193 → 0.614</text>
+      <text x="570" y="130" font-family="Georgia,serif" font-size="11" fill="#555" text-anchor="middle">Process validity: 56.2%</text>
+    </svg>
+  </figure>
+  <div class="mid-body">
+    <div class="mid-hdr">
+      <span class="paper-rank">04</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.19861">PolicyGuide: From Guarding One Action to Guiding the Whole Workflow for Policy-Compliant LLM Agents</a></h3>
+    <p class="mid-summary">Converts natural-language policies into persistent workflow graphs <em>offline</em>, then deploys a runtime verifier that tracks procedural state and intercepts unauthorized tool calls before execution — moving safety from per-action checks to whole-workflow enforcement. Demonstrated robustness against <strong>CRAFT adversarial attacks</strong>; Mean Pass@4 improved from 0.42 to 0.62 across three customer-service domains; telecom domain jumped from 0.193 to 0.614. Submitted August 21, 2026.</p>
+  </div>
+</article>
+
+<!-- ─── 05 DeepSeek Harness Security ─── -->
+<article class="mid">
+  <figure class="mid-hero">
+    <svg viewBox="0 0 660 140" xmlns="http://www.w3.org/2000/svg" aria-label="Security Assessment of DeepSeek Harness: 14560 executions, hidden unicode achieves 25.5% injection success vs 0% in plain text">
+      <rect width="660" height="140" fill="#fff"/>
+      <!-- Attack surface overview -->
+      <text x="18" y="18" font-family="Georgia,serif" font-size="9" fill="#999" letter-spacing="1.2">14,560 CONTROLLED EXECUTIONS · 16 CHANNELS · 35 OBJECTIVES · 12 ATTACK VARIANTS</text>
+
+      <!-- Attack vector bars -->
+      <text x="18" y="38" font-family="Georgia,serif" font-size="10" fill="#555">Overall injection ASR:</text>
+      <rect x="200" y="28" width="34" height="16" rx="1" fill="#e0a0a0"/>
+      <text x="217" y="40" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle">5.6%</text>
+      <text x="250" y="40" font-family="Georgia,serif" font-size="10" fill="#888">(text) /</text>
+      <rect x="290" y="28" width="34" height="16" rx="1" fill="#e07070"/>
+      <text x="307" y="40" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle">5.3%</text>
+      <text x="340" y="40" font-family="Georgia,serif" font-size="10" fill="#888">(LLM judge)</text>
+
+      <!-- Key findings -->
+      <rect x="18" y="54" width="290" height="26" rx="2" fill="#fce8e8" stroke="#c23b22" stroke-width="1.5"/>
+      <text x="163" y="64" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle" font-weight="bold">Hidden Unicode in files:</text>
+      <text x="163" y="75" font-family="Georgia,serif" font-size="14" fill="#c23b22" text-anchor="middle" font-weight="bold">25.5% success</text>
+
+      <rect x="320" y="54" width="210" height="26" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="425" y="64" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="middle">vs. plain text mode:</text>
+      <text x="425" y="75" font-family="Georgia,serif" font-size="14" fill="#aaa" text-anchor="middle">0.0%</text>
+
+      <rect x="542" y="54" width="100" height="26" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="592" y="64" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="middle">Skills-based:</text>
+      <text x="592" y="75" font-family="Georgia,serif" font-size="13" fill="#8a2020" text-anchor="middle">15.2%</text>
+
+      <!-- Objective breakdown -->
+      <text x="18" y="100" font-family="Georgia,serif" font-size="10" fill="#555">Easiest objective — control LLM output:</text>
+      <text x="330" y="100" font-family="Georgia,serif" font-size="12" fill="#c23b22" font-weight="bold">35.7%</text>
+      <text x="18" y="118" font-family="Georgia,serif" font-size="10" fill="#555">Hardest objective — trigger sensitive action:</text>
+      <text x="330" y="118" font-family="Georgia,serif" font-size="12" fill="#aaa" font-weight="bold">2.5%</text>
+      <text x="18" y="135" font-family="Georgia,serif" font-size="9" fill="#bbb">DeepSeek Harness evaluated via A.I.G methodology · August 19, 2026</text>
+    </svg>
+  </figure>
+  <div class="mid-body">
+    <div class="mid-hdr">
+      <span class="paper-rank">05</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.16393">Security Assessment of DeepSeek Harness with A.I.G: Evaluating Resistance to Indirect Prompt Injection</a></h3>
+    <p class="mid-summary">14,560 controlled executions across 16 channels, 35 objectives, and 12 attack variants show overall injection success of 5.6% — but with a critical carrier-format asymmetry: <strong>hidden Unicode embedded in files achieves 25.5% success</strong> vs. 0.0% in plain text mode. Controlling LLM output (35.7% ASR) proves far easier than triggering sensitive actions (2.5%). Skills-based injection elevated to 15.2%.</p>
+  </div>
+</article>
+
+<!-- ─── 06 Training Leaves Traces ─── -->
+<article class="mid">
+  <figure class="mid-hero">
+    <svg viewBox="0 0 660 130" xmlns="http://www.w3.org/2000/svg" aria-label="Training Leaves Traces: centered residual branch products verify model lineage at AUROC 1.00, 76x faster than baselines">
+      <rect width="660" height="130" fill="#fff"/>
+      <!-- Ancestor model -->
+      <rect x="240" y="10" width="180" height="30" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="330" y="30" font-family="Georgia,serif" font-size="11" fill="#555" text-anchor="middle">Pre-trained Ancestor Checkpoint</text>
+      <!-- Fork arrows -->
+      <line x1="280" y1="40" x2="180" y2="66" stroke="#aaa" stroke-width="1.5"/>
+      <line x1="380" y1="40" x2="480" y2="66" stroke="#aaa" stroke-width="1.5"/>
+      <!-- Child models -->
+      <rect x="100" y="66" width="160" height="30" rx="2" fill="#e8f0fc" stroke="#1e4096" stroke-width="1"/>
+      <text x="180" y="81" font-family="Georgia,serif" font-size="10" fill="#1e4096" text-anchor="middle">Checkpoint A</text>
+      <text x="180" y="93" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">(fine-tuned, LoRA, quantized…)</text>
+      <rect x="400" y="66" width="160" height="30" rx="2" fill="#e8f0fc" stroke="#1e4096" stroke-width="1"/>
+      <text x="480" y="81" font-family="Georgia,serif" font-size="10" fill="#1e4096" text-anchor="middle">Checkpoint B</text>
+      <text x="480" y="93" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">(fine-tuned, LoRA, quantized…)</text>
+      <!-- Centered residual branch products -->
+      <line x1="260" y1="96" x2="330" y2="108" stroke="#1e4096" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <line x1="400" y1="96" x2="330" y2="108" stroke="#1e4096" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <rect x="240" y="108" width="180" height="18" rx="2" fill="#eef8ee" stroke="#196e30" stroke-width="1.5"/>
+      <text x="330" y="121" font-family="Georgia,serif" font-size="10" fill="#196e30" text-anchor="middle" font-weight="bold">Shared ancestor verified · AUROC 1.00 · 76× faster</text>
+    </svg>
+  </figure>
+  <div class="mid-body">
+    <div class="mid-hdr">
+      <span class="paper-rank">06</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.14929">Training Leaves Traces: Centered Residual Signatures for Language Model Lineage Verification</a></h3>
+    <p class="mid-summary">A data-free, white-box method that detects whether two model checkpoints share a common weight ancestor by computing <strong>centered residual branch products</strong> — a coordinate-free fingerprint of the training lineage. Achieves <strong>AUROC 1.00</strong> on GPT-2 benchmarks; robust to quantization, LoRA merging, fine-tuning, permutation, and reciprocal scaling attacks; <strong>76× faster</strong> than alignment-based baselines. Enables passive model provenance auditing without behavioral testing.</p>
+  </div>
+</article>
+
+<!-- ─── 07 SAEVerbalizer ─── -->
+<article class="mid">
+  <figure class="mid-hero">
+    <svg viewBox="0 0 660 128" xmlns="http://www.w3.org/2000/svg" aria-label="SAEVerbalizer: SAE decoder direction injected into residual stream, fine-tuned layers generate natural language explanations for SAE features">
+      <rect width="660" height="128" fill="#fff"/>
+      <!-- SAE decoder -->
+      <rect x="18" y="26" width="120" height="40" rx="2" fill="#e8f0fc" stroke="#1e4096" stroke-width="1"/>
+      <text x="78" y="44" font-family="Georgia,serif" font-size="10" fill="#1e4096" text-anchor="middle">SAE Decoder</text>
+      <text x="78" y="57" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">direction d_f ∈ ℝⁿ</text>
+      <!-- Arrow -->
+      <line x1="138" y1="46" x2="162" y2="46" stroke="#aaa" stroke-width="1.5"/>
+      <polygon points="162,42 162,50 168,46" fill="#aaa"/>
+      <!-- Residual stream injection -->
+      <rect x="168" y="16" width="150" height="60" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="243" y="38" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">Residual Stream</text>
+      <text x="243" y="52" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">h ← h + α·d_f</text>
+      <text x="243" y="66" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">inject at layer L</text>
+      <!-- Arrow -->
+      <line x1="318" y1="46" x2="342" y2="46" stroke="#aaa" stroke-width="1.5"/>
+      <polygon points="342,42 342,50 348,46" fill="#aaa"/>
+      <!-- Fine-tuned LM -->
+      <rect x="348" y="26" width="140" height="40" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="418" y="44" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">Fine-tuned LM layers</text>
+      <text x="418" y="57" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">trained to verbalize</text>
+      <!-- Arrow -->
+      <line x1="488" y1="46" x2="512" y2="46" stroke="#aaa" stroke-width="1.5"/>
+      <polygon points="512,42 512,50 518,46" fill="#aaa"/>
+      <!-- Output -->
+      <rect x="518" y="18" width="124" height="56" rx="2" fill="#eef8ee" stroke="#196e30" stroke-width="1.5"/>
+      <text x="580" y="38" font-family="Georgia,serif" font-size="10" fill="#196e30" text-anchor="middle">Explanation:</text>
+      <text x="580" y="52" font-family="Georgia,serif" font-size="9" fill="#1a5e30" text-anchor="middle" font-style="italic">"Descriptions of</text>
+      <text x="580" y="64" font-family="Georgia,serif" font-size="9" fill="#1a5e30" text-anchor="middle" font-style="italic">physical danger"</text>
+
+      <!-- Scale label -->
+      <rect x="18" y="90" width="624" height="24" fill="#fafaf8" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="330" y="106" font-family="Georgia,serif" font-size="11" fill="#555" text-anchor="middle">Auto-labels SAE features at scale · explanations match human-annotated quality on interpretability evals</text>
+    </svg>
+  </figure>
+  <div class="mid-body">
+    <div class="mid-hdr">
+      <span class="paper-rank">07</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.13538">SAEVerbalizer: Generating Explanations for Sparse Autoencoder Features via Representation Verbalization</a></h3>
+    <p class="mid-summary">Addresses the SAE auto-interp bottleneck: instead of prompting an LLM to describe what token sets activate a feature, <strong>SAEVerbalizer injects the SAE decoder direction directly into the model's residual stream</strong> and fine-tunes downstream layers to generate a natural-language explanation. Removes the need for token-set curation; evaluation confirms generated explanations match human-annotated quality on automated interpretability metrics. Scales to full-dictionary labeling.</p>
+  </div>
+</article>
+
+<!-- ─── 08 DeMTS ─── -->
+<article class="mid">
+  <figure class="mid-hero">
+    <svg viewBox="0 0 660 128" xmlns="http://www.w3.org/2000/svg" aria-label="DeMTS: denoising trajectory treated as multivariate time series for hallucination detection in diffusion LMs">
+      <rect width="660" height="128" fill="#fff"/>
+      <!-- Denoising trajectory -->
+      <text x="18" y="16" font-family="Georgia,serif" font-size="9" fill="#999" letter-spacing="1.2">DENOISING TRAJECTORY T₀ → T_K (masked diffusion LM)</text>
+
+      <!-- T steps -->
+      <rect x="18" y="24" width="56" height="40" rx="1" fill="#f0ece7" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="46" y="40" font-family="Georgia,serif" font-size="8" fill="#aaa" text-anchor="middle">T₀</text>
+      <text x="46" y="55" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">[MASK]</text>
+
+      <rect x="84" y="24" width="56" height="40" rx="1" fill="#e8e4de" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="112" y="40" font-family="Georgia,serif" font-size="8" fill="#aaa" text-anchor="middle">T₁</text>
+      <text x="112" y="55" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">partial</text>
+
+      <rect x="150" y="24" width="56" height="40" rx="1" fill="#ddd8d0" stroke="#ccc" stroke-width="1"/>
+      <text x="178" y="40" font-family="Georgia,serif" font-size="8" fill="#888" text-anchor="middle">T₂</text>
+      <text x="178" y="55" font-family="Georgia,serif" font-size="9" fill="#666" text-anchor="middle">partial</text>
+
+      <text x="220" y="46" font-family="Georgia,serif" font-size="14" fill="#ccc">···</text>
+
+      <rect x="246" y="24" width="56" height="40" rx="1" fill="#ccc8c0" stroke="#aaa" stroke-width="1"/>
+      <text x="274" y="40" font-family="Georgia,serif" font-size="8" fill="#666" text-anchor="middle">T_K</text>
+      <text x="274" y="55" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">text out</text>
+
+      <!-- Arrow to MTS -->
+      <line x1="305" y1="44" x2="334" y2="44" stroke="#aaa" stroke-width="1.5"/>
+      <polygon points="334,40 334,48 340,44" fill="#aaa"/>
+
+      <!-- MTS representation box -->
+      <rect x="342" y="16" width="148" height="58" rx="2" fill="#e8f0fc" stroke="#1e4096" stroke-width="1.5"/>
+      <text x="416" y="36" font-family="Georgia,serif" font-size="10" fill="#1e4096" text-anchor="middle">MTS representation</text>
+      <text x="416" y="50" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">captures cross-token</text>
+      <text x="416" y="62" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">fault propagation</text>
+
+      <!-- Arrow to classifier -->
+      <line x1="490" y1="44" x2="516" y2="44" stroke="#aaa" stroke-width="1.5"/>
+      <polygon points="516,40 516,48 522,44" fill="#aaa"/>
+
+      <!-- Classifier -->
+      <rect x="522" y="24" width="120" height="40" rx="2" fill="#eef8ee" stroke="#196e30" stroke-width="1.5"/>
+      <text x="582" y="41" font-family="Georgia,serif" font-size="10" fill="#196e30" text-anchor="middle">Hallucination</text>
+      <text x="582" y="55" font-family="Georgia,serif" font-size="10" fill="#196e30" text-anchor="middle">Detected ✓</text>
+
+      <!-- Footnote -->
+      <rect x="18" y="82" width="624" height="38" fill="#fafaf8" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="330" y="98" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">Prior methods compressed trajectories along one dimension (temporal OR token);</text>
+      <text x="330" y="112" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">DeMTS preserves both via learnable latent variables · Evaluated on LLaDA / Dream generation</text>
+    </svg>
+  </figure>
+  <div class="mid-body">
+    <div class="mid-hdr">
+      <span class="paper-rank">08</span>
+      <span class="tag tag-dllm">text-diffusion</span>
+      <span class="tag">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.14632">DeMTS: Denoising Trajectories as Multivariate Time Series for Hallucination Detection in Diffusion Language Models</a></h3>
+    <p class="mid-summary">Frames hallucination detection in masked diffusion LMs as <strong>multivariate time-series classification over the full denoising trajectory</strong> — treating each step as a vector of token-level signals. Prior methods compressed along the temporal or token axis, missing cross-token fault propagation; DeMTS preserves both dimensions through learnable latent variables. Provides the first trajectory-aware hallucination detector for LLaDA/Dream-based generation.</p>
+  </div>
+</article>
+
+<!-- ─── 09 dLLM Multi-Label Classifiers ─── -->
+<article class="mid">
+  <figure class="mid-hero">
+    <svg viewBox="0 0 660 120" xmlns="http://www.w3.org/2000/svg" aria-label="Discrete Diffusion LMs as training-free multi-label classifiers: dLLM-SetScore framework evaluated on 6 datasets, accepted SIAM SDM 2026">
+      <rect width="660" height="120" fill="#fff"/>
+      <!-- Input text -->
+      <rect x="18" y="18" width="130" height="40" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="83" y="36" font-family="Georgia,serif" font-size="10" fill="#555" text-anchor="middle">Input text</text>
+      <text x="83" y="50" font-family="Georgia,serif" font-size="9" fill="#999" text-anchor="middle">"Breaking news…"</text>
+
+      <line x1="148" y1="38" x2="172" y2="38" stroke="#aaa" stroke-width="1.5"/>
+      <polygon points="172,34 172,42 178,38" fill="#aaa"/>
+
+      <!-- Diffusion model -->
+      <rect x="178" y="8" width="170" height="60" rx="2" fill="#e6f4ea" stroke="#1a5e30" stroke-width="1.5"/>
+      <text x="263" y="30" font-family="Georgia,serif" font-size="10" fill="#1a5e30" text-anchor="middle">LLaDA-8B / Dream-7B</text>
+      <text x="263" y="44" font-family="Georgia,serif" font-size="9" fill="#555" text-anchor="middle">dLLM-SetScore:</text>
+      <text x="263" y="57" font-family="Georgia,serif" font-size="9" fill="#555" text-anchor="middle">masked diffusion pseudo-likelihood</text>
+
+      <line x1="348" y1="38" x2="372" y2="38" stroke="#aaa" stroke-width="1.5"/>
+      <polygon points="372,34 372,42 378,38" fill="#aaa"/>
+
+      <!-- Label sets scored -->
+      <rect x="378" y="8" width="140" height="60" rx="2" fill="#f8f7f4" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="448" y="28" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">Score label sets:</text>
+      <text x="448" y="42" font-family="Georgia,serif" font-size="9" fill="#555" text-anchor="middle">P({finance, tech}) = 0.82</text>
+      <text x="448" y="55" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">P({sports}) = 0.12  …</text>
+
+      <line x1="518" y1="38" x2="542" y2="38" stroke="#aaa" stroke-width="1.5"/>
+      <polygon points="542,34 542,42 548,38" fill="#aaa"/>
+
+      <!-- Output labels -->
+      <rect x="548" y="18" width="96" height="40" rx="2" fill="#eef8ee" stroke="#196e30" stroke-width="1.5"/>
+      <text x="596" y="34" font-family="Georgia,serif" font-size="10" fill="#196e30" text-anchor="middle">finance</text>
+      <text x="596" y="48" font-family="Georgia,serif" font-size="10" fill="#196e30" text-anchor="middle">tech</text>
+
+      <!-- Training-free label + datasets -->
+      <rect x="18" y="84" width="624" height="28" fill="#fafaf8" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="200" y="102" font-family="Georgia,serif" font-size="11" fill="#555" text-anchor="middle">No fine-tuning · Zero-shot</text>
+      <text x="450" y="102" font-family="Georgia,serif" font-size="11" fill="#555" text-anchor="middle">6 datasets · SIAM SDM 2026 (peer-reviewed)</text>
+    </svg>
+  </figure>
+  <div class="mid-body">
+    <div class="mid-hdr">
+      <span class="paper-rank">09</span>
+      <span class="tag tag-dllm">text-diffusion</span>
+      <span class="tag tag-peer">SIAM SDM 2026</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.14649">Discrete Diffusion Language Models Are Training-Free Multi-Label Classifiers</a></h3>
+    <p class="mid-summary"><strong>dLLM-SetScore</strong> repurposes LLaDA-8B and Dream-7B as zero-shot multi-label text classifiers by scoring candidate label sets via masked-diffusion pseudo-likelihoods — no task-specific fine-tuning required. Evaluated across six diverse datasets (GoEmotions, Reuters-21578, EURLEX57K, ECtHR Task A, Jigsaw Toxic, AAPD); outperforms BART-MNLI, DeBERTa-NLI, Qwen2.5-7B-Instruct, and SetFit in multiple settings. Peer-reviewed, accepted to <strong>SIAM SDM 2026</strong>.</p>
+  </div>
+</article>
+
+<!-- ─── 10 MemTrapBench ─── -->
+<article class="mid">
+  <figure class="mid-hero">
+    <svg viewBox="0 0 660 120" xmlns="http://www.w3.org/2000/svg" aria-label="MemTrapBench: 1050 multi-turn instances across 4 cognitive trap categories; all memory strategies underperform no-memory baseline">
+      <rect width="660" height="120" fill="#fff"/>
+      <!-- Four categories -->
+      <rect x="18" y="14" width="134" height="50" rx="2" fill="#fce8e8" stroke="#e0a0a0" stroke-width="1"/>
+      <text x="85" y="34" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle">Cognitive Bias</text>
+      <text x="85" y="49" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">anchors to prior</text>
+      <text x="85" y="60" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">irrelevant memory</text>
+
+      <rect x="164" y="14" width="134" height="50" rx="2" fill="#fce8e8" stroke="#e0a0a0" stroke-width="1"/>
+      <text x="231" y="34" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle">Task Boundary</text>
+      <text x="231" y="49" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">old task bleeds</text>
+      <text x="231" y="60" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">into new context</text>
+
+      <rect x="310" y="14" width="134" height="50" rx="2" fill="#fce8e8" stroke="#c23b22" stroke-width="1.5"/>
+      <text x="377" y="34" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle" font-weight="bold">Safety</text>
+      <text x="377" y="49" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">remembered rule</text>
+      <text x="377" y="60" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">anchors wrong action</text>
+
+      <rect x="456" y="14" width="186" height="50" rx="2" fill="#fce8e8" stroke="#e0a0a0" stroke-width="1"/>
+      <text x="549" y="34" font-family="Georgia,serif" font-size="10" fill="#8a2020" text-anchor="middle">Trauma</text>
+      <text x="549" y="49" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">distorted belief from</text>
+      <text x="549" y="60" font-family="Georgia,serif" font-size="9" fill="#aaa" text-anchor="middle">prior negative exchange</text>
+
+      <!-- Key finding -->
+      <rect x="18" y="82" width="624" height="28" fill="#fafaf8" stroke="#e0dbd5" stroke-width="1"/>
+      <text x="330" y="101" font-family="Georgia,serif" font-size="12" fill="#8a2020" text-anchor="middle" font-style="italic">All tested memory strategies underperform no-memory baseline · 1,050 instances · 18–40 turns each</text>
+    </svg>
+  </figure>
+  <div class="mid-body">
+    <div class="mid-hdr">
+      <span class="paper-rank">10</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+    <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.20202">MemTrapBench: Benchmarking Cognitive Traps in LLM Memory Use</a></h3>
+    <p class="mid-summary">1,050 multi-turn dialogue instances (18–40 turns) across four cognitive trap categories — Cognitive Bias, Task Boundary, Safety, and Trauma — test whether accurate, relevant memories can anchor an LLM to an obsolete strategy or distort its beliefs. <strong>All evaluated memory strategies underperformed the no-memory baseline.</strong> Proposes AdaptiveMem, an inference-time system prompt detecting task transitions and strategy fixation; improves +2.5 to +14.9 points. Submitted August 21, 2026.</p>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════
+     NOTES
+═══════════════════════════════════════════ -->
+<section class="notes">
+  <div class="notes-hed">Notes</div>
+  <ul>
+    <li>Papers 1, 3, 4, 5, 6 together define the state of multi-agent and agentic AI security entering late August: attacks are lifecycle-aware, carrier-format matters as much as attack strategy, and delegation chains are a first-class attack surface. Bounded Agents (#1) is the strongest defensive result — trajectory-level enforcement vs. per-action checks.</li>
+    <li>Paper #2 (LLaMA numerical reasoning) and paper #7 (SAEVerbalizer) advance different bottlenecks in mech-interp methodology: #2 adds domain coverage (structured numerical reasoning, not just linguistic or factual tasks); #7 addresses the labeling throughput constraint. Distinct enough to flag separately for weekly roundup.</li>
+    <li>Text diffusion LMs (#8, #9): DeMTS brings hallucination detection tooling to dLLMs; dLLM-SetScore (peer-reviewed SIAM SDM) establishes a new application class — training-free classifiers — for bidirectional masked diffusion models. Both suggest the dLLM ecosystem is maturing beyond generation-only use cases.</li>
+    <li>Aug 20 report covered only 8 items from Aug 14–20, missing several strong Aug 15–19 results (papers #3, #5, #6, #7, #8, #9 here). Today's report recovers those alongside new Aug 21–22 submissions (#1, #4, #10).</li>
+    <li>1 peer-reviewed paper this window (SIAM SDM 2026, #9); 9 preprints; 0 forum/blog.</li>
+  </ul>
+</section>
+{% endraw %}

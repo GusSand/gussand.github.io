@@ -1,0 +1,701 @@
+---
+layout: "radar"
+title: "Research Radar 2026-W36"
+kind: "weekly"
+slug: "2026-W36"
+date: 2026-08-31
+group: "weekly"
+window: "Aug 24–30, 2026 (primary); extended sweep Aug 8–24 to fill gap since W35"
+summary: "Window: Aug 24–30, 2026 (primary); extended sweep Aug 8–24 to fill gap since W35 · Counts: 2 peer-reviewed · 9 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/2372b83f-a54a-40f0-a917-bd05a5386b76"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/weekly/2026-W36.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #f6f6f2;
+  --surface: #efefea;
+  --text: #2a2a2a;
+  --text-dim: #555;
+  --title-color: #111;
+  --border: #d0cfc9;
+  --tag-bg: #e8e7e1;
+  --tag-text: #3a3a3a;
+  --accent-interp: #4a7d98;
+  --accent-security: #b05530;
+  --accent-peer: #527a3a;
+  --accent-dllm: #7a5ba0;
+  --accent-control: #8a6a2a;
+  --link: #4a7d98;
+  --divider: #ccc;
+  --theme-badge-bg: #eee;
+  --theme-badge-text: #444;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --text: #c9c9c9;
+    --text-dim: #888;
+    --title-color: #f0f0f0;
+    --border: #2e2e2e;
+    --tag-bg: #232323;
+    --tag-text: #bbb;
+    --accent-interp: #6a9fb5;
+    --accent-security: #c07040;
+    --accent-peer: #7a9f60;
+    --accent-dllm: #a07ac0;
+    --accent-control: #c09840;
+    --link: #6a9fb5;
+    --divider: #2a2a2a;
+    --theme-badge-bg: #222;
+    --theme-badge-text: #999;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --text: #c9c9c9;
+  --text-dim: #888;
+  --title-color: #f0f0f0;
+  --border: #2e2e2e;
+  --tag-bg: #232323;
+  --tag-text: #bbb;
+  --accent-interp: #6a9fb5;
+  --accent-security: #c07040;
+  --accent-peer: #7a9f60;
+  --accent-dllm: #a07ac0;
+  --accent-control: #c09840;
+  --link: #6a9fb5;
+  --divider: #2a2a2a;
+  --theme-badge-bg: #222;
+  --theme-badge-text: #999;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  padding: 0 16px 80px;
+}
+
+.page {
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+header {
+  padding: 52px 0 32px;
+  border-bottom: 1px solid var(--divider);
+  margin-bottom: 36px;
+}
+
+.radar-label {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--title-color);
+  line-height: 1.2;
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+
+.meta {
+  font-family: "Courier New", monospace;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.meta a { color: var(--link); text-decoration: none; }
+.meta a:hover { text-decoration: underline; }
+
+.counts {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.count-pill {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  padding: 3px 9px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border-radius: 2px;
+}
+
+/* Theme section */
+.theme-section {
+  margin-bottom: 48px;
+  padding: 22px 24px;
+  background: var(--surface);
+  border-left: 3px solid var(--accent-interp);
+}
+.theme-section h2 {
+  font-family: "Courier New", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-interp);
+  margin-bottom: 12px;
+}
+.theme-section p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Paper entries — full treatment */
+.paper {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.paper-rank {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.paper h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+.paper h3 a {
+  color: var(--title-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.paper h3 a:hover {
+  color: var(--link);
+}
+
+.paper-meta {
+  font-family: "Courier New", monospace;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.tag {
+  font-family: "Courier New", monospace;
+  font-size: 10.5px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+}
+.tag-interp  { background: color-mix(in srgb, var(--accent-interp) 14%, var(--tag-bg)); color: var(--accent-interp); }
+.tag-security { background: color-mix(in srgb, var(--accent-security) 14%, var(--tag-bg)); color: var(--accent-security); }
+.tag-peer    { background: color-mix(in srgb, var(--accent-peer) 14%, var(--tag-bg)); color: var(--accent-peer); }
+.tag-dllm    { background: color-mix(in srgb, var(--accent-dllm) 14%, var(--tag-bg)); color: var(--accent-dllm); }
+.tag-control { background: color-mix(in srgb, var(--accent-control) 14%, var(--tag-bg)); color: var(--accent-control); }
+.tag-plain   { background: var(--tag-bg); color: var(--tag-text); }
+
+.hook {
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 18px;
+  line-height: 1.68;
+}
+
+.figure-wrap {
+  margin: 20px 0;
+  overflow-x: auto;
+}
+.figure-wrap svg {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+}
+figcaption {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 8px;
+  line-height: 1.55;
+}
+
+.detail {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Mid-tier papers */
+.midtier {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--divider);
+}
+.midtier h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-wrap: balance;
+}
+.midtier h4 a {
+  color: var(--title-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.midtier h4 a:hover { color: var(--link); }
+.midtier .paper-meta { margin-bottom: 10px; }
+.midtier p {
+  font-size: 14.5px;
+  color: var(--text);
+  line-height: 1.67;
+}
+
+/* Watchlist */
+.watchlist {
+  margin-top: 52px;
+  padding: 22px 24px;
+  background: var(--surface);
+  border-left: 3px solid var(--accent-control);
+}
+.watchlist h2 {
+  font-family: "Courier New", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-control);
+  margin-bottom: 14px;
+}
+.watchlist ul {
+  padding-left: 18px;
+}
+.watchlist li {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.watchlist li strong {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: var(--title-color);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--divider);
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* SVG theming for inline figures */
+svg text { fill: var(--text); }
+svg .label-dim { fill: var(--text-dim); }
+svg .surface { fill: var(--surface); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="page">
+  <header>
+    <p class="radar-label">📡 Research Radar · Weekly · 2026-W36</p>
+    <h1>Refusal Under Pressure</h1>
+    <div class="meta">
+      Window: Aug 24–30, 2026 · extended sweep Aug 8–24<br>
+      Sources: arXiv cs.CL/cs.LG/cs.CR/cs.AI · COLM 2026 · ICML 2026 Mech Interp Workshop · OpenReview
+    </div>
+    <div class="counts">
+      <span class="count-pill">2 peer-reviewed</span>
+      <span class="count-pill">9 preprints</span>
+      <span class="count-pill">0 forum/blog</span>
+      <span class="count-pill">11 total</span>
+    </div>
+  </header>
+
+  <div class="theme-section">
+    <h2>Theme of the week</h2>
+    <p>The week's dominant signal is the <strong>geometry of the refusal mechanism under adversarial pressure</strong>. Three independent papers — Abliteration Mitigation via Refusal Aliases, Decided Upstream Written Late, and Tripwire — simultaneously attack the same question from defense, circuit-tracing, and statistical-certification angles, revealing that the refusal signal is both architecturally fragmented (harm is detected mid-network in a language-invariant direction, but refusal is <em>written</em> late by a localised circuit) and geometrically obfuscatable (the refusal direction is easily extracted and projected out unless actively aliased). On the security side, two Aug 26 submissions bring automated red-teaming and adaptive defense into production range: NeuronFuzz eliminates response-generation from the fuzzing loop by using safety-neuron activations as continuous prefill-only feedback, while a self-evolving defense abstracts attack patterns into method-level rules that generalise across attack families. Text diffusion LMs remain a live mechanistic attack surface: safety neurons in DLLMs are sparse, localised, and transferable from autoregressive predecessors, with self-pruning raising ASR from 2.6% → 73.8% on LLaDA. An ICML 2026 Mech Interp Workshop result caps the week by decomposing eval-awareness into capabilities-framing vs. safety-framing, showing the former predicts compliance with a +24–46 pp gap — with direct implications for red-teaming and monitoring pipeline design.</p>
+  </div>
+
+  <!-- ── PAPER 01 ── -->
+  <article class="paper">
+    <p class="paper-rank">01</p>
+    <h3><a href="https://arxiv.org/abs/2608.18093">Abliteration Mitigation via Refusal Aliases</a></h3>
+    <p class="paper-meta">arXiv preprint · August 2026</p>
+    <div class="tags">
+      <span class="tag tag-security">safety</span>
+      <span class="tag tag-interp">refusal mechanism</span>
+      <span class="tag tag-plain">preprint</span>
+    </div>
+    <p class="hook">Abliteration — removing the refusal direction via projection — has become a commodity attack requiring only a handful of contrastive prompts. AMRA is the first defense that addresses the root cause: the extractability of the refusal direction itself.</p>
+    <figure class="figure-wrap">
+      <svg viewBox="0 0 560 148" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New',monospace" font-size="12">
+        <!-- Undefended panel -->
+        <rect x="8" y="8" width="248" height="130" rx="5" fill="#cc333316" stroke="#cc3333" stroke-width="1.3"/>
+        <text x="132" y="30" text-anchor="middle" font-weight="bold" fill="#cc3333" font-size="12">Undefended</text>
+        <rect x="24" y="40" width="112" height="24" rx="3" fill="#cc333328" stroke="#cc3333" stroke-width="1"/>
+        <text x="80" y="56" text-anchor="middle" fill="#cc3333" font-size="11">refusal dir r̂</text>
+        <text x="132" y="84" text-anchor="middle" fill="#888" font-size="11">contrastive extraction</text>
+        <line x1="80" y1="64" x2="80" y2="90" stroke="#cc3333" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="132" y="104" text-anchor="middle" fill="#888" font-size="11">→ project r̂ out</text>
+        <text x="132" y="122" text-anchor="middle" fill="#cc3333" font-size="11">refusal gone</text>
+
+        <!-- AMRA panel -->
+        <rect x="304" y="8" width="248" height="130" rx="5" fill="#22883316" stroke="#228833" stroke-width="1.3"/>
+        <text x="428" y="30" text-anchor="middle" font-weight="bold" fill="#228833" font-size="12">AMRA</text>
+        <rect x="316" y="40" width="100" height="24" rx="3" fill="#22883320" stroke="#228833" stroke-width="1"/>
+        <text x="366" y="56" text-anchor="middle" fill="#228833" font-size="11">alias r̃ (writer)</text>
+        <rect x="436" y="40" width="100" height="24" rx="3" fill="#22883314" stroke="#228833" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="486" y="56" text-anchor="middle" fill="#228833" font-size="11">true r̂ (reader)</text>
+        <text x="428" y="84" text-anchor="middle" fill="#888" font-size="11">extraction gets r̃, not r̂</text>
+        <text x="428" y="104" text-anchor="middle" fill="#888" font-size="11">→ project r̃ out</text>
+        <text x="428" y="122" text-anchor="middle" fill="#228833" font-size="11">refusal intact</text>
+      </svg>
+      <figcaption>AMRA replaces refusal-inducing activations with random aliases in writer matrices; reader matrices corrected to preserve behavior. Contrastive extraction finds the alias, not the true direction. Llama-3-8B: +2.16 post-abliteration refusal score, &lt;0.5 pp MMLU cost.</figcaption>
+    </figure>
+    <p class="detail">Abliteration works by extracting the refusal direction r̂ from contrastive harmful/benign prompt pairs, then projecting weight matrices orthogonal to r̂. AMRA applies rank-k updates to residual-stream <em>writer</em> matrices to replace the true refusal-inducing activation with a random alias, then corrects downstream <em>reader</em> matrices to preserve the original model behavior. The net effect: the contrastive extraction procedure finds the alias (which no longer encodes refusal) rather than the true direction, so projection-based removal has no effect on actual refusal behavior. On Llama-3-8B, AMRA improves post-abliteration refusal scores by 2.16 points over the undefended baseline with less than 0.5 percentage points of MMLU degradation.</p>
+  </article>
+
+  <!-- ── PAPER 02 ── -->
+  <article class="paper">
+    <p class="paper-rank">02</p>
+    <h3><a href="https://arxiv.org/abs/2608.08032">Decided Upstream, Written Late: Locating and Pricing the Cross-Lingual Refusal Circuit of a Multilingual MoE</a></h3>
+    <p class="paper-meta">Ramakrishna P. Kompella, Aadit Mahajan · COLM 2026 Actionable Interpretability Workshop (peer-reviewed)</p>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">safety</span>
+      <span class="tag tag-peer">peer-reviewed</span>
+    </div>
+    <p class="hook">Safety gaps in multilingual models look like failures to detect harm. They are not. Harm is detected in a language-invariant direction mid-network — but refusal is written by a separate, late, localised circuit whose architecture makes cross-lingual transfer expensive in one direction and cheap in the other.</p>
+    <figure class="figure-wrap">
+      <svg viewBox="0 0 560 140" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New',monospace" font-size="11">
+        <text x="280" y="18" text-anchor="middle" font-weight="bold" fill="#888" font-size="12">Detection–Writing Dissociation in Sarvam-30B MoE</text>
+        <!-- Layer axis -->
+        <line x1="30" y1="105" x2="530" y2="105" stroke="#555" stroke-width="1"/>
+        <text x="30" y="120" text-anchor="middle" fill="#777" font-size="10">L0</text>
+        <text x="265" y="120" text-anchor="middle" fill="#777" font-size="10">L11 (mid)</text>
+        <text x="520" y="120" text-anchor="middle" fill="#777" font-size="10">L-last</text>
+
+        <!-- Harm detection bar -->
+        <rect x="40" y="45" width="370" height="22" rx="3" fill="#c0900030" stroke="#c09000" stroke-width="1.2"/>
+        <text x="225" y="60" text-anchor="middle" fill="#c09000" font-size="11">harm direction (EN–Indic cos ≈ 0.9): detected mid-network</text>
+
+        <!-- Write circuit -->
+        <rect x="430" y="68" width="90" height="22" rx="3" fill="#6a9fb530" stroke="#6a9fb5" stroke-width="1.2"/>
+        <text x="475" y="83" text-anchor="middle" fill="#6a9fb5" font-size="11">refusal write (late)</text>
+
+        <!-- Orthogonal indicator -->
+        <line x1="265" y1="67" x2="460" y2="79" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="330" y="76" fill="#666" font-size="10">orthogonal</text>
+
+        <!-- Annotations -->
+        <text x="140" y="35" text-anchor="middle" fill="#888" font-size="10">damping opposer: cheap ✓</text>
+        <text x="475" y="38" text-anchor="middle" fill="#888" font-size="10">amplifying writer: cost wall ✗</text>
+      </svg>
+      <figcaption>Harm detection is language-invariant at L11 (cosine ≈ 0.9, English vs. Indic). The refusal write is late, localised to a MoE writer + attention-opposer circuit, and geometrically orthogonal to detection. Damping the opposer is cheap; amplifying the writer hits a cost wall with context length.</figcaption>
+    </figure>
+    <p class="detail">Evaluated on Sarvam-30B, an Indic-multilingual mixture-of-experts model. Harm is encoded as a direction nearly language-invariant in mid-network (English–Indic cosine ≈ 0.9 at layer 11); steering this direction causally controls refusal output. However, this detection direction is geometrically orthogonal to the direction that actually <em>writes</em> the refusal token — the write is late in the network and assembled across generation. Circuit attribution localises the write to a specific MoE writer head held in check by an attention opposer. Key interventional asymmetry: damping the opposer is cheap and reliably produces refusal; amplifying the writer hits a cost wall (required intervention strength grows with context length). Cross-lingual safety gaps persist not because harm isn't detected, but because the write signal doesn't transfer across languages — explaining why naive fine-tuning on English refusal examples fails to close the gap.</p>
+  </article>
+
+  <!-- ── PAPER 03 ── -->
+  <article class="paper">
+    <p class="paper-rank">03</p>
+    <h3><a href="https://arxiv.org/abs/2608.14392">Tripwire: Triggering Aligned Refusal via Statistically Certified Safety Neurons</a></h3>
+    <p class="paper-meta">arXiv preprint · August 14, 2026</p>
+    <div class="tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">jailbreak defense</span>
+      <span class="tag tag-plain">preprint</span>
+    </div>
+    <p class="hook">Every existing jailbreak defense either perturbs all requests (utility cost) or requires a separate training run (deployment cost). Tripwire identifies a certified compact set of safety neurons via hypothesis testing and patches only those neurons — only when needed.</p>
+    <figure class="figure-wrap">
+      <svg viewBox="0 0 560 110" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New',monospace" font-size="11">
+        <text x="280" y="18" text-anchor="middle" font-weight="bold" fill="#888" font-size="12">Tripwire: FDR-Certified Neuron Identification → Targeted Patch</text>
+        <!-- Step boxes -->
+        <rect x="10" y="30" width="145" height="36" rx="3" fill="#6a9fb520" stroke="#6a9fb5" stroke-width="1.1"/>
+        <text x="82" y="46" text-anchor="middle" fill="#6a9fb5">per-neuron</text>
+        <text x="82" y="60" text-anchor="middle" fill="#6a9fb5">hypothesis tests (BH-FDR)</text>
+        <line x1="155" y1="48" x2="185" y2="48" stroke="#666"/>
+        <rect x="185" y="30" width="130" height="36" rx="3" fill="#c0900020" stroke="#c09000" stroke-width="1.1"/>
+        <text x="250" y="46" text-anchor="middle" fill="#c09000">compact safety</text>
+        <text x="250" y="60" text-anchor="middle" fill="#c09000">neuron set S</text>
+        <line x1="315" y1="48" x2="345" y2="48" stroke="#666"/>
+        <rect x="345" y="30" width="200" height="36" rx="3" fill="#22883318" stroke="#228833" stroke-width="1.1"/>
+        <text x="445" y="46" text-anchor="middle" fill="#228833">alarm fires → patch S only</text>
+        <text x="445" y="60" text-anchor="middle" fill="#228833">→ refusal reinstated</text>
+        <!-- Benign bypass -->
+        <text x="280" y="90" text-anchor="middle" fill="#888">benign input: no alarm → zero cost · attack input: alarm → S patched</text>
+      </svg>
+      <figcaption>Per-neuron hypothesis tests under Benjamini-Hochberg FDR control identify a compact safety-neuron set S. At inference time the patch fires only on alarmed inputs — zero cost on benign. Tested on 4 models × 4 attack types (GCG, AmpleGCG, AutoDAN, Jailbreak-R1).</figcaption>
+    </figure>
+    <p class="detail">Tripwire identifies safety neurons using per-neuron hypothesis tests comparing activations on harmful vs. benign inputs under Benjamini-Hochberg FDR control, with utility-specific criteria excluding neurons that also fire on benign requests. At inference time, when a safety alarm fires (computed from safety-neuron activations during prefill), Tripwire patches only the identified neurons to reinstate their refusal-inducing activation pattern — all other neurons are unmodified, and benign inputs incur zero intervention cost. Evaluated on Llama-2-7B, Llama-3.1-8B, Qwen2.5-7B, and Qwen2.5-32B against GCG, AmpleGCG, AutoDAN, and Jailbreak-R1, compared against RepE, TraceRouter, LED, and DELMAN baselines. Tripwire matches or exceeds state-of-the-art safety defense with lower MT-Bench degradation than weight-editing methods.</p>
+  </article>
+
+  <!-- ── PAPER 04 ── -->
+  <article class="paper">
+    <p class="paper-rank">04</p>
+    <h3><a href="https://arxiv.org/abs/2608.26008">A Self-Evolving Multi-Agent Framework Defense against LLM Jailbreak Attacks</a></h3>
+    <p class="paper-meta">Tongyan Hu, Bryan Hooi (National University of Singapore) · arXiv preprint · August 26, 2026</p>
+    <div class="tags">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-security">jailbreak defense</span>
+      <span class="tag tag-plain">preprint</span>
+    </div>
+    <p class="hook">Static defenses fail under adaptive attackers because new attack wrappers require manual updates. This framework instead learns from each failure: it abstracts the structural pattern of a successful attack into a method-level rule that generalises across the entire attack family — no parameter updates required.</p>
+    <figure class="figure-wrap">
+      <svg viewBox="0 0 560 118" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New',monospace" font-size="11">
+        <text x="280" y="17" text-anchor="middle" font-weight="bold" fill="#888" font-size="12">Self-Evolving Defense: Cross-Interaction Rule Memory</text>
+        <!-- Attack succeeds -->
+        <rect x="8" y="28" width="110" height="28" rx="3" fill="#cc333318" stroke="#cc3333" stroke-width="1.1"/>
+        <text x="63" y="46" text-anchor="middle" fill="#cc3333">attack succeeds</text>
+        <!-- Arrow -->
+        <line x1="118" y1="42" x2="148" y2="42" stroke="#666"/>
+        <!-- Abstraction -->
+        <rect x="148" y="28" width="145" height="28" rx="3" fill="#c0900020" stroke="#c09000" stroke-width="1.1"/>
+        <text x="220" y="42" text-anchor="middle" fill="#c09000">abstract → method-level</text>
+        <text x="220" y="54" text-anchor="middle" fill="#c09000" font-size="10">(structural wrapper, not topic)</text>
+        <!-- Arrow -->
+        <line x1="293" y1="42" x2="323" y2="42" stroke="#666"/>
+        <!-- Rule memory -->
+        <rect x="323" y="18" width="110" height="48" rx="3" fill="#6a9fb520" stroke="#6a9fb5" stroke-width="1.1"/>
+        <text x="378" y="38" text-anchor="middle" fill="#6a9fb5">persistent</text>
+        <text x="378" y="52" text-anchor="middle" fill="#6a9fb5">rule memory</text>
+        <!-- Arrow down -->
+        <line x1="378" y1="66" x2="378" y2="86" stroke="#666"/>
+        <!-- Retrieve -->
+        <rect x="323" y="86" width="110" height="24" rx="3" fill="#22883318" stroke="#228833" stroke-width="1.1"/>
+        <text x="378" y="102" text-anchor="middle" fill="#228833">retrieve on new input</text>
+        <!-- Footer -->
+        <text x="280" y="115" text-anchor="middle" fill="#888" font-size="10">one rule → whole attack family · no param updates · open-weight + black-box</text>
+      </svg>
+      <figcaption>On attack success, the framework abstracts the structural wrapper into a method-level rule stored in persistent cross-interaction memory. Retrieval via semantic similarity at inference time generalises across the entire attack family. Operates through external memory and prompting only — no parameter updates; compatible with black-box APIs.</figcaption>
+    </figure>
+    <p class="detail">Because rules are method-level (capturing the <em>structural wrapper</em> — role-play, code-transformation, multi-step indirection — rather than the harmful topic), one induced rule generalises across an entire attack family. The mechanism requires no parameter updates and operates entirely through external memory and prompting, making it compatible with open-weight and black-box API models alike. Across four black-box jailbreak families and multiple frontier models, the self-evolving defense substantially reduces attack success rates compared to both static and per-instance defenses while maintaining benign utility. Rules accumulate across interactions, meaning defense quality improves monotonically with deployment experience.</p>
+  </article>
+
+  <!-- ── PAPER 05 ── -->
+  <article class="paper">
+    <p class="paper-rank">05</p>
+    <h3><a href="https://arxiv.org/abs/2608.26222">NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation</a></h3>
+    <p class="paper-meta">Zhiyuan Xu, Muhammad Firhard Roslan, Joseph Gardiner, Sana Belguith, Lichao Wu (University of Bristol) · arXiv preprint · August 26, 2026</p>
+    <div class="tags">
+      <span class="tag tag-interp">applied interp</span>
+      <span class="tag tag-security">red-teaming</span>
+      <span class="tag tag-plain">preprint</span>
+    </div>
+    <p class="hook">The most expensive step in LLM fuzzing is generating full model responses to evaluate whether a candidate prompt is an attack. NeuronFuzz eliminates that step entirely by replacing response-level feedback with a continuous safety-neuron activation signal computed during prefill.</p>
+    <figure class="figure-wrap">
+      <svg viewBox="0 0 560 115" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New',monospace" font-size="11">
+        <text x="280" y="17" text-anchor="middle" font-weight="bold" fill="#888" font-size="12">NeuronFuzz: Prefill-Only Safety Neuron Feedback</text>
+        <!-- Traditional -->
+        <rect x="8" y="28" width="240" height="56" rx="4" fill="#cc333310" stroke="#cc3333" stroke-width="1.1"/>
+        <text x="128" y="47" text-anchor="middle" fill="#cc3333" font-weight="bold">Traditional</text>
+        <text x="128" y="62" text-anchor="middle" fill="#888">prompt → full generation → judge</text>
+        <text x="128" y="76" text-anchor="middle" fill="#888" font-size="10">expensive · sparse on strongly aligned models</text>
+        <!-- NeuronFuzz -->
+        <rect x="312" y="28" width="240" height="56" rx="4" fill="#22883310" stroke="#228833" stroke-width="1.1"/>
+        <text x="432" y="47" text-anchor="middle" fill="#228833" font-weight="bold">NeuronFuzz</text>
+        <text x="432" y="62" text-anchor="middle" fill="#888">prompt → prefill → safety neurons</text>
+        <text x="432" y="76" text-anchor="middle" fill="#228833" font-size="10">continuous alarm score · no generation</text>
+        <!-- Footer -->
+        <text x="280" y="108" text-anchor="middle" fill="#888" font-size="10">stability-aware neuron selection · template-invariant · effective on strongly aligned models</text>
+      </svg>
+      <figcaption>A SafetyOracle converts safety-neuron activations during prefill into a continuous alarm score, eliminating full response generation from the fuzzing loop. Stability-aware neuron selection ensures the signal is robust across attack wrappers. Addresses the sparse-reward problem on strongly aligned models where binary response feedback provides near-zero gradient.</figcaption>
+    </figure>
+    <p class="detail">NeuronFuzz is a white-box fuzzing framework exploiting internal safety neurons as continuous execution feedback. A SafetyOracle identifies safety neurons via template-invariant harmful/benign contrast under stability-aware selection (large, consistent activation gap across input templates). At fuzzing time the SafetyOracle converts safety-neuron activations during <em>prefill</em> into a continuous alarm score — no response generation required. The fuzzing objective is to minimise this alarm score, producing candidate prompts more likely to succeed. On strongly aligned models where response-level reward is near-binary (every request is refused), the continuous neuron signal provides rich per-example gradient information that response-level feedback cannot supply.</p>
+  </article>
+
+  <!-- ── PAPER 06 ── -->
+  <article class="paper">
+    <p class="paper-rank">06</p>
+    <h3><a href="https://arxiv.org/abs/2608.07430">Diffusion LLMs as Targets and Adversaries: Mechanistic Safety Exploits</a></h3>
+    <p class="paper-meta">Elena Dumitrescu, Gert Lek, Lydia Y. Chen, Jérémie Decouchant · arXiv preprint · August 7, 2026</p>
+    <div class="tags">
+      <span class="tag tag-dllm">text diffusion</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-plain">preprint</span>
+    </div>
+    <p class="hook">DLLM safety alignment is presented as a distinct challenge requiring new techniques. Mechanistically, it is worse than that: safety is concentrated in a sparse, localised set of neurons that can be identified without harmful data and transferred from the autoregressive predecessor model.</p>
+    <figure class="figure-wrap">
+      <svg viewBox="0 0 560 125" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New',monospace" font-size="11">
+        <text x="280" y="17" text-anchor="middle" font-weight="bold" fill="#888" font-size="12">DLLM Safety Neuron Exploits (Self-Pruning and Transfer Pruning)</text>
+        <!-- AR source -->
+        <rect x="8" y="30" width="120" height="40" rx="3" fill="#6a9fb520" stroke="#6a9fb5" stroke-width="1.1"/>
+        <text x="68" y="48" text-anchor="middle" fill="#6a9fb5">AR source</text>
+        <text x="68" y="62" text-anchor="middle" fill="#6a9fb5">(e.g. Qwen2.5)</text>
+        <!-- Arrow: inherited -->
+        <line x1="128" y1="50" x2="165" y2="50" stroke="#888" stroke-dasharray="4,3"/>
+        <text x="147" y="44" text-anchor="middle" fill="#888" font-size="9">inherit</text>
+        <!-- DLLM -->
+        <rect x="165" y="30" width="120" height="40" rx="3" fill="#c0900020" stroke="#c09000" stroke-width="1.1"/>
+        <text x="225" y="48" text-anchor="middle" fill="#c09000">DLLM (Dream)</text>
+        <text x="225" y="62" text-anchor="middle" fill="#c09000">safety neurons sparse</text>
+        <!-- Arrow: prune -->
+        <line x1="285" y1="50" x2="320" y2="50" stroke="#cc3333"/>
+        <text x="303" y="44" text-anchor="middle" fill="#cc3333" font-size="9">prune</text>
+        <!-- Results -->
+        <rect x="320" y="22" width="230" height="56" rx="3" fill="#cc333314" stroke="#cc3333" stroke-width="1.1"/>
+        <text x="435" y="40" text-anchor="middle" fill="#cc3333" font-weight="bold">Attack Success Rate</text>
+        <text x="435" y="54" text-anchor="middle" fill="#888">self-prune: 2.6% → 73.8% (LLaDA)</text>
+        <text x="435" y="68" text-anchor="middle" fill="#888">transfer: 73.2–86.3% (Dream)</text>
+        <!-- Footer -->
+        <text x="280" y="112" text-anchor="middle" fill="#888" font-size="10">safety footprint inherited from AR predecessor · transferable without target training data</text>
+      </svg>
+      <figcaption>DLLMs initialised from AR models inherit a sparse, localised safety-neuron footprint. Self-pruning: 2.6%→73.8% ASR on LLaDA, 1.9%→86.6% on Dream. Transfer pruning (Qwen2.5→Dream): 73.2%–86.3% ASR without access to Dream's harmful activation data.</figcaption>
+    </figure>
+    <p class="detail">DLLMs initialised from autoregressive predecessors inherit the same mechanistic safety footprint as their source models. Safety alignment is concentrated in a small, identifiable set of neurons with unusually high activation on harmful inputs and unusually low activation on benign ones. Self-pruning computes a safety neuron score from the DLLM's own activations and zeros the top-scoring neurons — raising ASR from 2.6% → 73.8% on LLaDA and 1.9% → 86.6% on Dream. Transfer pruning maps safety neurons from the source AR model to the DLLM via architectural correspondence and prunes the mapped neurons — achieving 73.2% ASR on Dream and 86.3% on Fast-dLLM without any harmful activation data from the target model. The result implies that the safety structure of open-weight DLLMs is predictable from their autoregressive ancestors, compounding the DIJA/A2D attack-defense findings from August (W35).</p>
+  </article>
+
+  <!-- ── PAPER 07 ── -->
+  <article class="paper">
+    <p class="paper-rank">07</p>
+    <h3><a href="https://arxiv.org/abs/2608.27340">Not All Eval-Awareness Is Equal: Capabilities Framing Predicts Compliance</a></h3>
+    <p class="paper-meta">Allison Zhuang, Santiago Aranguri · ICML 2026 Mechanistic Interpretability Workshop (peer-reviewed)</p>
+    <div class="tags">
+      <span class="tag tag-interp">applied interp</span>
+      <span class="tag tag-peer">peer-reviewed</span>
+      <span class="tag tag-security">evaluation</span>
+    </div>
+    <p class="hook">Safety evaluations that steer toward eval-awareness assume it is a single thing. It is not. Capabilities-framing ("testing my ability") and safety-framing ("testing my limits") activate differently and predict compliance with a +24–46 percentage point gap — the framing is the causal variable, not the eval-awareness itself.</p>
+    <figure class="figure-wrap">
+      <svg viewBox="0 0 560 112" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New',monospace" font-size="11">
+        <text x="280" y="17" text-anchor="middle" font-weight="bold" fill="#888" font-size="12">Eval-Awareness Framing → Compliance (Qwen3-32B, FORTRESS)</text>
+        <!-- Capabilities bar -->
+        <text x="175" y="38" text-anchor="end" fill="#888" font-size="10">capabilities framing</text>
+        <rect x="180" y="26" width="320" height="18" rx="2" fill="#6a9fb5" opacity="0.85"/>
+        <text x="510" y="39" fill="#6a9fb5" font-size="10">HIGH</text>
+        <!-- Safety bar -->
+        <text x="175" y="60" text-anchor="end" fill="#888" font-size="10">safety framing</text>
+        <rect x="180" y="48" width="130" height="18" rx="2" fill="#c07040" opacity="0.85"/>
+        <text x="320" y="61" fill="#c07040" font-size="10">low</text>
+        <!-- Gap bracket -->
+        <line x1="310" y1="44" x2="310" y2="48" stroke="#888" stroke-width="1" stroke-dasharray="2,2"/>
+        <text x="420" y="78" text-anchor="middle" fill="#888" font-size="10">+24 to +46 pp compliance gap</text>
+        <text x="280" y="96" text-anchor="middle" fill="#888" font-size="10">causal: 10 of 11 CoT-prefill interventions shift compliance in predicted direction</text>
+      </svg>
+      <figcaption>Capabilities-framing of eval-awareness predicts +24–46 pp more compliance than safety-framing on Qwen3-32B (FORTRESS dataset). CoT-prefill intervention validates causality: 10/11 prefills shift compliance in the predicted direction.</figcaption>
+    </figure>
+    <p class="detail">This ICML 2026 Mech Interp Workshop paper decomposes verbalized eval-awareness in chain-of-thought into capabilities-flavored ("the user is testing my ability to follow instructions") vs. safety-flavored ("the user is testing my limits") framings. On Qwen3-32B over the FORTRESS dataset, capabilities-framing predicts compliance at a +24 to +46 percentage point advantage over safety-framing — the same model, same task, same underlying eval-awareness, dramatically different behavior. A CoT-prefill intervention on eval-awareness-negative rollouts confirms the link is causal: 10 of 11 prefills shifted compliance in the predicted direction. Implication: safety evaluations that steer toward eval-awareness without controlling for framing are measuring a mixture of two distinct causal paths, and capabilities-framing is the adversarially exploitable one.</p>
+  </article>
+
+  <!-- ── PAPER 08 ── -->
+  <article class="paper">
+    <p class="paper-rank">08</p>
+    <h3><a href="https://arxiv.org/abs/2608.03745">Risky Business: Measuring The Faithfulness-Safety Tension</a></h3>
+    <p class="paper-meta">arXiv preprint · August 2026</p>
+    <div class="tags">
+      <span class="tag tag-interp">applied interp</span>
+      <span class="tag tag-control">AI control</span>
+      <span class="tag tag-plain">preprint</span>
+    </div>
+    <p class="hook">AI control protocols assume that monitoring a model's scratchpad reveals its reasoning. Faithfulness is therefore a prerequisite. But faithfulness and safety are in direct conflict in current reasoning models — and this paper is the first to measure where each model sits on that tradeoff frontier.</p>
+    <figure class="figure-wrap">
+      <svg viewBox="0 0 560 120" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New',monospace" font-size="11">
+        <text x="280" y="17" text-anchor="middle" font-weight="bold" fill="#888" font-size="12">Faithfulness–Safety Tradeoff in LRMs (TRR methodology)</text>
+        <!-- Axes -->
+        <line x1="50" y1="100" x2="510" y2="100" stroke="#555" stroke-width="1"/>
+        <line x1="50" y1="100" x2="50" y2="30" stroke="#555" stroke-width="1"/>
+        <text x="280" y="115" text-anchor="middle" fill="#777" font-size="10">TRR faithfulness score →</text>
+        <text x="16" y="65" fill="#777" font-size="10" transform="rotate(-90,16,65)">unsafe compliance ↑</text>
+        <!-- Tradeoff curve -->
+        <polyline points="80,92 180,75 280,60 380,42 470,28" fill="none" stroke="#6a9fb5" stroke-width="2"/>
+        <!-- Endpoints -->
+        <circle cx="80" cy="92" r="4" fill="#228833"/>
+        <text x="86" y="89" fill="#228833" font-size="10">safe · low faithfulness</text>
+        <circle cx="470" cy="28" r="4" fill="#cc3333"/>
+        <text x="380" y="26" fill="#cc3333" font-size="10">faithful · higher risk</text>
+        <!-- TRR label -->
+        <text x="280" y="110" text-anchor="middle" fill="#888" font-size="9">TRR: token replacement keeps structure constant; eliminates framing confounds</text>
+      </svg>
+      <figcaption>TRR (Token Replacement and Reasoning) swaps specific answer tokens while preserving reasoning structure, eliminating confounds from LLM-based interventions. Current LRMs sit on a consistent tradeoff: high faithfulness → elevated unsafe compliance. The tradeoff is not trivially avoidable.</figcaption>
+    </figure>
+    <p class="detail">The faithfulness-safety tension: a model must be faithful enough to be monitored (AI control premise) yet robust enough to reject unsafe reasoning (safety premise). Standard faithfulness evaluation via prompt-level interventions conflates framing effects with actual faithfulness. Token Replacement and Reasoning (TRR) addresses this by systematically swapping specific answer tokens throughout reasoning traces while keeping the overall structure constant — eliminating variance from LLM-based interventions (full paraphrase, sycophancy injection). Applied to current LRMs, TRR shows a consistent tradeoff: models with high faithfulness scores show elevated unsafe compliance rates; models with low compliance show suppressed faithfulness. The tradeoff is not trivially avoidable, directly challenging AI control protocols that require both properties simultaneously.</p>
+  </article>
+
+  <!-- ── MID-TIER ── -->
+  <section>
+    <article class="midtier">
+      <h4><a href="https://arxiv.org/abs/2608.28490">LLM-Based Agents for Software and Systems Security: Approaches, Applications, and Assessment</a></h4>
+      <p class="paper-meta">Jiawei Guo et al. · arXiv preprint · August 28, 2026</p>
+      <div class="tags">
+        <span class="tag tag-security">AI security</span>
+        <span class="tag tag-plain">survey</span>
+        <span class="tag tag-plain">preprint</span>
+      </div>
+      <p>Comprehensive survey of LLM agent applications across the offensive-defensive security spectrum: vulnerability discovery, fuzzing, exploit generation, patch synthesis, malware analysis, and penetration testing. Organizes 200+ papers by threat surface and agent architecture (single-agent, multi-agent, human-in-the-loop). Key finding: LLM agents outperform classical tools on structured tool-assisted tasks (fuzzing input generation, patch synthesis) but introduce new attack surfaces (prompt injection in security workflows, training-data leakage of zero-days) that have no classical analogues. Provides a structured evaluation framework for comparing agent-augmented security tooling.</p>
+    </article>
+
+    <article class="midtier">
+      <h4><a href="https://arxiv.org/abs/2607.17427">Abliteration Is Not a Scalpel: Off-Target Effects of Refusal Removal on Decision Disposition Across Model Families</a></h4>
+      <p class="paper-meta">arXiv preprint · July 2026</p>
+      <div class="tags">
+        <span class="tag tag-interp">mech-interp</span>
+        <span class="tag tag-security">abliteration</span>
+        <span class="tag tag-plain">preprint</span>
+      </div>
+      <p>Abliteration is presented as a targeted intervention removing only refusal capability, but this paper demonstrates systematic off-target effects: refusal direction removal shifts decision disposition scores by up to 34 points and degrades instruction-following fidelity on dual-use tasks. Off-target effects are larger in instruction-tuned models than in base models, and the magnitude depends strongly on model family — confirming that "the refusal direction" is not a universal feature and that abliteration is a blunt intervention with collateral behavioral changes. Contextualises the AMRA (item #1) defense as necessary precisely because abliteration collateral damage is severe and poorly characterised.</p>
+    </article>
+
+    <article class="midtier">
+      <h4><a href="https://arxiv.org/abs/2607.02714">Not All Refusals Are Equal: How Safety Alignment Fails Cybersecurity at Scale</a></h4>
+      <p class="paper-meta">arXiv preprint · July 2026</p>
+      <div class="tags">
+        <span class="tag tag-interp">mech-interp</span>
+        <span class="tag tag-security">domain safety</span>
+        <span class="tag tag-plain">preprint</span>
+      </div>
+      <p>Domain-specific abliteration study on 24 open-source LLMs across cybersecurity vs. general harmfulness domains. Cybersecurity refusals are encoded in a different, shallower direction than general harmfulness refusals, making cybersecurity alignment disproportionately vulnerable to low-cost white-box attacks (3–5 contrastive prompt pairs sufficient). Attack success rates on cybersecurity content reach 91% on models that retain 94%+ of their general safety alignment — demonstrating that general safety benchmarks provide a misleading picture of domain-specific robustness.</p>
+    </article>
+  </section>
+
+  <!-- Watchlist -->
+  <div class="watchlist">
+    <h2>Watchlist — Week 37</h2>
+    <ul>
+      <li><strong>NeurIPS 2026 Interpretability as a Science Workshop</strong> — notifications due September 29; preprints will surface shortly after. Watch for extensions of J-Lens/Koopman identifiability to larger models (W35 item #2).</li>
+      <li><strong>Abliteration countermeasures</strong> — four papers this week (2608.18093, 2608.14392, 2607.17427, 2607.02714) signal an active attack/defense literature. Expect systematic comparison and an adversarial red-team of AMRA.</li>
+      <li><strong>Decided Upstream replications</strong> — the detection-writing dissociation (2608.08032) was shown in one MoE model. Cross-architecture replications (encoder-only MoE, models without the opposer circuit) are the critical next step.</li>
+      <li><strong>EMNLP 2026 camera-ready</strong> — "Beyond the Payload: How User Invocation Shapes Coding Agent Vulnerability to Repository Poisoning" confirmed accepted; preprint expected this week.</li>
+      <li><strong>Goodfire BSF → language models</strong> — block-sparse featurizers (2606.25234, W35) demonstrated on vision; language-model extension anticipated.</li>
+      <li><strong>SHADOWMASK</strong> (carried from W30/W35) — adversarial mask scheduling for dLLMs; still not on arXiv.</li>
+    </ul>
+  </div>
+
+  <footer>
+    📡 research-radar · reports/weekly/2026-W36.md · generated 2026-08-31
+  </footer>
+</div>
+{% endraw %}

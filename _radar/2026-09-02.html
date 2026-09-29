@@ -1,0 +1,407 @@
+---
+layout: "radar"
+title: "Research Radar — Sep 2, 2026"
+kind: "daily"
+slug: "2026-09-02"
+date: 2026-09-02
+group: "2026-W37"
+window: "2026-08-31 – 2026-09-02"
+summary: "Window: 2026-08-31 – 2026-09-02 · Sources swept: OpenReview, ACL Anthology, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 1 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/f869992a-f772-45b7-85b2-1c9db0945b2b"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-02.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ── Token system ─────────────────────────────────────────────────────────── */
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+  --fig-bg: #fff;
+  --fig-border: #e0e0e0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #c9c9c9;
+  --dim: #666;
+  --title: #f0f0f0;
+  --link: #7eb8ff;
+  --tag-bg: #252525;
+  --tag-text: #aaa;
+  --accent-teal: #14b8bd;
+  --accent-blue: #7eb8ff;
+  --accent-red: #f07070;
+  --accent-amber: #f0a030;
+  --accent-violet: #c084fc;
+  --accent-green: #4ade80;
+  --theme-band: #1a2a1a;
+  --fig-bg: #1e1e1e;
+  --fig-border: #333;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+  --fig-bg: #fff;
+  --fig-border: #e0e0e0;
+}
+
+/* ── Reset & base ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+a { color: var(--link); }
+a:hover { opacity: 0.8; }
+
+/* ── Masthead ────────────────────────────────────────────────────────────── */
+.masthead {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 44px;
+}
+.masthead-eyebrow {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--title);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.masthead-counts {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+}
+.track { color: var(--accent-teal); }
+.track-sep { margin: 0 6px; }
+
+/* ── Tags ────────────────────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-right: 4px;
+}
+.tag-peer   { background: #d4edda; color: #1a6e3c; }
+.tag-interp { background: #d0f0f0; color: #0d7377; }
+.tag-security { background: #fce8e8; color: #b02020; }
+.tag-control  { background: #ede0f8; color: #5c1aaa; }
+.tag-rank     { background: #fff3cd; color: #a05c00; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tag-peer     { background: #1a3320; color: #4ade80; }
+  :root:not([data-theme="light"]) .tag-interp   { background: #0e2c2c; color: #14b8bd; }
+  :root:not([data-theme="light"]) .tag-security { background: #2c1010; color: #f07070; }
+  :root:not([data-theme="light"]) .tag-control  { background: #20102c; color: #c084fc; }
+  :root:not([data-theme="light"]) .tag-rank     { background: #2c2000; color: #f0a030; }
+}
+:root[data-theme="dark"] .tag-peer     { background: #1a3320; color: #4ade80; }
+:root[data-theme="dark"] .tag-interp   { background: #0e2c2c; color: #14b8bd; }
+:root[data-theme="dark"] .tag-security { background: #2c1010; color: #f07070; }
+:root[data-theme="dark"] .tag-control  { background: #20102c; color: #c084fc; }
+:root[data-theme="dark"] .tag-rank     { background: #2c2000; color: #f0a030; }
+
+/* ── Full paper (items 1–3) ─────────────────────────────────────────────── */
+.paper { margin-bottom: 60px; }
+.paper-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.paper-rank {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dim);
+  min-width: 28px;
+  padding-top: 2px;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-wrap: balance;
+  margin: 0 0 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.paper-figure {
+  background: #fff;
+  border: 1px solid var(--fig-border);
+  border-radius: 4px;
+  padding: 16px;
+  margin: 0 0 20px;
+  overflow-x: auto;
+  text-align: center;
+}
+.paper-figure svg { display: block; margin: 0 auto; }
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  font-family: "Courier New", monospace;
+  margin-top: 10px;
+  text-align: left;
+  line-height: 1.5;
+}
+.paper-detail {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  border-left: 2px solid var(--border);
+  padding-left: 14px;
+}
+.paper-authors {
+  font-size: 13px;
+  color: var(--dim);
+  font-family: "Courier New", monospace;
+  margin-bottom: 10px;
+}
+hr.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 44px 0;
+}
+
+/* ── Mid-tier (items 4–10) ──────────────────────────────────────────────── */
+.more-section-label {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-bottom: 32px;
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 36px 0;
+}
+</style>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · September 2, 2026</div>
+  <div class="masthead-counts">0 peer-reviewed · 1 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">Pretraining Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">AI Security</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ═══ ITEM 1 ═══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-rank">Top pick</span>
+      <span class="tag" style="background:var(--theme-band);color:var(--accent-green);">pretraining-safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2508.06601">Deep Ignorance: Filtering Pretraining Data Builds Tamper-Resistant Safeguards into Open-Weight LLMs</a>
+  </h2>
+  <div class="paper-authors">O'Brien et al. — arXiv 2508.06601, Aug 2026</div>
+  <p class="paper-hook">
+    Post-training safety measures for open-weight LLMs can be erased in dozens of fine-tuning steps.
+    This paper shows that filtering dual-use knowledge from the pretraining corpus itself produces models
+    that resist adversarial fine-tuning by orders of magnitude longer — and without sacrificing capability.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Deep Ignorance pipeline and tamper-resistance comparison">
+      <!-- Background -->
+      <rect width="500" height="200" fill="#fff"/>
+      <!-- Pipeline boxes -->
+      <rect x="10" y="30" width="80" height="36" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="50" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a6e3c">Raw Corpus</text>
+      <text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">web text</text>
+      <polygon points="94,48 102,44 102,52" fill="#888"/>
+      <rect x="106" y="30" width="88" height="36" rx="4" fill="#fff3cd" stroke="#a05c00" stroke-width="1.2"/>
+      <text x="150" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a05c00">Topic Filter</text>
+      <text x="150" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">classifier + heuristic</text>
+      <polygon points="198,48 206,44 206,52" fill="#888"/>
+      <rect x="210" y="30" width="80" height="36" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="250" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a6e3c">Filtered Data</text>
+      <text x="250" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">biothreat removed</text>
+      <polygon points="294,48 302,44 302,52" fill="#888"/>
+      <rect x="306" y="30" width="80" height="36" rx="4" fill="#e8eaf8" stroke="#1a4f99" stroke-width="1.2"/>
+      <text x="346" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">6.9B Model</text>
+      <text x="346" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">pretrained fresh</text>
+      <!-- Bar chart comparison -->
+      <text x="250" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Adversarial Fine-tuning Steps to Break Safety</text>
+      <!-- Baseline bar -->
+      <rect x="60" y="118" width="40" height="12" fill="#f07070"/>
+      <text x="104" y="128" font-family="Georgia,serif" font-size="10" fill="#b02020">Baseline (post-training): ~100 steps</text>
+      <!-- Deep Ignorance bar -->
+      <rect x="60" y="140" width="340" height="12" fill="#4ade80"/>
+      <text x="404" y="150" font-family="Georgia,serif" font-size="10" fill="#1a6e3c">Deep Ignorance: ≥10,000 steps · 300M tokens</text>
+      <!-- Axis -->
+      <line x1="58" y1="115" x2="58" y2="155" stroke="#aaa" stroke-width="1"/>
+      <line x1="58" y1="155" x2="460" y2="155" stroke="#aaa" stroke-width="1"/>
+      <text x="58" y="170" font-family="Georgia,serif" font-size="9" fill="#888">0</text>
+      <text x="390" y="170" font-family="Georgia,serif" font-size="9" fill="#888">steps ──────────&gt;</text>
+      <!-- Label: 10k -->
+      <line x1="398" y1="114" x2="398" y2="156" stroke="#ccc" stroke-width="0.8" stroke-dasharray="3,2"/>
+      <text x="398" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">10k</text>
+      <!-- Legend axis note -->
+      <text x="250" y="192" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa">Order-of-magnitude improvement over post-training baselines</text>
+    </svg>
+    <figcaption>Figure 1: Multi-stage pretraining data filtering pipeline (top) and resistance to adversarial fine-tuning (bottom). Post-training baselines break in ~100 steps; Deep Ignorance-trained models resist ≥10,000 steps and 300M tokens of biothreat fine-tuning.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The authors pretrain multiple 6.9B-parameter models from scratch using a multi-stage pipeline that identifies and removes biothreat-relevant documents via topic classifiers and heuristic contamination filters. Resulting models score near-zero on biothreat proxy benchmarks and sustain that behavior under up to <strong>10,000 steps and 300M tokens</strong> of adversarial fine-tuning — exceeding post-training RLHF/DPO baselines by over an order of magnitude. Crucially, no degradation in unrelated capabilities (coding, math, general QA) was observed, resolving the key concern that data filtering degrades model quality.
+  </p>
+</article>
+<hr class="divider">
+
+<!-- ═══ ITEM 2 ═══════════════════════════════════════════════════════════ -->
+<hr class="divider">
+
+<!-- ═══ ITEM 3 ═══════════════════════════════════════════════════════════ -->
+<hr class="divider">
+
+<!-- ═══ ITEMS 4–10 mid-tier ═══════════════════════════════════════════════ -->
+<div class="more-section-label">Items 4 – 10 · Also notable<p style="margin-top:32px;font-size:13px;opacity:.7">9 entries removed on 2026-09-10 as repeats of earlier reports: 2608.13482 (first covered 2026-08-30), 2606.19168 (first covered 2026-08-28), 2608.25390 (first covered 2026-08-29), 2509.01631 (first covered 2026-07-12), 2608.14392 (first covered 2026-08-29), 2607.07368 (first covered 2026-07-17), 2607.07903 (first covered 2026-07-12), 2606.26620 (first covered 2026-07-02), 2608.02632 (first covered 2026-08-07).</p>
+</div>
+
+<!-- 4 -->
+<hr class="section-divider">
+
+<!-- 5 -->
+<hr class="section-divider">
+
+<!-- 6 -->
+<hr class="section-divider">
+
+<!-- 7 -->
+<hr class="section-divider">
+
+<!-- 8 -->
+<hr class="section-divider">
+
+<!-- 9 -->
+<hr class="section-divider">
+
+<!-- 10 -->
+{% endraw %}

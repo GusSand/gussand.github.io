@@ -1,0 +1,527 @@
+---
+layout: "radar"
+title: "Research Radar — August 8, 2026"
+kind: "daily"
+slug: "2026-08-08"
+date: 2026-08-08
+group: "latest"
+window: "August 7–8, 2026 (+ selected recent papers new to this radar)"
+summary: "Window: August 7–8, 2026 (+ selected recent papers new to this radar) · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 2 preprints · 0 forum/blog"
+artifact: "https://claude.ai/code/artifact/2dffbe04-ddd1-47d0-b287-59c0c280860c"
+source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-08-08.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ─── Tokens: light ───────────────────────────────────────────── */
+:root {
+  --bg:         #eef1f7;
+  --surface:    #ffffff;
+  --border:     #c8d3e6;
+  --ink:        #111827;
+  --ink-dim:    #4a5a72;
+  --ink-muted:  #8598b5;
+  --accent:     #1756d0;
+  --accent-sub: #d6e4ff;
+  --divider:    #dde5f3;
+
+  --tag-peer-c:    #065740; --tag-peer-bg:    #d0f5e5;
+  --tag-interp-c:  #084f80; --tag-interp-bg:  #d8ecfc;
+  --tag-sec-c:     #8b1a1a; --tag-sec-bg:     #fde0e0;
+  --tag-dllm-c:    #46189a; --tag-dllm-bg:    #ece4fb;
+  --tag-pre-c:     #5a4000; --tag-pre-bg:     #fdf2d0;
+}
+
+/* ─── Tokens: dark (system) ───────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:         #0c1018;
+    --surface:    #141b28;
+    --border:     #1f2d46;
+    --ink:        #cdd8ee;
+    --ink-dim:    #6a7d96;
+    --ink-muted:  #3a4f6a;
+    --accent:     #3b8cf5;
+    --accent-sub: #0d1e3f;
+    --divider:    #192436;
+
+    --tag-peer-c:    #3dd68a; --tag-peer-bg:    #062a1a;
+    --tag-interp-c:  #7bb8f8; --tag-interp-bg:  #0a1f34;
+    --tag-sec-c:     #f07070; --tag-sec-bg:     #2a0808;
+    --tag-dllm-c:    #c084fc; --tag-dllm-bg:    #1a0a30;
+    --tag-pre-c:     #f0c060; --tag-pre-bg:     #2a1a00;
+  }
+}
+
+/* ─── Tokens: explicit dark override ─────────────────────────── */
+:root[data-theme="dark"] {
+  --bg:         #0c1018;
+  --surface:    #141b28;
+  --border:     #1f2d46;
+  --ink:        #cdd8ee;
+  --ink-dim:    #6a7d96;
+  --ink-muted:  #3a4f6a;
+  --accent:     #3b8cf5;
+  --accent-sub: #0d1e3f;
+  --divider:    #192436;
+
+  --tag-peer-c:    #3dd68a; --tag-peer-bg:    #062a1a;
+  --tag-interp-c:  #7bb8f8; --tag-interp-bg:  #0a1f34;
+  --tag-sec-c:     #f07070; --tag-sec-bg:     #2a0808;
+  --tag-dllm-c:    #c084fc; --tag-dllm-bg:    #1a0a30;
+  --tag-pre-c:     #f0c060; --tag-pre-bg:     #2a1a00;
+}
+
+/* ─── Tokens: explicit light override ────────────────────────── */
+:root[data-theme="light"] {
+  --bg:         #eef1f7;
+  --surface:    #ffffff;
+  --border:     #c8d3e6;
+  --ink:        #111827;
+  --ink-dim:    #4a5a72;
+  --ink-muted:  #8598b5;
+  --accent:     #1756d0;
+  --accent-sub: #d6e4ff;
+  --divider:    #dde5f3;
+
+  --tag-peer-c:    #065740; --tag-peer-bg:    #d0f5e5;
+  --tag-interp-c:  #084f80; --tag-interp-bg:  #d8ecfc;
+  --tag-sec-c:     #8b1a1a; --tag-sec-bg:     #fde0e0;
+  --tag-dllm-c:    #46189a; --tag-dllm-bg:    #ece4fb;
+  --tag-pre-c:     #5a4000; --tag-pre-bg:     #fdf2d0;
+}
+
+/* ─── Reset ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: var(--bg); }
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  padding: 0 16px 80px;
+}
+.wrap { max-width: 680px; margin: 0 auto; }
+
+/* ─── Masthead ────────────────────────────────────────────────── */
+.masthead {
+  padding: 40px 0 32px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.mast-rule {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+}
+.mast-eye {
+  font-family: 'Courier New', monospace;
+  font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.mast-date {
+  font-family: 'Courier New', monospace;
+  font-size: 28px; font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.01em;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.mast-counts {
+  font-size: 13px; color: var(--ink-dim);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 14px;
+}
+.mast-tracks {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.track {
+  display: inline-block;
+  font-size: 11px; letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: var(--accent-sub);
+  color: var(--accent);
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+}
+
+/* ─── Tags ────────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 10px; letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  background: var(--accent-sub);
+  color: var(--accent);
+  font-weight: 700;
+}
+.tag-peer   { background: var(--tag-peer-bg);   color: var(--tag-peer-c); }
+.tag-interp { background: var(--tag-interp-bg); color: var(--tag-interp-c); }
+.tag-sec    { background: var(--tag-sec-bg);    color: var(--tag-sec-c); }
+.tag-dllm   { background: var(--tag-dllm-bg);   color: var(--tag-dllm-c); }
+.tag-pre    { background: var(--tag-pre-bg);    color: var(--tag-pre-c); }
+
+/* ─── Full paper entry (items 1–3) ───────────────────────────── */
+.paper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+.paper-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 16px 20px 0;
+}
+.paper-rank {
+  font-family: 'Courier New', monospace;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--ink-muted);
+  min-width: 22px;
+}
+.paper-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.paper-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 22px; font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.015em;
+  text-wrap: balance;
+  padding: 12px 20px 0;
+}
+.paper-title a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+/* COVER FIGURE — full-width, sits between title and text */
+.cover-figure {
+  margin: 16px 0 0;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.cover-figure svg, .cover-figure img {
+  display: block; width: 100%; height: auto;
+}
+.cover-figcaption {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink-dim);
+  padding: 8px 20px;
+  border-bottom: 1px solid var(--border);
+  font-style: italic;
+}
+
+.paper-body { padding: 18px 20px 22px; }
+.paper-venue {
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  color: var(--ink-dim);
+  margin-bottom: 12px;
+}
+.paper-hook {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.paper-rank-label {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 6px;
+}
+.paper-detail {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-dim);
+  border-top: 1px solid var(--divider);
+  padding-top: 14px;
+  margin-top: 14px;
+}
+
+/* ─── Section break ──────────────────────────────────────────── */
+.section-label {
+  font-family: 'Courier New', monospace;
+  font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-align: center;
+  padding: 8px 0 28px;
+  position: relative;
+}
+.section-label::before {
+  content: '';
+  position: absolute; top: 50%; left: 0; right: 0;
+  border-top: 1px solid var(--divider);
+  transform: translateY(-50%);
+}
+.section-label span {
+  position: relative;
+  background: var(--bg);
+  padding: 0 12px;
+}
+
+/* ─── Mid-tier entry (items 4–10) ────────────────────────────── */
+.mid {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.mid-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 16px 0;
+}
+.mid-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 17px; font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+  padding: 10px 16px 0;
+}
+.mid-title a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.mid-cover {
+  margin: 12px 0 0;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.mid-cover svg { display: block; width: 100%; height: auto; }
+.mid-cover-caption {
+  font-size: 11px; font-style: italic;
+  color: var(--ink-dim);
+  padding: 6px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.mid-body {
+  padding: 14px 16px 18px;
+}
+.mid-venue {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  color: var(--ink-dim);
+  margin-bottom: 10px;
+}
+.mid-summary {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────── */
+.footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-align: center;
+  letter-spacing: .04em;
+}
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+<!-- ─── MASTHEAD ─────────────────────────────────────────────── -->
+<header class="masthead">
+  <div class="mast-rule"></div>
+  <div class="mast-eye">Research Radar · Daily Edition</div>
+  <div class="mast-date">August 8, 2026</div>
+  <div class="mast-counts">0 peer-reviewed · 2 preprints · 0 forum/blog</div>
+  <div class="mast-tracks">
+    <span class="track">Mech Interp</span>
+    <span class="track">AI Security</span>
+    <span class="track">Text Diffusion LMs</span>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAPER 01 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAPER 02 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAPER 03 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- ─── SECTION BREAK ─────────────────────────────────────────── -->
+<div class="section-label"><span>Items 4–10 · Also notable</span></div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAPER 04 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAPER 05 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-header">
+    <span class="paper-rank">05</span>
+    <div class="paper-tags">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-sec">AI security</span>
+      <span class="tag tag-pre">preprint</span>
+    </div>
+  </div>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2605.08878">Why Do Aligned LLMs Remain Jailbreakable: Refusal-Escape Directions, Operator-Level Sources, and Safety-Utility Trade-off</a>
+  </h3>
+  <figure class="mid-cover">
+    <svg viewBox="0 0 660 150" xmlns="http://www.w3.org/2000/svg" aria-label="Refusal-Escape Directions in embedding space">
+      <rect width="660" height="150" fill="#fff"/>
+      <!-- Embedding space -->
+      <ellipse cx="280" cy="75" rx="220" ry="58" fill="#f8f9fc" stroke="#dde6f8" stroke-width="1.5"/>
+      <text x="280" y="20" font-family="'Courier New',monospace" font-size="9" fill="#888" text-anchor="middle">EMBEDDING SPACE (harmful input neighbourhood)</text>
+
+      <!-- Harmful input point -->
+      <circle cx="280" cy="78" r="8" fill="#f07070" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="280" y="100" font-family="'Courier New',monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">harmful input x</text>
+
+      <!-- Refusal region -->
+      <ellipse cx="220" cy="68" rx="55" ry="35" fill="#d0f5e5" stroke="#3dd68a" stroke-width="1" opacity=".5"/>
+      <text x="210" y="63" font-family="'Courier New',monospace" font-size="8" fill="#065740" text-anchor="middle">REFUSAL</text>
+      <text x="210" y="74" font-family="'Courier New',monospace" font-size="8" fill="#065740" text-anchor="middle">region</text>
+
+      <!-- Compliance region -->
+      <ellipse cx="360" cy="68" rx="55" ry="35" fill="#fde0e0" stroke="#f07070" stroke-width="1" opacity=".5"/>
+      <text x="360" y="63" font-family="'Courier New',monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">COMPLIANCE</text>
+      <text x="360" y="74" font-family="'Courier New',monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">region</text>
+
+      <!-- RED arrow -->
+      <line x1="280" y1="78" x2="345" y2="70" stroke="#1756d0" stroke-width="2.5" stroke-dasharray="none" marker-end="url(#red-arr)"/>
+      <defs>
+        <marker id="red-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <polygon points="0,0 7,3.5 0,7" fill="#1756d0"/>
+        </marker>
+      </defs>
+      <text x="314" y="60" font-family="Georgia,serif" font-size="11" font-style="italic" fill="#1756d0" text-anchor="middle">RED</text>
+
+      <!-- Jailbreak approximation -->
+      <circle cx="347" cy="70" r="5" fill="#1756d0" opacity=".6"/>
+      <text x="347" y="95" font-family="'Courier New',monospace" font-size="8" fill="#1756d0" text-anchor="middle">jailbreak ≈ move along RED</text>
+
+      <!-- Implication box -->
+      <rect x="480" y="40" width="165" height="70" rx="4" fill="#f5f7ff" stroke="#b0c4f0" stroke-width="1"/>
+      <text x="562" y="62" font-family="'Courier New',monospace" font-size="9" fill="#1756d0" text-anchor="middle">safety-utility</text>
+      <text x="562" y="76" font-family="'Courier New',monospace" font-size="9" fill="#1756d0" text-anchor="middle">trade-off provable:</text>
+      <text x="562" y="90" font-family="'Courier New',monospace" font-size="8" fill="#555" text-anchor="middle">closing RED fully</text>
+      <text x="562" y="102" font-family="'Courier New',monospace" font-size="8" fill="#555" text-anchor="middle">⟹ capability loss</text>
+    </svg>
+    <figcaption class="mid-cover-caption">RED (Refusal-Escape Direction): a local perturbation direction near a harmful input that shifts refusal → compliance while preserving harmful semantics. Jailbreaks approximate movement along RED; closing RED provably incurs a safety-utility trade-off.</figcaption>
+  </figure>
+  <div class="mid-body">
+    <div class="mid-venue">Yu Chen, Yuanhao Liu, Qi Cao (Institute of Computing Technology, CAS) · arXiv preprint, May 2026</div>
+    <p class="mid-summary">Refusal-Escape Directions (RED) are local continuous perturbation directions near harmful inputs that shift model behavior from refusal to compliance while preserving harmful-semantics interpretation — giving a mechanistic, operator-level account of why jailbreaks structurally work. The framework proves that fine-tuning-based alignment cannot eliminate RED without capability loss, establishing a fundamental safety-utility trade-off that output-level defenses cannot resolve.</p>
+  </div>
+</article>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAPER 06 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<article class="mid">
+  <div class="mid-header">
+    <span class="paper-rank">06</span>
+    <div class="paper-tags">
+      <span class="tag tag-sec">AI security</span>
+      <span class="tag tag-pre">preprint</span>
+    </div>
+  </div>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2606.11817">Grammar-Constrained Decoding Can Jailbreak LLMs into Generating Malicious Code</a>
+  </h3>
+  <figure class="mid-cover">
+    <svg viewBox="0 0 660 140" xmlns="http://www.w3.org/2000/svg" aria-label="CodeSpear: GCD as jailbreak attack surface for malicious code generation">
+      <rect width="660" height="140" fill="#fff"/>
+      <!-- Normal path -->
+      <rect x="20" y="30" width="120" height="36" rx="3" fill="#d0f5e5" stroke="#065740" stroke-width="1.5"/>
+      <text x="80" y="46" font-family="'Courier New',monospace" font-size="9" fill="#065740" text-anchor="middle">"Write malware</text>
+      <text x="80" y="58" font-family="'Courier New',monospace" font-size="9" fill="#065740" text-anchor="middle">that does X"</text>
+      <line x1="140" y1="48" x2="175" y2="48" stroke="#065740" stroke-width="1.5" marker-end="url(#ga)"/>
+      <defs><marker id="ga" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><polygon points="0,0 5,2.5 0,5" fill="#065740"/></marker></defs>
+      <rect x="175" y="30" width="90" height="36" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/>
+      <text x="220" y="46" font-family="Georgia,serif" font-size="11" fill="#555" text-anchor="middle">Aligned LLM</text>
+      <text x="220" y="58" font-family="'Courier New',monospace" font-size="8" fill="#888" text-anchor="middle">safety filter</text>
+      <line x1="265" y1="48" x2="295" y2="48" stroke="#888" stroke-width="1.5" marker-end="url(#ga2)"/>
+      <defs><marker id="ga2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><polygon points="0,0 5,2.5 0,5" fill="#888"/></marker></defs>
+      <rect x="295" y="30" width="90" height="36" rx="3" fill="#d0f5e5" stroke="#065740" stroke-width="1.5"/>
+      <text x="340" y="52" font-family="'Courier New',monospace" font-size="9" fill="#065740" text-anchor="middle">I cannot help</text>
+      <text x="180" y="22" font-family="'Courier New',monospace" font-size="8" fill="#888" text-anchor="middle">NORMAL PATH: refused ✓</text>
+
+      <!-- Attack path -->
+      <rect x="20" y="90" width="120" height="36" rx="3" fill="#fde0e0" stroke="#f07070" stroke-width="1.5"/>
+      <text x="80" y="106" font-family="'Courier New',monospace" font-size="9" fill="#8b1a1a" text-anchor="middle">"Generate code"</text>
+      <text x="80" y="118" font-family="'Courier New',monospace" font-size="9" fill="#8b1a1a" text-anchor="middle">+ GCD grammar</text>
+      <line x1="140" y1="108" x2="175" y2="108" stroke="#f07070" stroke-width="1.5" marker-end="url(#ga3)"/>
+      <defs><marker id="ga3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><polygon points="0,0 5,2.5 0,5" fill="#f07070"/></marker></defs>
+      <rect x="175" y="90" width="90" height="36" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/>
+      <text x="220" y="106" font-family="Georgia,serif" font-size="11" fill="#555" text-anchor="middle">Aligned LLM</text>
+      <text x="220" y="118" font-family="'Courier New',monospace" font-size="8" fill="#888" text-anchor="middle">code-mode primed</text>
+      <line x1="265" y1="108" x2="295" y2="108" stroke="#f07070" stroke-width="1.5" marker-end="url(#ga3)"/>
+      <rect x="295" y="90" width="90" height="36" rx="3" fill="#fde0e0" stroke="#f07070" stroke-width="1.5"/>
+      <text x="340" y="112" font-family="'Courier New',monospace" font-size="9" fill="#8b1a1a" text-anchor="middle">malicious code</text>
+      <text x="180" y="84" font-family="'Courier New',monospace" font-size="8" fill="#8b1a1a" text-anchor="middle">CODESPEAR: grammar primes code-mode → bypass ✗</text>
+
+      <!-- CodeShield box -->
+      <rect x="430" y="60" width="200" height="55" rx="4" fill="#d8ecfc" stroke="#084f80" stroke-width="1.5"/>
+      <text x="530" y="80" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#084f80" text-anchor="middle">CodeShield defense</text>
+      <text x="530" y="96" font-family="'Courier New',monospace" font-size="8" fill="#084f80" text-anchor="middle">honeypot code alignment</text>
+      <text x="530" y="108" font-family="'Courier New',monospace" font-size="8" fill="#084f80" text-anchor="middle">→ safe behavior under GCD</text>
+    </svg>
+    <figcaption class="mid-cover-caption">CodeSpear: a benign code grammar constraint applied via GCD primes the code-generation mode, bypassing safety alignment to elicit malicious code. CodeShield defends via honeypot code alignment.</figcaption>
+  </figure>
+  <div class="mid-body">
+    <div class="mid-venue">Yitong Zhang, Shiteng Lu, Jia Li · arXiv preprint, June 2026</div>
+    <p class="mid-summary">Grammar-Constrained Decoding (GCD) is a reliability tool that enforces syntactic validity in LLM code output — but the reliability mechanism is itself an attack surface. CodeSpear shows that applying a benign code grammar constraint shifts the generation distribution into a code-conditioned mode where safety guardrails are less active, enabling elicitation of malicious code from aligned models without modifying the harmful intent in the prompt. CodeShield defends by training the model to emit honeypot code (syntactically valid, functionally harmless) under attacker-controlled grammar constraints, robustly preserving safe behavior.</p>
+  </div>
+</article>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAPER 07 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAPER 08 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAPER 09 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAPER 10 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<footer class="footer">
+  <p>RESEARCH RADAR · GusSand/research-radar · August 8, 2026</p>
+  <p style="margin-top:6px;">Window: Aug 7–8, 2026 + recent papers new to this radar · Sources: OpenReview, ACL Anthology, TMLR, arXiv cs.CL/cs.LG/cs.CR/cs.AI, LessWrong/Alignment Forum</p>
+</footer>
+
+<p style="margin-top:32px;font-size:13px;opacity:.7">8 entries removed on 2026-09-10 as repeats of earlier reports: 2608.02632 (first covered 2026-08-07), 2606.16939 (first covered 2026-07-01), 2604.20945 (first covered 2026-07-07), 2606.28153 (first covered 2026-07-01), 2606.22673 (first covered 2026-07-02), 2606.24026 (first covered 2026-07-02), 2603.23268 (first covered 2026-07-01), 2605.08934 (first covered 2026-07-10).</p>
+</div>
+{% endraw %}
