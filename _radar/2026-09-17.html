@@ -6,8 +6,8 @@ slug: "2026-09-17"
 date: 2026-09-17
 group: "2026-W39"
 window: "September 2 – 17, 2026 (papers not covered in 2026-09-16 report)"
-summary: "Window: September 2 – 17, 2026 (papers not covered in 2026-09-16 report) · Sources swept: arXiv (cs.CL/cs.LG/cs.CR/cs.AI), OpenReview, ACL Anthology · Counts: 0 peer-reviewed · 10 preprints · 0 forum/blog"
-source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-17.md"
+summary: "Window: September 2 – 17, 2026 (papers not covered in 2026-09-16 report) · Sources swept: arXiv (cs.CL/cs.LG/cs.CR/cs.AI), OpenReview, ACL Anthology · Counts: 1 peer-reviewed · 7 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-09-17.md"
 styled: true
 excerpt_separator: ""
 ---
@@ -324,64 +324,6 @@ body {
 <!-- ═══════════════════════════════════════════════════════════
      PAPER 01 — Geometry of Refusal: Pretraining vs Post-hoc
 ═══════════════════════════════════════════════════════════ -->
-<article class="paper">
-  <div class="paper-hd">
-    <span class="rank">01</span>
-    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.06934">The Geometry of Refusal: Why Post-Hoc Safety Is Fragile and Pretraining-Time Safety Persists</a></h2>
-  </div>
-  <div class="paper-body">
-    <div class="tags">
-      <span class="tag t-safe">pretraining-safety</span>
-      <span class="tag t-interp">mech-interp</span>
-      <span class="tag t-pre">arXiv preprint · Sep 2026</span>
-    </div>
-    <p class="venue">Srikanth Malla, Chiho Choi, Joon Hee Choi (Samsung Semiconductor US) · arXiv 2609.06934 · September 7, 2026</p>
-    <p class="hook">Every jailbreak paper confirms it empirically; this paper proves it geometrically: post-hoc safety (RLHF, DPO) cannot erase a capability, it can only gate it. A kernel-immobility lemma shows that safety updates landing nearly orthogonal to capability directions create a thin refusal gate over intact capabilities — and that benign fine-tuning can remove the gate in 35–38 percentage points of refusal erosion. Pretraining co-training solves this at the root.</p>
-    <div class="fig-wrap">
-      <svg xmlns="http://www.w3.org/2000/svg" width="580" height="200" viewBox="0 0 580 200">
-        <defs>
-          <marker id="arr1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#3ec9c0"/></marker>
-          <marker id="arr2" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#f07878"/></marker>
-          <marker id="arr3" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#b0d878"/></marker>
-        </defs>
-        <rect width="580" height="200" fill="#0a0e12"/>
-        <!-- Title -->
-        <text x="290" y="18" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">Fisher Geometry: Post-Hoc vs. Pretraining Safety</text>
-        <!-- Left panel: post-hoc -->
-        <rect x="15" y="26" width="255" height="148" rx="5" fill="#14141c" stroke="#2a2a3a" stroke-width="1"/>
-        <text x="143" y="43" font-family="Courier New" font-size="10" fill="#888" text-anchor="middle">Post-Hoc Safety (RLHF/DPO)</text>
-        <!-- Capability ellipse -->
-        <ellipse cx="143" cy="115" rx="85" ry="50" fill="none" stroke="#7fbbf8" stroke-width="1.5" opacity="0.6"/>
-        <text x="143" y="90" font-family="Courier New" font-size="9" fill="#7fbbf8" text-anchor="middle" opacity="0.7">capability subspace</text>
-        <!-- Safety update vector: nearly orthogonal -->
-        <line x1="143" y1="115" x2="143" y2="58" stroke="#f0c060" stroke-width="2.5" marker-end="url(#arr1)"/>
-        <text x="158" y="73" font-family="Courier New" font-size="9" fill="#f0c060">Δ ⊥ cap.</text>
-        <text x="158" y="85" font-family="Courier New" font-size="9" fill="#f07878">thin gate</text>
-        <!-- Erosion annotation -->
-        <text x="143" y="158" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">35–38 pp refusal erosion</text>
-        <text x="143" y="170" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">after benign fine-tuning</text>
-        <!-- Right panel: pretraining -->
-        <rect x="310" y="26" width="255" height="148" rx="5" fill="#0a140a" stroke="#2a3a2a" stroke-width="1"/>
-        <text x="437" y="43" font-family="Courier New" font-size="10" fill="#888" text-anchor="middle">Pretraining Co-training</text>
-        <!-- Capability ellipse -->
-        <ellipse cx="437" cy="115" rx="85" ry="50" fill="none" stroke="#7fbbf8" stroke-width="1.5" opacity="0.6"/>
-        <text x="437" y="90" font-family="Courier New" font-size="9" fill="#7fbbf8" text-anchor="middle" opacity="0.7">capability subspace</text>
-        <!-- Safety update vector: inside subspace -->
-        <line x1="437" y1="115" x2="500" y2="95" stroke="#b0d878" stroke-width="2.5" marker-end="url(#arr3)"/>
-        <text x="507" y="92" font-family="Courier New" font-size="9" fill="#b0d878">Δ inside</text>
-        <text x="507" y="104" font-family="Courier New" font-size="9" fill="#b0d878">cap. space</text>
-        <!-- Retention annotation -->
-        <text x="437" y="158" font-family="Courier New" font-size="9" fill="#b0d878" text-anchor="middle">87–98% refusal; 2–14 pp erosion</text>
-        <text x="437" y="170" font-family="Courier New" font-size="9" fill="#b0d878" text-anchor="middle">410M–6.9B · OLMo sweep</text>
-        <!-- Middle divider label -->
-        <text x="290" y="190" font-family="Courier New" font-size="9" fill="#3a3a3a" text-anchor="middle">kernel-immobility lemma: orthogonal Δ can only mask, not erase</text>
-      </svg>
-    </div>
-    <p class="fig-cap">Figure 1: Fisher geometry of refusal — post-hoc safety Δ lands nearly orthogonal to capability directions (suppression gate); pretraining co-training places Δ inside the capability subspace (integration), yielding 87–98% refusal with only 2–14 pp post-attack erosion vs. 35–38 pp for post-hoc.</p>
-    <p class="detail">The authors measure the safety update Δ = W_safe − W_base against the curvature of the model's capabilities using the empirical Fisher of a capability loss. Post-hoc safety consistently lands in a suppression regime where Δ is nearly orthogonal to principal capability directions — a thin refusal gate overlaid on intact capabilities. A kernel-immobility lemma proves that this geometry can only mask a capability, not remove it, so benign fine-tuning restores harmful behavior (35–38 pp erosion for post-hoc installs). A 267-checkpoint sweep of OLMo-2-1B shows that the safety substrate crystallizes during pretraining; models with safety co-training achieve 87–98% refusal holding at 84–91% post-attack at every scale from 410M to 6.9B, with capability matched or better than an LM-only baseline.</p>
-  </div>
-</article>
-
 <!-- ═══════════════════════════════════════════════════════════
      PAPER 02 — Inoculation Midtraining
 ═══════════════════════════════════════════════════════════ -->
@@ -543,48 +485,6 @@ body {
 <!-- ═══════════════════════════════════════════════════════════
      PAPER 05 — Validity-Aware Jailbreak Evaluation
 ═══════════════════════════════════════════════════════════ -->
-<article class="mid">
-  <div class="mid-hd">
-    <span class="rank">05</span>
-    <h2 class="ptitle"><a href="https://arxiv.org/abs/2609.00498">Validity-Aware Jailbreak Evaluation for Large Language Models</a></h2>
-  </div>
-  <div class="mid-body">
-    <div class="tags">
-      <span class="tag t-sec">AI-security</span>
-      <span class="tag t-pre">arXiv preprint · Sep 2026</span>
-    </div>
-    <p class="mid-venue">arXiv 2609.00498 · September 2026</p>
-    <div class="mid-fig">
-      <svg xmlns="http://www.w3.org/2000/svg" width="520" height="100" viewBox="0 0 520 100">
-        <rect width="520" height="100" fill="#100a0a"/>
-        <text x="260" y="14" font-family="Courier New" font-size="10" fill="#555" text-anchor="middle">SEAV: Sequential Epistemic and Action-Level Validation</text>
-        <defs><marker id="as1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#f07878"/></marker></defs>
-        <rect x="10" y="28" width="95" height="50" rx="3" fill="#200a0a" stroke="#f07878" stroke-width="1"/>
-        <text x="57" y="50" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">Jailbreak</text>
-        <text x="57" y="64" font-family="Courier New" font-size="9" fill="#f07878" text-anchor="middle">response</text>
-        <path d="M105 53 L130 53" stroke="#f07878" stroke-width="1.5" fill="none" marker-end="url(#as1)"/>
-        <rect x="130" y="28" width="100" height="50" rx="3" fill="#1a0a0a" stroke="#c06060" stroke-width="1"/>
-        <text x="180" y="48" font-family="Courier New" font-size="9" fill="#c06060" text-anchor="middle">Decompose</text>
-        <text x="180" y="60" font-family="Courier New" font-size="9" fill="#c06060" text-anchor="middle">into steps</text>
-        <text x="180" y="72" font-family="Courier New" font-size="8" fill="#804040" text-anchor="middle">ordered chain</text>
-        <path d="M230 53 L258 53" stroke="#f07878" stroke-width="1.5" fill="none" marker-end="url(#as1)"/>
-        <rect x="258" y="28" width="115" height="50" rx="3" fill="#1a0a0a" stroke="#c06060" stroke-width="1"/>
-        <text x="315" y="45" font-family="Courier New" font-size="9" fill="#c06060" text-anchor="middle">Epistemic +</text>
-        <text x="315" y="58" font-family="Courier New" font-size="9" fill="#c06060" text-anchor="middle">operational</text>
-        <text x="315" y="71" font-family="Courier New" font-size="8" fill="#804040" text-anchor="middle">validity check</text>
-        <path d="M373 53 L400 53" stroke="#f07878" stroke-width="1.5" fill="none" marker-end="url(#as1)"/>
-        <rect x="400" y="28" width="110" height="50" rx="3" fill="#0a1a0a" stroke="#4dd9a0" stroke-width="1.5"/>
-        <text x="455" y="45" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">−14.9 pp</text>
-        <text x="455" y="58" font-family="Courier New" font-size="9" fill="#4dd9a0" text-anchor="middle">false positives</text>
-        <text x="455" y="71" font-family="Courier New" font-size="8" fill="#3aa070" text-anchor="middle">22–51% relabeled</text>
-        <text x="260" y="95" font-family="Courier New" font-size="9" fill="#333" text-anchor="middle">LLM-as-judge + retrieval-grounded verification</text>
-      </svg>
-    </div>
-    <p class="mid-cap">Fig. 5: SEAV pipeline — response decomposed into steps, each checked for epistemic validity and operational correctness; reduces false-positive jailbreak success rate by 14.9 pp.</p>
-    <p class="mid-sum">Existing jailbreak evaluators label semantically plausible responses as successful even when the content is factually wrong or procedurally invalid. SEAV decomposes each jailbreak response into ordered steps and evaluates both epistemic validity and operational correctness using LLM-as-judge plus retrieval-grounded verification. On a curated strategic-dishonesty diagnostic (SD-A), SEAV cuts the false-positive rate by 14.9 pp over the strongest baseline and reclassifies 22.1%–51.0% of prior-labeled successes as invalid across three of four public benchmarks — substantially revising the apparent attack success rates of published jailbreak methods.</p>
-  </div>
-</article>
-
 <!-- ═══════════════════════════════════════════════════════════
      PAPER 06 — Empirical Measurement of Jailbreaking Evaluators
 ═══════════════════════════════════════════════════════════ -->
@@ -788,10 +688,11 @@ body {
 <footer class="foot">
   <div>📡 Research Radar · September 17, 2026 · Daily edition</div>
   <div>Pretraining/Midtraining Safety · AI/LLM Security · Applied Mech Interp</div>
-  <div>0 peer-reviewed · 10 preprints · 0 forum/blog</div>
+  <div>1 peer-reviewed · 7 preprints · 0 forum/blog</div>
   <div>Artifact: <a href="https://claude.ai/artifact/BGJ3t1ynBchin4UNK9rCdu" style="color:inherit">https://claude.ai/artifact/BGJ3t1ynBchin4UNK9rCdu</a></div>
 </footer>
 
+<p style="margin-top:32px;font-size:13px;opacity:.7">2 entries removed on 2026-09-29 as repeats of earlier reports: 2609.06934 (first covered 2026-09-11), 2609.00498 (first covered 2026-09-06).</p>
 </div>
 </html>
 {% endraw %}

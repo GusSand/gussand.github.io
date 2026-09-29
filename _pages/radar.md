@@ -41,17 +41,23 @@ padding.
   {% endif %}
 
   {% if weeklies.size > 0 %}<p class="radar-label">Weekly editions</p>{% endif %}
-  {% for issue in weeklies %}
-    {% assign covered = site.radar | where: "group", issue.slug | sort: "date" | reverse %}
+  {% for week in site.data.radar_weeks %}
+    {% assign covered = site.radar | where: "group", week.slug | sort: "date" | reverse %}
     <div class="post-entry">
-      <span class="post-date">{{ issue.date | date: "%Y-%m-%d" }}</span>
-      <a href="{{ issue.url | relative_url }}" class="post-link">{{ issue.title }}</a>
-      {% if issue.summary != "" %}<p class="post-summary">{{ issue.summary }}</p>{% endif %}
-      <div class="post-tags">
-        <span class="post-tag">{{ issue.kind }}</span>
-        {% if issue.styled %}<span class="post-tag">illustrated</span>{% endif %}
-        <a class="post-tag post-tag-link" href="{{ issue.source_url }}">source</a>
-      </div>
+      {% if week.type == "weekly" %}
+        {% assign issue = weeklies | where: "slug", week.slug | first %}
+        <span class="post-date">{{ issue.date | date: "%Y-%m-%d" }}</span>
+        <a href="{{ issue.url | relative_url }}" class="post-link">{{ issue.title }}</a>
+        {% if issue.summary != "" %}<p class="post-summary">{{ issue.summary }}</p>{% endif %}
+        <div class="post-tags">
+          <span class="post-tag">{{ issue.kind }}</span>
+          {% if issue.styled %}<span class="post-tag">illustrated</span>{% endif %}
+          <a class="post-tag post-tag-link" href="{{ issue.source_url }}">source</a>
+        </div>
+      {% else %}
+        <span class="post-date">{{ week.date }}</span>
+        <span class="post-link radar-unsummarised">{{ week.label }}</span>
+      {% endif %}
       {% if covered.size > 0 %}
         <p class="radar-children">
           <span class="radar-children-label">Dailies:</span>
@@ -143,6 +149,7 @@ padding.
     color: #6f6e69;
   }
   .radar-children-label { margin-right: 4px; }
+  .radar-list .radar-unsummarised { color: #8a8981; font-weight: 500; }
   .radar-children a { color: #8a8981; }
   .radar-children a:hover { color: #c9c8c1; }
   .radar-sep { padding: 0 6px; color: #3a3a37; }

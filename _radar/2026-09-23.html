@@ -6,8 +6,8 @@ slug: "2026-09-23"
 date: 2026-09-23
 group: "2026-W40"
 window: "September 21–23, 2026 (+ EMNLP 2026 newly accepted papers)"
-summary: "Window: September 21–23, 2026 (+ EMNLP 2026 newly accepted papers) · Sources swept: OpenReview, ACL Anthology, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), ICML 2026 MI Workshop · Counts: 4 peer-reviewed · 6 preprints · 0 forum/blog"
-source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-23.md"
+summary: "Window: September 21–23, 2026 (+ EMNLP 2026 newly accepted papers) · Sources swept: OpenReview, ACL Anthology, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), ICML 2026 MI Workshop · Counts: 2 peer-reviewed · 3 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-09-23.md"
 styled: true
 excerpt_separator: ""
 ---
@@ -277,7 +277,7 @@ body {
 <header class="mast">
   <div class="mast-eye">📡 Research Radar</div>
   <div class="mast-title">Daily · September 23, 2026</div>
-  <div class="mast-counts">4 peer-reviewed · 6 preprints · 0 forum/blog</div>
+  <div class="mast-counts">2 peer-reviewed · 3 preprints · 0 forum/blog</div>
   <div class="mast-tracks">
     <span class="track">Pretraining Safety</span>
     <span class="track-sep">·</span>
@@ -288,199 +288,12 @@ body {
 </header>
 
 <!-- ===== PAPER 01 ===== -->
-<article class="paper">
-  <header class="paper-hd">
-    <div class="rank">01</div>
-    <div class="paper-meta">
-      <span class="tag tag-align">pretraining-safety</span>
-      <span class="tag tag-align">refusal-geometry</span>
-      <span class="tag">preprint</span>
-    </div>
-  </header>
-  <h2 class="paper-title"><a href="https://arxiv.org/abs/2609.06934">The Geometry of Refusal: Why Post-Hoc Safety Is Fragile and Pretraining-Time Safety Persists</a></h2>
-  <div class="paper-authors">Srikanth Malla, Chiho Choi, Joon Hee Choi (Samsung Semiconductor) — arXiv preprint, September 7, 2026</div>
-  <p class="paper-hook">Post-hoc safety training (RLHF, DPO) keeps getting bypassed by jailbreaks and fine-tuning attacks — this paper gives that pattern a precise geometric explanation and shows why pretraining-time safety does not share the same vulnerability. The culprit is where in the Fisher-curvature landscape the safety update lands.</p>
-  <figure class="paper-fig">
-    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Post-hoc safety orthogonal to capabilities vs pretraining safety embedded in capability subspace">
-      <rect width="500" height="220" fill="#fff"/>
-      <!-- Left: post-hoc -->
-      <rect x="18" y="18" width="218" height="184" rx="7" fill="#fff4f4" stroke="#e0c0c0" stroke-width="1.2"/>
-      <text x="127" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#901818" font-weight="bold">Post-Hoc Safety</text>
-      <text x="127" y="54" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#901818">(RLHF / DPO)</text>
-      <!-- Capability arrows -->
-      <line x1="45" y1="110" x2="205" y2="110" stroke="#555" stroke-width="2.2" marker-end="url(#m1)"/>
-      <line x1="45" y1="128" x2="205" y2="128" stroke="#555" stroke-width="1.4" marker-end="url(#m2)" opacity=".55"/>
-      <line x1="45" y1="146" x2="205" y2="146" stroke="#555" stroke-width="0.9" marker-end="url(#m3)" opacity=".3"/>
-      <text x="210" y="113" font-family="Georgia,serif" font-size="8.5" fill="#666">cap.</text>
-      <!-- Safety update (near-orthogonal, dashed) -->
-      <line x1="127" y1="170" x2="127" y2="68" stroke="#c01818" stroke-width="2.8" stroke-dasharray="5,3.5" marker-end="url(#m4)"/>
-      <text x="136" y="73" font-family="Georgia,serif" font-size="8.5" fill="#c01818">safety</text>
-      <text x="136" y="84" font-family="Georgia,serif" font-size="8.5" fill="#c01818">update</text>
-      <!-- Gate label -->
-      <rect x="72" y="90" width="108" height="15" rx="3" fill="#ffe8e8" stroke="#e0b0b0" stroke-width=".8"/>
-      <text x="126" y="101" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#901818">refusal gate (overlay)</text>
-      <text x="127" y="192" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">orthogonal → fragile</text>
-      <!-- Right: pretraining -->
-      <rect x="264" y="18" width="218" height="184" rx="7" fill="#f3fff6" stroke="#b0d8b8" stroke-width="1.2"/>
-      <text x="373" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#185a30" font-weight="bold">Pretraining-Time</text>
-      <text x="373" y="54" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#185a30">Safety</text>
-      <ellipse cx="373" cy="120" rx="72" ry="44" fill="#b8eec8" stroke="#185a30" stroke-width="1.6" opacity=".75"/>
-      <text x="373" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e">capability</text>
-      <text x="373" y="127" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e">subspace</text>
-      <ellipse cx="348" cy="113" rx="20" ry="14" fill="#185a30" opacity=".22"/>
-      <text x="348" y="117" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#0a3a1e">safety</text>
-      <text x="373" y="192" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">integrated → durable</text>
-      <defs>
-        <marker id="m1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#555"/></marker>
-        <marker id="m2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#555"/></marker>
-        <marker id="m3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#555"/></marker>
-        <marker id="m4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#c01818"/></marker>
-      </defs>
-    </svg>
-    <figcaption>Figure 1: Post-hoc safety update (dashed red) lands nearly orthogonal to capability directions — a gate overlaid on intact capabilities. Pretraining-time safety integrates into the capability subspace itself, making it structurally durable under fine-tuning attacks.</figcaption>
-  </figure>
-  <p class="paper-detail">The paper measures each safety update against the curvature of the model's capabilities using the empirical Fisher of a capability loss. Post-hoc safety consistently lands in a suppression regime: the update is nearly orthogonal to the high-curvature capability directions, with its small in-subspace component concentrating on a few sharp directions — a refusal gate placed over intact capabilities, not an erasure of them. Pretraining-time safety modifies the subspace in which capabilities reside, embedding the constraint where it cannot be peeled off by subsequent fine-tuning. The authors trace this geometry across three model families, providing the clearest mechanistic account to date of why data-filtering and pretraining-time interventions produce qualitatively different alignment durability than post-hoc fine-tuning.</p>
-</article>
-
 <!-- ===== PAPER 02 ===== -->
-<article class="paper">
-  <header class="paper-hd">
-    <div class="rank">02</div>
-    <div class="paper-meta">
-      <span class="tag tag-peer">EMNLP 2026 Findings</span>
-      <span class="tag tag-align">alignment-durability</span>
-      <span class="tag tag-align">Fisher-geometry</span>
-    </div>
-  </header>
-  <h2 class="paper-title"><a href="https://arxiv.org/abs/2609.01455">When Safety Routing Breaks: Understanding Alignment Fragility under Benign Fine-Tuning</a></h2>
-  <div class="paper-authors">Yitong Guo, Xiaoyi Chen, Siyuan Zhang, Xiaofeng Wang, Haixu Tang — EMNLP 2026 Findings (peer-reviewed)</div>
-  <p class="paper-hook">Even 100 benign fine-tuning examples can collapse safety alignment — this paper explains exactly why using Fisher geometry. The culprit is not gradient conflict (the prior explanation) but selective re-sharpening of a latent output-routing pathway that safety training leaves intact.</p>
-  <figure class="paper-fig">
-    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="Fisher geometry: flat safety landscape with latent routing pathway that sharpens under benign fine-tuning">
-      <rect width="500" height="210" fill="#fff"/>
-      <!-- Before: flat landscape -->
-      <rect x="18" y="18" width="218" height="174" rx="7" fill="#f5f8ff" stroke="#c0cce8" stroke-width="1.2"/>
-      <text x="127" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a3a99" font-weight="bold">After Safety Alignment</text>
-      <path d="M42 112 Q80 106 127 109 Q175 112 200 108" stroke="#1a3a99" stroke-width="2" fill="none"/>
-      <path d="M42 125 Q80 121 127 123 Q175 125 200 122" stroke="#1a3a99" stroke-width="1.3" fill="none" opacity=".55"/>
-      <path d="M42 138 Q80 135 127 137 Q175 138 200 136" stroke="#1a3a99" stroke-width=".8" fill="none" opacity=".3"/>
-      <text x="127" y="160" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">flat safety landscape</text>
-      <line x1="127" y1="170" x2="127" y2="62" stroke="#e08000" stroke-width="1.7" stroke-dasharray="4,3"/>
-      <text x="136" y="67" font-family="Georgia,serif" font-size="8.5" fill="#e08000">latent</text>
-      <text x="136" y="78" font-family="Georgia,serif" font-size="8.5" fill="#e08000">routing</text>
-      <text x="127" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a3a99">safety intact ✓</text>
-      <!-- After: sharpened pathway -->
-      <rect x="264" y="18" width="218" height="174" rx="7" fill="#fff7f0" stroke="#e0c060" stroke-width="1.2"/>
-      <text x="373" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#904000" font-weight="bold">After Benign Fine-Tuning</text>
-      <path d="M286 138 Q325 134 355 95 Q373 62 388 96 Q402 128 440 130" stroke="#904000" stroke-width="2.2" fill="none"/>
-      <path d="M286 150 Q325 147 355 116 Q373 92 388 118 Q402 140 440 143" stroke="#904000" stroke-width="1.3" fill="none" opacity=".55"/>
-      <line x1="373" y1="170" x2="373" y2="55" stroke="#c01818" stroke-width="2.8" marker-end="url(#m5)"/>
-      <text x="383" y="60" font-family="Georgia,serif" font-size="8.5" fill="#c01818">re-sharpened!</text>
-      <text x="373" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#c01818">safety collapsed ✗</text>
-      <defs>
-        <marker id="m5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#c01818"/></marker>
-      </defs>
-    </svg>
-    <figcaption>Figure 2: Safety Fisher is low-rank; alignment flattens the loss landscape but leaves a latent output-routing pathway; 100 benign fine-tuning examples selectively re-sharpen that pathway in output-side MLP modules, causing asymmetric safety collapse with minimal utility loss.</figcaption>
-  </figure>
-  <p class="paper-detail">The paper proposes a Fisher-geometric account of alignment fragility: safety Fisher is low-rank, and safety training flattens the geometry while preserving a latent output-routing pathway. After as few as 100 benign fine-tuning examples, this pathway is selectively re-sharpened in output-side MLP modules — attack success rate rises sharply while general utility degrades only mildly. LoRA and ASAM mitigate early collapse by suppressing output-side sharpness, but protection weakens at larger fine-tuning scales. The routing view also explains why a handful of safety examples can restore refusal: they re-flatten exactly the components benign fine-tuning had sharpened. Dataset at Hugging Face: <code>LuckyJason77/safety_routing_data</code>.</p>
-</article>
-
 <!-- ===== PAPER 03 ===== -->
-<article class="paper">
-  <header class="paper-hd">
-    <div class="rank">03</div>
-    <div class="paper-meta">
-      <span class="tag tag-peer">EMNLP 2026 Findings</span>
-      <span class="tag tag-interp">mech-interp-for-safety</span>
-      <span class="tag tag-align">refusal-circuit</span>
-    </div>
-  </header>
-  <h2 class="paper-title"><a href="https://arxiv.org/abs/2609.00051">From Detection to Refusal: Safer LLMs via Circuit-Guided Weight Scaling</a></h2>
-  <div class="paper-authors">Kuan-Lin Chu et al. — EMNLP 2026 Findings (peer-reviewed)</div>
-  <p class="paper-hook">This paper maps out the three-stage neural circuit that turns a harmful prompt into a refusal — Harmful Detection Heads, Safety Neurons, Refusal Heads — and then uses that map to improve safety by directly scaling the circuit's weights rather than fine-tuning the whole model.</p>
-  <figure class="paper-fig">
-    <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" aria-label="Three-stage safety circuit: Harmful Detection Heads to Safety Neurons to Refusal Heads">
-      <rect width="500" height="170" fill="#fff"/>
-      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#222" font-weight="bold">Three-Stage Safety Circuit</text>
-      <!-- Stage 1 -->
-      <rect x="18" y="38" width="138" height="78" rx="8" fill="#fde8e8" stroke="#b01818" stroke-width="1.5"/>
-      <text x="87" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7a1010" font-weight="bold">Harmful</text>
-      <text x="87" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7a1010" font-weight="bold">Detection</text>
-      <text x="87" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a1010">Attention Heads</text>
-      <text x="87" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#999">Early layers</text>
-      <!-- Arrow 1→2 -->
-      <line x1="158" y1="77" x2="178" y2="77" stroke="#555" stroke-width="2.2" marker-end="url(#m6)"/>
-      <!-- Stage 2 -->
-      <rect x="181" y="38" width="138" height="78" rx="8" fill="#e8effe" stroke="#1a3a99" stroke-width="1.5"/>
-      <text x="250" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a2e80" font-weight="bold">Safety</text>
-      <text x="250" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a2e80" font-weight="bold">Neurons</text>
-      <text x="250" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#1a2e80">MLP / residual stream</text>
-      <text x="250" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#999">Mid layers</text>
-      <!-- Arrow 2→3 -->
-      <line x1="321" y1="77" x2="341" y2="77" stroke="#555" stroke-width="2.2" marker-end="url(#m7)"/>
-      <!-- Stage 3 -->
-      <rect x="344" y="38" width="138" height="78" rx="8" fill="#e8fdf0" stroke="#185a30" stroke-width="1.5"/>
-      <text x="413" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0a3a1e" font-weight="bold">Refusal</text>
-      <text x="413" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0a3a1e" font-weight="bold">Heads</text>
-      <text x="413" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e">Output generation</text>
-      <text x="413" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#999">Late layers</text>
-      <text x="250" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Suppressing Stage 1 reliably disrupts Stage 3 — causal ordering confirmed by intervention</text>
-      <defs>
-        <marker id="m6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#555"/></marker>
-        <marker id="m7" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#555"/></marker>
-      </defs>
-    </svg>
-    <figcaption>Figure 3: Three-stage safety circuit: Harmful Detection Heads (early attention, identify harmful intent) → Safety Neurons (MLP, stabilize signals in residual stream) → Refusal Heads (output layer, generate safe response); targeted interventions confirm causal ordering.</figcaption>
-  </figure>
-  <p class="paper-detail">Using targeted attention-head and neuron-level interventions, the authors causally validate the three-stage organization: suppressing Harmful Detection Heads reliably disrupts downstream refusal, and directly amplifying Safety Neurons improves safety-relevant outputs without touching other parameters. Circuit-guided weight scaling applied to these components achieves improved safety scores over RLHF/DPO baselines while preserving general capability — an efficient, targeted safety enhancement that complements pretraining-time interventions rather than replacing them.</p>
-</article>
-
 <!-- ===== MID SECTION ===== -->
 <div class="more-label">Items 4–10 · Also notable</div>
 
 <!-- 04 -->
-<article class="mid-paper">
-  <header class="paper-hd">
-    <div class="rank">04</div>
-    <div class="paper-meta">
-      <span class="tag tag-peer">ICML 2025</span>
-      <span class="tag tag-sec">AI security</span>
-      <span class="tag tag-interp">mech-interp-applied</span>
-    </div>
-  </header>
-  <h3 class="mid-title"><a href="https://arxiv.org/abs/2608.27504">Circuit Discovery Helps Detect LLM Jailbreaking: A Mechanistic Interpretability Study</a></h3>
-  <figure class="mid-fig">
-    <svg viewBox="0 0 440 150" xmlns="http://www.w3.org/2000/svg" aria-label="Jailbreak circuit identified by edge attribution patching in LLaMA-2-7B-chat">
-      <rect width="440" height="150" fill="#fff"/>
-      <rect x="8" y="52" width="78" height="38" rx="5" fill="#fde0de" stroke="#b01010" stroke-width="1"/>
-      <text x="47" y="73" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a0808">Jailbreak</text>
-      <text x="47" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a0808">Prompt</text>
-      <line x1="88" y1="71" x2="108" y2="71" stroke="#b01010" stroke-width="1.8" stroke-dasharray="3,2" marker-end="url(#mj1)"/>
-      <rect x="111" y="40" width="90" height="62" rx="5" fill="#fff0d0" stroke="#9a5000" stroke-width="1"/>
-      <text x="156" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a3800" font-weight="bold">Key Attn</text>
-      <text x="156" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a3800">Heads</text>
-      <text x="156" y="93" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">edge attr.</text>
-      <line x1="203" y1="71" x2="223" y2="71" stroke="#9a5000" stroke-width="1.8" marker-end="url(#mj2)"/>
-      <rect x="226" y="40" width="80" height="62" rx="5" fill="#ece4fc" stroke="#501898" stroke-width="1"/>
-      <text x="266" y="71" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a1070" font-weight="bold">MLP</text>
-      <text x="266" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a1070">Pathways</text>
-      <line x1="308" y1="71" x2="328" y2="71" stroke="#501898" stroke-width="1.8" marker-end="url(#mj3)"/>
-      <rect x="331" y="52" width="80" height="38" rx="5" fill="#fde0de" stroke="#b01010" stroke-width="1"/>
-      <text x="371" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a0808">Affirm.</text>
-      <text x="371" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#7a0808">Response</text>
-      <rect x="111" y="112" width="198" height="24" rx="4" fill="#d0f0e2" stroke="#185a30" stroke-width=".8"/>
-      <text x="210" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#0a3a1e">Circuit ablation → ASR ↓ up to 80%</text>
-      <defs>
-        <marker id="mj1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#b01010"/></marker>
-        <marker id="mj2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#9a5000"/></marker>
-        <marker id="mj3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#501898"/></marker>
-      </defs>
-    </svg>
-    <figcaption>Figure 4: Jailbreak circuit in LLaMA-2-7B-chat identified by edge attribution patching; ablating key attention heads and MLP pathways during first-token prediction reduces ASR by up to 80%.</figcaption>
-  </figure>
-  <p class="mid-sum">Edge attribution patching and subnetwork probing in LLaMA-2-7B-chat identify the exact attention heads and MLP pathways mediating adversarial prompt exploitation; ablating those circuits during first-token prediction reduces attack success rates by up to 80%, providing the first circuit-level, targeted jailbreak defense without modifying model weights globally.</p>
-</article>
 <hr class="divider">
 
 <!-- 05 -->
@@ -701,58 +514,11 @@ body {
 <hr class="divider">
 
 <!-- 10 -->
-<article class="mid-paper">
-  <header class="paper-hd">
-    <div class="rank">10</div>
-    <div class="paper-meta">
-      <span class="tag tag-interp">mech-interp</span>
-      <span class="tag">formal-verification</span>
-      <span class="tag">IRN-faithfulness</span>
-      <span class="tag">preprint</span>
-    </div>
-  </header>
-  <h3 class="mid-title"><a href="https://arxiv.org/abs/2609.15533">The Misery of Mechanistic Interpretability: A Formal Perspective</a></h3>
-  <figure class="mid-fig">
-    <svg viewBox="0 0 440 135" xmlns="http://www.w3.org/2000/svg" aria-label="Dominant IRN feature flips under minor input perturbation across 5 model families">
-      <rect width="440" height="135" fill="#fff"/>
-      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#222" font-weight="bold">IRN Feature Flip Under Minor Perturbation</text>
-      <!-- Before -->
-      <rect x="12" y="28" width="168" height="86" rx="6" fill="#f5f8ff" stroke="#1a3a99" stroke-width="1.2"/>
-      <text x="96" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#1a3a99" font-weight="bold">Input x</text>
-      <rect x="24" y="54" width="62" height="13" rx="2" fill="#1a3a99"/>
-      <text x="93" y="64" font-family="Georgia,serif" font-size="8.5" fill="#1a3a99">Feature A (dominant)</text>
-      <rect x="24" y="72" width="22" height="10" rx="2" fill="#a0b8e8"/>
-      <text x="52" y="80" font-family="Georgia,serif" font-size="8.5" fill="#888">B</text>
-      <rect x="24" y="86" width="10" height="8" rx="2" fill="#d0dcf0"/>
-      <text x="40" y="92" font-family="Georgia,serif" font-size="8.5" fill="#888">C</text>
-      <text x="96" y="107" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#1a3a99">→ "Feature A"</text>
-      <!-- Perturbation arrow -->
-      <text x="220" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#9a5000">+ε</text>
-      <line x1="184" y1="71" x2="248" y2="71" stroke="#9a5000" stroke-width="2" marker-end="url(#mm1)"/>
-      <!-- After -->
-      <rect x="260" y="28" width="168" height="86" rx="6" fill="#fff5f5" stroke="#b01818" stroke-width="1.2"/>
-      <text x="344" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#b01818" font-weight="bold">Input x+ε</text>
-      <rect x="272" y="54" width="10" height="10" rx="2" fill="#f0c0c0"/>
-      <text x="289" y="63" font-family="Georgia,serif" font-size="8.5" fill="#888">A</text>
-      <rect x="272" y="68" width="62" height="13" rx="2" fill="#b01818"/>
-      <text x="341" y="78" font-family="Georgia,serif" font-size="8.5" fill="#b01818">Feature B (now dominant!)</text>
-      <rect x="272" y="86" width="26" height="10" rx="2" fill="#f09090"/>
-      <text x="305" y="94" font-family="Georgia,serif" font-size="8.5" fill="#888">C</text>
-      <text x="344" y="107" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#b01818">→ "Feature B"</text>
-      <text x="220" y="127" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">Across GPT-2 small, Gemma 2 2B, Gemma 3 1B, Llama 3.2 1B, R1-Distill-Qwen 1.5B</text>
-      <defs>
-        <marker id="mm1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3z" fill="#9a5000"/></marker>
-      </defs>
-    </svg>
-    <figcaption>Figure 10: Semantically minor perturbation flips the dominant IRN/SAE feature across all five tested model families; reachability analysis certifies a sound upper bound on perturbations that cause feature-identity changes.</figcaption>
-  </figure>
-  <p class="mid-sum">Semantically minor input perturbations flip the dominant IRN (interpretable replacement network) features across five open-weight model families (GPT-2 small, Gemma 2 2B, Gemma 3 1B, Llama 3.2 1B, R1-Distill-Qwen 1.5B), showing that single-input mechanistic interpretability findings are unreliable without formal certification; the proposed reachability-analysis framework certifies sound upper bounds on perturbation magnitude that causes feature-identity changes.</p>
-</article>
-
 <footer class="foot">
   <div>Research Radar — Daily Edition · September 23, 2026</div>
   <div>Sources swept: arXiv cs.CL / cs.LG / cs.CR / cs.AI · EMNLP 2026 · ICML 2026 MI Workshop</div>
   <div>Window: September 21–23, 2026 (+ newly published EMNLP 2026 Findings papers)</div>
-  <div>Generated by Claude Code · claude.ai/code</div>
+  <div>Generated by Claude Code · claude.ai/code<p style="margin-top:32px;font-size:13px;opacity:.7">5 entries removed on 2026-09-29 as repeats of earlier reports: 2609.06934 (first covered 2026-09-11), 2609.01455 (first covered 2026-09-03), 2609.00051 (first covered 2026-09-03), 2608.27504 (first covered 2026-09-01), 2609.15533 (first covered 2026-09-17).</p>
+</div>
 </footer>
 {% endraw %}

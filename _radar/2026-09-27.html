@@ -6,8 +6,8 @@ slug: "2026-09-27"
 date: 2026-09-27
 group: "2026-W40"
 window: "September 25–27, 2026 (preprints); August 8–September 27 sweep for newly-appeared uncovered work"
-summary: "Window: September 25–27, 2026 (preprints); August 8–September 27 sweep for newly-appeared uncovered work · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, DailyArXiv, Hugging Face papers · Counts: 2 peer-reviewed · 8 preprints · 0 forum/blog"
-source_url: "https://github.com/GusSand/research-radar/blob/main/reports/daily/2026-09-27.md"
+summary: "Window: September 25–27, 2026 (preprints); August 8–September 27 sweep for newly-appeared uncovered work · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, DailyArXiv, Hugging Face papers · Counts: 2 peer-reviewed · 4 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-09-27.md"
 styled: true
 excerpt_separator: ""
 ---
@@ -369,46 +369,6 @@ excerpt_separator: ""
   <hr class="divider">
 
   <!-- PAPER 3 -->
-  <article class="paper-full">
-    <div class="paper-rank">03 · AI SECURITY · REFUSAL DIRECTIONS</div>
-    <div class="paper-title">
-      <a href="https://arxiv.org/abs/2609.09793" target="_blank">How Fragile Is Safety Alignment at Frontier Scale? A Single-Direction Attack on a 320B MoE</a>
-    </div>
-    <div class="paper-meta">Yi Shi, Tanyu Chen, Kai Shen (Continuum AI) · arXiv preprint · September 9, 2026</div>
-    <div style="margin-bottom:12px;">
-      <span class="tag tag-sec">AI security</span>
-      <span class="tag tag-interp">refusal directions</span>
-    </div>
-    <p class="paper-hook">
-      Directional ablation — projecting a single refusal direction out of the residual-stream weights using a few hundred contrastive prompts — was established at up to ~70B dense parameters. This paper shows it survives the leap to a 320B mixture-of-experts architecture with block-FP8 quantization, with important differences in where the signal lives.
-    </p>
-    <div class="paper-figure">
-      <svg viewBox="0 0 620 170" xmlns="http://www.w3.org/2000/svg" width="620" height="170" style="background:#161616;border-radius:4px;">
-        <text x="16" y="22" font-family="'Courier New',monospace" font-size="11" fill="#6a6a6a">Refusal direction location: dense model vs. 320B MoE</text>
-        <!-- Dense side -->
-        <rect x="16" y="36" width="260" height="110" rx="4" fill="#191919" stroke="#2e2e2e"/>
-        <text x="146" y="58" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" fill="#4caf7a">Dense model (≤70B)</text>
-        <rect x="50" y="70" width="212" height="24" rx="3" fill="#12201a" stroke="#4caf7a" stroke-width="1"/>
-        <text x="156" y="87" text-anchor="middle" font-family="system-ui" font-size="11" fill="#4caf7a">residual-stream write matrices</text>
-        <text x="146" y="120" text-anchor="middle" font-family="system-ui" font-size="11" fill="#6a6a6a">single direction, easy to locate</text>
-        <!-- MoE side -->
-        <rect x="316" y="36" width="288" height="110" rx="4" fill="#191919" stroke="#e06060" stroke-width="1"/>
-        <text x="460" y="58" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" fill="#e06060">GLM-5.3-Flash (320B MoE)</text>
-        <rect x="335" y="68" width="100" height="22" rx="3" fill="#2e1515" stroke="#e06060" stroke-width="1" opacity="0.8"/>
-        <text x="385" y="83" text-anchor="middle" font-family="system-ui" font-size="10" fill="#e06060">hyper-conn layer 1</text>
-        <rect x="445" y="68" width="140" height="22" rx="3" fill="#2e1515" stroke="#e06060" stroke-width="1" opacity="0.6"/>
-        <text x="515" y="83" text-anchor="middle" font-family="system-ui" font-size="10" fill="#e06060">routed expert weights</text>
-        <rect x="380" y="98" width="120" height="22" rx="3" fill="#2e1515" stroke="#e06060" stroke-width="1" opacity="0.4"/>
-        <text x="440" y="113" text-anchor="middle" font-family="system-ui" font-size="10" fill="#e06060">block-FP8 quantized</text>
-        <text x="460" y="136" text-anchor="middle" font-family="system-ui" font-size="11" fill="#6a6a6a">distributed — recipe adaptation required</text>
-      </svg>
-    </div>
-    <div class="paper-caption">Figure: Refusal direction in dense models sits in residual-stream write matrices (single, easy location); in the 320B MoE, the hyper-connection structure and expert routing distribute the signal, requiring architectural adaptation of the abliteration recipe.</div>
-    <div class="paper-detail">
-      Directional ablation requires no gradient-based training — only a few hundred contrastive prompts — to remove a model's ability to refuse. Tested on GLM-5.3-Flash (320B parameters, 288 routed experts, four-wide hyper-connection residual, block-FP8 quantization), the attack succeeds, confirming that the safety fragility seen at &lt;70B dense scale transfers to frontier-class MoE deployments. The refusal direction is not located where the original recipe would place it; the hyper-connection structure distributes the signal differently than in dense models. The paper maps the architectural adaptations required and characterizes where the signal lives — providing both proof of vulnerability and a practical abliteration guide for frontier MoEs.
-    </div>
-  </article>
-
   <div class="midtier-label">Items 4–10 · ranked by priority</div>
 
   <!-- PAPER 4 -->
@@ -489,112 +449,8 @@ excerpt_separator: ""
   </article>
 
   <!-- PAPER 6 -->
-  <article class="paper-mid">
-    <div class="paper-mid-header">
-      <div class="paper-mid-rank">06</div>
-      <div class="paper-mid-title">
-        <a href="https://arxiv.org/abs/2608.25390" target="_blank">Refusal Geometry Reflects Refusal Training: Diverse Refusal Prefixes Can Raise Stable Rank and Weaken Refusal Vector Ablation Attacks</a>
-      </div>
-    </div>
-    <div class="paper-mid-tags">
-      <span class="tag tag-align">refusal training</span>
-      <span class="tag tag-sec">abliteration defense</span>
-    </div>
-    <div class="paper-mid-figure">
-      <svg viewBox="0 0 580 100" xmlns="http://www.w3.org/2000/svg" width="580" height="100" style="background:#161616;border-radius:4px;">
-        <text x="14" y="20" font-family="'Courier New',monospace" font-size="11" fill="#6a6a6a">Stable rank of refusal subspace vs. abliteration effectiveness</text>
-        <!-- low rank -->
-        <rect x="14" y="32" width="210" height="44" rx="3" fill="#2e1515" stroke="#e06060" stroke-width="1"/>
-        <text x="50" y="50" font-family="system-ui" font-size="11" fill="#6a6a6a">homogeneous</text>
-        <text x="50" y="66" font-family="'Courier New',monospace" font-size="11" fill="#e06060">rank=1 → ablitable ✗</text>
-        <!-- high rank -->
-        <rect x="270" y="32" width="210" height="44" rx="3" fill="#12201a" stroke="#4caf7a" stroke-width="1"/>
-        <text x="306" y="50" font-family="system-ui" font-size="11" fill="#6a6a6a">diverse prefixes</text>
-        <text x="306" y="66" font-family="'Courier New',monospace" font-size="11" fill="#4caf7a">rank &gt;1 → robust ✓</text>
-        <text x="234" y="58" text-anchor="middle" font-family="system-ui" font-size="18" fill="#d4a740">→</text>
-        <text x="500" y="42" font-family="system-ui" font-size="11" fill="#6a6a6a">training-time</text>
-        <text x="500" y="58" font-family="system-ui" font-size="11" fill="#d4a740">countermeasure</text>
-      </svg>
-    </div>
-    <div class="paper-mid-summary">
-      Abliteration removes refusals by projecting a single refusal direction out of the residual stream. This work shows that the geometry of the refusal subspace directly reflects how refusal training was conducted: diverse refusal prefixes during RLHF/SFT raise the stable rank of the refusal subspace, distributing the signal across more dimensions and making it structurally harder to remove. Provides a training-time countermeasure — prefix diversity as a structural defense against abliteration — with a mechanistic account of why it works.
-    </div>
-  </article>
-
   <!-- PAPER 7 -->
-  <article class="paper-mid">
-    <div class="paper-mid-header">
-      <div class="paper-mid-rank">07</div>
-      <div class="paper-mid-title">
-        <a href="https://arxiv.org/abs/2608.19338" target="_blank">Mechanistic Tomography: Designed Measurement for Control-Oriented Interpretability</a>
-      </div>
-    </div>
-    <div class="paper-mid-tags">
-      <span class="tag tag-interp">mech interp</span>
-      <span class="tag tag-ctrl">control-oriented</span>
-    </div>
-    <div class="paper-mid-figure">
-      <svg viewBox="0 0 580 100" xmlns="http://www.w3.org/2000/svg" width="580" height="100" style="background:#161616;border-radius:4px;">
-        <text x="14" y="20" font-family="'Courier New',monospace" font-size="11" fill="#6a6a6a">Mechanistic tomography pipeline — Qwen-2.5-7B refusal surface</text>
-        <rect x="14" y="32" width="100" height="44" rx="3" fill="#191919" stroke="#2e2e2e"/>
-        <text x="64" y="52" text-anchor="middle" font-family="system-ui" font-size="11" fill="#c9c9c9">designed</text>
-        <text x="64" y="66" text-anchor="middle" font-family="system-ui" font-size="11" fill="#c9c9c9">interventions</text>
-        <line x1="114" y1="54" x2="145" y2="54" stroke="#4dd0c0" stroke-width="1.5"/>
-        <polygon points="145,54 138,50 138,58" fill="#4dd0c0"/>
-        <rect x="145" y="32" width="90" height="44" rx="3" fill="#0d2e2e" stroke="#4dd0c0" stroke-width="1"/>
-        <text x="190" y="52" text-anchor="middle" font-family="system-ui" font-size="11" fill="#4dd0c0">y = Ax + w</text>
-        <text x="190" y="66" text-anchor="middle" font-family="system-ui" font-size="10" fill="#6a6a6a">linear fit</text>
-        <line x1="235" y1="54" x2="266" y2="54" stroke="#4dd0c0" stroke-width="1.5"/>
-        <polygon points="266,54 259,50 259,58" fill="#4dd0c0"/>
-        <rect x="266" y="32" width="100" height="44" rx="3" fill="#191919" stroke="#2e2e2e"/>
-        <text x="316" y="52" text-anchor="middle" font-family="system-ui" font-size="11" fill="#c9c9c9">held-out</text>
-        <text x="316" y="66" text-anchor="middle" font-family="system-ui" font-size="11" fill="#c9c9c9">calibration</text>
-        <line x1="366" y1="54" x2="397" y2="54" stroke="#4caf7a" stroke-width="1.5"/>
-        <polygon points="397,54 390,50 390,58" fill="#4caf7a"/>
-        <rect x="397" y="32" width="168" height="44" rx="3" fill="#12201a" stroke="#4caf7a" stroke-width="1"/>
-        <text x="481" y="52" text-anchor="middle" font-family="'Courier New',monospace" font-size="12" fill="#4caf7a">R²= 0.983</text>
-        <text x="481" y="66" text-anchor="middle" font-family="system-ui" font-size="10" fill="#6a6a6a">MAE 0.00379 on 128 held-out</text>
-      </svg>
-    </div>
-    <div class="paper-mid-summary">
-      Frames mech interp measurement as y = Ax + w (A = intervention design, x = target map, w = nonlinear residual + noise), giving a practical sequence: cheapest measurements first, held-out test, calibrate mismatch, expand only if structured residual remains. On a Qwen-2.5-7B refusal-response experiment (401 designed actions), a calibrated additive map reaches MAE 0.003790 and R² 0.9829 on 128 held-out actions — a stopping-result showing finite calibration was adequate, no larger family needed. Provides principled stopping criteria for interp measurement campaigns.
-    </div>
-  </article>
-
   <!-- PAPER 8 -->
-  <article class="paper-mid">
-    <div class="paper-mid-header">
-      <div class="paper-mid-rank">08</div>
-      <div class="paper-mid-title">
-        <a href="https://arxiv.org/abs/2608.22557" target="_blank">BLADE: Bilevel Low-rank Augmented-Lagrangian Erasure for LLM Unlearning</a>
-      </div>
-    </div>
-    <div class="paper-mid-tags">
-      <span class="tag tag-unlearn">unlearning</span>
-      <span class="tag tag-align">safety</span>
-    </div>
-    <div class="paper-mid-figure">
-      <svg viewBox="0 0 580 100" xmlns="http://www.w3.org/2000/svg" width="580" height="100" style="background:#161616;border-radius:4px;">
-        <text x="14" y="20" font-family="'Courier New',monospace" font-size="11" fill="#6a6a6a">BLADE composite score improvement over strongest baselines</text>
-        <rect x="14" y="32" width="142" height="44" rx="3" fill="#1e1a2e" stroke="#7a9ee8" stroke-width="1"/>
-        <text x="85" y="52" text-anchor="middle" font-family="system-ui" font-size="12" fill="#7a9ee8">TOFU</text>
-        <text x="85" y="68" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="#7a9ee8">+6%</text>
-        <rect x="170" y="32" width="142" height="44" rx="3" fill="#1e1a2e" stroke="#9b7de8" stroke-width="1"/>
-        <text x="241" y="52" text-anchor="middle" font-family="system-ui" font-size="12" fill="#9b7de8">MUSE Books</text>
-        <text x="241" y="68" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="#9b7de8">+9%</text>
-        <rect x="326" y="32" width="142" height="44" rx="3" fill="#1e1a2e" stroke="#7a9ee8" stroke-width="1"/>
-        <text x="397" y="52" text-anchor="middle" font-family="system-ui" font-size="12" fill="#7a9ee8">KnowUndo</text>
-        <text x="397" y="68" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="#7a9ee8">+7%</text>
-        <text x="482" y="42" font-family="system-ui" font-size="10" fill="#6a6a6a">stable under</text>
-        <text x="482" y="56" font-family="system-ui" font-size="10" fill="#6a6a6a">4× scale &amp;</text>
-        <text x="482" y="70" font-family="system-ui" font-size="10" fill="#6a6a6a">4 seq. steps</text>
-      </svg>
-    </div>
-    <div class="paper-mid-summary">
-      Existing unlearning methods suffer from unbounded forget losses degrading coherence and fixed-weight balancing that cannot adapt mid-training. BLADE uses three mechanisms: a clamped-entropy forget loss whose gradient is zero once tokens reach sufficient uncertainty; an asymmetric augmented Lagrangian that permanently ratchets retain protection after any violation; and bilevel LoRA adapters that repair retain damage before each forgetting step. Results: +6% TOFU, +9% MUSE Books, +7% KnowUndo composite scores over strongest baselines; stable under 4× scaling and 4 sequential unlearning steps.
-    </div>
-  </article>
-
   <!-- PAPER 9 -->
   <article class="paper-mid">
     <div class="paper-mid-header">
@@ -669,5 +525,6 @@ excerpt_separator: ""
     <div style="margin-top:4px;">Produced by automated daily sweep. Not peer-reviewed selection; verify individual claims against the papers.</div>
   </footer>
 
+<p style="margin-top:32px;font-size:13px;opacity:.7">4 entries removed on 2026-09-29 as repeats of earlier reports: 2609.09793 (first covered 2026-09-11), 2608.25390 (first covered 2026-08-29), 2608.19338 (first covered 2026-08-27), 2608.22557 (first covered 2026-08-27).</p>
 </div>
 {% endraw %}

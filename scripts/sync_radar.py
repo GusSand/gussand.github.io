@@ -11,6 +11,7 @@ Usage: python3 scripts/sync_radar.py --source /path/to/research-radar
 
 import argparse
 import datetime as dt
+import json
 import re
 import subprocess
 import sys
@@ -18,6 +19,7 @@ from pathlib import Path
 
 REPO_URL = "https://github.com/GusSand/research-radar"
 KINDS = ("daily", "weekly", "backfill")
+WEEKS_JSON = Path(__file__).resolve().parent.parent / "_data" / "radar_weeks.json"
 
 WEEK_RE = re.compile(r"^(\d{4})-W(\d{2})$")
 DATE_RE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})$")
@@ -164,8 +166,9 @@ def collect(source):
 def assign_groups(reports):
     """Roll each daily up under the weekly that summarises its week.
 
-    A daily whose week never got a weekly stays in the "latest" group and is
-    listed in full on the index; the rest collapse under their weekly.
+    Only dailies newer than the last weekly stay in the "latest" group and are
+    listed in full on the index. A past week that never got a weekly (the
+    routine failed that Monday) still collapses, under a "week-YYYY-Www" group.
     """
     covered = {}
     for r in reports:
@@ -173,13 +176,40 @@ def assign_groups(reports):
             week = iso_covered_week(r["slug"])
             if week:
                 covered[week] = r["slug"]
+    last_covered = max(covered) if covered else None
 
     for r in reports:
         if r["kind"] != "daily":
             r["group"] = r["kind"]
             continue
         year, week, _ = r["date"].isocalendar()
-        r["group"] = covered.get((year, week), "latest")
+        if (year, week) in covered:
+            r["group"] = covered[(year, week)]
+        elif last_covered and (year, week) < last_covered:
+            r["group"] = f"week-{year}-W{week:02d}"
+        else:
+            r["group"] = "latest"
+
+
+def week_index(reports):
+    """Weeklies and weekly-less past weeks, newest first, for the index page.
+
+    A missing weekly is dated to the Monday it would have gone out, so it
+    sorts among the real ones.
+    """
+    weeks = [{"type": "weekly", "slug": r["slug"], "date": r["date"].isoformat()}
+             for r in reports if r["kind"] == "weekly"]
+    orphans = {r["group"] for r in reports if r["group"].startswith("week-")}
+    for group in orphans:
+        year, week = int(group[5:9]), int(group[11:])
+        monday = dt.date.fromisocalendar(year, week, 1)
+        weeks.append({
+            "type": "unsummarised",
+            "slug": group,
+            "date": (monday + dt.timedelta(days=7)).isoformat(),
+            "label": f"Week of {monday:%B} {monday.day} (no weekly summary)",
+        })
+    return sorted(weeks, key=lambda w: w["date"], reverse=True)
 
 
 def build(source, out_dir):
@@ -199,7 +229,7 @@ def build(source, out_dir):
             "window": md_window(md_text),
             "summary": md_summary(md_text),
             "artifact": artifact_m.group(0) if artifact_m else None,
-            "source_url": f"{REPO_URL}/blob/main/reports/{kind}/{r['md_path'].name}",
+            "source_url": f"{REPO_URL}/blob/claude/radar/reports/{kind}/{r['md_path'].name}",
             "styled": has_html,
             # reports wrap their body in {% raw %}, which Jekyll's excerpt
             # splitter would cut in half; we never use the excerpt anyway
@@ -221,7 +251,7 @@ def build(source, out_dir):
             encoding="utf-8",
         )
         written.append(dest.name)
-    return written
+    return written, week_index(reports)
 
 
 def main():
@@ -238,7 +268,8 @@ def main():
     for stale in list(args.out.glob("*.md")) + list(args.out.glob("*.html")):
         stale.unlink()
 
-    written = build(args.source, args.out)
+    written, weeks = build(args.source, args.out)
+    WEEKS_JSON.write_text(json.dumps(weeks, indent=1) + "\n", encoding="utf-8")
     print(f"wrote {len(written)} radar issues to {args.out}")
 
 
