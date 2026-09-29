@@ -30,6 +30,18 @@ jobs:
           path: .radar-source
           fetch-depth: 0 # commit dates order the backfill reports
 
+      # The routines push to claude/radar; a launchd job on Gus's Mac merges it
+      # into main, but only when the Mac is up. Merge it here too (locally, never
+      # pushed) so the site doesn't depend on that job.
+      - name: Merge claude/radar
+        working-directory: .radar-source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git rev-parse --verify --quiet origin/claude/radar >/dev/null; then
+            git merge --no-edit origin/claude/radar || { git merge --abort; echo "::warning::claude/radar conflicts with main; syncing main only"; }
+          fi
+
       - name: Sync reports into _radar
         run: python3 scripts/sync_radar.py --source .radar-source
 
