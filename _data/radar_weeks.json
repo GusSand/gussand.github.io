@@ -10,10 +10,9 @@
   "date": "2026-09-21"
  },
  {
-  "type": "unsummarised",
-  "slug": "week-2026-W37",
-  "date": "2026-09-14",
-  "label": "Week of September 7 (no weekly summary)"
+  "type": "weekly",
+  "slug": "2026-W38",
+  "date": "2026-09-14"
  },
  {
   "type": "weekly",
@@ -31,28 +30,24 @@
   "date": "2026-08-24"
  },
  {
-  "type": "unsummarised",
-  "slug": "week-2026-W33",
-  "date": "2026-08-17",
-  "label": "Week of August 10 (no weekly summary)"
+  "type": "weekly",
+  "slug": "2026-W34",
+  "date": "2026-08-17"
  },
  {
-  "type": "unsummarised",
-  "slug": "week-2026-W32",
-  "date": "2026-08-10",
-  "label": "Week of August 3 (no weekly summary)"
+  "type": "weekly",
+  "slug": "2026-W33",
+  "date": "2026-08-10"
  },
  {
-  "type": "unsummarised",
-  "slug": "week-2026-W31",
-  "date": "2026-08-03",
-  "label": "Week of July 27 (no weekly summary)"
+  "type": "weekly",
+  "slug": "2026-W32",
+  "date": "2026-08-03"
  },
  {
-  "type": "unsummarised",
-  "slug": "week-2026-W30",
-  "date": "2026-07-27",
-  "label": "Week of July 20 (no weekly summary)"
+  "type": "weekly",
+  "slug": "2026-W31",
+  "date": "2026-07-27"
  },
  {
   "type": "weekly",

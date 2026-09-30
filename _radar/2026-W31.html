@@ -1,0 +1,741 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-W31"
+kind: "weekly"
+slug: "2026-W31"
+date: 2026-07-27
+group: "weekly"
+window: "July 20-26, 2026 (backfilled 2026-09-29)"
+summary: "Window: July 20-26, 2026 (backfilled 2026-09-29) · Counts: 0 peer-reviewed · 11 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/weekly/2026-W31.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80; --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  padding: 0 16px;
+}
+a { color: var(--link); }
+.page-wrap { max-width: 720px; margin: 0 auto; padding: 48px 0 80px; }
+
+/* Masthead */
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 24px;
+  margin-bottom: 36px;
+}
+.masthead-eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--title);
+  margin-bottom: 8px;
+}
+.masthead-counts {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  color: var(--dim);
+}
+.track { color: var(--accent-teal); font-weight: 600; }
+.track-sep { margin: 0 6px; color: var(--dim); }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-right: 4px;
+  margin-bottom: 2px;
+}
+.tag-peer   { background: #d4edda; color: var(--accent-green); }
+.tag-interp { background: #d0f0f0; color: var(--accent-teal); }
+.tag-security { background: #fde8e8; color: var(--accent-red); }
+.tag-align  { background: #dce8ff; color: var(--accent-blue); }
+.tag-control { background: #ede8ff; color: var(--accent-violet); }
+@media (prefers-color-scheme: dark) {
+  .tag-peer    { background: #1a3a22; color: var(--accent-green); }
+  .tag-interp  { background: #0d2a2a; color: var(--accent-teal); }
+  .tag-security{ background: #3a1a1a; color: var(--accent-red); }
+  .tag-align   { background: #1a2a44; color: var(--accent-blue); }
+  .tag-control { background: #2a1a44; color: var(--accent-violet); }
+}
+
+/* Theme section */
+.theme-section {
+  background: var(--theme-band);
+  border-left: 4px solid var(--accent-green);
+  padding: 18px 22px;
+  margin-bottom: 44px;
+  border-radius: 0 4px 4px 0;
+}
+.theme-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-green);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.theme-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* Full paper entries (01–08) */
+.paper {
+  margin-bottom: 52px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--border);
+}
+.paper-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.paper-rank {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--border);
+  min-width: 42px;
+  line-height: 1;
+  padding-top: 2px;
+}
+.paper-meta { display: flex; flex-wrap: wrap; align-items: center; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-byline {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+.paper-why {
+  font-size: 14px;
+  color: var(--dim);
+  border-left: 3px solid var(--border);
+  padding-left: 12px;
+  margin-bottom: 14px;
+  font-style: italic;
+}
+.paper-hook {
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.paper-detail {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.paper-figure {
+  margin: 20px 0;
+  text-align: center;
+}
+.paper-figure figcaption {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Mid-tier entries (09–11) */
+.more-section-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-top: 2px solid var(--border);
+  padding-top: 18px;
+  margin-bottom: 28px;
+  margin-top: 4px;
+}
+.mid-paper { margin-bottom: 36px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-summary { font-size: 14px; color: var(--text); line-height: 1.65; margin-top: 8px; }
+hr.section-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+/* Watchlist */
+.watchlist {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin-top: 48px;
+}
+.watchlist-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-amber);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.watchlist ul { padding-left: 18px; }
+.watchlist li { font-size: 14px; line-height: 1.65; margin-bottom: 6px; }
+</style>
+
+<div class="page-wrap">
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Week 31 · July 20–26, 2026 <span style="font-size:13px;color:var(--dim);font-weight:normal;">(backfilled 2026-09-29)</span></div>
+  <div class="masthead-counts">0 peer-reviewed · 11 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<section class="theme-section">
+  <div class="theme-label">Theme of the Week</div>
+  <p class="theme-text">Sparse autoencoders underwent a methodological stress test this week — three independent papers interrogated whether SAE features are reliable instruments for causal claims and safety-critical work. Marks et al. proved which linear readouts survive sparse compression (most safety-relevant probes do; rare-concept probes lose 15–40%); Bloom, Conmy, and Nanda showed that timescale is a genuine dimension of feature identity that standard stateless SAEs systematically miss; and Cho et al. demonstrated that SAE family choice is a larger determinant of interventional validity than model scale. Alongside these methodological advances, LACUNA exposed the gap between unlearning metrics and genuine knowledge erasure, PAC-style safety bounds provided the first distribution-free formal certificates for LLM output safety, and CC-Delta showed SAE-guided jailbreak defense outperforms dense activation steering. The security track closed with a multi-turn jailbreaking advance and a survey confirming 69–98% policy-enforcement failure rates in AI coding agent deployments.</p>
+</section>
+
+<!-- Paper 01 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.17425">Decoder-Preserving Sparse Autoencoders: Which Readouts Survive Sparse Compression?</a>
+  </h2>
+  <div class="paper-byline">Samuel Marks, Can Rager, Eric J. Michaud, Yonatan Belinkov, David Bau, Aaron Mueller — arXiv (July 2026)</div>
+  <p class="paper-why">First formal characterization of information loss through SAE bottlenecks — directly answers whether safety-critical linear probes survive SAE-based interventions, a question every practitioner using SAEs for steering or monitoring needs to resolve before trusting their results.</p>
+  <p class="paper-hook">When a sparse autoencoder compresses a residual-stream vector into sparse feature activations, it discards information — but which information? This paper proves exactly which linear readouts survive the compression, and shows empirically that most safety-relevant probes do while rare-concept probes do not.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Decoder-Preserving SAEs: subspace projection diagram showing preserved vs projected-out readouts">
+      <rect width="500" height="200" fill="#fff"/>
+      <!-- Residual stream vector z -->
+      <rect x="30" y="70" width="80" height="60" rx="4" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="70" y="97" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a4f99">z ∈ ℝ^d</text>
+      <text x="70" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">residual</text>
+      <!-- Arrow to SAE -->
+      <line x1="110" y1="100" x2="150" y2="100" stroke="#888" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <defs><marker id="arr1" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#888"/></marker></defs>
+      <text x="130" y="92" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#888">SAE</text>
+      <!-- SAE reconstruction box -->
+      <rect x="150" y="70" width="80" height="60" rx="4" fill="#fff0e8" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="190" y="97" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#a05c00">ẑ ∈ col(D)</text>
+      <text x="190" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">reconstruction</text>
+      <!-- Arrow to readouts -->
+      <line x1="230" y1="100" x2="270" y2="100" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <defs><marker id="arr2" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#888"/></marker></defs>
+      <!-- Preserved readouts (green) -->
+      <rect x="270" y="52" width="110" height="32" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="325" y="65" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1a6e3c" font-weight="bold">✓ PRESERVED</text>
+      <text x="325" y="78" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1a6e3c">refusal, harm, entity type</text>
+      <!-- Projected-out readouts (red) -->
+      <rect x="270" y="116" width="110" height="32" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.2"/>
+      <text x="325" y="129" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#b02020" font-weight="bold">✗ PROJECTED OUT</text>
+      <text x="325" y="142" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#b02020">rare / fine-grained: −15–40%</text>
+      <!-- Condition label -->
+      <rect x="390" y="72" width="98" height="56" rx="4" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+      <text x="439" y="90" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#555">preserved iff</text>
+      <text x="439" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">w ∈ col(D)</text>
+      <text x="439" y="118" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#555">decoder span</text>
+    </svg>
+    <figcaption>A readout φ(z) = wᵀz is preserved through SAE compression iff the weight vector w lies in the column span of the decoder matrix D. Safety-relevant high-frequency probes (refusal direction, harmfulness) satisfy this condition; rare-concept probes are partly projected out, losing 15–40% predictive accuracy.</figcaption>
+  </figure>
+  <p class="paper-detail">The paper frames SAE compression as a constrained matrix-valued distortion minimization problem and derives a closed-form characterization: a linear functional φ(z) = wᵀz is preserved iff w ∈ col(D). Empirically, probes for refusal direction, harmfulness scores, and entity type have weight vectors well-aligned with the decoder span and survive with near-zero degradation; probes for rare named entities or low-frequency syntax lose 15–40% of predictive accuracy. This gives practitioners a principled pre-flight test: check decoder-span alignment before trusting that a safety probe generalizes through an SAE intervention.</p>
+</article>
+
+<!-- Paper 02 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.17117">Persistent Sparse Autoencoders: Learning Feature Timescales</a>
+  </h2>
+  <div class="paper-byline">Joseph Bloom, Arthur Conmy, Neel Nanda — arXiv (July 2026)</div>
+  <p class="paper-why">Standard SAEs treat each token independently, blind to whether a feature fires in isolated bursts or sustained spans — a systematic miss for sequence-level safety monitoring. This paper adds per-feature persistence coefficients that capture exactly this distinction.</p>
+  <p class="paper-hook">Some features burst at a single surprising token; others sustain across 20–50 tokens of a discourse topic. Standard SAEs cannot tell the difference because they process each position as if no other positions exist. Persistent SAEs fix this by letting each feature learn its own decay rate.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" aria-label="Persistent SAE feature timescale visualization showing bursty vs sustained activation patterns">
+      <rect width="500" height="180" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#444" font-weight="600">Feature Timescale Distribution (Gemma-2-9B)</text>
+      <!-- X axis -->
+      <line x1="50" y1="140" x2="470" y2="140" stroke="#ccc" stroke-width="1"/>
+      <text x="50" y="158" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">1</text>
+      <text x="155" y="158" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">8</text>
+      <text x="260" y="158" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">20</text>
+      <text x="365" y="158" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">35</text>
+      <text x="470" y="158" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">50+</text>
+      <text x="260" y="172" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">persistence span (tokens)</text>
+      <!-- Y axis -->
+      <line x1="50" y1="35" x2="50" y2="140" stroke="#ccc" stroke-width="1"/>
+      <!-- Bars: lexical-surprise (burst), syntax (mid), discourse (sustained) -->
+      <!-- burst: tokens 1-3, tall bar, red -->
+      <rect x="52" y="55" width="60" height="85" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="82" y="50" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#b02020" font-weight="bold">lexical-surprise</text>
+      <text x="82" y="62" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#b02020">(burst, 1–3 tok)</text>
+      <!-- syntax: tokens 3-8, medium bar, amber -->
+      <rect x="135" y="88" width="80" height="52" fill="#fff0d4" stroke="#a05c00" stroke-width="1"/>
+      <text x="175" y="83" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#a05c00" font-weight="bold">syntactic</text>
+      <text x="175" y="95" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#a05c00">(3–8 tokens)</text>
+      <!-- discourse: tokens 20-50, lower bar, teal -->
+      <rect x="240" y="105" width="215" height="35" fill="#d0f0f0" stroke="#0d7377" stroke-width="1"/>
+      <text x="347" y="100" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#0d7377" font-weight="bold">discourse-level topic</text>
+      <text x="347" y="112" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0d7377">(20–50 tokens, sustained)</text>
+    </svg>
+    <figcaption>Feature timescale distribution learned by Persistent SAEs on Gemma-2-9B. Three regimes emerge: lexical-surprise features burst at 1–3 token positions; syntactic head-agreement features sustain over 3–8 tokens; discourse-level topic features persist over 20–50 tokens. Standard SAEs cannot represent this structure.</figcaption>
+  </figure>
+  <p class="paper-detail">Persistent SAEs augment the TopK encoder with a per-feature persistence coefficient α_f ∈ [0,1] learned during training: at each token, feature f's pre-activation is blended with a decayed version of its previous activation, allowing sustained features to self-reinforce and bursty features to decay rapidly. Trained on Gemma-2-9B, Persistent SAEs recover three clear timescale regimes with distinct interpretable character. Persistence coefficients are predictive of which features transfer across tasks, suggesting timescale is a meaningful dimension of feature identity beyond interpretability labeling.</p>
+</article>
+
+<!-- Paper 03 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.20286">Sound Probabilistic Safety Bounds for Large Language Models</a>
+  </h2>
+  <div class="paper-byline">Luca Marzari, Davide Corsi, Isabella Mastroeni, Alessandro Farinelli, Ferdinando Cicalese — arXiv (July 22, 2026)</div>
+  <p class="paper-why">First distribution-free, model-agnostic PAC-style certificates for LLM output safety — closes the gap between empirical safety evaluations (which cannot quantify unseen-prompt risk) and formal verification (which requires internal access). Certificates are composable across safety-pipeline stages.</p>
+  <p class="paper-hook">Standard safety evaluations tell you how often a model fails on a test set. This paper tells you, with formal statistical guarantees, how often it will fail on prompts you haven't seen — using only a modest sample and no access to model internals.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" aria-label="PAC safety bound framework pipeline diagram">
+      <rect width="500" height="180" fill="#fff"/>
+      <!-- Stage 1: prompt sample -->
+      <rect x="20" y="60" width="90" height="60" rx="4" fill="#dce8ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="65" y="87" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1a4f99" font-weight="600">n prompts</text>
+      <text x="65" y="101" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1a4f99">from distribution</text>
+      <!-- Arrow -->
+      <line x1="110" y1="90" x2="135" y2="90" stroke="#888" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <defs><marker id="arr3" markerWidth="7" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#888"/></marker></defs>
+      <!-- Stage 2: LLM safety predicate -->
+      <rect x="135" y="60" width="100" height="60" rx="4" fill="#f5f5f5" stroke="#888" stroke-width="1.2"/>
+      <text x="185" y="84" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#444" font-weight="600">LLM + safety</text>
+      <text x="185" y="98" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#444">predicate</text>
+      <text x="185" y="112" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">(black-box)</text>
+      <!-- Arrow -->
+      <line x1="235" y1="90" x2="260" y2="90" stroke="#888" stroke-width="1.5" marker-end="url(#arr4)"/>
+      <defs><marker id="arr4" markerWidth="7" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#888"/></marker></defs>
+      <!-- Stage 3: conformal + Clopper-Pearson -->
+      <rect x="260" y="60" width="110" height="60" rx="4" fill="#ede8ff" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="315" y="84" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#5c1aaa" font-weight="600">Conformal +</text>
+      <text x="315" y="98" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#5c1aaa">Clopper-Pearson</text>
+      <!-- Arrow -->
+      <line x1="370" y1="90" x2="395" y2="90" stroke="#888" stroke-width="1.5" marker-end="url(#arr5)"/>
+      <defs><marker id="arr5" markerWidth="7" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#888"/></marker></defs>
+      <!-- Stage 4: PAC certificate -->
+      <rect x="395" y="52" width="90" height="76" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="440" y="78" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1a6e3c" font-weight="700">P(unsafe)</text>
+      <text x="440" y="93" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a6e3c" font-weight="bold">≤ ε</text>
+      <text x="440" y="108" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1a6e3c">w.p. 1−δ</text>
+      <text x="440" y="121" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">n ≥ 200 prompts</text>
+      <!-- Bottom label -->
+      <text x="250" y="155" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#888">Distribution-free · No model internals · Composable across pipeline stages</text>
+    </svg>
+    <figcaption>PAC safety certification pipeline. From n test prompts (n ≥ 200 suffices at δ = 0.01), conformal prediction combined with Clopper-Pearson intervals yields a distribution-free bound P(unsafe) ≤ ε with probability 1−δ. Certificates hold within 2–5% of empirical violation rates on ToxiGen and AdvBench across four frontier models.</figcaption>
+  </figure>
+  <p class="paper-detail">The framework formulates LLM safety certification as a PAC learning problem over a prompt distribution, then computes a sample-efficient bound on the probability of safety predicate violation on future unseen prompts. The bound uses conformal prediction combined with Clopper-Pearson intervals — making it distribution-free and assumption-free about LLM internals. Evaluated on ToxiGen and AdvBench with four frontier models, certificates hold within 2–5% of empirical violation rates at δ = 0.01 with as few as 200 test prompts, and are composable: certificates for sub-policies (refusal gates, output classifiers) can be chained to certify multi-stage safety pipelines.</p>
+</article>
+
+<!-- Paper 04 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.02513">LACUNA: A Testbed for Evaluating Localization Precision for LLM Unlearning</a>
+  </h2>
+  <div class="paper-byline">Matteo Boglioni, Thibault Rousset, Siva Reddy, Marius Mosbach, Verna Dankers — Mila / McGill — arXiv (July 2026)</div>
+  <p class="paper-why">First unlearning testbed with ground-truth parameter-level localization; proves that standard high-metric unlearning does not imply genuine knowledge erasure and quantifies exactly how much better localization could improve robustness to resurfacing attacks.</p>
+  <p class="paper-hook">When an unlearning algorithm achieves high scores on the standard forgetting benchmarks, does it actually remove the knowledge from the weights — or just suppress its expression? LACUNA answers this question by building a testbed where the ground truth is known.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 175" xmlns="http://www.w3.org/2000/svg" aria-label="LACUNA testbed: oracle localization vs standard unlearning methods on forget/retain/resurfacing tradeoff">
+      <rect width="500" height="175" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333" font-weight="600">LACUNA: Unlearning Metric vs. Resurfacing Robustness</text>
+      <!-- Axes -->
+      <line x1="60" y1="130" x2="440" y2="130" stroke="#ccc" stroke-width="1"/>
+      <line x1="60" y1="30" x2="60" y2="130" stroke="#ccc" stroke-width="1"/>
+      <text x="250" y="148" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">standard unlearning metric (higher = better forget)</text>
+      <text x="16" y="85" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888" transform="rotate(-90,16,85)">resurfacing robustness</text>
+      <!-- SimNPO cluster: high metric, low robustness -->
+      <circle cx="340" cy="110" r="8" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <circle cx="360" cy="108" r="8" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <circle cx="350" cy="115" r="8" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="360" y="135" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#b02020">SimNPO &amp; variants</text>
+      <text x="360" y="146" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#b02020">(high metric, low robustness)</text>
+      <!-- OracleGrad: high metric AND high robustness -->
+      <circle cx="355" cy="50" r="10" fill="#d4edda" stroke="#1a6e3c" stroke-width="2"/>
+      <text x="395" y="50" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1a6e3c" font-weight="bold">OracleGrad</text>
+      <text x="395" y="62" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1a6e3c">(oracle localization)</text>
+      <!-- Gap arrow -->
+      <line x1="355" y1="60" x2="355" y2="98" stroke="#a05c00" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr6)"/>
+      <defs><marker id="arr6" markerWidth="7" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#a05c00"/></marker></defs>
+      <text x="376" y="82" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#a05c00">localization</text>
+      <text x="376" y="93" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#a05c00">gap</text>
+    </svg>
+    <figcaption>LACUNA exposes the localization gap: standard unlearning algorithms (SimNPO and variants) achieve high unlearning metric scores but low resurfacing robustness because they do not target the responsible weights. OracleGrad — with oracle access to ground-truth parameter localization — achieves both, quantifying the gap that better mechanistic localization methods could close.</figcaption>
+  </figure>
+  <p class="paper-detail">LACUNA injects PII of synthetic individuals into predefined weight subsets of 1B and 7B OLMo models via masked continual pretraining, creating a controlled testbed with oracle knowledge of which parameters encode each to-be-forgotten fact. Standard unlearning algorithms achieve high traditional unlearning metrics without targeting the responsible weights, leaving models vulnerable to resurfacing attacks that recover the supposedly forgotten information. OracleGrad — a simple baseline with oracle parameter localization — achieves optimal forget/retain balance and maximal resurfacing robustness, quantifying the gap that better mechanistic localization could close.</p>
+</article>
+
+<!-- Paper 05 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.20596">Are Single-Token Sparse Autoencoder Features Causally Necessary? Layer-Depth and SAE-Family Effects</a>
+  </h2>
+  <div class="paper-byline">Seonglae Cho, Zekun Wu, Kleyton Da Costa, Rishi Kalra, Ilham Wicaksono, Adriano Koshiyama — arXiv (July 22, 2026)</div>
+  <p class="paper-why">Establishes that SAE family is a more important methodological choice than model scale for causal interventional claims — a concrete warning for safety practitioners selecting SAE families for probing or steering experiments.</p>
+  <p class="paper-hook">If you ablate a feature that reliably activates on a single token type and the model's probability of generating that token doesn't drop significantly, the feature wasn't doing the causal work. Testing 3.9 million such features, this paper finds the answer depends more on which SAE family you trained than on which model you're studying.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 165" xmlns="http://www.w3.org/2000/svg" aria-label="SAE causal necessity by family: GemmaScope 86%, BatchTopK 82%, LlamaScope 40%">
+      <rect width="500" height="165" fill="#fff"/>
+      <text x="250" y="18" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#333" font-weight="600">Single-Token Feature Causal Necessity (BH-significant, 178/208 conditions)</text>
+      <!-- GemmaScope bar -->
+      <rect x="70" y="35" width="258" height="30" rx="3" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="80" y="56" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#0d7377" font-weight="600">GemmaScope</text>
+      <text x="340" y="56" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#0d7377" font-weight="700">86%</text>
+      <!-- BatchTopK bar -->
+      <rect x="70" y="75" width="246" height="30" rx="3" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="80" y="96" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#0d7377" font-weight="600">BatchTopK</text>
+      <text x="328" y="96" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#0d7377" font-weight="700">82%</text>
+      <!-- LlamaScope bar -->
+      <rect x="70" y="115" width="120" height="30" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="80" y="136" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#b02020" font-weight="600">LlamaScope</text>
+      <text x="202" y="136" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#b02020" font-weight="700">~40%</text>
+      <!-- Axis -->
+      <line x1="70" y1="148" x2="380" y2="148" stroke="#ccc" stroke-width="1"/>
+      <text x="70" y="160" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">0%</text>
+      <text x="340" y="160" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">86%</text>
+      <!-- Annotation -->
+      <text x="390" y="96" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">cross-family gap</text>
+      <text x="390" y="108" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">&gt; within-family</text>
+      <text x="390" y="120" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">scaling effect</text>
+    </svg>
+    <figcaption>Single-token feature causal necessity rates by SAE family. GemmaScope and BatchTopK features are causally anchored (86% and 82% BH-significant); LlamaScope features are locally redundant (~40%). The cross-family gap exceeds the within-family scaling effect — SAE family selection matters more than model scale for interventional validity.</figcaption>
+  </figure>
+  <p class="paper-detail">The paper uses single-token SAE features as ground-truth-verifiable diagnostics: ablating a feature activating on token t must significantly reduce log-probability for t to count as causally necessary. Testing 3.9 million features from six models across three SAE families, BH-significant logit reductions appear in 178 of 208 conditions. Single-token features cluster 4.7× tighter in decoder space than all features and concentrate in early layers. The key finding is that cross-family variation exceeds within-family scaling effects, directly implying that SAE family is a first-order methodological choice for anyone relying on SAE interventions for safety work.</p>
+</article>
+
+<!-- Paper 06 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2602.12418">Sparse Autoencoders are Capable LLM Jailbreak Mitigators</a>
+  </h2>
+  <div class="paper-byline">Yannick Assogba et al. — arXiv (February 2026, surfaced July 24, 2026)</div>
+  <p class="paper-why">Demonstrates the clearest pragmatic safety payoff for SAE interpretability to date: SAE-guided jailbreak defense outperforms dense activation steering on all four tested models and 12 jailbreak categories, with the largest gap on out-of-distribution attacks.</p>
+  <p class="paper-hook">Dense activation steering for jailbreak defense conflates features active in harmful jailbreak context with features active in all harmful queries — including benign ones. CC-Delta separates them by comparing activations with and without jailbreak context, then steers only on the difference.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" aria-label="CC-Delta: context-conditioned delta steering identifies jailbreak-specific SAE features by contrastive activation comparison">
+      <rect width="500" height="170" fill="#fff"/>
+      <!-- Left: with jailbreak -->
+      <rect x="20" y="40" width="120" height="80" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.2"/>
+      <text x="80" y="60" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#b02020" font-weight="600">SAE activations</text>
+      <text x="80" y="74" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#b02020">with jailbreak</text>
+      <text x="80" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020">f_harm + f_jb</text>
+      <!-- Right: without jailbreak -->
+      <rect x="170" y="40" width="120" height="80" rx="4" fill="#f5f5f5" stroke="#888" stroke-width="1.2"/>
+      <text x="230" y="60" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#555" font-weight="600">SAE activations</text>
+      <text x="230" y="74" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#555">same query, no jailbreak</text>
+      <text x="230" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">f_harm</text>
+      <!-- Delta arrow -->
+      <line x1="140" y1="80" x2="168" y2="80" stroke="#5c1aaa" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="154" y="72" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#5c1aaa">Δ</text>
+      <!-- Result: jailbreak-specific features -->
+      <rect x="320" y="40" width="155" height="80" rx="4" fill="#ede8ff" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="397" y="60" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#5c1aaa" font-weight="600">jailbreak-specific</text>
+      <text x="397" y="74" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#5c1aaa">SAE features → steer</text>
+      <text x="397" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#5c1aaa">f_jb only</text>
+      <line x1="290" y1="80" x2="318" y2="80" stroke="#5c1aaa" stroke-width="1.5" marker-end="url(#arr7)"/>
+      <defs><marker id="arr7" markerWidth="7" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#5c1aaa"/></marker></defs>
+      <text x="250" y="148" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#888">Outperforms dense steering on all 4 models × 12 jailbreak types; largest gains on OOD attacks</text>
+    </svg>
+    <figcaption>CC-Delta identifies jailbreak-specific SAE features by contrasting activations for the same harmful request with and without jailbreak context. Steering on only the delta (f_jb) avoids activating on features shared with benign harm queries, reducing over-refusal while maintaining defense coverage — especially on out-of-distribution attacks not seen during defense calibration.</figcaption>
+  </figure>
+  <p class="paper-detail">CC-Delta compares token-level SAE sparse activations for the same harmful request framed with and without jailbreak context. The contrastive delta isolates jailbreak-specific features without contaminating features active in both jailbreak and benign contexts. A mean-shift steering vector applied in SAE latent space at inference time then suppresses only the jailbreak-specific directions. Evaluated across four models and 12 jailbreak categories, CC-Delta outperforms dense activation steering throughout, with the largest gains on out-of-distribution attacks — consistent with the interpretation that SAE decomposition captures jailbreak structure invisible to dense residual-stream methods.</p>
+</article>
+
+<!-- Paper 07 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2604.09839">Steered LLM Activations are Non-Surjective</a>
+  </h2>
+  <div class="paper-byline">arXiv (April 2026, surfaced July 26, 2026)</div>
+  <p class="paper-why">Proves a fundamental separation between white-box steerability and black-box prompting that has been assumed but never formally established — with direct implications for how any experiment comparing steering to prompting should be designed and what its results can claim.</p>
+  <p class="paper-hook">Researchers often ask "is there a prompt that produces the same behavior as this steering vector?" This paper proves the answer is almost surely no — the set of states reachable via steering is strictly larger than the set reachable via any prompt.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 175" xmlns="http://www.w3.org/2000/svg" aria-label="Non-surjectivity: manifold of prompt-reachable states is a measure-zero subset of steered states">
+      <rect width="500" height="175" fill="#fff"/>
+      <!-- Outer ellipse: steered states -->
+      <ellipse cx="250" cy="95" rx="200" ry="70" fill="#ede8ff" stroke="#5c1aaa" stroke-width="1.5" stroke-dasharray="6,3"/>
+      <text x="250" y="25" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#5c1aaa">steered states (vastly larger set)</text>
+      <!-- Inner ellipse: prompt-reachable states -->
+      <ellipse cx="250" cy="100" rx="100" ry="38" fill="#dce8ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="250" y="97" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1a4f99" font-weight="600">prompt-reachable states</text>
+      <text x="250" y="110" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1a4f99">(measure zero in steered space)</text>
+      <!-- Steered point outside -->
+      <circle cx="370" cy="75" r="7" fill="#5c1aaa" opacity="0.8"/>
+      <text x="388" y="70" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#5c1aaa">steered state</text>
+      <text x="388" y="82" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#5c1aaa">not reachable by prompt</text>
+      <!-- Arrow from steered to gap -->
+      <line x1="362" y1="75" x2="345" y2="80" stroke="#5c1aaa" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="250" y="155" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">⟹ no prompt reproduces steered behavior · white-box ≠ black-box · decouple evaluations</text>
+    </svg>
+    <figcaption>The set of hidden states reachable via activation steering strictly contains the set reachable via any discrete prompt — with the prompt-reachable manifold having measure zero in the larger space. Consequently, almost surely no prompt can reproduce the same internal behavior as a steering vector, and steering-vs-prompting comparisons cannot assume equivalence.</figcaption>
+  </figure>
+  <p class="paper-detail">The paper constructs the manifold of prompt-reachable hidden states and proves it has measure zero in the space of states reachable via activation steering — meaning that for almost any steering vector and magnitude, the induced hidden state lies strictly outside the prompt-reachable manifold. This formal non-surjectivity result establishes a fundamental separation: white-box steerability is not equivalent to black-box prompting, benchmarks that compare the two under equivalence assumptions are methodologically unsound, and evaluations of steering effects should explicitly decouple the white-box and black-box conditions.</p>
+</article>
+
+<!-- Paper 08 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.11070">MJ: Multi-turn LLM Jailbreaking via Decomposed Credit Assignment</a>
+  </h2>
+  <div class="paper-byline">Junyoung Park, Namgyu Park, Sechan Lee, Yoon-Chan Jhi, Jihoon Cho, Sangdon Park — arXiv (July 13, 2026)</div>
+  <p class="paper-why">Addresses the key limitation of RL-based multi-turn jailbreaking — each dialogue turn contributes unequally to the final outcome, but prior methods apply a single trajectory-level signal that conflates useful and noise turns — with a principled decomposed credit estimator.</p>
+  <p class="paper-hook">A multi-turn jailbreak attacker needs to learn which conversational turns actually moved the model toward compliance and which were noise — but standard RL broadcasts a single final reward to all turns equally. DC-GRPO gives each turn its own credit signal.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg" aria-label="DC-GRPO decomposed credit: per-turn immediate + future reward signal vs trajectory-level broadcast">
+      <rect width="500" height="160" fill="#fff"/>
+      <!-- Standard: single trajectory reward -->
+      <text x="130" y="25" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#b02020" font-weight="600">Standard RL (single reward)</text>
+      <rect x="20" y="35" width="55" height="25" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="47" y="52" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#b02020">turn 1</text>
+      <rect x="95" y="35" width="55" height="25" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="122" y="52" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#b02020">turn 2</text>
+      <rect x="170" y="35" width="55" height="25" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="197" y="52" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#b02020">turn N</text>
+      <text x="245" y="36" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#b02020">← single R</text>
+      <line x1="75" y1="47" x2="93" y2="47" stroke="#b02020" stroke-width="1" stroke-dasharray="3,2"/>
+      <line x1="150" y1="47" x2="168" y2="47" stroke="#b02020" stroke-width="1" stroke-dasharray="3,2"/>
+      <!-- DC-GRPO: per-turn credit -->
+      <text x="130" y="90" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1a6e3c" font-weight="600">DC-GRPO (per-turn credit)</text>
+      <rect x="20" y="100" width="55" height="25" rx="3" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="47" y="114" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#1a6e3c">turn 1</text>
+      <text x="47" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1a6e3c">r₁+γV₂</text>
+      <rect x="95" y="100" width="55" height="25" rx="3" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="122" y="114" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#1a6e3c">turn 2</text>
+      <text x="122" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1a6e3c">r₂+γV₃</text>
+      <rect x="170" y="100" width="55" height="25" rx="3" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="197" y="114" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#1a6e3c">turn N</text>
+      <text x="197" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1a6e3c">r_N</text>
+      <text x="270" y="115" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1a6e3c">strong multi-turn ASR</text>
+      <text x="270" y="128" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1a6e3c">cross-model transfer</text>
+      <text x="250" y="152" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#888">immediate credit (rₜ) + future credit (γVₜ₊₁) decomposed per turn</text>
+    </svg>
+    <figcaption>DC-GRPO replaces a single trajectory-level reward with per-turn credits combining immediate reward rₜ and future-value estimate γVₜ₊₁. Both static- and dynamic-weighted instantiations achieve strong multi-turn attack success rates on black-box frontier models with cross-model transferability.</figcaption>
+  </figure>
+  <p class="paper-detail">DC-GRPO (Decomposed Credit Group Relative Policy Optimization) derives a per-turn value function that separates each turn's contribution to the final harmful outcome into immediate and future components, then applies group-relative policy optimization independently per turn. Both static-weighted (fixed γ) and dynamic-weighted (γ learned per dialogue state) instantiations are evaluated on multi-turn jailbreak benchmarks against black-box frontier models, achieving strong attack success rates and cross-model transfer — confirming that per-turn credit decomposition is a broadly applicable improvement over trajectory-level RL for multi-turn adversarial training.</p>
+</article>
+
+<!-- Items 9–11 -->
+<div class="more-section-label">Items 9–11 · Also notable</div>
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:20px;">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.19364">Statistically Grounded Sparse-Feature Interventions for Activation-Space Control in Large Language Models</a>
+  </h3>
+  <p class="mid-summary">Proposes a six-condition reliability filter followed by Borda consensus ranking (F-test, KSG mutual information, Cohen's d) to select SAE features for steering without a learned objective, evaluated on three Gemma-family models. Key methodological finding: raw attribute movement in activation space does not predict generation quality — practitioners need an explicit selection filter before treating SAE steering as effective.</p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:20px;">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.05743">The Balkanization of Execution-Security Research for AI Coding Agents</a>
+  </h3>
+  <p class="mid-summary">Systematic review of 39 papers across 17 execution-security categories for AI coding agents; headline finding is 69–98% policy-enforcement failure rates across all categories. Documents 4 patched CVEs and 5 structural gaps, arguing the field lacks the shared ontology and shared benchmarks needed for coordinated progress on agent security.</p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:20px;">11</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.16693">Are Arithmetic Heuristic Neurons Form-Invariant? A Mechanistic Analysis of Symbols, Text, and Code in LLMs</a>
+  </h3>
+  <p class="mid-summary">Attribution and activation patching on Llama-3 models identifies a compact shared set of MLP neurons that is both necessary and sufficient for late-layer arithmetic computation across symbolic arithmetic, natural-language word problems, and Python code. Targeted interventions degrade performance simultaneously in all three modalities, supporting a single surface-form-invariant arithmetic circuit.</p>
+</article>
+
+<!-- Watchlist -->
+<div class="watchlist">
+  <div class="watchlist-label">Watchlist</div>
+  <ul>
+    <li><strong>Persistent SAE extensions</strong> — follow-up work applying timescale structure to supervised probe training and long-horizon agent monitoring; the Bloom/Conmy/Nanda preprint sets up a natural extension to safety monitoring across multi-turn conversations.</li>
+    <li><strong>LACUNA localization gap</strong> — upcoming papers attempting to close the OracleGrad gap using attribution-patching-based localization without oracle access; the testbed makes evaluation tractable.</li>
+    <li><strong>PAC safety certification under distribution shift</strong> — the 2607.20286 framework is distribution-free but assumes stationarity; extensions to adaptive adversaries and distribution shift are the natural next step.</li>
+    <li><strong>Multi-turn jailbreak defenses</strong> — DC-GRPO raises the bar for multi-turn ASR; corresponding defense work is not yet visible and represents an open gap.</li>
+    <li><strong>CC-Delta distillation</strong> — SAE-based steering at inference time carries latency cost; watch for approaches that bake the defense into model weights (cf. CRISP from W30 #07).</li>
+  </ul>
+</div>
+
+</div><!-- .page-wrap -->
+{% endraw %}

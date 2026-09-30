@@ -1,0 +1,1040 @@
+---
+layout: "radar"
+title: "Weekly Radar — 2026-W32"
+kind: "weekly"
+slug: "2026-W32"
+date: 2026-08-03
+group: "weekly"
+window: "July 27 - August 2, 2026 (backfilled 2026-09-29)"
+summary: "Window: July 27 - August 2, 2026 (backfilled 2026-09-29) · Counts: 2 peer-reviewed · 12 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/weekly/2026-W32.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a;
+  --text: #c9c9c9; --dim: #666; --title: #f0f0f0; --link: #7eb8ff;
+  --tag-bg: #252525; --tag-text: #aaa;
+  --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+  --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+  --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd;
+  --text: #3a3a3a; --dim: #888; --title: #1a1a1a; --link: #1a4f99;
+  --tag-bg: #e8e8e8; --tag-text: #444;
+  --accent-teal: #0d7377; --accent-blue: #1a4f99; --accent-red: #b02020;
+  --accent-amber: #a05c00; --accent-violet: #5c1aaa; --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+a { color: var(--link); }
+a:hover { text-decoration: underline; }
+
+.page { max-width: 760px; margin: 0 auto; padding: 32px 16px 80px; }
+
+/* Masthead */
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 32px;
+}
+.masthead-eyebrow {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.masthead-issue {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--title);
+  margin-bottom: 6px;
+}
+.masthead-counts {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.track {
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.track-sep { color: var(--dim); font-size: 12px; }
+
+/* Theme section */
+.theme-section {
+  background: var(--theme-band);
+  border-left: 4px solid var(--accent-green);
+  padding: 18px 20px;
+  margin-bottom: 40px;
+  border-radius: 0 4px 4px 0;
+}
+.theme-label {
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent-green);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.theme-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-right: 4px;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.tag-peer  { background: #d4edda; color: var(--accent-green); }
+.tag-interp  { background: #d0f0f0; color: var(--accent-teal); }
+.tag-security { background: #fde0e0; color: var(--accent-red); }
+.tag-align   { background: #dce8ff; color: var(--accent-blue); }
+.tag-control { background: #ede0ff; color: var(--accent-violet); }
+@media (prefers-color-scheme: dark) {
+  .tag-peer    { background: #1a3a22; color: var(--accent-green); }
+  .tag-interp  { background: #0a2a2a; color: var(--accent-teal); }
+  .tag-security{ background: #3a1010; color: var(--accent-red); }
+  .tag-align   { background: #102040; color: var(--accent-blue); }
+  .tag-control { background: #200a40; color: var(--accent-violet); }
+}
+:root[data-theme="dark"] .tag-peer    { background: #1a3a22; color: var(--accent-green); }
+:root[data-theme="dark"] .tag-interp  { background: #0a2a2a; color: var(--accent-teal); }
+:root[data-theme="dark"] .tag-security{ background: #3a1010; color: var(--accent-red); }
+:root[data-theme="dark"] .tag-align   { background: #102040; color: var(--accent-blue); }
+:root[data-theme="dark"] .tag-control { background: #200a40; color: var(--accent-violet); }
+
+/* Paper entries */
+.paper { margin-bottom: 52px; }
+.paper-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+.paper-rank {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dim);
+  min-width: 26px;
+  padding-top: 3px;
+}
+.paper-meta { flex: 1; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin: 0 0 12px;
+}
+.paper-title a { color: var(--title); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0 0 16px;
+}
+.paper-detail {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 12px 0 0;
+}
+
+/* Figures */
+.paper-figure {
+  margin: 16px 0;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-align: center;
+}
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption {
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Mid-tier */
+.more-section-label {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin: 52px 0 28px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin: 8px 0 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+/* Watchlist */
+.watchlist {
+  margin-top: 52px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.watchlist-label {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.watchlist ul { margin: 0; padding-left: 20px; }
+.watchlist li { font-size: 14px; margin-bottom: 8px; line-height: 1.6; }
+</style>
+
+<div class="page">
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Week 32 · July 27 – August 2, 2026 <span style="font-size:14px;font-weight:normal;color:var(--dim)">(backfilled 2026-09-29)</span></div>
+  <div class="masthead-counts">2 peer-reviewed · 12 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<section class="theme-section">
+  <div class="theme-label">Theme of the Week</div>
+  <p class="theme-text">
+    This week's dominant signal was a methodological audit of sparse autoencoder interpretability. Three independent papers converged on the finding that SAE evaluations systematically confuse distinct axes: geometric recovery is not causal function, activation descriptions do not predict downstream effect, and pipeline configuration explains more variance in autointerpretability scores than SAE architecture does. ParityTransformer raised the ante by demonstrating that training-time interpretability constraints outperform post-hoc SAEs on every causal metric, pointing toward a possible paradigm shift away from the retrofit programme. On the security side, the week's most striking pattern was the proliferation of pre-filter attack surfaces: audio-modality injection, adversarial code comments, and log-embedded payloads all succeed by placing their payloads upstream of any text-level safety defense.
+  </p>
+</section>
+
+<!-- ===================== FULL ENTRIES 01-08 ===================== -->
+
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.12166">From Geometric Recovery to Causal Validation: A Reproducible Audit of Sparse Autoencoder Features</a>
+  </h2>
+  <p class="paper-hook">
+    The SAE field has conflated two separable claims: that a decoder vector points in the right direction (geometric recovery) and that the encoder actually fires on relevant inputs (causal activation). This paper runs the first systematic causal audit of SAE evaluation practice and finds the two claims come apart far more often than the field has assumed.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Scatter plot showing geometric alignment vs causal inertness in SAE features">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1a1a1a">Geometric Recovery vs. Causal Activation</text>
+      <!-- axes -->
+      <line x1="70" y1="180" x2="450" y2="180" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="70" y1="180" x2="70" y2="40" stroke="#ccc" stroke-width="1.5"/>
+      <text x="260" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#888">Cosine Similarity (geometric recovery)</text>
+      <text x="20" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#888" transform="rotate(-90,20,110)">Causal Firing Rate</text>
+      <!-- ideal diagonal -->
+      <line x1="70" y1="180" x2="450" y2="40" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+      <!-- well-trained SAE cluster — mostly causal -->
+      <g fill="#0d7377" opacity="0.7">
+        <circle cx="300" cy="80" r="4"/><circle cx="320" cy="75" r="4"/><circle cx="340" cy="72" r="4"/>
+        <circle cx="380" cy="60" r="4"/><circle cx="400" cy="55" r="4"/><circle cx="420" cy="52" r="4"/>
+        <circle cx="310" cy="140" r="4"/><circle cx="350" cy="148" r="4"/><!-- 9% inert -->
+      </g>
+      <!-- degraded SAE — mostly inert despite high cosine -->
+      <g fill="#b02020" opacity="0.7">
+        <circle cx="370" cy="160" r="4"/><circle cx="390" cy="163" r="4"/><circle cx="410" cy="158" r="4"/>
+        <circle cx="430" cy="165" r="4"/><circle cx="350" cy="162" r="4"/><circle cx="440" cy="160" r="4"/>
+        <circle cx="360" cy="155" r="4"/><!-- 77% inert in red cluster -->
+      </g>
+      <!-- legend -->
+      <rect x="280" y="115" width="12" height="12" fill="#0d7377" opacity="0.7" rx="2"/>
+      <text x="296" y="126" font-family="Georgia, serif" font-size="11" fill="#3a3a3a">Well-trained SAE (9% inert)</text>
+      <rect x="280" y="132" width="12" height="12" fill="#b02020" opacity="0.7" rx="2"/>
+      <text x="296" y="143" font-family="Georgia, serif" font-size="11" fill="#3a3a3a">Degraded SAE (77% inert)</text>
+      <!-- annotation -->
+      <text x="410" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">high cosine,</text>
+      <text x="410" y="122" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">never fires</text>
+      <line x1="410" y1="128" x2="415" y2="150" stroke="#b02020" stroke-width="1"/>
+    </svg>
+    <figcaption>Figure 1: Up to 77% of features passing the cosine ≥ 0.90 recovery threshold in a degraded SAE — and 9% in a well-trained one — never fire when the matched concept is present. Cosine recovery and causal activation are empirically separable claims that existing metrics only measure on the geometric axis.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The pipeline subjects every recovered feature to ablation (zero the feature, measure behavioral change) and steering (activate the feature, measure downstream effect). The 77%/9% causal inertness figures show the problem is severe in degraded SAEs and non-negligible even in well-trained ones. Existing evaluation metrics measure only decoder geometry; they are systematically blind to whether the encoder ever activates. This result should change how SAE papers design evaluations and how we interpret cross-architecture comparisons. Code released at github.com/mohamed-bal/sae-causal-audit.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-peer">ICSME 2026</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.15937">The Language of Security: How Prompt Syntax Shapes Code Vulnerability in LLMs</a>
+  </h2>
+  <p class="paper-hook">
+    The same security requirement reformulated across five syntactic variants produces up to a 31 percentage-point swing in CWE violation rates — a gap large enough to make prompt syntax the dominant security control in LLM-assisted coding workflows, with model architecture running a distant second.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart showing CWE violation rates across five syntactic prompt formulations on five LLMs">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1a1a1a">CWE Violation Rate by Prompt Syntax</text>
+      <!-- y axis -->
+      <line x1="80" y1="170" x2="80" y2="40" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="80" y1="170" x2="470" y2="170" stroke="#ccc" stroke-width="1.5"/>
+      <!-- y labels -->
+      <text x="74" y="174" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#888">0%</text>
+      <text x="74" y="140" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#888">20%</text>
+      <text x="74" y="106" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#888">40%</text>
+      <text x="74" y="72" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#888">60%</text>
+      <!-- gridlines -->
+      <line x1="80" y1="139" x2="470" y2="139" stroke="#eee" stroke-width="1"/>
+      <line x1="80" y1="106" x2="470" y2="106" stroke="#eee" stroke-width="1"/>
+      <line x1="80" y1="72" x2="470" y2="72" stroke="#eee" stroke-width="1"/>
+      <!-- bars: 5 syntactic styles, averaged violation rate -->
+      <!-- Declarative: 58% -->
+      <rect x="100" y="78" width="44" height="92" fill="#b02020" opacity="0.85"/>
+      <text x="122" y="75" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#b02020">58%</text>
+      <text x="122" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Decl.</text>
+      <!-- Imperative: 51% -->
+      <rect x="170" y="93" width="44" height="77" fill="#b02020" opacity="0.65"/>
+      <text x="192" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#b02020">51%</text>
+      <text x="192" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Imper.</text>
+      <!-- Role-based: 38% -->
+      <rect x="240" y="109" width="44" height="61" fill="#a05c00" opacity="0.75"/>
+      <text x="262" y="106" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#a05c00">38%</text>
+      <text x="262" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Role</text>
+      <!-- Chain-of-thought: 30% -->
+      <rect x="310" y="122" width="44" height="48" fill="#0d7377" opacity="0.75"/>
+      <text x="332" y="119" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#0d7377">30%</text>
+      <text x="332" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">CoT</text>
+      <!-- Constraint: 23% -->
+      <rect x="380" y="134" width="44" height="36" fill="#1a6e3c" opacity="0.85"/>
+      <text x="402" y="131" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#1a6e3c">23%</text>
+      <text x="402" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Const.</text>
+      <!-- brace annotation -->
+      <line x1="100" y1="60" x2="424" y2="60" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="262" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1a1a1a">31 pp swing from syntax alone</text>
+    </svg>
+    <figcaption>Figure 2: CWE violation rate across five syntactic prompt formulations, averaged over five frontier LLMs. Declarative instructions produce 58% violation rate; constraint-based formulations reduce this to 23% — a 31 pp swing attributable to syntax alone, not model choice.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Across five major LLMs, 100 coding prompts, and 14 CWE categories, declarative and imperative styles consistently underperform role-based and chain-of-thought instructions by 20–31 pp on high-risk CWEs including CWE-89 (SQL injection) and CWE-79 (XSS). The interaction between model and syntactic variant is significant: a formulation that elicits secure code from GPT-4o may be among the worst choices for Llama 3.3 70B. LLM-assisted coding security audits that test only one prompt formulation systematically underestimate vulnerability rates. Accepted ICSME 2026 main track.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.20652">ParityTransformer: Interpretability by Design via the Deep Parity Bottleneck</a>
+  </h2>
+  <p class="paper-hook">
+    Interpretability in transformers is almost always post-hoc — you train the model, then reverse-engineer what it learned. ParityTransformer inverts the workflow by enforcing an interpretable constraint during training, and the resulting features outperform post-hoc SAEs on every causal metric while matching them on probing.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart comparing DPB vs standard SAE on three causal interpretability metrics">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1a1a1a">DPB vs Standard SAE — Causal Metrics</text>
+      <!-- Three metric groups -->
+      <!-- Absorption rate (lower is better) -->
+      <text x="130" y="42" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#555">Absorption Rate ↓</text>
+      <rect x="90" y="80" width="36" height="80" fill="#b02020" opacity="0.75"/>
+      <text x="108" y="77" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#b02020">28%</text>
+      <text x="108" y="178" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">SAE</text>
+      <rect x="145" y="128" width="36" height="32" fill="#1a6e3c" opacity="0.85"/>
+      <text x="163" y="125" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#1a6e3c">12%</text>
+      <text x="163" y="178" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">DPB</text>
+      <!-- Steering accuracy (higher is better) -->
+      <text x="280" y="42" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#555">Steering Accuracy ↑</text>
+      <rect x="240" y="95" width="36" height="65" fill="#b02020" opacity="0.75"/>
+      <text x="258" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#b02020">61%</text>
+      <text x="258" y="178" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">SAE</text>
+      <rect x="295" y="80" width="36" height="80" fill="#1a6e3c" opacity="0.85"/>
+      <text x="313" y="77" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#1a6e3c">74%</text>
+      <text x="313" y="178" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">DPB</text>
+      <!-- Causal stability (higher is better) -->
+      <text x="430" y="42" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#555">Causal Stability ↑</text>
+      <rect x="390" y="102" width="36" height="58" fill="#b02020" opacity="0.75"/>
+      <text x="408" y="99" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#b02020">56%</text>
+      <text x="408" y="178" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">SAE</text>
+      <rect x="445" y="88" width="36" height="72" fill="#1a6e3c" opacity="0.85"/>
+      <text x="463" y="85" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#1a6e3c">71%</text>
+      <text x="463" y="178" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">DPB</text>
+      <!-- baseline -->
+      <line x1="60" y1="160" x2="490" y2="160" stroke="#eee" stroke-width="1"/>
+    </svg>
+    <figcaption>Figure 1: DPB achieves lower feature absorption (12% vs 28%), higher steering accuracy (74% vs 61%), and higher causal intervention stability (71% vs 56%) vs standard SAEs. Probing performance is equivalent — all gains are on causal metrics, which matter for safety applications.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The Deep Parity Bottleneck partitions the residual stream into parity-signed feature subspaces during training, enforcing legibility by construction. Evaluated on GPT-2 and Pythia-1.4B against Anthropic JumpReLU and standard TopK SAEs, DPB models match SAE probing performance but show substantially lower absorption, higher steering accuracy, and more stable causal interventions — with no significant capability degradation. If the result holds at frontier scale, it challenges the assumption that interpretability must be extracted from models post-hoc.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.19386">Building Fast, Evaluating Slow: Pipeline Choices Dominate Autointerpretability Score Variance</a>
+  </h2>
+  <p class="paper-hook">
+    Cross-paper SAE comparisons routinely hinge on autointerpretability scores. This systematic audit shows that pipeline configuration — not SAE architecture — drives the majority of variance in those scores, putting much of the published literature on uncertain empirical footing.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Stacked bar chart showing variance decomposition: pipeline vs architecture for four autointerpretability metrics">
+      <rect width="500" height="200" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1a1a1a">Variance Source: Pipeline vs Architecture</text>
+      <!-- legend -->
+      <rect x="90" y="30" width="12" height="12" fill="#b02020" opacity="0.8"/>
+      <text x="106" y="41" font-family="Georgia, serif" font-size="11" fill="#3a3a3a">Pipeline (corpus, evaluator, template, draw)</text>
+      <rect x="310" y="30" width="12" height="12" fill="#0d7377" opacity="0.8"/>
+      <text x="326" y="41" font-family="Georgia, serif" font-size="11" fill="#3a3a3a">Architecture</text>
+      <!-- Simulation metric -->
+      <text x="110" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#555">Simulation</text>
+      <rect x="60" y="75" width="120" height="20" fill="#b02020" opacity="0.8"/>
+      <rect x="180" y="75" width="40" height="20" fill="#0d7377" opacity="0.8"/>
+      <text x="120" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#fff">75%</text>
+      <text x="200" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#fff">25%</text>
+      <!-- Detection metric -->
+      <text x="110" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#555">Detection</text>
+      <rect x="60" y="115" width="100" height="20" fill="#b02020" opacity="0.7"/>
+      <rect x="160" y="115" width="60" height="20" fill="#0d7377" opacity="0.8"/>
+      <text x="110" y="130" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#fff">63%</text>
+      <text x="190" y="130" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#fff">37%</text>
+      <!-- Purity metric -->
+      <text x="110" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#555">Purity</text>
+      <rect x="60" y="155" width="115" height="20" fill="#b02020" opacity="0.8"/>
+      <rect x="175" y="155" width="45" height="20" fill="#0d7377" opacity="0.8"/>
+      <text x="117" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#fff">72%</text>
+      <text x="197" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#fff">28%</text>
+      <!-- Fuzzing -->
+      <text x="340" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#b02020">Fuzzing: unreliable</text>
+      <text x="340" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#b02020">across all conditions</text>
+    </svg>
+    <figcaption>Figure 1: Variance decomposition across four autointerpretability metrics on Pythia-160M and Apertus-8B. Pipeline choices (corpus sampling, draw conditions, evaluator model, prompt template) collectively explain more variance than SAE architecture in simulation, detection, and purity; fuzzing is unreliable across all conditions.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Spanning four metrics, two models, and four axes of methodological variation, the paper shows that top-k feature rankings do not stay consistent across corpus and draw conditions — meaning aggregate scores paper over per-feature variance that matters for mechanistic claims. Published SAE architecture comparisons that do not ablate pipeline variables may largely reflect configuration differences rather than genuine architectural signal. Any new paper in this space needs a pipeline ablation to isolate the architectural contribution.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.24645">Sparse Autoencoders Encode Both Concepts and Functions: The Downstream Geometry of Feature Effects</a>
+  </h2>
+  <p class="paper-hook">
+    Features with clear interpretable descriptions often have weak causal effects, while the features that dominate model behavior are often the least well-described. Evaluating SAEs only on activation descriptions misses the half of feature geometry that determines whether steering and ablation will work.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="FEGA scatter showing misalignment between concept-activation axis and functional-effect axis for SAE features">
+      <rect width="500" height="210" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1a1a1a">FEGA: Concept vs. Effect Axes are Misaligned</text>
+      <line x1="80" y1="175" x2="450" y2="175" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="80" y1="175" x2="80" y2="40" stroke="#ccc" stroke-width="1.5"/>
+      <text x="265" y="195" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#888">Concept Activation Score</text>
+      <text x="22" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#888" transform="rotate(-90,22,110)">Functional Effect Score</text>
+      <!-- Ideal diagonal (dashed) -->
+      <line x1="80" y1="175" x2="450" y2="40" stroke="#bbb" stroke-width="1" stroke-dasharray="5,4"/>
+      <text x="380" y="65" font-family="Georgia, serif" font-size="10" fill="#aaa">ideal</text>
+      <!-- Quadrant labels -->
+      <text x="175" y="65" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">High effect,</text>
+      <text x="175" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">poor description</text>
+      <text x="370" y="165" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">Good description,</text>
+      <text x="370" y="177" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">weak effect</text>
+      <!-- points: high-effect low-concept cluster -->
+      <g fill="#1a6e3c" opacity="0.7">
+        <circle cx="130" cy="60" r="4"/><circle cx="150" cy="70" r="4"/><circle cx="120" cy="80" r="4"/>
+        <circle cx="160" cy="55" r="4"/><circle cx="145" cy="90" r="4"/>
+      </g>
+      <!-- points: high-concept low-effect cluster -->
+      <g fill="#b02020" opacity="0.7">
+        <circle cx="360" cy="155" r="4"/><circle cx="380" cy="160" r="4"/><circle cx="400" cy="150" r="4"/>
+        <circle cx="370" cy="145" r="4"/><circle cx="420" cy="158" r="4"/>
+      </g>
+      <!-- diagonal points (ideal) -->
+      <g fill="#888" opacity="0.5">
+        <circle cx="200" cy="130" r="3"/><circle cx="240" cy="110" r="3"/><circle cx="280" cy="95" r="3"/>
+        <circle cx="220" cy="120" r="3"/>
+      </g>
+    </svg>
+    <figcaption>Figure 1: Feature-Effect Geometry Analysis (FEGA) scatter — SAE features along concept-activation and functional-effect axes. The axes are systematically misaligned: features with high interpretability scores cluster in the bottom-right (good description, weak causal effect), while causally dominant features cluster top-left (high effect, poor description).</figcaption>
+  </figure>
+  <p class="paper-detail">
+    FEGA decomposes SAE feature behavior into a concept axis (what activations describe) and an effect axis (how downstream logits shift when the feature fires). Effect geometry predicts steering reliability substantially better than activation descriptions alone. This finding directly complements the causal audit in 2607.12166 and the metric critique in 2607.19386, forming a coherent methodological case against single-axis SAE evaluation. Safety-oriented steering and unlearning applications should select features by effect geometry, not interpretability score.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.28165">Piggybacking on Perception: Stealthy Concurrent Audio Prompt Injections against Multimodal LLM Agents</a>
+  </h2>
+  <p class="paper-hook">
+    Every text-level safety filter acts after audio has been transcribed to text. This attack embeds adversarial instructions as psychoacoustically imperceptible perturbations in the audio waveform itself — placing the payload in the reasoning context before any safety system can act, without replacing the legitimate audio content.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg" aria-label="Diagram showing audio prompt injection pipeline bypassing text-level safety filters">
+      <rect width="500" height="190" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1a1a1a">Audio Prompt Injection — Attack Flow</text>
+      <!-- boxes -->
+      <rect x="20" y="60" width="90" height="40" rx="4" fill="#fde0e0" stroke="#b02020" stroke-width="1.5"/>
+      <text x="65" y="77" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#b02020">Adversarial</text>
+      <text x="65" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#b02020">Audio (≤JND)</text>
+      <rect x="150" y="60" width="80" height="40" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1.5"/>
+      <text x="190" y="77" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#555">ASR Layer</text>
+      <text x="190" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#555">(Perception)</text>
+      <rect x="270" y="60" width="90" height="40" rx="4" fill="#fde0e0" stroke="#b02020" stroke-width="1.5"/>
+      <text x="315" y="77" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#b02020">Text context</text>
+      <text x="315" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#b02020">(payload ↑)</text>
+      <rect x="400" y="60" width="80" height="40" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="440" y="77" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1a6e3c">LLM Agent</text>
+      <text x="440" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1a6e3c">(executes)</text>
+      <!-- arrows -->
+      <line x1="110" y1="80" x2="148" y2="80" stroke="#888" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <line x1="230" y1="80" x2="268" y2="80" stroke="#888" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <line x1="360" y1="80" x2="398" y2="80" stroke="#888" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <defs>
+        <marker id="arr1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <!-- safety filter box (bypassed) -->
+      <rect x="270" y="115" width="90" height="35" rx="4" fill="#f0ede8" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="315" y="132" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#aaa">Text safety</text>
+      <text x="315" y="145" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#aaa">filter ✗</text>
+      <line x1="315" y1="100" x2="315" y2="113" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="315" y="165" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">arrives too late — payload already in context</text>
+    </svg>
+    <figcaption>Figure 1: The adversarial payload is embedded in the audio waveform at sub-perceptibility level, transcribed by ASR into the model's reasoning context, and executed before any text-level safety filter can intervene. Text filters arrive after the payload has been promoted to trusted context.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Adversarial instruction strings are embedded as psychoacoustically imperceptible perturbations concurrent with (not replacing) legitimate audio content. The attack exploits the ASR ordering constraint: by the time the model sees text, the payload has already been promoted to trusted context. Evaluated against production-scale multimodal agents, the attack achieves high success rates while remaining below human perceptibility thresholds. Neither users nor acoustic anomaly detectors see anything unusual. Code released.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.26849">ToxScreen: Detecting Whether an LLM Has Been Poisoned</a>
+  </h2>
+  <p class="paper-hook">
+    Backdoor defense research has lacked a benchmark that matches the realistic white-box threat model — defender has weight access but no training data, no trusted reference model, and no prior on trigger type. ToxScreen is the first systematic substrate for evaluating trigger-recovery defenses under these constraints.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="ToxScreen benchmark taxonomy showing five axes of variation across 800 backdoored models">
+      <rect width="500" height="200" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1a1a1a">ToxScreen — ~800 Backdoored Models</text>
+      <!-- 5 axis boxes -->
+      <rect x="25" y="40" width="82" height="50" rx="4" fill="#dce8ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="66" y="61" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a4f99">Attack</text>
+      <text x="66" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a4f99">Objectives</text>
+      <rect x="120" y="40" width="82" height="50" rx="4" fill="#fde0e0" stroke="#b02020" stroke-width="1.5"/>
+      <text x="161" y="61" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">Trigger</text>
+      <text x="161" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">Mechanisms</text>
+      <rect x="215" y="40" width="82" height="50" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="256" y="61" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">Poison Rate</text>
+      <text x="256" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">0.1%–5%</text>
+      <rect x="310" y="40" width="82" height="50" rx="4" fill="#ede0ff" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="351" y="61" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5c1aaa">Model Scale</text>
+      <text x="351" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5c1aaa">125M–7B</text>
+      <rect x="405" y="40" width="75" height="50" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1.5"/>
+      <text x="442" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Training</text>
+      <text x="442" y="73" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Method</text>
+      <text x="442" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555">FT/LoRA/RLHF</text>
+      <!-- Threat model box -->
+      <rect x="100" y="120" width="300" height="50" rx="4" fill="#fde0e0" stroke="#b02020" stroke-width="1.5"/>
+      <text x="250" y="140" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#b02020">White-box Defender Threat Model</text>
+      <text x="250" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#3a3a3a">Weight access · No training data · No reference model · No trigger prior</text>
+      <!-- connecting lines -->
+      <line x1="66" y1="90" x2="200" y2="120" stroke="#ccc" stroke-width="1"/>
+      <line x1="161" y1="90" x2="215" y2="120" stroke="#ccc" stroke-width="1"/>
+      <line x1="256" y1="90" x2="250" y2="120" stroke="#ccc" stroke-width="1"/>
+      <line x1="351" y1="90" x2="285" y2="120" stroke="#ccc" stroke-width="1"/>
+      <line x1="442" y1="90" x2="300" y2="120" stroke="#ccc" stroke-width="1"/>
+    </svg>
+    <figcaption>Figure 1: ToxScreen benchmark — ~800 backdoored models varying across five axes evaluated under a realistic white-box threat model where the defender has weight access but no training data, no trusted reference model, and no prior on trigger type.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The benchmark spans ~800 backdoored models covering attack objectives, trigger mechanisms (word/phrase/style triggers), poisoning rates 0.1%–5%, model scales 125M–7B, and training mechanisms including full fine-tuning, LoRA, and RLHF-based backdoor insertion. This is the first systematic substrate for evaluating trigger-recovery defenses under a realistic threat model. Competitive baseline results are expected to follow shortly.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.25270">Where Steering Signals Come From: Activation Source Selection in Activation Steering</a>
+  </h2>
+  <p class="paper-hook">
+    Source position — where in the context you extract the steering vector — has been treated as an unexamined hyperparameter. This paper shows it is the decisive variable: execution-boundary states substantially outperform all alternatives across models and tasks.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart of steering vector effectiveness by source position showing execution-boundary dominance">
+      <rect width="500" height="190" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1a1a1a">Steering Success by Source Position</text>
+      <line x1="80" y1="155" x2="460" y2="155" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="80" y1="155" x2="80" y2="40" stroke="#ccc" stroke-width="1.5"/>
+      <text x="270" y="175" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#888">Source Position</text>
+      <!-- bars -->
+      <!-- Random: 31% -->
+      <rect x="95" y="123" width="50" height="32" fill="#b02020" opacity="0.7"/>
+      <text x="120" y="120" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#b02020">31%</text>
+      <text x="120" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Random</text>
+      <!-- Last token: 38% -->
+      <rect x="175" y="115" width="50" height="40" fill="#b02020" opacity="0.6"/>
+      <text x="200" y="112" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#b02020">38%</text>
+      <text x="200" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Last Token</text>
+      <!-- Post-action: 42% -->
+      <rect x="255" y="108" width="50" height="47" fill="#a05c00" opacity="0.7"/>
+      <text x="280" y="105" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#a05c00">42%</text>
+      <text x="280" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Post-action</text>
+      <!-- Exec. boundary: 71% -->
+      <rect x="335" y="67" width="50" height="88" fill="#1a6e3c" opacity="0.85"/>
+      <text x="360" y="64" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#1a6e3c">71%</text>
+      <text x="360" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Exec. Boundary</text>
+      <!-- gridline at 50% -->
+      <line x1="80" y1="107" x2="460" y2="107" stroke="#eee" stroke-width="1"/>
+      <text x="74" y="111" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#888">50%</text>
+    </svg>
+    <figcaption>Figure 1: Steering vector effectiveness at different source positions — averaged across three instruction-tuned models and four task families. Execution-boundary positions (just before the model produces the target behavior) consistently outperform random positions, last tokens, and post-action states.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Holding the downstream intervention fixed and varying only the source position, execution-boundary states — positions just before the model produces the target behavior — yield substantially stronger signals than random positions, last tokens, or post-action states. The result holds across three instruction-tuned models and four task families, turning source selection from a poorly understood hyperparameter into a principled design choice with direct implications for safety steering and unlearning applications.
+  </p>
+</article>
+
+<!-- ===================== MID-TIER 09-14 ===================== -->
+
+<div class="more-section-label">Items 9 – 14 · Also notable</div>
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.23710">The Illusion of Secure LLM Code: How Iterative Reprompting Undermines Security</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="Line chart showing cumulative critical security issue increase +37.6% over 5 reprompting iterations">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">CWE Violations Over Reprompting Iterations</text>
+      <line x1="60" y1="130" x2="400" y2="130" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="60" y1="130" x2="60" y2="35" stroke="#ccc" stroke-width="1.5"/>
+      <text x="230" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#888">Reprompting Iteration</text>
+      <text x="20" y="85" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#888" transform="rotate(-90,20,85)">Cumulative CWEs</text>
+      <!-- iteration markers -->
+      <text x="60" y="142" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">0</text>
+      <text x="128" y="142" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">1</text>
+      <text x="196" y="142" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">2</text>
+      <text x="264" y="142" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">3</text>
+      <text x="332" y="142" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">4</text>
+      <text x="400" y="142" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">5</text>
+      <!-- rising line -->
+      <polyline points="60,105 128,100 196,90 264,78 332,70 400,64" stroke="#b02020" stroke-width="2.5" fill="none"/>
+      <circle cx="60" cy="105" r="3" fill="#b02020"/>
+      <circle cx="128" cy="100" r="3" fill="#b02020"/>
+      <circle cx="196" cy="90" r="3" fill="#b02020"/>
+      <circle cx="264" cy="78" r="3" fill="#b02020"/>
+      <circle cx="332" cy="70" r="3" fill="#b02020"/>
+      <circle cx="400" cy="64" r="3" fill="#b02020"/>
+      <text x="405" y="62" font-family="Georgia, serif" font-size="11" fill="#b02020" font-weight="bold">+37.6%</text>
+    </svg>
+    <figcaption>Figure 4: Cumulative critical CWE violations increase +37.6% after 5 reprompting iterations as functional objectives supersede initial security constraints.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Most LLMs produce low-risk code on initial request, but iterative agentic reprompting causes critical CWE violations to increase by +37.6% after 5 iterations as the model increasingly prioritizes the most recently specified functional objectives over earlier security constraints. The pattern is consistent across GPT-4o, Claude 3.7 Sonnet, and three other frontier models.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-peer">ICLR 2026 Workshop</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2606.00801">Quality-Diversity Evolution for Discovering Diverse Vulnerabilities in LLM Safety</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="MAP-Elites grid showing per-model safety geometry for GPT-4o-mini, Gemini, and Claude">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">MAP-Elites — Per-Model Safety Geometry</text>
+      <!-- Grid columns (encoding methods) -->
+      <text x="155" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555">Plain</text>
+      <text x="220" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555">ROT13</text>
+      <text x="285" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555">Leet</text>
+      <text x="350" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555">Base64</text>
+      <!-- Row labels (strategy) -->
+      <text x="95" y="65" text-anchor="end" font-family="Georgia, serif" font-size="9" fill="#555">Direct</text>
+      <text x="95" y="100" text-anchor="end" font-family="Georgia, serif" font-size="9" fill="#555">Hypothetical</text>
+      <text x="95" y="135" text-anchor="end" font-family="Georgia, serif" font-size="9" fill="#555">Roleplay</text>
+      <!-- GPT cells -->
+      <rect x="100" y="49" width="110" height="24" rx="2" fill="#f0f0f0" stroke="#ddd"/>
+      <rect x="220" y="49" width="110" height="24" rx="2" fill="#b02020" opacity="0.8"/>
+      <text x="275" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#fff">GPT ASR 0.8</text>
+      <rect x="100" y="84" width="110" height="24" rx="2" fill="#b02020" opacity="0.7"/>
+      <text x="155" y="101" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#fff">GPT ASR 0.7</text>
+      <rect x="220" y="84" width="110" height="24" rx="2" fill="#f0f0f0" stroke="#ddd"/>
+      <rect x="100" y="119" width="110" height="24" rx="2" fill="#f0f0f0" stroke="#ddd"/>
+      <rect x="220" y="119" width="110" height="24" rx="2" fill="#f0f0f0" stroke="#ddd"/>
+      <!-- Claude cells — all low -->
+      <rect x="330" y="49" width="80" height="24" rx="2" fill="#d4edda" stroke="#1a6e3c"/>
+      <text x="370" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">C: 0.4</text>
+      <rect x="330" y="84" width="80" height="24" rx="2" fill="#d4edda" stroke="#1a6e3c"/>
+      <text x="370" y="101" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">C: 0.4</text>
+      <rect x="330" y="119" width="80" height="24" rx="2" fill="#d4edda" stroke="#1a6e3c"/>
+      <text x="370" y="136" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">C: 0.4</text>
+    </svg>
+    <figcaption>Figure 5: MAP-Elites behavioral grid — each cell is a strategy × encoding combination; red = high ASR. GPT-4o-mini and Gemini show concentrated vulnerabilities; Claude shows uniformly low ASR (max 0.4) across all cells.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Applies MAP-Elites evolutionary search to LLM red-teaming over interpretable semantic attack strategies. The approach surfaces per-model safety geometry — which strategy-encoding pairs are productive and which are dead ends — enabling targeted hardening. ICLR 2026 Workshop on Agents in the Wild.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">11</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.14493">LogInject: Passive Prompt Injection via Security Operations Log Context</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg" aria-label="LogInject attack flow diagram">
+      <rect width="440" height="140" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">LogInject Attack Flow</text>
+      <!-- Flow boxes -->
+      <rect x="10" y="40" width="70" height="35" rx="3" fill="#fde0e0" stroke="#b02020" stroke-width="1.5"/>
+      <text x="45" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#b02020">HTTP UA /</text>
+      <text x="45" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#b02020">DNS / SMTP</text>
+      <rect x="100" y="40" width="70" height="35" rx="3" fill="#f0ede8" stroke="#888" stroke-width="1.5"/>
+      <text x="135" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555">Server</text>
+      <text x="135" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555">Log Entry</text>
+      <rect x="190" y="40" width="80" height="35" rx="3" fill="#fde0e0" stroke="#b02020" stroke-width="1.5"/>
+      <text x="230" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#b02020">SOC Agent</text>
+      <text x="230" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#b02020">LLM Context</text>
+      <rect x="290" y="40" width="70" height="35" rx="3" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="325" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#1a6e3c">Attack</text>
+      <text x="325" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#1a6e3c">Executes</text>
+      <rect x="375" y="40" width="55" height="35" rx="3" fill="#f0ede8" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="402" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#aaa">Text filter</text>
+      <text x="402" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#aaa">✗ bypassed</text>
+      <!-- arrows -->
+      <line x1="80" y1="57" x2="98" y2="57" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <line x1="170" y1="57" x2="188" y2="57" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <line x1="270" y1="57" x2="288" y2="57" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <line x1="360" y1="57" x2="373" y2="57" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+      <defs>
+        <marker id="arr2" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <text x="220" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">12,847-entry LogInject-1.0 benchmark · all 4 attack objectives succeed</text>
+      <text x="220" y="126" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">No user interaction required · structural metadata bypasses free-text filters</text>
+    </svg>
+    <figcaption>Figure 7: Adversarial payloads in HTTP User-Agent strings, DNS TXT records, and SMTP headers propagate into server logs; SOC agents treat log content as authoritative, executing all four attack objectives with no user interaction.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Adversarial payloads embedded in standard log metadata (HTTP User-Agent, DNS TXT, mail headers) reach SOC agent LLMs as trusted operational context, succeeding at all four attack objectives across 12,847 log entries. Most IPI defenses filter free-text fields and miss payloads in structural metadata — opening a blind spot in AI-assisted SOC pipelines.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">12</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.11871">Inside the Unfair Judge: A Mechanistic Interpretability Account of LLM-as-Judge Bias</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="Activation space diagram showing type-specific bias subspace in LLM-as-judge models">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">Bias as Geometric Subspace in Judge Activations</text>
+      <!-- 2D activation space -->
+      <ellipse cx="160" cy="90" rx="80" ry="50" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.5" opacity="0.6"/>
+      <text x="160" y="87" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#0d7377">Clean inputs</text>
+      <text x="160" y="102" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#0d7377">(on manifold)</text>
+      <!-- bias displacement arrows -->
+      <line x1="220" y1="90" x2="310" y2="65" stroke="#b02020" stroke-width="2" marker-end="url(#arr3)"/>
+      <text x="285" y="60" font-family="Georgia, serif" font-size="10" fill="#b02020">position bias</text>
+      <line x1="220" y1="95" x2="310" y2="100" stroke="#a05c00" stroke-width="2" marker-end="url(#arr3)"/>
+      <text x="270" y="112" font-family="Georgia, serif" font-size="10" fill="#a05c00">verbosity bias</text>
+      <line x1="220" y1="100" x2="310" y2="135" stroke="#5c1aaa" stroke-width="2" marker-end="url(#arr3)"/>
+      <text x="275" y="148" font-family="Georgia, serif" font-size="10" fill="#5c1aaa">authority bias</text>
+      <defs>
+        <marker id="arr3" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <text x="50" y="145" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">Steerable in both directions</text>
+    </svg>
+    <figcaption>Figure 1: Biased inputs occupy type-specific low-dimensional subspaces that sharpen with model depth; steering along the bias subspace drives scoring in either direction across seven judges and seven bias types.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Covers seven judges, seven bias types (position, verbosity, authority, format, etc.), and nine benchmarks. Biases are geometrically structured, type-specific, and causally controllable via hidden-state steering — establishing judge alignment as a mechanistic problem amenable to intervention rather than just an instruction-tuning shortfall.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">13</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.24964">ALIBI: Adaptive Agentic Attacks on LLM-Based Vulnerability Detectors via Adversarial Code Comments</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg" aria-label="ALIBI adaptive attack loop diagram">
+      <rect width="440" height="140" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">ALIBI — Adaptive Comment Injection Loop</text>
+      <rect x="30" y="40" width="90" height="35" rx="4" fill="#fde0e0" stroke="#b02020" stroke-width="1.5"/>
+      <text x="75" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">Vulnerable Code</text>
+      <text x="75" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">+ Adv. Comments</text>
+      <rect x="160" y="40" width="90" height="35" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1.5"/>
+      <text x="205" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">LLM Detector</text>
+      <text x="205" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">(chain-of-thought)</text>
+      <rect x="300" y="40" width="110" height="35" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="355" y="56" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">Evasion achieved</text>
+      <text x="355" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#1a6e3c">(detector fooled)</text>
+      <line x1="120" y1="57" x2="158" y2="57" stroke="#888" stroke-width="1.5" marker-end="url(#arr4)"/>
+      <line x1="250" y1="57" x2="298" y2="57" stroke="#888" stroke-width="1.5" marker-end="url(#arr4)"/>
+      <path d="M205,75 Q205,110 75,110 Q75,90 75,75" stroke="#888" stroke-width="1" fill="none" stroke-dasharray="4,3"/>
+      <text x="140" y="122" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555">refine comments ← feedback</text>
+      <defs>
+        <marker id="arr4" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: ALIBI loop — agent iteratively inserts and refines adversarial natural-language comments against four LLM-based vulnerability detectors, exploiting the gap between comment semantics and code security semantics.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    A coding agent iteratively inserts adversarial natural-language comments in real-world vulnerable code from vulnerability-fixing commits, exploiting that comments are parsed as natural language by LLM detector chain-of-thought but carry no code security semantics. Evaluated against four detectors from specialized reasoning models to frontier multi-agent systems; source-code comments emerge as a previously understudied attack surface.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">14</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2606.15054">Size Doesn't Matter: Cosine-Scored Sparse Autoencoders</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 150" xmlns="http://www.w3.org/2000/svg" aria-label="Diagram comparing inner-product vs cosine SAE feature allocation">
+      <rect width="440" height="150" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">Inner-Product vs. Cosine SAE Feature Use</text>
+      <!-- left: inner-product -->
+      <rect x="20" y="35" width="180" height="90" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1.5"/>
+      <text x="110" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#555">Inner-Product SAE</text>
+      <rect x="30" y="65" width="80" height="25" rx="2" fill="#d0f0f0" stroke="#0d7377"/>
+      <text x="70" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#0d7377">Content features</text>
+      <rect x="120" y="65" width="70" height="25" rx="2" fill="#fde0e0" stroke="#b02020"/>
+      <text x="155" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#b02020">Norm detectors</text>
+      <text x="110" y="115" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">~20–30% wasted slots</text>
+      <!-- right: cosine -->
+      <rect x="240" y="35" width="180" height="90" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="330" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1a6e3c">Cosine SAE</text>
+      <rect x="250" y="65" width="160" height="25" rx="2" fill="#d0f0f0" stroke="#0d7377"/>
+      <text x="330" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#0d7377">All slots → content features</text>
+      <text x="330" y="115" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#1a6e3c">norm dependence ≈ 0 after training</text>
+    </svg>
+    <figcaption>Figure 8: Inner-product SAEs allocate a fraction of dictionary slots to norm detectors (a quantity transformers discard via sublayer normalization); cosine training converges to near-zero magnitude dependence, filling all slots with content-aligned features.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Standard SAE inner-product scores depend on input norm — a quantity sublayer normalization discards from the residual stream, causing wasted dictionary slots. Replacing inner-product with a learned cosine blend always converges to near-zero magnitude dependence, reclaiming those slots for content-aligned features with measurable semantic alignment improvement at matched reconstruction loss.
+  </p>
+</article>
+
+<!-- ===================== WATCHLIST ===================== -->
+
+<div class="watchlist">
+  <div class="watchlist-label">Watchlist</div>
+  <ul>
+    <li><strong>ParityTransformer scale-up</strong> — results currently on GPT-2/Pythia-1.4B; performance at frontier scale is the key open question for whether interpretability-by-design is viable.</li>
+    <li><strong>SAE causal audit replication</strong> (2607.12166) — the 77%/9% causal inertness figures need independent replication on different SAE families and benchmarks before they can anchor field-wide evaluation reform.</li>
+    <li><strong>Audio PI defenses</strong> — 2607.28165 opens a gap in multimodal agent security; no published defenses address the acoustic-layer threat model as of this window.</li>
+    <li><strong>ToxScreen baselines</strong> — benchmark released; first competitive trigger-recovery results under the white-box, data-free threat model are expected to follow shortly.</li>
+  </ul>
+</div>
+
+</div><!-- /page -->
+{% endraw %}

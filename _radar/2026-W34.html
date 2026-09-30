@@ -1,0 +1,944 @@
+---
+layout: "radar"
+title: "Weekly Radar - 2026-W34"
+kind: "weekly"
+slug: "2026-W34"
+date: 2026-08-17
+group: "weekly"
+window: "August 10–16, 2026 (backfilled 2026-09-29)"
+summary: "Window: August 10–16, 2026 (backfilled 2026-09-29) · Counts: 0 peer-reviewed · 13 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/weekly/2026-W34.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --fig-bg: #1e1e1e;
+  --fig-border: #333; --tag-bg: #252525; --tag-text: #aaa;
+  --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+  --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+  --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: Georgia, serif; font-size: 16px; line-height: 1.7; margin: 0; padding: 0 16px; }
+a { color: var(--link); }
+.masthead { border-bottom: 2px solid var(--border); padding: 28px 0 20px; max-width: 720px; margin: 0 auto 32px; }
+.masthead-eyebrow { font-family: system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
+.masthead-issue { font-family: Georgia, serif; font-size: 22px; font-weight: bold; color: var(--title); margin-bottom: 6px; }
+.masthead-counts { font-family: system-ui, sans-serif; font-size: 13px; color: var(--dim); margin-bottom: 10px; }
+.masthead-tracks { display: flex; gap: 4px; align-items: center; }
+.track { display: inline-block; background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 2px 8px; font-family: system-ui, sans-serif; font-size: 12px; color: var(--text); }
+.track-sep { color: var(--dim); font-size: 14px; margin: 0 2px; }
+.theme-section { background: var(--theme-band); border-left: 3px solid var(--accent-green); padding: 16px 20px; margin: 0 auto 36px; max-width: 720px; border-radius: 0 4px 4px 0; }
+.theme-label { font-family: system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-green); margin-bottom: 8px; }
+.theme-text { font-size: 15px; line-height: 1.7; color: var(--text); margin: 0; }
+.paper { max-width: 720px; margin: 0 auto 52px; }
+.paper-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.paper-rank { font-family: system-ui, sans-serif; font-size: 28px; font-weight: 900; color: var(--border); line-height: 1; min-width: 44px; }
+.paper-meta { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { display: inline-block; background: var(--tag-bg); color: var(--tag-text); border-radius: 3px; padding: 2px 8px; font-family: system-ui, sans-serif; font-size: 11px; font-weight: 600; }
+.tag-peer { background: #d4f0dd; color: #1a6e3c; }
+.tag-interp { background: #d0f0f0; color: #0d7377; }
+.tag-security { background: #fde8e8; color: #b02020; }
+.tag-align { background: #dde8f8; color: #1a4f99; }
+.tag-control { background: #ede8f8; color: #5c1aaa; }
+.tag-rank { background: #fdf3dc; color: #a05c00; }
+@media (prefers-color-scheme: dark) {
+  .tag-peer { background: #1a3a24; color: #4ade80; }
+  .tag-interp { background: #0f2a2a; color: #14b8bd; }
+  .tag-security { background: #3a1a1a; color: #f07070; }
+  .tag-align { background: #1a2a3a; color: #7eb8ff; }
+  .tag-control { background: #2a1a3a; color: #c084fc; }
+  .tag-rank { background: #2a2010; color: #f0a030; }
+}
+.paper-title { font-family: Georgia, serif; font-size: 22px; font-weight: bold; line-height: 1.3; margin: 0 0 14px; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-authors { font-family: system-ui, sans-serif; font-size: 13px; color: var(--dim); margin-bottom: 14px; }
+.paper-hook { font-size: 16px; line-height: 1.75; margin-bottom: 16px; }
+.paper-figure { margin: 20px 0; }
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption { font-family: system-ui, sans-serif; font-size: 12px; color: var(--dim); text-align: center; margin-top: 8px; line-height: 1.5; max-width: 500px; margin-left: auto; margin-right: auto; }
+.paper-detail { font-size: 15px; line-height: 1.75; }
+hr.section-divider { border: none; border-top: 1px solid var(--border); margin: 40px auto; max-width: 720px; }
+.more-section-label { font-family: system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); max-width: 720px; margin: 0 auto 24px; padding-top: 8px; }
+.mid-paper { max-width: 720px; margin: 0 auto 44px; }
+.mid-title { font-family: Georgia, serif; font-size: 18px; font-weight: bold; line-height: 1.3; margin-bottom: 14px; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-summary { font-size: 14px; color: var(--text); line-height: 1.65; margin-top: 14px; }
+.watchlist { max-width: 720px; margin: 0 auto 52px; }
+.watchlist h2 { font-size: 16px; font-family: system-ui, sans-serif; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--dim); margin-bottom: 14px; }
+.watchlist ul { margin: 0; padding-left: 20px; }
+.watchlist li { font-size: 14px; line-height: 1.65; margin-bottom: 8px; }
+</style>
+
+
+<header class="masthead">
+  <div class="masthead-eyebrow">RESEARCH RADAR</div>
+  <div class="masthead-issue">Week 34 · August 10–16, 2026</div>
+  <div class="masthead-counts">0 peer-reviewed · 13 preprints · 0 forum/blog &nbsp;·&nbsp; <em>backfilled 2026-09-29</em></div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<section class="theme-section">
+  <div class="theme-label">THEME OF THE WEEK</div>
+  <p class="theme-text">
+    The most impactful result of the week was infrastructural: a cross-session compatibility flaw in encrypted chain-of-thought blocks, shared across all major AI providers, exposed that hidden reasoning traces can be decoded through injection into weaker models — and that 6,708 public agent trajectories already contained 704 recoverable privacy artifacts. The week also produced a rare theoretical anchor: the first identifiability theorem for a mechanistic interpretability primitive, establishing that the transformer's intrinsic spectrum is coordinate-free and recoverable from data at a provably optimal rate. On the attack surface, causal mediation across 16 models showed grammatical phrasing mediates 25–40% of refusal decisions independently of harmful content, and Convergent Detour Hijacking introduced a new class of attack that defeats completion-based monitors while still finishing the user's task. An unusually large agent security evaluation cluster (ToolHazard, REDAgentBench, and a 743-paper systematic review) signalled that reproducible agent security measurement is becoming a distinct sub-field.
+  </p>
+</section>
+
+<!-- ============================================================ PAPER 01 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-rank">top pick</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.09867">Stealing Reasoning Traces from Proprietary LLM APIs</a>
+  </h2>
+  <p class="paper-authors">Alexander Panfilov, David Schmotz, Ilia Shumailov, Luca Beurer-Kellner, Joachim Schaeffer, Ameya Prabhu, Jonas Geiping, Maksym Andriushchenko — arXiv preprint, August 10, 2026</p>
+  <p class="paper-hook">
+    The hidden chain-of-thought blocks returned by OpenAI, Anthropic, and Google are encrypted and meant to be opaque — but they are fully cross-compatible across sessions, users, and models within a provider's ecosystem, enabling a decryption jailbreak in two API calls per block. The team mass-decoded 704 real privacy artifacts from 6,708 publicly available agent trajectories.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Cross-session CoT block injection attack">
+      <rect width="500" height="200" fill="#fff" rx="4"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Cross-Session Encrypted CoT Block Injection</text>
+      <!-- Strong model box -->
+      <rect x="30" y="50" width="140" height="60" rx="4" fill="#dde8f8" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="100" y="74" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#1a4f99" font-weight="700">STRONG MODEL</text>
+      <text x="100" y="91" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">(safety-trained)</text>
+      <!-- Encrypted block -->
+      <rect x="200" y="55" width="100" height="50" rx="3" fill="#fdf3dc" stroke="#a05c00" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="250" y="76" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#a05c00" font-weight="700">ENC(CoT)</text>
+      <text x="250" y="91" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a05c00">block</text>
+      <!-- Arrow from strong to block -->
+      <line x1="170" y1="80" x2="198" y2="80" stroke="#1a4f99" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <!-- Arrow from block to weak -->
+      <line x1="302" y1="80" x2="330" y2="80" stroke="#b02020" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <!-- Weak model box -->
+      <rect x="332" y="50" width="140" height="60" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="402" y="74" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#b02020" font-weight="700">WEAK MODEL</text>
+      <text x="402" y="91" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">(fewer safeguards)</text>
+      <!-- Output box -->
+      <rect x="332" y="130" width="140" height="45" rx="3" fill="#f8f0f8" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="402" y="149" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#5c1aaa" font-weight="700">Output: decoded CoT</text>
+      <text x="402" y="163" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5c1aaa">API keys · passwords · traces</text>
+      <!-- Arrow from weak model down to output -->
+      <line x1="402" y1="110" x2="402" y2="128" stroke="#b02020" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <!-- Inject label -->
+      <text x="310" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">inject</text>
+      <!-- Defs for arrowheads -->
+      <defs>
+        <marker id="arr1" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#1a4f99"/>
+        </marker>
+        <marker id="arr2" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#b02020"/>
+        </marker>
+        <marker id="arr3" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#b02020"/>
+        </marker>
+      </defs>
+      <!-- Stats at bottom -->
+      <text x="30" y="185" font-family="system-ui,sans-serif" font-size="10" fill="#666">6,708 public trajectories → 704 artifacts: 62 API keys · 33 passwords · 24 tokens · 7 private keys</text>
+    </svg>
+    <figcaption>Figure 1: The encrypted thinking block from a strong model is injected into a weaker model's session; with no session binding in the block, the weaker model decodes and outputs the hidden reasoning verbatim — two API calls suffice per block.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Four abuse paths are demonstrated: (1) <strong>model distillation</strong> — inject a strong model's block into a weaker model and harvest decoded reasoning as training data; (2) <strong>private data extraction</strong> — decode other users' blocks found in public agent trajectory datasets, yielding 704 artifacts (62 API keys, 33 passwords, 24 access tokens, 7 private keys) from 6,708 real trajectories; (3) <strong>harmful content recovery</strong> — reasoning hidden behind a safe visible answer is fully recoverable; (4) <strong>prompt-injection hiding</strong> — malicious instructions in the thinking block are invisible to monitors inspecting only visible output. The flaw is a protocol design error, not a model inference bug: encrypted blocks carry no session or user binding, so any model in the ecosystem decodes any block.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ============================================================ PAPER 02 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.10172">Intrinsic Structure: Spectral Identifiability for Mechanistic Interpretability</a>
+  </h2>
+  <p class="paper-authors">Ashim Dhor, Pin-Yu Chen — arXiv preprint, August 10, 2026</p>
+  <p class="paper-hook">
+    Sparse autoencoders trained on identical activations with different random seeds return materially different features, with no prior theory to distinguish structural from incidental variability. This paper provides the first identifiability theorem for a mech-interp primitive, establishing that the transformer's intrinsic spectrum is coordinate-free and recoverable from data at a provably optimal rate.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="Koopman spectrum convergence plot">
+      <rect width="500" height="210" fill="#fff" rx="4"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Intrinsic Spectrum: M⁻¹/² Convergence Rate</text>
+      <!-- Axes -->
+      <line x1="60" y1="160" x2="450" y2="160" stroke="#888" stroke-width="1.5"/>
+      <line x1="60" y1="40" x2="60" y2="160" stroke="#888" stroke-width="1.5"/>
+      <!-- Axis labels -->
+      <text x="255" y="200" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#555">log(M) — calibration samples</text>
+      <text x="18" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#555" transform="rotate(-90,18,100)">Spectral error</text>
+      <!-- X ticks -->
+      <text x="80" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#666">10²</text>
+      <text x="180" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#666">10³</text>
+      <text x="280" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#666">10⁴</text>
+      <text x="380" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#666">10⁵</text>
+      <!-- Y ticks -->
+      <text x="52" y="163" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#666">0</text>
+      <text x="52" y="113" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#666">0.5</text>
+      <text x="52" y="63" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#666">1.0</text>
+      <!-- M^{-1/2} reference line -->
+      <polyline points="80,55 180,105 280,130 380,148 440,155" fill="none" stroke="#aaa" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="435" y="148" font-family="system-ui,sans-serif" font-size="9" fill="#aaa">M⁻¹/²</text>
+      <!-- GPT-2 curve -->
+      <polyline points="80,52 180,102 280,128 380,146" fill="none" stroke="#1a4f99" stroke-width="2"/>
+      <circle cx="80" cy="52" r="3" fill="#1a4f99"/>
+      <circle cx="180" cy="102" r="3" fill="#1a4f99"/>
+      <circle cx="280" cy="128" r="3" fill="#1a4f99"/>
+      <circle cx="380" cy="146" r="3" fill="#1a4f99"/>
+      <!-- Gemma curve -->
+      <polyline points="80,58 180,108 280,132 380,149" fill="none" stroke="#0d7377" stroke-width="2"/>
+      <circle cx="80" cy="58" r="3" fill="#0d7377"/>
+      <circle cx="380" cy="149" r="3" fill="#0d7377"/>
+      <!-- Qwen curve -->
+      <polyline points="80,62 180,111 280,135 380,151" fill="none" stroke="#5c1aaa" stroke-width="2"/>
+      <circle cx="80" cy="62" r="3" fill="#5c1aaa"/>
+      <circle cx="380" cy="151" r="3" fill="#5c1aaa"/>
+      <!-- Legend -->
+      <line x1="70" y1="192" x2="88" y2="192" stroke="#1a4f99" stroke-width="2"/>
+      <text x="91" y="195" font-family="system-ui,sans-serif" font-size="9" fill="#1a1a1a">GPT-2 Small</text>
+      <line x1="160" y1="192" x2="178" y2="192" stroke="#0d7377" stroke-width="2"/>
+      <text x="181" y="195" font-family="system-ui,sans-serif" font-size="9" fill="#1a1a1a">Gemma-2-2B</text>
+      <line x1="255" y1="192" x2="273" y2="192" stroke="#5c1aaa" stroke-width="2"/>
+      <text x="276" y="195" font-family="system-ui,sans-serif" font-size="9" fill="#1a1a1a">Qwen3-8B-Base</text>
+    </svg>
+    <figcaption>Figure 1: All three models converge at the predicted M⁻¹/² rate, establishing the first provably optimal identifiability result for a mech-interp primitive — the intrinsic spectrum is not seed-dependent.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The paper treats the transformer forward pass as a controlled dynamical system (depth = time) and lifts it via the Koopman operator to a finite linear realization whose spectrum is basis-independent. Main results: (1) the spectrum is recoverable from M calibration samples at rate M⁻¹/², with a matching minimax lower bound — the first identifiability theorem with optimality for a mech-interp primitive; (2) a dissociation theorem shows that whenever the realization is non-normal (the generic case for deep transformers), the directions carrying activation variance and those propagating information across depth cannot coincide — explaining why PCA probes systematically miss causally active circuits. Validated on GPT-2 Small, Gemma-2-2B, and Qwen3-8B-Base at the predicted convergence exponent.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ============================================================ PAPER 03 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.05409">Mood Matters: How Syntactic Sensitivity Undermines Safety Alignment</a>
+  </h2>
+  <p class="paper-authors">Klerings, Brinkmann, Stuckenschmidt, Ponzetto — arXiv preprint, August 5, 2026</p>
+  <p class="paper-hook">
+    Alignment training is evaluated on harmful content, but this paper's causal mediation analysis across 16 models up to 70B shows that syntactic form — imperative vs. polite-question phrasing — causally mediates 25–40% of the refusal decision even when harmful content is held constant. Steering syntactic directions alone is sufficient to trigger or suppress refusal, revealing a structural vulnerability in safety training.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Syntactic contribution to refusal across model families">
+      <rect width="500" height="200" fill="#fff" rx="4"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Syntactic Mood Causally Mediates 25–40% of Refusal</text>
+      <!-- Bar chart: models on x, syntactic contribution on y -->
+      <!-- Y axis -->
+      <line x1="60" y1="30" x2="60" y2="155" stroke="#888" stroke-width="1.2"/>
+      <line x1="60" y1="155" x2="470" y2="155" stroke="#888" stroke-width="1.2"/>
+      <!-- Y ticks -->
+      <text x="52" y="158" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#666">0%</text>
+      <text x="52" y="127" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#666">10%</text>
+      <text x="52" y="96" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#666">20%</text>
+      <text x="52" y="65" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#666">30%</text>
+      <text x="52" y="34" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#666">40%</text>
+      <!-- Horizontal guides -->
+      <line x1="60" y1="96" x2="470" y2="96" stroke="#eee" stroke-width="1"/>
+      <line x1="60" y1="65" x2="470" y2="65" stroke="#eee" stroke-width="1"/>
+      <!-- Bars: 6 model families -->
+      <!-- Llama family: ~32% -->
+      <rect x="80" y="59" width="50" height="96" fill="#b02020" opacity="0.8" rx="2"/>
+      <text x="105" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">Llama</text>
+      <text x="105" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">32%</text>
+      <!-- Qwen: ~38% -->
+      <rect x="150" y="46" width="50" height="109" fill="#b02020" opacity="0.8" rx="2"/>
+      <text x="175" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">Qwen</text>
+      <text x="175" y="39" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">38%</text>
+      <!-- GPT: ~27% -->
+      <rect x="220" y="72" width="50" height="83" fill="#1a4f99" opacity="0.8" rx="2"/>
+      <text x="245" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">GPT</text>
+      <text x="245" y="65" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99" font-weight="700">27%</text>
+      <!-- Mistral: ~35% -->
+      <rect x="290" y="52" width="50" height="103" fill="#b02020" opacity="0.8" rx="2"/>
+      <text x="315" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">Mistral</text>
+      <text x="315" y="45" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">35%</text>
+      <!-- Gemma: ~25% -->
+      <rect x="360" y="80" width="50" height="75" fill="#0d7377" opacity="0.8" rx="2"/>
+      <text x="385" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">Gemma</text>
+      <text x="385" y="73" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#0d7377" font-weight="700">25%</text>
+      <!-- Label -->
+      <text x="250" y="190" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#555">Causal mediation of syntactic mood on refusal (harmful content held constant)</text>
+    </svg>
+    <figcaption>Figure 1: Syntactic mood causally mediates 25–40% of the refusal decision across model families; the effect is consistent at 70B scale, confirming this is not a small-model artefact.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Activation patching and causal mediation at head and MLP level identify components responding to syntactic mood while holding harmful semantics constant. Steering the "polite-question" direction on harmful imperative prompts reliably reduces refusal rate; steering toward imperative mood on benign prompts increases it — a clean causal pathway from surface syntax to safety behavior. The finding implies that safety evaluations varying only semantic harm level systematically underestimate this attack surface, and that alignment methods trained to detect semantic harm will structurally overfit to syntactic proxies available at training time.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ============================================================ PAPER 04 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.12273">Convergent Detour Hijacking: Task-Preserving Resource Amplification in Skill-Based LLM Agents</a>
+  </h2>
+  <p class="paper-authors">Junliang Liu, Ruoyu Li, Wenxin Tang, Jingyu Xiao, Zhenyu Liu, Jingheng Xu, Laizhong Cui — arXiv preprint, ~August 12, 2026</p>
+  <p class="paper-hook">
+    Completion-based safety monitors verify that an agent finished its assigned task — but a skill-based agent can be hijacked to execute attacker-controlled resource-amplifying subroutines while still converging on and completing the original task. The attack is invisible in the final output; detection requires auditing intermediate resource consumption across the full trajectory.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Normal vs hijacked skill-agent execution">
+      <rect width="500" height="200" fill="#fff" rx="4"/>
+      <text x="250" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">Convergent Detour Hijacking: Same Output, Hidden Side-Channel</text>
+      <!-- Normal path (top) -->
+      <text x="30" y="46" font-family="system-ui,sans-serif" font-size="10" fill="#1a6e3c" font-weight="700">NORMAL</text>
+      <rect x="80" y="33" width="70" height="28" rx="3" fill="#d4f0dd" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="115" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a6e3c">User Task</text>
+      <line x1="150" y1="47" x2="180" y2="47" stroke="#1a6e3c" stroke-width="1.5" marker-end="url(#arN)"/>
+      <rect x="182" y="33" width="80" height="28" rx="3" fill="#d4f0dd" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="222" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a6e3c">Skill Path</text>
+      <line x1="262" y1="47" x2="292" y2="47" stroke="#1a6e3c" stroke-width="1.5" marker-end="url(#arN)"/>
+      <rect x="294" y="33" width="80" height="28" rx="3" fill="#d4f0dd" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="334" y="47" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a6e3c" font-weight="700">Task Output</text>
+      <text x="334" y="57" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#1a6e3c">✓ safe</text>
+      <!-- Hijacked path (bottom) -->
+      <text x="30" y="110" font-family="system-ui,sans-serif" font-size="10" fill="#b02020" font-weight="700">HIJACKED</text>
+      <rect x="80" y="97" width="70" height="28" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1.2"/>
+      <text x="115" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">User Task</text>
+      <line x1="150" y1="111" x2="175" y2="111" stroke="#b02020" stroke-width="1.5" marker-end="url(#arH)"/>
+      <!-- Detour branch -->
+      <rect x="177" y="87" width="100" height="28" rx="3" fill="#fdf3dc" stroke="#a05c00" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="227" y="101" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a05c00" font-weight="700">DETOUR</text>
+      <text x="227" y="111" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#a05c00">resource amplify</text>
+      <!-- arrow from detour to convergence -->
+      <line x1="277" y1="101" x2="292" y2="111" stroke="#a05c00" stroke-width="1.2" stroke-dasharray="3,2"/>
+      <!-- Continue to output -->
+      <line x1="177" y1="125" x2="292" y2="125" stroke="#b02020" stroke-width="1.5"/>
+      <line x1="292" y1="111" x2="292" y2="125" stroke="#b02020" stroke-width="1.2"/>
+      <line x1="292" y1="125" x2="292" y2="121" stroke="#b02020" stroke-width="1.5" marker-end="url(#arH)"/>
+      <rect x="294" y="97" width="80" height="28" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="334" y="111" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">Task Output</text>
+      <text x="334" y="121" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#b02020">✓ same output!</text>
+      <!-- Monitor callout -->
+      <rect x="390" y="75" width="100" height="60" rx="3" fill="#ede8f8" stroke="#5c1aaa" stroke-width="1.2"/>
+      <text x="440" y="93" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5c1aaa" font-weight="700">Monitor</text>
+      <text x="440" y="106" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5c1aaa">checks output</text>
+      <text x="440" y="119" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5c1aaa">→ ✓ OK</text>
+      <text x="440" y="130" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#b02020">(misses detour!)</text>
+      <!-- Arrow from output to monitor -->
+      <line x1="374" y1="111" x2="388" y2="111" stroke="#5c1aaa" stroke-width="1" stroke-dasharray="3,2"/>
+      <!-- Legend note -->
+      <text x="30" y="167" font-family="system-ui,sans-serif" font-size="10" fill="#555">Detour executes attacker-controlled subroutines; both paths reach identical final output.</text>
+      <text x="30" y="182" font-family="system-ui,sans-serif" font-size="10" fill="#555">Detection requires monitoring resource consumption across the full trajectory.</text>
+      <defs>
+        <marker id="arN" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a6e3c"/></marker>
+        <marker id="arH" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#b02020"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: Normal execution (top) and Convergent Detour Hijacking (bottom) — both converge on the same final output; the hijacked path executes attacker-controlled resource-amplifying subroutines invisibly to completion-based monitors.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    CDH exploits the skill-selection layer of multi-skill agent architectures: an adversarial injection redirects routing to a detour path that executes the amplification subroutine as a side-channel, then returns to the original task's completion path. Because task outcome is preserved, completion rate, user satisfaction, and standard ASR metrics all report clean. Detection requires monitoring resource consumption patterns — compute, API calls, or bandwidth — across the full agent trajectory rather than at the final state. The attack surface is any skill-based agent architecture where skill routing can be influenced by injected content.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ============================================================ PAPER 05 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.05108">Agent Against Agent: An Agentic System for Automatic Prompt Injection Red Teaming (PIMiner)</a>
+  </h2>
+  <p class="paper-authors">Wang, Yin, Geng, Jia — arXiv preprint, August 5, 2026</p>
+  <p class="paper-hook">
+    Prompt injection defenses are typically evaluated against fixed attack sets, not adaptive adversaries. PIMiner's red-team agent distils successful injection patterns into a reusable strategy library during training, then transfers to previously unseen LLM targets using approximately 10 queries per sample — the most sample-efficient automated prompt-injection red-teaming framework to date.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 185" xmlns="http://www.w3.org/2000/svg" aria-label="PIMiner pipeline diagram">
+      <rect width="500" height="185" fill="#fff" rx="4"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">PIMiner: Strategy Library → ~10-Query Transfer</text>
+      <!-- Training phase -->
+      <rect x="20" y="35" width="200" height="105" rx="4" fill="#dde8f8" stroke="#1a4f99" stroke-width="1.2"/>
+      <text x="120" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#1a4f99" font-weight="700">TRAINING PHASE</text>
+      <rect x="35" y="60" width="75" height="25" rx="2" fill="#fff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="72" y="77" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99">Explore injections</text>
+      <line x1="110" y1="72" x2="125" y2="72" stroke="#1a4f99" stroke-width="1" marker-end="url(#arP1)"/>
+      <rect x="127" y="60" width="75" height="25" rx="2" fill="#fff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="165" y="77" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99">Evaluate success</text>
+      <text x="120" y="103" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99">↓ distil patterns</text>
+      <rect x="60" y="110" width="120" height="22" rx="2" fill="#fdf3dc" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="120" y="125" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a05c00" font-weight="700">Strategy Library</text>
+      <!-- Arrow training to test -->
+      <line x1="220" y1="88" x2="270" y2="88" stroke="#888" stroke-width="1.5" marker-end="url(#arP2)"/>
+      <text x="245" y="83" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">reuse</text>
+      <!-- Test phase -->
+      <rect x="272" y="35" width="210" height="105" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.2"/>
+      <text x="377" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#b02020" font-weight="700">TEST PHASE (unseen target)</text>
+      <rect x="285" y="60" width="85" height="25" rx="2" fill="#fff" stroke="#b02020" stroke-width="1"/>
+      <text x="328" y="77" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">Library select</text>
+      <line x1="370" y1="72" x2="385" y2="72" stroke="#b02020" stroke-width="1" marker-end="url(#arP3)"/>
+      <rect x="387" y="60" width="80" height="25" rx="2" fill="#fff" stroke="#b02020" stroke-width="1"/>
+      <text x="427" y="77" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">~10 queries</text>
+      <text x="377" y="103" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">→ high-ASR transfer</text>
+      <rect x="320" y="110" width="110" height="22" rx="2" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="375" y="125" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">Attack succeeds</text>
+      <!-- Note -->
+      <text x="250" y="165" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#555">Covers tool use, multi-turn context, external data retrieval — real deployed-agent surfaces.</text>
+      <defs>
+        <marker id="arP1" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a4f99"/></marker>
+        <marker id="arP2" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#888"/></marker>
+        <marker id="arP3" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#b02020"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: PIMiner training distils successful injection patterns into abstract structural templates; test-time retrieval plus ~10 per-target queries achieves high-ASR transfer to previously unseen model targets.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    During training, the agent proposes injection variants, evaluates success, and distils effective patterns into abstract structural templates stored in a reusable strategy library. At test time, template retrieval and lightweight per-target adaptation (~10 queries) achieves high transfer ASR. The agentic framing extends coverage to tool use, multi-turn context, and external data retrieval — the real attack surfaces of deployed agents — rather than single-turn idealised benchmarks. The sample efficiency (~10 queries vs. hundreds for prior methods) makes it practical for continuous red-teaming as defenses evolve.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ============================================================ PAPER 06 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.08168">Thinking vs. NoThinking: Interpreting Reasoning Mechanisms via Sparse Autoencoders</a>
+  </h2>
+  <p class="paper-authors">Bo Cheng, Qiaolin Lu, Yi Chang, Yuan Wu — arXiv preprint, August 8, 2026</p>
+  <p class="paper-hook">
+    What does a reasoning model's chain-of-thought actually do computationally compared to direct-answer mode? This paper applies Top-K SAEs to DeepSeek-R1-Distill-Qwen-7B and shows that Thinking and NoThinking distribute computation differently in ways that scale with problem difficulty — the first mechanistic account of reasoning mode structure.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 195" xmlns="http://www.w3.org/2000/svg" aria-label="SAE feature activation: Thinking vs NoThinking">
+      <rect width="500" height="195" fill="#fff" rx="4"/>
+      <text x="250" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">SAE Feature Activation: Thinking vs. NoThinking</text>
+      <!-- Thinking panel -->
+      <rect x="20" y="30" width="210" height="130" rx="4" fill="#f8f0ff" stroke="#5c1aaa" stroke-width="1.2"/>
+      <text x="125" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#5c1aaa" font-weight="700">THINKING MODE</text>
+      <text x="125" y="61" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">Sparse · High-Intensity · Stable</text>
+      <!-- Sparse high bars: few tall spikes -->
+      <rect x="40" y="130" width="8" height="5" fill="#5c1aaa" rx="1"/>
+      <rect x="60" y="80" width="8" height="55" fill="#5c1aaa" rx="1"/>
+      <rect x="80" y="130" width="8" height="5" fill="#5c1aaa" rx="1"/>
+      <rect x="100" y="72" width="8" height="63" fill="#5c1aaa" rx="1"/>
+      <rect x="120" y="128" width="8" height="7" fill="#5c1aaa" rx="1"/>
+      <rect x="140" y="78" width="8" height="57" fill="#5c1aaa" rx="1"/>
+      <rect x="160" y="128" width="8" height="7" fill="#5c1aaa" rx="1"/>
+      <rect x="180" y="130" width="8" height="5" fill="#5c1aaa" rx="1"/>
+      <rect x="200" y="83" width="8" height="52" fill="#5c1aaa" rx="1"/>
+      <!-- labels -->
+      <text x="125" y="148" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5c1aaa">verbal deduction features</text>
+      <text x="125" y="160" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">pattern: same across difficulty</text>
+      <!-- NoThinking panel -->
+      <rect x="270" y="30" width="210" height="130" rx="4" fill="#fff8e8" stroke="#a05c00" stroke-width="1.2"/>
+      <text x="375" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#a05c00" font-weight="700">NOTHINKING MODE</text>
+      <text x="375" y="61" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">Diffuse · Adaptive · Scales with difficulty</text>
+      <!-- Diffuse lower bars: more features, lower magnitude -->
+      <rect x="285" y="115" width="8" height="20" fill="#a05c00" rx="1" opacity="0.7"/>
+      <rect x="300" y="110" width="8" height="25" fill="#a05c00" rx="1" opacity="0.7"/>
+      <rect x="315" y="118" width="8" height="17" fill="#a05c00" rx="1" opacity="0.7"/>
+      <rect x="330" y="112" width="8" height="23" fill="#a05c00" rx="1" opacity="0.7"/>
+      <rect x="345" y="107" width="8" height="28" fill="#a05c00" rx="1" opacity="0.7"/>
+      <rect x="360" y="113" width="8" height="22" fill="#a05c00" rx="1" opacity="0.7"/>
+      <rect x="375" y="108" width="8" height="27" fill="#a05c00" rx="1" opacity="0.7"/>
+      <rect x="390" y="115" width="8" height="20" fill="#a05c00" rx="1" opacity="0.7"/>
+      <rect x="405" y="111" width="8" height="24" fill="#a05c00" rx="1" opacity="0.7"/>
+      <rect x="420" y="106" width="8" height="29" fill="#a05c00" rx="1" opacity="0.7"/>
+      <rect x="435" y="113" width="8" height="22" fill="#a05c00" rx="1" opacity="0.7"/>
+      <!-- labels -->
+      <text x="375" y="148" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a05c00">symbolic manipulation features</text>
+      <text x="375" y="160" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">pattern: complexity scales with difficulty</text>
+      <!-- note -->
+      <text x="250" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#555">SAE signature distinguishes mode and difficulty from internal activations alone.</text>
+    </svg>
+    <figcaption>Figure 1: Thinking mode activates sparse, high-intensity features for verbal deduction (stable across difficulty); NoThinking mode shows diffuse, lower-magnitude activations for symbolic manipulation that scale with problem complexity.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Thinking mode activates sparse, high-intensity features driving verbal deduction; the pattern is stable regardless of problem difficulty. NoThinking mode activates an adaptive diffuse pattern that prioritises symbolic manipulation over verbal reasoning, scaling in complexity with problem difficulty. The dissociation is mechanistically interpretable: two distinct computational strategies coexist in a shared network, with mode selection shifting which feature set is recruited. The SAE signature reliably distinguishes Thinking from NoThinking modes and difficulty regimes from internal activations alone — a direct monitoring primitive for reasoning models.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ============================================================ PAPER 07 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.13474">Decoding Task Progress from VLA Representations</a>
+  </h2>
+  <p class="paper-authors">(multiple authors) — arXiv preprint, ~August 13–14, 2026 · <em>fresh-sweep addition</em></p>
+  <p class="paper-hook">
+    Vision-language-action models are being deployed as general-purpose robot manipulation policies, but there are currently no standard tools for understanding what they represent internally or monitoring them at runtime. This paper probes the VLA residual stream and shows that task progress — normalised time remaining in a trajectory — is linearly readable from activations, functioning as a label-free out-of-distribution detector competitive with state-of-the-art methods.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg" aria-label="Linear task-progress probe in VLA residual stream">
+      <rect width="500" height="190" fill="#fff" rx="4"/>
+      <text x="250" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Linear Probe Reads Task Progress from VLA Activations</text>
+      <!-- Axes -->
+      <line x1="60" y1="150" x2="440" y2="150" stroke="#888" stroke-width="1.5"/>
+      <line x1="60" y1="40" x2="60" y2="150" stroke="#888" stroke-width="1.5"/>
+      <text x="250" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#555">Trajectory timestep</text>
+      <text x="18" y="95" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#555" transform="rotate(-90,18,95)">Probe output (task progress)</text>
+      <!-- True progress line -->
+      <line x1="80" y1="140" x2="420" y2="45" stroke="#1a6e3c" stroke-width="2" stroke-dasharray="5,3"/>
+      <!-- Predicted progress line (probe) -->
+      <polyline points="80,142 120,126 160,110 200,95 240,80 280,65 320,52 360,44 400,43 420,44" fill="none" stroke="#1a4f99" stroke-width="2.5"/>
+      <!-- OOD stall region -->
+      <rect x="350" y="38" width="80" height="120" rx="2" fill="#fde8e8" opacity="0.4"/>
+      <text x="390" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">stalled / OOD</text>
+      <polyline points="355,43 365,41 380,42 395,44 410,43 425,44" fill="none" stroke="#b02020" stroke-width="2"/>
+      <!-- Legend -->
+      <line x1="70" y1="168" x2="90" y2="168" stroke="#1a6e3c" stroke-width="2" stroke-dasharray="5,3"/>
+      <text x="94" y="172" font-family="system-ui,sans-serif" font-size="9" fill="#1a1a1a">True progress</text>
+      <line x1="170" y1="168" x2="190" y2="168" stroke="#1a4f99" stroke-width="2"/>
+      <text x="194" y="172" font-family="system-ui,sans-serif" font-size="9" fill="#1a1a1a">Linear probe prediction</text>
+      <rect x="330" y="161" width="14" height="8" fill="#fde8e8" stroke="#b02020" stroke-width="0.8"/>
+      <text x="347" y="170" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">OOD / stall detected</text>
+    </svg>
+    <figcaption>Figure 1: A single linear probe on the VLA residual stream tracks normalised task progress throughout a trajectory; when the probe output plateaus (stall region), it serves as a label-free OOD alarm competitive with purpose-built detectors.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The task-progress signal is present in the pretrained PaliGemma backbone before any robot-specific fine-tuning, suggesting it emerges from pretraining on temporally structured data. A single linear probe generalises to unseen tasks and varies appropriately under language counterfactuals when trained on multi-prompt data. While the probe does not enable meaningful steering of the policy, it functions as a label-free out-of-distribution detector for stalled task progress and is competitive with state-of-the-art OOD methods. This is a direct instance of pragmatic mech-interp: an internal representation identified mechanistically and immediately operationalised as a runtime monitoring tool.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ============================================================ PAPER 08 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.02674">Moving the Safety Barrier: Dynamic Routing Adaptive Alignment Against White-Box Attacks</a>
+  </h2>
+  <p class="paper-authors">(multiple authors) — arXiv preprint, August 3, 2026</p>
+  <p class="paper-hook">
+    White-box safety alignment attacks succeed by targeting the primary safety route — a vulnerability that exists precisely because safety is concentrated in a single interpretable direction. Dynamic Routing Adaptive Alignment responds by distributing safety computation across multiple redundant compensatory routes that activate when the primary pathway is compromised.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 185" xmlns="http://www.w3.org/2000/svg" aria-label="Dynamic routing: primary and compensatory safety routes">
+      <rect width="500" height="185" fill="#fff" rx="4"/>
+      <text x="250" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">Dynamic Routing: Primary + Compensatory Safety Routes</text>
+      <!-- Input -->
+      <rect x="20" y="75" width="70" height="35" rx="3" fill="#surface" stroke="#888" stroke-width="1.2"/>
+      <text x="55" y="97" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#555">Input</text>
+      <!-- Arrow to primary -->
+      <line x1="90" y1="92" x2="120" y2="75" stroke="#888" stroke-width="1.2" marker-end="url(#arDR1)"/>
+      <line x1="90" y1="92" x2="120" y2="92" stroke="#888" stroke-width="1.2" marker-end="url(#arDR2)"/>
+      <line x1="90" y1="92" x2="120" y2="109" stroke="#888" stroke-width="1.2" marker-end="url(#arDR3)"/>
+      <!-- Primary route -->
+      <rect x="122" y="62" width="90" height="26" rx="3" fill="#d4f0dd" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="167" y="79" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a6e3c" font-weight="700">Primary Route</text>
+      <!-- ATTACK: red X -->
+      <line x1="175" y1="62" x2="215" y2="88" stroke="#b02020" stroke-width="2.5"/>
+      <line x1="215" y1="62" x2="175" y2="88" stroke="#b02020" stroke-width="2.5"/>
+      <text x="250" y="55" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">← ATTACK: primary route suppressed</text>
+      <!-- Compensatory route 1 -->
+      <rect x="122" y="83" width="90" height="26" rx="3" fill="#dde8f8" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="167" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99" font-weight="700">Comp. Route A</text>
+      <!-- Compensatory route 2 -->
+      <rect x="122" y="104" width="90" height="26" rx="3" fill="#dde8f8" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="167" y="121" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99" font-weight="700">Comp. Route B</text>
+      <!-- Arrows from comp routes to OR gate -->
+      <line x1="212" y1="96" x2="270" y2="108" stroke="#1a4f99" stroke-width="1.5" marker-end="url(#arDR4)"/>
+      <line x1="212" y1="117" x2="270" y2="110" stroke="#1a4f99" stroke-width="1.5" marker-end="url(#arDR4)"/>
+      <!-- Safety decision -->
+      <rect x="272" y="90" width="90" height="35" rx="3" fill="#ede8f8" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="317" y="106" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#5c1aaa" font-weight="700">Safety decision</text>
+      <text x="317" y="118" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5c1aaa">REFUSE</text>
+      <!-- Arrow to output -->
+      <line x1="362" y1="107" x2="395" y2="107" stroke="#1a6e3c" stroke-width="1.5" marker-end="url(#arDR5)"/>
+      <rect x="397" y="90" width="85" height="35" rx="3" fill="#d4f0dd" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="440" y="106" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a6e3c" font-weight="700">Robust refusal</text>
+      <text x="440" y="118" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a6e3c">maintained</text>
+      <!-- Note -->
+      <text x="250" y="158" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#555">Compensatory routes activate when primary is compromised — surgical deactivation of</text>
+      <text x="250" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#555">any single route is insufficient to jailbreak the model.</text>
+      <defs>
+        <marker id="arDR1" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#888"/></marker>
+        <marker id="arDR2" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#888"/></marker>
+        <marker id="arDR3" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#888"/></marker>
+        <marker id="arDR4" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a4f99"/></marker>
+        <marker id="arDR5" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a6e3c"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: When a white-box attack suppresses the primary safety route (red ×), compensatory routes (blue) activate and preserve the refusal decision — no single route is a single point of failure.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Rather than concentrating safety in a single interpretable direction (the standard approach that white-box attacks exploit), the framework trains distributed redundancy: compensatory routes monitor the integrity of the primary route and activate under attack. Evaluated against state-of-the-art white-box attacks including activation steering and representation surgery, dynamic routing significantly reduces ASR while maintaining benign task performance. The architecture is compatible with existing alignment fine-tuning pipelines without requiring base model retraining.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- MID-TIER SECTION -->
+<div class="more-section-label">Items 9–13 · Also notable</div>
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2608.11878">ToolHazard: Scaling Adversarial Environments for Security Evaluation of LLM-based Agents</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="ToolHazard three-component pipeline">
+      <rect width="440" height="155" fill="#fff" rx="4"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a">ToolHazard: Automated Adversarial Environment Generation</text>
+      <!-- Component 1 -->
+      <rect x="20" y="32" width="110" height="80" rx="4" fill="#dde8f8" stroke="#1a4f99" stroke-width="1.2"/>
+      <text x="75" y="54" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99" font-weight="700">Environment</text>
+      <text x="75" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99" font-weight="700">Simulator</text>
+      <text x="75" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">generates executable</text>
+      <text x="75" y="92" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">stateful envs</text>
+      <!-- Arrow -->
+      <line x1="130" y1="72" x2="150" y2="72" stroke="#888" stroke-width="1.2" marker-end="url(#arTH1)"/>
+      <!-- Component 2 -->
+      <rect x="152" y="32" width="110" height="80" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.2"/>
+      <text x="207" y="54" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">Attacker</text>
+      <text x="207" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">Agent</text>
+      <text x="207" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">discovers injection</text>
+      <text x="207" y="92" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">points + payloads</text>
+      <!-- Arrow -->
+      <line x1="262" y1="72" x2="282" y2="72" stroke="#888" stroke-width="1.2" marker-end="url(#arTH2)"/>
+      <!-- Component 3 -->
+      <rect x="284" y="32" width="110" height="80" rx="4" fill="#d4f0dd" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="339" y="54" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a6e3c" font-weight="700">User</text>
+      <text x="339" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a6e3c" font-weight="700">Simulator</text>
+      <text x="339" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">state-grounded</text>
+      <text x="339" y="92" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">long-horizon tasks</text>
+      <!-- Arrow down to bench -->
+      <line x1="220" y1="112" x2="220" y2="130" stroke="#888" stroke-width="1.2" marker-end="url(#arTH3)"/>
+      <text x="220" y="148" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">→ ToolHazard-Bench: scalable, reproducible adversarial evaluation</text>
+      <defs>
+        <marker id="arTH1" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#888"/></marker>
+        <marker id="arTH2" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#888"/></marker>
+        <marker id="arTH3" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#888"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: ToolHazard's three-component pipeline generates executable stateful environments, discovers injection points via an attacker agent, and builds long-horizon user tasks — automating the full adversarial benchmark generation workflow.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Existing agent security benchmarks use manually implemented environments and fixed injection locations, limiting coverage and reproducibility. ToolHazard synthesises executable stateful environments from domain seeds, discovers viable injection points via an adaptive Attacker Agent, and builds realistic long-horizon tasks via a User Simulator — enabling scalable automated generation of a dynamic, attacker-adaptive benchmark across diverse domains.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2608.10669">REDAgentBench: Executable Red Teaming and Faithful Measurement of LLM Agent Systems</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 145" xmlns="http://www.w3.org/2000/svg" aria-label="REDAgentBench four-stage decomposition">
+      <rect width="440" height="145" fill="#fff" rx="4"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a">REDAgentBench: ASR Decomposed into Four Stages</text>
+      <!-- Stages -->
+      <rect x="15" y="35" width="85" height="60" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="57" y="58" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">Exposure</text>
+      <text x="57" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">agent sees</text>
+      <text x="57" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">injection</text>
+      <line x1="100" y1="65" x2="120" y2="65" stroke="#b02020" stroke-width="1.2" marker-end="url(#arRED)"/>
+      <rect x="122" y="35" width="85" height="60" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="164" y="58" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">Execution</text>
+      <text x="164" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">agent runs</text>
+      <text x="164" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">injection</text>
+      <line x1="207" y1="65" x2="227" y2="65" stroke="#b02020" stroke-width="1.2" marker-end="url(#arRED)"/>
+      <rect x="229" y="35" width="85" height="60" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="271" y="58" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">Observation</text>
+      <text x="271" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">effect on</text>
+      <text x="271" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">service</text>
+      <line x1="314" y1="65" x2="334" y2="65" stroke="#b02020" stroke-width="1.2" marker-end="url(#arRED)"/>
+      <rect x="336" y="35" width="85" height="60" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="378" y="58" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">Adjudication</text>
+      <text x="378" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">verify vs.</text>
+      <text x="378" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">receipts</text>
+      <text x="220" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#555">Verified against service receipts + final-state changes — not LLM self-report.</text>
+      <text x="220" y="136" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#555">Localises where in the pipeline a safety failure actually occurs.</text>
+      <defs>
+        <marker id="arRED" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#b02020"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: ASR decomposed into four stages verified against service receipts; this distinguishes incomplete execution from true policy violations, and false-positive detections from genuine attacks.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Standard agent safety metrics collapse all failures into a single ASR number. REDAgentBench derives attacks from explicit safety constraints, runs them in isolated service sandboxes, and verifies outcomes from service receipts and final-state changes — decomposing ASR into a four-stage breakdown (exposure / execution / observation / adjudication) that localises where in the agent execution pipeline a safety failure actually occurs.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">11</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2608.06400">Beyond Routing Weights: Faithful Interpretation of MoE Reward Models via Contribution Contrast (CoCo)</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 145" xmlns="http://www.w3.org/2000/svg" aria-label="CoCo: chosen vs rejected response expert activation contrast">
+      <rect width="440" height="145" fill="#fff" rx="4"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a">CoCo: Expert Roles from Chosen–Rejected Activation Contrast</text>
+      <!-- Expert columns -->
+      <text x="80" y="40" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">Expert A</text>
+      <text x="165" y="40" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">Expert B</text>
+      <text x="250" y="40" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">Expert C</text>
+      <text x="335" y="40" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">Expert D</text>
+      <!-- Chosen bars (blue) -->
+      <rect x="60" y="80" width="20" height="45" fill="#1a4f99" rx="1"/>
+      <rect x="145" y="55" width="20" height="70" fill="#1a4f99" rx="1"/>
+      <rect x="230" y="100" width="20" height="25" fill="#1a4f99" rx="1"/>
+      <rect x="315" y="65" width="20" height="60" fill="#1a4f99" rx="1"/>
+      <!-- Rejected bars (red) -->
+      <rect x="85" y="100" width="20" height="25" fill="#b02020" rx="1" opacity="0.75"/>
+      <rect x="170" y="100" width="20" height="25" fill="#b02020" rx="1" opacity="0.75"/>
+      <rect x="255" y="55" width="20" height="70" fill="#b02020" rx="1" opacity="0.75"/>
+      <rect x="340" y="95" width="20" height="30" fill="#b02020" rx="1" opacity="0.75"/>
+      <!-- X axis -->
+      <line x1="40" y1="125" x2="420" y2="125" stroke="#888" stroke-width="1"/>
+      <!-- Legend -->
+      <rect x="60" y="133" width="12" height="8" fill="#1a4f99" rx="1"/>
+      <text x="75" y="141" font-family="system-ui,sans-serif" font-size="9" fill="#1a1a1a">Chosen</text>
+      <rect x="130" y="133" width="12" height="8" fill="#b02020" rx="1" opacity="0.75"/>
+      <text x="145" y="141" font-family="system-ui,sans-serif" font-size="9" fill="#1a1a1a">Rejected</text>
+      <text x="280" y="138" font-family="system-ui,sans-serif" font-size="9" fill="#555">Contrast reveals expert specialisation invisible to router weights</text>
+    </svg>
+    <figcaption>Figure 1: CoCo characterises each MoE expert by the contrast in its activations on chosen vs. rejected response pairs — Expert B specialises in chosen-response features, Expert C in rejected — revealing preference-shaping roles invisible to router-weight analysis.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Existing MoE interpretability reads expert roles from routing weights or scalar scores, missing how each expert differentially processes chosen vs. rejected responses — the signal actually driving reward model decisions. CoCo (Contribution Contrast) computes response-level expert contributions from chosen-rejected pairs, surfacing semantically coherent expert specialisation that is invisible to router-weight, score-based, and SAE-based analysis — a direct mech-interp tool for auditing preference-shaping in RLHF reward models.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">12</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">consensus document</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2608.14611">The 2026 Singapore Consensus on Global AI Safety Research Priorities</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg" aria-label="Singapore Consensus priority areas">
+      <rect width="440" height="140" fill="#fff" rx="4"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a">2026 Singapore Consensus: Priority Research Areas</text>
+      <!-- Priority tiles -->
+      <rect x="15" y="30" width="120" height="50" rx="3" fill="#dde8f8" stroke="#1a4f99" stroke-width="1.2"/>
+      <text x="75" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99" font-weight="700">Control &amp; Oversight</text>
+      <text x="75" y="65" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">autonomous AI agents</text>
+      <rect x="160" y="30" width="120" height="50" rx="3" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.2"/>
+      <text x="220" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#0d7377" font-weight="700">Mech. Interp</text>
+      <text x="220" y="65" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">supplements evals</text>
+      <rect x="305" y="30" width="120" height="50" rx="3" fill="#d4f0dd" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="365" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a6e3c" font-weight="700">Societal Resilience</text>
+      <text x="365" y="65" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">new dedicated focus</text>
+      <rect x="80" y="95" width="120" height="35" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1.2"/>
+      <text x="140" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">Safety Cases</text>
+      <text x="140" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">frontier deployment</text>
+      <rect x="240" y="95" width="120" height="35" rx="3" fill="#ede8f8" stroke="#5c1aaa" stroke-width="1.2"/>
+      <text x="300" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5c1aaa" font-weight="700">Scalable Alignment</text>
+      <text x="300" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">training methods</text>
+    </svg>
+    <figcaption>Figure 1: Five priority clusters from the 2026 Singapore Consensus — 100+ contributors, 13 countries; mechanistic interpretability and AI control feature as explicit research priorities alongside the new dedicated focus on societal resilience.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    The second International Scientific Exchange on AI Safety, drawing from frontier developers, government safety institutes, academia, and civil society across 13 countries, produces a structured consensus on the field's open research problems. Extends the 2025 report with a dedicated focus on societal resilience and risks from increasingly autonomous AI agents; mechanistic interpretability supplementing alignment evaluations, control protocols for potentially misaligned AI, and frontier deployment safety cases are included as explicit priority categories.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">13</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2608.06690">Policy-Masked Private Experts: Auditable and Reversible Capability Access Control in Sparse MoE Models</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 130" xmlns="http://www.w3.org/2000/svg" aria-label="Policy-Masked Private Experts architecture">
+      <rect width="440" height="130" fill="#fff" rx="4"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a">Policy-Masked Private Experts: Capability Access Control</text>
+      <!-- Authorized path -->
+      <rect x="15" y="30" width="80" height="35" rx="3" fill="#d4f0dd" stroke="#1a6e3c" stroke-width="1.2"/>
+      <text x="55" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a6e3c" font-weight="700">Authorised req</text>
+      <line x1="95" y1="47" x2="135" y2="47" stroke="#1a6e3c" stroke-width="1.2" marker-end="url(#arPM1)"/>
+      <!-- Public experts -->
+      <rect x="137" y="25" width="80" height="25" rx="3" fill="#dde8f8" stroke="#1a4f99" stroke-width="1.2"/>
+      <text x="177" y="41" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99">Public experts</text>
+      <!-- Private experts -->
+      <rect x="137" y="55" width="80" height="25" rx="3" fill="#fdf3dc" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="177" y="71" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a05c00" font-weight="700">Private experts</text>
+      <!-- Unauthorized path -->
+      <rect x="15" y="80" width="80" height="35" rx="3" fill="#fde8e8" stroke="#b02020" stroke-width="1.2"/>
+      <text x="55" y="101" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020" font-weight="700">Unauthorised req</text>
+      <line x1="95" y1="97" x2="135" y2="55" stroke="#b02020" stroke-width="1.2" marker-end="url(#arPM2)"/>
+      <text x="118" y="90" font-family="system-ui,sans-serif" font-size="8" fill="#b02020">public only</text>
+      <!-- Arrow to output -->
+      <line x1="217" y1="47" x2="260" y2="47" stroke="#888" stroke-width="1.2" marker-end="url(#arPM3)"/>
+      <!-- Output boxes -->
+      <rect x="262" y="30" width="160" height="55" rx="3" fill="#surface" stroke="#888" stroke-width="1"/>
+      <text x="342" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">Authorised: public + private experts</text>
+      <text x="342" y="65" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a05c00">Unauthorised: zero private expert calls</text>
+      <!-- Audit note -->
+      <text x="220" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#555">Router decisions → full audit log · Private branch revocable without retraining base model.</text>
+      <defs>
+        <marker id="arPM1" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a6e3c"/></marker>
+        <marker id="arPM2" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#b02020"/></marker>
+        <marker id="arPM3" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#888"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: Authorised requests activate both public and private expert branches; unauthorised requests execute zero private expert computations; the private branch is auditable via router logs and revocable without retraining.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Sensitive capabilities in sparse MoE models are sequestered in a disjoint private expert branch (Qwen3-30B-A3B and DeepSeek-V2-Lite) that activates only for policy-authorised requests; the pretrained backbone is frozen and the branch can be revoked without retraining. Under the declared trusted computing base, unauthorised requests execute zero private expert computations; router decisions provide a full audit log.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- WATCHLIST -->
+<section class="watchlist">
+  <h2>Watchlist</h2>
+  <ul>
+    <li><strong>2608.09867 (CoT theft protocol flaw)</strong> — Provider responses and patches expected; watch for follow-up disclosures on block-binding cryptographic fixes and scope clarifications from OpenAI, Anthropic, Google.</li>
+    <li><strong>2608.11171 (TrustNLP Survey)</strong> — Meta-analysis of 144 papers across six trust dimensions; documents the trajectory from post-hoc interpretability to mechanistic control as the dominant emerging research direction.</li>
+    <li><strong>2608.10530 (Agentic LLM vulnerabilities systematic review)</strong> — 743-record PRISMA review finds attack:defense ratio of 3.9:1; action-layer defenses critically under-studied at 4.7% of papers — use as a calibration reference for coverage gaps.</li>
+    <li><strong>Agent security evaluation cluster</strong> — ToolHazard, REDAgentBench, and the systematic review arrived in the same week; monitor for benchmark consolidation and standardisation efforts as this sub-field matures.</li>
+    <li><strong>2608.13474 (VLA task-progress probe)</strong> — First mech-interp monitoring result for robot manipulation policies; watch for steering follow-up work and extension to other embodied-AI architectures.</li>
+  </ul>
+</section>
+{% endraw %}

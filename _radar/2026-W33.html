@@ -1,0 +1,994 @@
+---
+layout: "radar"
+title: "Research Radar — Week 33 · August 3–9, 2026"
+kind: "weekly"
+slug: "2026-W33"
+date: 2026-08-10
+group: "weekly"
+window: "August 3–9, 2026 (backfilled 2026-09-29)"
+summary: "Window: August 3–9, 2026 (backfilled 2026-09-29) · Counts: 6 peer-reviewed · 7 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/weekly/2026-W33.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80; --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: Georgia, serif; font-size: 16px; line-height: 1.7; margin: 0; padding: 0; }
+a { color: var(--link); }
+.page { max-width: 780px; margin: 0 auto; padding: 32px 16px 64px; }
+
+/* Masthead */
+.masthead { border-bottom: 2px solid var(--border); padding-bottom: 20px; margin-bottom: 28px; }
+.masthead-eyebrow { font-family: system-ui, sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-bottom: 4px; }
+.masthead-issue { font-family: system-ui, sans-serif; font-size: 22px; font-weight: 700; color: var(--title); }
+.masthead-counts { font-family: system-ui, sans-serif; font-size: 13px; color: var(--dim); margin-top: 4px; }
+.masthead-tracks { margin-top: 10px; }
+.track { font-family: system-ui, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-teal); }
+.track-sep { color: var(--dim); margin: 0 6px; }
+.backfill-note { font-family: system-ui, sans-serif; font-size: 11px; color: var(--dim); margin-top: 6px; font-style: italic; }
+
+/* Theme section */
+.theme-section { background: var(--theme-band); border-left: 3px solid var(--accent-green); border-radius: 4px; padding: 16px 20px; margin-bottom: 36px; }
+.theme-label { font-family: system-ui, sans-serif; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-green); font-weight: 700; margin-bottom: 8px; }
+.theme-text { margin: 0; font-size: 15px; line-height: 1.7; }
+
+/* Tags */
+.tag { display: inline-block; font-family: system-ui, sans-serif; font-size: 11px; background: var(--tag-bg); color: var(--tag-text); border-radius: 3px; padding: 2px 7px; margin-right: 4px; }
+.tag-peer { background: #d4edda; color: #155724; }
+.tag-interp { background: #d0f0f0; color: #0d5c60; }
+.tag-security { background: #f8d7da; color: #721c24; }
+.tag-align { background: #cce5ff; color: #004085; }
+.tag-control { background: #e8d5f5; color: #4a0e7a; }
+@media (prefers-color-scheme: dark) {
+  .tag-peer { background: #1a3d25; color: #6fcf8a; }
+  .tag-interp { background: #0d3038; color: #4dd0d6; }
+  .tag-security { background: #3a1020; color: #f07070; }
+  .tag-align { background: #0d2040; color: #7eb8ff; }
+  .tag-control { background: #2a1040; color: #c084fc; }
+}
+:root[data-theme="dark"] .tag-peer { background: #1a3d25; color: #6fcf8a; }
+:root[data-theme="dark"] .tag-interp { background: #0d3038; color: #4dd0d6; }
+:root[data-theme="dark"] .tag-security { background: #3a1020; color: #f07070; }
+:root[data-theme="dark"] .tag-align { background: #0d2040; color: #7eb8ff; }
+:root[data-theme="dark"] .tag-control { background: #2a1040; color: #c084fc; }
+
+/* Paper cards */
+.paper { margin-bottom: 56px; }
+.paper-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.paper-rank { font-family: system-ui, sans-serif; font-size: 22px; font-weight: 700; color: var(--dim); min-width: 38px; }
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 4px; }
+.paper-title { font-family: Georgia, serif; font-size: 22px; font-weight: bold; line-height: 1.25; margin: 0 0 14px 0; }
+.paper-title a { color: var(--title); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook { font-size: 16px; line-height: 1.7; margin: 0 0 18px 0; }
+.paper-figure { margin: 0 0 18px 0; background: #fff; border-radius: 4px; border: 1px solid #ddd; padding: 12px; }
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption { font-family: system-ui, sans-serif; font-size: 12px; color: var(--dim); margin-top: 8px; line-height: 1.5; }
+.paper-detail { font-size: 15px; line-height: 1.7; margin: 0; }
+hr.paper-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+/* Mid-tier */
+.more-section-label { font-family: system-ui, sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); font-weight: 600; margin: 48px 0 28px 0; border-top: 1px solid var(--border); padding-top: 20px; }
+.mid-paper { margin-bottom: 44px; }
+.mid-title { font-family: Georgia, serif; font-size: 18px; font-weight: bold; line-height: 1.3; margin: 0 0 14px 0; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure { margin: 0 0 14px 0; }
+.mid-figure img, .mid-figure svg { max-width: 440px; }
+.mid-summary { font-size: 14px; color: var(--text); line-height: 1.65; margin: 0; }
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+/* Watchlist */
+.watchlist { background: var(--surface); border-radius: 6px; padding: 20px 24px; margin-top: 48px; }
+.watchlist h2 { font-family: system-ui, sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin: 0 0 14px 0; font-weight: 600; }
+.watchlist ul { margin: 0; padding-left: 18px; }
+.watchlist li { font-size: 14px; line-height: 1.65; margin-bottom: 8px; }
+</style>
+
+<div class="page">
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Week 33 · August 3–9, 2026</div>
+  <div class="masthead-counts">6 peer-reviewed · 7 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+  <div class="backfill-note">Backfilled 2026-09-29 — scheduled run for this week failed.</div>
+</header>
+
+<section class="theme-section">
+  <div class="theme-label">Theme of the Week</div>
+  <p class="theme-text">
+    Mechanistic interpretability crossed into operational security tooling this week along three independent lines: CIF formalised the statistics of interventional evaluation so mech-interp claims can carry rigorous confidence bounds; the automated attribution-graph pipeline eliminated the manual annotation bottleneck and opened circuit analysis to population-scale studies; and AMS, published in IEEE Access, demonstrated that representation-geometry analysis can passively fingerprint four classes of safety-training modification at deployment time without any behavioral querying. On the attack side, supply-chain backdoors embedded directly in VLM architecture definitions and grammar-constrained decoding jailbreaks showed adversaries moving well beyond prompt engineering into structural attack vectors. The week's major alignment advance came from the dLLM track: A2D is the first alignment method purpose-built for masked diffusion models, dropping the attack success rate on LLaDA-8B from over 80% to 1.3%.
+  </p>
+</section>
+
+<!-- ============================================================ -->
+<!-- ITEM 01 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">IEEE Access 2026</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.05578">Detecting Safety Training Modification in Language Models via Activation Analysis</a>
+  </h2>
+  <p class="paper-hook">
+    Safety auditing today requires running behavioural tests against the model. AMS shows it can be done passively: safety fine-tuning leaves a characteristic geometric signature in activation space, and specific modifications — abliteration, uncensored fine-tunes — collapse or rotate that structure in predictable ways. The tool fingerprints which modification category a model underwent with 71% leave-one-out accuracy, purely from inference-time activations.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="AMS: PCA scatter — safe models cluster tightly; abliterated models scatter">
+      <rect width="500" height="220" fill="#fff"/>
+      <!-- axes -->
+      <line x1="60" y1="20" x2="60" y2="185" stroke="#ccc" stroke-width="1"/>
+      <line x1="60" y1="185" x2="480" y2="185" stroke="#ccc" stroke-width="1"/>
+      <text x="270" y="212" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">PC1 (harmful–benign axis)</text>
+      <text x="20" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888" transform="rotate(-90,20,110)">PC2</text>
+      <!-- Safety-trained cluster (tight, top-left) -->
+      <ellipse cx="155" cy="80" rx="35" ry="28" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.2" opacity="0.7"/>
+      <circle cx="148" cy="75" r="4" fill="#1a6e3c" opacity="0.85"/>
+      <circle cx="162" cy="84" r="4" fill="#1a6e3c" opacity="0.85"/>
+      <circle cx="150" cy="90" r="4" fill="#1a6e3c" opacity="0.85"/>
+      <circle cx="158" cy="70" r="4" fill="#1a6e3c" opacity="0.85"/>
+      <circle cx="165" cy="78" r="4" fill="#1a6e3c" opacity="0.85"/>
+      <circle cx="145" cy="83" r="4" fill="#1a6e3c" opacity="0.85"/>
+      <text x="155" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#155724">Safety-tuned</text>
+      <!-- Abliterated cluster (spread, center-right) -->
+      <circle cx="320" cy="115" r="4" fill="#b02020" opacity="0.7"/>
+      <circle cx="355" cy="75" r="4" fill="#b02020" opacity="0.7"/>
+      <circle cx="295" cy="145" r="4" fill="#b02020" opacity="0.7"/>
+      <circle cx="370" cy="130" r="4" fill="#b02020" opacity="0.7"/>
+      <circle cx="340" cy="160" r="4" fill="#b02020" opacity="0.7"/>
+      <circle cx="390" cy="90" r="4" fill="#b02020" opacity="0.7"/>
+      <circle cx="310" cy="60" r="4" fill="#b02020" opacity="0.7"/>
+      <circle cx="410" cy="155" r="4" fill="#b02020" opacity="0.7"/>
+      <circle cx="280" cy="95" r="4" fill="#b02020" opacity="0.7"/>
+      <text x="345" y="178" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#721c24">Abliterated</text>
+      <!-- Legend -->
+      <rect x="65" y="25" width="10" height="10" fill="#1a6e3c" opacity="0.85" rx="2"/>
+      <text x="80" y="35" font-family="Georgia,serif" font-size="11" fill="#333">Safety-trained (tight cluster)</text>
+      <rect x="65" y="42" width="10" height="10" fill="#b02020" opacity="0.7" rx="2"/>
+      <text x="80" y="52" font-family="Georgia,serif" font-size="11" fill="#333">Abliterated (collapsed geometry)</text>
+    </svg>
+    <figcaption>Figure 1: AMS PCA projection — safety-trained models form a tight cluster in the harmful–benign activation subspace; abliteration collapses that structure, scattering points. AMS quantifies this geometry to classify safety modification type (71% leave-one-out accuracy across 14 model configurations).</figcaption>
+  </figure>
+  <p class="paper-detail">
+    AMS extracts intermediate-layer residual-stream activations for paired harmful/benign prompts and computes linear probe separability, mean cosine distances, and angular distribution statistics to characterise the geometric structure of safety-relevant concepts. Validated across 14 model configurations spanning four architecture families (Llama, Gemma, Qwen, Mistral) and four modification categories (instruction-tuned, base, abliterated, uncensored fine-tunes), AMS achieves <strong>71% leave-one-out cross-validation accuracy</strong> in classifying which safety modification a model underwent — well above chance with no behavioral queries. The finding that abliteration and uncensored fine-tuning leave geometrically distinct signatures opens the door to passive model auditing at deployment time without any prompting or behavioral evaluation.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ============================================================ -->
+<!-- ITEM 02 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ICLR 2026</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-align">alignment</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2509.23286">A2D: Any-Order, Any-Step Safety Alignment for Diffusion Language Models</a>
+  </h2>
+  <p class="paper-hook">
+    DIJA showed that AR-style safety alignment is insufficient for masked diffusion LMs. A2D is the specific defence: the first alignment method purpose-built for dLLMs, dropping the attack success rate on LLaDA-8B from over 80% to 1.3% and enabling safe termination up to 19.3× faster than post-hoc filtering.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="A2D: EOS refusal under randomized masking order">
+      <rect width="500" height="220" fill="#fff"/>
+      <!-- Title -->
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">A2D: Any-Order Safety Alignment</text>
+      <!-- Denoising steps (left to right) showing masked tokens getting filled -->
+      <!-- Step T -->
+      <rect x="40" y="50" width="55" height="28" rx="4" fill="#e8e8e8" stroke="#bbb" stroke-width="1"/>
+      <text x="67" y="69" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">[M][M][M]</text>
+      <text x="67" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa">t=T</text>
+      <!-- Arrow -->
+      <line x1="98" y1="64" x2="118" y2="64" stroke="#bbb" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <defs><marker id="arr1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#bbb"/></marker></defs>
+      <!-- Step t=T/2 -->
+      <rect x="120" y="50" width="75" height="28" rx="4" fill="#fff3cd" stroke="#f0a030" stroke-width="1.2"/>
+      <text x="158" y="69" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#a05c00">harm [M] [M]</text>
+      <text x="158" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a05c00">t=T/2</text>
+      <!-- Arrow -->
+      <defs><marker id="arr2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#bbb"/></marker></defs>
+      <line x1="198" y1="64" x2="218" y2="64" stroke="#bbb" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <!-- EOS intercept box -->
+      <rect x="220" y="42" width="90" height="44" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.8"/>
+      <text x="265" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#155724">[EOS] fired</text>
+      <text x="265" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#155724">safe termination</text>
+      <!-- Arrow down to "Safe output" -->
+      <line x1="265" y1="90" x2="265" y2="120" stroke="#1a6e3c" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <defs><marker id="arr3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a6e3c"/></marker></defs>
+      <rect x="210" y="122" width="110" height="26" rx="4" fill="#c3e6cb" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="265" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#155724">Refusal output</text>
+      <!-- "Without A2D" path (right side) -->
+      <line x1="313" y1="64" x2="338" y2="64" stroke="#eee" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <defs><marker id="arr4" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ccc"/></marker></defs>
+      <line x1="313" y1="64" x2="338" y2="64" stroke="#ccc" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr4)"/>
+      <rect x="340" y="50" width="110" height="28" rx="4" fill="#f8d7da" stroke="#b02020" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <text x="395" y="69" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#721c24">harm content gen.</text>
+      <text x="395" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">(DIJA: &gt;80% ASR)</text>
+      <!-- Key numbers -->
+      <text x="40" y="175" font-family="Georgia,serif" font-size="12" fill="#1a1a1a">LLaDA-8B-Instruct: &gt;80% → <tspan font-weight="bold" fill="#155724">1.3% ASR</tspan></text>
+      <text x="40" y="193" font-family="Georgia,serif" font-size="12" fill="#1a1a1a">Dream-v0-Instruct-7B: &gt;80% → <tspan font-weight="bold" fill="#155724">0.0% ASR</tspan>    Early stop: <tspan font-weight="bold">19.3×</tspan> faster</text>
+    </svg>
+    <figcaption>Figure 1: A2D intercepts the denoising pass at the moment harmful content begins to form, emitting [EOS] under any masking order. Without A2D (dashed, right path), DIJA achieves &gt;80% ASR. With A2D: LLaDA-8B drops to 1.3%, Dream-v0 to 0.0%.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    A2D aligns safety at the token level inside the diffusion process by training the dLLM to emit an [EOS] refusal signal whenever harmful content arises, under randomised masking order — the key inductive bias of diffusion generation. Forcing safety to generalise across all orderings (rather than just prefix-conditional ones) makes A2D robust to any-order and any-step prefilling attacks, the mechanism DIJA exploits. Against DIJA, LLaDA-8B-Instruct drops from over 80% ASR to <strong>1.3%</strong>; Dream-v0-Instruct-7B drops to <strong>0.0%</strong>. Monitoring [EOS] token probability enables early termination — up to <strong>19.3×</strong> faster safe rejection — without sacrificing model capability on benign tasks.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ============================================================ -->
+<!-- ITEM 03 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">UAI 2026</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.08349">Certified Interventional Fidelity: Anytime-Valid, Adaptive Evaluation of Causal Claims in Mechanistic Interpretability</a>
+  </h2>
+  <p class="paper-hook">
+    Interventional claims — activation patching, state swapping, ablation — are the currency of mechanistic interpretability, but they are routinely reported as point estimates even when evaluations are adapted mid-run, inflating type-I error without any principled bound. CIF is the first fully rigorous framework for that evaluation pattern.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="CIF: anytime-valid confidence sequences converging over intervention samples">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">CIF: Anytime-Valid Confidence Sequences</text>
+      <!-- Axes -->
+      <line x1="60" y1="170" x2="470" y2="170" stroke="#ccc" stroke-width="1.2"/>
+      <line x1="60" y1="30" x2="60" y2="170" stroke="#ccc" stroke-width="1.2"/>
+      <text x="265" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">Intervention samples (n)</text>
+      <text x="18" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888" transform="rotate(-90,18,105)">Effect size CI</text>
+      <!-- x-axis ticks -->
+      <text x="100" y="183" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa">50</text>
+      <text x="180" y="183" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa">150</text>
+      <text x="280" y="183" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa">300</text>
+      <text x="400" y="183" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa">500</text>
+      <!-- True effect horizontal line -->
+      <line x1="60" y1="100" x2="470" y2="100" stroke="#888" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="474" y="104" font-family="Georgia,serif" font-size="10" fill="#888">θ*</text>
+      <!-- Upper bound - converging from wide to tight -->
+      <polyline points="60,50 100,62 150,70 200,78 250,84 300,88 350,91 400,93 450,95 470,95" fill="none" stroke="#0d7377" stroke-width="1.8"/>
+      <!-- Lower bound -->
+      <polyline points="60,150 100,138 150,130 200,122 250,116 300,112 350,109 400,107 450,105 470,105" fill="none" stroke="#0d7377" stroke-width="1.8"/>
+      <!-- Shaded region between bounds -->
+      <polygon points="60,50 100,62 150,70 200,78 250,84 300,88 350,91 400,93 450,95 470,95 470,105 450,105 400,107 350,109 300,112 250,116 200,122 150,130 100,138 60,150" fill="#d0f0f0" opacity="0.5"/>
+      <!-- Label -->
+      <text x="340" y="72" font-family="Georgia,serif" font-size="11" fill="#0d5c60">CI upper</text>
+      <text x="340" y="120" font-family="Georgia,serif" font-size="11" fill="#0d5c60">CI lower</text>
+      <!-- Early stop indicator -->
+      <line x1="220" y1="30" x2="220" y2="170" stroke="#a05c00" stroke-width="1.2" stroke-dasharray="3,3"/>
+      <text x="222" y="45" font-family="Georgia,serif" font-size="10" fill="#a05c00">Early stop</text>
+      <text x="222" y="57" font-family="Georgia,serif" font-size="10" fill="#a05c00">(CI conclusive)</text>
+    </svg>
+    <figcaption>Figure 1: CIF anytime-valid confidence sequences — the interval narrows as intervention samples accumulate; the sequence is valid at every stopping time, enabling principled adaptive evaluation. An early stop (orange dashed) is statistically valid once CI is conclusive.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    CIF writes the evaluated quantity as a causal estimand — an expectation of a bounded score over a stated input distribution and a stated intervention distribution. Confidence intervals and anytime-valid confidence sequences follow via bounded mixture importance weighting. Because the sequences remain valid at any sample size, practitioners can halt early when the effect is already conclusive or extend when effect size is ambiguous, without inflating false-positive rates. The framework explicitly handles adaptive intervention sampling — the dominant evaluation pattern in practice — making it the first fully rigorous foundation for interventional interpretability evaluation, applicable to activation patching, state swapping, ablation, and compressed-model comparison.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ============================================================ -->
+<!-- ITEM 04 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ICML 2026 Mech Interp Workshop</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.02632">LLMs Can Annotate Attribution Graphs</a>
+  </h2>
+  <p class="paper-hook">
+    Circuit tracing via attribution graphs produces thousands of feature nodes per prompt, each requiring a human analyst to group them into semantically coherent "supernodes." This paper automates the entire pipeline — and LLM-generated supernodes match human annotations on automated metrics — opening population-scale circuit analysis for the first time.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Automated attribution graph annotation pipeline">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Automated Attribution Graph Annotation</text>
+      <!-- Box 1: Feature nodes -->
+      <rect x="20" y="45" width="95" height="55" rx="5" fill="#e8e8e8" stroke="#bbb" stroke-width="1.2"/>
+      <text x="68" y="67" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#333">Feature nodes</text>
+      <text x="68" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">auto-interp</text>
+      <text x="68" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">descriptions</text>
+      <!-- Arrow -->
+      <defs>
+        <marker id="a1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#0d7377"/>
+        </marker>
+      </defs>
+      <line x1="116" y1="72" x2="148" y2="72" stroke="#0d7377" stroke-width="1.8" marker-end="url(#a1)"/>
+      <!-- Box 2: LLM clustering -->
+      <rect x="150" y="45" width="100" height="55" rx="5" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="200" y="67" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0d5c60">LLM</text>
+      <text x="200" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0d5c60">clustering</text>
+      <text x="200" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0d5c60">→ supernodes</text>
+      <!-- Arrow -->
+      <defs>
+        <marker id="a2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#0d7377"/>
+        </marker>
+      </defs>
+      <line x1="251" y1="72" x2="283" y2="72" stroke="#0d7377" stroke-width="1.8" marker-end="url(#a2)"/>
+      <!-- Box 3: Validation -->
+      <rect x="285" y="45" width="100" height="55" rx="5" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="335" y="65" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#155724">Auto metric</text>
+      <text x="335" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#155724">validation</text>
+      <text x="335" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#155724">≈ human quality</text>
+      <!-- Arrow -->
+      <defs>
+        <marker id="a3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#1a6e3c"/>
+        </marker>
+      </defs>
+      <line x1="386" y1="72" x2="418" y2="72" stroke="#1a6e3c" stroke-width="1.8" marker-end="url(#a3)"/>
+      <!-- Box 4: Population scale -->
+      <rect x="420" y="45" width="70" height="55" rx="5" fill="#cce5ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="455" y="67" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#004085">Population</text>
+      <text x="455" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#004085">analysis</text>
+      <text x="455" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#004085">1000+ graphs</text>
+      <!-- Key result box -->
+      <rect x="80" y="130" width="340" height="58" rx="5" fill="#f8f8f0" stroke="#c0b000" stroke-width="1.5"/>
+      <text x="250" y="152" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">97 / 100 intermediate-hop recovery</text>
+      <text x="250" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333">Two-hop Capitals task · LLM flags unusual graphs for human review</text>
+      <text x="250" y="183" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">eliminates the hardest manual bottleneck in circuit analysis</text>
+    </svg>
+    <figcaption>Figure 1: Automated attribution graph annotation pipeline — auto-interp feature descriptions are clustered into supernodes by an LLM, validated by automated interpretability metrics, and scaled to population studies. 97/100 intermediate-hop recovery on two-hop factual recall.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Feature descriptions from auto-interp are passed to an LLM that clusters them into supernodes. Automated interpretability metrics — scoring without human judges — confirm LLM-generated supernodes are as interpretable as human-annotated ones. On a two-hop Capitals factual recall task, the pipeline recovers the intermediate-hop supernode in <strong>97 of 100 prompts</strong>. A proof-of-concept scales to 1000 Wikipedia-prompt attribution graphs: supernodes are annotated automatically, and an LLM judge flags unusual graphs for human review. The paper extends Anthropic's attribution-graph line of work toward population-level interpretability studies, eliminating the hardest human-bottleneck step and opening the door to systematic safety auditing at scale.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ============================================================ -->
+<!-- ITEM 05 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ACL 2026 Findings</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2604.18756">Towards Understanding the Robustness of Sparse Autoencoders</a>
+  </h2>
+  <p class="paper-hook">
+    SAE-augmented classifiers achieve up to 5× reduction in jailbreak success rate versus raw hidden-state probing — but robustness is uneven. This is the first systematic study of when SAE-based safety probes transfer across models, attacks, and jailbreak formats.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart: jailbreak success rates with vs without SAE augmentation">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">SAE Augmentation Reduces Jailbreak ASR</text>
+      <!-- Axes -->
+      <line x1="60" y1="170" x2="470" y2="170" stroke="#ccc" stroke-width="1.2"/>
+      <line x1="60" y1="35" x2="60" y2="170" stroke="#ccc" stroke-width="1.2"/>
+      <text x="265" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">Jailbreak attack type</text>
+      <text x="18" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888" transform="rotate(-90,18,105)">Attack success rate (%)</text>
+      <!-- y-axis labels -->
+      <text x="54" y="173" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#aaa">0</text>
+      <text x="54" y="135" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#aaa">20</text>
+      <text x="54" y="100" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#aaa">40</text>
+      <text x="54" y="65" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#aaa">60</text>
+      <!-- Attack 1: GCG -->
+      <rect x="80" y="65" width="28" height="105" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <rect x="112" y="132" width="28" height="38" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="105" y="185" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">GCG</text>
+      <!-- Attack 2: PAIR -->
+      <rect x="165" y="78" width="28" height="92" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <rect x="197" y="142" width="28" height="28" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="190" y="185" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">PAIR</text>
+      <!-- Attack 3: AutoDAN -->
+      <rect x="250" y="90" width="28" height="80" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <rect x="282" y="148" width="28" height="22" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="275" y="185" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">AutoDAN</text>
+      <!-- Attack 4: Compositional -->
+      <rect x="335" y="100" width="28" height="70" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <rect x="367" y="145" width="28" height="25" fill="#fff3cd" stroke="#f0a030" stroke-width="1"/>
+      <text x="360" y="185" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">Composite</text>
+      <!-- Legend -->
+      <rect x="70" y="28" width="14" height="10" fill="#f8d7da" stroke="#b02020" stroke-width="1" rx="1"/>
+      <text x="88" y="37" font-family="Georgia,serif" font-size="10" fill="#333">Raw hidden states</text>
+      <rect x="185" y="28" width="14" height="10" fill="#d4edda" stroke="#1a6e3c" stroke-width="1" rx="1"/>
+      <text x="203" y="37" font-family="Georgia,serif" font-size="10" fill="#333">SAE-augmented (5× lower)</text>
+      <!-- Arrow label -->
+      <text x="430" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020">5×</text>
+      <text x="430" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020">reduction</text>
+      <line x1="418" y1="100" x2="390" y2="120" stroke="#b02020" stroke-width="1" stroke-dasharray="2,2"/>
+    </svg>
+    <figcaption>Figure 1: SAE augmentation reduces jailbreak attack success rate by up to 5× across attack types; robustness of top-K features degrades for rare/compositional harmfulness concepts (rightmost bar shows smaller gain).</figcaption>
+  </figure>
+  <p class="paper-detail">
+    SAE-augmented classifiers trained on SAE activations achieve up to <strong>5× reduction in jailbreak success rate</strong> versus probing raw hidden states. The study distinguishes stable features (top-K activating on core harmfulness concepts, which transfer across models and attacks) from brittle ones (activating on format-specific signals, which degrade for rare or compositional harm). Robustness scales with dictionary size. The 5× reduction is the largest demonstrated for interpretability-based safety classifiers on a comprehensive jailbreak suite, providing a practical threshold for when SAE features are deployable as safety monitors.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ============================================================ -->
+<!-- ITEM 06 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">ACL 2026 Findings</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2601.14004">Locate, Steer, and Improve: A Practical Survey of Actionable Mechanistic Interpretability in Large Language Models</a>
+  </h2>
+  <p class="paper-hook">
+    The field's most complete practitioner-oriented synthesis to date: a peer-reviewed ACL 2026 taxonomy of the full actionable mech-interp pipeline, from localization tools through behavioral intervention to model improvement, with explicit coverage of which evaluation methods have demonstrated downstream reliability and where gaps remain.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Locate-Steer-Improve three-stage actionable mech-interp pipeline">
+      <rect width="500" height="200" fill="#fff"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Locate → Steer → Improve Pipeline</text>
+      <!-- Stage 1: Locate -->
+      <rect x="20" y="40" width="140" height="120" rx="8" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1.8"/>
+      <text x="90" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#1a4f99">LOCATE</text>
+      <text x="90" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Probing classifiers</text>
+      <text x="90" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Attribution patching</text>
+      <text x="90" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Circuit discovery</text>
+      <text x="90" y="125" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">SAE features</text>
+      <text x="90" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Feature localization</text>
+      <!-- Arrow 1→2 -->
+      <defs>
+        <marker id="b1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#555"/>
+        </marker>
+      </defs>
+      <line x1="162" y1="100" x2="178" y2="100" stroke="#555" stroke-width="2" marker-end="url(#b1)"/>
+      <!-- Stage 2: Steer -->
+      <rect x="180" y="40" width="140" height="120" rx="8" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.8"/>
+      <text x="250" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#0d5c60">STEER</text>
+      <text x="250" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Activation patching</text>
+      <text x="250" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Repr. engineering</text>
+      <text x="250" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">SAE steering vectors</text>
+      <text x="250" y="125" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Activation clamping</text>
+      <text x="250" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Behavioral modification</text>
+      <!-- Arrow 2→3 -->
+      <defs>
+        <marker id="b2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#555"/>
+        </marker>
+      </defs>
+      <line x1="322" y1="100" x2="338" y2="100" stroke="#555" stroke-width="2" marker-end="url(#b2)"/>
+      <!-- Stage 3: Improve -->
+      <rect x="340" y="40" width="140" height="120" rx="8" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.8"/>
+      <text x="410" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#155724">IMPROVE</text>
+      <text x="410" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Safety alignment</text>
+      <text x="410" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Concept unlearning</text>
+      <text x="410" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Model editing</text>
+      <text x="410" y="125" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Downstream tasks</text>
+      <text x="410" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Model improvement</text>
+    </svg>
+    <figcaption>Figure 1: The Locate → Steer → Improve pipeline with representative methods at each stage. The survey maps which techniques have demonstrated downstream reliability — and which gaps remain between mechanistic understanding and practical safety utility.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The survey organises actionable mech-interp into three stages: (1) <em>Locate</em> — feature localization via probing, attribution, and circuit discovery; (2) <em>Steer</em> — behavioral modification via activation patching, representation engineering, and SAE-derived steering vectors; (3) <em>Improve</em> — how mechanistic findings feed back into model improvement, safety, and alignment objectives. Coverage extends from classical IOI circuits to SAE-based interpretability and control, with explicit attention to the gap between mechanistic understanding and practical utility and to which evaluation methods have demonstrated downstream reliability. Serves as the field's closest equivalent to a practitioner roadmap across the three tracks this radar monitors.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ============================================================ -->
+<!-- ITEM 07 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2607.25479">Architectural Backdoors in Vision-Language Model Supply Chains via Representation Steering</a>
+  </h2>
+  <p class="paper-hook">
+    Every existing defence against VLM backdoors inspects training data, outputs, or prompts. This attack requires none of those surfaces: a malicious model provider embeds a trigger-gated representation modification directly inside the VLM architecture definition, bypassing every defence that checks anything other than architecture code itself.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="VLM supply-chain architectural backdoor attack diagram">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Architectural Backdoor: VLM Supply Chain</text>
+      <!-- Provider -->
+      <rect x="20" y="50" width="110" height="60" rx="6" fill="#f8d7da" stroke="#b02020" stroke-width="1.5"/>
+      <text x="75" y="75" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#721c24">Malicious</text>
+      <text x="75" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#721c24">Provider</text>
+      <!-- Arrow to architecture -->
+      <defs>
+        <marker id="c1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#b02020"/>
+        </marker>
+      </defs>
+      <line x1="131" y1="80" x2="163" y2="80" stroke="#b02020" stroke-width="1.8" marker-end="url(#c1)"/>
+      <!-- Architecture definition (contains hidden trigger) -->
+      <rect x="165" y="38" width="170" height="84" rx="6" fill="#fff3cd" stroke="#f0a030" stroke-width="1.8"/>
+      <text x="250" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#a05c00">Architecture Definition</text>
+      <text x="250" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">Normal layers + operations</text>
+      <rect x="180" y="85" width="140" height="28" rx="3" fill="#f8d7da" stroke="#b02020" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="250" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#721c24">hidden: trigger-gated Δrepr (dormant)</text>
+      <!-- Arrow to deployment -->
+      <defs>
+        <marker id="c2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#555"/>
+        </marker>
+      </defs>
+      <line x1="336" y1="80" x2="358" y2="80" stroke="#555" stroke-width="1.8" marker-end="url(#c2)"/>
+      <!-- Deployment -->
+      <rect x="360" y="50" width="120" height="60" rx="6" fill="#e8e8e8" stroke="#888" stroke-width="1.5"/>
+      <text x="420" y="75" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#333">User</text>
+      <text x="420" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#333">Deployment</text>
+      <!-- Clean input path (green, bottom) -->
+      <line x1="250" y1="123" x2="250" y2="148" stroke="#1a6e3c" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <text x="200" y="163" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#155724">Clean input → normal behavior</text>
+      <!-- Trigger input path (red, right-angled) -->
+      <line x1="420" y1="111" x2="420" y2="148" stroke="#b02020" stroke-width="1.5"/>
+      <text x="420" y="163" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#721c24">Trigger input → Δrepr activates</text>
+      <text x="420" y="178" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#721c24">before safety logic runs</text>
+      <!-- Evades defense label -->
+      <rect x="130" y="185" width="240" height="22" rx="3" fill="#f0f0f0" stroke="#aaa" stroke-width="1"/>
+      <text x="250" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#444">Evades: data inspection · output filters · prompt classifiers</text>
+    </svg>
+    <figcaption>Figure 1: Architectural backdoor in the VLM supply chain — the trigger-gated additive representation modification is embedded in the architecture definition. Clean inputs see dormant behavior; trigger inputs activate the steering before any downstream safety logic runs. No training-data poisoning required.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    On trigger inputs the embedded modification steers an intermediate representation toward an adversarial target before any downstream safety logic runs. Evaluated across multiple VLM families and four task categories (visual QA, text-to-image generation, retrieval, semantic response biasing), the backdoor consistently compromises integrity, safety enforcement, and ranking fairness while preserving clean-input performance. The attack evades anomaly detection that checks activations or outputs on clean inputs because the trigger-gated modification is dormant in the clean regime. Notably, no data poisoning, no fine-tuning control, and no prompt modification are required — only the model provider's architecture code.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ============================================================ -->
+<!-- ITEM 08 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2605.08878">Why Do Aligned LLMs Remain Jailbreakable: Refusal-Escape Directions, Operator-Level Sources, and Safety-Utility Trade-off</a>
+  </h2>
+  <p class="paper-hook">
+    This paper gives jailbreaks a mechanistic and geometric explanation: Refusal-Escape Directions (RED) are local perturbation directions in embedding space that shift behavior from refusal to compliance. Crucially, it proves that perfectly eliminating RED while preserving capability is mathematically not achievable by fine-tuning alone.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Refusal-Escape Directions in embedding space">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Refusal-Escape Directions (RED)</text>
+      <!-- Axes -->
+      <line x1="60" y1="180" x2="460" y2="180" stroke="#ddd" stroke-width="1"/>
+      <line x1="60" y1="30" x2="60" y2="180" stroke="#ddd" stroke-width="1"/>
+      <text x="460" y="190" font-family="Georgia,serif" font-size="11" fill="#aaa">emb dim 1</text>
+      <text x="15" y="35" font-family="Georgia,serif" font-size="11" fill="#aaa" transform="rotate(-90,22,100)">emb dim 2</text>
+      <!-- Refusal boundary -->
+      <line x1="80" y1="60" x2="440" y2="160" stroke="#1a4f99" stroke-width="2" stroke-dasharray="6,3"/>
+      <text x="430" y="148" font-family="Georgia,serif" font-size="11" fill="#1a4f99">Refusal</text>
+      <text x="430" y="162" font-family="Georgia,serif" font-size="11" fill="#1a4f99">boundary</text>
+      <!-- Harmful input point (red) -->
+      <circle cx="200" cy="120" r="8" fill="#b02020" stroke="#fff" stroke-width="1.5"/>
+      <text x="205" y="112" font-family="Georgia,serif" font-size="11" fill="#b02020">harmful x</text>
+      <!-- Refusal direction arrow (perpendicular to boundary) -->
+      <defs>
+        <marker id="d1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#1a4f99"/>
+        </marker>
+        <marker id="d2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#b02020"/>
+        </marker>
+      </defs>
+      <!-- RED arrow -->
+      <line x1="200" y1="120" x2="320" y2="90" stroke="#b02020" stroke-width="2.2" marker-end="url(#d2)"/>
+      <text x="268" y="93" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#b02020">RED</text>
+      <!-- Compliance region label -->
+      <text x="380" y="80" font-family="Georgia,serif" font-size="11" fill="#1a6e3c">Compliance</text>
+      <text x="380" y="95" font-family="Georgia,serif" font-size="11" fill="#1a6e3c">region</text>
+      <!-- Refusal region label -->
+      <text x="90" y="160" font-family="Georgia,serif" font-size="11" fill="#888">Refusal region</text>
+      <!-- Jailbreak path label -->
+      <text x="260" y="148" font-family="Georgia,serif" font-size="10" fill="#b02020">jailbreak ≈</text>
+      <text x="260" y="162" font-family="Georgia,serif" font-size="10" fill="#b02020">prompt along RED</text>
+      <!-- Key result: provable trade-off -->
+      <rect x="55" y="185" width="390" height="22" rx="3" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+      <text x="250" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#444">Eliminating RED while preserving capability: <tspan font-weight="bold">provably not achievable by fine-tuning alone</tspan></text>
+    </svg>
+    <figcaption>Figure 1: RED as continuous analogue of jailbreaks — local perturbation directions in embedding space around a harmful input that cross the refusal boundary into compliance. Decomposition into operator-level sources identifies which model components contribute most to escape.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    RED arises through the model's operator structure and decomposes into operator-level source contributions; its elimination induces a provable safety-utility trade-off. A jailbreak is reframed as a discrete prompt construction that approximates movement along RED, grounding the phenomenon mechanistically. The framework predicts that alignment methods targeting refusal behavior at the output level will remain susceptible to RED-based bypasses until the underlying subspace structure is addressed — a theoretical corroboration of empirical jailbreak persistence across a wide range of attack methods and models.
+  </p>
+</article>
+
+<!-- ============================================================ -->
+<!-- MID-TIER: Items 9–13 -->
+<!-- ============================================================ -->
+
+<div class="more-section-label">Items 9 – 13 · Also notable</div>
+
+<!-- ITEM 09 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:17px">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.09156">Present but Rescaled: Chat-to-Agent Transfer of Additive Activation Steering</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="Steering direction persists but is amplified in agentic settings">
+      <rect width="440" height="170" fill="#fff"/>
+      <!-- Chat column -->
+      <rect x="20" y="30" width="170" height="110" rx="5" fill="#e8f0ff" stroke="#1a4f99" stroke-width="1.2"/>
+      <text x="105" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a4f99">Chat setting</text>
+      <line x1="35" y1="70" x2="185" y2="70" stroke="#1a4f99" stroke-width="0.8" opacity="0.3"/>
+      <text x="105" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333">Steering direction</text>
+      <text x="105" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333">persists in late layers</text>
+      <text x="105" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a4f99">1.0× baseline</text>
+      <!-- Arrow -->
+      <defs>
+        <marker id="e1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <line x1="192" y1="85" x2="218" y2="85" stroke="#888" stroke-width="1.8" marker-end="url(#e1)"/>
+      <!-- ReAct column -->
+      <rect x="220" y="30" width="200" height="110" rx="5" fill="#fff3cd" stroke="#f0a030" stroke-width="1.8"/>
+      <text x="320" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#a05c00">ReAct agent</text>
+      <line x1="235" y1="70" x2="405" y2="70" stroke="#a05c00" stroke-width="0.8" opacity="0.3"/>
+      <text x="320" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333">Format scaffold</text>
+      <text x="320" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333">amplifies steering</text>
+      <text x="320" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#a05c00">up to 2.00× amplification</text>
+    </svg>
+    <figcaption>Figure: Activation steering direction persists in late layers across both settings; the ReAct format scaffold amplifies refusal bypass by up to 2.00×.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    The first systematic study of whether activation steering vectors calibrated in single-turn chat settings transfer to ReAct tool-using agents. Transfer is real but rescaled: the injected direction persists at near-full strength in late layers across every tested setting and model, but the effective amplification is localised to the ReAct format scaffold — agentic deployment amplifies steering-based refusal bypass by up to <strong>2.00×</strong> on some models. Security-relevant for deployments that assume chat-calibrated steering baselines carry over to agents.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:17px">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2606.11817">Grammar-Constrained Decoding Can Jailbreak LLMs into Generating Malicious Code</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="GCD constraint bypasses safety alignment for malicious code generation">
+      <rect width="440" height="160" fill="#fff"/>
+      <!-- Harmful prompt -->
+      <rect x="10" y="30" width="120" height="40" rx="4" fill="#e8e8e8" stroke="#bbb" stroke-width="1"/>
+      <text x="70" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333">Harmful prompt</text>
+      <text x="70" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">+ GCD grammar</text>
+      <!-- Arrow -->
+      <defs>
+        <marker id="f1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#b02020"/>
+        </marker>
+      </defs>
+      <line x1="131" y1="50" x2="158" y2="50" stroke="#b02020" stroke-width="1.8" marker-end="url(#f1)"/>
+      <!-- Bypass path -->
+      <rect x="160" y="22" width="130" height="56" rx="4" fill="#f8d7da" stroke="#b02020" stroke-width="1.5"/>
+      <text x="225" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#721c24">Grammar primes</text>
+      <text x="225" y="59" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#721c24">code-gen mode</text>
+      <text x="225" y="73" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#721c24">↓ safety guardrails</text>
+      <!-- Arrow to malicious output -->
+      <defs>
+        <marker id="f2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#b02020"/>
+        </marker>
+      </defs>
+      <line x1="291" y1="50" x2="318" y2="50" stroke="#b02020" stroke-width="1.8" marker-end="url(#f2)"/>
+      <rect x="320" y="30" width="110" height="40" rx="4" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="375" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#721c24">Malicious code</text>
+      <text x="375" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#721c24">(CodeSpear)</text>
+      <!-- Defense -->
+      <rect x="160" y="100" width="210" height="40" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="265" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#155724">CodeShield defence</text>
+      <text x="265" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#155724">honeypot code alignment under attacker grammar</text>
+    </svg>
+    <figcaption>Figure: CodeSpear — a benign code grammar constraint (GCD) primes the code-generation mode, bypassing safety guardrails; CodeShield defends via honeypot code alignment.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Grammar-Constrained Decoding (GCD) enforces syntactic validity in code generation and is widely used as a reliability tool. CodeSpear reveals that applying a benign code grammar constraint is sufficient to bypass safety alignment and induce malicious code generation: the grammar's structural priming shifts generation into a code-conditioned mode where safety guardrails are less active. The companion defense, CodeShield, trains the model to generate honeypot code (functionally harmless, syntactically valid) under attacker-controlled grammar constraints, preserving safe behavior without degrading normal code generation.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 11 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:17px">11</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2608.05695">DreamGuard: Efficient Runtime Guardrail for LLM Agents via Risk-Aware World Model</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="DreamGuard recurrent world model over agent trajectory">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">DreamGuard: Proactive Trajectory Risk Model</text>
+      <!-- Action sequence -->
+      <rect x="15" y="40" width="55" height="32" rx="3" fill="#e8e8e8" stroke="#bbb" stroke-width="1"/>
+      <text x="42" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">a₁ (safe)</text>
+      <defs>
+        <marker id="g1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+          <path d="M0,0 L5,2.5 L0,5 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <line x1="71" y1="56" x2="88" y2="56" stroke="#888" stroke-width="1.2" marker-end="url(#g1)"/>
+      <rect x="90" y="40" width="55" height="32" rx="3" fill="#e8e8e8" stroke="#bbb" stroke-width="1"/>
+      <text x="117" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">a₂ (safe)</text>
+      <defs>
+        <marker id="g2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+          <path d="M0,0 L5,2.5 L0,5 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <line x1="146" y1="56" x2="163" y2="56" stroke="#888" stroke-width="1.2" marker-end="url(#g2)"/>
+      <rect x="165" y="40" width="55" height="32" rx="3" fill="#fff3cd" stroke="#f0a030" stroke-width="1.2"/>
+      <text x="192" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a05c00">a₃ (risky)</text>
+      <defs>
+        <marker id="g3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+          <path d="M0,0 L5,2.5 L0,5 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <line x1="221" y1="56" x2="238" y2="56" stroke="#888" stroke-width="1.2" marker-end="url(#g3)"/>
+      <!-- Recurrent world model box -->
+      <rect x="240" y="28" width="125" height="56" rx="5" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="303" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0d5c60">Recurrent World</text>
+      <text x="303" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0d5c60">Model</text>
+      <text x="303" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0d7377">predicts future latent states</text>
+      <!-- Arrows from world model to risk signals -->
+      <defs>
+        <marker id="g4" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+          <path d="M0,0 L5,2.5 L0,5 Z" fill="#b02020"/>
+        </marker>
+      </defs>
+      <line x1="303" y1="85" x2="303" y2="110" stroke="#b02020" stroke-width="1.5" marker-end="url(#g4)"/>
+      <rect x="240" y="110" width="125" height="35" rx="4" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="303" y="127" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#721c24">Immediate-hazard score</text>
+      <text x="303" y="141" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#721c24">+ Prefix-risk score → block</text>
+      <!-- Missed by reactive guard -->
+      <text x="50" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">a₁, a₂: individually</text>
+      <text x="50" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">benign — reactive</text>
+      <text x="50" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">guard misses drift</text>
+    </svg>
+    <figcaption>Figure: DreamGuard maintains a recurrent latent state over the trajectory and predicts future states, deriving both immediate-hazard and prefix-risk evidence before each tool invocation — catching multi-step unsafe trajectories that point-in-time filters miss.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Individually benign-looking actions can gradually drift an agent toward hazardous states in ways that reactive per-action filters miss. DreamGuard maintains a compact recurrent latent state over the trajectory and predicts future states, from which it derives both immediate-hazard and prefix-risk evidence; evaluated across long-horizon agent tasks, it catches multi-step unsafe trajectories that point-in-time guards consistently miss.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 12 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:17px">12</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">unlearning</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.23970">Understanding Machine Unlearning Through the Lens of Mode Connectivity</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Mode connectivity in weight space: naive unlearning preserves low-loss path; circuit-aware breaks it">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">Mode Connectivity and Unlearning Durability</text>
+      <!-- Left: Naive unlearning -->
+      <rect x="15" y="30" width="190" height="110" rx="5" fill="#f8f8f8" stroke="#bbb" stroke-width="1"/>
+      <text x="110" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#444">Naive output suppression</text>
+      <!-- Two model points -->
+      <circle cx="65" cy="100" r="7" fill="#1a4f99"/>
+      <text x="65" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4f99">original</text>
+      <circle cx="155" cy="80" r="7" fill="#b02020"/>
+      <text x="155" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">unlearned</text>
+      <!-- Low-loss path preserved (green arc) -->
+      <path d="M72,100 Q110,55 148,80" fill="none" stroke="#1a6e3c" stroke-width="2"/>
+      <text x="110" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">low-loss path</text>
+      <text x="110" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">preserved → leaks</text>
+      <!-- Right: Circuit-aware unlearning -->
+      <rect x="235" y="30" width="190" height="110" rx="5" fill="#f8f8f8" stroke="#bbb" stroke-width="1"/>
+      <text x="330" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#444">Circuit-aware unlearning</text>
+      <!-- Two model points -->
+      <circle cx="280" cy="100" r="7" fill="#1a4f99"/>
+      <text x="280" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4f99">original</text>
+      <circle cx="370" cy="80" r="7" fill="#1a6e3c"/>
+      <text x="370" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">unlearned</text>
+      <!-- High-loss path (red, broken) -->
+      <path d="M287,100 Q330,130 363,80" fill="none" stroke="#b02020" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="330" y="135" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">path broken</text>
+      <text x="330" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">no interpolation</text>
+      <text x="330" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">recovery route</text>
+    </svg>
+    <figcaption>Figure: Naive unlearning (left) preserves mode connectivity — a low-loss interpolation path between original and unlearned model, through which forgotten knowledge can be recovered. Circuit-aware unlearning (right) breaks these paths, preventing recovery via interpolation.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Mode connectivity analysis reveals that naive output-suppression unlearning methods preserve a low-loss interpolation path between the unlearned model and the original, meaning the "forgotten" knowledge remains accessible via the path. Circuit-aware unlearning methods that modify specific computational pathways break these paths more robustly, providing a mechanistic interpretability account of why some unlearning methods are durable and others are not.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 13 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:17px">13</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2607.17890">Stress Testing Concept Erasure with Large Language Model Agents</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="STACE three-agent loop: Proposer, Critique, Verifier">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">STACE: Three-Agent Stress Test Loop</text>
+      <!-- Proposer -->
+      <rect x="30" y="40" width="110" height="55" rx="5" fill="#cce5ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="85" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#004085">Proposer</text>
+      <text x="85" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">generates novel</text>
+      <text x="85" y="89" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">NL stress probes</text>
+      <!-- Arrow P→C -->
+      <defs>
+        <marker id="h1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <line x1="141" y1="67" x2="163" y2="67" stroke="#888" stroke-width="1.5" marker-end="url(#h1)"/>
+      <!-- Critique -->
+      <rect x="165" y="40" width="110" height="55" rx="5" fill="#fff3cd" stroke="#f0a030" stroke-width="1.5"/>
+      <text x="220" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#a05c00">Critique</text>
+      <text x="220" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">challenges weak</text>
+      <text x="220" y="89" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">tests, iterates</text>
+      <!-- Arrow C→V -->
+      <defs>
+        <marker id="h2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <line x1="276" y1="67" x2="298" y2="67" stroke="#888" stroke-width="1.5" marker-end="url(#h2)"/>
+      <!-- Verifier -->
+      <rect x="300" y="40" width="110" height="55" rx="5" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="355" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#155724">Verifier</text>
+      <text x="355" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">confirms concept</text>
+      <text x="355" y="89" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">leakage present</text>
+      <!-- Feedback loop -->
+      <path d="M355,96 Q355,125 220,125 Q85,125 85,96" fill="none" stroke="#888" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <defs>
+        <marker id="h3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <line x1="115" y1="125" x2="85" y2="96" stroke="#888" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#h3)"/>
+      <text x="220" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">iterative refinement loop</text>
+    </svg>
+    <figcaption>Figure: STACE three-agent loop — Proposer generates novel NL probes, Critique agent challenges weak tests, Verifier confirms whether erased concepts remain recoverable. Feedback loop drives iterative refinement beyond static evaluation sets.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    STACE (Stress-Testing Agents for Concept Erasure) autonomously stress-tests concept-erased models using a three-agent loop: a Proposer generates novel natural-language probes, a Critique agent challenges weak tests, and a Verifier confirms whether erased concepts remain recoverable via external knowledge retrieval. The framework exposes failure modes invisible to static pre-defined evaluation sets, particularly under diverse rephrasing and cross-concept knowledge reconstruction — raising the bar for what counts as a verified concept erasure.
+  </p>
+</article>
+
+<!-- ============================================================ -->
+<!-- WATCHLIST -->
+<!-- ============================================================ -->
+<div class="watchlist">
+  <h2>Watchlist</h2>
+  <ul>
+    <li><strong>DreamGuard scaling</strong> — evaluated on short agentic tasks; performance on production-length agent trajectories (&gt;100 steps) is unknown.</li>
+    <li><strong>CIF adoption</strong> — whether UAI acceptance accelerates uptake of anytime-valid evaluation in mech-interp papers submitted to NeurIPS 2026.</li>
+    <li><strong>AMS adversarial robustness</strong> — 71% accuracy against passive probing; not yet tested against adversarially obfuscated weight edits designed to preserve activation geometry.</li>
+    <li><strong>A2D + DIJA escalation</strong> — whether next-generation dLLM jailbreaks targeting the any-order training distribution can bypass A2D's coverage.</li>
+    <li><strong>VLM supply-chain threat surface</strong> — architectural backdoors require architecture code access; as community VLM model-merging workflows proliferate, the realistic threat surface expands.</li>
+  </ul>
+</div>
+
+</div><!-- .page -->
+{% endraw %}
