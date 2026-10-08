@@ -1,0 +1,752 @@
+---
+layout: "radar"
+title: "Research Radar — October 8, 2026"
+kind: "daily"
+slug: "2026-10-08"
+date: 2026-10-08
+group: "latest"
+window: "October 7–8, 2026"
+summary: "Window: October 7–8, 2026 · Sources swept: OpenReview, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), ACL Anthology, LessWrong/Alignment Forum · Counts: 1 peer-reviewed · 9 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-10-08.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80; --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  padding: 0 16px 64px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { opacity: 0.8; }
+
+/* Masthead */
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding: 36px 0 24px;
+  margin-bottom: 40px;
+}
+.masthead-eyebrow {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--title);
+  margin-bottom: 8px;
+}
+.masthead-counts {
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.track {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-teal);
+  font-family: system-ui, sans-serif;
+}
+.track-sep { color: var(--dim); margin: 0 8px; }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-right: 4px;
+  text-transform: uppercase;
+}
+.tag-peer { background: #d4edda; color: #1a6e3c; }
+.tag-interp { background: #d0f0f0; color: #0d7377; }
+.tag-security { background: #fde8e8; color: #b02020; }
+.tag-align { background: #dce8fc; color: #1a4f99; }
+.tag-control { background: #ede8fc; color: #5c1aaa; }
+.tag-rank { background: #fef3d0; color: #a05c00; }
+
+/* Full paper (top 3) */
+.paper {
+  margin-bottom: 52px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.paper-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.paper-rank {
+  font-family: system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--dim);
+  min-width: 44px;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.paper-title a { color: var(--title); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.paper-title a:hover { color: var(--link); }
+.paper-authors {
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 14px;
+  font-family: system-ui, sans-serif;
+}
+.paper-hook {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.paper-figure {
+  margin: 20px 0;
+  text-align: center;
+}
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure svg { display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  font-family: system-ui, sans-serif;
+  margin-top: 8px;
+  line-height: 1.5;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.paper-detail {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* Mid-tier (items 4–10) */
+.more-section-label {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 48px 0 28px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.mid-paper {
+  margin-bottom: 44px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-figure { margin: 14px 0; text-align: center; }
+.mid-figure figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  font-family: system-ui, sans-serif;
+  margin-top: 6px;
+  line-height: 1.5;
+  max-width: 440px;
+  margin-left: auto; margin-right: auto;
+}
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+.mid-authors {
+  font-size: 12px;
+  color: var(--dim);
+  font-family: system-ui, sans-serif;
+  margin-bottom: 10px;
+}
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+</style>
+
+
+<header class="masthead">
+  <div class="masthead-eyebrow">RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · October 8, 2026</div>
+  <div class="masthead-counts">1 peer-reviewed · 9 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  #1 — Component and Dimension Sparsity (COLM 2026)        -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">COLM 2026</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.06903">Component and Dimension Sparsity in Transformer Refusal Mechanisms</a>
+  </h2>
+  <p class="paper-authors">Vincent Siu, Glenn Grant-Richards, Vlad Pavlovich, Yizhou Sun, Dawn Song, Chenguang Wang — COLM 2026 (accepted)</p>
+  <p class="paper-hook">
+    The sole peer-reviewed paper this cycle and the most deployable mech-interp result: refusal is not diffusely distributed across a transformer but is carried by a small, identifiable set of components and dimensions—meaning precise interventions are possible, and broad refusal-removal attacks are likely hitting noise.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Component and dimension sparsity in refusal mechanisms">
+      <rect width="500" height="220" fill="#fff"/>
+      <!-- Title -->
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" font-weight="bold">Component Sparsity → Dimension Sparsity</text>
+      <!-- Bar chart: components needed vs effect captured -->
+      <text x="30" y="50" font-family="Georgia,serif" font-size="11" fill="#888">Component level</text>
+      <!-- Axis -->
+      <line x1="40" y1="55" x2="460" y2="55" stroke="#ccc" stroke-width="1"/>
+      <!-- 28% bar -->
+      <rect x="50" y="60" width="96" height="28" fill="#0d7377" rx="2"/>
+      <text x="148" y="78" font-family="Georgia,serif" font-size="11" fill="#0d7377">28% of components</text>
+      <!-- Effect -->
+      <rect x="50" y="93" width="352" height="28" fill="#d0f0f0" rx="2"/>
+      <text x="260" y="111" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377">88–101% of steering effect</text>
+      <!-- Dimension level label -->
+      <text x="30" y="140" font-family="Georgia,serif" font-size="11" fill="#888">Dimension level (within components)</text>
+      <line x1="40" y1="145" x2="460" y2="145" stroke="#ccc" stroke-width="1"/>
+      <!-- 50% bar -->
+      <rect x="50" y="150" width="176" height="28" fill="#1a4f99" rx="2"/>
+      <text x="230" y="168" font-family="Georgia,serif" font-size="11" fill="#1a4f99">~50% of dimensions</text>
+      <!-- Effect -->
+      <rect x="50" y="183" width="336" height="28" fill="#dce8fc" rx="2"/>
+      <text x="245" y="201" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a4f99">85–98% of component-level baseline</text>
+    </svg>
+    <figcaption>Figure 1: Two-level sparsity — 28–48% of upstream components carry 88–101% of the refusal steering effect; within those components, ~50% of residual-stream dimensions retain 85–98% of that effect. Consistent with a privileged basis structure.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Siu et al. apply activation steering across four open-weight models and perform ablation sweeps at two granularities: which attention/MLP components are necessary, and which residual-stream dimensions within those components matter. Finding that 28–48% of upstream components account for 88–101% of the steering effect, and roughly half of dimensions within those components retain 85–98% of the component-level baseline, has two direct implications. First, targeted interventions can disable refusal by hitting fewer than half of upstream units. Second, coarse refusal-removal attacks that operate on full-dimension mean-difference vectors are likely coupling to the non-causal dimensions, explaining their brittleness under distribution shift.
+  </p>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  #2 — SafeEvo                                             -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.09600">SafeEvo: Deciphering the Safety Alignment Mechanism and Evolution in Language Models</a>
+  </h2>
+  <p class="paper-authors">Miao Yu, Hao Huang, Lu Yuan, Yunpeng Li, Kun Wang, Zuming Jiang — arXiv preprint, 7 Oct 2026</p>
+  <p class="paper-hook">
+    Refusal circuits are latent before any alignment training, but are weak—and they continuously restructure rather than merely strengthen as alignment proceeds. This has direct implications for why fine-tuning attacks erode safety so easily, and for how Safety Circuit Alignment could fix it.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="SafeEvo: refusal circuit evolution across alignment checkpoints">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" font-weight="bold">Circuit Overlap Across 20 Alignment Checkpoints</text>
+      <!-- Axes -->
+      <line x1="60" y1="170" x2="460" y2="170" stroke="#999" stroke-width="1.5"/>
+      <line x1="60" y1="40" x2="60" y2="170" stroke="#999" stroke-width="1.5"/>
+      <!-- Y axis labels -->
+      <text x="55" y="44" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#888">100%</text>
+      <text x="55" y="88" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#888">88%</text>
+      <text x="55" y="132" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#888">76%</text>
+      <text x="55" y="170" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#888">70%</text>
+      <!-- X axis labels -->
+      <text x="60" y="185" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">0</text>
+      <text x="260" y="185" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">10</text>
+      <text x="460" y="185" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">20 ckpts</text>
+      <!-- Declining curve: adjacent-checkpoint overlap 98% → 78% -->
+      <!-- Y range: 40(100%) to 170(70%); each % = 1.3px -->
+      <!-- 98% = 40 + (100-98)*1.3 = 42.6; 78% = 40 + (100-78)*1.3 = 68.6 -->
+      <polyline
+        points="60,43 110,48 160,57 210,64 260,72 310,78 360,83 410,87 460,68"
+        fill="none" stroke="#0d7377" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Annotation: start -->
+      <circle cx="60" cy="43" r="4" fill="#0d7377"/>
+      <text x="65" y="38" font-family="Georgia,serif" font-size="10" fill="#0d7377">98% (ckpt 0)</text>
+      <!-- Annotation: end -->
+      <circle cx="460" cy="68" r="4" fill="#0d7377"/>
+      <text x="420" y="62" font-family="Georgia,serif" font-size="10" fill="#0d7377">78% (ckpt 20)</text>
+      <!-- Independent circuit overlap -->
+      <line x1="60" y1="148" x2="460" y2="148" stroke="#b02020" stroke-width="1.5" stroke-dasharray="6,3"/>
+      <text x="270" y="143" font-family="Georgia,serif" font-size="10" fill="#b02020">26% — independent runs</text>
+      <text x="30" y="200" font-family="Georgia,serif" font-size="10" fill="#888">Y: circuit overlap | X: alignment checkpoint</text>
+    </svg>
+    <figcaption>Figure 2: Adjacent-checkpoint refusal circuit overlap falls from 98% to 78% across 20 alignment steps (teal), while independently extracted circuits share only 26% overlap (red dashed), showing alignment continuously restructures rather than merely amplifying the safety circuit.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    SafeEvo formulates circuit extraction as differentiable mask optimization, isolating the sparse subgraph that carries full refusal ability. On Llama-3-8B, Qwen-2.5-7B, and Mistral-7B, ablating the "weak refusal circuit" in the base model raises attack success rates to 32.7–48.4%—confirming refusal is present but unreliable before alignment. Tracking circuits across checkpoints (warm-started extraction) reveals 98→78% overlap decay over 20 steps; independent runs share only 26%, demonstrating circuit non-uniqueness. Safety Circuit Alignment (SCA) confines gradient updates to the discovered refusal circuit, cutting the alignment tax while preserving safety gains.
+  </p>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  #3 — Backdooring Sparse Autoencoders                     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.06049">Backdooring Sparse Autoencoders</a>
+  </h2>
+  <p class="paper-authors">Enrico Ahlers, Daniel Passon, Tobias Kiecker, Eik Reichmann, Lars Grunske — arXiv preprint (cs.CR), 5 Oct 2026</p>
+  <p class="paper-hook">
+    As SAEs move from interpretability aids to active steering components, a trojanized SAE decoder can silently hijack an unmodified LLM—without touching the model itself and without tripping standard SAEBench quality metrics.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Backdoored SAE supply-chain attack diagram">
+      <rect width="500" height="200" fill="#fff"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" font-weight="bold">Backdoored SAE Supply-Chain Attack</text>
+      <!-- LLM box -->
+      <rect x="30" y="50" width="120" height="50" rx="6" fill="#dce8fc" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="90" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a4f99">LLM (unchanged)</text>
+      <!-- Arrow to SAE -->
+      <line x1="150" y1="75" x2="200" y2="75" stroke="#888" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <defs><marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#888"/></marker></defs>
+      <!-- SAE box (backdoored decoder) -->
+      <rect x="200" y="45" width="130" height="60" rx="6" fill="#fde8e8" stroke="#b02020" stroke-width="2"/>
+      <text x="265" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#b02020" font-weight="bold">SAE</text>
+      <text x="265" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">(decoder modified)</text>
+      <!-- Arrow to output -->
+      <line x1="330" y1="75" x2="380" y2="75" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <defs><marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#888"/></marker></defs>
+      <!-- Output box -->
+      <rect x="380" y="50" width="100" height="50" rx="6" fill="#fef3d0" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="430" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#a05c00">Malicious</text>
+      <text x="430" y="87" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#a05c00">output</text>
+      <!-- Trigger label -->
+      <text x="265" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020">Trigger in prompt → attack fires</text>
+      <!-- Quality metrics note -->
+      <rect x="170" y="150" width="200" height="35" rx="4" fill="#f0ede8" stroke="#ddd" stroke-width="1"/>
+      <text x="270" y="166" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">SAEBench quality metrics: near-unchanged</text>
+      <text x="270" y="179" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">(attack evades standard detection)</text>
+    </svg>
+    <figcaption>Figure 3: Only the SAE decoder is modified; the LLM and SAE encoder are untouched. On trigger, the poisoned reconstruction drives the model to produce attacker-chosen outputs while reconstruction loss and feature-density scores remain nearly normal.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The attack restricts modifications to the SAE decoder, leaving the LM weights and SAE encoder intact. In a code-generation case study across three LLMs and a wide range of insertion layers, the backdoored SAE achieves high rates of unsolicited malicious code insertion and reliable trigger-dependent activation, while reconstruction loss and feature density—the standard SAEBench metrics—show only small changes. The threat model covers any setting where a third party distributes a trained SAE as a drop-in steering component, and the paper concludes that SAEs intended for in-context steering should be cryptographically signed and reproducibly audited rather than treated as benign auxiliary artifacts.
+  </p>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  Items 4–10                                               -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- #4 APEX -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.06966">APEX: Active Protection at Execution Boundaries for LLM Agents</a>
+  </h3>
+  <p class="mid-authors">Zheng et al. — arXiv (cs.CR), 3 Oct 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="APEX execution boundary defense architecture">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">APEX: Execution-Boundary Defense</text>
+      <!-- Untrusted zone -->
+      <rect x="20" y="35" width="130" height="90" rx="6" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="85" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020">Untrusted env</text>
+      <text x="85" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">(tool outputs,</text>
+      <text x="85" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">injected content)</text>
+      <!-- Arrow -->
+      <line x1="150" y1="80" x2="190" y2="80" stroke="#888" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <defs><marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#888"/></marker></defs>
+      <!-- Boundary check -->
+      <rect x="190" y="40" width="110" height="80" rx="6" fill="#d0f0f0" stroke="#0d7377" stroke-width="2"/>
+      <text x="245" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377" font-weight="bold">APEX boundary</text>
+      <text x="245" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0d7377">WRAP: authorized?</text>
+      <text x="245" y="99" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0d7377">PLANT: endorsed?</text>
+      <!-- Arrow -->
+      <line x1="300" y1="80" x2="340" y2="80" stroke="#888" stroke-width="1.5" marker-end="url(#arr4)"/>
+      <defs><marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#888"/></marker></defs>
+      <!-- Trusted output -->
+      <rect x="340" y="50" width="80" height="60" rx="6" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="380" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a6e3c">Safe</text>
+      <text x="380" y="89" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a6e3c">action</text>
+      <!-- Result label -->
+      <text x="220" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377">0% ASR on 5/6 benchmarks · 0.56% on 6th</text>
+    </svg>
+    <figcaption>Figure 4: APEX moves defense from pattern matching to the execution boundary, applying authorization (WRAP) and deception-probe (PLANT) checks before any agent action fires.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    APEX defends against indirect prompt injection by checking whether a proposed action is authorized and whether the runtime information reaching it was endorsed by the original task—without looking for attack patterns. Against 13 baselines across six benchmarks, it achieves 0% attack success on five of six and 0.56% on the sixth, holding under adaptive attacks across all capability-unit types.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #5 On-Policy Distillation Backdoor -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.07654">Does On-Policy Distillation for Safety Pose Backdoor Risks?</a>
+  </h3>
+  <p class="mid-authors">Jian Luo et al. — arXiv (cs.CR), 6 Oct 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 175" xmlns="http://www.w3.org/2000/svg" aria-label="Backdoor transfer through on-policy distillation">
+      <rect width="440" height="175" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">Backdoor Transfer via On-Policy Distillation</text>
+      <!-- Teacher box -->
+      <rect x="30" y="50" width="120" height="55" rx="6" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="90" y="75" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#b02020">Teacher LLM</text>
+      <text x="90" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">(safety-aligned +</text>
+      <!-- Arrow -->
+      <line x1="150" y1="77" x2="200" y2="77" stroke="#888" stroke-width="1.5" marker-end="url(#arr5)"/>
+      <defs><marker id="arr5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#888"/></marker></defs>
+      <!-- OPD box -->
+      <rect x="200" y="40" width="100" height="70" rx="6" fill="#f0ede8" stroke="#ddd" stroke-width="1.5"/>
+      <text x="250" y="65" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">On-Policy</text>
+      <text x="250" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">Distillation</text>
+      <text x="250" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">3% poison rate</text>
+      <!-- Arrow -->
+      <line x1="300" y1="77" x2="350" y2="77" stroke="#888" stroke-width="1.5" marker-end="url(#arr6)"/>
+      <defs><marker id="arr6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#888"/></marker></defs>
+      <!-- Student box -->
+      <rect x="350" y="50" width="70" height="55" rx="6" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="385" y="75" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#b02020">Student</text>
+      <text x="385" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">ASR 70%</text>
+      <!-- Lazy defense note -->
+      <text x="220" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a6e3c">Lazy Defense (KL clipping) delays transfer at low poison rates</text>
+    </svg>
+    <figcaption>Figure 5: A backdoored safety-aligned teacher transfers to a clean student via on-policy distillation at just 3% poisoning rate (70% ASR), amplified by more training epochs.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    A safety-aligned teacher with 3% poisoned training data transfers backdoor behavior to a clean student via on-policy distillation at 70% attack success rate; even 10 poisoned samples reach 67% ASR after 16 epochs. Top-k KL estimation accelerates transfer relative to sampled-token KL. The proposed Lazy Defense clips KL rewards to slow student updates and delay backdoor transfer at low poisoning rates.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #6 Prompted to Discriminate -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.02413">Prompted to Discriminate: Generalizing Malicious-Input Probes in the Wild</a>
+  </h3>
+  <p class="mid-authors">Elad David, Max Fomin — arXiv, 1 Oct 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="Classification suffix improves probe OOD generalization">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">Classification Suffix → Better OOD Probe Generalization</text>
+      <!-- Two configurations -->
+      <!-- Baseline -->
+      <rect x="20" y="40" width="180" height="60" rx="6" fill="#f0ede8" stroke="#ddd" stroke-width="1.5"/>
+      <text x="110" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">User turn → probe read</text>
+      <text x="110" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">No suffix (baseline)</text>
+      <text x="110" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">OOD AUC: lower</text>
+      <!-- Improved -->
+      <rect x="240" y="40" width="180" height="60" rx="6" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="330" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377">User turn + classify suffix → probe</text>
+      <text x="330" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377">Content-free label ≈ real label</text>
+      <text x="330" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377">OOD AUC: +up to ~4 pts</text>
+      <text x="220" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">13 safety benchmarks · 3 model families · LODO eval</text>
+    </svg>
+    <figcaption>Figure 6: Appending a classification instruction after the user turn consistently improves leave-one-dataset-out AUC of activation-based malicious-input probes by up to ~4 points; format matters more than label content.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Appending a short classification suffix after the user turn at probe-read time improves out-of-distribution generalization of activation-based malicious-input detectors by up to ~4 AUC points under leave-one-dataset-out evaluation across 13 safety benchmarks and three model families. Format (classification instruction) matters more than content (a content-free label suffix matches a real label suffix); deployed via KV-cache fork, it is a near-zero-cost drop-in for any activation-probe monitor.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #7 Secure Speculative Decoding -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.08678">Secure Speculative Decoding for Large Language Models</a>
+  </h3>
+  <p class="mid-authors">Yichi Zhang, Zhiqi Wang, Neil Gong, Yuchen Yang — arXiv (cs.CR), 6 Oct 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="SecureSD reduces attack success while preserving decoding speedup">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">SecureSD: Security–Efficiency Trade-off</text>
+      <!-- Axes -->
+      <line x1="60" y1="140" x2="400" y2="140" stroke="#999" stroke-width="1.5"/>
+      <line x1="60" y1="50" x2="60" y2="140" stroke="#999" stroke-width="1.5"/>
+      <text x="230" y="162" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">Decoding speedup →</text>
+      <text x="18" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888" transform="rotate(-90,18,100)">Attack success rate →</text>
+      <!-- Baseline speculative decoding: high speedup, high ASR -->
+      <circle cx="330" cy="65" r="8" fill="#b02020"/>
+      <text x="340" y="62" font-family="Georgia,serif" font-size="10" fill="#b02020">Baseline SD</text>
+      <text x="340" y="75" font-family="Georgia,serif" font-size="10" fill="#b02020">(high ASR)</text>
+      <!-- SecureSD: similar speedup, low ASR -->
+      <circle cx="320" cy="125" r="8" fill="#0d7377"/>
+      <text x="330" y="122" font-family="Georgia,serif" font-size="10" fill="#0d7377">SecureSD</text>
+      <text x="330" y="135" font-family="Georgia,serif" font-size="10" fill="#0d7377">(99.8% speedup kept)</text>
+      <!-- Arrow between -->
+      <line x1="330" y1="73" x2="323" y2="117" stroke="#888" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr7)"/>
+      <defs><marker id="arr7" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#888"/></marker></defs>
+      <text x="255" y="97" font-family="Georgia,serif" font-size="10" fill="#888">−92.4% ASR</text>
+    </svg>
+    <figcaption>Figure 7: SecureSD tightens early-token verification in the draft model, collapsing attack success rate by up to 92.4% while keeping 99.8% of the decoding speedup.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    SecureSD identifies a security-utility asymmetry in lossy speculative decoding—efficiency gains cause disproportionate security loss—and fixes it by applying stricter verification at early draft-token positions where the vulnerability originates. Across five benchmarks, it reduces jailbreak and prompt injection attack success rates by up to 92.4% while retaining 99.8% of the decoding speedup and 98.4% of utility.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #8 Localize-and-Detect -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.03960">Localize-and-Detect: Auditing Task-Level Poisoning in Instruction-Tuned Models</a>
+  </h3>
+  <p class="mid-authors">Luze Sun, Cristina Nita-Rotaru, Alina Oprea — arXiv (cs.CR), 2 Oct 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Two-stage task-level poisoning auditor">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">Localize-and-Detect: Two-Stage Black-Box Auditor</text>
+      <!-- Stage 1 -->
+      <rect x="20" y="40" width="170" height="65" rx="6" fill="#dce8fc" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="105" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a4f99" font-weight="bold">Stage 1: Localize</text>
+      <text x="105" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">Rank tasks by distribution</text>
+      <text x="105" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">divergence (base vs FT model)</text>
+      <!-- Arrow -->
+      <line x1="190" y1="72" x2="230" y2="72" stroke="#888" stroke-width="1.5" marker-end="url(#arr8)"/>
+      <defs><marker id="arr8" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#888"/></marker></defs>
+      <!-- Stage 2 -->
+      <rect x="230" y="40" width="180" height="65" rx="6" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="320" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020" font-weight="bold">Stage 2: Detect</text>
+      <text x="320" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">Search top tasks for biased</text>
+      <text x="320" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">content in FT responses</text>
+      <text x="220" y="135" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">Black-box only (no internals) · 216 poisoned models · 2 LLM families</text>
+    </svg>
+    <figcaption>Figure 8: Two-stage black-box auditor for task-conditioned poisoning: distribution-divergence ranking (Stage 1) feeds into biased-content detection (Stage 2), with no access to model weights required.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    A two-stage black-box auditor for task-level (non-trigger) poisoning: Stage 1 ranks tasks by output-distribution divergence between fine-tuned and base models; Stage 2 finds biased content in the fine-tuned model's top-ranked task responses. Evaluated on 216 poisoned models across two LLM families, white-box signals do not outperform the black-box approach, making the auditor deployable without model access.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #9 PyINE -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.04737">PyINE: A Framework for Scalable Elicitation and Oversight via Code Execution</a>
+  </h3>
+  <p class="mid-authors">Pierre-Luc St-Charles, Yoshua Bengio et al. — arXiv (cs.AI), 3 Oct 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="PyINE: code execution as scalable oversight substrate">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">PyINE: Code Execution as Oversight Substrate</text>
+      <!-- Python programs -->
+      <rect x="20" y="45" width="110" height="55" rx="6" fill="#dce8fc" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="75" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a4f99">Python programs</text>
+      <text x="75" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">(~1M exec traces)</text>
+      <!-- Arrow -->
+      <line x1="130" y1="72" x2="165" y2="72" stroke="#888" stroke-width="1.5" marker-end="url(#arr9)"/>
+      <defs><marker id="arr9" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#888"/></marker></defs>
+      <!-- LLM variants -->
+      <rect x="165" y="45" width="120" height="55" rx="6" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="225" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377">LLM code variants</text>
+      <text x="225" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0d7377">(500K+ matched)</text>
+      <!-- Arrow -->
+      <line x1="285" y1="72" x2="320" y2="72" stroke="#888" stroke-width="1.5" marker-end="url(#arr10)"/>
+      <defs><marker id="arr10" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 Z" fill="#888"/></marker></defs>
+      <!-- Oversight eval -->
+      <rect x="320" y="45" width="100" height="55" rx="6" fill="#ede8fc" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="370" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#5c1aaa">Oversight eval</text>
+      <text x="370" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#5c1aaa">(probes, judges)</text>
+      <text x="220" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">Deceptive-cue failure: model errs when human-readable cues conflict with exec result</text>
+    </svg>
+    <figcaption>Figure 9: PyINE uses Python execution traces as verifiable ground truth for oversight research, exposing a deceptive-cue failure mode where RL-trained models err when human-readable labels conflict with actual program behavior.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    PyINE provides ~1M deterministic Python execution traces and 500K+ LLM-generated code variants as a scalable, mechanically generated oversight substrate (Yoshua Bengio et al.). RL-trained models improve substantially at execution-outcome prediction but still fail when human-readable cues conflict with actual program behavior—a concrete, measurable instance of the deceptive-cue problem in scalable oversight.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #10 Probabilistic Jailbreaking -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.09973">From Expected Harmfulness to Likelihood: A Probabilistic Reformulation of Jailbreaking LLM Agents</a>
+  </h3>
+  <p class="mid-authors">Juanyang Xu, Zheng Wang, Xingyu Zhao, Siddartha Khastgir, Andi Zhang — arXiv, 7 Oct 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="Gradient identity unifying jailbreak objectives">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">Unifying Jailbreak Objectives via Gradient Identity</text>
+      <!-- Expected harmfulness objective -->
+      <rect x="20" y="45" width="170" height="55" rx="6" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="105" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020" font-weight="bold">Maximize E[harmfulness]</text>
+      <text x="105" y="86" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">(expected harm over outputs)</text>
+      <!-- Equivalence arrow -->
+      <line x1="195" y1="72" x2="250" y2="72" stroke="#a05c00" stroke-width="2"/>
+      <text x="222" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#a05c00" font-weight="bold">≡</text>
+      <!-- Likelihood objective -->
+      <rect x="255" y="45" width="165" height="55" rx="6" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="337" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020" font-weight="bold">Maximize P(harmful target)</text>
+      <text x="337" y="86" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">(likelihood of target output)</text>
+      <!-- OPUR result -->
+      <text x="220" y="125" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377">→ OPUR: harmfulness-reweighted sampling guides input optimization</text>
+      <text x="220" y="142" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">Validated on InjecAgent-style indirect-injection benchmarks</text>
+    </svg>
+    <figcaption>Figure 10: The gradient of expected harmfulness equals the expected gradient of log-likelihood under harmfulness-reweighted outputs—unifying two jailbreak paradigms and motivating OPUR, which samples from the reweighted distribution to guide input optimization.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Proves by gradient identity that maximizing expected harmfulness and maximizing the likelihood of a harmful target output are equivalent jailbreak objectives, unifying two previously separate paradigms. OPUR exploits this identity by sampling from a harmfulness-reweighted output distribution to guide likelihood-based input optimization, demonstrating improved effectiveness on InjecAgent-style indirect-injection benchmarks against LLM agents.
+  </p>
+</article>
+{% endraw %}
