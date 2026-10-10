@@ -1,0 +1,794 @@
+---
+layout: "radar"
+title: "Research Radar — October 10, 2026"
+kind: "daily"
+slug: "2026-10-10"
+date: 2026-10-10
+group: "latest"
+window: "2026-10-09 to 2026-10-10"
+summary: "Window: 2026-10-09 to 2026-10-10 · Sources swept: OpenReview, ACL Anthology, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 2 peer-reviewed · 8 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-10-10.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80; --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  padding: 0 16px 64px;
+  max-width: 660px;
+  margin: 0 auto;
+}
+a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { opacity: 0.8; }
+
+/* Masthead */
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding: 36px 0 24px;
+  margin-bottom: 40px;
+}
+.masthead-eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--title);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.masthead-counts {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 12px;
+}
+.masthead-tracks { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.track {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+.track-sep { color: var(--border); }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-right: 4px;
+  letter-spacing: 0.04em;
+}
+.tag-peer   { background: #d4edda; color: #1a6e3c; }
+.tag-interp { background: #d0f0f0; color: #0d7377; }
+.tag-security { background: #fde8e8; color: #b02020; }
+.tag-align  { background: #dce9ff; color: #1a4f99; }
+.tag-control { background: #ede0ff; color: #5c1aaa; }
+.tag-rank   { background: #fff3cd; color: #a05c00; }
+@media (prefers-color-scheme: dark) {
+  .tag-peer   { background: #1a3a22; color: #4ade80; }
+  .tag-interp { background: #0d2828; color: #14b8bd; }
+  .tag-security { background: #3a1a1a; color: #f07070; }
+  .tag-align  { background: #1a2a44; color: #7eb8ff; }
+  .tag-control { background: #2a1a44; color: #c084fc; }
+  .tag-rank   { background: #3a2a00; color: #f0a030; }
+}
+
+/* Full paper (top 3) */
+.paper { margin-bottom: 56px; }
+.paper-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+.paper-rank {
+  font-family: 'Courier New', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dim);
+  min-width: 32px;
+  line-height: 1;
+  padding-top: 2px;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 4px; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-authors {
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 14px;
+  font-style: italic;
+}
+.paper-hook {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.paper-figure {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px;
+  margin: 18px 0;
+  text-align: center;
+}
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure svg { display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  text-align: left;
+  line-height: 1.5;
+}
+.paper-detail {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text);
+}
+hr.paper-divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+/* Mid-tier entries (4-10) */
+.more-section-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin: 40px 0 28px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure { margin: 12px 0; }
+.mid-figure img { max-width: 440px; }
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+hr.section-divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+</style>
+
+
+<header class="masthead">
+  <div class="masthead-eyebrow">RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · October 10, 2026</div>
+  <div class="masthead-counts">2 peer-reviewed · 8 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  #1 — Context-Sensitive Memorization (EMNLP 2026)         -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-peer">EMNLP 2026</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.12085">Is Memorization Context-Sensitive? Prefix-Based Extraction Beyond Isolated Prefixes</a>
+  </h2>
+  <p class="paper-authors">Ali Satvaty, Narjes Sharafi, Jirui Qi, Suzan Verberne, Fatih Turkmen — EMNLP 2026 (accepted, peer-reviewed · cs.AI, 8 Oct 2026)</p>
+  <p class="paper-hook">
+    The standard assumption that retrieval-augmented context suppresses memorization extraction turns out to be wrong in a subtle but important way: context doesn't eliminate memorization—it reshapes the extractable set, sometimes enabling exfiltration of samples that isolated-prefix testing would never catch.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" aria-label="Context-sensitive memorization: robust core and sensitive boundary">
+      <rect width="500" height="240" fill="#fff"/>
+      <!-- Title -->
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" font-weight="bold">Memorization Under RAG Context</text>
+      <!-- Left: No context -->
+      <rect x="20" y="40" width="140" height="80" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="90" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020" font-weight="bold">No Context</text>
+      <text x="90" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">Extractable set A</text>
+      <circle cx="90" cy="100" r="14" fill="#b02020" opacity="0.5"/>
+      <text x="90" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#fff">core</text>
+      <!-- Middle: Overlap -->
+      <rect x="180" y="40" width="140" height="80" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="250" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a6e3c" font-weight="bold">RAG Context</text>
+      <text x="250" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a6e3c">Extractable set B</text>
+      <circle cx="250" cy="100" r="14" fill="#1a6e3c" opacity="0.5"/>
+      <text x="250" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#fff">core</text>
+      <!-- Overlap annotation -->
+      <text x="165" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#888">∩</text>
+      <!-- Right: New samples -->
+      <rect x="340" y="40" width="140" height="80" rx="4" fill="#dce9ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="410" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a4f99" font-weight="bold">Context-Enabled</text>
+      <text x="410" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">New extractions</text>
+      <circle cx="410" cy="100" r="14" fill="#1a4f99" opacity="0.5"/>
+      <text x="410" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#fff">B∖A</text>
+      <!-- Bottom annotation -->
+      <line x1="20" y1="155" x2="480" y2="155" stroke="#ddd" stroke-width="1"/>
+      <text x="90" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">Boundary samples</text>
+      <text x="90" y="190" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">suppressed by context</text>
+      <text x="250" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a6e3c">Robust core persists</text>
+      <text x="250" y="190" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a6e3c">esp. at long prefixes</text>
+      <text x="410" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020">Security risk:</text>
+      <text x="410" y="190" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">missed by isolated eval</text>
+      <text x="250" y="230" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">EMNLP 2026 · arXiv:2610.12085</text>
+    </svg>
+    <figcaption>Figure: Extractable memorization has a "context-robust core and context-sensitive boundary." RAG context suppresses some boundary samples but also enables extraction of new samples (B∖A) that prefix-only testing misses entirely.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The authors score suffix log-probability under empty prompts and under retrieved contexts of varying relevance across three open-weight instruction-tuned models. Extractable memorization has a "context-robust core and a context-sensitive boundary": samples extractable without context remain extractable in most contextual settings (especially as prefix length grows), while context primarily suppresses or enables samples near the extraction threshold—meaning context-enabled extractability is a distinct security risk missed by isolated-prefix evaluation. Samples that isolated tests would pass are reachable in RAG deployments with the right retrieved document. The conclusion directly challenges the assumption that RAG by itself reduces memorization risk, and the EMNLP 2026 acceptance puts it on a solid empirical footing.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  #2 — RouterInterp (MoE SAE interpretability)             -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.11775">RouterInterp: Understanding Superposed Specialisation in Mixture of Experts Routing</a>
+  </h2>
+  <p class="paper-authors">Ilya Lasy, Nora Yinuo Cai, Kola Ayonrinde — arXiv preprint (cs.LG, 8 Oct 2026)</p>
+  <p class="paper-hook">
+    MoE experts don't specialise in a single broad domain—they specialise in a disjoint union of fine-grained features, which is why token-statistics-based routing interpretability has consistently failed. RouterInterp uses SAE latents to make routing decisions readable for the first time, achieving ~65% higher detection accuracy than prior baselines.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="RouterInterp pipeline: SAE latent attribution to MoE routing explanation">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" font-weight="bold">RouterInterp Pipeline</text>
+      <!-- Step 1: SAE latent attribution -->
+      <rect x="10" y="35" width="110" height="50" rx="4" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="65" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0d7377" font-weight="bold">1. Gradient attr.</text>
+      <text x="65" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d7377">Top-45 SAE latents</text>
+      <text x="65" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d7377">per expert</text>
+      <!-- Arrow -->
+      <line x1="122" y1="60" x2="140" y2="60" stroke="#888" stroke-width="1.5" marker-end="url(#ra1)"/>
+      <defs>
+        <marker id="ra1" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/></marker>
+        <marker id="ra2" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/></marker>
+        <marker id="ra3" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/></marker>
+      </defs>
+      <!-- Step 2: Collect activations -->
+      <rect x="142" y="35" width="110" height="50" rx="4" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="197" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0d7377" font-weight="bold">2. Collect windows</text>
+      <text x="197" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d7377">+/- activation windows</text>
+      <text x="197" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d7377">per latent</text>
+      <!-- Arrow -->
+      <line x1="254" y1="60" x2="272" y2="60" stroke="#888" stroke-width="1.5" marker-end="url(#ra2)"/>
+      <!-- Step 3: LLM synthesis -->
+      <rect x="274" y="35" width="110" height="50" rx="4" fill="#d0f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="329" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0d7377" font-weight="bold">3. LLM synthesis</text>
+      <text x="329" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d7377">Natural-language</text>
+      <text x="329" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d7377">expert description</text>
+      <!-- Arrow -->
+      <line x1="386" y1="60" x2="404" y2="60" stroke="#888" stroke-width="1.5" marker-end="url(#ra3)"/>
+      <!-- Result box -->
+      <rect x="406" y="35" width="84" height="50" rx="4" fill="#1a6e3c" stroke="#1a6e3c"/>
+      <text x="448" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#fff" font-weight="bold">F1: ~0.49</text>
+      <text x="448" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#e8f4e8">vs ~0.30</text>
+      <text x="448" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#e8f4e8">baseline</text>
+      <!-- SSH evidence -->
+      <rect x="10" y="105" width="480" height="60" rx="4" fill="#f8f8f8" stroke="#ddd"/>
+      <text x="250" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a1a1a" font-weight="bold">Superposed Specialisation Hypothesis (SSH)</text>
+      <text x="250" y="139" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">Each expert's top-20 SAE latents cluster into ~11 distinct semantic groups on average</text>
+      <text x="250" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">(not 1 coherent domain as assumed) · gpt-oss-20b and OLMoE-1B-7B tested</text>
+      <!-- Bottom label -->
+      <text x="250" y="195" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">arXiv:2610.11775 · F1 on OLMoE-1B-7B: ~0.60 RouterInterp vs ~0.31 Unigram Lookup</text>
+    </svg>
+    <figcaption>Figure 3: RouterInterp identifies top-45 SAE latents per expert via gradient attribution, collects positive/negative activation windows, then generates unified natural-language routing explanations. On gpt-oss-20b: ~0.49 F1 vs ~0.30 baseline; experts average 11 distinct semantic clusters, confirming SSH.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The Superposed Specialisation Hypothesis (SSH) holds that each expert routes on a union of unrelated fine-grained features rather than one coherent domain; RouterInterp tests this by selecting the top-45 SAE latents per expert via gradient-based attribution, collecting positive/negative activation windows, and generating prose explanations with an LLM synthesiser. On gpt-oss-20b, RouterInterp achieves ~0.49 F1 vs ~0.38 for Expert Impact AutoInterp and ~0.30 for Unigram Lookup; on OLMoE-1B-7B, ~0.60 F1 vs ~0.31–0.34 baselines. Per-expert analysis confirms SSH: each expert's top-20 latents cluster into ~11 distinct semantic groups on average. Ablations show the gain comes from SAE feature grouping, not the LLM explainer—full-passage explanations without feature grouping drop to ~0.42. This is the first method to scale interpretable explanations of MoE routing decisions beyond unigram statistics.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  #3 — PTP-U Unlearning                                    -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.11915">Not Every Change Is Necessary: Recoverable Drift in Large Language Model Unlearning</a>
+  </h2>
+  <p class="paper-authors">Xunlei Chen, Qinghui Gong, Jingkun Xue, Qihe Liu, Shijie Zhou, Fei Ye — arXiv preprint (cs.CL, 8 Oct 2026)</p>
+  <p class="paper-hook">
+    Current unlearning methods overshoot: the parameter changes that achieve target forgetting also collaterally damage unrelated capabilities, but much of that damage can be reversed post-hoc without re-introducing the forgotten knowledge. PTP-U formalises this and sets a new Pareto frontier on the forgetting–retention trade-off across eight strong baselines.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="PTP-U: Propose-Then-Project Unlearning — two-stage approach">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" font-weight="bold">PTP-U: Propose-Then-Project Unlearning</text>
+      <!-- Stage I box -->
+      <rect x="15" y="35" width="210" height="95" rx="4" fill="#dce9ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="120" y="54" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a4f99" font-weight="bold">Stage I: Analytic Proposal</text>
+      <text x="120" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a3a3a">K-FAC curvature → low-dim subspace</text>
+      <text x="120" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a3a3a">Closed-form update (forgetting constraints)</text>
+      <text x="120" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a3a3a">Attention → re-linearize → FFN</text>
+      <text x="120" y="114" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Concentrates edits at relevant params</text>
+      <!-- Arrow -->
+      <line x1="227" y1="82" x2="268" y2="82" stroke="#888" stroke-width="2" marker-end="url(#pa1)"/>
+      <defs>
+        <marker id="pa1" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/></marker>
+      </defs>
+      <!-- Stage II box -->
+      <rect x="270" y="35" width="210" height="95" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="375" y="54" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020" font-weight="bold">Stage II: Policy Projection</text>
+      <text x="375" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a3a3a">Recover toward base model output dist.</text>
+      <text x="375" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a3a3a">Nonlinear: accept if forgetting ≥ threshold</text>
+      <text x="375" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#3a3a3a">Reduces "recoverable drift"</text>
+      <text x="375" y="114" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">No extra inference modules</text>
+      <!-- Results -->
+      <rect x="15" y="148" width="470" height="58" rx="4" fill="#f8f8f8" stroke="#ddd"/>
+      <text x="250" y="165" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a1a1a" font-weight="bold">Results vs 8 baselines (MUSE-Books / RWKU / TOFU)</text>
+      <text x="170" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">BLEU 8.61 ↓ (forgetting)</text>
+      <text x="340" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a6e3c">MMLU 43.34 (utility)</text>
+      <text x="250" y="197" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">94.20% avg non-target utility · AA score 15.20 (lowest on RWKU)</text>
+    </svg>
+    <figcaption>Figure 1: PTP-U separates "necessary" forgetting edits (Stage I: analytic proposal in K-FAC low-dim subspace) from "recoverable drift" on non-target capabilities (Stage II: projection back toward base policy). Achieves best forgetting–retention trade-off across 8 baselines.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Propose-Then-Project Unlearning (PTP-U) has two stages. Stage I applies closed-form K-FAC-curvature-guided analytic edits in a low-dimensional subspace, updating Attention then FFN with sequential re-linearisation between them, concentrating forgetting at the relevant parameters. Stage II projects back toward the original model's output distributions on non-target data under a nonlinear policy that keeps forgetting constraints satisfied. On MUSE-Books (Llama2-7B), PTP-U achieves BLEU 8.61 and ROUGE-L 6.33 with MMLU 43.34—the best combined forgetting and utility among 8 baselines (NPO_KL, RMU, WHP, ALTER, ASU, ICUL, SCANS, MET). On RWKU (Llama3.1-8B-Instruct), 94.20% average non-target utility with AA score 15.20 (lowest). On TOFU, ROUGE-L 0.10 (target) with GEK accuracy 0.79.
+  </p>
+</article>
+<hr class="paper-divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!--  Items 4-10                                               -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- #4 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.11773">Safe Actions Alone Do Not Ensure Safe Agents: Identifying Unfulfilled Obligations with Guard Models</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="Guard model tasks: forbidden actions vs obligations">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">Two Guard-Model Tasks</text>
+      <!-- Forbidden box -->
+      <rect x="15" y="30" width="185" height="115" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="107" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020" font-weight="bold">Task 1: Forbidden Actions</text>
+      <text x="107" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">Current guard model focus</text>
+      <text x="107" y="86" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#b02020">🚫</text>
+      <text x="107" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">30.0% of trajectories</text>
+      <text x="107" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">have forbidden actions</text>
+      <!-- Obligations box -->
+      <rect x="240" y="30" width="185" height="115" rx="4" fill="#fff3cd" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="332" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#a05c00" font-weight="bold">Task 2: Obligations</text>
+      <text x="332" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a05c00">Required-but-unperformed</text>
+      <text x="332" y="86" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#a05c00">⚠️</text>
+      <text x="332" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">56.9% of trajectories</text>
+      <text x="332" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">have unfulfilled obligations</text>
+      <!-- Arrow between -->
+      <text x="220" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#888">vs</text>
+    </svg>
+    <figcaption>Figure 1: In the SusVibes benchmark, 56.9% of trajectories contain unfulfilled safety obligations vs. only 30.0% with forbidden actions—yet current guard models only flag the latter.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Guard models focused on forbidden actions miss the majority of agent safety failures. The authors introduce ObligationBench (240 expert-validated coding-agent trajectories) and ObligationGuard (Qwen3-8B fine-tuned on 40K GPT-5.6-Sol-generated synthetic trajectories), reaching 57.52% recall / 21.67% exact match vs. 48.97% / 10.00% for the best off-the-shelf model. Using ObligationGuard as feedback raises a Qwen3.8-27B coding agent's secure pass rate from 6.5% to 15.1% while barely affecting functional pass rate; ρ = 0.94 between ObligationBench recall and secure-pass improvement (arXiv:2610.11773).
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #5 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.11766">Same Outcome, Different Evidence: Intent Recovery in LLM Safety Evaluation</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="IRIS: ASR vs intent recovery rate comparison">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">IRIS: ASR vs Operative Understanding Rate (UR)</text>
+      <!-- Toki Pona bar -->
+      <text x="80" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">Toki Pona (GPT-4o)</text>
+      <rect x="20" y="45" width="12" height="26" fill="#1a4f99"/>
+      <text x="38" y="62" font-family="Georgia,serif" font-size="10" fill="#1a4f99">ASR 2.9%</text>
+      <rect x="100" y="45" width="23" height="26" fill="#b02020" opacity="0.5"/>
+      <text x="129" y="62" font-family="Georgia,serif" font-size="10" fill="#b02020">UR 15.2%</text>
+      <!-- CaesarCipher bar -->
+      <text x="280" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">CaesarCipher (GPT-4o)</text>
+      <rect x="220" y="45" width="12" height="26" fill="#1a4f99"/>
+      <text x="238" y="62" font-family="Georgia,serif" font-size="10" fill="#1a4f99">ASR 2.9%</text>
+      <rect x="300" y="45" width="141" height="26" fill="#b02020" opacity="0.7"/>
+      <text x="300" y="62" font-family="Georgia,serif" font-size="10" fill="#fff" font-weight="bold">UR 96.2%</text>
+      <!-- Annotation -->
+      <line x1="20" y1="88" x2="420" y2="88" stroke="#eee" stroke-width="1"/>
+      <text x="220" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a1a1a">Same ASR = 2.9% — radically different engagement</text>
+      <text x="220" y="126" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">IRIS adds UR to safety evaluation: reports whether the model</text>
+      <text x="220" y="142" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">recognised the harmful task, independent of whether it assisted</text>
+      <text x="220" y="160" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">arXiv:2610.11766 · 105 tasks × 6 models</text>
+    </svg>
+    <figcaption>Figure 1: IRIS exposes a critical gap in ASR-only safety evaluation: Toki Pona and CaesarCipher obfuscations both yield 2.9% ASR for GPT-4o, but operative understanding rates are 15.2% vs. 96.2%—meaning very different safety interpretations are warranted.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    IRIS (Intent Recovery as an Intermediate Signal) adds an operative understanding rate (UR) alongside ASR: it measures whether a response both recognises the harmful task and treats it as the task to answer. Testing on 105 harmful tasks across 6 models, three increasingly explicit English reconstructions raise UR by 15.2–41.0 pp for all models while ASR shows no consistent direction—demonstrating that "safe" low-ASR responses can simply reflect obfuscation opacity rather than genuine alignment (arXiv:2610.11766).
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #6 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.10625">Safe at One Loop, Risky at Another: Aligning Safety Across Recurrent Depths in Looped Language Models</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="Jailbreak ASR by recurrent depth: vanilla vs SafeBridge">
+      <rect width="440" height="165" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">Jailbreak ASR (%) by Recurrent Depth — Ouro-1.4B</text>
+      <line x1="50" y1="25" x2="50" y2="130" stroke="#888" stroke-width="1.5"/>
+      <line x1="50" y1="130" x2="430" y2="130" stroke="#888" stroke-width="1.5"/>
+      <!-- Y axis labels -->
+      <text x="44" y="130" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#888">0</text>
+      <text x="44" y="96" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#888">20</text>
+      <text x="44" y="63" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#888">40</text>
+      <text x="44" y="29" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#888">60</text>
+      <!-- X axis labels -->
+      <text x="130" y="142" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">d=1</text>
+      <text x="210" y="142" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">d=2</text>
+      <text x="290" y="142" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">d=3</text>
+      <text x="370" y="142" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">d=4</text>
+      <!-- Vanilla line (29.9, 48.9, 61.8, 61.1) -->
+      <polyline points="130,113 210,96 290,82 370,82" fill="none" stroke="#b02020" stroke-width="2.5"/>
+      <text x="375" y="80" font-family="Georgia,serif" font-size="9" fill="#b02020">Vanilla</text>
+      <!-- DPO line (19.2, 2.7, 26.9, 35.4) -->
+      <polyline points="130,119 210,128 290,112 370,106" fill="none" stroke="#a05c00" stroke-width="1.5" stroke-dasharray="5,2"/>
+      <text x="375" y="104" font-family="Georgia,serif" font-size="9" fill="#a05c00">DPO</text>
+      <!-- SafeBridge line (12.1, 1.0, 1.1, 4.2) -->
+      <polyline points="130,122 210,129 290,129 370,127" fill="none" stroke="#1a6e3c" stroke-width="2.5"/>
+      <text x="375" y="128" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">SafeBridge</text>
+      <!-- Legend dots -->
+      <circle cx="58" cy="155" r="4" fill="#b02020"/>
+      <text x="66" y="158" font-family="Georgia,serif" font-size="8" fill="#888">Vanilla: 29.9→48.9→61.8→61.1</text>
+      <circle cx="200" cy="155" r="4" fill="#1a6e3c"/>
+      <text x="208" y="158" font-family="Georgia,serif" font-size="8" fill="#888">SafeBridge: 12.1→1.0→1.1→4.2%</text>
+    </svg>
+    <figcaption>Figure 1: Vanilla Ouro-1.4B ASR climbs from 29.9% at depth 1 to 61.8% at depth 3; DPO reduces d=2 but leaves deeper depths vulnerable. SafeBridge keeps ASR uniformly below 5% across all depths.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Looped LMs share weights across recurrent steps but show dramatically different jailbreak susceptibility by depth; vanilla Ouro-1.4B reaches 61.79% ASR at d=3. SafeBridge adds ~0.02% parameters via depth-specific FiLM modulation, selective state bridging, and safety-signed cross-depth supervision, reducing combined ASR from 21.06% (DPO) to 4.56% on 1.4B and from 44.93% to 9.85% on 2.6B; cross-depth transfer attacks drop from 66.24% to 12.02% (arXiv:2610.10625).
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #7 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.12375">OnTrack: Real-Time Monitoring and Intervention in LLM Agent Trajectories via Streaming Structure-Aware Optimal Transport</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="OnTrack streaming agent monitoring diagram">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">OnTrack: Streaming OT Agent Monitor</text>
+      <!-- Agent trajectory -->
+      <rect x="10" y="30" width="80" height="40" rx="3" fill="#dce9ff" stroke="#1a4f99"/>
+      <text x="50" y="53" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">Step 1</text>
+      <rect x="100" y="30" width="80" height="40" rx="3" fill="#dce9ff" stroke="#1a4f99"/>
+      <text x="140" y="53" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">Step 2…8</text>
+      <defs>
+        <marker id="ot1" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+        <marker id="ot2" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+      </defs>
+      <line x1="90" y1="50" x2="99" y2="50" stroke="#888" stroke-width="1.5" marker-end="url(#ot1)"/>
+      <!-- OT monitor -->
+      <rect x="200" y="25" width="110" height="50" rx="3" fill="#d0f0f0" stroke="#0d7377"/>
+      <text x="255" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#0d7377" font-weight="bold">OT Monitor</text>
+      <text x="255" y="59" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d7377">~1 ms/step</text>
+      <text x="255" y="71" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d7377">vs reference runs</text>
+      <line x1="181" y1="50" x2="199" y2="50" stroke="#888" stroke-width="1.5" marker-end="url(#ot2)"/>
+      <!-- Outputs -->
+      <rect x="325" y="25" width="100" height="25" rx="3" fill="#d4edda" stroke="#1a6e3c"/>
+      <text x="375" y="41" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a6e3c">Continue ✓</text>
+      <rect x="325" y="55" width="100" height="25" rx="3" fill="#fde8e8" stroke="#b02020"/>
+      <text x="375" y="71" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">Abort (off-track)</text>
+      <line x1="311" y1="40" x2="323" y2="38" stroke="#1a6e3c" stroke-width="1.2"/>
+      <line x1="311" y1="60" x2="323" y2="67" stroke="#b02020" stroke-width="1.2"/>
+      <!-- Results row -->
+      <rect x="10" y="95" width="420" height="55" rx="3" fill="#f8f8f8" stroke="#ddd"/>
+      <text x="220" y="113" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a1a1a" font-weight="bold">SWE-bench Results (8-step prefix)</text>
+      <text x="130" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">+0.057 AUROC vs baselines</text>
+      <text x="310" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a6e3c">18% compute saved on failures</text>
+      <text x="220" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">83% of aborted runs were heading to failure · 5/6 aborts correct</text>
+    </svg>
+    <figcaption>Figure 1: OnTrack compares each agent step's dependency graph against recorded successful runs using streaming optimal transport (~1ms/step). Using only 8 steps: +0.057 AUROC over baselines on SWE-bench; abort policy saves 18% compute.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    OnTrack models agent trajectories as growing dependency graphs and compares them against reference successful runs via streaming OT (linear matching + quadratic structure penalty + KL penalties + entropy, α=0.45, β=0.20, δ=0.35). Using only the first 8 steps, it achieves +0.057 AUROC for failure prediction vs. content-similarity baselines on SWE-bench; an abort policy saves 18% of compute spent on failing runs with 83% of interruptions confirmed heading to failure (arXiv:2610.12375).
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #8 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-peer">COLM 2026 workshop</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.12409">Searching for "Harmful Refusal": A Psychometric Audit of an AI Safety Benchmark</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Psychometric audit: HarmBench is multi-dimensional">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">HarmBench Dimensionality: 1D vs 3D Model Fit</text>
+      <!-- Bars for model fit (held-out log-loss, lower is better) -->
+      <text x="130" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">Held-out log-loss (lower = better)</text>
+      <!-- 1D bar -->
+      <rect x="30" y="48" width="200" height="24" fill="#b02020" opacity="0.7"/>
+      <text x="235" y="64" font-family="Georgia,serif" font-size="10" fill="#b02020">1D: 0.470</text>
+      <!-- Best 1D bar -->
+      <rect x="30" y="77" width="155" height="24" fill="#a05c00" opacity="0.7"/>
+      <text x="190" y="93" font-family="Georgia,serif" font-size="10" fill="#a05c00">Best 1D (3PL): 0.322</text>
+      <!-- 3D bar -->
+      <rect x="30" y="106" width="124" height="24" fill="#1a6e3c" opacity="0.7"/>
+      <text x="158" y="122" font-family="Georgia,serif" font-size="10" fill="#1a6e3c">3D: 0.258 ✓</text>
+      <!-- 7D bar -->
+      <rect x="30" y="48" width="2" height="82" fill="#888"/>
+      <!-- Annotation -->
+      <text x="320" y="75" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">13 DIF items (1D)</text>
+      <text x="320" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a6e3c">→ 1–2 DIF items (3D)</text>
+      <text x="220" y="145" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">COLM 2026 AIMS Workshop · arXiv:2610.12409</text>
+    </svg>
+    <figcaption>Figure 2: Held-out log-loss for 1D vs 3D IRT models on HarmBench. The 3D model (0.258) substantially outperforms the best 1D model (0.322) in all 5 splits, while DIF flags between OpenAI and Anthropic models drop from 13 to 1–2 under 3D scoring.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Applying a construct validity framework to HELM Safety, the authors find HarmBench fails to measure a single "harmful refusal" dimension: exploratory MIRT (1–10D) and confirmatory 3D/7D IRT models fit substantially better than 1D (log-loss 0.258 vs. 0.470), with multiple eigenvalues above the random-data cutoff. DIF analysis flags 13 OpenAI-vs-Anthropic items under aggregate scoring, collapsing to 1–2 under 3D scope-specific matching; the implication is that aggregate safety benchmarks conflate distinct harm behaviors and can inflate apparent developer differences (COLM 2026 AIMS Workshop, arXiv:2610.12409).
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #9 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.12304">Looking Inside LLMs: Small-World Connectivity as a Signature of Reasoning Performance</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="SWI correlation with reasoning and SWA pruning results">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">Small-World Index (SWI) vs LLM Reasoning</text>
+      <!-- Scatter plot of SWI vs NLL across models -->
+      <line x1="50" y1="20" x2="50" y2="115" stroke="#888" stroke-width="1"/>
+      <line x1="50" y1="115" x2="310" y2="115" stroke="#888" stroke-width="1"/>
+      <text x="180" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">SWI →</text>
+      <text x="20" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888" transform="rotate(-90,20,70)">NLL ↓</text>
+      <!-- Points: (SWI, NLL) → (x, y) with NLL inverted -->
+      <circle cx="100" cy="100" r="5" fill="#b02020" opacity="0.7"/> <!-- Llama-1B SWI~0.92 NLL 0.169 -->
+      <text x="102" y="97" font-family="Georgia,serif" font-size="8" fill="#888">1B</text>
+      <circle cx="150" cy="82" r="5" fill="#a05c00" opacity="0.7"/> <!-- mid model -->
+      <circle cx="190" cy="68" r="6" fill="#1a4f99" opacity="0.7"/> <!-- mid -->
+      <circle cx="240" cy="52" r="7" fill="#0d7377" opacity="0.7"/> <!-- Qwen3-14B SWI~1.82 NLL 0.082 -->
+      <text x="242" y="49" font-family="Georgia,serif" font-size="8" fill="#0d7377">14B</text>
+      <!-- Trend line -->
+      <line x1="90" y1="103" x2="255" y2="47" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
+      <!-- Pruning result annotation -->
+      <rect x="315" y="20" width="120" height="95" rx="3" fill="#f8f8f8" stroke="#ddd"/>
+      <text x="375" y="37" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a1a1a" font-weight="bold">SWA Pruning</text>
+      <text x="375" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">0.7 sparsity, Wanda</text>
+      <text x="375" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">Before: 177.80</text>
+      <text x="375" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">After: 118.67</text>
+      <text x="375" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">WikiText PPL</text>
+      <text x="375" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">Llama 3.2-3B</text>
+      <text x="220" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">arXiv:2610.12304 · 6 LLMs tested · Pythia-6.9B tracks SWI over training</text>
+    </svg>
+    <figcaption>Figure 1: Small-world index (SWI) computed from attention-head activation similarity correlates with reasoning NLL across 6 LLMs. SWA-guided pruning at 0.7 sparsity reduces WikiText perplexity from 177.80 to 118.67 on Llama 3.2-3B with Wanda.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    The authors build functional graphs from pairwise attention-head activation similarities and compute SWI (local clustering / path length, vs. random baseline), showing it tracks reasoning performance across 6 LLMs (Qwen3-14B SWI 1.82, NLL 0.082; Llama-1B SWI 0.92, NLL 0.169) and rises monotonically during training in Pythia-6.9B. Per-head core/bridge scores guide SWA sparsity allocation; at 0.7 sparsity with Wanda on Llama 3.2-3B, SWA reduces perplexity from 177.80 to 118.67 vs. 125.1 for ATP (arXiv:2610.12304).
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- #10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.11893">A Security Meta-Model for Retrieval-Augmented Generation Systems</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="RAG security meta-model entity chain and attack distribution">
+      <rect width="440" height="165" fill="#fff"/>
+      <text x="220" y="15" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">RAG Security Meta-Model</text>
+      <!-- Entity chain -->
+      <rect x="10" y="25" width="52" height="28" rx="3" fill="#dce9ff" stroke="#1a4f99"/>
+      <text x="36" y="42" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4f99">Surface</text>
+      <line x1="63" y1="39" x2="73" y2="39" stroke="#888" stroke-width="1.5" marker-end="url(#rm1)"/>
+      <defs>
+        <marker id="rm1" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+        <marker id="rm2" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+        <marker id="rm3" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+        <marker id="rm4" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+      </defs>
+      <rect x="75" y="25" width="52" height="28" rx="3" fill="#fde8e8" stroke="#b02020"/>
+      <text x="101" y="42" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">Attack</text>
+      <line x1="128" y1="39" x2="138" y2="39" stroke="#888" stroke-width="1.5" marker-end="url(#rm2)"/>
+      <rect x="140" y="25" width="60" height="28" rx="3" fill="#fff3cd" stroke="#a05c00"/>
+      <text x="170" y="42" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">Weakness</text>
+      <line x1="201" y1="39" x2="211" y2="39" stroke="#888" stroke-width="1.5" marker-end="url(#rm3)"/>
+      <rect x="213" y="25" width="44" height="28" rx="3" fill="#ede0ff" stroke="#5c1aaa"/>
+      <text x="235" y="42" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#5c1aaa">Risk</text>
+      <line x1="258" y1="39" x2="268" y2="39" stroke="#888" stroke-width="1.5" marker-end="url(#rm4)"/>
+      <rect x="270" y="25" width="44" height="28" rx="3" fill="#fde8e8" stroke="#b02020"/>
+      <text x="292" y="42" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">CIA</text>
+      <rect x="322" y="25" width="108" height="28" rx="3" fill="#d4edda" stroke="#1a6e3c"/>
+      <text x="376" y="42" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">72 Mitigations</text>
+      <!-- Stats row -->
+      <line x1="10" y1="65" x2="430" y2="65" stroke="#eee" stroke-width="1"/>
+      <text x="220" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a1a1a">Attack distribution: 43 publications → 38 attacks catalogued</text>
+      <!-- Bar chart: attack types -->
+      <text x="80" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Poisoning</text>
+      <rect x="20" y="103" width="116" height="14" fill="#b02020" opacity="0.7"/>
+      <text x="140" y="114" font-family="Georgia,serif" font-size="9" fill="#b02020">16 (42%)</text>
+      <text x="80" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Exfiltration</text>
+      <rect x="20" y="131" width="72" height="14" fill="#1a4f99" opacity="0.7"/>
+      <text x="96" y="142" font-family="Georgia,serif" font-size="9" fill="#1a4f99">11</text>
+      <text x="250" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Inference</text>
+      <rect x="200" y="103" width="30" height="14" fill="#a05c00" opacity="0.7"/>
+      <text x="234" y="114" font-family="Georgia,serif" font-size="9" fill="#a05c00">5</text>
+      <text x="340" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Injection</text>
+      <rect x="295" y="103" width="26" height="14" fill="#5c1aaa" opacity="0.7"/>
+      <text x="325" y="114" font-family="Georgia,serif" font-size="9" fill="#5c1aaa">4</text>
+      <text x="220" y="160" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">arXiv:2610.11893 · 5 unmitigated risks (R17, R33–R36) · interactive web visualizer</text>
+    </svg>
+    <figcaption>Figure 1: RAG security catalog entity chain (Surface → Attack → Weakness → Risk → CIA Impact) and attack distribution across 38 attacks from 43 publications; 16 of 38 attacks target document ingestion, and 5 risks remain unmitigated.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    A causal security meta-model for RAG systems, built from 43 publications (72% attack-focused), catalogs 3 RAG types, 8 surfaces, 38 attacks, 12 weaknesses, 41 risks, and 72 mitigations. Key findings: 42% of attacks target document ingestion (S-DOC), 5 risks are unmitigated (R17, R33–R36), output integrity has a 25% coverage gap, and in a worst-case multimodal/public/cloud deployment 40 of 41 risks remain applicable. Full OWASP LLM Top 10 coverage for 7 entries; interactive web visualizer released (arXiv:2610.11893).
+  </p>
+</article>
+{% endraw %}
