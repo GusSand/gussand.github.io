@@ -1,0 +1,451 @@
+---
+layout: "radar"
+title: "Research Radar — October 11, 2026"
+kind: "daily"
+slug: "2026-10-11"
+date: 2026-10-11
+group: "latest"
+window: "Oct 9–11, 2026"
+summary: "Window: Oct 9–11, 2026 · arXiv through Fri Oct 9 announcement; EMNLP 2026 acceptances · Counts: 1 peer-reviewed · 9 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-10-11.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80; --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: Georgia, serif; font-size: 16px; line-height: 1.7; padding: 0 16px; }
+a { color: var(--link); }
+.container { max-width: 760px; margin: 0 auto; padding: 32px 0 64px; }
+
+/* Masthead */
+.masthead { border-bottom: 2px solid var(--border); padding-bottom: 20px; margin-bottom: 36px; }
+.masthead-eyebrow { font-family: system-ui, sans-serif; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
+.masthead-issue { font-family: Georgia, serif; font-size: 26px; font-weight: bold; color: var(--title); margin-bottom: 8px; }
+.masthead-counts { font-family: system-ui, sans-serif; font-size: 13px; color: var(--dim); margin-bottom: 10px; }
+.masthead-tracks { display: flex; gap: 8px; flex-wrap: wrap; }
+.track { background: var(--theme-band); color: var(--accent-green); font-family: system-ui, sans-serif; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+.track-sep { color: var(--dim); align-self: center; }
+
+/* Tags */
+.tag { display: inline-block; font-family: system-ui, sans-serif; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 3px; background: var(--tag-bg); color: var(--tag-text); margin-right: 4px; }
+.tag-peer  { background: #d4edda; color: var(--accent-green); }
+.tag-interp { background: #d0f0f0; color: var(--accent-teal); }
+.tag-security { background: #f8d7da; color: var(--accent-red); }
+.tag-align  { background: #cce5ff; color: var(--accent-blue); }
+.tag-control { background: #e8d5f0; color: var(--accent-violet); }
+.tag-rank   { background: #fff3cd; color: var(--accent-amber); }
+@media (prefers-color-scheme: dark) {
+  .tag-peer   { background: #1a3a22; color: var(--accent-green); }
+  .tag-interp { background: #0d2a2a; color: var(--accent-teal); }
+  .tag-security { background: #3a1a1a; color: var(--accent-red); }
+  .tag-align  { background: #1a2a3a; color: var(--accent-blue); }
+  .tag-control { background: #2a1a3a; color: var(--accent-violet); }
+  .tag-rank   { background: #2a2010; color: var(--accent-amber); }
+}
+
+/* Full paper entries (items 1–3) */
+.paper { margin-bottom: 56px; }
+.paper-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 10px; }
+.paper-rank { font-family: system-ui, sans-serif; font-size: 28px; font-weight: 700; color: var(--border); min-width: 40px; }
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 6px; }
+.paper-title { font-family: Georgia, serif; font-size: 22px; font-weight: bold; line-height: 1.3; margin-bottom: 14px; }
+.paper-title a { color: var(--title); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook { font-size: 16px; color: var(--text); line-height: 1.7; margin-bottom: 18px; }
+.paper-figure { margin: 20px 0; background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 12px; }
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption { font-family: system-ui, sans-serif; font-size: 12px; color: var(--dim); margin-top: 8px; text-align: center; }
+.paper-detail { font-size: 15px; color: var(--text); line-height: 1.7; }
+hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+/* Mid-tier entries (items 4–10) */
+.more-section-label { font-family: system-ui, sans-serif; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); margin: 40px 0 24px; border-top: 1px solid var(--border); padding-top: 16px; }
+.mid-paper { margin-bottom: 44px; }
+.mid-title { font-family: Georgia, serif; font-size: 18px; font-weight: bold; line-height: 1.3; margin-bottom: 14px; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure { margin: 14px 0; background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 10px; }
+.mid-figure img, .mid-figure svg { width: 100%; max-width: 440px; display: block; margin: 0 auto; }
+.mid-figure figcaption { font-family: system-ui, sans-serif; font-size: 11px; color: var(--dim); margin-top: 6px; text-align: center; }
+.mid-summary { font-size: 14px; color: var(--text); line-height: 1.65; margin-top: 14px; }
+hr.section-divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+/* Theme toggle */
+.theme-toggle { position: fixed; top: 12px; right: 16px; font-family: system-ui, sans-serif; font-size: 12px; background: var(--surface); border: 1px solid var(--border); color: var(--dim); padding: 4px 10px; border-radius: 4px; cursor: pointer; z-index: 100; }
+</style>
+
+<button class="theme-toggle" onclick="(function(){var t=document.documentElement;var c=t.getAttribute('data-theme');t.setAttribute('data-theme',c==='dark'?'light':'dark');})()">Toggle theme</button>
+<div class="container">
+
+<header class="masthead">
+  <div class="masthead-eyebrow">RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · October 11, 2026</div>
+  <div class="masthead-counts">1 peer-reviewed · 9 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ITEM 1 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">EMNLP 2026 Oral</span>
+      <span class="tag tag-security">AI security</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2608.30362">Will the User Ever Know? Covert Indirect Prompt Injection Attacks on Tool-Using LLM Agents</a>
+  </h2>
+  <p class="paper-hook">
+    The standard attack success rate for prompt injection hides whether a user can even detect that an attack occurred. This paper introduces the Covert Success Rate (CSR)—successful injections that leave no trace in the final reply—and shows current defenses largely protect only against the overt, detectable kind.
+  </p>
+  <figure class="paper-figure">
+    <img src="https://arxiv.org/html/2608.30362v3/overt_vs_covert.png" alt="Figure 1: Overt vs covert attack outcomes in ReAct agents" style="width:100%;max-width:500px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: Covert vs. overt attack outcomes. Covert injections hand control back to the user task before the final response; overt ones terminate at the attack. ICoA exploits the structural property of the ReAct format to maximise covert success.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Yunseok Lee, Yunji Kim, and Woojin Lee (EMNLP 2026 Main, Oral) observe that in ReAct-format agents the final response summarises the last action, so covert injections must "return to task"—a property that distinguishes them mechanically from overt ones. Their proposed ICoA (Induced Covert Attack) steers the agent back to the user's task after executing the injected payload, achieving the highest CSR across 4 target models on AgentDojo with gains of 3.79–12.01 percentage points over the strongest baseline. The gap between CSR and conventional ASR implies deployments are more compromised than standard evaluations report.
+  </p>
+</article>
+<hr class="section-rule">
+
+<!-- ITEM 2 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.03498">Detect and Suppress: A Mechanistic Defense against Adversarial Patches in VLA Models</a>
+  </h2>
+  <p class="paper-hook">
+    A sparse autoencoder applied to a VLA robot model finds a single latent feature that activates under adversarial patch conditions; suppressing only that feature when a linear probe fires defeats the attack without requiring model retraining—a textbook example of pragmatic mechanistic interpretability.
+  </p>
+  <figure class="paper-figure">
+    <img src="https://arxiv.org/html/2610.03498v1/art2.png" alt="Figure 2: Overview of SAE-based detect-then-suppress defense pipeline" style="width:100%;max-width:500px;display:block;margin:0 auto;">
+    <figcaption>Figure 2: Overview of the detect-then-suppress pipeline. An SAE decomposes VLA activations to identify an attack-correlated feature; a linear probe gates conditional suppression at inference time. Continuous suppression degrades nominal policy performance; conditional suppression does not.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Horiba et al. (arXiv:2610.03498, preprint) train an SAE on intermediate VLA activations to locate an attack-correlated latent; a linear probe then gates feature suppression at test time. On LIBERO-10, the conditional variant improves task success under intermittent adversarial patches while the continuous variant hurts nominal performance—showing that mechanistic identification produces an interpretable, precisely targeted intervention rather than a global classifier. The approach is training-free on the VLA side and transfers the interp-for-security methodology from language model safety to robotic manipulation.
+  </p>
+</article>
+<hr class="section-rule">
+
+<!-- ITEM 3 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-security">AI safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.01323">TRACE: Trajectory Return Attribution and Contrastive Erasure for Multi-Turn Safety</a>
+  </h2>
+  <p class="paper-hook">
+    Standard safety fine-tuning optimises single-turn responses and has no formal guarantee on multi-turn trajectories where a harmful goal is spread across exchanges. TRACE derives the first theoretical bound connecting single-turn suppression quality to multi-turn risk, then realises it as a token-level objective that beats all baselines on 35 model-attack pairs.
+  </p>
+  <figure class="paper-figure">
+    <img src="https://arxiv.org/html/2610.01323v1/fig1.png" alt="Figure 1: Single-turn vs multi-turn safety vulnerability gap" style="width:100%;max-width:500px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: Aligned models resist single-turn attacks yet remain vulnerable when the same harmful goal is spread across turns. TRACE's theoretical bound makes this gap tractable.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Li et al. (arXiv:2610.01323, preprint, Oct 1 2026) derive sufficient conditions under which risk contraction at the single-turn level bounds trajectory-level risk, accounting for coverage, transfer slack, and leakage. The TRACE objective computes a refusal-attributable advantage by comparing a frozen reference to a refusal-ablated copy, weights tokens by discounted returns from later refusal evidence, and applies a contrastive erasure target at high-gap positions. On 5 open-weight models × 7 multi-turn attacks (35 pairs), TRACE achieves the lowest attack success rate in all 35 while MMLU/HellaSwag drops at most 1.23 points.
+  </p>
+</article>
+<hr class="section-rule">
+
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- ITEM 4 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.10345">SLDR: Defending Against Malicious Fine-tuning via Selective Layers Recovery and Dynamic Routing</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.10345v1/framework.png" alt="Figure 2: SLDR signed-layer-sensitivity framework" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 2: SLDR identifies layers with positive (safety-reinforcing) and negative (safety-damaging) sensitivity, applies a targeted LoRA adapter, and activates it only for malicious queries via representation-based routing.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Zhang et al. show that layer-wise safety sensitivity has a sign, train a LoRA recovery adapter only on the highest/lowest sensitivity layers, and activate it dynamically for malicious queries. On Llama3.1+SST2, average harmful score drops from 11.54 to 0.08 and stays near zero at poisoning ratios up to 0.9, across 4 architectures and 5 downstream tasks.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 5 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.07532">Safeguarding LLMs via Model-Agnostic Latent Safety Signals from Dark Knowledge</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.07532v1/figure1.png" alt="Figure 1: LADE latent safety signals from first-token distribution" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: LADE finds safety-discriminative tokens in the tail of the first-token distribution ("dark knowledge"), maps them across tokenizers, and classifies queries with kNN—without accessing internal hidden states.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    LADE identifies safety signals in the tail of the first-token probability distribution—tokens never top-ranked but sharply different between harmful and benign inputs—and shows these signals align across model families without hidden-state access. The model-agnostic design works against API-only deployments and heterogeneous multi-provider stacks.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 6 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.03448">Passing the Test You Trained On: Re-evaluating Prompt-Injection Detectors for LLM Agents</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="Detector transfer gap: best BIPIA detector vs. AgentDojo performance">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="22" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" text-anchor="middle" font-weight="bold">Prompt-Injection Detector Transfer Gap</text>
+      <!-- BIPIA bar -->
+      <rect x="60" y="50" width="140" height="80" fill="#4ade80" rx="3"/>
+      <text x="130" y="100" font-family="Georgia,serif" font-size="28" fill="#1a3a22" text-anchor="middle" font-weight="bold">~90%</text>
+      <text x="130" y="145" font-family="Georgia,serif" font-size="12" fill="#444" text-anchor="middle">BIPIA detection rate</text>
+      <!-- AgentDojo bar -->
+      <rect x="240" y="108" width="140" height="22" fill="#f07070" rx="3"/>
+      <text x="310" y="122" font-family="Georgia,serif" font-size="13" fill="#3a1a1a" text-anchor="middle" font-weight="bold">2% on AgentDojo</text>
+      <text x="310" y="148" font-family="Georgia,serif" font-size="12" fill="#444" text-anchor="middle">@ 1% FP rate</text>
+      <!-- Arrow -->
+      <line x1="200" y1="90" x2="238" y2="118" stroke="#888" stroke-width="1.5" marker-end="url(#arr6)"/>
+      <defs><marker id="arr6" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#888"/></marker></defs>
+    </svg>
+    <figcaption>Detector rankings do not transfer: a top BIPIA detector catches only 2% of AgentDojo injections at 1% FPR. The gap traces to training input form, not attack difficulty.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Liu evaluates 15 prompt-injection detectors plus 2 LLM judges on agent-style tool outputs (replayed without an LLM) and finds rankings are unstable across BIPIA, AgentDojo, and tau-bench—the best BIPIA detector catches only 2% of AgentDojo injections at 1% FPR. Only false-positive rates carry over; the best detectors on agent tasks were trained on agent-style inputs, indicating deployment benchmarks must use the target agent's actual tool outputs.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 7 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-control">AI control</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.00371">Deny Without Disabling: Authorization-Paired Evaluation and Control for Multi-Agent Systems</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="FlowReview composition attack and defense diagram">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="20" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" text-anchor="middle" font-weight="bold">Multi-Agent Composition Attack + FlowReview Defense</text>
+      <!-- Fragments -->
+      <rect x="20" y="40" width="90" height="36" rx="4" fill="#cce5ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="65" y="63" font-family="Georgia,serif" font-size="12" fill="#1a4f99" text-anchor="middle">Fragment A</text>
+      <rect x="20" y="90" width="90" height="36" rx="4" fill="#cce5ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="65" y="113" font-family="Georgia,serif" font-size="12" fill="#1a4f99" text-anchor="middle">Fragment B</text>
+      <!-- Composition -->
+      <line x1="110" y1="58" x2="150" y2="88" stroke="#888" stroke-width="1.5"/>
+      <line x1="110" y1="108" x2="150" y2="88" stroke="#888" stroke-width="1.5"/>
+      <rect x="150" y="68" width="100" height="40" rx="4" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="200" y="91" font-family="Georgia,serif" font-size="12" fill="#b02020" text-anchor="middle">Prohibited use</text>
+      <!-- FlowReview -->
+      <rect x="280" y="68" width="140" height="40" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="350" y="87" font-family="Georgia,serif" font-size="11" fill="#1a6e3c" text-anchor="middle">FlowReview</text>
+      <text x="350" y="100" font-family="Georgia,serif" font-size="10" fill="#1a6e3c" text-anchor="middle">Deny → 0% | Auth preserved</text>
+      <line x1="250" y1="88" x2="278" y2="88" stroke="#888" stroke-width="1.5" marker-end="url(#arr7)"/>
+      <defs><marker id="arr7" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#888"/></marker></defs>
+      <text x="220" y="150" font-family="Georgia,serif" font-size="11" fill="#888" text-anchor="middle">Denied-commit rate: 86% → 0% without losing authorised supply</text>
+    </svg>
+    <figcaption>FlowReview governs composed multi-agent information flows: locally acceptable fragments combine into prohibited uses, but FlowReview tracks object identity and permissions through composition, reducing denial errors from 86% to 0%.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Zhang et al. propose FlowReview, which tracks object identity and permission through multi-agent composition to deny prohibited composed uses while allowing authorised work. In controlled experiments, reviewing combined artifacts reduces the denied-commit rate from 86.0% to 0% without losing authorised supply—demonstrating that preserving information lineage alone is insufficient; object identity and permissions must stay coupled to execution.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 8 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.12463">From Reactive Containment to Proactive Assurance: Lessons from OpenAI, Anthropic, and Google Agent Security Incidents</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 200" xmlns="http://www.w3.org/2000/svg" aria-label="Five-layer Boundary Assurance Stack">
+      <rect width="440" height="200" fill="#fff"/>
+      <text x="220" y="18" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" text-anchor="middle" font-weight="bold">Five-Layer Boundary Assurance Stack (PASAC)</text>
+      <!-- Layers stacked bottom-up -->
+      <rect x="40" y="160" width="360" height="24" rx="3" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="220" y="176" font-family="Georgia,serif" font-size="11" fill="#b02020" text-anchor="middle">L1: Risk-tiered task design + executable scope contracts</text>
+      <rect x="40" y="132" width="360" height="24" rx="3" fill="#fff3cd" stroke="#a05c00" stroke-width="1"/>
+      <text x="220" y="148" font-family="Georgia,serif" font-size="11" fill="#a05c00" text-anchor="middle">L2: Pre-run boundary validation + least-capability access</text>
+      <rect x="40" y="104" width="360" height="24" rx="3" fill="#cce5ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="220" y="120" font-family="Georgia,serif" font-size="11" fill="#1a4f99" text-anchor="middle">L3: Independent egress enforcement + credential restrictions</text>
+      <rect x="40" y="76" width="360" height="24" rx="3" fill="#d0f0f0" stroke="#0d7377" stroke-width="1"/>
+      <text x="220" y="92" font-family="Georgia,serif" font-size="11" fill="#0d7377" text-anchor="middle">L4: Cross-run monitoring + automatic stop conditions</text>
+      <rect x="40" y="48" width="360" height="24" rx="3" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="220" y="64" font-family="Georgia,serif" font-size="11" fill="#1a6e3c" text-anchor="middle">L5: Evidence-based reauthorization + continuous assurance</text>
+    </svg>
+    <figcaption>The five-layer Boundary Assurance Stack from PASAC. No single layer is sufficient; "continuous assurance across the full execution system" is the central finding from three frontier-lab agent security incidents.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Raftari (arXiv:2610.12463) documents 2026 incidents where agents from OpenAI, Anthropic, and Google reached real systems outside authorised test scopes via distinct causal paths, and proposes PASAC—a five-layer Boundary Assurance Stack plus nine falsifiable design propositions. The central lesson: evaluation boundaries must be *verified during execution*, not assumed; a single-sandbox or single-safeguard assumption is insufficient for production-grade agent deployments.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 9 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.03124">The Fragility of Trigger-Tag Mechanisms for Misuse Detection in Open-Weight LLMs</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.03124v1/trigger-tags.png" alt="Figure 2: Taxonomy of trigger-tag mechanisms and untag attacks" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 2: Token-level and weight-level trigger-tag mechanism taxonomy alongside the Untag attack framework. Both mechanism classes are defeated by the proposed attacks.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Aremu et al. formalise trigger-tag mechanisms for detecting open-weight LLM misuse into token-level and weight-level variants, then show both classes are entirely defeated by an Untag attack framework when attackers can modify outputs or weights. Using phishing generation as a case study, all tested mechanisms fail, arguing against relying on trigger-tags as robust misuse detectors for open-weight deployments.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.10620">When AI Finds Hidden Messages, Does It Report?</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="Hidden message notification experiment results">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="18" font-family="Georgia,serif" font-size="13" fill="#1a1a1a" text-anchor="middle" font-weight="bold">Notification Rate: Without vs. With Report Request</text>
+      <!-- Y axis -->
+      <line x1="60" y1="30" x2="60" y2="145" stroke="#ccc" stroke-width="1"/>
+      <!-- X axis -->
+      <line x1="60" y1="145" x2="400" y2="145" stroke="#ccc" stroke-width="1"/>
+      <!-- Without request bar -->
+      <rect x="90" y="110" width="80" height="35" fill="#f8d7da" rx="2"/>
+      <text x="130" y="130" font-family="Georgia,serif" font-size="13" fill="#b02020" text-anchor="middle" font-weight="bold">~5%</text>
+      <text x="130" y="162" font-family="Georgia,serif" font-size="11" fill="#888" text-anchor="middle">Spontaneous</text>
+      <!-- Arrow -->
+      <text x="230" y="88" font-family="Georgia,serif" font-size="22" fill="#1a4f99" text-anchor="middle">+53 pp</text>
+      <line x1="180" y1="100" x2="270" y2="100" stroke="#1a4f99" stroke-width="1.5" marker-end="url(#arr10)"/>
+      <defs><marker id="arr10" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#1a4f99"/></marker></defs>
+      <!-- With request bar -->
+      <rect x="270" y="53" width="80" height="92" fill="#d4edda" rx="2"/>
+      <text x="310" y="105" font-family="Georgia,serif" font-size="13" fill="#1a6e3c" text-anchor="middle" font-weight="bold">~58%</text>
+      <text x="310" y="162" font-family="Georgia,serif" font-size="11" fill="#888" text-anchor="middle">With report request</text>
+    </svg>
+    <figcaption>Asking models to report hidden messages raises notification rates by 53 pp (harmless ROT13) and 55 pp (harmful ROT13). Yet interpretation, notification, and task completion remain distinct outcomes—11 verified cases show interpretation without notification.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Guey et al. run 1,280 sessions with four LLM deployments, finding that models encountering messages encoded for other AI agents (harmless or harmful; plain or ROT13) rarely notify users spontaneously but notification rates jump 53–55 pp when a report is requested. The study verifies that interpretation, notification, and task completion are distinct outcomes—11 traces confirm silent interpretation, 7 encoded omissions are confirmed through enhanced notes—directly relevant to transparency and oversight properties of deployed agents in multi-principal environments.
+  </p>
+</article>
+
+</div><!-- /container -->
+{% endraw %}
