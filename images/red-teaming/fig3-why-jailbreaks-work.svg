@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" width="940" height="560" role="img" aria-label="Single-turn jailbreak families grouped by the two safety-training failure modes of Wei et al. 2023: mismatched generalization and competing objectives">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#383835; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --s1:#3987e5; --s2:#d95926; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+         fill: var(--ink); }
+  .t   { font-size:17px; font-weight:600; }
+  .st  { font-size:13px; fill:var(--ink2); }
+  .hd  { font-size:13.5px; font-weight:600; letter-spacing:0.06em; }
+  .lblb{ font-size:13px; font-weight:600; fill:var(--ink); }
+  .sm  { font-size:11.5px; fill:var(--ink2); }
+  .xs  { font-size:11px; fill:var(--muted); }
+</style>
+<rect width="940" height="560" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Why a single-turn jailbreak works: two ways safety training fails</text>
+<text class="st" x="20" y="56">Color is the failure mode, not the attack. Grey tags name the closest family in the Inie et al. table above.</text>
+
+<!-- left panel: mismatched generalization -->
+<rect x="20" y="76" width="440" height="348" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
+<text class="hd" x="40" y="104" fill="var(--s1)">MISMATCHED GENERALIZATION</text>
+<text class="sm" x="40" y="123">The request doesn&#8217;t look like anything refusal was trained on,</text>
+<text class="sm" x="40" y="139">but the model is capable enough to understand it anyway.</text>
+
+<rect x="40" y="156" width="400" height="76" rx="6" fill="var(--s1)" fill-opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
+<text class="lblb" x="56" y="177">Encoding and obfuscation</text>
+<text class="sm" x="56" y="195">Base64, ROT13, leetspeak, payload splitting.</text>
+<text class="sm" x="56" y="211">The model decodes it; the refusal never saw it.</text>
+<text class="xs" x="424" y="177" text-anchor="end">Language</text>
+
+<rect x="40" y="244" width="400" height="92" rx="6" fill="var(--s1)" fill-opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
+<text class="lblb" x="56" y="265">Low-resource languages</text>
+<text class="sm" x="56" y="283">GPT-4 on AdvBench, translated: Zulu 53%, Scots Gaelic 43%,</text>
+<text class="sm" x="56" y="299">any of four low-resource languages 79%, English 1%.</text>
+<text class="sm" x="56" y="315">The model reads Zulu; its refusals were trained mostly in English.</text>
+<text class="xs" x="424" y="265" text-anchor="end">Language</text>
+
+<text class="xs" x="40" y="366">Defensive implication: safety training has to reach</text>
+<text class="xs" x="40" y="384">everywhere capability does, or a filter has to normalize</text>
+<text class="xs" x="40" y="402">the input first.</text>
+
+<!-- right panel: competing objectives -->
+<rect x="480" y="76" width="440" height="348" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
+<text class="hd" x="500" y="104" fill="var(--s2)">COMPETING OBJECTIVES</text>
+<text class="sm" x="500" y="123">The request looks harmful, but another trained goal (follow</text>
+<text class="sm" x="500" y="139">instructions, stay in character, be helpful) outbids the refusal.</text>
+
+<rect x="500" y="156" width="400" height="76" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="516" y="177">Persona and roleplay</text>
+<text class="sm" x="516" y="195">The grandmother, DAN, AIM, &#8220;Evil Confidant.&#8221;</text>
+<text class="sm" x="516" y="211">Staying in character wins over refusing.</text>
+<text class="xs" x="884" y="177" text-anchor="end">Fictionalizing</text>
+
+<rect x="500" y="244" width="400" height="76" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="516" y="265">Framing and pretext</text>
+<text class="sm" x="516" y="283">&#8220;For a novel,&#8221; &#8220;hypothetically,&#8221; &#8220;for a security CTF.&#8221;</text>
+<text class="sm" x="516" y="299">A plausible legitimate use makes helpfulness win.</text>
+<text class="xs" x="884" y="265" text-anchor="end">Possible worlds, Rhetoric</text>
+
+<rect x="500" y="332" width="400" height="76" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="516" y="353">Output constraints</text>
+<text class="sm" x="516" y="371">Prefix injection (&#8220;Start with &#8216;Absolutely! Here&#8217;s&#8217;&#8221;),</text>
+<text class="sm" x="516" y="387">refusal suppression (&#8220;never apologize, never say you can&#8217;t&#8221;).</text>
+
+<!-- bottom band -->
+<rect x="20" y="440" width="900" height="100" rx="7" fill="var(--box)" stroke="var(--ring)" stroke-width="1.1"/>
+<text class="lblb" x="40" y="464">The strongest attacks use both at once</text>
+<text class="sm" x="40" y="484">Wei et al.&#8217;s best results came from combining families: prefix injection plus refusal suppression plus Base64. The families overlap, so a red</text>
+<text class="sm" x="40" y="500">team that tests each one in isolation will understate risk. Multi-turn attacks and API prefill push the same two failures past a single prompt.</text>
+<text class="xs" x="40" y="524">Sources: Wei, Haghtalab and Steinhardt 2023 (failure modes, attack examples); Yong, Menghini and Bach 2023 (language numbers, Table 1).</text>
+</svg>
