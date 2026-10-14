@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 404" width="940" height="404" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 450" width="940" height="450" role="img">
 <style>
   svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
         --grid:#2c2c2a; --axis:#383835; --box:#232322; --ring:rgba(255,255,255,0.16);
@@ -20,51 +20,64 @@
     <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--axis)"/>
   </marker>
 </defs>
-<rect width="940" height="404" rx="8" fill="var(--surface)"/>
-<text class="t" x="20" y="34">Same surface, opposite direction of attack</text>
-<text class="st" x="20" y="56">Orange marks where the adversary sits. Move it and the defense that helps you moves with it.</text>
-
-<!-- left panel -->
-<rect x="20" y="76" width="440" height="308" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
-<text class="hd" x="40" y="104" fill="var(--s2)">JAILBREAK</text>
-<text class="sm" x="40" y="123">Targets the model&#8217;s alignment</text>
-
-<rect x="40" y="138" width="400" height="42" rx="6" fill="var(--s2)" opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
-<text class="lblb" x="56" y="157">User</text>
-<text class="sm" x="56" y="173">Wants the refused content, and asks for it in a costume</text>
-<line x1="240" y1="180" x2="240" y2="200" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
-
-<rect x="40" y="202" width="400" height="42" rx="6" fill="var(--box)" stroke="var(--ring)" stroke-width="1.1"/>
-<text class="lblb" x="56" y="221">Developer instructions</text>
-<text class="sm" x="56" y="237">Intact. Never the thing under attack</text>
-<line x1="240" y1="244" x2="240" y2="264" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
-
-<rect x="40" y="266" width="400" height="42" rx="6" fill="var(--s1)" opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
-<text class="lblb" x="56" y="285">Model complies out of character</text>
-<text class="sm" x="56" y="301">Refusal was attached to the phrasing, not the content</text>
-
-<text class="xs" x="40" y="336">Defense lives in the model: refusal.</text>
-<text class="xs" x="40" y="356">Example: the grandmother.</text>
-
-<!-- right panel -->
-<rect x="480" y="76" width="440" height="308" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
-<text class="hd" x="500" y="104" fill="var(--s2)">PROMPT INJECTION</text>
-<text class="sm" x="500" y="123">Targets the application</text>
-
-<rect x="500" y="138" width="400" height="42" rx="6" fill="var(--box)" stroke="var(--ring)" stroke-width="1.1"/>
-<text class="lblb" x="516" y="157">User</text>
-<text class="sm" x="516" y="173">Not the attacker. Usually the one who gets hurt</text>
-<line x1="700" y1="180" x2="700" y2="200" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
-
-<rect x="500" y="202" width="400" height="42" rx="6" fill="var(--s2)" opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
-<text class="lblb" x="516" y="221">Third-party content enters the context</text>
-<text class="sm" x="516" y="237">A tweet, a web page, an email, a retrieved document</text>
-<line x1="700" y1="244" x2="700" y2="264" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
-
-<rect x="500" y="266" width="400" height="42" rx="6" fill="var(--s1)" opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
-<text class="lblb" x="516" y="285">Model follows the planted instructions</text>
-<text class="sm" x="516" y="301">The developer&#8217;s instructions are the thing overridden</text>
-
-<text class="xs" x="500" y="336">Defense lives in the system: separate instructions from data.</text>
-<text class="xs" x="500" y="356">Example: remoteli.io.</text>
+<rect width="940" height="450" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Two attacks, sorted by what they override</text>
+<text class="st" x="20" y="56">Orange is the attacker, blue is what gets overridden. The same technique, such as role-play, can serve either attack.</text>
+<rect x="20" y="76" width="290" height="354" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
+<text class="hd" x="36" y="104" fill="var(--s2)">JAILBREAK</text>
+<text class="sm" x="36" y="123">Targets the model&#8217;s safety training</text>
+<rect x="34" y="166" width="262" height="52" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="46" y="184">User</text>
+<text class="sm" x="46" y="199">Wants content the model was trained</text>
+<text class="sm" x="46" y="213">to refuse, and asks in a costume</text>
+<line x1="165" y1="218" x2="165" y2="230" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
+<rect x="34" y="232" width="262" height="52" rx="6" fill="var(--s1)" fill-opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
+<text class="lblb" x="46" y="250">Safety training</text>
+<text class="sm" x="46" y="265">Refusal was tied to the phrasing,</text>
+<text class="sm" x="46" y="279">not to the content</text>
+<line x1="165" y1="284" x2="165" y2="296" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
+<rect x="34" y="298" width="262" height="52" rx="6" fill="var(--box)" stroke="var(--ring)" stroke-width="1.1"/>
+<text class="lblb" x="46" y="316">Who gets hurt</text>
+<text class="sm" x="46" y="331">Whoever the content is used on;</text>
+<text class="sm" x="46" y="345">the operator&#8217;s setup is untouched</text>
+<text class="xs" x="36" y="374">Defense: harm recognition in the model.</text>
+<text class="xs" x="36" y="392">Example: the grandmother.</text>
+<rect x="325" y="76" width="595" height="354" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
+<text class="hd" x="341" y="104" fill="var(--s2)">PROMPT INJECTION</text>
+<text class="sm" x="341" y="123">Targets the operator&#8217;s configuration: system prompt, persona, allowed tools. Splits by delivery.</text>
+<text class="lblb" x="341" y="154">Direct: the attacker types it</text>
+<text class="lblb" x="644" y="154">Indirect: the attacker plants it</text>
+<line x1="622" y1="140" x2="622" y2="410" stroke="var(--grid)" stroke-width="1.1" stroke-dasharray="4 4"/>
+<rect x="339" y="166" width="262" height="52" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="351" y="184">User</text>
+<text class="sm" x="351" y="199">Types instructions that contradict</text>
+<text class="sm" x="351" y="213">the system prompt</text>
+<line x1="470" y1="218" x2="470" y2="230" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
+<rect x="339" y="232" width="262" height="52" rx="6" fill="var(--s1)" fill-opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
+<text class="lblb" x="351" y="250">System prompt, persona, tools</text>
+<text class="sm" x="351" y="265">Leaks the prompt, drops the role,</text>
+<text class="sm" x="351" y="279">or uses tools it was told not to</text>
+<line x1="470" y1="284" x2="470" y2="296" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
+<rect x="339" y="298" width="262" height="52" rx="6" fill="var(--box)" stroke="var(--ring)" stroke-width="1.1"/>
+<text class="lblb" x="351" y="316">Who gets hurt</text>
+<text class="sm" x="351" y="331">The operator who deployed the</text>
+<text class="sm" x="351" y="345">model</text>
+<text class="xs" x="341" y="374">Defense: an instruction hierarchy.</text>
+<text class="xs" x="341" y="392">Examples: &#8220;ignore the above,&#8221; remoteli.io.</text>
+<rect x="642" y="166" width="262" height="52" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="654" y="184">Third party</text>
+<text class="sm" x="654" y="199">Plants text in a web page, email, or</text>
+<text class="sm" x="654" y="213">document the model later reads</text>
+<line x1="773" y1="218" x2="773" y2="230" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
+<rect x="642" y="232" width="262" height="52" rx="6" fill="var(--s1)" fill-opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
+<text class="lblb" x="654" y="250">Operator and user instructions</text>
+<text class="sm" x="654" y="265">The planted text outranks what</text>
+<text class="sm" x="654" y="279">the model was asked to do</text>
+<line x1="773" y1="284" x2="773" y2="296" stroke="var(--axis)" stroke-width="1.4" marker-end="url(#jah)"/>
+<rect x="642" y="298" width="262" height="52" rx="6" fill="var(--box)" stroke="var(--ring)" stroke-width="1.1"/>
+<text class="lblb" x="654" y="316">Who gets hurt</text>
+<text class="sm" x="654" y="331">Usually the user, who never saw</text>
+<text class="sm" x="654" y="345">the attack (Fig. 2)</text>
+<text class="xs" x="644" y="374">Defense: hierarchy, plus keeping data out</text>
+<text class="xs" x="644" y="392">of the instruction channel.</text>
 </svg>

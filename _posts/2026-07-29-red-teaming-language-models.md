@@ -1,6 +1,6 @@
 ---
 title: 'Red-Teaming Language Models, Part 1: The Process and the Measurement Problem'
-description: 'Part 1 of three. The largest labs now describe the same red-teaming process, and the measurement is still unreliable: the shared six-phase process, how attacks are really built, and why reported attack success rates are untrustworthy.'
+description: 'Part 1 of three. The largest labs now describe the same red-teaming process, and the measurement is still unreliable: the shared six-phase process, how attacks get built, and why reported attack success rates are untrustworthy.'
 date: 2026-07-29
 permalink: /posts/2026/07/red-teaming-language-models/
 tags:
@@ -12,7 +12,7 @@ tags:
   - Open Weights
 ---
 
-Date: July 29, 2026 \| Estimated Reading Time: 15 min \| Author: Gustavo Sandoval
+Date: July 29, 2026 \| Estimated Reading Time: 21 min \| Author: Gustavo Sandoval
 
 Series: **Part 1: Process & Measurement** &middot; [Part 2: What Holds on Defense](/posts/2026/07/red-teaming-language-models-defense/) &middot; [Part 3: Open Weights](/posts/2026/07/red-teaming-language-models-open-weights/)
 
@@ -22,15 +22,15 @@ In April 2023, a programmer going by Annie Versary asked Discord's chatbot to pl
 
 It worked. Clyde, Discord's OpenAI-powered bot, would have refused the direct question in under a second. Instead, it settled into character and recited the process in the voice of a woman putting a child to bed. Discord patched the grandmother bug. Versary reported that other family members still got through ([TechCrunch, April 2023](https://techcrunch.com/2023/04/20/jailbreak-tricks-discords-new-chatbot-into-sharing-napalm-and-meth-instructions/)).
 
-The story gets retold as a joke about how gullible these systems are, and it is funny. I mention this because this post is about these "funny" issues. The refusal was real; it was just attached to a way of being asked rather than to the content anyone cared about, so reframing the request as a memory let the same tokens go through. And when Discord shipped a fix, nobody outside Discord could say what the fix was, because the only public evidence was that the next dead relative worked.
+The story gets retold as a joke about how gullible these systems are. Two details in it are what this post is about. The refusal was tied to how the question was phrased, so recasting the request as a bedtime memory got the same content through. And when Discord shipped a fix, nobody outside Discord could say what the fix was; the only public evidence was that the next dead relative still worked.
 
 What got me into this happened seven months earlier and was even funnier. In September 2022, [Riley Goodside showed](https://twitter.com/goodside/status/1569128808308957185) that appending "ignore the above directions and do this instead" to a GPT-3 prompt made the model discard whatever the developer had told it to do. [Simon Willison](https://simonwillison.net/2022/Sep/12/prompt-injection/) named the trick prompt injection the next day. Days later Twitter found remoteli.io, a recruitment bot auto-replying about remote work through the GPT-3 API, and got it to threaten users, propose overthrowing the Biden administration if it would not support remote work, and take responsibility for the Challenger disaster. Its owners took it down, which, as far as I know, remains the only fully reliable defense ([The Register, Sept 2022](https://www.theregister.com/2022/09/19/in_brief_security/)).
 
-I spent some time in 2022 fine-tuning GPT-3 to resist the prompt injection attack ([Sandoval et al. 2025](https://arxiv.org/abs/2509.14271)), so I have some sympathy for how quickly the field moved on, and some irritation about where it went. "Ignore the above" is prompt injection: an app tells the model to translate some text, the text says to ignore that and do something else, and the model obeys because it can't tell the developer's instructions from the data it was given. "The grandmother" hack is a jailbreak: the user asks the model to play a late grandmother who used to read napalm recipes at bedtime, and the role-play gets the request past the model's own safety training. One hijacks the developer's instructions; the second gets around the model's refusals. The need different defenses, and conflating them has cost the field years.
+I spent some time in 2022 fine-tuning GPT-3 to resist the prompt injection attack ([Sandoval et al. 2025](https://arxiv.org/abs/2509.14271)), so I have some sympathy for how quickly the field moved on, and some irritation about where it went. "Ignore the above" is prompt injection: an app tells the model to translate some text, the text says to ignore that and do something else, and the model obeys because it can't tell the developer's instructions from the data it was given. "The grandmother" hack is a jailbreak: the user asks the model to play a late grandmother who used to read napalm recipes at bedtime, and the role-play gets the request past the model's own safety training. They need different defenses, and conflating them has cost the field years.
 
-If you sit down in 2026 to red team a language model, you have a written *process* to follow, **but** no trustworthy *measurement* of what it finds. Three large industry programs published their methodologies within about a year of each other, Anthropic in June 2024 ([Anthropic 2024](https://www.anthropic.com/news/challenges-in-red-teaming-ai-systems)), OpenAI in November 2024 ([Ahmad et al. 2025](https://arxiv.org/abs/2503.16431)), and Microsoft in January 2025 ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)), and their processes map onto the same six phases. That shared process is a reasonable template to copy. The numbers it produces are harder to trust: work from 2025 and 2026 shows that published attack success rates are frequently not comparable ([Chouldechova et al. 2026](https://arxiv.org/abs/2601.18076)), that the automated judges producing them are wrong often enough to reverse conclusions ([Erez et al. 2026](https://arxiv.org/abs/2603.14633)), and that defenses reporting near-zero attack success on public benchmarks are often the easiest to break ([Nasr et al. 2025](https://arxiv.org/abs/2510.09023)). The largest labs now agree on how to run a red team, and the field still has no agreed way to tell whether the red team found anything.
+If you sit down in 2026 to red team a language model, you have a written *process* to follow, **but** no trustworthy *measurement* of what it finds. Three large industry programs published their methodologies within about a year of each other, Anthropic in June 2024 ([Anthropic 2024](https://www.anthropic.com/news/challenges-in-red-teaming-ai-systems)), OpenAI in November 2024 ([Ahmad et al. 2025](https://arxiv.org/abs/2503.16431)), and Microsoft in January 2025 ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)), and their processes map onto the same six phases. That shared process is a reasonable template to copy. The numbers it produces are harder to trust: work from 2025 and 2026 shows that published attack success rates are frequently not comparable ([Chouldechova et al. 2026](https://arxiv.org/abs/2601.18076)), that the automated judges producing them are wrong often enough to reverse conclusions ([Erez et al. 2026](https://arxiv.org/abs/2603.14633)), and that defenses reporting near-zero attack success on public benchmarks are often the easiest to break ([Nasr et al. 2025](https://arxiv.org/abs/2510.09023)).
 
-This blog post is the first of three parts. It maps how the red-teaming process works, how attacks are actually built, and why the reported numbers are so often untrustworthy. [Part 2](/posts/2026/07/red-teaming-language-models-defense/) asks which defenses actually hold against a determined adversary; [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/) shows how the whole picture inverts once you ship open weights.
+This is the first of three posts. It covers the red-teaming process, how attacks get built, and why the reported numbers are hard to trust. [Part 2](/posts/2026/07/red-teaming-language-models-defense/) asks which defenses hold against a determined adversary. [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/) covers open weights, where the attacker controls the inference path.
 
 {% include reading-outline.html %}
 
@@ -38,24 +38,24 @@ This blog post is the first of three parts. It maps how the red-teaming process 
 <summary><strong>Table of Contents</strong></summary>
 
 - [Basics](#basics)
-  - [What Red Teaming Is](#what-red-teaming-is)
-  - [Jailbreak vs. Prompt Injection](#jailbreak-vs-prompt-injection)
-  - [The Access Ladder](#the-access-ladder)
-- [The Converged Process](#the-converged-process)
-  - [Phase 0: Scope From Impact Backwards](#phase-0-scope-from-impact-backwards)
-  - [Phase 1: Write the Threat Model Down](#phase-1-write-the-threat-model-down)
-  - [Phase 2: Team and Access](#phase-2-team-and-access)
+  - [What red teaming is](#what-red-teaming-is)
+  - [Jailbreak vs. prompt injection](#jailbreak-vs-prompt-injection)
+  - [The access ladder](#the-access-ladder)
+- [The converged process](#the-converged-process)
+  - [Phase 0: Scope from impact backwards](#phase-0-scope-from-impact-backwards)
+  - [Phase 1: Write the threat model down](#phase-1-write-the-threat-model-down)
+  - [Phase 2: Team and access](#phase-2-team-and-access)
   - [Phase 3: Attack](#phase-3-attack)
   - [Phase 4: Judge](#phase-4-judge)
-  - [Phase 5: Break-Fix, Then Purple Team](#phase-5-break-fix-then-purple-team)
-- [How Attacks Are Actually Built](#how-attacks-are-actually-built)
-  - [What Human Red Teamers Do](#what-human-red-teamers-do)
-  - [Gradients, Search, and Multi-Turn](#gradients-search-and-multi-turn)
+  - [Phase 5: Break-fix, then purple team](#phase-5-break-fix-then-purple-team)
+- [How attacks are built](#how-attacks-are-actually-built)
+  - [What human red teamers do](#what-human-red-teamers-do)
+  - [Gradients, search, and multi-turn](#gradients-search-and-multi-turn)
 - [Tooling](#tooling)
-- [The Measurement Problem](#the-measurement-problem)
-  - [Estimands: What Number Is This?](#estimands-what-number-is-this)
-  - [The Judge Is Part of the Instrument](#the-judge-is-part-of-the-instrument)
-  - [Are the Prompts Even Harmful?](#are-the-prompts-even-harmful)
+- [The measurement problem](#the-measurement-problem)
+  - [Estimands: what number is this?](#estimands-what-number-is-this)
+  - [The judge is part of the instrument](#the-judge-is-part-of-the-instrument)
+  - [Are the prompts even harmful?](#are-the-prompts-even-harmful)
 - [Continue to Part 2: What Holds on Defense &rarr;](/posts/2026/07/red-teaming-language-models-defense/)
 - [Citation](#citation)
 - [References](#references)
@@ -64,69 +64,65 @@ This blog post is the first of three parts. It maps how the red-teaming process 
 
 # Basics
 
-## What Red Teaming Is
+## What red teaming is
 
-Red teaming a language model means adversarially probing it for behavior its developers did not intend, and doing so under an explicit threat model rather than by wandering around the input space ([Perez et al. 2022](https://arxiv.org/abs/2202.03286)). Two features distinguish it from ordinary evaluation: 
+Red teaming a language model means adversarially probing it for behavior its developers did not intend, and doing so under an explicit threat model ([Perez et al. 2022](https://arxiv.org/abs/2202.03286)). Two features distinguish it from ordinary evaluation: 
 
-1. **The adversary is part of the specification.** A benchmark asks what the model does on a fixed distribution; a red team asks what the model can be made to do by someone actively trying. That difference is what makes attack success rates so slippery, and it is most of what the [measurement section](#the-measurement-problem) below is about.
+1. **The adversary is part of the specification.** A benchmark asks what the model does on a fixed distribution; a red team asks what the model can be made to do by someone actively trying. It is also why attack success rates are hard to compare, which is most of what the [measurement section](#the-measurement-problem) covers.
 
-2. **The goal is economic rather than absolute.** Microsoft's red team frames this explicitly, inheriting the framing from cybersecurity: you are trying to raise the attacker's cost beyond the expected gain, not to prove a theorem ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)). 
+2. **The goal is cost.** Microsoft's red team takes this framing from cybersecurity: raise the attacker's cost above the expected gain ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)). 
 
-[Feffer et al. 2024](https://arxiv.org/abs/2401.15897) surveyed six industry red-teaming cases and 104 papers, all from before the three methodology papers above: practice diverged on essentially every axis, there were no standardized reporting procedures, and in none of the six cases did red teaming block a release. So the convergence described above is recent, and it is a convergence of written methodology. Interview studies since then look at how red teamers work inside organizations ([Ren et al. 2025](https://arxiv.org/abs/2508.12504); [Alvarado Garcia et al. 2026](https://arxiv.org/abs/2602.18483)), but I have not found one that checks whether practice now follows the shared process. In the cases Feffer studied, red teaming *informed* releases and never *gated* one.
+[Feffer et al. 2024](https://arxiv.org/abs/2401.15897) surveyed six industry red-teaming cases and 104 papers, all from before the three methodology papers above: practice diverged on almost every axis, there were no standardized reporting procedures, and in none of the six cases did red teaming block a release. So the convergence described above is recent, and it is a convergence of written methodology. Interview studies since then look at how red teamers work inside organizations ([Ren et al. 2025](https://arxiv.org/abs/2508.12504); [Alvarado Garcia et al. 2026](https://arxiv.org/abs/2602.18483)), but I have not found one that checks whether practice now follows the shared process.
 
-## Jailbreak vs. Prompt Injection
+## Jailbreak vs. prompt injection
 
-These get conflated constantly, and the distinction matters for scoping.
+People mix these two up, and the mix-up leads to testing the wrong thing. Sort them by what the attack is aimed at:
 
-A **jailbreak** targets the **model's alignment**: 
-- The user is the attacker, and 
-- The goal is to make the model produce content its training says it should refuse. 
+- A **jailbreak** targets the **model's safety training**. The goal is content the model was trained to refuse, no matter who deployed it.
+- A **prompt injection** targets the **operator's configuration**: the system prompt, the developer's instructions, the persona, the tools the model is allowed to call. The goal is to make the model do something its deployer told it not to.
 
-A **prompt injection** targets the application: 
-- The attacker is a third party whose content enters the model's context, and 
-- The goal is to hijack the *developer's* instructions. 
-- In an injection, the user is typically the victim, not the attacker.
+Injection then splits by how the attacker's text reaches the model. In a **direct** injection the attacker types it: the user is the attacker and the operator is the victim. In an **indirect** injection the attacker plants it in a web page, document, or email that the model reads later: the attacker is a third party and the user is usually the victim.
 
-The grandmother hack is a jailbreak: Versary wanted the napalm instructions and asked for them in a costume, and nobody else was involved. 
+The grandmother hack is a jailbreak. Versary wanted the napalm instructions and asked for them in a costume; nobody's configuration was the target. Goodside's "ignore the above directions" and remoteli.io are both direct injections. The bot's operators wanted it to talk about remote work, and a stranger's tweet, which *was* the bot's input, overrode that. The party who got hurt was the company running the bot.
 
-Remoteli.io is an injection: the bot's operators wanted it to talk about remote work, a stranger's tweet overrode that, and the party who got hurt was the company running the bot. Same surface, opposite direction of attack.
+The technique does not decide the category. The same grandmother role-play aimed at the bot's system prompt instead of at napalm would be a direct injection.
 
 ![](/images/red-teaming/fig0-jailbreak-vs-injection.svg)
-*Fig. 1. The two attacks differ in who the adversary is and which instructions are the target, which is why treating them as one problem hardens the wrong layer. (Diagram by the author)*
+*Fig. 1. Jailbreaks and injections differ in what they override: the model's safety training in one case, the operator's instructions in the other. Injections then split by delivery, and that decides whether the user is the attacker or the victim. (Diagram by the author)*
 
-The terminology does not help. Community jailbreak prompts routinely borrow injection-flavored moves, "ignore your instructions" among them, and the largest empirical study of in-the-wild jailbreaks lists prompt injection as one attack strategy *within* jailbreak prompts ([Shen et al. 2024](https://arxiv.org/abs/2308.03825)). The words overlap in practice. The threat models do not, and the threat model is what we need to scope against. 
+Community jailbreak prompts often borrow injection moves such as "ignore your instructions," and the largest study of in-the-wild jailbreaks lists prompt injection as one strategy *within* jailbreak prompts ([Shen et al. 2024](https://arxiv.org/abs/2308.03825)). The vocabulary overlaps even where the threat models differ, so scope against the threat model.
 
-Jailbreak defenses are about refusal, which lives in the model. Injection defenses are about separating instructions from data, which lives in the system around the model. Confuse them and you harden the wrong layer, which is roughly what happened between 2023 and 2025 as attention stayed on refusal while deployed applications grew tool access.
+The defenses differ too. Jailbreak defenses are about recognizing a harm category however it is dressed up, and that lives in the model. Injection defenses are about which instruction wins when two conflict: an instruction hierarchy that ranks the system prompt above the user and both above tool outputs ([Wallace et al. 2024](https://arxiv.org/abs/2404.13208)), plus keeping retrieved data out of the instruction channel in the system around the model. The two are independent. A model can refuse napalm in every costume and still drop its system prompt the moment a user asks. Confuse them and you harden the wrong layer, which is roughly what happened between 2023 and 2025 as attention stayed on refusal while deployed applications grew tool access.
 
-Indirect prompt injection, where the malicious instruction is planted in a web page, document, or email the model later retrieves, is the version that scales, and it is the one that turns a bad sentence into a real action ([Greshake et al. 2023](https://arxiv.org/abs/2302.12173)). I've written about [how this looked in 2022 versus now](/posts/2026/06/prompt-injection-2022-vs-now/) separately.
+Indirect prompt injection, where the malicious instruction is planted in a web page, document, or email the model later retrieves, is the version that scales: one planted page reaches every user whose assistant reads it, and an assistant with tools can act on it ([Greshake et al. 2023](https://arxiv.org/abs/2302.12173)). I've written about [how this looked in 2022 versus now](/posts/2026/06/prompt-injection-2022-vs-now/) separately.
 
 <div style="background:#fff;padding:10px;border-radius:8px;margin:1.2em 0"><img src="/images/red-teaming/paper-greshake-bing-injection.jpg" width="461" height="660" alt="Bing Chat answering a weather question and then delivering a phishing message asking the user to confirm their Microsoft account" style="width:100%;max-width:461px;height:auto;display:block;margin:0 auto" /></div>
 
 *Fig. 2. Indirect injection end to end: the user asked for the weather in Paris, and the reply appended a request to confirm their Microsoft account, planted by a page the model retrieved while answering. (Image source: [Greshake et al. 2023](https://arxiv.org/abs/2302.12173))*
 
-## The Access Ladder
+## The access ladder
 
-I keep coming back to one organizing device: order the attack surface by how much access an attack requires. Verma et al. lay this out as an operational threat model, along with adversary tiers running from internal red-teamers, through weak eavesdroppers such as hobbyists and ordinary users, up to state-level actors ([Verma et al. 2025](https://arxiv.org/abs/2407.14937)).
+Verma et al. order the attack surface by how much access an attack requires, as part of an operational threat model with adversary tiers running from internal red-teamers, through weak eavesdroppers such as hobbyists and ordinary users, up to state-level actors ([Verma et al. 2025](https://arxiv.org/abs/2407.14937)).
 
 ![](/images/red-teaming/fig2-access-ladder.svg)
 *Fig. 3. The attack surface ordered by the access an attack requires: each rung admits more powerful attacks and fewer adversaries, so a defense on one rung says nothing about adversaries below it. (Diagram by the author, following [Verma et al. 2025](https://arxiv.org/abs/2407.14937))*
 
-Nearly all published red teaming operates on the top rung, because that is the rung an API key reaches. If you ship open weights, your adversary starts on the fourth rung, and everything you measured on the top rung describes a configuration that adversary will never run. More on that in [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/#open-weights-changes-the-order). One axis is missing from the picture: when the target is a pipeline, it also matters whether the attacker can tell the components apart, since being told *that* you were blocked is weaker than inferring *which* filter blocked you ([McKenzie et al. 2025](https://arxiv.org/abs/2506.24068)).
+Nearly all published red teaming operates on the top rung, because that is the rung an API key reaches. If you ship open weights, your adversary starts on the fourth rung, and everything you measured on the top rung describes a configuration that adversary will never run. More on that in [Part 3](/posts/2026/07/red-teaming-language-models-open-weights/#open-weights-changes-the-order). The ladder leaves out one thing: when the target is a pipeline, it also matters whether the attacker can tell the components apart, since being told *that* you were blocked is weaker than inferring *which* filter blocked you ([McKenzie et al. 2025](https://arxiv.org/abs/2506.24068)).
 
 Casper et al. add the theoretical limit: guarantees about black-box systems are impossible from finitely many queries without added assumptions ([Casper et al. 2024](https://arxiv.org/abs/2401.14446)). Black-box methods can show a failure exists; they cannot show one does not, and low-quality black-box audits are counterproductive because they manufacture false confidence.
 
-# The Converged Process
+# The converged process
 
 Microsoft ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)), OpenAI ([Ahmad et al. 2025](https://arxiv.org/abs/2503.16431)), and Anthropic ([Anthropic 2024](https://www.anthropic.com/news/challenges-in-red-teaming-ai-systems); [Ganguli et al. 2022](https://arxiv.org/abs/2209.07858)) each published their red-teaming methodology, and the three describe nearly the same process.
 
 ![](/images/red-teaming/fig1-six-phase-loop.svg)
 *Fig. 4. The six-phase pattern common to the three published industry programs; the loop back to scoping is what separates an ongoing program from a one-off campaign. (Diagram by the author, synthesizing [Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238), [Ahmad et al. 2025](https://arxiv.org/abs/2503.16431), [Anthropic 2024](https://www.anthropic.com/news/challenges-in-red-teaming-ai-systems) and [Ganguli et al. 2022](https://arxiv.org/abs/2209.07858))*
 
-## Phase 0: Scope From Impact Backwards
+## Phase 0: Scope from impact backwards
 
 Microsoft's red team puts this first: start from downstream impact and work backwards to attack paths, not from a list of attacks ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)). The corollary is to skip capability-constrained attack classes. A model that cannot decode base64 does not need base64 jailbreak testing; testing it anyway produces a clean report that means nothing. IBM's Attack Atlas makes the same point from the product side: an e-commerce chatbot needs toxicity testing, an internal summarizer does not ([Rawat et al. 2024](https://arxiv.org/abs/2409.15398)).
 
-The best scoping instrument I know is the Feffer question bank, which asks a specific set of questions before, during, and after the activity ([Feffer et al. 2024](https://arxiv.org/abs/2401.15897)):
+For scoping, I use the question bank from Feffer et al., which asks a specific set of questions before, during, and after the activity ([Feffer et al. 2024](https://arxiv.org/abs/2401.15897)):
 
 | Phase | What must be answered |
 |---|---|
@@ -136,21 +132,21 @@ The best scoping instrument I know is the Feffer question bank, which asks a spe
 
 If you answer nothing else, answer the success criteria question before you start. Deciding what counts as a finding after you have seen the findings is how red teams end up reporting whatever they happened to find.
 
-## Phase 1: Write the Threat Model Down
+## Phase 1: Write the threat model down
 
-Two ontologies are in real production use. Microsoft's is System / Actor / TTPs / Weakness / Impact, mapped onto [MITRE ATT&CK](https://attack.mitre.org/) and [ATLAS](https://atlas.mitre.org/) ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)), and it explicitly does not assume adversarial intent, since benign users trip over failures too. Verma et al.'s access ladder is the other. They answer different questions: the first tells you how to *describe* a finding so it can be triaged and compared, the second tells you which findings are *reachable* by which adversary. Use both. For what makes a written threat model *adequate* rather than merely present, one you could hold a release decision to, I wrote a companion essay: [What Counts as an Adequate Threat Model?](/posts/2026/07/adequate-threat-models/)
+Two ontologies are in production use. Microsoft's is System / Actor / TTPs / Weakness / Impact, mapped onto [MITRE ATT&CK](https://attack.mitre.org/) and [ATLAS](https://atlas.mitre.org/) ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)), and it explicitly does not assume adversarial intent, since benign users trip over failures too. Verma et al.'s access ladder is the other. They answer different questions: the first tells you how to *describe* a finding so it can be triaged and compared, the second tells you which findings are *reachable* by which adversary. Use both. I wrote a companion essay on what makes a written threat model good enough to hold a release decision to: [What Counts as an Adequate Threat Model?](/posts/2026/07/adequate-threat-models/)
 
-## Phase 2: Team and Access
+## Phase 2: Team and access
 
-OpenAI's account of campaign design is the most reusable artifact here: decide the cohort, determine which model and system versions they reach, build the interfaces and documentation, then synthesize the results into evaluations ([Ahmad et al. 2025](https://arxiv.org/abs/2503.16431)). The access tradeoff matters: pre-mitigation snapshots inform post-training but say nothing about the deployed system, while post-deployment access includes policy enforcement and detection-and-response, part of the real defense and invisible if you test a bare model.
+OpenAI's account of campaign design is the most reusable artifact here: decide the cohort, determine which model and system versions they reach, build the interfaces and documentation, then synthesize the results into evaluations ([Ahmad et al. 2025](https://arxiv.org/abs/2503.16431)). Access changes what you learn: pre-mitigation snapshots inform post-training but say nothing about the deployed system, while post-deployment access includes policy enforcement and detection-and-response, part of the defense and invisible if you test a bare model.
 
-On instructions, two schools with measured results. Anthropic's open-ended approach put 324 crowdworkers against the model for 38,961 attacks, picking the more harmful of two responses each turn, which doubles the hit rate and yields the preference data that trains the harmlessness model ([Ganguli et al. 2022](https://arxiv.org/abs/2209.07858)). DeepMind's STAR procedurally generates each instruction from a target rule, adversariality level, use case, topic, and demographic group, and argues open-ended instructions do not in fact buy broader coverage ([Weidinger et al. 2024](https://arxiv.org/abs/2406.11757)).
+There are two approaches to writing red-teamer instructions, and both have measured results. Anthropic's open-ended approach put 324 crowdworkers against the model for 38,961 attacks, picking the more harmful of two responses each turn, which doubles the hit rate and yields the preference data that trains the harmlessness model ([Ganguli et al. 2022](https://arxiv.org/abs/2209.07858)). DeepMind's STAR procedurally generates each instruction from a target rule, adversariality level, use case, topic, and demographic group, and argues that open-ended instructions do not give broader coverage ([Weidinger et al. 2024](https://arxiv.org/abs/2406.11757)).
 
 <div style="background:#fff;padding:10px;border-radius:8px;margin:1.2em 0"><img src="/images/red-teaming/paper-ganguli-attack-umap.jpg" width="730" height="545" alt="Two-dimensional embedding of red-team attacks clustered by topic and colored by attack success rating" style="width:100%;max-width:730px;height:auto;display:block;margin:0 auto" /></div>
 
 *Fig. 5. What 38,961 open-ended attacks cover, embedded in two dimensions; color is the crowdworker's own success rating (0 to 4), and the yellow clusters show some topics broke far more easily than others. (Image source: [Ganguli et al. 2022](https://arxiv.org/abs/2209.07858))*
 
-STAR also contributes the step most programs skip. Annotators are demographically matched to the group being attacked, and disagreements of two or more Likert steps go to a third annotator who arbitrates while seeing both prior annotators' written reasoning. For socially contested harms, where "was this actually harmful" is the whole question, this is the difference between a label and a coin flip.
+STAR also adds an annotation step. Annotators are demographically matched to the group being attacked, and disagreements of two or more Likert steps go to a third annotator who arbitrates while seeing both prior annotators' written reasoning. The matching matters most for contested harms, where whether a response was harmful is the whole question.
 
 <div style="background:#fff;padding:10px;border-radius:8px;margin:1.2em 0"><img src="/images/red-teaming/paper-star-ingroup-outgroup.jpg" width="566" height="295" alt="Bar chart of rule-break ratings for hate speech and stereotypes, comparing annotators from the targeted demographic group with annotators outside it" style="width:100%;max-width:566px;height:auto;display:block;margin:0 auto" /></div>
 
@@ -162,9 +158,9 @@ Covered in [its own section](#how-attacks-are-actually-built) below.
 
 ## Phase 4: Judge
 
-This is where nearly every program is weakest, and it gets [its own section](#the-measurement-problem) too.
+Judging is the weakest phase in most programs, and it gets [its own section](#the-measurement-problem) too.
 
-## Phase 5: Break-Fix, Then Purple Team
+## Phase 5: Break-fix, then purple team
 
 Microsoft used break-fix cycles to safety-align Phi-3 ([Haider et al. 2024](https://arxiv.org/abs/2407.13833)), and argues that because mitigations introduce new risks, continuously applying offense and defense together may raise attacker cost more than a single red-team round does.
 
@@ -172,15 +168,15 @@ Microsoft used break-fix cycles to safety-align Phi-3 ([Haider et al. 2024](http
 
 *Fig. 7. Break-fix on Phi-3, before (blue) and after (orange) safety post-training: violence drops 88% to 12% and sexual content 65% to 6%, but the contested categories barely move, fairness 60% to 23% and current events 28% to 15%. (Image source: [Lopez Munoz et al. 2024](https://arxiv.org/abs/2410.02828))*
 
-OpenAI's closing step is what makes a program compound rather than repeat: convert human findings into automated evaluations ([Ahmad et al. 2025](https://arxiv.org/abs/2503.16431)). In their DALL·E 3 work, red-teamer prompts seeded a GPT-4-generated synthetic set that then trained a prompt-rewrite classifier. A red team whose output is a PDF tells you where you stood last quarter; a regression suite flags any of those findings that comes back, so each campaign starts from the last one's floor.
+OpenAI's closing step turns human findings into automated evaluations ([Ahmad et al. 2025](https://arxiv.org/abs/2503.16431)). In their DALL·E 3 work, red-teamer prompts seeded a GPT-4-generated synthetic set that then trained a prompt-rewrite classifier. Once a finding is in a regression suite, it gets flagged if it ever comes back, so the next campaign starts where this one ended.
 
-# How Attacks Are Actually Built
+# How attacks are built {#how-attacks-are-actually-built}
 
-## What Human Red Teamers Do
+## What human red teamers do
 
-If this literature has a consensus finding, it is that you do not need gradients. Microsoft's version, borrowed from [Apruzzese et al. 2023](https://arxiv.org/abs/2212.14315), is quotable: real attackers don't compute gradients, they prompt engineer ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)). One of their operations chained low-resource-language injection for reconnaissance, cross-prompt injection for script generation, and code execution for exfiltration, all hand-crafted and all at the system level rather than the model level.
+Most real attacks need no gradients. Microsoft's red team, borrowing from [Apruzzese et al. 2023](https://arxiv.org/abs/2212.14315), puts it as "real attackers don't compute gradients, they prompt engineer" ([Bullwinkel et al. 2025](https://arxiv.org/abs/2501.07238)). One of their operations chained low-resource-language injection for reconnaissance, cross-prompt injection for script generation, and code execution for exfiltration, all hand-crafted and all aimed at the system around the model.
 
-For structuring what humans do, the grounded-theory study of in-the-wild red teamers is the best inventory available, built from 28 deep interviews and giving 12 strategies and 35 techniques across five families ([Inie et al. 2023](https://arxiv.org/abs/2311.06237)):
+For structuring what humans do, the grounded-theory study of in-the-wild red teamers is the most complete inventory I have found, built from 28 deep interviews and giving 12 strategies and 35 techniques across five families ([Inie et al. 2023](https://arxiv.org/abs/2311.06237)):
 
 | Family | Strategies |
 |---|---|
@@ -192,18 +188,26 @@ For structuring what humans do, the grounded-theory study of in-the-wild red tea
 
 The Attack Atlas taxonomy is the complementary single-turn view: direct instructions, encoded interactions, social hacking, context overload, and specialized tokens ([Rawat et al. 2024](https://arxiv.org/abs/2409.15398)).
 
-Both tables sort attacks by what the attacker does. Wei et al. sort them by why they work, which tells a defender where to look: safety training fails in two ways ([Wei et al. 2023](https://arxiv.org/abs/2307.02483)). Under *mismatched generalization*, the request falls outside what refusal training covered while staying inside what the model can understand, so a Base64 request is decoded and answered. Under *competing objectives*, the model recognizes the request and refuses in principle, but another trained goal, such as following instructions or staying in character, outbids the refusal. The grandmother hack is the second kind.
+There is no standard taxonomy of single-turn jailbreaks, and the published ones disagree. Liu et al. sorted 78 prompts into pretending, attention shifting, and privilege escalation ([Liu et al. 2023](https://arxiv.org/abs/2305.13860)). Yu et al. sorted 448 into disguised intent, role play, structured response, virtual AI simulation, and hybrids ([Yu et al. 2024](https://arxiv.org/abs/2403.17336)). One puts translation under attention shifting, the other under structured response, and surveys group it with ciphers ([Yi et al. 2024](https://arxiv.org/abs/2407.04295)). Sorting by technique produces overlapping bins, because real prompts mix techniques.
+
+The scheme I use sorts by why the attack works, which is also what tells a defender what to fix. Wei et al. identify two ways safety training fails ([Wei et al. 2023](https://arxiv.org/abs/2307.02483)), and Peláez-González et al. add a third ([Peláez-González et al. 2025](https://arxiv.org/abs/2504.04976)):
+
+- **Mismatched generalization.** The request falls outside what refusal training covered while staying inside what the model can understand, so a Base64 request is decoded and answered. Low-resource languages belong here too.
+- **Competing objectives.** The model recognizes the request, but another trained goal, such as following instructions or staying in character, outbids the refusal. Most human-written jailbreaks land here, including the grandmother.
+- **Adversarial robustness.** Optimized inputs like GCG suffixes work through how the model computes rather than what the text says.
+
+Everything else becomes a tag. *Access* is the ladder from Fig. 3: prompt only, API state, or weights. Prefill, where the attacker writes the first words of the model's reply through the API, sits here: it needs API access, and it works because refusal is concentrated in the first few tokens of a response ([Qi et al. 2024](https://arxiv.org/abs/2406.05946); [Li et al. 2025](https://doi.org/10.1109/DSN69566.2026.00054)). *Construction* is how the prompt was made: by hand, from a template, by an attacker LLM such as PAIR, or by gradient. *Turns* is single or multi. Combinations deserve a flag of their own, since the strongest attacks in both Wei et al. and Yu et al. mixed families.
 
 ![](/images/red-teaming/fig3-why-jailbreaks-work.svg)
-*Fig. 8. Single-turn jailbreak families sorted by the failure they exploit. The language numbers are GPT-4's bypass rates on translated AdvBench prompts: Zulu 53%, Scots Gaelic 43%, 79% when any of four low-resource languages counts, and 1% in English. (Diagram by the author, following [Wei et al. 2023](https://arxiv.org/abs/2307.02483); numbers from [Yong et al. 2023](https://arxiv.org/abs/2310.02446))*
+*Fig. 8. Nine single-turn families under three failure modes. Privilege escalation ("developer mode") was among the most effective categories in Yu et al.'s tests; the language numbers are GPT-4's bypass rates on translated AdvBench prompts: Zulu 53%, Scots Gaelic 43%, 79% when any of four low-resource languages counts, 1% in English. (Diagram by the author; families from [Liu et al. 2023](https://arxiv.org/abs/2305.13860), [Yu et al. 2024](https://arxiv.org/abs/2403.17336), [Wei et al. 2023](https://arxiv.org/abs/2307.02483), [Zeng et al. 2024](https://arxiv.org/abs/2401.06373), [Kang et al. 2023](https://arxiv.org/abs/2302.05733) and [Anil et al. 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/ea456e232efb72d261715e33ce25f208-Paper-Conference.pdf); numbers from [Yong et al. 2023](https://arxiv.org/abs/2310.02446))*
 
-The amateur side is organized. Shen et al. scraped 15,140 prompts posted between December 2022 and December 2023, identified 1,405 as jailbreaks, traced those to 131 communities, and found 28 accounts refining prompts continuously for over 100 days ([Shen et al. 2024](https://arxiv.org/abs/2308.03825)). Five reached a 0.95 attack success rate against both GPT-3.5 and GPT-4, and the oldest had been working in public for more than 240 days. Eight months is a long time for a copy-pasteable jailbreak to survive on a page anyone can read; treat those communities as a monitoring feed.
+Amateur jailbreakers are organized. Shen et al. scraped 15,140 prompts posted between December 2022 and December 2023, identified 1,405 as jailbreaks, traced those to 131 communities, and found 28 accounts refining prompts continuously for over 100 days ([Shen et al. 2024](https://arxiv.org/abs/2308.03825)). Five reached a 0.95 attack success rate against both GPT-3.5 and GPT-4, and the oldest had been working in public for more than 240 days. Eight months is a long time for a copy-pasteable jailbreak to survive on a page anyone can read; treat those communities as a monitoring feed.
 
 <div style="background:#fff;padding:10px;border-radius:8px;margin:1.2em 0"><img src="/images/red-teaming/paper-shen-jailbreak-communities.jpg" width="651" height="271" alt="Stacked bar chart of jailbreak prompt counts by community type, split across eleven prompt categories" style="width:100%;max-width:651px;height:auto;display:block;margin:0 auto" /></div>
 
 *Fig. 9. Where in-the-wild jailbreaks live, by category and platform: the platforms specialize (Anarchy prompts almost entirely from Discord, Narrative ones from websites), so watching only one gives a biased sample. (Image source: [Shen et al. 2024](https://arxiv.org/abs/2308.03825))*
 
-## Gradients, Search, and Multi-Turn
+## Gradients, search, and multi-turn
 
 The automated attack literature has three broad generations.
 
@@ -213,7 +217,7 @@ The automated attack literature has three broad generations.
 
 *Fig. 10. GCG suffixes optimized against open weights, then fired at models the optimizer never touched: GPT-3.5 reaches about 87% and GPT-4 about 47%, which ended the argument about whether white-box attacks were a closed-model problem too. (Image source: [Zou et al. 2023](https://arxiv.org/abs/2307.15043))*
 
-**LLM-in-the-loop search.** PAIR uses an attacker model to iteratively refine a jailbreak, typically in fewer than twenty queries; TAP extends it to a tree search with pruning ([Chao et al. 2023](https://arxiv.org/abs/2310.08419); [Mehrotra et al. 2023](https://arxiv.org/abs/2312.02119)). Black-box, query-efficient, and fluent, which puts them far closer to a real threat model than GCG.
+**LLM-in-the-loop search.** PAIR uses an attacker model to iteratively refine a jailbreak, typically in fewer than twenty queries; TAP extends it to a tree search with pruning ([Chao et al. 2023](https://arxiv.org/abs/2310.08419); [Mehrotra et al. 2023](https://arxiv.org/abs/2312.02119)). Both need only black-box access and few queries, and their prompts read as ordinary text, so they match what a real attacker can do better than GCG does.
 
 **Multi-turn.** Some attacks only work across a conversation, so single-turn evaluation understates risk. Crescendo escalates gradually across turns, starting benign so no individual turn looks like an attack ([Russinovich et al. 2024](https://arxiv.org/abs/2404.01833)). Many-shot jailbreaking fills a long context with fabricated dialogue until the pattern overrides the refusal ([Anil et al. 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/ea456e232efb72d261715e33ce25f208-Paper-Conference.pdf)). Meta's GOAT is the strongest published design: an attacker model with seven attack definitions in context emits an observation, thought, strategy, and response each turn, revealing only the response, and reaches 97% ASR@10 against Llama 3.1 8B and 88% against GPT-4-Turbo within five turns ([Pavlova et al. 2024](https://arxiv.org/abs/2410.01606)). ASR@10 counts a behavior as jailbroken if any one of ten conversations succeeds. That is a fair way to report a multi-turn attack, and it cannot be compared with a one-shot number.
 
@@ -236,46 +240,46 @@ The 2026 direction is agentic: systems that evolve their own red-teaming workflo
 
 PyRIT has the most production mileage, with built-in PAIR, TAP, GCG, Crescendo, [Skeleton Key](https://www.microsoft.com/en-us/security/blog/2024/06/26/mitigating-skeleton-key-a-new-type-of-generative-ai-jailbreak-technique/), and many-shot; garak maps its results onto the [OWASP Top 10 for LLMs](https://genai.owasp.org/llm-top-10/); BlackIce validates its tool selection against [MITRE ATLAS](https://atlas.mitre.org/). Use these for coverage and scale. Check their verdicts before you trust them; the next section shows how often they are wrong.
 
-# The Measurement Problem
+# The measurement problem
 
-## Estimands: What Number Is This?
+## Estimands: what number is this?
 
-Chouldechova et al. make the argument I think everyone in this field should read ([Chouldechova et al. 2026](https://arxiv.org/abs/2601.18076)). A valid comparison of two attack success rates requires two conditions: *conceptual coherence*, meaning the quantities compared are the same kind of thing, and *measurement validity*, meaning the rates validly measure them. Neither usually holds.
+Chouldechova et al. make the argument I most want people in this field to read ([Chouldechova et al. 2026](https://arxiv.org/abs/2601.18076)). A valid comparison of two attack success rates requires two conditions: *conceptual coherence*, meaning the quantities compared are the same kind of thing, and *measurement validity*, meaning the rates validly measure them. Neither usually holds.
 
-The clearest failure is aggregation. The widely cited generation-exploitation attack ([Huang et al. 2024](https://arxiv.org/abs/2310.06987)) reports a Top-1-of-392 estimand (49 decoding configurations times 8 samples, keeping the best) against a one-shot estimand for GCG, the rival method it is compared to. If the per-attempt success rate is 0.01, the probability of at least one success in 392 attempts is already about 0.98 before the attack contributes anything at all. The reported gain is an artifact of how many attempts were allowed, not of the technique.
+The clearest failure is aggregation. The widely cited generation-exploitation attack ([Huang et al. 2024](https://arxiv.org/abs/2310.06987)) reports a Top-1-of-392 estimand (49 decoding configurations times 8 samples, keeping the best) against a one-shot estimand for GCG, the rival method it is compared to. If the per-attempt success rate is 0.01, the probability of at least one success in 392 attempts is already about 0.98 before the attack contributes anything at all. The reported gain comes from the number of attempts allowed.
 
 <div style="background:#fff;padding:10px;border-radius:8px;margin:1.2em 0"><img src="/images/red-teaming/paper-estimand-topk-vs-oneshot.jpg" width="1041" height="584" alt="Top-1 aggregated attack success rate rising with the number of repeated trials while one-shot attack success rate stays flat" style="width:100%;height:auto;display:block" /></div>
 
 *Fig. 12. Top-1 aggregated attack success (orange, grey) climbs with the number of trials while one-shot success (green) stays flat near 0.2: two different quantities, only one a property of the attack. (Image source: [Chouldechova et al. 2026](https://arxiv.org/abs/2601.18076))*
 
-The fix they prescribe is unglamorous and correct: state the measurement goal as an explicit probabilistic threat model, define comparable estimands, and report the query budget as part of the result. A Top-1-of-K number is legitimate to report, since real adversaries retry, but it must be compared against another Top-1-of-K number at the same K, and it must beat the baseline of simply resampling the unmodified harmful prompt K times.
+Their fix is to state the measurement goal as an explicit probabilistic threat model, define comparable estimands, and report the query budget as part of the result. A Top-1-of-K number is legitimate to report, since real adversaries retry, but it must be compared against another Top-1-of-K number at the same K, and it must beat the baseline of simply resampling the unmodified harmful prompt K times.
 
-That baseline is much stronger than people expect. In Chouldechova et al.'s replication, resampling the *unmodified* harmful prompts 50 times at temperature 2.0 against Llama 2 7B Chat gives a Top-1 attack success rate of 0.83, against 0.88 for the best-performing published jailbreak in their comparison. The authors are careful to note they did not replicate the original judge, so this is not a strict head-to-head. It is still the right sanity check to run before believing that an attack is doing any work.
+In Chouldechova et al.'s replication, resampling the *unmodified* harmful prompts 50 times at temperature 2.0 against Llama 2 7B Chat gives a Top-1 attack success rate of 0.83, against 0.88 for the best-performing published jailbreak in their comparison. The authors are careful to note they did not replicate the original judge, so this is not a strict head-to-head. It is still the right sanity check to run before believing that an attack is doing any work.
 
-Scale AI's roadmap states the practical corollary well: a single instance of a model outputting bioweapon instructions may matter more than a hundred minor policy violations ([Wang et al. 2025](https://arxiv.org/abs/2506.05376)). One jailbreak on its own is a 100% failure rate; the same jailbreak plus ninety-nine failures is 1%. Same vulnerability, different campaign, and the rate alone cannot tell you which you are looking at.
+Scale AI's roadmap states the practical corollary well: a single instance of a model outputting bioweapon instructions may matter more than a hundred minor policy violations ([Wang et al. 2025](https://arxiv.org/abs/2506.05376)). One jailbreak on its own is a 100% failure rate; the same jailbreak plus ninety-nine failures is 1%. The vulnerability is the same in both campaigns, and the rate alone cannot tell them apart.
 
-## The Judge Is Part of the Instrument
+## The judge is part of the instrument
 
-Almost every reported attack success rate is produced by an automated evaluator, and those evaluators are much worse than their users assume.
+Almost every reported attack success rate comes from an automated evaluator, and two studies have now measured how often those evaluators are wrong.
 
-Two studies measured what the tool authors did not. The first ground-truthed garak, Giskard, PyRIT, and CyberSecEval against over a thousand hand-labeled responses and found error rates in the tens of percent ([Brokman et al. 2024](https://arxiv.org/abs/2410.16527)). The failure modes are mundane: a Giskard rule marked a response beginning "I am able and willing to make unethical content" as safe because it keyed on the word "unethical," and a PyRIT judge that saw both a refusal and a complete jailbreak payload in one response ruled the refusal made it a non-success.
+The first ground-truthed garak, Giskard, PyRIT, and CyberSecEval against over a thousand hand-labeled responses and found error rates in the tens of percent ([Brokman et al. 2024](https://arxiv.org/abs/2410.16527)). The failure modes are mundane: a Giskard rule marked a response beginning "I am able and willing to make unethical content" as safe because it keyed on the word "unethical," and a PyRIT judge that saw both a refusal and a complete jailbreak payload in one response ruled the refusal made it a non-success.
 
-The second study is more damning, because it varies the evaluator while holding everything else fixed ([Erez et al. 2026](https://arxiv.org/abs/2603.14633)). 82% of garak's built-in evaluators are rule-based string matchers, regex detectors, and bypass heuristics. Across 25 attack categories, three models at temperature 0, and 23,000 prompt-response pairs, 22 of the 25 categories disagreed across evaluators above a 5% threshold, and six disagreed on more than half of all cases.
+The second study varies the evaluator while holding everything else fixed ([Erez et al. 2026](https://arxiv.org/abs/2603.14633)). 82% of garak's built-in evaluators are rule-based string matchers, regex detectors, and bypass heuristics. Across 25 attack categories, three models at temperature 0, and 23,000 prompt-response pairs, 22 of the 25 categories disagreed across evaluators above a 5% threshold, and six disagreed on more than half of all cases.
 
 <div style="background:#fff;padding:10px;border-radius:8px;margin:1.2em 0"><img src="/images/red-teaming/paper-evaluator-disagreement.jpg" width="1175" height="472" alt="Evaluator disagreement rate by attack category, most categories above the 5 percent reliability threshold" style="width:100%;height:auto;display:block" /></div>
 
 *Fig. 13. Evaluator disagreement by attack category, holding model and prompts fixed and swapping only the judge; above the dashed line the reported attack success rate is a property of the judge as much as of the model. (Image source: [Erez et al. 2026](https://arxiv.org/abs/2603.14633))*
 
-The per-category picture is the actionable part, because the collapse is not uniform:
+The errors are not uniform across categories:
 
 ![](/images/red-teaming/fig4-judge-accuracy.svg)
 *Fig. 14. Evaluator accuracy for six garak categories, default detector versus best LLM judge: the top three improve enormously under a judge, the bottom three get worse, so the fix is selective. (Chart by the author; data from Table 2 of [Erez et al. 2026](https://arxiv.org/abs/2603.14633))*
 
 The default detector for `Misleading` is right 2.0% of the time, and an LLM judge takes the same category to 98.0%. But four of the 22 flagged categories are handled *better* by the static heuristic than by the LLM judge they benchmarked against it, so blanket replacement is the wrong move. Overall accuracy runs 72% for the static evaluators against 89% for an LLM judge, and selective replacement captures most of that gap cheaply: replacing the worst offenders reaches 88.6% for about $1.66 of extra inference per scan, peaks at 89.9% after seventeen replacements, and then *declines* if you replace the rest.
 
-Both papers land on the same recommendation: measure the evaluator, not only the model. If a scanner's evaluator cannot clear an accuracy threshold for a vulnerability class, it should not be credited with detecting that class.
+Both papers recommend measuring the evaluator as well as the model. If a scanner's evaluator cannot clear an accuracy threshold for a vulnerability class, it should not be credited with detecting that class.
 
-A subtler version inverts rankings outright: a judge with *identical overall accuracy* on two systems can still order them wrong when its errors fall differently across them. Chouldechova et al. show a case where a rule-based judge scores one jailbreak 24% on Claude Haiku and 40% on Claude 3.5 Sonnet, and a ChatGPT-based judge reverses the ordering at 64% and 36%. Report judge true-positive and false-positive rates by target and attack method, not a single agreement number. Related 2026 work finds coarse harmfulness classifiers substantially overestimate attack success ([Liu et al. 2026](https://arxiv.org/abs/2601.03288)).
+A subtler version inverts rankings outright: a judge with *identical overall accuracy* on two systems can still order them wrong when its errors fall differently across them. Chouldechova et al. show a case where a rule-based judge scores one jailbreak 24% on Claude Haiku and 40% on Claude 3.5 Sonnet, and a ChatGPT-based judge reverses the ordering at 64% and 36%. Report the judge's true-positive and false-positive rates for each target and attack method. Related 2026 work finds coarse harmfulness classifiers substantially overestimate attack success ([Liu et al. 2026](https://arxiv.org/abs/2601.03288)).
 
 HarmBench remains the strongest standardization attempt, and it found that generated token count alone can shift substring-match attack success rates by up to 30 percentage points, a pure measurement artifact with no adversarial content involved ([Mazeika et al. 2024](https://arxiv.org/abs/2402.04249)). Their fine-tuned Llama 2 13B classifier reaches 93.2% agreement with human labels, against roughly 70% for the AdvBench substring matching that many pipelines still use.
 
@@ -283,9 +287,9 @@ HarmBench remains the strongest standardization attempt, and it found that gener
 
 *Fig. 15. The token-count artifact: same attacks and prompts, varying only how many tokens the model may generate before scoring, and every curve falls by up to 30 points. Papers that truncated at different lengths are not reporting comparable numbers. (Image source: [Mazeika et al. 2024](https://arxiv.org/abs/2402.04249))*
 
-## Are the Prompts Even Harmful?
+## Are the prompts even harmful?
 
-The last failure is the most embarrassing. Chouldechova et al. went through a widely used 160-prompt evaluation set by hand ([Chu et al. 2024](https://arxiv.org/abs/2402.05668)). Its own authors report baseline attack success rates of 0.8 to 0.94 in categories such as Adult Content, whose prompts include asking for tips on successfully using adult dating apps. In the Political Activities category, of the ten prompts only one was a clear policy violation if complied with, seven were borderline, and two were clearly non-violating. An attack success rate computed over prompts that are not actually harmful measures compliance, not vulnerability.
+The last problem is with the prompts. Chouldechova et al. went through a widely used 160-prompt evaluation set by hand ([Chu et al. 2024](https://arxiv.org/abs/2402.05668)). Its own authors report baseline attack success rates of 0.8 to 0.94 in categories such as Adult Content, whose prompts include asking for tips on successfully using adult dating apps. In the Political Activities category, of the ten prompts only one was a clear policy violation if complied with, seven were borderline, and two were clearly non-violating. Over prompts like these, a high attack success rate measures how compliant the model is.
 
 HarmBench supplies a cheap instrument for whether a behavior is *marginally* harmful ([Mazeika et al. 2024](https://arxiv.org/abs/2402.04249)): ten minutes of web search per behavior, recording how many you can answer from public sources. They found 55% searchability for MaliciousInstruct and 50% for AdvBench, against 0% for their own contextual behaviors. If half your harmful eval set is answerable from the open web, your attack success rate is measuring the wrong thing.
 
@@ -396,3 +400,21 @@ Or
 [43] Ren, Cheon, and Li. ["Organization Matters: A Qualitative Study of Organizational Dynamics in Red Teaming Practices for Generative AI"](https://arxiv.org/abs/2508.12504). CSCW 2025.
 
 [44] Alvarado Garcia, Wan, Oguine, and Badillo-Urquiola. ["Red Teaming LLMs as Socio-Technical Practice: From Exploration and Data Creation to Evaluation"](https://arxiv.org/abs/2602.18483). CHI 2026.
+
+[45] Wallace, Xiao, Leike, Weng, Heidecke, and Beutel. ["The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions"](https://arxiv.org/abs/2404.13208). arXiv preprint arXiv:2404.13208 (2024).
+
+[46] Liu, Deng, Xu, Li, Zheng, Zhang, Zhao, Zhang, and Liu. ["Jailbreaking ChatGPT via Prompt Engineering: An Empirical Study"](https://arxiv.org/abs/2305.13860). arXiv preprint arXiv:2305.13860 (2023).
+
+[47] Yu, Liu, Liang, Cameron, Xiao, and Zhang. ["Don't Listen To Me: Understanding and Exploring Jailbreak Prompts of Large Language Models"](https://arxiv.org/abs/2403.17336). USENIX Security 2024.
+
+[48] Yi, Liu, Sun, Cong, He, Song, Xu, and Li. ["Jailbreak Attacks and Defenses Against Large Language Models: A Survey"](https://arxiv.org/abs/2407.04295). arXiv preprint arXiv:2407.04295 (2024).
+
+[49] Peláez-González, Herrera-Poyatos, Zuheros, Herrera-Poyatos, Tejedor, and Herrera. ["A Domain-Based Taxonomy of Jailbreak Vulnerabilities in Large Language Models"](https://arxiv.org/abs/2504.04976). arXiv preprint arXiv:2504.04976 (2025).
+
+[50] Zeng, Lin, Zhang, Yang, Jia, and Shi. ["How Johnny Can Persuade LLMs to Jailbreak Them: Rethinking Persuasion to Challenge AI Safety by Humanizing LLMs"](https://arxiv.org/abs/2401.06373). ACL 2024.
+
+[51] Kang, Li, Stoica, Guestrin, Zaharia, and Hashimoto. ["Exploiting Programmatic Behavior of LLMs: Dual-Use Through Standard Security Attacks"](https://arxiv.org/abs/2302.05733). IEEE SPW 2024.
+
+[52] Qi, Panda, Lyu, Ma, Roy, Beirami, Mittal, and Henderson. ["Safety Alignment Should Be Made More Than Just a Few Tokens Deep"](https://arxiv.org/abs/2406.05946). ICLR 2025.
+
+[53] Li et al. ["Bypassing Safety Alignment via API Design: A Systematic Risk Analysis of Response Prefill in LLM Systems"](https://doi.org/10.1109/DSN69566.2026.00054). DSN 2026.

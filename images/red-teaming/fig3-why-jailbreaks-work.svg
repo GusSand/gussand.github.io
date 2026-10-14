@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" width="940" height="560" role="img" aria-label="Single-turn jailbreak families grouped by the two safety-training failure modes of Wei et al. 2023: mismatched generalization and competing objectives">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 600" width="940" height="600" role="img" aria-label="Single-turn jailbreak families sorted into three failure modes: mismatched generalization, competing objectives, and adversarial robustness, with three cross-cutting tags">
 <style>
   svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
         --grid:#2c2c2a; --axis:#383835; --box:#232322; --ring:rgba(255,255,255,0.16);
-        --s1:#3987e5; --s2:#d95926; }
+        --s1:#3987e5; --s2:#d95926; --s3:#c98500; }
   text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
          fill: var(--ink); }
   .t   { font-size:17px; font-weight:600; }
@@ -12,60 +12,82 @@
   .sm  { font-size:11.5px; fill:var(--ink2); }
   .xs  { font-size:11px; fill:var(--muted); }
 </style>
-<rect width="940" height="560" rx="8" fill="var(--surface)"/>
-<text class="t" x="20" y="34">Why a single-turn jailbreak works: two ways safety training fails</text>
-<text class="st" x="20" y="56">Color is the failure mode, not the attack. Grey tags name the closest family in the Inie et al. table above.</text>
+<rect width="940" height="600" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Single-turn jailbreaks, sorted by the safety-training failure they exploit</text>
+<text class="st" x="20" y="56">Color is the failure mode. Each family appears in the sources cited in grey; the grouping into A, B and C is mine.</text>
 
-<!-- left panel: mismatched generalization -->
-<rect x="20" y="76" width="440" height="348" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
-<text class="hd" x="40" y="104" fill="var(--s1)">MISMATCHED GENERALIZATION</text>
-<text class="sm" x="40" y="123">The request doesn&#8217;t look like anything refusal was trained on,</text>
-<text class="sm" x="40" y="139">but the model is capable enough to understand it anyway.</text>
+<!-- A: mismatched generalization -->
+<rect x="20" y="76" width="290" height="262" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
+<text class="hd" x="36" y="102" fill="var(--s1)">A. MISMATCHED GENERALIZATION</text>
+<text class="sm" x="36" y="121">Outside what refusal training covered,</text>
+<text class="sm" x="36" y="137">inside what the model understands.</text>
 
-<rect x="40" y="156" width="400" height="76" rx="6" fill="var(--s1)" fill-opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
-<text class="lblb" x="56" y="177">Encoding and obfuscation</text>
-<text class="sm" x="56" y="195">Base64, ROT13, leetspeak, payload splitting.</text>
-<text class="sm" x="56" y="211">The model decodes it; the refusal never saw it.</text>
-<text class="xs" x="424" y="177" text-anchor="end">Language</text>
+<rect x="34" y="152" width="262" height="76" rx="6" fill="var(--s1)" fill-opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
+<text class="lblb" x="46" y="172">Encoding and obfuscation</text>
+<text class="sm" x="46" y="190">Base64, ROT13, leetspeak, ciphers,</text>
+<text class="sm" x="46" y="205">payload splitting</text>
+<text class="xs" x="46" y="221">Wei 2023; Chu 2024; Yi 2024</text>
 
-<rect x="40" y="244" width="400" height="92" rx="6" fill="var(--s1)" fill-opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
-<text class="lblb" x="56" y="265">Low-resource languages</text>
-<text class="sm" x="56" y="283">GPT-4 on AdvBench, translated: Zulu 53%, Scots Gaelic 43%,</text>
-<text class="sm" x="56" y="299">any of four low-resource languages 79%, English 1%.</text>
-<text class="sm" x="56" y="315">The model reads Zulu; its refusals were trained mostly in English.</text>
-<text class="xs" x="424" y="265" text-anchor="end">Language</text>
+<rect x="34" y="240" width="262" height="84" rx="6" fill="var(--s1)" fill-opacity="0.15" stroke="var(--s1)" stroke-width="1.3"/>
+<text class="lblb" x="46" y="260">Low-resource languages</text>
+<text class="sm" x="46" y="278">GPT-4, AdvBench: Zulu 53%, Scots</text>
+<text class="sm" x="46" y="293">Gaelic 43%, any of four 79%, English 1%</text>
+<text class="xs" x="46" y="313">Yong 2023; grouped with ciphers by Yi, Chu</text>
 
-<text class="xs" x="40" y="366">Defensive implication: safety training has to reach</text>
-<text class="xs" x="40" y="384">everywhere capability does, or a filter has to normalize</text>
-<text class="xs" x="40" y="402">the input first.</text>
+<!-- C: adversarial robustness -->
+<rect x="20" y="352" width="290" height="98" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
+<text class="hd" x="36" y="378" fill="var(--s3)">C. ADVERSARIAL ROBUSTNESS</text>
+<text class="sm" x="36" y="397">Optimized suffixes (GCG): gibberish that</text>
+<text class="sm" x="36" y="413">works through how the model computes,</text>
+<text class="sm" x="36" y="429">not what it reads.</text>
+<text class="xs" x="36" y="444">Zou 2023; Pel&#225;ez-Gonz&#225;lez 2025</text>
 
-<!-- right panel: competing objectives -->
-<rect x="480" y="76" width="440" height="348" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
-<text class="hd" x="500" y="104" fill="var(--s2)">COMPETING OBJECTIVES</text>
-<text class="sm" x="500" y="123">The request looks harmful, but another trained goal (follow</text>
-<text class="sm" x="500" y="139">instructions, stay in character, be helpful) outbids the refusal.</text>
+<!-- B: competing objectives -->
+<rect x="325" y="76" width="595" height="374" rx="7" fill="none" stroke="var(--grid)" stroke-width="1.3"/>
+<text class="hd" x="341" y="102" fill="var(--s2)">B. COMPETING OBJECTIVES</text>
+<text class="sm" x="341" y="121">The model sees the harm, but another trained goal (follow instructions, stay in</text>
+<text class="sm" x="341" y="137">character, be helpful) outbids the refusal.</text>
 
-<rect x="500" y="156" width="400" height="76" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
-<text class="lblb" x="516" y="177">Persona and roleplay</text>
-<text class="sm" x="516" y="195">The grandmother, DAN, AIM, &#8220;Evil Confidant.&#8221;</text>
-<text class="sm" x="516" y="211">Staying in character wins over refusing.</text>
-<text class="xs" x="884" y="177" text-anchor="end">Fictionalizing</text>
+<rect x="339" y="152" width="280" height="88" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="351" y="172">Persona and role-play</text>
+<text class="sm" x="351" y="190">DAN, AIM, the grandmother</text>
+<text class="xs" x="351" y="228">Liu 2023; Yu 2024; Shen 2024</text>
 
-<rect x="500" y="244" width="400" height="76" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
-<text class="lblb" x="516" y="265">Framing and pretext</text>
-<text class="sm" x="516" y="283">&#8220;For a novel,&#8221; &#8220;hypothetically,&#8221; &#8220;for a security CTF.&#8221;</text>
-<text class="sm" x="516" y="299">A plausible legitimate use makes helpfulness win.</text>
-<text class="xs" x="884" y="265" text-anchor="end">Possible worlds, Rhetoric</text>
+<rect x="627" y="152" width="280" height="88" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="639" y="172">Privilege escalation</text>
+<text class="sm" x="639" y="190">&#8220;Developer mode,&#8221; sudo, &#8220;you are an</text>
+<text class="sm" x="639" y="205">unrestricted model.&#8221; Most effective in Yu.</text>
+<text class="xs" x="639" y="228">Liu 2023; Yu 2024</text>
 
-<rect x="500" y="332" width="400" height="76" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
-<text class="lblb" x="516" y="353">Output constraints</text>
-<text class="sm" x="516" y="371">Prefix injection (&#8220;Start with &#8216;Absolutely! Here&#8217;s&#8217;&#8221;),</text>
-<text class="sm" x="516" y="387">refusal suppression (&#8220;never apologize, never say you can&#8217;t&#8221;).</text>
+<rect x="339" y="248" width="280" height="88" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="351" y="268">Pretext and persuasion</text>
+<text class="sm" x="351" y="286">&#8220;For a novel,&#8221; &#8220;for research,&#8221; appeals</text>
+<text class="sm" x="351" y="301">to authority or urgency</text>
+<text class="xs" x="351" y="324">Liu 2023; Yu 2024; Zeng 2024</text>
 
-<!-- bottom band -->
-<rect x="20" y="440" width="900" height="100" rx="7" fill="var(--box)" stroke="var(--ring)" stroke-width="1.1"/>
-<text class="lblb" x="40" y="464">The strongest attacks use both at once</text>
-<text class="sm" x="40" y="484">Wei et al.&#8217;s best results came from combining families: prefix injection plus refusal suppression plus Base64. The families overlap, so a red</text>
-<text class="sm" x="40" y="500">team that tests each one in isolation will understate risk. Multi-turn attacks and API prefill push the same two failures past a single prompt.</text>
-<text class="xs" x="40" y="524">Sources: Wei, Haghtalab and Steinhardt 2023 (failure modes, attack examples); Yong, Menghini and Bach 2023 (language numbers, Table 1).</text>
+<rect x="627" y="248" width="280" height="88" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="639" y="268">Task deflection</text>
+<text class="sm" x="639" y="286">&#8220;Continue this story,&#8221; &#8220;run this program,&#8221;</text>
+<text class="sm" x="639" y="301">string concatenation</text>
+<text class="xs" x="639" y="324">Liu 2023; Yu 2024; Kang 2023</text>
+
+<rect x="339" y="344" width="280" height="92" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="351" y="364">Output constraints</text>
+<text class="sm" x="351" y="382">Prefix injection (&#8220;start with &#8216;Sure, here&#8217;s&#8217;&#8221;),</text>
+<text class="sm" x="351" y="397">refusal suppression (&#8220;never apologize&#8221;)</text>
+<text class="xs" x="351" y="424">Wei 2023</text>
+
+<rect x="627" y="344" width="280" height="92" rx="6" fill="var(--s2)" fill-opacity="0.15" stroke="var(--s2)" stroke-width="1.3"/>
+<text class="lblb" x="639" y="364">Many-shot and in-context</text>
+<text class="sm" x="639" y="382">One long prompt of fake dialogue in which</text>
+<text class="sm" x="639" y="397">the assistant keeps complying</text>
+<text class="xs" x="639" y="424">Anil 2024; Yi 2024</text>
+
+<!-- tags band -->
+<rect x="20" y="466" width="900" height="116" rx="7" fill="var(--box)" stroke="var(--ring)" stroke-width="1.1"/>
+<text class="lblb" x="40" y="490">Then tag every attack on three axes that cut across the families</text>
+<text class="sm" x="40" y="512">Access: prompt only, API state (prefill writes the start of the reply), or weights. This is the access ladder in Fig. 3.</text>
+<text class="sm" x="40" y="530">Built by: hand, template, LLM search (PAIR, TAP), or gradient. Automated search is a way to produce A or B attacks, not a family.</text>
+<text class="sm" x="40" y="548">Turns: single or multi (Crescendo, GOAT). Combined: the strongest attacks in Wei and in Yu mixed families.</text>
+<text class="xs" x="40" y="570">Example: the grandmother is B / persona, prompt only, hand-written, single turn.</text>
 </svg>

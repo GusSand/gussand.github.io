@@ -12,7 +12,7 @@ tags:
   - Open Weights
 ---
 
-Date: August 5, 2026 \| Estimated Reading Time: 11 min \| Author: Gustavo Sandoval
+Date: August 5, 2026 \| Estimated Reading Time: 13 min \| Author: Gustavo Sandoval
 
 Series: [Part 1: Process & Measurement](/posts/2026/07/red-teaming-language-models/) &middot; [Part 2: What Holds on Defense](/posts/2026/07/red-teaming-language-models-defense/) &middot; **Part 3: Open Weights**
 
