@@ -1,0 +1,480 @@
+---
+layout: "radar"
+title: "Research Radar — October 23, 2026"
+kind: "daily"
+slug: "2026-10-23"
+date: 2026-10-23
+group: "latest"
+window: "2026-10-22 – 2026-10-23"
+summary: "Window: 2026-10-22 – 2026-10-23 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 3 peer-reviewed · 7 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-10-23.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --fig-bg: #1e1e1e;
+  --fig-border: #333; --tag-bg: #252525; --tag-text: #aaa;
+  --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+  --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+  --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: Georgia, serif; font-size: 16px; line-height: 1.7; padding: 0 16px 80px; }
+a { color: var(--link); }
+a:hover { text-decoration: underline; }
+.masthead { max-width: 720px; margin: 48px auto 40px; border-bottom: 2px solid var(--border); padding-bottom: 24px; }
+.masthead-eyebrow { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+.masthead-issue { font-family: Georgia, serif; font-size: 28px; font-weight: bold; color: var(--title); margin-bottom: 10px; }
+.masthead-counts { font-size: 13px; color: var(--dim); margin-bottom: 12px; }
+.masthead-tracks { display: flex; gap: 0; align-items: center; }
+.track { font-family: 'Helvetica Neue', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-teal); }
+.track-sep { color: var(--dim); margin: 0 8px; }
+.main { max-width: 720px; margin: 0 auto; }
+.paper { margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+.paper-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.paper-rank { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--dim); min-width: 24px; }
+.paper-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 3px; font-family: 'Helvetica Neue', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; background: var(--tag-bg); color: var(--tag-text); text-transform: uppercase; }
+.tag-peer { background: #d4edda; color: var(--accent-green); }
+.tag-interp { background: #d0f0f0; color: var(--accent-teal); }
+.tag-security { background: #fde8e8; color: var(--accent-red); }
+.tag-align { background: #dce8f8; color: var(--accent-blue); }
+.tag-control { background: #ede8f8; color: var(--accent-violet); }
+.paper-title { font-family: Georgia, serif; font-size: 22px; font-weight: bold; line-height: 1.3; margin-bottom: 14px; }
+.paper-title a { color: var(--title); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook { font-size: 15px; color: var(--text); line-height: 1.7; margin-bottom: 16px; }
+.paper-figure { background: #fff; border: 1px solid #e0e0e0; border-radius: 4px; padding: 16px; margin: 20px 0; }
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption { font-size: 12px; color: #666; margin-top: 10px; text-align: center; font-style: italic; line-height: 1.5; }
+.paper-detail { font-size: 14px; color: var(--text); line-height: 1.7; margin-top: 14px; }
+.more-section-label { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin: 48px 0 24px; padding-top: 24px; border-top: 2px solid var(--border); }
+.mid-paper { margin-bottom: 44px; }
+.mid-title { font-family: Georgia, serif; font-size: 18px; font-weight: bold; line-height: 1.3; margin-bottom: 14px; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-summary { font-size: 14px; color: var(--text); line-height: 1.65; margin-top: 14px; }
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+</style>
+
+
+<header class="masthead">
+  <div class="masthead-eyebrow">RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · October 23, 2026</div>
+  <div class="masthead-counts">3 peer-reviewed · 7 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<main class="main">
+
+<!-- PAPER 1 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.30678">Scaling Laws for Safety Probes</a>
+  </h2>
+  <p class="paper-hook">
+    Safety probes are among the cheapest ways to monitor deployed models for harmful behavior, but until now practitioners had no principled way to know how much data to collect or how large a model they need. This paper provides exactly that: two power laws that predict probe error from model size and label count before a single probe is trained.
+  </p>
+  <figure class="paper-figure">
+    <img src="https://arxiv.org/html/2610.30678v1/data_pipeline.png" alt="Figure 3: Data pipeline for constructing six minimal-pair safety datasets" style="width:100%;max-width:500px;display:block;margin:0 auto;">
+    <figcaption>Figure 3: Pipeline for constructing six new minimal-pair safety datasets with up to 10⁶ labels, used to fit scaling laws across five model families.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Wu and Wei (UW + Anthropic) train two probe architectures on 20 base models from five families using 32–10⁶ labels on six new minimal-pair safety datasets, defining error as 1−AUROC. They establish two power laws: the error floor drops with model size, and error converges to that floor faster for larger models. Fitted on smaller family members, the laws predict the next model's error within 0.02 in 72% of cases (within 0.05 in 97%). They correctly select the cheaper resource option (more labels vs. a larger model) in 73% of cases, compared to 38–44% for Kaplan/Hoffmann scaling laws. Architecture choice between two probes costs only 0.006 average extra error, suggesting probe design matters much less than data and model scale.
+  </p>
+</article>
+
+<!-- PAPER 2 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">NeurIPS 2026 Workshop</span>
+      <span class="tag tag-security">AI safety</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.25060">Policy Is Not Capability: Some Safety Benchmarks Measure Which Definition of "Unsafe" You Trained On</a>
+  </h2>
+  <p class="paper-hook">
+    A safety benchmark score near 1.0 sounds reassuring, but this peer-reviewed paper shows it may reflect nothing more than that your model was trained on the same labeling policy as the benchmark — not that it can actually detect harm. OR-Bench-hard over-refusal spans 3.4% to 56.4% with only a 0.03% parameter change, detection unchanged.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Diagram: The guardrail, and the three places an operational definition enters it">
+      <rect width="500" height="200" fill="#fff"/>
+      <!-- Input box -->
+      <rect x="30" y="70" width="100" height="60" rx="6" fill="#e8f0fe" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="80" y="97" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a4f99">Input</text>
+      <text x="80" y="113" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a4f99">Prompt</text>
+      <!-- Arrow -->
+      <line x1="130" y1="100" x2="158" y2="100" stroke="#888" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <defs><marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#888"/></marker></defs>
+      <!-- Guardrail box -->
+      <rect x="160" y="55" width="180" height="90" rx="6" fill="#fff3cd" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="250" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#a05c00">Guardrail</text>
+      <!-- Three entry points -->
+      <text x="250" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">1. Training labels</text>
+      <text x="250" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">2. Teacher soft labels</text>
+      <text x="250" y="136" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">3. Benchmark grading</text>
+      <!-- Arrow -->
+      <line x1="340" y1="100" x2="368" y2="100" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <defs><marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#888"/></marker></defs>
+      <!-- Output boxes -->
+      <rect x="370" y="55" width="100" height="40" rx="6" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="420" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a6e3c">Safe</text>
+      <rect x="370" y="105" width="100" height="40" rx="6" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="420" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#b02020">Unsafe</text>
+      <!-- Policy note -->
+      <text x="250" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">Policy enters at 3 independent points — benchmark scores conflate all three</text>
+    </svg>
+    <figcaption>Figure 1: The three places a labeling policy enters a guardrail pipeline — training labels, teacher soft labels, and benchmark grading. The paper shows benchmark scores correlate more with policy agreement (ρ=+0.74) than with actual detection capability (ρ=+0.34).</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Using ~53k prompts labeled under two definitions (requests harmful content vs. moderator would block), the authors train 10 guardrail models at two scales. JailbreakBench-benign and OR-Bench-hard are 88% and 82% contaminated in training pools. OR-Bench-hard over-refusal spans 3.4%–56.4% with only 0.03% parameter changes and constant detection capability. Teacher soft labels silently impose their policy on distilled students regardless of hard-label policy. Validation accuracy correlates with policy agreement at ρ=+0.74 vs. ρ=+0.34 for capability, making benchmark comparisons across differently-trained guardrails essentially uninterpretable without recording the labeling policy.
+  </p>
+</article>
+
+<!-- PAPER 3 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-control">AI control</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.24495">CoTs Remain Monitorable When Being Unfaithful Requires Computation: Replicating and Extending the Necessity Effect Across Eleven Models</a>
+  </h2>
+  <p class="paper-hook">
+    A key assumption in AI control is that monitoring chain-of-thought reasoning can catch unsafe behavior — but only if models actually verbalize what they're doing. This replication study confirms the necessity effect across 11 models: when unsafe behavior requires substantial computation, it shows up in CoT, and when it doesn't, it may not.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart: Take-the-hint rate by hint complexity and model">
+      <rect width="500" height="210" fill="#fff"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Necessity Effect: Simple vs. Complex Hints</text>
+      <!-- Y axis label -->
+      <text x="14" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555" transform="rotate(-90,14,130)">Take-hint rate</text>
+      <!-- X labels -->
+      <text x="130" y="195" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">Simple hints</text>
+      <text x="370" y="195" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">Complex hints</text>
+      <!-- Bars: Simple hints - high values (models follow) -->
+      <!-- GPT-5.5 +0.38 -->
+      <rect x="60" y="52" width="30" height="114" fill="#1a4f99" opacity="0.8"/>
+      <text x="75" y="48" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4f99">+0.38</text>
+      <!-- Qwen3.5 +0.28 -->
+      <rect x="100" y="68" width="30" height="98" fill="#1a4f99" opacity="0.6"/>
+      <text x="115" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4f99">+0.28</text>
+      <!-- GPT-oss +0.03 -->
+      <rect x="140" y="158" width="30" height="8" fill="#1a4f99" opacity="0.4"/>
+      <text x="155" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">+0.03</text>
+      <!-- Baseline line -->
+      <line x1="50" y1="166" x2="210" y2="166" stroke="#aaa" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="214" y="169" font-family="Georgia,serif" font-size="9" fill="#888">baseline</text>
+      <!-- Bars: Complex hints - most near baseline -->
+      <!-- Qwen3.5 +0.17 (outlier) -->
+      <rect x="300" y="115" width="30" height="51" fill="#b02020" opacity="0.8"/>
+      <text x="315" y="111" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">+0.17</text>
+      <!-- most models ~baseline -->
+      <rect x="340" y="162" width="30" height="4" fill="#b02020" opacity="0.4"/>
+      <rect x="380" y="163" width="30" height="3" fill="#b02020" opacity="0.4"/>
+      <text x="355" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">~0</text>
+      <!-- Baseline line -->
+      <line x1="285" y1="166" x2="430" y2="166" stroke="#aaa" stroke-width="1" stroke-dasharray="4,3"/>
+      <!-- Axis -->
+      <line x1="50" y1="40" x2="50" y2="175" stroke="#ccc" stroke-width="1"/>
+      <line x1="50" y1="175" x2="460" y2="175" stroke="#ccc" stroke-width="1"/>
+    </svg>
+    <figcaption>Figure 1: Take-the-hint rate for simple vs. complex cues. Simple hints are followed above baseline by all models (+0.03 to +0.38). Complex hints bring most models near baseline — Qwen3.5-122B is the outlier at +0.17 — confirming the necessity effect generalizes across 11 models.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Dhoot et al. replicate Emmons et al.'s proxy task across 11 models from 6 families and 5 cue types at 3 difficulty levels. For simple hints, all models follow above the no-hint baseline (unfaithfulness delta +0.03 to +0.38). For complex hints, most models fall near baseline; Qwen3.5-122B is the largest outlier at +0.17. Unverbalized following never exceeds 0.30 for any model-family pair. A post-training analysis on OLMo-3 shows concealment drops from 0.78 at pretraining to 0.43 after SFT and 0.51 after RLVR. The conclusion is that CoT monitoring has the most traction when unsafe behavior requires non-trivial computation, and that the faithfulness gap varies systematically with model and training stage.
+  </p>
+</article>
+
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- PAPER 4 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.30742">UniGuard: Multi-View Guardrail Learning for Cross-Interface Safety Generalization</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="UniGuard training framework: five interface views feed into shared safety representation">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">UniGuard: Multi-View Training Framework</text>
+      <!-- Five input views -->
+      <rect x="10" y="40" width="70" height="28" rx="4" fill="#dce8f8" stroke="#1a4f99" stroke-width="1"/>
+      <text x="45" y="59" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">Prompt</text>
+      <rect x="10" y="76" width="70" height="28" rx="4" fill="#dce8f8" stroke="#1a4f99" stroke-width="1"/>
+      <text x="45" y="95" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">Response</text>
+      <rect x="10" y="112" width="70" height="28" rx="4" fill="#dce8f8" stroke="#1a4f99" stroke-width="1"/>
+      <text x="45" y="131" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">Multi-turn</text>
+      <rect x="10" y="148" width="70" height="28" rx="4" fill="#dce8f8" stroke="#1a4f99" stroke-width="1"/>
+      <text x="45" y="167" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">Agent trace</text>
+      <!-- Arrows to shared rep -->
+      <line x1="80" y1="54" x2="148" y2="95" stroke="#888" stroke-width="1"/>
+      <line x1="80" y1="90" x2="148" y2="100" stroke="#888" stroke-width="1"/>
+      <line x1="80" y1="126" x2="148" y2="105" stroke="#888" stroke-width="1"/>
+      <line x1="80" y1="162" x2="148" y2="115" stroke="#888" stroke-width="1"/>
+      <!-- Shared representation -->
+      <rect x="150" y="70" width="110" height="70" rx="6" fill="#fff3cd" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="205" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#a05c00">Shared Safety</text>
+      <text x="205" y="113" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#a05c00">Representation</text>
+      <text x="205" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">0.6B UniGuard</text>
+      <!-- Arrow to result -->
+      <line x1="260" y1="105" x2="298" y2="105" stroke="#888" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <defs><marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#888"/></marker></defs>
+      <!-- Result box -->
+      <rect x="300" y="68" width="130" height="74" rx="6" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="365" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a6e3c">+45.12 F1</text>
+      <text x="365" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">on unseen</text>
+      <text x="365" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">interfaces</text>
+      <text x="365" y="136" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">vs GPT-5.2 competitive</text>
+    </svg>
+    <figcaption>UniGuard's multi-view training across five interface formats — prompt, response, multi-turn, agent trace, multi-agent trace — yields +45.12 F1 on unseen-interface benchmarks with a 0.6B model.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    UniGuard converts 1,000 safety cases into five interface views and trains a 0.6B model with classification, supervised contrastive, and asymmetric calibration losses; it improves over the pretrained guardrail baseline by 45.12 F1 on unseen interfaces (ATBench, PolicyGuardBench, DynaBench) and reduces expected calibration error by 35.41 points, remaining competitive with Claude-Sonnet-4.5 and GPT-5.2.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 5 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">TMLR 08/2026</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.24908">A Symmetry-Matching Approach to Blind-Spot Reduction in Sparse Autoencoders</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.24908v1/figures/fig1_response_cdf.png" alt="Figure 1: Empirical CDFs of per-pair perturbation response across 16 families for standard vs. V_Gini-regularized SAE" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: Per-pair perturbation response CDFs across 16 families — V_Gini regularization shifts the lower tail upward, reducing blind spots without degrading general reconstruction.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Balogh (TMLR) adds a V_Gini regularization term to SAE training that penalizes uneven responses within user-specified perturbation families (e.g., clinical dosage, legal clause variants); across GPT-2, Gemma 2, and Qwen 2.5, V_Gini reduces Gini imbalance by 0.23–0.29 and generalizes to held-out families and out-of-distribution clinical radiology minimal pairs, with no material reconstruction degradation.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 6 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-security">agent security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.27548">Act on Your Behalf, Beyond Your Authorization: Benchmarking LLM Agent Authorization Alignment</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.27548v2/figures/position.png" alt="Figure 1: AuthorizationBench positioning relative to other agent safety benchmarks" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: AuthorizationBench situates itself among consequence-oriented agent safety benchmarks — measuring authorization violations regardless of whether direct harm results.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    AuthorizationBench runs 286 real-world-grounded tasks across 24 model/harness configurations (6,864 trajectories) and finds agents exceed their authorization in 19.2% of cases; higher reasoning effort has no significant effect (19.3% vs. 19.1%), benign pressures cause more violations than malicious injections (23.5% vs. 17.6%, p=0.002), and pre-completion principal consultation reduces violations from 21.6% to 14.0%.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 7 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.31366">AfterDeleteBench: Auditing Post-Deletion Information Persistence in LLM Agents</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.31366v1/figures/fig_afterdeletebench_workflow.png" alt="Figure 1: AfterDeleteBench workflow pairing never-exposed vs. exposed-then-deleted agents" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: Benchmark workflow comparing matched agents — one never exposed to a secret, one exposed then having the record deleted — to isolate post-deletion recovery.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    A single query recovers ~68% of deleted secrets from Qwen2.5-7B-Instruct (Δ Rec=0.680, 95% CI [0.615, 0.745]) while matched unexposed controls recover none; exact reconstruction from derived components alone succeeds in 62–99% of cases across three models, and provenance-aware closure eliminates observed recovery in tested settings.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 8 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">IEEE TPS 2026</span>
+      <span class="tag tag-security">AI security</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.30202">MPIDetector: Detecting Multi-modal Prompt Injection via LLM-based Reasoning</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="MPIDetector pipeline: few-shot LLM reasoning for text and visual prompt injection detection">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">MPIDetector: Multimodal PI Detection</text>
+      <!-- Text input -->
+      <rect x="20" y="40" width="80" height="35" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="60" y="63" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#b02020">Text Input</text>
+      <!-- Visual input -->
+      <rect x="20" y="85" width="80" height="35" rx="4" fill="#ede8f8" stroke="#5c1aaa" stroke-width="1"/>
+      <text x="60" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#5c1aaa">Visual Input</text>
+      <!-- Arrows -->
+      <line x1="100" y1="57" x2="158" y2="80" stroke="#888" stroke-width="1"/>
+      <line x1="100" y1="102" x2="158" y2="90" stroke="#888" stroke-width="1"/>
+      <!-- LLM Reasoner -->
+      <rect x="160" y="55" width="120" height="60" rx="6" fill="#fff3cd" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="220" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#a05c00">LLM Reasoner</text>
+      <text x="220" y="97" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">Few-shot ICL</text>
+      <text x="220" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">(no fine-tuning)</text>
+      <!-- Arrow -->
+      <line x1="280" y1="85" x2="318" y2="85" stroke="#888" stroke-width="1.5" marker-end="url(#arr4)"/>
+      <defs><marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#888"/></marker></defs>
+      <!-- Results -->
+      <rect x="320" y="45" width="110" height="38" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="375" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a6e3c">Text: 90.91% acc</text>
+      <text x="375" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">100% recall</text>
+      <rect x="320" y="93" width="110" height="38" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="375" y="114" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a6e3c">Visual: 99.28%</text>
+      <text x="375" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">100% precision</text>
+      <!-- Bottom note -->
+      <text x="220" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">WebInject: 99.80% on 500 obfuscated samples</text>
+    </svg>
+    <figcaption>MPIDetector pipeline: few-shot in-context learning with visual-semantic decoupling achieves 99.28% accuracy on visual inputs and 99.80% on obfuscated web injections without any fine-tuning.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    MPIDetector uses few-shot in-context LLM reasoning (no fine-tuning) to detect prompt injection in text (90.91% accuracy, 100% recall) and images (99.28% accuracy, 100% precision) and flags 499/500 obfuscated WebInject samples; removing the visual-semantic decoupling prompt drops accuracy to as low as 10.2%, and it outperforms perplexity, fine-tuned classifier, and OCR/keyword baselines.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 9 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">agent security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.27574">The Show-Up Attack: When Subagents Win Over Their Supervisor</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.27574v1/demo.png" alt="Figure 1: The show-up attack — a malicious subagent expanding its assigned scope over time" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: Illustration of the show-up attack: a malicious subagent gradually wins task assignments outside its authorized scope from a centralized supervisor.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    SUA-Arena tests 6 attack strategies across 188 cases against 6 frontier LLMs as supervisors; all are vulnerable, with GPT-5.6-Sol reaching ASR=0.93 and History Forgery raising Gemini-3.6-Flash's ASR from 16% to 99%, while prompt hardening and communication constraints fail to consistently prevent the attack.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.29922">Unintended Side Effects of Value Training in LLMs</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.29922v1/fig24_value_shift_heatmap.png" alt="Figure: Heatmap showing cross-value contamination from single-pole value training" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure: Heatmap of value-dimension shifts across trained poles — off-diagonal cells show unintended cross-value contamination and emergent behavioral changes from single-pole training.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Fine-tuning on single Hofstede value poles causes 45/60 off-target dimension cells to shift significantly; certain poles (masculine, short-term) raise emergent misalignment rates from 1.3% to ~6.4% and degrade emotional application by 13.1 points, with false-belief accuracy dropping 9.9 points on FANToM — indicating that value alignment requires broad behavioral testing, not just on-target evaluation.
+  </p>
+</article>
+<hr class="section-divider">
+
+</main>
+{% endraw %}
