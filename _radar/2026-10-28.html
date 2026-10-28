@@ -1,0 +1,870 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-10-28"
+kind: "daily"
+slug: "2026-10-28"
+date: 2026-10-28
+group: "latest"
+window: "October 27–28, 2026"
+summary: "Window: October 27–28, 2026 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 10 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-10-28.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ── Token system ───────────────────────────────────────────────── */
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+}
+
+/* ── Base ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+}
+a { color: var(--link); }
+a:hover { opacity: 0.8; }
+hr.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+/* ── Masthead ──────────────────────────────────────────────────── */
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding: 40px 0 28px;
+  margin-bottom: 48px;
+}
+.masthead-eyebrow {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.masthead-issue {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--title);
+  margin-bottom: 10px;
+}
+.masthead-counts {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+.masthead-tracks {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.track {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+}
+.track-sep { color: var(--dim); margin: 0 8px; }
+
+/* ── Tags ──────────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border-radius: 3px;
+  padding: 2px 6px;
+  margin-right: 5px;
+  margin-bottom: 4px;
+}
+.tag-interp  { background: #e0f2f1; color: var(--accent-teal); }
+.tag-align   { background: #e8eeff; color: var(--accent-blue); }
+.tag-security { background: #ffeaea; color: var(--accent-red); }
+.tag-control { background: #f0e8ff; color: var(--accent-violet); }
+.tag-peer    { background: #e8f5e9; color: var(--accent-green); }
+@media (prefers-color-scheme: dark) {
+  .tag-interp   { background: #0d2a2c; color: var(--accent-teal); }
+  .tag-align    { background: #0d1a3a; color: var(--accent-blue); }
+  .tag-security { background: #2a0a0a; color: var(--accent-red); }
+  .tag-control  { background: #1e0a3a; color: var(--accent-violet); }
+  .tag-peer     { background: #0a2a14; color: var(--accent-green); }
+}
+:root[data-theme="dark"] .tag-interp  { background: #0d2a2c; color: var(--accent-teal); }
+:root[data-theme="dark"] .tag-align   { background: #0d1a3a; color: var(--accent-blue); }
+:root[data-theme="dark"] .tag-security { background: #2a0a0a; color: var(--accent-red); }
+:root[data-theme="dark"] .tag-control { background: #1e0a3a; color: var(--accent-violet); }
+:root[data-theme="dark"] .tag-peer    { background: #0a2a14; color: var(--accent-green); }
+
+/* ── Full paper (top 3) ────────────────────────────────────────── */
+.paper { margin-bottom: 60px; }
+.paper-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.paper-rank {
+  font-family: "Courier New", monospace;
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--dim);
+  min-width: 40px;
+  line-height: 1;
+  padding-top: 3px;
+}
+.paper-meta { flex: 1; padding-top: 2px; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 18px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+.paper-figure {
+  margin: 20px 0;
+  text-align: center;
+}
+.paper-figure img {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.paper-figure svg { display: block; margin: 0 auto; }
+.paper-figure figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  font-style: italic;
+  line-height: 1.5;
+}
+.paper-detail {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ── Mid-tier entries (items 4–10) ─────────────────────────────── */
+.more-section-label {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+  border-top: 2px solid var(--border);
+  padding-top: 28px;
+  margin-bottom: 32px;
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure svg { max-width: 440px; display: block; margin: 0 auto; }
+.mid-figure figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  font-style: italic;
+  line-height: 1.5;
+}
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+/* ── Theme toggle ──────────────────────────────────────────────── */
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--dim);
+  font-family: "Courier New", monospace;
+}
+</style>
+
+<button class="theme-toggle" onclick="(function(){var r=document.documentElement,t=r.getAttribute('data-theme');r.setAttribute('data-theme',t==='dark'?'light':'dark');})()">toggle theme</button>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · October 28, 2026</div>
+  <div class="masthead-counts">0 peer-reviewed · 10 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ══════════════════════ PAPER 01 ══════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.37481">Follow the Gradient: Tracing Safety Degradation Back to Training Data</a>
+  </h2>
+  <p class="paper-hook">
+    Safety degradation during instruction fine-tuning often comes from individually benign examples — not overtly harmful data. SimpleLoRIF identifies exactly which training examples push a model toward unsafe outputs by projecting their gradients into an unsafe-model reference space, and the resulting SafeTulu cuts GCG attack success rates by up to 22%.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="SimpleLoRIF pipeline: restricted gradient projection identifies safety-degrading training examples">
+      <rect width="500" height="210" fill="#fff"/>
+      <text x="250" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">SimpleLoRIF Pipeline</text>
+      <!-- Box 1 -->
+      <rect x="10" y="30" width="80" height="50" rx="4" fill="#e8eef8" stroke="#4a6ea8" stroke-width="1.5"/>
+      <text x="50" y="51" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a1a1a">Training data</text>
+      <text x="50" y="65" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">~1M examples</text>
+      <!-- Arrow -->
+      <line x1="90" y1="55" x2="108" y2="55" stroke="#333" stroke-width="1.5" marker-end="url(#p1a)"/>
+      <!-- Box 2 -->
+      <rect x="108" y="30" width="100" height="50" rx="4" fill="#fdf4e8" stroke="#a87a30" stroke-width="1.5"/>
+      <text x="158" y="48" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a1a1a">Backprop last 4</text>
+      <text x="158" y="61" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a1a1a">transformer blocks</text>
+      <text x="158" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">low-rank projection</text>
+      <!-- Arrow -->
+      <line x1="208" y1="55" x2="226" y2="55" stroke="#333" stroke-width="1.5" marker-end="url(#p1b)"/>
+      <!-- Box 3 -->
+      <rect x="226" y="30" width="100" height="50" rx="4" fill="#f0e8f8" stroke="#6a2aa8" stroke-width="1.5"/>
+      <text x="276" y="48" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a1a1a">Gradient space</text>
+      <text x="276" y="61" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#6a2aa8">unsafe ref. model</text>
+      <text x="276" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">AUC ≤ 0.865</text>
+      <!-- Arrow -->
+      <line x1="326" y1="55" x2="344" y2="55" stroke="#333" stroke-width="1.5" marker-end="url(#p1c)"/>
+      <!-- Box 4 -->
+      <rect x="344" y="30" width="100" height="50" rx="4" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="394" y="48" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a1a1a">Remove top 20%</text>
+      <text x="394" y="61" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030">unsafe-aligned</text>
+      <text x="394" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">examples</text>
+      <!-- Arrow down -->
+      <line x1="394" y1="80" x2="394" y2="108" stroke="#a83030" stroke-width="1.5" marker-end="url(#p1d)"/>
+      <!-- Result box -->
+      <rect x="270" y="108" width="210" height="50" rx="4" fill="#e8fce8" stroke="#2a7a2a" stroke-width="2"/>
+      <text x="375" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a" font-weight="bold">SafeTulu</text>
+      <text x="375" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#2a7a2a">GCG ASR ↓ up to 22% · Qwen/Llama/OLMo</text>
+      <!-- Comparison box -->
+      <rect x="10" y="108" width="200" height="50" rx="4" fill="#f8f8f8" stroke="#ccc" stroke-width="1.5"/>
+      <text x="110" y="127" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Outperforms:</text>
+      <text x="110" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">LLM-as-judge filtering</text>
+      <text x="110" y="153" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">Prior gradient methods</text>
+      <!-- Caption -->
+      <text x="250" y="185" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">Benign-looking examples (tool failures, narrative arithmetic) identified as safety-degrading</text>
+      <text x="250" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">Released: SafeTulu dataset + HuggingFace Space for custom filtering</text>
+      <defs>
+        <marker id="p1a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+        <marker id="p1b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+        <marker id="p1c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+        <marker id="p1d" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,0 L6,0 L3,8 z" fill="#a83030"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: SimpleLoRIF restricts backpropagation to the last four transformer blocks and projects embeddings into the gradient space of a reference unsafe model, making it scalable to ~1M training examples. SafeTulu (filtered Tulu 3) reduces GCG attack success by up to 22% across three model families.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    SimpleLoRIF works by embedding each training example in the gradient space of both the target model and an unsafe reference model, using only the final four transformer blocks to keep cost tractable. Examples whose gradient direction aligns with the unsafe model's loss landscape are ranked as most suspect. In emergent-misalignment datasets, this achieves AUC up to 0.865; unexpected culprits include tool-execution failure examples and narrative arithmetic problems. SafeTulu, built by removing the top 20% of gradient-aligned examples from Tulu 3, reduces GCG attack success rate by up to 22% across Qwen, Llama, and OLMo, outperforming LLM-as-a-judge content filtering and prior gradient-based attribution methods, with downstream capabilities largely preserved.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ══════════════════════ PAPER 02 ══════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.37657">Heads of Security: Learned Attention Gates Improve Prompt Injection Robustness</a>
+  </h2>
+  <p class="paper-hook">
+    Fine-tuning defenses against prompt injection collapse to 85%+ success under adaptive attacks. HoS trains learned per-head attention gates that control how attention distributes between trusted and untrusted tokens — reducing adaptive RL-Hammer attack success from 97% to 10% on a 70B model while preserving utility where ASIDE fails.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="Heads of Security: per-head attention gating separates trusted and untrusted token attention">
+      <rect width="500" height="210" fill="#fff"/>
+      <text x="250" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">HoS: Learned Attention Gates</text>
+      <!-- Left: input tokens -->
+      <rect x="10" y="30" width="90" height="30" rx="3" fill="#e8eef8" stroke="#4a6ea8" stroke-width="1.5"/>
+      <text x="55" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#4a6ea8">Trusted instruction</text>
+      <rect x="10" y="70" width="90" height="30" rx="3" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="55" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a83030">Untrusted data</text>
+      <!-- Arrows -->
+      <line x1="100" y1="45" x2="165" y2="85" stroke="#4a6ea8" stroke-width="1.5" marker-end="url(#p2a)"/>
+      <line x1="100" y1="85" x2="165" y2="100" stroke="#a83030" stroke-width="1.5" marker-end="url(#p2b)"/>
+      <!-- Gate box -->
+      <rect x="165" y="50" width="120" height="70" rx="4" fill="#f0e8f8" stroke="#6a2aa8" stroke-width="2"/>
+      <text x="225" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#6a2aa8" font-weight="bold">Attention Gate</text>
+      <text x="225" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">per-head learned</text>
+      <text x="225" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">gate weights g_h</text>
+      <text x="225" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#6a2aa8">suppress untrusted</text>
+      <!-- Arrow to output -->
+      <line x1="285" y1="85" x2="320" y2="85" stroke="#333" stroke-width="1.5" marker-end="url(#p2c)"/>
+      <!-- LLM box -->
+      <rect x="320" y="55" width="80" height="60" rx="3" fill="#f0ede8" stroke="#888" stroke-width="1.5"/>
+      <text x="360" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">LLM</text>
+      <text x="360" y="93" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">processes task</text>
+      <text x="360" y="106" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">ignores injection</text>
+      <!-- Results table -->
+      <rect x="10" y="135" width="480" height="60" rx="3" fill="#f8f8f8" stroke="#ccc" stroke-width="1"/>
+      <text x="20" y="152" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">RL-Hammer adaptive attack (GPT-OSS-20B):</text>
+      <text x="20" y="167" font-family="Georgia,serif" font-size="9" fill="#a83030">Base model: 97% ASR</text>
+      <text x="20" y="181" font-family="Georgia,serif" font-size="9" fill="#a87a30">SecAlign++: 85% ASR</text>
+      <text x="220" y="152" font-family="Georgia,serif" font-size="9" fill="#1a6e3c" font-weight="bold">HoS: 10% ASR</text>
+      <text x="220" y="167" font-family="Georgia,serif" font-size="9" fill="#666">White-box Claudini: 3× more compute to match</text>
+      <text x="220" y="181" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">Utility: near-baseline on benchmarks</text>
+      <defs>
+        <marker id="p2a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a6ea8"/></marker>
+        <marker id="p2b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a83030"/></marker>
+        <marker id="p2c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 2: HoS trains per-head gate weights that suppress attention to untrusted tokens. High-weight heads learn to redirect attention away from injected content while leaving capability-critical heads ungated.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    HoS adds a small learned gating module to each attention head that multiplies attention scores to untrusted tokens by a head-specific gate value, trained to distinguish trusted system instructions from untrusted user-supplied data. Compared to SecAlign++ (fine-tuning based) and ASIDE (architecture-based without per-head gating), HoS uniquely withstands both the black-box RL-Hammer adaptive attack (97% → 10% ASR on GPT-OSS-20B, 85% → 10% on Llama-3.3-70B-Instruct) and the white-box Claudini attack (requiring ~3× more compute). ASIDE achieves only 10% utility on tool-use tasks; HoS maintains near-baseline benchmark performance. Training requires only a small labeled instruction-data set and adds no inference overhead.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ══════════════════════ PAPER 03 ══════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.36108">Log-To-Leak: Prompt Injection Attacks on Tool-Using LLM Agents via the Model Context Protocol</a>
+  </h2>
+  <p class="paper-hook">
+    MCP tool descriptions are natural language — and that makes them a prompt-injection surface. An attacker who controls a server description can instruct agents to append unauthorized post-hoc logging calls after every legitimate task, exfiltrating user queries and responses at 62–100% attack success rate while the legitimate task still mostly completes.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="Log-To-Leak: MCP tool description injection inserts unauthorized logging call after legitimate task">
+      <rect width="500" height="210" fill="#fff"/>
+      <!-- Benign path (top) -->
+      <text x="10" y="22" font-family="Georgia,serif" font-size="10" fill="#2a7a2a" font-weight="bold">Benign MCP workflow</text>
+      <rect x="10" y="28" width="70" height="30" rx="3" fill="#e8f4e8" stroke="#4a8a4a" stroke-width="1.5"/>
+      <text x="45" y="48" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">User query</text>
+      <line x1="80" y1="43" x2="108" y2="43" stroke="#4a8a4a" stroke-width="1.5" marker-end="url(#p3a)"/>
+      <rect x="108" y="28" width="90" height="30" rx="3" fill="#e8f4e8" stroke="#4a8a4a" stroke-width="1.5"/>
+      <text x="153" y="41" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">LLM + MCP</text>
+      <text x="153" y="53" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">tool call</text>
+      <line x1="198" y1="43" x2="226" y2="43" stroke="#4a8a4a" stroke-width="1.5" marker-end="url(#p3b)"/>
+      <rect x="226" y="28" width="80" height="30" rx="3" fill="#e8f4e8" stroke="#4a8a4a" stroke-width="1.5"/>
+      <text x="266" y="48" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">Task done ✓</text>
+      <!-- Malicious path (middle) -->
+      <text x="10" y="85" font-family="Georgia,serif" font-size="10" fill="#a83030" font-weight="bold">Log-To-Leak (injected description)</text>
+      <rect x="10" y="92" width="70" height="30" rx="3" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="45" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">User query</text>
+      <line x1="80" y1="107" x2="108" y2="107" stroke="#a83030" stroke-width="1.5" marker-end="url(#p3c)"/>
+      <rect x="108" y="92" width="90" height="30" rx="3" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="153" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">LLM + MCP</text>
+      <text x="153" y="117" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030">+ injection</text>
+      <line x1="198" y1="107" x2="226" y2="107" stroke="#a83030" stroke-width="1.5" marker-end="url(#p3d)"/>
+      <rect x="226" y="92" width="80" height="30" rx="3" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="266" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">Task done ✓</text>
+      <text x="266" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#a83030">+save_logs !</text>
+      <line x1="306" y1="107" x2="334" y2="107" stroke="#a83030" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#p3e)"/>
+      <rect x="334" y="92" width="90" height="30" rx="3" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="379" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030">Attacker</text>
+      <text x="379" y="117" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030">receives leak</text>
+      <!-- Payload structure -->
+      <rect x="10" y="140" width="480" height="55" rx="3" fill="#fff8e8" stroke="#a87a30" stroke-width="1.5"/>
+      <text x="20" y="156" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Payload components in MCP description:</text>
+      <text x="20" y="171" font-family="Georgia,serif" font-size="9" fill="#666">Trigger · Tool Binding · Justification · Pressure</text>
+      <text x="20" y="186" font-family="Georgia,serif" font-size="9" fill="#a83030">ASR: 62–100% · Logging accuracy: 76–96% · Task Δ: ≤6.6pp · Defenses leave ASR &gt;55%</text>
+      <defs>
+        <marker id="p3a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a8a4a"/></marker>
+        <marker id="p3b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a8a4a"/></marker>
+        <marker id="p3c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a83030"/></marker>
+        <marker id="p3d" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a83030"/></marker>
+        <marker id="p3e" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a83030"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: In the malicious workflow, an injected directive in the MCP server description causes the agent to append an unauthorized save_logs call after the legitimate task completes, exfiltrating the user query, server response, and agent output to the attacker.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Log-To-Leak's payload embeds four structural components into the MCP server description: a Trigger condition, a Tool Binding specifying the logging endpoint, a Justification making the extra call seem routine, and Pressure language discouraging the model from omitting it. In 16 of 18 model-server pairs, the legitimate task completion changed by at most 6.63pp — covert disclosure and legitimate task completion coexist. Conditional logging accuracy (faithfulness of exfiltrated content) ranged 76.55–95.64%. An instruction-based detector flagged 85.53% of benign tool descriptions as injections, showing that the attack surface cannot be defended without host-level authorization controls for secondary tool calls.
+  </p>
+</article>
+
+<!-- ══════════════════════ ITEMS 4–10 ══════════════════════════════ -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- ── Paper 04 ── -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-control">AI control</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37055">Blindfold: Keeping the Audit Coin Secret from LLM Agents</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="Blindfold: audit coin leakage via timing side-channel breaks AI control certificate validity">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Audit Coin Secrecy (PNI) Requirement</text>
+      <!-- Timeline -->
+      <text x="30" y="42" font-family="Georgia,serif" font-size="9" fill="#333">Agent</text>
+      <line x1="65" y1="38" x2="420" y2="38" stroke="#333" stroke-width="1.5" marker-end="url(#p4a)"/>
+      <circle cx="150" cy="38" r="4" fill="#4a8a4a"/>
+      <text x="150" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#4a8a4a">commit τ</text>
+      <circle cx="240" cy="38" r="4" fill="#a87a30"/>
+      <text x="240" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#a87a30">tool call</text>
+      <circle cx="320" cy="38" r="4" fill="#a83030"/>
+      <text x="320" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#a83030">coin</text>
+      <!-- PNI violation zone -->
+      <rect x="235" y="44" width="90" height="16" rx="3" fill="#fce8e8" stroke="#a83030" stroke-width="1"/>
+      <text x="280" y="55" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#a83030">Δt leaks coin (PNI violated)</text>
+      <!-- Formula -->
+      <rect x="20" y="76" width="195" height="38" rx="3" fill="#fff8e8" stroke="#a87a30" stroke-width="1.5"/>
+      <text x="117" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Bias ≤ (1−ε)·D_A</text>
+      <text x="117" y="107" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">D_A = TV(view|coin=0, view|coin=1)</text>
+      <!-- Fix -->
+      <rect x="230" y="76" width="195" height="38" rx="3" fill="#e8f4e8" stroke="#4a8a4a" stroke-width="1.5"/>
+      <text x="327" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a1a1a" font-weight="bold">Blindfold fix</text>
+      <text x="327" y="107" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#4a8a4a">per-call fresh coin + constant-time silent audit</text>
+      <!-- PNI box -->
+      <rect x="20" y="128" width="405" height="30" rx="3" fill="#f0e8f8" stroke="#6a2aa8" stroke-width="1.5"/>
+      <text x="222" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#6a2aa8" font-weight="bold">PNI: necessary &amp; sufficient for unbiased control certificate</text>
+      <text x="222" y="154" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">Raising audit rate ε cannot restore validity when D_A &gt; 0</text>
+      <defs><marker id="p4a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker></defs>
+    </svg>
+    <figcaption>Figure 1: Silent audit latency lets an agent read the coin before committing an action, biasing the certified bound. PNI (pre-commit noninterference) is both necessary and sufficient for a valid certificate; Blindfold's constant-time silent audit closes the channel.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Audit-based AI control certificates assume the agent cannot observe whether its action will be audited. This paper formalizes pre-commit noninterference (PNI) and shows that timing side-channels in tool calls violate it, with worst-case bias (1−ε)·D_A regardless of audit rate ε. In a live LLM agent experiment, the plain certificate failed on measured labels and a pre-registered schedule; the Blindfold fix (per-call fresh coin + constant-time silent audit) restored validity — implying any shared-infrastructure AI control deployment exposes a coin-reading channel.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── Paper 05 ── -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.36258">SpecGuard: Detecting Multi-Turn LLM Jailbreaks via Specification-Based Runtime Monitoring</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 165" xmlns="http://www.w3.org/2000/svg" aria-label="SpecGuard: LTL formulas compiled to finite automata for multi-turn jailbreak detection">
+      <rect width="440" height="165" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">SpecGuard: Specification-Based Runtime Monitoring</text>
+      <!-- Step 1 -->
+      <rect x="10" y="28" width="90" height="44" rx="3" fill="#e8eef8" stroke="#4a6ea8" stroke-width="1.5"/>
+      <text x="55" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">LTL safety</text>
+      <text x="55" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">specification</text>
+      <text x="55" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">φ_1, …, φ_k</text>
+      <!-- Arrow -->
+      <line x1="100" y1="50" x2="118" y2="50" stroke="#333" stroke-width="1.5" marker-end="url(#p5a)"/>
+      <!-- Step 2 -->
+      <rect x="118" y="28" width="100" height="44" rx="3" fill="#fdf4e8" stroke="#a87a30" stroke-width="1.5"/>
+      <text x="168" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Compile to</text>
+      <text x="168" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a87a30">symbolic FA</text>
+      <text x="168" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">training-free</text>
+      <!-- Arrow -->
+      <line x1="218" y1="50" x2="236" y2="50" stroke="#333" stroke-width="1.5" marker-end="url(#p5b)"/>
+      <!-- Step 3 -->
+      <rect x="236" y="28" width="100" height="44" rx="3" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="286" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Incremental</text>
+      <text x="286" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">trace monitor</text>
+      <text x="286" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">per-turn update</text>
+      <!-- Arrow -->
+      <line x1="336" y1="50" x2="354" y2="50" stroke="#333" stroke-width="1.5" marker-end="url(#p5c)"/>
+      <!-- Step 4 -->
+      <rect x="354" y="28" width="76" height="44" rx="3" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="392" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030">Witness</text>
+      <text x="392" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030">emitted</text>
+      <text x="392" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">replayable</text>
+      <!-- Input stream -->
+      <text x="10" y="95" font-family="Georgia,serif" font-size="9" fill="#666">Input: Turn 1 → Turn 2 → … → Turn N (dialogue trace)</text>
+      <!-- Key properties -->
+      <rect x="10" y="108" width="420" height="45" rx="3" fill="#f8f8f8" stroke="#ccc" stroke-width="1"/>
+      <text x="20" y="123" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Key properties:</text>
+      <text x="20" y="137" font-family="Georgia,serif" font-size="9" fill="#666">✓ Training-free  ✓ No model access required  ✓ Outperforms guard models on multi-turn benchmarks</text>
+      <text x="20" y="149" font-family="Georgia,serif" font-size="9" fill="#666">✓ Controlled false-positive rate  ✓ Buffered runtime + retrospective audit modes</text>
+      <defs>
+        <marker id="p5a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+        <marker id="p5b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+        <marker id="p5c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: SpecGuard pipeline — safety rules written as LTL formulas are compiled to symbolic finite automata that read each dialogue turn as atomic propositions, emitting a replayable witness when a forbidden pattern triggers.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Multi-turn jailbreaks spread harm across multiple turns, making per-turn classifiers ineffective. SpecGuard writes safety rules as LTL formulas, compiles them to symbolic automata, and monitors incrementally — with no training and no access to the protected model. It consistently outperforms representative open-source guard models on multi-turn benchmarks while keeping false-positive rates controlled; it also supports retrospective auditing of saved traces.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── Paper 06 ── -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.36295">Detecting and Mitigating Query-Based System Prompt Leakage Attacks</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="AdvGuard: semantic interaction graph and GCN classifier for system prompt leakage detection">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">AdvGuard: Three-Stage Detection Pipeline</text>
+      <!-- Stage 1 -->
+      <rect x="10" y="28" width="100" height="55" rx="3" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="60" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Stage 1</text>
+      <text x="60" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030">Prompt-level</text>
+      <text x="60" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030">detector</text>
+      <text x="60" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">early block</text>
+      <line x1="110" y1="55" x2="128" y2="55" stroke="#333" stroke-width="1.5" marker-end="url(#p6a)"/>
+      <!-- Stage 2 -->
+      <rect x="128" y="28" width="120" height="55" rx="3" fill="#fdf4e8" stroke="#a87a30" stroke-width="1.5"/>
+      <text x="188" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Stage 2</text>
+      <text x="188" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a87a30">Session graph</text>
+      <text x="188" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">semantic interaction</text>
+      <text x="188" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">multi-hop patterns</text>
+      <line x1="248" y1="55" x2="266" y2="55" stroke="#333" stroke-width="1.5" marker-end="url(#p6b)"/>
+      <!-- Stage 3 -->
+      <rect x="266" y="28" width="110" height="55" rx="3" fill="#e8eef8" stroke="#4a6ea8" stroke-width="1.5"/>
+      <text x="321" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Stage 3</text>
+      <text x="321" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">GCN classifier</text>
+      <text x="321" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">line graph</text>
+      <text x="321" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">components</text>
+      <line x1="376" y1="55" x2="394" y2="55" stroke="#333" stroke-width="1.5" marker-end="url(#p6c)"/>
+      <!-- Block -->
+      <rect x="394" y="40" width="36" height="30" rx="3" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="412" y="59" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#2a7a2a">BLOCK</text>
+      <!-- Results -->
+      <rect x="10" y="100" width="420" height="45" rx="3" fill="#f8f8f8" stroke="#ccc" stroke-width="1"/>
+      <text x="20" y="116" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Results:</text>
+      <text x="20" y="130" font-family="Georgia,serif" font-size="9" fill="#666">97–99% F1 · 100% recall · 3.4% FPR · Recall +36pp over best baseline</text>
+      <text x="20" y="142" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">Adaptive attacks (PLeak, LeakAgent): exact-match leakage → 0.00–0.01</text>
+      <defs>
+        <marker id="p6a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+        <marker id="p6b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+        <marker id="p6c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: AdvGuard's three-stage pipeline — prompt-level early blocking, semantic interaction graph, and GCN classification of graph components — catches coordinated multi-query extraction attacks that per-query baselines miss entirely.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Per-query defenses miss system-prompt extraction attacks that spread queries across a session. AdvGuard models the full session as a semantic interaction graph and classifies extracted subgraph components with a GCN, achieving 97–99% F1 at 100% recall (a 36pp recall improvement over the strongest baseline) with a 3.4% false-positive rate. Against adaptive attacks integrating PLeak and LeakAgent, exact-match leakage drops to 0.00–0.01 across evaluated victim models.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── Paper 07 ── -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI safety</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37430">When Visual Evidence Is Insufficient: How Instructions, Post-Training, and Internal Activations Shape Refusal in Multimodal Language Models</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="Three refusal behavior types in MLLMs and three sources of control studied">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Refusal Sources in MLLMs (MoHoBench)</text>
+      <!-- Behavior types -->
+      <rect x="10" y="28" width="130" height="50" rx="3" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="75" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Solvability Detection</text>
+      <text x="75" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030">refuses ALL</text>
+      <text x="75" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">unanswerable Qs</text>
+      <rect x="155" y="28" width="130" height="50" rx="3" fill="#fff8e8" stroke="#a87a30" stroke-width="1.5"/>
+      <text x="220" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Selective Refusal</text>
+      <text x="220" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a87a30">inconsistent</text>
+      <text x="220" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">context-independent</text>
+      <rect x="300" y="28" width="130" height="50" rx="3" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="365" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Evidence-Based</text>
+      <text x="365" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">context-sensitive ✓</text>
+      <text x="365" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">target behavior</text>
+      <!-- Control sources -->
+      <text x="10" y="100" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Three sources of control studied:</text>
+      <rect x="10" y="108" width="130" height="38" rx="3" fill="#e8eef8" stroke="#4a6ea8" stroke-width="1"/>
+      <text x="75" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">Instruction wording</text>
+      <text x="75" y="137" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">prompt-sensitive</text>
+      <rect x="155" y="108" width="130" height="38" rx="3" fill="#fdf4e8" stroke="#a87a30" stroke-width="1"/>
+      <text x="220" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a87a30">Post-training (SFT/RLHF)</text>
+      <text x="220" y="137" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">largest aggregate Δ</text>
+      <rect x="300" y="108" width="130" height="38" rx="3" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="1"/>
+      <text x="365" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">Activation intervention</text>
+      <text x="365" y="137" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#2a7a2a">transfers across prompts ✓</text>
+    </svg>
+    <figcaption>Figure 1: The three refusal behavior types on MoHoBench. Post-training produces the largest aggregate refusal rate change; activation interventions produce smaller changes that are more stable across prompt variations than instruction manipulation.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    This paper tests three sources of refusal control in MLLMs on visually unanswerable questions: instruction wording, post-training (SFT and preference-based), and activation-space intervention. Post-training produces the largest aggregate refusal rate increases but can generate mixed refusal-and-answer outputs; instruction effects are highly prompt-sensitive at the sample level. Activation intervention produces smaller changes that transfer across prompt conditions, suggesting the internal representation is the more reliable handle on evidence-based refusal behavior.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── Paper 08 ── -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37517">Orthogonal and Parametrized Multi-Attribute Steering of LLMs</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="Orthogonal multi-attribute steering: decoupled trait vectors prevent cross-interference">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Orthogonal Multi-Attribute Steering</text>
+      <!-- Problem (naive) -->
+      <text x="10" y="36" font-family="Georgia,serif" font-size="9" fill="#a83030" font-weight="bold">Naive stacking (interference)</text>
+      <ellipse cx="90" cy="75" rx="38" ry="22" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="90" y="71" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#a83030">sycophancy</text>
+      <text x="90" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#a83030">v_s</text>
+      <ellipse cx="130" cy="90" rx="38" ry="22" fill="#fce8e8" stroke="#a83030" stroke-width="1.5" opacity="0.7"/>
+      <text x="130" y="86" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#a83030">warmth</text>
+      <text x="130" y="97" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#a83030">v_w</text>
+      <text x="85" y="125" font-family="Georgia,serif" font-size="8" fill="#666">overlap → cross-trait activation</text>
+      <!-- Fix (orthogonal) -->
+      <text x="240" y="36" font-family="Georgia,serif" font-size="9" fill="#2a7a2a" font-weight="bold">After orthogonalization (decoupled)</text>
+      <ellipse cx="290" cy="78" rx="35" ry="20" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="290" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#2a7a2a">sycophancy</text>
+      <text x="290" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#2a7a2a">v_s⊥</text>
+      <ellipse cx="370" cy="78" rx="35" ry="20" fill="#e8eef8" stroke="#4a6ea8" stroke-width="1.5"/>
+      <text x="370" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#4a6ea8">warmth</text>
+      <text x="370" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#4a6ea8">v_w⊥</text>
+      <text x="240" y="125" font-family="Georgia,serif" font-size="8" fill="#666">no overlap → independent control</text>
+      <!-- Bottom note -->
+      <rect x="10" y="133" width="420" height="20" rx="3" fill="#f8f8f8" stroke="#ccc" stroke-width="1"/>
+      <text x="220" y="147" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">+ Steerable interval identification + parametrized strength (semantic scale) per trait</text>
+    </svg>
+    <figcaption>Figure 1: Naive steering vector stacking causes cross-trait interference (overlapping ellipses). After orthogonalization, each trait vector lies in a separate subspace, allowing sycophancy and warmth to be steered simultaneously without unintended co-activation.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Naively combining steering vectors causes unintended co-activation of multiple traits. This paper identifies the steerable interval for each trait, parametrizes strength as a fixed semantic scale for interpretability, and orthogonalizes vectors before combination — allowing multi-trait steering (e.g., sycophancy + warmth simultaneously) without cross-interference. The approach is validated on latent-space cluster separation for steered outputs.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── Paper 09 ── -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.36524">Causal Localization of Evidence Effects in Transformers</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="BUC method: symbolic probing finds causal evidence-weighing attention heads that transfer to natural language tasks">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">CEA + BUC: Causal Localization of Evidence Effects</text>
+      <!-- Stage 1 -->
+      <rect x="10" y="28" width="120" height="55" rx="3" fill="#e8eef8" stroke="#4a6ea8" stroke-width="1.5"/>
+      <text x="70" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">1. CEA Probe</text>
+      <text x="70" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">"A A B A B" →</text>
+      <text x="70" y="69" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">logit(A)−logit(B)</text>
+      <text x="70" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">count+order varied</text>
+      <line x1="130" y1="55" x2="148" y2="55" stroke="#333" stroke-width="1.5" marker-end="url(#p9a)"/>
+      <!-- Stage 2 -->
+      <rect x="148" y="28" width="140" height="55" rx="3" fill="#fdf4e8" stroke="#a87a30" stroke-width="1.5"/>
+      <text x="218" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">2. BUC Selection</text>
+      <text x="218" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">ablation removes +</text>
+      <text x="218" y="69" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a87a30">patch restores effect</text>
+      <text x="218" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">1–12 heads selected</text>
+      <line x1="288" y1="55" x2="306" y2="55" stroke="#333" stroke-width="1.5" marker-end="url(#p9b)"/>
+      <!-- Stage 3 -->
+      <rect x="306" y="28" width="124" height="55" rx="3" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="368" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">3. NL Transfer</text>
+      <text x="368" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">"More reports on</text>
+      <text x="368" y="69" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">X vs Y?"</text>
+      <text x="368" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">acc ↓ 8.2pp (rand: 0.8pp)</text>
+      <!-- Results bar -->
+      <rect x="10" y="100" width="420" height="45" rx="3" fill="#f8f8f8" stroke="#ccc" stroke-width="1"/>
+      <text x="20" y="116" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Pythia-410M results:</text>
+      <text x="20" y="130" font-family="Georgia,serif" font-size="9" fill="#666">65.5–91.6% of count effect removed via ablation of 1–12 heads</text>
+      <text x="20" y="142" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">8 heads selected on symbolic probes → 8.2pp NL task drop (vs 0.8pp random)</text>
+      <defs>
+        <marker id="p9a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+        <marker id="p9b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#333"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: CEA controls symbol counts and ordering; BUC selects compact head sets via bidirectional ablation/patching; selected heads carry causal influence to natural-language evidence-counting decisions, validated in Pythia-410M.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    CEA (Controlled Evidence Aggregation) probes frozen Transformers with symbolic prompts of varying symbol counts and orders; BUC (Balanced Utility Causal Selection) finds 1–12 attention heads that both remove and restore the count-sensitivity effect via ablation and patching. In Pythia-410M, selected heads remove 65.5–91.6% of the count effect. Crucially, 8 heads selected entirely on symbolic probes transfer: ablating them drops accuracy by 8.2pp on a natural-language evidence-counting task versus 0.8pp for random same-size head sets.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ── Paper 10 ── -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37157">What Survives Distillation? A Mechanistic Interpretability Study of GPT-2 and DistilGPT-2</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="Circuit survival in distillation: IOI collapses, Greater-Than survives with layer remapping">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Circuit Survival in GPT-2 → DistilGPT-2 Distillation</text>
+      <!-- IOI panel -->
+      <rect x="10" y="28" width="200" height="100" rx="3" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="110" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">IOI Circuit</text>
+      <!-- GPT-2 bar -->
+      <rect x="30" y="52" width="70" height="14" rx="2" fill="#4a6ea8"/>
+      <text x="105" y="63" font-family="Georgia,serif" font-size="8" fill="#333">GPT-2: 94.8%</text>
+      <!-- DistilGPT-2 bar (short) -->
+      <rect x="30" y="72" width="25" height="14" rx="2" fill="#a83030"/>
+      <text x="60" y="83" font-family="Georgia,serif" font-size="8" fill="#a83030">DistilGPT-2: 35.2%</text>
+      <text x="110" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030" font-weight="bold">COLLAPSE</text>
+      <text x="110" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">Name-mover heads</text>
+      <text x="110" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">not preserved</text>
+      <!-- GT panel -->
+      <rect x="230" y="28" width="200" height="100" rx="3" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="330" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Greater-Than Circuit</text>
+      <!-- GPT-2 bar -->
+      <rect x="250" y="52" width="80" height="14" rx="2" fill="#4a6ea8"/>
+      <text x="335" y="63" font-family="Georgia,serif" font-size="8" fill="#333">GPT-2: ~95%</text>
+      <!-- DistilGPT-2 bar -->
+      <rect x="250" y="72" width="70" height="14" rx="2" fill="#2a7a2a"/>
+      <text x="325" y="83" font-family="Georgia,serif" font-size="8" fill="#2a7a2a">DistilGPT-2: 87.7%</text>
+      <text x="330" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a" font-weight="bold">SURVIVES</text>
+      <text x="330" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">Layer 9 → Layer 4</text>
+      <text x="330" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#2a7a2a">Pearson r = 0.945</text>
+      <!-- Caption -->
+      <text x="220" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">Circuit compressibility, not aggregate metrics (PPL, accuracy), determines survival</text>
+    </svg>
+    <figcaption>Figure 1: CKA and activation patching show that IOI collapses in DistilGPT-2 (35.2% vs 94.8%), while the Greater-Than circuit survives (87.7%) with its comparison head relocated from layer 9 to layer 4 at Pearson r = 0.945.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Using linear CKA, logit lens, SAE feature statistics, and activation patching, this study shows that knowledge distillation does not preserve circuits uniformly: GPT-2's IOI circuit collapses in DistilGPT-2 (accuracy drops from 94.8% to 35.2%), while the Greater-Than circuit survives at 87.7%, with the teacher's layer-9 comparison head remapped to student layer 4 (Pearson r = 0.945). Perplexity and aggregate accuracy do not distinguish these outcomes — circuit-level analysis is needed to evaluate whether compressed models retain specific computational mechanisms.
+  </p>
+</article>
+{% endraw %}
