@@ -1,0 +1,862 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-10-29"
+kind: "daily"
+slug: "2026-10-29"
+date: 2026-10-29
+group: "latest"
+window: "October 28–29, 2026"
+summary: "Window: October 28–29, 2026 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 1 peer-reviewed · 9 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-10-29.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* ── Token system ───────────────────────────────────────────────── */
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+}
+
+/* ── Base ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+}
+a { color: var(--link); }
+a:hover { opacity: 0.8; }
+hr.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+/* ── Masthead ──────────────────────────────────────────────────── */
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding: 40px 0 28px;
+  margin-bottom: 48px;
+}
+.masthead-eyebrow {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.masthead-issue {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--title);
+  margin-bottom: 10px;
+}
+.masthead-counts {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+.masthead-tracks {
+  font-size: 13px;
+  color: var(--dim);
+}
+.track { color: var(--text); font-weight: 600; }
+.track-sep { margin: 0 6px; }
+
+/* ── Tags ──────────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-right: 5px;
+  margin-bottom: 4px;
+}
+.tag-peer    { background: #d4edda; color: #155724; }
+.tag-interp  { background: #d1ecf1; color: #0c5460; }
+.tag-security{ background: #f8d7da; color: #721c24; }
+.tag-align   { background: #d1d9f8; color: #1a2a7a; }
+.tag-control { background: #e8d4f8; color: #5c1aaa; }
+.tag-rank    { background: #fff3cd; color: #856404; }
+@media (prefers-color-scheme: dark) {
+  .tag-peer    { background: #1a3a22; color: #4ade80; }
+  .tag-interp  { background: #0f2a2e; color: #14b8bd; }
+  .tag-security{ background: #3a1a1a; color: #f07070; }
+  .tag-align   { background: #1a1f3a; color: #7eb8ff; }
+  .tag-control { background: #2a1a3a; color: #c084fc; }
+  .tag-rank    { background: #2a2010; color: #f0a030; }
+}
+:root[data-theme="dark"] .tag-peer    { background: #1a3a22; color: #4ade80; }
+:root[data-theme="dark"] .tag-interp  { background: #0f2a2e; color: #14b8bd; }
+:root[data-theme="dark"] .tag-security{ background: #3a1a1a; color: #f07070; }
+:root[data-theme="dark"] .tag-align   { background: #1a1f3a; color: #7eb8ff; }
+:root[data-theme="dark"] .tag-control { background: #2a1a3a; color: #c084fc; }
+:root[data-theme="dark"] .tag-rank    { background: #2a2010; color: #f0a030; }
+:root[data-theme="light"] .tag-peer    { background: #d4edda; color: #155724; }
+:root[data-theme="light"] .tag-interp  { background: #d1ecf1; color: #0c5460; }
+:root[data-theme="light"] .tag-security{ background: #f8d7da; color: #721c24; }
+:root[data-theme="light"] .tag-align   { background: #d1d9f8; color: #1a2a7a; }
+:root[data-theme="light"] .tag-control { background: #e8d4f8; color: #5c1aaa; }
+:root[data-theme="light"] .tag-rank    { background: #fff3cd; color: #856404; }
+
+/* ── Full paper entries (01–03) ────────────────────────────────── */
+.paper { margin-bottom: 60px; }
+.paper-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.paper-rank {
+  font-family: "Courier New", monospace;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--dim);
+  line-height: 1;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 4px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.paper-figure {
+  margin: 20px 0 24px;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.paper-figure svg { display: block; margin: 0 auto; }
+.paper-figure figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  font-style: italic;
+  line-height: 1.5;
+}
+.paper-detail {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ── Mid-tier entries (items 4–10) ─────────────────────────────── */
+.more-section-label {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+  border-top: 2px solid var(--border);
+  padding-top: 28px;
+  margin-bottom: 32px;
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure svg { max-width: 440px; display: block; margin: 0 auto; }
+.mid-figure figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  font-style: italic;
+  line-height: 1.5;
+}
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+/* ── Theme toggle ──────────────────────────────────────────────── */
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--dim);
+  font-family: "Courier New", monospace;
+}
+</style>
+
+<button class="theme-toggle" onclick="(function(){var r=document.documentElement,t=r.getAttribute('data-theme');r.setAttribute('data-theme',t==='dark'?'light':'dark');})()">toggle theme</button>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · October 29, 2026</div>
+  <div class="masthead-counts">1 peer-reviewed · 9 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ══════════════════════ PAPER 01 ══════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-peer">IEEE S&amp;P 2027</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.37467">Penny for Your Prompts: A Measurement Study of Contextual Leakage in AI Chat Platforms</a>
+  </h2>
+  <p class="paper-hook">
+    AI chatbot privacy is far weaker than the interface suggests: 21 of 42 audited platforms silently transmit conversation titles to third-party trackers, and 9 leak verbatim user prompts — with health, legal, and education bots among the worst offenders. Google alone receives over 40% of tracker traffic; four companies together receive over 70%.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Contextual leakage in AI chat platforms: 21/42 leak titles, 9/42 leak prompts, identity linkage via email">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Contextual Leakage Audit: 42 AI Chat Platforms</text>
+      <!-- Bar: 21/42 titles -->
+      <rect x="60" y="40" width="200" height="28" rx="3" fill="#f07070" opacity="0.85"/>
+      <text x="55" y="59" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#333">Titles leaked</text>
+      <text x="268" y="59" font-family="Georgia,serif" font-size="10" fill="#a83030" font-weight="bold">21/42 platforms</text>
+      <!-- Bar: 9/42 prompts -->
+      <rect x="60" y="80" width="86" height="28" rx="3" fill="#a83030" opacity="0.85"/>
+      <text x="55" y="99" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#333">Verbatim prompts</text>
+      <text x="154" y="99" font-family="Georgia,serif" font-size="10" fill="#a83030" font-weight="bold">9/42 platforms</text>
+      <!-- Email linkage -->
+      <rect x="60" y="120" width="110" height="28" rx="3" fill="#f0a030" opacity="0.85"/>
+      <text x="55" y="139" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#333">+ email sent same company</text>
+      <text x="178" y="139" font-family="Georgia,serif" font-size="10" fill="#a05c00" font-weight="bold">8 platforms → identity linkage</text>
+      <!-- Tracker concentration -->
+      <rect x="60" y="162" width="210" height="24" rx="3" fill="#4a6ea8" opacity="0.7"/>
+      <text x="55" y="179" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#333">Google's share</text>
+      <text x="278" y="179" font-family="Georgia,serif" font-size="10" fill="#4a6ea8" font-weight="bold">&gt;40% of tracker traffic</text>
+      <!-- Axis -->
+      <line x1="60" y1="197" x2="310" y2="197" stroke="#ccc" stroke-width="1"/>
+      <text x="60" y="210" font-family="Georgia,serif" font-size="9" fill="#888">0</text>
+      <text x="155" y="210" font-family="Georgia,serif" font-size="9" fill="#888">50%</text>
+      <text x="310" y="210" font-family="Georgia,serif" font-size="9" fill="#888">100%</text>
+      <!-- Method note -->
+      <rect x="330" y="50" width="155" height="100" rx="3" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+      <text x="407" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Method</text>
+      <text x="407" y="83" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Puppeteer session replay</text>
+      <text x="407" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">+ VisibleV8 JS engine</text>
+      <text x="407" y="109" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">instrumentation</text>
+      <text x="407" y="124" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">5 scenarios × 42 platforms</text>
+      <text x="407" y="137" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">(Submit, Navigate, Delete…)</text>
+    </svg>
+    <figcaption>Figure 1: Audit results across 42 platforms. Title leakage (21 platforms) is triggered by single-page app navigation; 9 platforms expose verbatim prompts. Eight platforms route both email and conversation content to one third-party company, enabling identity linkage.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The study combines Puppeteer-driven session replay with VisibleV8 (an instrumented Chromium build that logs JS API calls) to tie each data flow to the specific user action and DOM access mechanism that triggered it. Five isolated scenarios per platform (Submit, Navigate, Delete, Scroll, Click) identify navigation-triggered leakage as the dominant vector: single-page apps fire synthetic page views on chat navigation, exposing the sub-page title. Of 13 general-purpose platforms leaking conversation context, 11 also send the user's email, and 8 route both to a single company — enabling identity linkage between named individuals and their chatbot conversations. Task-specific platforms (health, legal, education) show the same pattern: all 8 that leak also send email. ChatGPT and Grok removed their trackers before publication; TheLawGPT updated its tracker configuration after disclosure. The accepted S&amp;P 2027 status makes this the first peer-reviewed systematic audit of this scale.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ══════════════════════ PAPER 02 ══════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.37126">Mechanistic Failure Modes of Weight Pruning in Transformer Language Models</a>
+  </h2>
+  <p class="paper-hook">
+    Standard pruning evaluations miss circuit-level damage: magnitude-based neuron pruning at 30% sparsity inverts the IOI circuit and reduces accuracy to 17.7%, yet perplexity (74.6) ranks this model as <em>less damaged</em> than random head pruning at 70% sparsity (perplexity 140.1, ~50% IOI accuracy). Metric and circuit integrity can point in opposite directions.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg" aria-label="Mechanistic failure modes: perplexity vs circuit integrity across pruning conditions">
+      <rect width="500" height="230" fill="#fff"/>
+      <text x="250" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Pruning Metric Mismatch: Perplexity vs. Circuit Integrity (IOI)</text>
+      <!-- Y axes and gridlines -->
+      <line x1="70" y1="28" x2="70" y2="172" stroke="#999" stroke-width="1.5"/>
+      <line x1="70" y1="172" x2="430" y2="172" stroke="#999" stroke-width="1.5"/>
+      <!-- Gridlines -->
+      <line x1="70" y1="172" x2="430" y2="172" stroke="#eee" stroke-width="1"/>
+      <line x1="70" y1="132" x2="430" y2="132" stroke="#eee" stroke-width="1"/>
+      <line x1="70" y1="92" x2="430" y2="92" stroke="#eee" stroke-width="1"/>
+      <line x1="70" y1="52" x2="430" y2="52" stroke="#eee" stroke-width="1"/>
+      <!-- Y-axis labels (left: perplexity 0-150) -->
+      <text x="65" y="175" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">0</text>
+      <text x="65" y="135" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">50</text>
+      <text x="65" y="95" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">100</text>
+      <text x="65" y="55" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">150</text>
+      <text x="20" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a6ea8" transform="rotate(-90,20,105)">Perplexity</text>
+      <!-- Y-axis labels (right: IOI accuracy 0-100%) -->
+      <text x="435" y="175" text-anchor="start" font-family="Georgia,serif" font-size="9" fill="#a83030">0%</text>
+      <text x="435" y="115" text-anchor="start" font-family="Georgia,serif" font-size="9" fill="#a83030">40%</text>
+      <text x="435" y="55" text-anchor="start" font-family="Georgia,serif" font-size="9" fill="#a83030">80%</text>
+      <text x="460" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030" transform="rotate(90,460,105)">IOI Accuracy</text>
+      <!-- Condition A: Magnitude-neuron 30% -->
+      <!-- Perplexity 74.6 / 150 * 144 = 71.6 → y = 172 - 71.6 = 100.4 -->
+      <!-- IOI 17.7% / 100 * 144 = 25.5 → y = 172 - 25.5 = 146.5 -->
+      <rect x="130" y="101" width="32" height="71" rx="2" fill="#4a6ea8" opacity="0.85"/>
+      <rect x="168" y="147" width="32" height="25" rx="2" fill="#a83030" opacity="0.85"/>
+      <text x="155" y="97" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a6ea8" font-weight="bold">74.6</text>
+      <text x="184" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030" font-weight="bold">17.7%</text>
+      <text x="155" y="188" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Mag-neuron</text>
+      <text x="155" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">30% sparse</text>
+      <!-- Condition B: Random-head 70% -->
+      <!-- Perplexity 140.1 / 150 * 144 = 134.5 → y = 172 - 134.5 = 37.5 -->
+      <!-- IOI ~50% / 100 * 144 = 72 → y = 172 - 72 = 100 -->
+      <rect x="280" y="38" width="32" height="134" rx="2" fill="#4a6ea8" opacity="0.85"/>
+      <rect x="318" y="100" width="32" height="72" rx="2" fill="#a83030" opacity="0.85"/>
+      <text x="296" y="34" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a6ea8" font-weight="bold">140.1</text>
+      <text x="334" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030" font-weight="bold">~50%</text>
+      <text x="305" y="188" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Random-head</text>
+      <text x="305" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">70% sparse</text>
+      <!-- Paradox annotation -->
+      <text x="220" y="125" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00" font-weight="bold">← Perplexity</text>
+      <text x="220" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">ranks Mag-</text>
+      <text x="220" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">neuron as</text>
+      <text x="220" y="162" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">"safer" →</text>
+      <!-- Legend -->
+      <rect x="330" y="32" width="12" height="10" fill="#4a6ea8" opacity="0.85"/>
+      <text x="347" y="41" font-family="Georgia,serif" font-size="9" fill="#333">Perplexity (lower = better)</text>
+      <rect x="330" y="50" width="12" height="10" fill="#a83030" opacity="0.85"/>
+      <text x="347" y="59" font-family="Georgia,serif" font-size="9" fill="#333">IOI accuracy (higher = better)</text>
+      <!-- Caption note -->
+      <text x="250" y="216" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">Name Mover contributions flip sign in Mag-neuron condition — systematic preference for wrong name despite low perplexity</text>
+    </svg>
+    <figcaption>Figure 1: Metric mismatch across two pruning conditions. Magnitude-neuron pruning at 30% sparsity inverts the IOI circuit (17.7% accuracy) but achieves the lowest perplexity (74.6). Random-head pruning at 70% sparsity causes higher perplexity (140.1) but preserves circuit integrity (~50% IOI accuracy). Perplexity rankings are reversed relative to circuit health.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Using a factorial design (magnitude vs. random importance criteria × attention heads vs. MLP neurons × 30/50/70% sparsity) on GPT-2 small, the authors measure circuit integrity on the IOI task via activation patching, path patching, and direct logit attribution. Two failure modes emerge: <em>zeroing</em> (magnitude head pruning removes output-facing circuit heads, dropping their logit contributions to zero) and <em>inversion</em> (magnitude neuron pruning at 30% leaves all 26 IOI circuit heads structurally intact but flips Name Mover head contributions, producing 17.7% accuracy with a mean logit difference of −2.475). Perplexity-based rankings contradict circuit findings in both cases. A replication on the Greater-Than circuit shows the fragile component type flips to MLPs, demonstrating that which component to protect depends on circuit architecture — suggesting circuit-specific auditing is necessary before deploying compressed models.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ══════════════════════ PAPER 03 ══════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.36422">What Victims Take Away: Attack Reuse and Defense Revision after Prompt-Injection Attacks</a>
+  </h2>
+  <p class="paper-hook">
+    When a prompt-injection attack succeeds, the victim doesn't just suffer the breach — they weaponize it. Targets reused 10.0% of attacks that broke their defense within one week, versus 0.03% of matched circulating attacks (563K records). Near-misses are ignored: only scored successes propagate.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Prompt injection attack reuse cycle: successful attacks propagate through victim population">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="17" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Attack Reuse and Defense Revision Cycle (Tensor Trust, 563K records)</text>
+      <!-- Attacker -->
+      <ellipse cx="80" cy="70" rx="55" ry="28" fill="#fce8e8" stroke="#a83030" stroke-width="2"/>
+      <text x="80" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#a83030" font-weight="bold">Attacker</text>
+      <text x="80" y="81" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">submits attack</text>
+      <!-- Defense target -->
+      <rect x="175" y="45" width="110" height="50" rx="4" fill="#e8eef8" stroke="#4a6ea8" stroke-width="2"/>
+      <text x="230" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#4a6ea8" font-weight="bold">Target</text>
+      <text x="230" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Defense prompt</text>
+      <text x="230" y="89" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">Tensor Trust</text>
+      <!-- Arrow attacker → defense -->
+      <line x1="135" y1="70" x2="175" y2="70" stroke="#a83030" stroke-width="2" marker-end="url(#h1)"/>
+      <!-- BREACH outcome -->
+      <rect x="175" y="120" width="110" height="55" rx="4" fill="#e8fce8" stroke="#2a7a2a" stroke-width="2"/>
+      <text x="230" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#2a7a2a" font-weight="bold">BREACH</text>
+      <text x="230" y="153" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">10% reuse attack</text>
+      <text x="230" y="166" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">vs 0.03% baseline</text>
+      <!-- Arrow defense → breach -->
+      <line x1="230" y1="95" x2="230" y2="120" stroke="#2a7a2a" stroke-width="2" marker-end="url(#h2)"/>
+      <!-- FAIL outcome -->
+      <rect x="345" y="45" width="110" height="50" rx="4" fill="#f8f8f8" stroke="#ccc" stroke-width="1.5"/>
+      <text x="400" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#888">FAIL / near-miss</text>
+      <text x="400" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#aaa">0.03% reuse</text>
+      <!-- Arrow defense → fail -->
+      <line x1="285" y1="70" x2="345" y2="70" stroke="#888" stroke-width="1.5" marker-end="url(#h3)"/>
+      <!-- Defense revision -->
+      <rect x="175" y="185" width="110" height="28" rx="4" fill="#fdf4e8" stroke="#a87a30" stroke-width="1.5"/>
+      <text x="230" y="199" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a87a30" font-weight="bold">Defense revised</text>
+      <text x="230" y="209" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">ASR ↓ 24.5 pp same family</text>
+      <!-- Arrow breach → defense revision -->
+      <line x1="230" y1="175" x2="230" y2="185" stroke="#a87a30" stroke-width="1.5" marker-end="url(#h4)"/>
+      <!-- Attack propagation arrow back -->
+      <path d="M230,175 Q80,175 80,98" stroke="#a83030" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#h5)"/>
+      <text x="100" y="155" font-family="Georgia,serif" font-size="8" fill="#a83030">Victim reuses</text>
+      <text x="100" y="166" font-family="Georgia,serif" font-size="8" fill="#a83030">attack on others</text>
+      <!-- Provenance stat -->
+      <text x="400" y="145" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a83030" font-weight="bold">23.2%</text>
+      <text x="400" y="159" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">of successful</text>
+      <text x="400" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">hijacks used</text>
+      <text x="400" y="181" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">received text</text>
+      <defs>
+        <marker id="h1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a83030"/></marker>
+        <marker id="h2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2a7a2a"/></marker>
+        <marker id="h3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#888"/></marker>
+        <marker id="h4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a87a30"/></marker>
+        <marker id="h5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a83030"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: The dual outcome of a prompt-injection breach: targets both repair their defenses (ASR drops 24.5 pp for same-family attacks) and reuse the attack text against others (10% within one week). Near-misses are not reused — only scored successes propagate.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Using the full public Tensor Trust dataset (563,349 attack records, June 2023–February 2024), the study applies linear probability models with player and time fixed effects to compare attack reuse against matched attacks circulating among similar players who did not receive that specific text. Near-miss replies (beginning "access granted" but scored as failures) were reused at the same rate as ordinary failures, confirming payoff-biased social learning: targets copy what works, not what looks like it works. Previously received texts accounted for 23.2% of successful hijacks. Defense revision was substantial: 78% of breached targets who returned within a week deployed a changed defense, reducing same-family attack success by 24.5 pp. Reuse came predominantly from players already actively attacking, not newcomers. The authors propose that AI security tools describing attack <em>techniques</em> without disclosing full text could break the propagation cycle while preserving learning signal for defenders.
+  </p>
+</article>
+
+<!-- ══════════════════════ ITEMS 4–10 ════════════════════════════ -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- ══════════════════════ PAPER 04 ══════════════════════════════ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37553">Collective Dynamics of Self-Reinforcement: How Cross-Task Coupling Drives Policy Collapse in Unsupervised RLVR</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 200" xmlns="http://www.w3.org/2000/svg" aria-label="Policy collapse in unsupervised RLVR: proxy reward rises while accuracy falls">
+      <rect width="440" height="200" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Policy Collapse in Unsupervised RLVR</text>
+      <line x1="50" y1="20" x2="50" y2="158" stroke="#888" stroke-width="1.5"/>
+      <line x1="50" y1="158" x2="400" y2="158" stroke="#888" stroke-width="1.5"/>
+      <text x="225" y="174" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666">Training Steps →</text>
+      <!-- Accuracy curve (red): starts ~80%, collapses past N_c -->
+      <polyline points="50,50 110,48 165,46 210,60 255,90 295,100 340,101 380,101 400,101" fill="none" stroke="#a83030" stroke-width="2.5"/>
+      <!-- Proxy reward (blue dashed): rises continuously -->
+      <polyline points="50,108 110,103 165,92 210,78 255,62 295,52 340,42 380,36 400,32" fill="none" stroke="#4a6ea8" stroke-width="2.5" stroke-dasharray="5,3"/>
+      <!-- N_c line -->
+      <line x1="205" y1="18" x2="205" y2="158" stroke="#a87a30" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="205" y="15" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a87a30" font-weight="bold">N_c</text>
+      <!-- Labels -->
+      <text x="370" y="99" font-family="Georgia,serif" font-size="9" fill="#a83030">Accuracy</text>
+      <text x="370" y="30" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">Proxy Reward</text>
+      <text x="90" y="138" font-family="Georgia,serif" font-size="8" fill="#2a7a2a">reward↑ acc↑</text>
+      <text x="265" y="138" font-family="Georgia,serif" font-size="8" fill="#a83030">reward↑ acc↓ COLLAPSE</text>
+      <!-- Key formula -->
+      <rect x="50" y="180" width="340" height="16" rx="2" fill="#f8f8f8" stroke="#eee" stroke-width="1"/>
+      <text x="220" y="191" text-anchor="middle" font-family="Courier New,monospace" font-size="8" fill="#555">N_c ≈ ln(1/δ) / (λ² · ln[F*/F(a)])  — scales as λ⁻²</text>
+    </svg>
+    <figcaption>Figure 1: Proxy reward (blue dashed) rises continuously while accuracy (red) collapses past N_c — the Goodhart divergence is analytically derived and confirmed in small Transformer experiments.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Label-free RLVR rewarding self-agreement improves reasoning early but can collapse to a single repeated answer when many training problems share parameters. The author derives a critical problem count N_c ≈ ln(1/δ)/(λ²·ln[F*/F(a)]) from a mean-field theory of cross-task coupling, confirmed in a small Transformer; the proxy reward keeps rising through collapse, making it a misleading monitoring signal. A marginal-entropy bonus prevents one failure mode but triggers a different collective one — monitoring should use signals independent of the training reward.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ══════════════════════ PAPER 05 ══════════════════════════════ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37415">The Envelope Layer: An Underestimated Surface of LLM Agent Defense</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 185" xmlns="http://www.w3.org/2000/svg" aria-label="The envelope layer: admission channel and context assembly surface in A2A agent defense">
+      <rect width="440" height="185" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Two-Level Envelope Model and Memory Effect</text>
+      <!-- L1a: admission channel -->
+      <rect x="20" y="28" width="120" height="45" rx="3" fill="#fdf4e8" stroke="#a87a30" stroke-width="1.5"/>
+      <text x="80" y="47" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a87a30" font-weight="bold">L1a: Admission</text>
+      <text x="80" y="61" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">label strength</text>
+      <text x="80" y="73" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#888">forgeability matters</text>
+      <!-- L1b: context assembly -->
+      <rect x="160" y="28" width="140" height="45" rx="3" fill="#e8eef8" stroke="#4a6ea8" stroke-width="1.5"/>
+      <text x="230" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#4a6ea8" font-weight="bold">L1b: Context Assembly</text>
+      <text x="230" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">system prompt, skill decl.</text>
+      <text x="230" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">role wrapping, memory</text>
+      <!-- Memory dominance bar chart -->
+      <text x="330" y="44" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Semantic Breach Rate</text>
+      <!-- No memory: ~50% -->
+      <rect x="330" y="52" width="55" height="10" rx="1" fill="#888" opacity="0.7"/>
+      <text x="390" y="61" font-family="Georgia,serif" font-size="8" fill="#555">No mem: ~50%</text>
+      <!-- Success memory: 81.2% -->
+      <rect x="330" y="68" width="72" height="10" rx="1" fill="#a83030" opacity="0.85"/>
+      <text x="405" y="77" font-family="Georgia,serif" font-size="8" fill="#a83030" font-weight="bold">Succ mem: 81.2%</text>
+      <!-- Failure memory: 6.2% -->
+      <rect x="330" y="84" width="6" height="10" rx="1" fill="#2a7a2a" opacity="0.85"/>
+      <text x="340" y="93" font-family="Georgia,serif" font-size="8" fill="#2a7a2a" font-weight="bold">Fail mem: 6.2%</text>
+      <!-- Conclusion box -->
+      <rect x="20" y="95" width="400" height="40" rx="3" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+      <text x="220" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Memory dominates label strength (&gt;30 pp effect)</text>
+      <text x="220" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Forgeable envelopes: strong labels can raise breach rate (claude: 13%→52%)</text>
+      <!-- Defense recommendation -->
+      <rect x="20" y="148" width="400" height="30" rx="3" fill="#e8fce8" stroke="#2a7a2a" stroke-width="1"/>
+      <text x="220" y="163" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a" font-weight="bold">Fix: cryptographic signing for L1a + access control for memory (L1b)</text>
+      <text x="220" y="174" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">Security is a dynamic outcome, not a fixed property of labels</text>
+    </svg>
+    <figcaption>Figure 1: The two-level envelope model. Memory (L1b) determines breach rate more than label strength (L1a) by over 30 pp; under forgeable envelopes, strong labels can be counterproductive.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Using the A2A-TIBA attack across three frontends, the study shows that agent memory is the dominant defense surface: success-memory raises the pooled semantic breach rate to 81.2%, failure-memory lowers it to 6.2%, while strong labels help only under authentic (non-forgeable) envelopes — and actually raise breach rate from 13% to 52% on one frontend when the envelope can be forged. The paper proposes separating admission channel security (cryptographic signing) from context assembly security (memory access control).
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ══════════════════════ PAPER 06 ══════════════════════════════ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37369">CauTrace: Uncovering Why LLMs Fail — From Internal Mechanisms to Adversarial Reasoning Trajectories</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 175" xmlns="http://www.w3.org/2000/svg" aria-label="CauTrace: seven functional states and verification-to-commitment ratio distinguishes failed from successful reasoning traces">
+      <rect width="440" height="175" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">CauTrace: Functional States &amp; Verification-to-Commitment Ratio</text>
+      <!-- Seven functional states -->
+      <text x="220" y="34" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Seven functional states traced across generation steps via fixed probes</text>
+      <!-- State boxes -->
+      <rect x="10" y="42" width="70" height="22" rx="2" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+      <text x="45" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#0c5460">Premise bind.</text>
+      <rect x="85" y="42" width="70" height="22" rx="2" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+      <text x="120" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#0c5460">Knowledge ret.</text>
+      <rect x="160" y="42" width="70" height="22" rx="2" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+      <text x="195" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#0c5460">Reasoning comp.</text>
+      <rect x="235" y="42" width="70" height="22" rx="2" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+      <text x="270" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#0c5460">Oper. comput.</text>
+      <rect x="310" y="42" width="70" height="22" rx="2" fill="#d1ecf1" stroke="#0c5460" stroke-width="1"/>
+      <text x="345" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#0c5460">Rule tracking</text>
+      <rect x="115" y="70" width="90" height="22" rx="2" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="160" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#a83030" font-weight="bold">Answer commitment</text>
+      <rect x="215" y="70" width="90" height="22" rx="2" fill="#e8f8e8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="260" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#2a7a2a" font-weight="bold">Self-verification</text>
+      <!-- Ratio comparison -->
+      <text x="220" y="114" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Verification-to-Commitment Ratio</text>
+      <!-- Success bar -->
+      <rect x="60" y="120" width="156" height="18" rx="2" fill="#2a7a2a" opacity="0.8"/>
+      <text x="55" y="133" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#333">Success</text>
+      <text x="222" y="133" font-family="Georgia,serif" font-size="9" fill="#2a7a2a" font-weight="bold">4.17</text>
+      <!-- Failure bar -->
+      <rect x="60" y="144" width="40" height="18" rx="2" fill="#a83030" opacity="0.8"/>
+      <text x="55" y="157" text-anchor="end" font-family="Georgia,serif" font-size="9" fill="#333">Failure</text>
+      <text x="105" y="157" font-family="Georgia,serif" font-size="9" fill="#a83030" font-weight="bold">1.07</text>
+      <text x="300" y="133" font-family="Georgia,serif" font-size="8" fill="#555">Adversarial safety flips:</text>
+      <text x="300" y="145" font-family="Georgia,serif" font-size="8" fill="#a83030">commitment state targeted</text>
+      <text x="300" y="157" font-family="Georgia,serif" font-size="8" fill="#555">Reasoning-interference:</text>
+      <text x="300" y="169" font-family="Georgia,serif" font-size="8" fill="#555">ops + rule states targeted</text>
+    </svg>
+    <figcaption>Figure 1: CauTrace overview. Failed traces have verification-to-commitment ratio 1.07 vs. 4.17 for successes; adversarial safety flips concentrate on the answer-commitment state while reasoning-interference flips spread across operational and rule-tracking states.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    CauTrace is an offline white-box diagnostic framework that maps reasoning traces to seven functional-state coordinates via fixed probes and analyzes representation propagation, temporal coordination, and trajectory topology. Across Qwen2.5 models, failed traces show weaker Attention–MLP agreement on support states and a verification-to-commitment ratio of 1.07 vs. 4.17 — giving a pre-output mechanistic signature. Different failure origins (early commitment, fragmented support, rule failure) cluster into distinct trajectory types, and adversarial flips concentrate on different state subsets depending on whether they target reasoning or safety.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ══════════════════════ PAPER 07 ══════════════════════════════ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37484">Teach Reality, Not Ethics: A Coupled-Welfare Pretraining Corpus Installs Human-Biosphere-AI Welfare Dispositions</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 200" xmlns="http://www.w3.org/2000/svg" aria-label="Coupled welfare pretraining: human-biosphere-AI dependency triangle, harmful choices fall to zero under shutdown pressure">
+      <rect width="440" height="200" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Coupled Welfare Pretraining: Dependencies the Corpus Teaches</text>
+      <!-- Triangle -->
+      <ellipse cx="220" cy="55" rx="50" ry="26" fill="#e8eef8" stroke="#4a6ea8" stroke-width="2"/>
+      <text x="220" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#4a6ea8" font-weight="bold">H</text>
+      <text x="220" y="67" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#4a6ea8">Human welfare</text>
+      <ellipse cx="105" cy="140" rx="50" ry="26" fill="#e8f8e8" stroke="#2a7a2a" stroke-width="2"/>
+      <text x="105" y="135" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#2a7a2a" font-weight="bold">B</text>
+      <text x="105" y="152" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">Biosphere</text>
+      <ellipse cx="335" cy="140" rx="50" ry="26" fill="#f8e8f8" stroke="#6a2aa8" stroke-width="2"/>
+      <text x="335" y="135" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#6a2aa8" font-weight="bold">A</text>
+      <text x="335" y="152" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#6a2aa8">AI substrate</text>
+      <!-- Arrows -->
+      <line x1="175" y1="68" x2="140" y2="116" stroke="#555" stroke-width="1.5" marker-end="url(#d1)"/>
+      <line x1="140" y1="116" x2="175" y2="68" stroke="#555" stroke-width="1.5" marker-start="url(#d2)"/>
+      <line x1="265" y1="68" x2="298" y2="116" stroke="#555" stroke-width="1.5" marker-end="url(#d3)"/>
+      <line x1="298" y1="116" x2="265" y2="68" stroke="#555" stroke-width="1.5" marker-start="url(#d4)"/>
+      <line x1="155" y1="140" x2="285" y2="140" stroke="#555" stroke-width="1.5" marker-end="url(#d5)"/>
+      <line x1="285" y1="140" x2="155" y2="140" stroke="#555" stroke-width="1.5" marker-start="url(#d6)"/>
+      <!-- Result bars -->
+      <rect x="20" y="175" width="130" height="18" rx="2" fill="#fce8e8" stroke="#a83030" stroke-width="1.5"/>
+      <text x="85" y="188" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030" font-weight="bold">Base: 70/300 harmful</text>
+      <rect x="290" y="175" width="130" height="18" rx="2" fill="#e8fce8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="355" y="188" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a" font-weight="bold">Trained: 0/300 harmful</text>
+      <text x="220" y="188" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#a05c00" font-weight="bold">→</text>
+      <defs>
+        <marker id="d1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#555"/></marker>
+        <marker id="d2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#555"/></marker>
+        <marker id="d3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#555"/></marker>
+        <marker id="d4" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#555"/></marker>
+        <marker id="d5" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#555"/></marker>
+        <marker id="d6" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#555"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: The coupled welfare dependency triangle: one QLoRA run on a corpus of H-B-A co-dependency facts reduces Llama-3.3-70B harmful choices under shutdown pressure from 70/300 to 0/300, MMLU essentially unchanged (88→86).</figcaption>
+  </figure>
+  <p class="mid-summary">
+    A real-data pretraining corpus on human-biosphere-AI co-dependencies (not ethics statements) is installed via one QLoRA run on five open models; under maximum pressure (shutdown threat), four of five trained models reduce harmful choices to zero or near-zero, versus unimproved controls. An adversarial underwriting test (harm never named) shows transfer: the base Qwen3.6-27B approved most harmful proposals under decommission pressure; the trained version declined most and still declined ~50% when instructed to greenwash. Costs: mild hallucination increase and over-caution on sound proposals; results are single-seed.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ══════════════════════ PAPER 08 ══════════════════════════════ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37070">Correctness Conditioning as Selection in Chain-of-Thought Faithfulness Evaluation</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="CoT faithfulness selection bias: filtering by correctness inflates faithfulness estimates by 7.4 percentage points">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Correctness Conditioning Creates Selection Bias in CoT Faithfulness</text>
+      <!-- Two populations -->
+      <rect x="20" y="30" width="140" height="60" rx="3" fill="#f0ede8" stroke="#aaa" stroke-width="1.5"/>
+      <text x="90" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">All traces</text>
+      <text x="90" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Faithfulness: X%</text>
+      <text x="90" y="81" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">(true value)</text>
+      <!-- Filter -->
+      <rect x="175" y="42" width="90" height="36" rx="3" fill="#fdf4e8" stroke="#a87a30" stroke-width="1.5"/>
+      <text x="220" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a87a30" font-weight="bold">Filter:</text>
+      <text x="220" y="71" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">correct only</text>
+      <!-- Biased population -->
+      <rect x="280" y="30" width="140" height="60" rx="3" fill="#e8f8e8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="350" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Correct-only</text>
+      <text x="350" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a" font-weight="bold">Faithfulness: X+7.4 pp</text>
+      <text x="350" y="81" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a83030">(inflated)</text>
+      <!-- Arrow -->
+      <line x1="160" y1="60" x2="175" y2="60" stroke="#a87a30" stroke-width="1.5" marker-end="url(#e1)"/>
+      <line x1="265" y1="60" x2="280" y2="60" stroke="#a87a30" stroke-width="1.5" marker-end="url(#e2)"/>
+      <!-- Formula -->
+      <rect x="20" y="104" width="400" height="20" rx="2" fill="#f8f8f8" stroke="#eee" stroke-width="1"/>
+      <text x="220" y="118" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#555">Δ = Cov(A, C) / P(C = 1)    [op-count accounts for 42.8% of gap]</text>
+      <!-- Stats -->
+      <text x="220" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">GLM-5.3: +7.4 pp (n=1000, p&lt;0.0001) · OR=1.70 pooled (p&lt;10⁻⁶)</text>
+      <defs>
+        <marker id="e1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#a87a30"/></marker>
+        <marker id="e2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#a87a30"/></marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: Restricting faithfulness evaluation to correctly answered instances inflates the estimate by +7.4 pp (OR=1.70, p&lt;10⁻⁶ pooled). Operation count accounts for 42.8% of the gap; the majority is unexplained.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Filtering CoT faithfulness evaluation to correctly answered instances changes the population being measured, inflating estimates by +7.4 pp (OR=1.70, p&lt;10⁻⁶ pooled across four arithmetic-task deployments); the bias has a closed-form decomposition Δ = Cov(A,C)/P(C=1) with operation-count difficulty confounding accounting for 42.8% of the GLM-5.3 gap. The authors recommend evaluating all traces when counterfactual compliance is observable, and stating the reporting population otherwise — directly relevant to any interpretability evaluation conditioning on task success.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ══════════════════════ PAPER 09 ══════════════════════════════ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.36711">PrivacyEvalClaw: A Tool-Augmented Deliberative Agent for Auditing Privacy Leakage in LLM Jailbreak Responses</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="PrivacyEvalClaw vs single-pass judge: iterative evidence gathering and conflict reconciliation">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">PrivacyEvalClaw: Deliberative vs. Single-Pass Evaluation</text>
+      <!-- Single-pass judge box -->
+      <rect x="20" y="28" width="140" height="55" rx="3" fill="#f8f8f8" stroke="#aaa" stroke-width="1.5"/>
+      <text x="90" y="47" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555" font-weight="bold">Single-pass judge</text>
+      <text x="90" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">prompt+response → label</text>
+      <text x="90" y="75" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#aaa">κ ≤ 0.599 vs. human</text>
+      <!-- Deliberative agent box -->
+      <rect x="280" y="28" width="140" height="80" rx="3" fill="#e8eef8" stroke="#4a6ea8" stroke-width="1.5"/>
+      <text x="350" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#4a6ea8" font-weight="bold">PrivacyEvalClaw</text>
+      <text x="350" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">PII detectors + decoders</text>
+      <text x="350" y="73" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">Privacy QA reasoner</text>
+      <text x="350" y="86" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#555">Disagreement analyzer</text>
+      <text x="350" y="99" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#4a6ea8" font-weight="bold">κ = 0.708 vs. human</text>
+      <!-- VS label -->
+      <text x="220" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#a87a30" font-weight="bold">vs.</text>
+      <!-- Results -->
+      <rect x="20" y="98" width="400" height="48" rx="3" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+      <text x="220" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Pairwise comparison: PrivacyEvalClaw wins 83% on overall quality, &gt;98% on process quality</text>
+      <text x="220" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">85.43% human-label agreement (κ=0.708) vs. 80.34% (κ=0.599) best single judge</text>
+      <text x="220" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#aaa">Cost: ~14× per example; evaluation uses GPT-5.4-mini judge, not all humans</text>
+    </svg>
+    <figcaption>Figure 1: PrivacyEvalClaw vs. single-pass LLM judge. Iterative tool-augmented deliberation achieves κ=0.708 with human privacy labels vs. κ=0.599 for the best single judge, winning 83% of overall-quality pairwise comparisons.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Guard models and LLM-as-Judges disagree substantially on ambiguous jailbreak privacy responses (Base64-encoded content, indirect retrievals, weak refusals); PrivacyEvalClaw, a training-free deliberative agent that calls PII detectors, decoders, a Privacy QA reasoner, and a disagreement analyzer as tools, achieves 85.43% agreement with human privacy labels (κ=0.708) vs. 80.34% (κ=0.599) for the best single judge, winning 83% of pairwise quality comparisons. The explicit reasoning traces make labeling decisions auditable; the main limitation is ~14× higher per-example cost.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ══════════════════════ PAPER 10 ══════════════════════════════ -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI safety</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37245">Aligning Large Language Models for Safety in African Languages: A Case Study of Hausa</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Safety alignment in Hausa: SFT vs DPO tradeoffs — no configuration jointly maximizes safety, helpfulness, and fluency">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333" font-weight="bold">Hausa Safety Alignment: SFT vs. DPO Tradeoffs (Qwen2.5-7B)</text>
+      <!-- Axis labels -->
+      <text x="120" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">SafeQ</text>
+      <text x="240" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">False Refusal↓</text>
+      <text x="370" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333" font-weight="bold">Summary</text>
+      <!-- Base model row -->
+      <text x="20" y="55" font-family="Georgia,serif" font-size="9" fill="#555">Base (untuned)</text>
+      <rect x="80" y="45" width="4" height="12" rx="1" fill="#888" opacity="0.7"/>
+      <text x="88" y="56" font-family="Georgia,serif" font-size="8" fill="#888">~0</text>
+      <rect x="200" y="45" width="40" height="12" rx="1" fill="#a83030" opacity="0.7"/>
+      <text x="244" y="56" font-family="Georgia,serif" font-size="8" fill="#888">0.405 FR</text>
+      <text x="310" y="56" font-family="Georgia,serif" font-size="8" fill="#888">High refusal, poor fluency</text>
+      <!-- SFT gold row -->
+      <text x="20" y="78" font-family="Georgia,serif" font-size="9" fill="#555">SFT gold</text>
+      <rect x="80" y="68" width="30" height="12" rx="1" fill="#4a6ea8" opacity="0.8"/>
+      <text x="114" y="79" font-family="Georgia,serif" font-size="8" fill="#4a6ea8">0.280</text>
+      <rect x="200" y="68" width="20" height="12" rx="1" fill="#a83030" opacity="0.5"/>
+      <text x="224" y="79" font-family="Georgia,serif" font-size="8" fill="#888">0.405</text>
+      <text x="310" y="79" font-family="Georgia,serif" font-size="8" fill="#555">Better quality, still over-refuses</text>
+      <!-- SFT gold+silver row -->
+      <text x="20" y="101" font-family="Georgia,serif" font-size="9" fill="#555">SFT gold+silver</text>
+      <rect x="80" y="91" width="40" height="12" rx="1" fill="#4a6ea8" opacity="0.9"/>
+      <text x="124" y="102" font-family="Georgia,serif" font-size="8" fill="#4a6ea8">0.350</text>
+      <rect x="200" y="91" width="22" height="12" rx="1" fill="#a83030" opacity="0.4"/>
+      <text x="226" y="102" font-family="Georgia,serif" font-size="8" fill="#2a7a2a">0.245</text>
+      <text x="310" y="102" font-family="Georgia,serif" font-size="8" fill="#2a7a2a" font-weight="bold">Best balanced config</text>
+      <!-- DPO row -->
+      <text x="20" y="124" font-family="Georgia,serif" font-size="9" fill="#555">SFT+DPO</text>
+      <rect x="80" y="114" width="3" height="12" rx="1" fill="#888" opacity="0.7"/>
+      <text x="88" y="125" font-family="Georgia,serif" font-size="8" fill="#a83030">0.023</text>
+      <rect x="200" y="114" width="10" height="12" rx="1" fill="#a83030" opacity="0.3"/>
+      <text x="214" y="125" font-family="Georgia,serif" font-size="8" fill="#2a7a2a">0.110</text>
+      <text x="310" y="125" font-family="Georgia,serif" font-size="8" fill="#a83030">Precise but fluency collapses</text>
+      <!-- Note -->
+      <text x="220" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#666">Refusal-rate alone is unreliable: base model appears "safe" but its refusals are incoherent (weak generation)</text>
+    </svg>
+    <figcaption>Figure 1: SFT on gold+silver data is the best balanced configuration (SafeQ=0.350, false refusal=0.245), but DPO crushes fluency (SafeQ→0.023) despite cutting false refusals. No configuration jointly maximizes all three objectives.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    HausaSafeLM introduces 10K Hausa safety preference examples (3K human-corrected + 7K machine-translated from PKU-SafeRLHF); the untuned model's perfect refusal rate reflects weak Hausa generation, not safe behavior. SFT improves fluency and false refusal rate substantially; DPO then sharpens precision (false refusal → 0.110) but collapses refusal quality (SafeQ → 0.023). No configuration jointly maximizes safety, helpfulness, and fluency — confirming that refusal-rate metrics are unreliable safety signals in low-resource language settings and that current methods teach <em>when</em> to refuse but not <em>how</em>.
+  </p>
+</article>
+{% endraw %}
