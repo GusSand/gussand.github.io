@@ -10,6 +10,8 @@ tags:
   - Evaluation
   - Jailbreak
   - Open Weights
+series: "red-teaming"
+short_title: "What Holds on Defense"
 ---
 
 Date: August 3, 2026 \| Estimated Reading Time: 7 min \| Author: Gustavo Sandoval

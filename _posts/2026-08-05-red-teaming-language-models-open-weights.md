@@ -10,6 +10,8 @@ tags:
   - Evaluation
   - Jailbreak
   - Open Weights
+series: "red-teaming"
+short_title: "What Changes When You Ship Open Weights"
 ---
 
 Date: August 5, 2026 \| Estimated Reading Time: 13 min \| Author: Gustavo Sandoval

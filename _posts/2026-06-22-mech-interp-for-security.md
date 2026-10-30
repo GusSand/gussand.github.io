@@ -8,6 +8,9 @@ tags:
   - LLM
   - Mechanistic Interpretability
   - Steering
+kind: "Explainer"
+image: "/images/mech-interp/fig2-read-vs-write.svg"
+image_caption: "Reading a model's internal state versus writing to it."
 ---
 
 Date: June 22, 2026 \| Estimated Reading Time: 12 min \| Author: Gustavo Sandoval

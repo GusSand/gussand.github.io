@@ -8,6 +8,8 @@ tags:
   - LLM
   - Code Assistants
   - User Study
+kind: "Study"
+image: "/images/does-ai-insecure/fig1-the-gap-is-the-human.svg"
 ---
 
 Date: June 15, 2026 \| Estimated Reading Time: 9 min \| Author: Gustavo Sandoval

@@ -10,6 +10,9 @@ tags:
   - Evaluation
   - Jailbreak
   - Open Weights
+series: "red-teaming"
+series_title: "Red-Teaming Language Models"
+short_title: "The Process and the Measurement Problem"
 ---
 
 Date: July 29, 2026 \| Estimated Reading Time: 21 min \| Author: Gustavo Sandoval

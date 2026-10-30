@@ -1,0 +1,122 @@
+---
+layout: compress
+---
+{% comment %}
+Homepage ("Field Notes"). Driven by post front matter:
+  image / image_caption  figure for the lead story and card thumbnails
+  thumb_text             text thumbnail for posts without a figure
+  kind                   kicker label (Essay, Survey, ...); falls back to the first tag
+  series / series_title / short_title  posts grouped in the series box
+The lead is the newest non-series post with an image. Cards are the next four
+non-series posts. The archive lists the rest.
+{% endcomment %}
+{% assign standalone = site.posts | where_exp: "p", "p.series == nil" %}
+{% assign lead = standalone | where_exp: "p", "p.image" | first %}
+{% assign series_posts = site.posts | where_exp: "p", "p.series != nil" | sort: "date" %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.author.name }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="icon" type="image/png" href="{{ '/images/favicon-32x32.png' | relative_url }}" sizes="32x32">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+  {% include analytics.html %}
+</head>
+<body>
+<div class="topbar"><div class="wrap mono"><span>{{ site.author.location }} &middot; NYU Tandon</span><span>Interpretability &middot; LLM Security</span></div></div>
+<div class="wrap">
+  <header class="mast">
+    <h1>{{ site.author.name }}<span class="dot">.</span></h1>
+    <p><b>Notes from inside the model.</b> Long-form writing on mechanistic interpretability, red-teaming and secure code generation, by an NYU professor who spent 15 years shipping software at Microsoft.</p>
+  </header>
+  <nav class="sections">
+    {% for item in site.data.menu.entries %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% endfor %}
+  </nav>
+
+  {% if lead %}
+  <article class="lead">
+    <div>
+      <span class="label mono">Latest {{ lead.kind | default: "essay" | downcase }}</span>
+      <h2><a href="{{ lead.url | relative_url }}">{{ lead.short_title | default: lead.title }}</a></h2>
+      <p class="dek">{{ lead.dek | default: lead.description | strip_html | truncatewords: 40 }}</p>
+      <div class="byline mono"><b>{{ lead.date | date: "%b %-d, %Y" }}</b>{% for t in lead.tags limit:2 %} &middot; {{ t }}{% endfor %}</div>
+    </div>
+    <figure class="figure">
+      <a href="{{ lead.url | relative_url }}"><img src="{{ lead.image | relative_url }}" alt="{{ lead.image_caption | default: lead.title | escape }}"></a>
+      {% if lead.image_caption %}<figcaption>{{ lead.image_caption }}</figcaption>{% endif %}
+    </figure>
+  </article>
+  {% endif %}
+
+  <div class="cols">
+    <main>
+      <h2 class="kicker-h mono"><span>Recent</span></h2>
+      <div class="cards">
+        {% assign shown = "|" | append: lead.url | append: "|" %}
+        {% assign n = 0 %}
+        {% for p in standalone %}
+          {% assign key = "|" | append: p.url | append: "|" %}
+          {% if shown contains key or n >= 4 %}{% continue %}{% endif %}
+          {% assign shown = shown | append: key %}
+          {% assign n = n | plus: 1 %}
+        <div class="card">
+          <a class="thumb" href="{{ p.url | relative_url }}">
+            {% if p.image %}<img src="{{ p.image | relative_url }}" alt="" loading="lazy">{% else %}<span class="serif">{{ p.thumb_text | default: p.title }}</span>{% endif %}
+          </a>
+          <span class="mono">{{ p.date | date: "%b %-d" }} &middot; {{ p.kind | default: p.tags.first }}</span>
+          <h3><a href="{{ p.url | relative_url }}">{{ p.short_title | default: p.title }}</a></h3>
+          <p>{{ p.dek | default: p.description | strip_html | truncatewords: 22 }}</p>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% if series_posts.size > 0 %}
+      <section class="series">
+        <span class="mono" style="color:var(--teal)">Series &middot; {{ series_posts.size }} parts</span>
+        <h3>{{ series_posts.first.series_title }}</h3>
+        <ol>
+          {% for p in series_posts %}
+            {% assign d = p.dek | default: p.description | strip_html %}
+            {% if d contains " of three. " %}{% assign d = d | split: " of three. " | last %}{% endif %}
+          <li><div><a href="{{ p.url | relative_url }}">{{ p.short_title | default: p.title }}</a><small>{{ d | truncatewords: 18 }}</small></div></li>
+          {% endfor %}
+        </ol>
+      </section>
+      {% endif %}
+    </main>
+
+    <aside>
+      <div class="about">
+        <img src="{{ '/images/headshot2.jpeg' | relative_url }}" alt="{{ site.author.name }}">
+        <span class="mono" style="color:var(--red)">About</span>
+        <p>Industry Professor of Computer Science at NYU Tandon. My PhD work diagnoses where models go wrong and patches them without retraining.</p>
+        <p><a class="more" href="{{ '/about/' | relative_url }}">More about me &rarr;</a></p>
+      </div>
+      <div class="papers">
+        <h2 class="kicker-h mono"><span>Papers</span></h2>
+        {% for paper in site.data.papers %}
+        <div class="item"><span class="mono">{{ paper.venue }} &middot; {{ paper.year }}</span><a href="{{ paper.url }}">{{ paper.title }}</a></div>
+        {% endfor %}
+      </div>
+      <div class="archive">
+        <h2 class="kicker-h mono"><span>Archive</span></h2>
+        {% assign m = 0 %}
+        {% for p in standalone %}
+          {% assign key = "|" | append: p.url | append: "|" %}
+          {% if shown contains key or m >= 5 %}{% continue %}{% endif %}
+          {% assign m = m | plus: 1 %}
+        <a href="{{ p.url | relative_url }}">{{ p.short_title | default: p.title }} <span>{{ p.date | date: "%b %Y" }}</span></a>
+        {% endfor %}
+        <a href="{{ '/archives/' | relative_url }}">All writing &rarr; <span></span></a>
+      </div>
+    </aside>
+  </div>
+</div>
+<footer class="site-foot"><div class="wrap"><span>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}</span><span><a href="https://github.com/{{ site.author.github }}">GitHub</a><a href="https://twitter.com/{{ site.author.twitter }}">X</a><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a><a href="{{ '/feed.xml' | relative_url }}">RSS</a></span></div></footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Selected papers shown in the homepage sidebar (_layouts/home.html), newest first.
+- venue: arXiv
+  year: 2026
+  title: "Surgical Repair of Insecure Code Generation in LLMs"
+  url: https://arxiv.org/abs/2604.16697
+
+- venue: arXiv
+  year: 2025
+  title: "Early Approaches to Adversarial Fine-Tuning for Prompt Injection Defense"
+  url: https://arxiv.org/abs/2509.14271
+
+- venue: USENIX Security
+  year: 2023
+  title: "Lost at C: A User Study on the Security Implications of LLM Code Assistants"
+  url: https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval

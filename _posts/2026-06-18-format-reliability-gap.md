@@ -8,6 +8,9 @@ tags:
   - LLM
   - Mechanistic Interpretability
   - Secure Code Generation
+kind: "Summary"
+image: "/images/format-reliability/fig1-layer-trajectory.svg"
+image_caption: "Where the secure choice appears, layer by layer."
 ---
 
 Date: June 18, 2026 \| Estimated Reading Time: 10 min \| Author: Gustavo Sandoval

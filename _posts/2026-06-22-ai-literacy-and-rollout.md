@@ -7,6 +7,8 @@ tags:
   - Vibe Coding
   - Security
   - LLM
+kind: "Plan"
+image: "/images/ai-literacy/fig1-cohort-ladder.svg"
 ---
 
 Date: June 22, 2026 \| Estimated Reading Time: 8 min \| Author: Gustavo Sandoval

@@ -8,6 +8,8 @@ tags:
   - LLM
   - Prompt Injection
   - Adversarial Fine-Tuning
+kind: "Retrospective"
+image: "/images/prompt-injection-retro/fig1-2022-vs-2026.svg"
 ---
 
 Date: June 20, 2026 \| Estimated Reading Time: 11 min \| Author: Gustavo Sandoval

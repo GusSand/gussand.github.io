@@ -10,6 +10,8 @@ tags:
   - Evaluation
   - Open Weights
   - Governance
+kind: "Essay"
+thumb_text: "attack config ≠ security claim"
 ---
 
 Date: July 31, 2026 \| Estimated Reading Time: 24 min \| Author: Gustavo Sandoval
