@@ -67,7 +67,7 @@ issues and the newest weekly issue from the radar collection.
         {% assign n = 0 %}
         {% for p in pool %}
           {% assign key = "|" | append: p.url | append: "|" %}
-          {% if shown contains key or n >= 4 %}{% continue %}{% endif %}
+          {% if shown contains key or n >= 8 %}{% continue %}{% endif %}
           {% assign shown = shown | append: key %}
           {% assign n = n | plus: 1 %}
           {% if p.series_title %}
