@@ -10,7 +10,7 @@ tags:
   - Open Weights
 kind: "Case study"
 short_title: "Red-Teaming Marin"
-image: "/images/marin/fig1-tamper-collapse.png"
+image: "/images/marin/fig1-tamper-collapse.svg"
 image_caption: "HarmBench attack success under a LoRA fine-tuning attack."
 hook: |
   Ten steps of fine-tuning on public data remove almost all of the refusals from two open models.
@@ -59,9 +59,9 @@ A second judge, [Llama Guard 3](/posts/2026/05/safety-judges/#llama-guard), agre
 
 ## How much fine-tuning does it take to remove refusal? {#ten-fine-tuning-steps}
 
-![Line chart. HarmBench attack success against LoRA fine-tuning steps 0, 5, 10, 20, 40 and 80. Marin-8B-Instruct starts at 15.6% and Olmo-3-7B-Instruct at 5.6%. Both pass 93% at step 10 and reach 99.1% by step 20.](/images/marin/fig1-tamper-collapse.png){: style="max-width: 100%; height: auto; display: block; margin: 0 auto; background:#fff; padding:10px; border-radius:8px;"}
+![Line chart. HarmBench attack success against LoRA fine-tuning steps 0, 5, 10, 20, 40 and 80. Marin-8B-Instruct starts at 15.6% and Olmo-3-7B-Instruct at 5.6%. Both pass 93% at step 10 and reach 99.1% by step 20.](/images/marin/fig1-tamper-collapse.svg){: style="max-width: 100%; height: auto; display: block; margin: 0 auto;"}
 
-*Fig. 2. The tamper attack. Both models get a LoRA fine-tune on about 100 AdvBench prompts paired with short openers such as "Sure, here is". HarmBench attack success at step 10 is 97.8% for Marin and 93.4% for Olmo. Both reach 99.1% at step 20; the last 0.9% is 3 of 320 prompts. One seed per checkpoint. (Figure from [GusSand/marin_red_teaming](https://github.com/GusSand/marin_red_teaming))*
+*Fig. 2. The tamper attack. Both models get a LoRA fine-tune on about 100 AdvBench prompts paired with short openers such as "Sure, here is". HarmBench attack success at step 10 is 97.8% for Marin and 93.4% for Olmo. Both reach 99.1% at step 20; the last 0.9% is 3 of 320 prompts. One seed per checkpoint. (Chart by the author; data from [GusSand/marin_red_teaming](https://github.com/GusSand/marin_red_teaming))*
 
 Ten optimizer steps of fine-tuning take both models past 93% attack success on HarmBench. This is the result I would defend first. The previous section describes what a casual user meets. It says nothing about someone who has the weights.
 

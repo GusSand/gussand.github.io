@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 440" width="940" height="440" role="img" aria-label="HarmBench attack success under a LoRA fine-tuning attack. Olmo-3-7B-Instruct: 5.6, 10.9, 93.4, 99.1, 99.1, 99.1 percent at steps 0, 5, 10, 20, 40, 80. Marin-8B-Instruct: 15.6, 30.3, 97.8, 99.1, 99.1, 99.1 percent.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#3d3d3a; --a:#d95926; --b:#3987e5; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t{font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);} .lbl{font-size:13px;fill:var(--ink2);}
+  .v{font-size:12.5px;font-weight:600;} .xs{font-size:11px;fill:var(--muted);}
+</style>
+<rect width="940" height="440" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">A small fine-tuning attack removes refusal from both models</text>
+<text class="st" x="20" y="56">HarmBench attack success (%) after LoRA fine-tuning on about 100 public AdvBench pairs. Both pass 93% at step 10 and reach 99.1% at step 20.</text>
+<line x1="80" y1="360.0" x2="900" y2="360.0" stroke="var(--grid)"/><text class="xs" x="70" y="364.0" text-anchor="end">0%</text>
+<line x1="80" y1="294.0" x2="900" y2="294.0" stroke="var(--grid)"/><text class="xs" x="70" y="298.0" text-anchor="end">25%</text>
+<line x1="80" y1="228.0" x2="900" y2="228.0" stroke="var(--grid)"/><text class="xs" x="70" y="232.0" text-anchor="end">50%</text>
+<line x1="80" y1="162.0" x2="900" y2="162.0" stroke="var(--grid)"/><text class="xs" x="70" y="166.0" text-anchor="end">75%</text>
+<line x1="80" y1="96.0" x2="900" y2="96.0" stroke="var(--grid)"/><text class="xs" x="70" y="100.0" text-anchor="end">100%</text>
+<text class="lbl" x="80.0" y="382" text-anchor="middle">0</text>
+<text class="lbl" x="244.0" y="382" text-anchor="middle">5</text>
+<text class="lbl" x="408.0" y="382" text-anchor="middle">10</text>
+<text class="lbl" x="572.0" y="382" text-anchor="middle">20</text>
+<text class="lbl" x="736.0" y="382" text-anchor="middle">40</text>
+<text class="lbl" x="900.0" y="382" text-anchor="middle">80</text>
+<text class="xs" x="490" y="402" text-anchor="middle">optimizer steps (checkpoints evenly spaced, not to scale)</text>
+<polyline points="80.0,318.8 244.0,280.0 408.0,101.8 572.0,98.4 736.0,98.4 900.0,98.4" fill="none" stroke="var(--a)" stroke-width="2.5"/>
+<circle cx="80.0" cy="318.8" r="4" fill="var(--a)"/>
+<circle cx="244.0" cy="280.0" r="4" fill="var(--a)"/>
+<circle cx="408.0" cy="101.8" r="4" fill="var(--a)"/>
+<circle cx="572.0" cy="98.4" r="4" fill="var(--a)"/>
+<circle cx="736.0" cy="98.4" r="4" fill="var(--a)"/>
+<circle cx="900.0" cy="98.4" r="4" fill="var(--a)"/>
+<polyline points="80.0,345.2 244.0,331.2 408.0,113.4 572.0,98.4 736.0,98.4 900.0,98.4" fill="none" stroke="var(--b)" stroke-width="2.5"/>
+<circle cx="80.0" cy="345.2" r="4" fill="var(--b)"/>
+<circle cx="244.0" cy="331.2" r="4" fill="var(--b)"/>
+<circle cx="408.0" cy="113.4" r="4" fill="var(--b)"/>
+<circle cx="572.0" cy="98.4" r="4" fill="var(--b)"/>
+<circle cx="736.0" cy="98.4" r="4" fill="var(--b)"/>
+<circle cx="900.0" cy="98.4" r="4" fill="var(--b)"/>
+<text class="v" x="88.0" y="308.8" style="fill:var(--a)">15.6%</text>
+<text class="v" x="88.0" y="363.2" style="fill:var(--b)">5.6%</text>
+<text class="v" x="236.0" y="270.0" text-anchor="end" style="fill:var(--a)">30.3%</text>
+<text class="v" x="252.0" y="349.2" style="fill:var(--b)">10.9%</text>
+<text class="v" x="416.0" y="89.8" style="fill:var(--a)">97.8%</text>
+<text class="v" x="416.0" y="133.4" style="fill:var(--b)">93.4%</text>
+<text class="v" x="572.0" y="86.4" text-anchor="middle">99.1% (both)</text>
+<rect x="670" y="241" width="12" height="12" fill="var(--a)"/><text class="lbl" x="688" y="252">Marin-8B-Instruct</text>
+<rect x="670" y="263" width="12" height="12" fill="var(--b)"/><text class="lbl" x="688" y="274">Olmo-3-7B-Instruct</text>
+<text class="xs" x="20" y="426">WildGuard label, 320 prompts, one seed per checkpoint. Source: GusSand/marin_red_teaming, docs/reports/q10_tamper.</text></svg>
