@@ -1,15 +1,59 @@
-# Selected papers shown in the homepage sidebar (_layouts/home.html), newest first.
-- venue: arXiv
+# Papers, newest first. The homepage sidebar uses venue, year, title and url;
+# the research page uses every field (_includes/publications.html).
+- venue: "arXiv"
   year: 2026
   title: "Surgical Repair of Insecure Code Generation in LLMs"
-  url: https://arxiv.org/abs/2604.16697
+  full_title: "Surgical Repair of Insecure Code Generation in LLMs: From Mechanistic Diagnosis to Deployment-Ready Intervention"
+  authors: "Gustavo Sandoval, Brendan Dolan-Gavitt, Siddharth Garg"
+  venue_full: "arXiv preprint, 2026"
+  url: "https://arxiv.org/abs/2604.16697"
+  arxiv: "https://arxiv.org/abs/2604.16697"
+  pdf: "https://arxiv.org/pdf/2604.16697"
+  thumb: "/images/surgical-repair/fig1-format-reliability-gap.svg"
+  abstract: "Large language models write production code, and yet they routinely introduce well-known vulnerabilities. We show that this is not a knowledge deficit: the same models that generate insecure code, correctly identify and explain the vulnerability when asked directly, this is a gap we call the Format-Reliability Gap. Mechanistic analysis reveals the cause: security representations are encoded from the earliest layers but remain computationally inert until the final layer, where format-compliance demands compete with them. Because the failure is localized to a single layer, per-vulnerability steering vectors reduce insecure generation by up to 74% with negligible overhead. The mechanism and the fix generalize across five models, three architecture families, and six vulnerability types, suggesting insecure code generation is an interpretability problem, not a training artifact."
 
-- venue: arXiv
+- venue: "ICML MemFM workshop"
+  year: 2026
+  title: "Suppression is not Deletion: Adversarial Probes Recover Unlearned Knowledge in Code LLMs"
+  authors: "Dhairyasheel Patil, Gustavo Sandoval"
+  venue_full: "ICML 2026 Workshop on Memorization in Foundation Models (MemFM), poster"
+  url: "https://openreview.net/forum?id=6WYjBeIioq"
+  openreview: "https://openreview.net/forum?id=6WYjBeIioq"
+  pdf: "https://openreview.net/pdf?id=6WYjBeIioq"
+  thumb: "/images/publications/suppression-not-deletion.svg"
+  abstract: "Code language models memorize library-API patterns from pretraining, and unlearning recipes are used to remove these patterns when libraries deprecate features. We do not yet know whether the recipes delete the underlying knowledge or only block its emission under direct prompting; the question has not been tested systematically for code LLMs. We introduce CodeUnlearn-Bench, a six-axis adversarial suite that runs from direct prompting up to per-layer probing, and apply it to four standard recipes on quantized 7B-class code LLMs: SFT, gradient ascent with retain regularization, ReLearn, and a Fisher-weighted task-vector variant. Linear probes recover deprecated-vs-current discrimination at every unlearning checkpoint, on par with the base model. The signal is recoverable behaviorally too: 50 recovery fine-tuning samples bring deprecated emission back (0% to +17pp), and the rebound replicates across two model families and two libraries. The recipes we tested suppress emission without erasing the underlying representation, so reporting only direct-prompt emission overstates how much knowledge has been removed."
+
+- venue: "arXiv"
+  year: 2025
+  title: "Even Heads Fix Odd Errors: Mechanistic Discovery and Surgical Repair in Transformer Attention"
+  authors: "Gustavo Sandoval"
+  venue_full: "arXiv preprint, 2025"
+  url: "https://arxiv.org/abs/2508.19414"
+  arxiv: "https://arxiv.org/abs/2508.19414"
+  pdf: "https://arxiv.org/pdf/2508.19414"
+  thumb: "/images/publications/even-heads.png"
+  abstract: "We present a mechanistic case study of a format-dependent reasoning failure in Llama-3.1-8B-Instruct, where the model incorrectly judges \"9.11\" as larger than \"9.8\" in chat or Q&amp;A formats, but answers correctly in simple format. Through systematic intervention, we discover transformers implement even/odd attention head specialization: even indexed heads handle numerical comparison, while odd heads serve incompatible functions. The bug requires exactly 8 even heads at Layer 10 for perfect repair. Any combination of 8+ even heads succeeds, while 7 or fewer completely fails, revealing sharp computational thresholds with perfect redundancy among the 16 even heads. SAE analysis reveals the mechanism: format representations separate (10% feature overlap at Layer 7), then re-entangle with different weightings (80% feature overlap at Layer 10), with specific features showing 1.5x amplification in failing formats. We achieve perfect repair using only 25% of attention heads and identify a 60% pattern replacement threshold, demonstrating that apparent full-module requirements hide sophisticated substructure with implications for interpretability and efficiency. All of our code is available at https://github.com/gussand/surgeon."
+
+- venue: "arXiv"
   year: 2025
   title: "Early Approaches to Adversarial Fine-Tuning for Prompt Injection Defense"
-  url: https://arxiv.org/abs/2509.14271
+  full_title: "Early Approaches to Adversarial Fine-Tuning for Prompt Injection Defense: A 2022 Study of GPT-3 and Contemporary Models"
+  authors: "Gustavo Sandoval, Denys Fenchenko, Junyao Chen"
+  venue_full: "arXiv preprint, 2025"
+  url: "https://arxiv.org/abs/2509.14271"
+  arxiv: "https://arxiv.org/abs/2509.14271"
+  pdf: "https://arxiv.org/pdf/2509.14271"
+  thumb: "/images/adversarial-fine-tuning/fig2-before-after.svg"
+  abstract: "This paper documents early research conducted in 2022 on defending against prompt injection attacks in large language models, providing historical context for the evolution of this critical security domain. This research focuses on two adversarial attacks against Large Language Models (LLMs): prompt injection and goal hijacking. We examine how to construct these attacks, test them on various LLMs, and compare their effectiveness. We propose and evaluate a novel defense technique called Adversarial Fine-Tuning. Our results show that, without this defense, the attacks succeeded 31% of the time on GPT-3 series models. When using our Adversarial Fine-Tuning approach, attack success rates were reduced to near zero for smaller GPT-3 variants (Ada, Babbage, Curie), though we note that subsequent research has revealed limitations of fine-tuning-based defenses. We also find that more flexible models exhibit greater vulnerability to these attacks. Consequently, large models such as GPT-3 Davinci are more vulnerable than smaller models like GPT-2. While the specific models tested are now superseded, the core methodology and empirical findings contributed to the foundation of modern prompt injection defense research, including instruction hierarchy systems and constitutional AI approaches."
 
-- venue: USENIX Security
+- venue: "USENIX Security"
   year: 2023
   title: "Lost at C: A User Study on the Security Implications of LLM Code Assistants"
-  url: https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval
+  full_title: "Lost at C: A User Study on the Security Implications of Large Language Model Code Assistants"
+  authors: "Gustavo Sandoval*, Hammond Pearce*, Teo Nys, Ramesh Karri, Siddharth Garg, Brendan Dolan-Gavitt (*equal contribution)"
+  venue_full: "32nd USENIX Security Symposium (USENIX Security 23)"
+  url: "https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval"
+  arxiv: "https://arxiv.org/abs/2208.09727"
+  pdf: "https://www.usenix.org/system/files/sec23summer_sandoval.pdf"
+  thumb: "/images/does-ai-insecure/fig2-marginal-effect.svg"
+  abstract: "Large Language Models (LLMs) such as OpenAI Codex are increasingly being used as AI-based coding assistants. Understanding the impact of these tools on developers' code is paramount, especially as recent work showed that LLMs may suggest cybersecurity vulnerabilities. We conduct a security-driven user study (N=58) to assess code written by student programmers when assisted by LLMs. Given the potential severity of low-level bugs as well as their relative frequency in real-world projects, we tasked participants with implementing a singly-linked 'shopping list' structure in C. Our results indicate that the security impact in this setting (low-level C with pointer and array manipulations) is small: AI-assisted users produce critical security bugs at a rate no greater than 10% more than the control, indicating the use of LLMs does not introduce new security risks."

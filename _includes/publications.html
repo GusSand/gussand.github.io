@@ -1,0 +1,19 @@
+{% comment %} Publication list with thumbnail, links and a collapsible abstract. Data: _data/papers.yml {% endcomment %}
+<div class="pubs">
+{% for p in site.data.papers %}
+  <div class="pub-entry">
+    <a class="pub-thumb" href="{{ p.url }}"><img src="{{ p.thumb | relative_url }}" alt="Figure from {{ p.full_title | default: p.title }}" loading="lazy"></a>
+    <div class="pub-body">
+      <div class="pub-title"><a href="{{ p.url }}">{{ p.full_title | default: p.title }}</a></div>
+      <div class="pub-authors">{{ p.authors | replace: "Gustavo Sandoval", "<b>Gustavo Sandoval</b>" }}</div>
+      <div class="pub-venue"><em>{{ p.venue_full }}</em></div>
+      <div class="pub-links">
+        {% if p.arxiv %}<a class="pub-btn" href="{{ p.arxiv }}">arXiv</a>{% endif %}
+        {% if p.openreview %}<a class="pub-btn" href="{{ p.openreview }}">OpenReview</a>{% endif %}
+        {% if p.pdf %}<a class="pub-btn" href="{{ p.pdf }}">PDF</a>{% endif %}
+        {% if p.abstract %}<details class="pub-abs"><summary class="pub-btn">Abstract</summary><p>{{ p.abstract }}</p></details>{% endif %}
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
