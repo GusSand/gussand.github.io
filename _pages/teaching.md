@@ -8,9 +8,10 @@ permalink: /teaching/
 
 ## Courses at NYU
 
-- **CS-GY 6013**: Special Topics in Operating Systems
-- **CS-GY 6033**: Design and Analysis of Algorithms I
-- **CS-GY 9223**: Special Topics in Computer Science - Machine Learning Security
+- **CS-UY 3224**: Introduction to Operating Systems (undergraduate)
+- **CS-GY 6923**: Machine Learning (graduate)
+- **CS-GY 6953**: Deep Learning (graduate)
+- **CS-GY 9223**: Special Topics in Computer Science - Machine Learning Security (graduate)
 
 ## Teaching Philosophy
 
