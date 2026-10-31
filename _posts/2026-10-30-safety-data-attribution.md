@@ -1,5 +1,5 @@
 ---
-title: 'Which training data taught it that?'
+title: 'Where did the model learn to do that?'
 description: 'Adding "no more than 50 words" can make an AI model comply with a harmful request. Can we trace a behavior like that to its training data, and fix it by changing the data? A survey of 26 papers on data attribution for safety, on which repairs work, and on the limits of pretraining filters.'
 date: 2026-10-30
 permalink: /posts/2026/10/safety-data-attribution/
