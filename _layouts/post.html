@@ -10,8 +10,15 @@ layout: default
     {% if page.author %}
       • {{ page.author }}
     {% endif %}
+    {% if page.reading_time %}
+      • {{ page.reading_time }} min read
+    {% endif %}
   </div>
   
+  {% if page.hook %}
+  <div class="hook">{{ page.hook | markdownify }}</div>
+  {% endif %}
+
   <div class="post-content">
     {{ content }}
   </div>

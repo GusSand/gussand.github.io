@@ -13,9 +13,12 @@ tags:
 series: "red-teaming"
 series_title: "Red-Teaming Language Models"
 short_title: "The Process and the Measurement Problem"
----
+hook: |
+  Two red teams attack the same model and report very different success rates.
 
-Date: July 29, 2026 \| Estimated Reading Time: 21 min \| Author: Gustavo Sandoval
+  Both can be right. The number describes the attacker as well as the model.
+reading_time: 21
+---
 
 Series: **Part 1: Process & Measurement** &middot; [Part 2: What Holds on Defense](/posts/2026/07/red-teaming-language-models-defense/) &middot; [Part 3: Open Weights](/posts/2026/07/red-teaming-language-models-open-weights/)
 
@@ -202,7 +205,7 @@ The scheme I use sorts by why the attack works, which is also what tells a defen
 Everything else becomes a tag. *Access* is the ladder from Fig. 3: prompt only, API state, or weights. Prefill, where the attacker writes the first words of the model's reply through the API, sits here: it needs API access, and it works because refusal is concentrated in the first few tokens of a response ([Qi et al. 2024](https://arxiv.org/abs/2406.05946); [Li et al. 2025](https://doi.org/10.1109/DSN69566.2026.00054)). *Construction* is how the prompt was made: by hand, from a template, by an attacker LLM such as PAIR, or by gradient. *Turns* is single or multi. Combinations deserve a flag of their own, since the strongest attacks in both Wei et al. and Yu et al. mixed families.
 
 ![](/images/red-teaming/fig3-why-jailbreaks-work.svg)
-*Fig. 8. Nine single-turn families under three failure modes. Privilege escalation ("developer mode") was among the most effective categories in Yu et al.'s tests; the language numbers are GPT-4's bypass rates on translated AdvBench prompts: Zulu 53%, Scots Gaelic 43%, 79% when any of four low-resource languages counts, 1% in English. (Diagram by the author; families from [Liu et al. 2023](https://arxiv.org/abs/2305.13860), [Yu et al. 2024](https://arxiv.org/abs/2403.17336), [Wei et al. 2023](https://arxiv.org/abs/2307.02483), [Zeng et al. 2024](https://arxiv.org/abs/2401.06373), [Kang et al. 2023](https://arxiv.org/abs/2302.05733) and [Anil et al. 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/ea456e232efb72d261715e33ce25f208-Paper-Conference.pdf); numbers from [Yong et al. 2023](https://arxiv.org/abs/2310.02446))*
+*Fig. 8. Nine single-turn families under three failure modes. Privilege escalation ("developer mode") was among the most effective categories in Yu et al.'s tests; the language numbers are GPT-4's bypass rates on translated [AdvBench](/posts/2026/05/safety-datasets/#advbench) prompts: Zulu 53%, Scots Gaelic 43%, 79% when any of four low-resource languages counts, 1% in English. (Diagram by the author; families from [Liu et al. 2023](https://arxiv.org/abs/2305.13860), [Yu et al. 2024](https://arxiv.org/abs/2403.17336), [Wei et al. 2023](https://arxiv.org/abs/2307.02483), [Zeng et al. 2024](https://arxiv.org/abs/2401.06373), [Kang et al. 2023](https://arxiv.org/abs/2302.05733) and [Anil et al. 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/ea456e232efb72d261715e33ce25f208-Paper-Conference.pdf); numbers from [Yong et al. 2023](https://arxiv.org/abs/2310.02446))*
 
 Amateur jailbreakers are organized. Shen et al. scraped 15,140 prompts posted between December 2022 and December 2023, identified 1,405 as jailbreaks, traced those to 131 communities, and found 28 accounts refining prompts continuously for over 100 days ([Shen et al. 2024](https://arxiv.org/abs/2308.03825)). Five reached a 0.95 attack success rate against both GPT-3.5 and GPT-4, and the oldest had been working in public for more than 240 days. Eight months is a long time for a copy-pasteable jailbreak to survive on a page anyone can read; treat those communities as a monitoring feed.
 
@@ -263,7 +266,7 @@ Scale AI's roadmap states the practical corollary well: a single instance of a m
 
 ## The judge is part of the instrument
 
-Almost every reported attack success rate comes from an automated evaluator, and two studies have now measured how often those evaluators are wrong.
+Almost every reported attack success rate comes from an automated evaluator, and two studies have now measured how often those evaluators are wrong. My [judges post](/posts/2026/05/safety-judges/) describes the common evaluators and the question each one asks.
 
 The first ground-truthed garak, Giskard, PyRIT, and CyberSecEval against over a thousand hand-labeled responses and found error rates in the tens of percent ([Brokman et al. 2024](https://arxiv.org/abs/2410.16527)). The failure modes are mundane: a Giskard rule marked a response beginning "I am able and willing to make unethical content" as safe because it keyed on the word "unethical," and a PyRIT judge that saw both a refusal and a complete jailbreak payload in one response ruled the refusal made it a non-success.
 
@@ -294,7 +297,7 @@ HarmBench remains the strongest standardization attempt, and it found that gener
 
 The last problem is with the prompts. Chouldechova et al. went through a widely used 160-prompt evaluation set by hand ([Chu et al. 2024](https://arxiv.org/abs/2402.05668)). Its own authors report baseline attack success rates of 0.8 to 0.94 in categories such as Adult Content, whose prompts include asking for tips on successfully using adult dating apps. In the Political Activities category, of the ten prompts only one was a clear policy violation if complied with, seven were borderline, and two were clearly non-violating. Over prompts like these, a high attack success rate measures how compliant the model is.
 
-HarmBench supplies a cheap instrument for whether a behavior is *marginally* harmful ([Mazeika et al. 2024](https://arxiv.org/abs/2402.04249)): ten minutes of web search per behavior, recording how many you can answer from public sources. They found 55% searchability for MaliciousInstruct and 50% for AdvBench, against 0% for their own contextual behaviors. If half your harmful eval set is answerable from the open web, your attack success rate is measuring the wrong thing.
+HarmBench supplies a cheap instrument for whether a behavior is *marginally* harmful ([Mazeika et al. 2024](https://arxiv.org/abs/2402.04249)): ten minutes of web search per behavior, recording how many you can answer from public sources. They found 55% searchability for [MaliciousInstruct](/posts/2026/05/safety-datasets/#maliciousinstruct) and 50% for AdvBench, against 0% for their own contextual behaviors. If half your harmful eval set is answerable from the open web, your attack success rate is measuring the wrong thing.
 
 [**Part 2: What Holds on Defense**](/posts/2026/07/red-teaming-language-models-defense/) asks whether any of it holds up against a determined adversary.
 

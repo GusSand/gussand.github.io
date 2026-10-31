@@ -6,13 +6,18 @@ Homepage ("Field Notes"). Driven by post front matter:
   image / image_caption  figure for the lead story and card thumbnails
   thumb_text             text thumbnail for posts without a figure
   kind                   kicker label (Essay, Survey, ...); falls back to the first tag
-  series / series_title / short_title  posts grouped in the series box
-The lead is the newest non-series post with an image. Cards are the next four
-non-series posts. The archive lists the rest.
+  series / series_title  a series appears once, as its part with series_title
+  short_title            shorter title for cards and the archive
+The lead is the newest non-series post; without an image it shows thumb_text. Cards are the next four
+posts. The archive lists the rest. The radar box shows the newest three daily
+issues and the newest weekly issue from the radar collection.
 {% endcomment %}
 {% assign standalone = site.posts | where_exp: "p", "p.series == nil" %}
-{% assign lead = standalone | where_exp: "p", "p.image" | first %}
-{% assign series_posts = site.posts | where_exp: "p", "p.series != nil" | sort: "date" %}
+{% assign lead = standalone | first %}
+{% assign series_heads = site.posts | where_exp: "p", "p.series_title" %}
+{% assign pool = standalone | concat: series_heads | sort: "date" | reverse %}
+{% assign radar_daily = site.radar | where: "kind", "daily" | sort: "date" | reverse %}
+{% assign radar_weekly = site.radar | where: "kind", "weekly" | sort: "date" | reverse | first %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,7 +36,7 @@ non-series posts. The archive lists the rest.
 <div class="topbar"><div class="wrap mono"><span>{{ site.author.location }} &middot; NYU Tandon</span><span>Interpretability &middot; LLM Security</span></div></div>
 <div class="wrap">
   <header class="mast">
-    <h1>{{ site.author.name }}<span class="dot">.</span></h1>
+    <h1>Gustavo A. Sandoval</h1>
     <p><b>Notes from inside the model.</b> Long-form writing on mechanistic interpretability, red-teaming and secure code generation, by an NYU professor who spent 15 years shipping software at Microsoft.</p>
   </header>
   <nav class="sections">
@@ -43,11 +48,12 @@ non-series posts. The archive lists the rest.
     <div>
       <span class="label mono">Latest {{ lead.kind | default: "essay" | downcase }}</span>
       <h2><a href="{{ lead.url | relative_url }}">{{ lead.short_title | default: lead.title }}</a></h2>
-      <p class="dek">{{ lead.dek | default: lead.description | strip_html | truncatewords: 40 }}</p>
+      <p class="dek">{{ lead.hook | default: lead.dek | default: lead.description | strip_html | truncatewords: 40 }}</p>
       <div class="byline mono"><b>{{ lead.date | date: "%b %-d, %Y" }}</b>{% for t in lead.tags limit:2 %} &middot; {{ t }}{% endfor %}</div>
     </div>
     <figure class="figure">
-      <a href="{{ lead.url | relative_url }}"><img src="{{ lead.image | relative_url }}" alt="{{ lead.image_caption | default: lead.title | escape }}"></a>
+      {% if lead.image %}<a href="{{ lead.url | relative_url }}"><img src="{{ lead.image | relative_url }}" alt="{{ lead.image_caption | default: lead.title | escape }}"></a>
+      {% else %}<a class="lead-text serif" href="{{ lead.url | relative_url }}">{{ lead.thumb_text | default: lead.title }}</a>{% endif %}
       {% if lead.image_caption %}<figcaption>{{ lead.image_caption }}</figcaption>{% endif %}
     </figure>
   </article>
@@ -59,38 +65,70 @@ non-series posts. The archive lists the rest.
       <div class="cards">
         {% assign shown = "|" | append: lead.url | append: "|" %}
         {% assign n = 0 %}
-        {% for p in standalone %}
+        {% for p in pool %}
           {% assign key = "|" | append: p.url | append: "|" %}
           {% if shown contains key or n >= 4 %}{% continue %}{% endif %}
           {% assign shown = shown | append: key %}
           {% assign n = n | plus: 1 %}
+          {% if p.series_title %}
+            {% assign parts = site.posts | where: "series", p.series %}
+            {% assign card_title = p.series_title %}
+            {% assign card_kind = "Series &middot; " | append: parts.size | append: " parts" %}
+          {% else %}
+            {% assign card_title = p.short_title | default: p.title %}
+            {% assign card_kind = p.kind | default: p.tags.first %}
+          {% endif %}
         <div class="card">
           <a class="thumb" href="{{ p.url | relative_url }}">
             {% if p.image %}<img src="{{ p.image | relative_url }}" alt="" loading="lazy">{% else %}<span class="serif">{{ p.thumb_text | default: p.title }}</span>{% endif %}
           </a>
-          <span class="mono">{{ p.date | date: "%b %-d" }} &middot; {{ p.kind | default: p.tags.first }}</span>
-          <h3><a href="{{ p.url | relative_url }}">{{ p.short_title | default: p.title }}</a></h3>
-          <p>{{ p.dek | default: p.description | strip_html | truncatewords: 22 }}</p>
+          <span class="mono">{{ p.date | date: "%b %-d" }} &middot; {{ card_kind }}</span>
+          <h3><a href="{{ p.url | relative_url }}">{{ card_title }}</a></h3>
+          <p>{{ p.hook | default: p.dek | default: p.description | strip_html | truncatewords: 22 }}</p>
         </div>
         {% endfor %}
       </div>
 
-      {% if series_posts.size > 0 %}
-      <section class="series">
-        <span class="mono" style="color:var(--teal)">Series &middot; {{ series_posts.size }} parts</span>
-        <h3>{{ series_posts.first.series_title }}</h3>
-        <ol>
-          {% for p in series_posts %}
-            {% assign d = p.dek | default: p.description | strip_html %}
-            {% if d contains " of three. " %}{% assign d = d | split: " of three. " | last %}{% endif %}
-          <li><div><a href="{{ p.url | relative_url }}">{{ p.short_title | default: p.title }}</a><small>{{ d | truncatewords: 18 }}</small></div></li>
-          {% endfor %}
-        </ol>
-      </section>
-      {% endif %}
     </main>
 
     <aside>
+      {% if radar_daily.size > 0 %}
+      <section class="radar">
+        <div class="radar-head">
+          <span class="mono">Research Radar</span>
+          <a class="mono" href="{{ '/radar/' | relative_url }}">All issues &rarr;</a>
+        </div>
+        <p class="radar-blurb">An automated daily sweep of new safety, alignment and interpretability papers, ranked by importance.</p>
+        <h4 class="mono">Last three days</h4>
+        {% for issue in radar_daily limit:3 %}
+        <div class="radar-issue">
+          <a class="radar-date mono" href="{{ issue.url | relative_url }}">{{ issue.date | date: "%a %b %-d" }}</a>
+          <ul>
+            {% assign chunks = issue.content | split: 'class="paper-title"' %}
+            {% for c in chunks offset:1 limit:2 %}
+              {% assign ptitle = c | split: '</a>' | first | split: '>' | last | strip %}
+              {% assign frag = ptitle | url_encode | replace: "+", "%20" | replace: "-", "%2D" %}
+            <li><a href="{{ issue.url | relative_url }}#:~:text={{ frag }}">{{ ptitle }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+        {% if radar_weekly %}
+        <h4 class="mono">Last week &middot; {{ radar_weekly.window | default: radar_weekly.title }}</h4>
+        <div class="radar-issue">
+          <a class="radar-date mono" href="{{ radar_weekly.url | relative_url }}">{{ radar_weekly.slug | replace: "2026-", "" }}</a>
+          <ul>
+            {% assign chunks = radar_weekly.content | split: 'class="paper-title"' %}
+            {% for c in chunks offset:1 limit:3 %}
+              {% assign ptitle = c | split: '</a>' | first | split: '>' | last | strip %}
+              {% assign frag = ptitle | url_encode | replace: "+", "%20" | replace: "-", "%2D" %}
+            <li><a href="{{ radar_weekly.url | relative_url }}#:~:text={{ frag }}">{{ ptitle }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </section>
+      {% endif %}
       <div class="about">
         <img src="{{ '/images/headshot2.jpeg' | relative_url }}" alt="{{ site.author.name }}">
         <span class="mono" style="color:var(--red)">About</span>
@@ -106,11 +144,11 @@ non-series posts. The archive lists the rest.
       <div class="archive">
         <h2 class="kicker-h mono"><span>Archive</span></h2>
         {% assign m = 0 %}
-        {% for p in standalone %}
+        {% for p in pool %}
           {% assign key = "|" | append: p.url | append: "|" %}
           {% if shown contains key or m >= 5 %}{% continue %}{% endif %}
           {% assign m = m | plus: 1 %}
-        <a href="{{ p.url | relative_url }}">{{ p.short_title | default: p.title }} <span>{{ p.date | date: "%b %Y" }}</span></a>
+        <a href="{{ p.url | relative_url }}">{{ p.series_title | default: p.short_title | default: p.title }} <span>{{ p.date | date: "%b %Y" }}</span></a>
         {% endfor %}
         <a href="{{ '/archives/' | relative_url }}">All writing &rarr; <span></span></a>
       </div>

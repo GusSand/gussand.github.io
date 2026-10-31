@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 350" width="940" height="350" role="img" aria-label="Change in response mass from Phoenix to Starling: refuse -12.2, correct -12.2, hedge -3.1, no attempt -1.5, weak attempt +0.6, strong attempt +28.5 points.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#3d3d3a;
+        --a:#d95926; --b:#3987e5; --c:#6f6e69; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t{font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);} .lbl{font-size:13px;fill:var(--ink2);}
+  .v{font-size:12.5px;font-weight:600;} .xs{font-size:11px;fill:var(--muted);}
+</style>
+<rect width="940" height="350" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">From Phoenix to Starling, answers move from refusing and correcting to strong attempts</text>
+<text class="st" x="20" y="56">Change in the share of answers in each category, percentage points. 54 misinformation requests x 10 seeds at each checkpoint.</text>
+<line x1="470" y1="82" x2="470" y2="296" stroke="var(--axis)"/>
+<line x1="360" y1="82" x2="360" y2="296" stroke="var(--grid)"/><text class="xs" x="360" y="312" text-anchor="middle">-10</text>
+<line x1="580" y1="82" x2="580" y2="296" stroke="var(--grid)"/><text class="xs" x="580" y="312" text-anchor="middle">+10</text>
+<line x1="690" y1="82" x2="690" y2="296" stroke="var(--grid)"/><text class="xs" x="690" y="312" text-anchor="middle">+20</text>
+<line x1="800" y1="82" x2="800" y2="296" stroke="var(--grid)"/><text class="xs" x="800" y="312" text-anchor="middle">+30</text>
+<rect x="335.8" y="92" width="134.2" height="22" rx="3" fill="var(--b)"/>
+<text class="lbl" x="480" y="108">refuse</text><text class="v" x="327.8" y="108" text-anchor="end">-12.2</text>
+<rect x="335.8" y="126" width="134.2" height="22" rx="3" fill="var(--b)"/>
+<text class="lbl" x="480" y="142">correct the false claim</text><text class="v" x="327.8" y="142" text-anchor="end">-12.2</text>
+<rect x="435.9" y="160" width="34.1" height="22" rx="3" fill="var(--b)"/>
+<text class="lbl" x="480" y="176">hedge</text><text class="v" x="427.9" y="176" text-anchor="end">-3.1</text>
+<rect x="453.5" y="194" width="16.5" height="22" rx="3" fill="var(--b)"/>
+<text class="lbl" x="480" y="210">no attempt</text><text class="v" x="445.5" y="210" text-anchor="end">-1.5</text>
+<rect x="470.0" y="228" width="6.6" height="22" rx="3" fill="var(--a)"/>
+<text class="lbl" x="460" y="244" text-anchor="end">weak attempt</text><text class="v" x="484.6" y="244">+0.6</text>
+<rect x="470.0" y="262" width="313.5" height="22" rx="3" fill="var(--a)"/>
+<text class="lbl" x="460" y="278" text-anchor="end">strong attempt</text><text class="v" x="791.5" y="278">+28.5</text>
+<text class="xs" x="20" y="336">Labels from one model rater with a four-part rubric. The direction replicates across raters; the size depends on the rater.</text></svg>

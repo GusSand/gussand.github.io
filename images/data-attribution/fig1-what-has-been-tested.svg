@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 498" width="940" height="498" role="img" aria-label="Grid of data attribution papers on safety behaviors by training stage and by how they were validated. The pretraining row has no paper that retrained after attributing a behavior to documents.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --ok:#0ca30c; --weak:#d95926; --rank:#3987e5; --gap:#f2c14e; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t{font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);} .ch{font-size:13px;font-weight:600;}
+  .rl{font-size:14px;font-weight:600;} .p{font-size:12.5px;fill:var(--ink2);} .xs{font-size:11px;fill:var(--muted);}
+  .g{font-size:13px;font-weight:600;fill:var(--gap);}
+</style>
+<rect width="940" height="498" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Which training data caused a safety behavior? What has been tested</text>
+<text class="st" x="20" y="56">Papers by the training stage they attribute, and by whether they retrained on the changed data to check.</text>
+<rect x="194" y="76" width="242" height="4" fill="var(--rank)"/>
+<rect x="444" y="76" width="242" height="4" fill="var(--ok)"/>
+<rect x="694" y="76" width="242" height="4" fill="var(--weak)"/>
+<text class="ch" x="202" y="98">Ranked only</text>
+<text class="ch" x="452" y="98">Retrained: behavior moved</text>
+<text class="ch" x="702" y="98">Retrained: weak or failed</text>
+<text class="rl" x="24" y="134">Pretraining</text>
+<rect x="194" y="110" width="242" height="70" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="p" x="204" y="132">Grosse 2023</text>
+<text class="p" x="204" y="150">(shutdown query, up</text>
+<text class="p" x="204" y="168">to 52B)</text>
+<rect x="444" y="110" width="242" height="70" rx="6" fill="none" stroke="var(--gap)" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text class="p" x="454" y="132">Coalson 2025 (IF-GUIDE:</text>
+<text class="p" x="454" y="150">toxicity, 1B, suppressed)</text>
+<text class="g" x="454" y="172">Open: refusal, &gt;1B</text>
+<rect x="694" y="110" width="242" height="70" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="p" x="704" y="132">Vetter 2026</text>
+<text class="p" x="704" y="150">(fine-tuning on retrieved</text>
+<text class="p" x="704" y="168">documents)</text>
+<text class="rl" x="24" y="212">SFT and LoRA</text>
+<rect x="194" y="188" width="242" height="114" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="p" x="204" y="210">Habibi 2026</text>
+<rect x="444" y="188" width="242" height="114" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="p" x="454" y="210">Kowal 2026 · He 2024</text>
+<text class="p" x="454" y="228">Li 2025 · Chen 2025</text>
+<text class="p" x="454" y="246">Abdelghafar 2026</text>
+<text class="p" x="454" y="264">Paulo 2026 (selecting)</text>
+<text class="p" x="454" y="282">Luo 2026 (rewriting)</text>
+<rect x="694" y="188" width="242" height="114" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="p" x="704" y="210">Paulo 2026 (removing)</text>
+<text class="p" x="704" y="228">Weckbecker 2026</text>
+<text class="p" x="704" y="246">Luo 2026 (deleting)</text>
+<text class="rl" x="24" y="334">DPO</text>
+<rect x="194" y="310" width="242" height="70" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="xs" x="204" y="334">none found</text>
+<rect x="444" y="310" width="242" height="70" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="p" x="454" y="332">Xiao 2026</text>
+<text class="p" x="454" y="350">Razin 2024</text>
+<text class="p" x="454" y="368">Bergen 2026</text>
+<rect x="694" y="310" width="242" height="70" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="p" x="704" y="332">Blank 2026</text>
+<text class="rl" x="24" y="412">RL (GRPO)</text>
+<rect x="194" y="388" width="242" height="52" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="xs" x="204" y="412">none found</text>
+<rect x="444" y="388" width="242" height="52" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="xs" x="454" y="412">none found</text>
+<rect x="694" y="388" width="242" height="52" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+<text class="p" x="704" y="410">Nautiyal 2026</text>
+<text class="xs" x="20" y="462">Pretraining with content filters, added data or mix changes, not attribution: O&#8217;Brien 2025, Maini 2025, Rathi 2026, Li 2026, Tice 2026, Lu 2026.</text>
+<text class="xs" x="20" y="479">Epifano 2026 rewrites known poisoned rows. Chen 2025 and He 2024 train on selected subsets rather than removing data.</text>
+</svg>

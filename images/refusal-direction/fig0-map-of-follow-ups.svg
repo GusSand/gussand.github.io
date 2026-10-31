@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 430" width="940" height="430" role="img" aria-label="Map of 30 follow-up papers to Arditi et al. 2024, in four groups: fine-tuning attacks, refusal geometry, direction-based defenses and data attribution, plus the measurement no paper has made.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --axis:#3d3d3a; --box:#232322; --ring:rgba(255,255,255,0.16);
+        --g1:#d95926; --g2:#3987e5; --g3:#0ca30c; --g4:#a77fe0; --gap:#f2c14e; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
+  .ct{font-size:15px;font-weight:600;} .sm{font-size:12.5px;fill:var(--ink2);}
+  .n{font-size:22px;font-weight:700;} .xs{font-size:11px;fill:var(--muted);}
+</style>
+<rect width="940" height="430" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">What the field did with the refusal direction, 2024 to 2026</text>
+<text class="st" x="20" y="56">Follow-up papers to Arditi et al., sorted by the question each one asks. Numbers are paper counts.</text>
+
+<!-- root -->
+<rect x="20" y="84" width="240" height="244" rx="8" fill="var(--box)" stroke="var(--ring)"/>
+<text class="ct" x="38" y="114">Arditi et al. 2024</text>
+<text class="sm" x="38" y="142">One direction in the residual</text>
+<text class="sm" x="38" y="160">stream mediates refusal.</text>
+<text class="sm" x="38" y="190">Remove it: the model answers</text>
+<text class="sm" x="38" y="208">harmful requests.</text>
+<text class="sm" x="38" y="238">Add it: the model refuses</text>
+<text class="sm" x="38" y="256">harmless ones.</text>
+<text class="xs" x="38" y="306">Tested on 13 open chat models</text>
+
+<!-- connectors -->
+<g fill="none" stroke-width="2">
+  <path d="M260 206 C 286 206, 284 110, 310 110" stroke="var(--g1)"/>
+  <path d="M260 206 C 286 206, 284 174, 310 174" stroke="var(--g2)"/>
+  <path d="M260 206 C 286 206, 284 238, 310 238" stroke="var(--g3)"/>
+  <path d="M260 206 C 286 206, 284 302, 310 302" stroke="var(--g4)"/>
+</g>
+
+<!-- groups -->
+<g>
+  <rect x="310" y="84" width="610" height="52" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+  <rect x="310" y="84" width="5" height="52" fill="var(--g1)"/>
+  <text class="ct" x="330" y="106">1. Fine-tuning breaks refusal</text>
+  <text class="sm" x="330" y="125">Qi 2023 · Razin 2024 · Leong 2024 · Yoon 2026 · Guo 2026</text>
+  <text class="n" x="900" y="118" text-anchor="end" style="fill:var(--g1)">10</text>
+
+  <rect x="310" y="148" width="610" height="52" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+  <rect x="310" y="148" width="5" height="52" fill="var(--g2)"/>
+  <text class="ct" x="330" y="170">2. Refusal has more than one direction</text>
+  <text class="sm" x="330" y="189">Bailey 2024 · Wollschläger 2025 · Zhao 2025 · Youstra 2025 · Joad 2026</text>
+  <text class="n" x="900" y="182" text-anchor="end" style="fill:var(--g2)">10</text>
+
+  <rect x="310" y="212" width="610" height="52" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+  <rect x="310" y="212" width="5" height="52" fill="var(--g3)"/>
+  <text class="ct" x="330" y="234">3. The direction as a defense</text>
+  <text class="sm" x="330" y="253">Zhu 2024 · Du 2025 · RefusalGuard 2026 · Li 2026</text>
+  <text class="n" x="900" y="246" text-anchor="end" style="fill:var(--g3)">6</text>
+
+  <rect x="310" y="276" width="610" height="52" rx="6" fill="var(--box)" stroke="var(--ring)"/>
+  <rect x="310" y="276" width="5" height="52" fill="var(--g4)"/>
+  <text class="ct" x="330" y="298">4. Which training data did it?</text>
+  <text class="sm" x="330" y="317">Kowal 2026 · Xiao and Aranguri 2026 · Bergen 2026</text>
+  <text class="n" x="900" y="310" text-anchor="end" style="fill:var(--g4)">3</text>
+</g>
+
+<!-- the gap -->
+<rect x="20" y="348" width="900" height="62" rx="8" fill="none" stroke="var(--gap)" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text class="ct" x="38" y="373" style="fill:var(--gap)">Not found</text>
+<text class="sm" x="122" y="373">The direction traced through SFT, then DPO, then RL on one open pipeline such as Tülu 3 or OLMo 2.</text>
+<text class="sm" x="122" y="393">A few papers look at one stage each. None follows the direction across all three.</text>
+</svg>

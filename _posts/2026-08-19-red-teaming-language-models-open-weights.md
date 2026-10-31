@@ -1,7 +1,7 @@
 ---
 title: 'Red-Teaming Language Models, Part 3: What Changes When You Ship Open Weights'
 description: 'Part 3 of three. Once you ship open weights the refusal layer is a soft target and every deployment defense is optional for the adversary; alignment-removal costs, pretraining-stage interventions, detachable capabilities, and a release-ordered priority list.'
-date: 2026-08-05
+date: 2026-08-19
 permalink: /posts/2026/07/red-teaming-language-models-open-weights/
 tags:
   - Security
@@ -12,9 +12,12 @@ tags:
   - Open Weights
 series: "red-teaming"
 short_title: "What Changes When You Ship Open Weights"
----
+hook: |
+  A handful of fine-tuning examples, costing pennies, can strip a model's safety training.
 
-Date: August 5, 2026 \| Estimated Reading Time: 13 min \| Author: Gustavo Sandoval
+  Ship the weights, and anyone can run that attack.
+reading_time: 13
+---
 
 Series: [Part 1: Process & Measurement](/posts/2026/07/red-teaming-language-models/) &middot; [Part 2: What Holds on Defense](/posts/2026/07/red-teaming-language-models-defense/) &middot; **Part 3: Open Weights**
 
@@ -61,7 +64,7 @@ Qi et al. add the finding that should worry anyone operating a fine-tuning API r
 
 What follows is that white-box red teaming that stops short of fine-tuning studies a weaker adversary than the real one ([Wang et al. 2025](https://arxiv.org/abs/2506.05376)). For open weights, "adaptive" must include a fine-tuning arm, not just prompt-space search.
 
-The same problem hits labs that ship nothing but a guard. The transfer half of the staged attack [above](/posts/2026/07/red-teaming-language-models-defense/#attacking-the-pipeline-not-the-model) trained against a proxy pipeline built from open-weight safeguard models, then worked a third of the time on a target it had never queried. Publishing a safeguard model hands every attacker a differentiable stand-in for your defense, which is why that paper recommends keeping safeguards closed or trained on non-public data. The argument is sound and points the wrong way for a field that depends on open artifacts (ShieldGemma, Llama Guard) to reproduce anything, and I don't think anyone has a good answer yet.
+The same problem hits labs that ship nothing but a guard. The transfer half of the staged attack [above](/posts/2026/07/red-teaming-language-models-defense/#attacking-the-pipeline-not-the-model) trained against a proxy pipeline built from open-weight safeguard models, then worked a third of the time on a target it had never queried. Publishing a safeguard model hands every attacker a differentiable stand-in for your defense, which is why that paper recommends keeping safeguards closed or trained on non-public data. The argument is sound and points the wrong way for a field that depends on open artifacts (ShieldGemma, [Llama Guard](/posts/2026/05/safety-judges/#llama-guard)) to reproduce anything, and I don't think anyone has a good answer yet.
 
 ## Measuring Any of This Is Its Own Problem
 

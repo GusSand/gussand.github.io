@@ -1,31 +1,64 @@
 ---
 ---
 
-/* Base styles for a dark theme similar to philkrav.com */
+/* Site-wide styles. The palette matches the homepage (assets/css/home.css):
+   paper and ink in light mode, warm charcoal in dark mode, red and teal accents. */
+:root {
+  --paper: #FBF7EF;
+  --card: #FFFFFF;
+  --ink: #1C1A17;
+  --ink2: #3A352E;
+  --red: #B3261E;
+  --teal: #0F6E6E;
+  --mustard: #F2C14E;
+  --rule: #DDD3C2;
+  --muted: #6B6458;
+  --zebra: #F4EEE3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #16130F;
+    --card: #211D17;
+    --ink: #F1EADC;
+    --ink2: #D9D0C0;
+    --red: #F26B5B;
+    --teal: #4FC1B8;
+    --mustard: #F2C14E;
+    --rule: #3A332A;
+    --muted: #A79E8E;
+    --zebra: #1C1914;
+  }
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  color: #fff;
-  background-color: #000;
-  font-size: 16px;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.65;
+  color: var(--ink2);
+  background-color: var(--paper);
+  font-size: 16.5px;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
 h1, h2, h3 {
-  font-weight: 600;
+  font-family: Fraunces, Georgia, serif;
+  font-weight: 700;
+  line-height: 1.2;
   margin-bottom: 0.5em;
-  color: #fff;
+  color: var(--ink);
 }
 
 a {
-  color: #fff;
+  color: var(--teal);
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--teal) 45%, transparent);
+  text-underline-offset: 3px;
 }
 
 a:hover {
-  color: #aaa;
+  color: var(--red);
   text-decoration: underline;
 }
 
@@ -49,18 +82,18 @@ a:hover {
 header {
   width: 170px;
   border-right: none;
-  
+
   h1.header {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-weight: bold;
+    font-family: Fraunces, Georgia, serif;
+    font-weight: 800;
     font-size: 1.5em;
     text-transform: lowercase;
   }
-  
+
   ul {
     list-style: none;
     padding: 0;
-    
+
     li {
       margin-bottom: 10px;
       font-size: 14px;
@@ -78,8 +111,38 @@ section {
 hr {
   border: 0;
   height: 1px;
-  background: #333;
+  background: var(--rule);
   margin: 1.5em 0;
+}
+
+blockquote {
+  margin: 1.4em 0;
+  padding: 0.2em 1.1em;
+  border-left: 3px solid var(--mustard);
+  color: var(--muted);
+}
+
+code {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: 0.9em;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+pre {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 12px 14px;
+  overflow-x: auto;
+
+  code {
+    border: 0;
+    padding: 0;
+    background: none;
+  }
 }
 
 /* Adjustments for mobile */
@@ -88,18 +151,18 @@ hr {
     width: auto;
     margin: 0;
   }
-  
+
   header, section, footer {
     float: none;
     position: static;
     width: auto;
   }
-  
+
   header {
     padding-right: 0;
     border-right: none;
   }
-  
+
   section {
     border: 0;
     margin: 0;
@@ -109,9 +172,10 @@ hr {
 
 /* Site header with top-right menu */
 .site-header {
+  width: auto;
   position: relative;
   margin-bottom: 2em;
-  border-bottom: 1px solid #333;
+  border-bottom: 3px double var(--ink);
   padding-bottom: 0.5em;
 }
 
@@ -126,7 +190,11 @@ hr {
 .header-inner .header {
   margin: 0;
   font-size: 1.8em;
-  font-weight: 600;
+  font-weight: 800;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .menu-nav {
@@ -139,8 +207,9 @@ hr {
 
 .menu-item {
   font-size: 0.9em;
+  font-weight: 500;
   text-decoration: none;
-  color: #ccc;
+  color: var(--muted);
   transition: color 0.2s ease;
   text-transform: lowercase;
   white-space: nowrap;
@@ -153,7 +222,7 @@ hr {
 }
 
 .menu-item:hover {
-  color: #fff;
+  color: var(--red);
   text-decoration: none;
 }
 
@@ -163,49 +232,105 @@ hr {
     flex-direction: row;
     flex-wrap: wrap;
   }
-  
+
   .header-inner .header {
     margin-bottom: 0.5em;
   }
-  
+
   .menu-nav {
     margin-left: auto;
   }
 }
 
 .site-footer {
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--rule);
   padding: 20px 0;
   font-size: 14px;
-  color: #aaa;
+  color: var(--muted);
+}
+
+footer hr {
+  background: var(--rule);
+}
+
+footer p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.post > h1 {
+  font-size: 2.3em;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 0.3em;
+}
+
+/* The hook: a post's opening phenomenon, set apart above the body. */
+.hook {
+  margin: 1.4em 0 1.8em;
+  padding: 0.3em 0 0.3em 1.1em;
+  border-left: 4px solid var(--mustard);
+
+  p {
+    font-family: Fraunces, Georgia, serif;
+    font-style: italic;
+    font-size: 1.35em;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0 0 0.5em;
+
+    &:last-child { margin-bottom: 0; }
+  }
 }
 
 .post-content, .page-content {
   h1 {
     font-size: 1.8em;
-    font-weight: 600;
+    font-weight: 700;
     border-bottom: none;
     margin-bottom: 0.5em;
   }
-  
+
   h2, h3, h4, h5, h6 {
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--ink);
   }
-  
+
+  h2 {
+    margin-top: 1.8em;
+  }
+
   a {
-    color: #fff;
+    color: var(--teal);
     text-decoration: underline;
-    
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, var(--teal) 45%, transparent);
+
     &:hover {
-      color: #aaa;
+      color: var(--red);
+      text-decoration-color: var(--red);
     }
   }
-  
+
+  strong {
+    color: var(--ink);
+  }
+
+  em {
+    color: inherit;
+  }
+
   hr {
     border: 0;
     height: 1px;
-    background: #333;
+    background: var(--rule);
     margin: 1.5em 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -220,19 +345,22 @@ hr {
 .post-entry {
   margin-bottom: 2.5em;
   padding-bottom: 2em;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--rule);
 }
 
 .post-date {
-  color: #aaa;
-  font-size: 14px;
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color: var(--teal);
+  font-size: 13px;
+  letter-spacing: 0.04em;
   margin-right: 15px;
 }
 
 .post-link {
-  font-size: 20px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 21px;
   font-weight: 600;
-  color: #fff;
+  color: var(--ink);
   text-decoration: none;
   margin-bottom: 0.7em;
   display: block;
@@ -241,20 +369,23 @@ hr {
 }
 
 .post-link:hover {
-  color: #ccc;
+  color: var(--red);
   text-decoration: none;
 }
 
 .post-summary {
-  color: #ddd;
+  color: var(--muted);
   font-size: 15px;
   line-height: 1.6;
   margin-top: 0.5em;
 }
 
 .post-meta {
-  font-size: 14px;
-  color: #aaa;
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  text-transform: uppercase;
 }
 
 /* Additional layout elements for no-style-please theme */
@@ -268,7 +399,7 @@ hr {
 }
 
 .menu-item-date {
-  color: #aaa;
+  color: var(--muted);
   font-size: 12px;
   display: inline-block;
   margin-right: 10px;
@@ -279,11 +410,11 @@ hr {
 }
 
 .menu-item-separator {
-  color: #555;
+  color: var(--rule);
   display: none;
 }
 
-/* Improved link button styles for the homepage feed */
+/* Link buttons */
 .post-links {
   margin-top: 10px;
   display: flex;
@@ -293,20 +424,22 @@ hr {
 
 .link-button {
   display: inline-block;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--card);
+  border: 1px solid var(--rule);
+  color: var(--ink);
   padding: 5px 12px;
   border-radius: 4px;
   font-size: 14px;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .link-button:hover {
-  background-color: #555;
-  color: #fff;
+  border-color: var(--red);
+  color: var(--red);
   text-decoration: none;
-} 
+}
+
 /* Tables
    The base stylesheet had no table rules, so bordered cells and a header
    band are doing the work of separating columns that were previously just
@@ -321,26 +454,26 @@ hr {
   }
 
   thead th {
-    background-color: #1a1a1a;
-    color: #fff;
+    background-color: var(--card);
+    color: var(--ink);
     font-weight: 600;
     text-align: left;
-    border-bottom: 1px solid #444;
+    border-bottom: 2px solid var(--mustard);
   }
 
   th, td {
     padding: 9px 12px;
-    border: 1px solid #2e2e2e;
+    border: 1px solid var(--rule);
     vertical-align: top;
     text-align: left;
   }
 
   tbody tr:nth-child(even) td {
-    background-color: #0f0f0f;
+    background-color: var(--zebra);
   }
 
   tbody tr:hover td {
-    background-color: #191919;
+    background-color: var(--card);
   }
 
   /* long-celled tables scroll rather than squash on small screens */

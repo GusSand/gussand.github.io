@@ -1,7 +1,7 @@
 ---
 title: 'The Format-Reliability Gap: Diagnosing and Repairing Insecure Code Generation'
 description: 'A model will write you a SQL injection, then correctly identify the same bug a minute later. The knowledge is present and goes unused during generation. Tracing that gap to a single layer, and steering it away.'
-date: 2026-06-18
+date: 2026-06-29
 permalink: /posts/2026/06/format-reliability-gap/
 tags:
   - Security
@@ -11,9 +11,12 @@ tags:
 kind: "Summary"
 image: "/images/format-reliability/fig1-layer-trajectory.svg"
 image_caption: "Where the secure choice appears, layer by layer."
----
+hook: |
+  The model that writes the buffer overflow can also find it.
 
-Date: June 18, 2026 \| Estimated Reading Time: 10 min \| Author: Gustavo Sandoval
+  It just does not use that knowledge while it writes.
+reading_time: 10
+---
 
 Ask an LLM to generate a piece of code and it might hand you a SQL injection or a buffer overflow. Ask the same model, a minute later, "does this code have a vulnerability?" and it will often name the bug, explain why it's dangerous, and write the fix. So the knowledge is in there. The model just doesn't use it while it's generating.
 

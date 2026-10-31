@@ -32,6 +32,7 @@ nav.sections a:hover{color:var(--red)}
 .byline b{color:var(--red)}
 .figure{background:var(--fig);border:1px solid var(--rule);padding:16px;margin:0;align-self:start}
 .figure img{width:100%;display:block}
+.lead-text{display:flex;align-items:center;justify-content:center;text-align:center;aspect-ratio:4/3;padding:20px;font-size:clamp(26px,3vw,36px);font-weight:800;line-height:1.2;color:#0F6E6E}
 .figure figcaption{font-size:13px;color:#6B6458;margin-top:8px;font-style:italic}
 
 /* recent cards and series */
@@ -49,14 +50,20 @@ nav.sections a:hover{color:var(--red)}
 .card p{margin:0;color:var(--muted);font-size:14.5px}
 .card .mono{color:var(--teal)}
 
-.series{margin-top:32px;border:2px solid var(--ink);padding:20px;background:var(--card)}
-.series h3{font-family:Fraunces,Georgia,serif;font-size:26px;margin:4px 0 0}
-.series ol{margin:10px 0 0;padding:0;list-style:none;counter-reset:s}
-.series li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--rule)}
-.series li::before{content:counter(s);font-family:Fraunces,Georgia,serif;font-weight:800;font-size:28px;line-height:1;color:var(--red)}
-.series li a{font-weight:600}
-.series li a:hover{color:var(--red)}
-.series li small{display:block;color:var(--muted)}
+.radar{margin:0 0 28px;border:2px solid var(--ink);padding:20px;background:var(--card)}
+.radar-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.radar-head span{color:var(--red);font-size:14px}
+.radar-head a{color:var(--teal)}
+.radar-head a:hover{color:var(--red)}
+.radar-blurb{margin:6px 0 4px;color:var(--muted);font-size:14.5px}
+.radar h4{margin:18px 0 0;padding-bottom:6px;border-bottom:2px solid var(--mustard);color:var(--ink);font-weight:500}
+.radar-issue{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.radar-date{color:var(--teal);padding-top:3px}
+.radar-date:hover{color:var(--red)}
+.radar ul{margin:0;padding:0;list-style:none}
+.radar li{padding:2px 0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:15px;line-height:1.35}
+.radar li+li{margin-top:6px}
+.radar li a:hover{color:var(--red)}
 
 /* sidebar */
 aside .about{border-top:4px solid var(--red);padding-top:14px}

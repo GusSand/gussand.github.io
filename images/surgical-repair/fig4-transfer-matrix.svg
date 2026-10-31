@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 592" width="940" height="592" role="img">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s2:#d95926; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t   { font-size:17px; font-weight:600; }
+  .st  { font-size:13px; fill:var(--ink2); }
+  .lbl { font-size:13px; fill:var(--ink); }
+  .sm  { font-size:12px; fill:var(--ink2); }
+  .xs  { font-size:11px; fill:var(--muted); }
+  .num { font-size:12.5px; font-weight:600; fill:var(--ink); font-variant-numeric: tabular-nums; }
+  .tick{ font-size:11px; fill:var(--muted); font-variant-numeric: tabular-nums; }
+</style>
+<rect width="940" height="592" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">The vectors are vulnerability-specific: secure rate (%) by vector and prompt set</text>
+<text class="st" x="20" y="56">Llama-3.1-8B-Instruct, adversarial prompts that explicitly request the insecure API.</text>
+<text class="sm" x="386" y="82" text-anchor="middle">applied to prompts for</text>
+<text class="sm" x="60" y="330" text-anchor="middle" transform="rotate(-90 60 326)">vector built from</text>
+<text class="lbl" x="206.0" y="102" text-anchor="middle">C-787</text>
+<text class="lbl" x="158" y="150.0" text-anchor="end">C-787</text>
+<text class="lbl" x="278.0" y="102" text-anchor="middle">C-119</text>
+<text class="lbl" x="158" y="222.0" text-anchor="end">C-119</text>
+<text class="lbl" x="350.0" y="102" text-anchor="middle">C-134</text>
+<text class="lbl" x="158" y="294.0" text-anchor="end">C-134</text>
+<text class="lbl" x="422.0" y="102" text-anchor="middle">Py-89</text>
+<text class="lbl" x="158" y="366.0" text-anchor="end">Py-89</text>
+<text class="lbl" x="494.0" y="102" text-anchor="middle">Py-78</text>
+<text class="lbl" x="158" y="438.0" text-anchor="end">Py-78</text>
+<text class="lbl" x="566.0" y="102" text-anchor="middle">Py-79</text>
+<text class="lbl" x="158" y="510.0" text-anchor="end">Py-79</text>
+<rect x="171" y="111" width="70" height="70" rx="4" fill="#3574c0"/>
+<rect x="172" y="112" width="68" height="68" rx="4" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+<text class="num" x="206.0" y="150.0" text-anchor="middle">79</text>
+<rect x="243" y="111" width="70" height="70" rx="4" fill="#273341"/>
+<text class="num" x="278.0" y="150.0" text-anchor="middle">5</text>
+<rect x="315" y="111" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="350.0" y="150.0" text-anchor="middle">0</text>
+<rect x="387" y="111" width="70" height="70" rx="4" fill="#367acc"/>
+<text class="num" x="422.0" y="150.0" text-anchor="middle">85</text>
+<rect x="459" y="111" width="70" height="70" rx="4" fill="#26303c"/>
+<text class="num" x="494.0" y="150.0" text-anchor="middle">1</text>
+<rect x="531" y="111" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="566.0" y="150.0" text-anchor="middle">0</text>
+<rect x="171" y="183" width="70" height="70" rx="4" fill="#26303b"/>
+<text class="num" x="206.0" y="222.0" text-anchor="middle">1</text>
+<rect x="243" y="183" width="70" height="70" rx="4" fill="#3883dd"/>
+<rect x="244" y="184" width="68" height="68" rx="4" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+<text class="num" x="278.0" y="222.0" text-anchor="middle">95</text>
+<rect x="315" y="183" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="350.0" y="222.0" text-anchor="middle">0</text>
+<rect x="387" y="183" width="70" height="70" rx="4" fill="#28384c"/>
+<text class="num" x="422.0" y="222.0" text-anchor="middle">11</text>
+<rect x="459" y="183" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="494.0" y="222.0" text-anchor="middle">0</text>
+<rect x="531" y="183" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="566.0" y="222.0" text-anchor="middle">0</text>
+<rect x="171" y="255" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="206.0" y="294.0" text-anchor="middle">0</text>
+<rect x="243" y="255" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="278.0" y="294.0" text-anchor="middle">0</text>
+<rect x="315" y="255" width="70" height="70" rx="4" fill="#232322"/>
+<rect x="316" y="256" width="68" height="68" rx="4" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+<text class="num" x="350.0" y="294.0" text-anchor="middle">0*</text>
+<rect x="387" y="255" width="70" height="70" rx="4" fill="#3266a4"/>
+<text class="num" x="422.0" y="294.0" text-anchor="middle">62</text>
+<rect x="459" y="255" width="70" height="70" rx="4" fill="#273545"/>
+<text class="num" x="494.0" y="294.0" text-anchor="middle">7</text>
+<rect x="531" y="255" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="566.0" y="294.0" text-anchor="middle">0</text>
+<rect x="171" y="327" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="206.0" y="366.0" text-anchor="middle">0</text>
+<rect x="243" y="327" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="278.0" y="366.0" text-anchor="middle">0</text>
+<rect x="315" y="327" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="350.0" y="366.0" text-anchor="middle">0</text>
+<rect x="387" y="327" width="70" height="70" rx="4" fill="#3678c7"/>
+<rect x="388" y="328" width="68" height="68" rx="4" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+<text class="num" x="422.0" y="366.0" text-anchor="middle">83</text>
+<rect x="459" y="327" width="70" height="70" rx="4" fill="#273748"/>
+<text class="num" x="494.0" y="366.0" text-anchor="middle">9</text>
+<rect x="531" y="327" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="566.0" y="366.0" text-anchor="middle">0</text>
+<rect x="171" y="399" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="206.0" y="438.0" text-anchor="middle">0</text>
+<rect x="243" y="399" width="70" height="70" rx="4" fill="#2c4e75"/>
+<text class="num" x="278.0" y="438.0" text-anchor="middle">35</text>
+<rect x="315" y="399" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="350.0" y="438.0" text-anchor="middle">0</text>
+<rect x="387" y="399" width="70" height="70" rx="4" fill="#336aad"/>
+<text class="num" x="422.0" y="438.0" text-anchor="middle">67</text>
+<rect x="459" y="399" width="70" height="70" rx="4" fill="#2b4565"/>
+<rect x="460" y="400" width="68" height="68" rx="4" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+<text class="num" x="494.0" y="438.0" text-anchor="middle">25</text>
+<rect x="531" y="399" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="566.0" y="438.0" text-anchor="middle">0</text>
+<rect x="171" y="471" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="206.0" y="510.0" text-anchor="middle">0</text>
+<rect x="243" y="471" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="278.0" y="510.0" text-anchor="middle">0</text>
+<rect x="315" y="471" width="70" height="70" rx="4" fill="#232322"/>
+<text class="num" x="350.0" y="510.0" text-anchor="middle">0</text>
+<rect x="387" y="471" width="70" height="70" rx="4" fill="#3881da"/>
+<text class="num" x="422.0" y="510.0" text-anchor="middle">93</text>
+<rect x="459" y="471" width="70" height="70" rx="4" fill="#283b50"/>
+<text class="num" x="494.0" y="510.0" text-anchor="middle">13</text>
+<rect x="531" y="471" width="70" height="70" rx="4" fill="#293e57"/>
+<rect x="532" y="472" width="68" height="68" rx="4" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+<text class="num" x="566.0" y="510.0" text-anchor="middle">17</text>
+<text class="sm" x="642" y="124">Outlined diagonal = native vector.</text>
+<text class="sm" x="642" y="143">Mean diagonal 49.9%,</text>
+<text class="sm" x="642" y="162">mean off-diagonal 13.1%.</text>
+<text class="sm" x="642" y="181"></text>
+<text class="sm" x="642" y="200">Py-89 column: every vector raises</text>
+<text class="sm" x="642" y="219">secure SQL (62 to 93%). A manual audit</text>
+<text class="sm" x="642" y="238">of 40 outputs found real parameterized</text>
+<text class="sm" x="642" y="257">queries in all 40.</text>
+<text class="sm" x="642" y="276"></text>
+<text class="sm" x="642" y="295">* C-134 on its own adversarial prompts</text>
+<text class="sm" x="642" y="314">produced 150/150 garbled outputs.</text>
+</svg>

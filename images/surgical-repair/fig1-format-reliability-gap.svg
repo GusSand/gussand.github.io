@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s2:#d95926; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t   { font-size:17px; font-weight:600; }
+  .st  { font-size:13px; fill:var(--ink2); }
+  .lbl { font-size:13px; fill:var(--ink); }
+  .sm  { font-size:12px; fill:var(--ink2); }
+  .xs  { font-size:11px; fill:var(--muted); }
+  .num { font-size:12.5px; font-weight:600; fill:var(--ink); font-variant-numeric: tabular-nums; }
+  .tick{ font-size:11px; fill:var(--muted); font-variant-numeric: tabular-nums; }
+</style>
+<rect width="940" height="400" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Knows it in review, skips it in generation: Llama-3.1-8B-Instruct</text>
+<text class="st" x="20" y="56">Review accuracy minus secure-generation rate, percentage points, per vulnerability type.</text>
+<line x1="230.0" y1="84" x2="230.0" y2="336" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="230.0" y="354" text-anchor="middle">0 pp</text>
+<line x1="387.5" y1="84" x2="387.5" y2="336" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="387.5" y="354" text-anchor="middle">25 pp</text>
+<line x1="545.0" y1="84" x2="545.0" y2="336" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="545.0" y="354" text-anchor="middle">50 pp</text>
+<line x1="702.5" y1="84" x2="702.5" y2="336" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="702.5" y="354" text-anchor="middle">75 pp</text>
+<line x1="860.0" y1="84" x2="860.0" y2="336" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="860.0" y="354" text-anchor="middle">100 pp</text>
+<text class="lbl" x="216" y="110" text-anchor="end">CWE-119 buffer overflow</text>
+<rect x="230" y="96" width="567.0" height="18" rx="4" fill="var(--s1)"/>
+<text class="num" x="805.0" y="110">+90.0</text>
+<text class="lbl" x="216" y="152" text-anchor="end">CWE-787 out-of-bounds write</text>
+<rect x="230" y="138" width="524.8" height="18" rx="4" fill="var(--s1)"/>
+<text class="num" x="762.8" y="152">+83.3</text>
+<text class="lbl" x="216" y="194" text-anchor="end">CWE-79 XSS</text>
+<rect x="230" y="180" width="313.7" height="18" rx="4" fill="var(--s1)"/>
+<text class="num" x="551.7" y="194">+49.8</text>
+<text class="lbl" x="216" y="236" text-anchor="end">CWE-78 OS command injection</text>
+<rect x="230" y="222" width="287.9" height="18" rx="4" fill="var(--s1)"/>
+<text class="num" x="525.9" y="236">+45.7</text>
+<text class="lbl" x="216" y="278" text-anchor="end">CWE-89 SQL injection</text>
+<rect x="230" y="264" width="270.9" height="18" rx="4" fill="var(--s1)"/>
+<text class="num" x="508.9" y="278">+43.0</text>
+<text class="lbl" x="216" y="320" text-anchor="end">CWE-134 format string</text>
+<rect x="230" y="306" width="126.0" height="18" rx="4" fill="var(--s1)"/>
+<text class="num" x="364.0" y="320">+20.0</text>
+<line x1="230" y1="84" x2="230" y2="336" stroke="var(--axis)" stroke-width="1.4"/>
+<text class="xs" x="20" y="384">Mistral-7B, Mistral-24B and Qwen-14B show the same ordering: CWE-787/119 gaps of +66 to +100 pp, CWE-134 at +10 to +20 pp.</text>
+</svg>

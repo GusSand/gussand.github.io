@@ -1,7 +1,7 @@
 ---
 title: 'AI Literacy Audit and Rollout Plan'
 description: 'How to introduce agentic coding to a medium-size team, built on a Netflix training study, with a security reviewer''s caveats about the productivity numbers everyone quotes.'
-date: 2026-06-22
+date: 2026-09-30
 permalink: /posts/2026/06/ai-literacy-and-rollout/
 tags:
   - Vibe Coding
@@ -9,9 +9,12 @@ tags:
   - LLM
 kind: "Plan"
 image: "/images/ai-literacy/fig1-cohort-ladder.svg"
----
+hook: |
+  Most teams roll out AI coding tools by buying licenses and waiting for productivity.
 
-Date: June 22, 2026 \| Estimated Reading Time: 8 min \| Author: Gustavo Sandoval
+  Agentic coding is a skill, and nobody is born knowing it.
+reading_time: 8
+---
 
 I have to confess something: I have been vibe coding and beyond for over a couple of years now. I started with CoPilot, for which I even created a plugin for a research paper (https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval), then moved on to Cursor and eventually landed in Claude Code. I have created my initial [Claude.md](https://gist.github.com/GusSand/549883ca0a1f326a31239cc3fcfa7f69) for research that has different personas, etc. However, given that I have spent the past (few) years in Academia, this has mainly been either a solo journey or with a few graduate students. 
 

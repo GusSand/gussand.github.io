@@ -1,7 +1,7 @@
 ---
 title: 'Mechanistic Interpretability as a Security Tool'
 description: 'Interpretability is usually pitched as a science project. The narrower, more useful case: if you can find where a model decides to do something unsafe, you can often fix it there, cheaply, instead of retraining around it. A tour of where behavior lives inside a model, what it costs to reach in, and why the same tools cut both ways.'
-date: 2026-06-22
+date: 2026-09-02
 permalink: /posts/2026/06/mech-interp-for-security/
 tags:
   - Security
@@ -11,9 +11,12 @@ tags:
 kind: "Explainer"
 image: "/images/mech-interp/fig2-read-vs-write.svg"
 image_caption: "Reading a model's internal state versus writing to it."
----
+hook: |
+  Black-box testing tells you that a model does something unsafe.
 
-Date: June 22, 2026 \| Estimated Reading Time: 12 min \| Author: Gustavo Sandoval
+  Interpretability can tell you where inside the model it decides to.
+reading_time: 12
+---
 
 In May 2024, Anthropic put out a version of Claude that could not stop talking about the Golden Gate Bridge. Ask it for a banana bread recipe and it would work the bridge into the ingredients. Ask it to write a business email and the fog would roll in. It was funny, it was briefly a meme, and it was made by turning a single knob. The researchers had located an internal feature that fired on the concept "Golden Gate Bridge," clamped its value high, and let the model run ([Templeton et al. 2024](https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html)).
 

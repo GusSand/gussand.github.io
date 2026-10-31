@@ -7,9 +7,13 @@ tags:
   - Security
   - Deep Learning
   - LLM
----
+hook: |
+  Your app tells the model what to do. Then a user types "ignore the previous instructions", and the model obeys the user.
 
-Date: January 1, 2023 \| Estimated Reading Time: 7 min \| Authors: Gustavo Sandoval, Denys Fenchenko, Junyao Chen (NYU)
+  The model has no idea where your instruction ends and the user's text begins.
+reading_time: 7
+author: "Gustavo Sandoval, Denys Fenchenko, Junyao Chen (NYU)"
+---
 
 Most applications built on a language model work the same way. You write an instruction, append the user's text, and send the whole thing to the model:
 

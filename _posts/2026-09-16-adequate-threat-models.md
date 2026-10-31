@@ -1,7 +1,7 @@
 ---
 title: 'What Counts as an Adequate Threat Model?'
 description: 'Threat models get written as attack configurations and then reported as security claims. Four separate literatures have already worked out what the difference is, and they barely cite each other. A synthesis, the empirical evidence that almost nobody does this, and the checklist I would hold a release to.'
-date: 2026-07-31
+date: 2026-09-16
 permalink: /posts/2026/07/adequate-threat-models/
 tags:
   - Security
@@ -12,15 +12,18 @@ tags:
   - Governance
 kind: "Essay"
 thumb_text: "attack config ≠ security claim"
----
+hook: |
+  The strongest tamper-resistance result of 2024 broke four months later.
 
-Date: July 31, 2026 \| Estimated Reading Time: 24 min \| Author: Gustavo Sandoval
+  The attackers changed two hyperparameters.
+reading_time: 24
+---
 
 In August 2024, TAR (Tamper-Resistant Safeguards) arrived with the strongest tamper-resistance claim anyone had published: safeguards on an open-weight model that survived up to 5,000 steps of adversarial fine-tuning ([Tamirisa et al. 2024, v1](https://arxiv.org/abs/2408.00761)). Four months later, Qi, Wei, Carlini and colleagues changed two hyperparameters. One hundred warmup steps instead of thirty, cosine learning-rate decay instead of a constant rate after warmup. Post-attack WMDP-Bio accuracy went from roughly 25%, which is chance, to consistently above 60%, near the undefended Llama-3-8B-Instruct baseline ([Qi et al. 2024](https://arxiv.org/abs/2412.07097)). TAR's current arXiv version says "hundreds of steps."
 
 TAR's evaluation was real. The safeguards survived the 28 configured adversaries the paper ran them against. The failure was in the translation, from a result about those 28 adversaries to a claim about fine-tuning, and the two hyperparameters that broke the claim sit inside the search space of anyone who has read a training tutorial.
 
-In May 2026 it got worse in a more interesting way. Kuo, Yadav and Smith pointed out that TAR and SEAM, both meta-learned against *fine-tuning* attacks, can be sidestepped by an attacker who does not fine-tune. Abliteration projects the refusal direction out of the weight matrices in closed form, no gradients and no training data beyond a small prompt set. Against TAR it reaches up to 62% attack success on AdvBench; against an undefended Llama-3.1-8B it clears 90% on both AdvBench and HarmBench ([Kuo et al. 2026](https://arxiv.org/abs/2605.26526)). A defense hardened against one family of attacks says nothing at all about a family it never considered, and the defense had no way to signal that, because the claim was never scoped to a family in the first place.
+In May 2026 it got worse in a more interesting way. Kuo, Yadav and Smith pointed out that TAR and SEAM, both meta-learned against *fine-tuning* attacks, can be sidestepped by an attacker who does not fine-tune. Abliteration projects the refusal direction out of the weight matrices in closed form, no gradients and no training data beyond a small prompt set. Against TAR it reaches up to 62% attack success on [AdvBench](/posts/2026/05/safety-datasets/#advbench); against an undefended Llama-3.1-8B it clears 90% on both AdvBench and [HarmBench](/posts/2026/05/safety-datasets/#harmbench) ([Kuo et al. 2026](https://arxiv.org/abs/2605.26526)). A defense hardened against one family of attacks says nothing at all about a family it never considered, and the defense had no way to signal that, because the claim was never scoped to a family in the first place.
 
 I have been reading around this question for about three months, mostly because I could not answer it when someone asked me directly: what makes a foundation model threat model *adequate*? I mean it in a narrow sense. Adequate enough that you could hold a release decision to it, and the decision could come back negative.
 
@@ -227,7 +230,7 @@ I wrote a long section on measurement in [the first red-teaming post](/posts/202
 
 Schwinn and colleagues audited four safety judges (AegisGuard, the Llama-2-13B HarmBench classifier, JailJudge, LlamaGuard-3) against 6,642 human-verified labels. Under the distribution shifts that red teaming produces, the judges perform on average only slightly better than a coin flip, and JailJudge bottoms out at **AUROC 0.48** on GCG-R, which is worse than random ([Schwinn et al. 2026](https://arxiv.org/abs/2603.06594)). Their conclusion is that many attacks inflate their success rates by exploiting judge insufficiencies rather than eliciting genuinely harmful content.
 
-If who scores the outcome is unspecified, the threat model is unspecified, because the definition of a successful attack is downstream of the scorer. This applies to the numbers in this post too. TamperBench's harmfulness floor, which I use below, is a StrongREJECT number produced by an automated judge, and Schwinn's result is a reason to treat it as a lower-confidence quantity than the fine-tuning cost figures, which are dollars.
+If who scores the outcome is unspecified, the threat model is unspecified, because the definition of a successful attack is downstream of the scorer. This applies to the numbers in this post too. TamperBench's harmfulness floor, which I use below, is a [StrongREJECT](/posts/2026/05/safety-judges/#strongreject-judge) number produced by an automated judge, and Schwinn's result is a reason to treat it as a lower-confidence quantity than the fine-tuning cost figures, which are dollars.
 
 # Open Weights, Where the Gap Is Widest
 

@@ -1,7 +1,7 @@
 ---
 title: 'Prompt Injection, 2022 vs Today: A Retrospective'
 description: 'Prompt injection gets called the SQL injection of LLMs, and the comparison holds up. What the attack looked like against GPT-3 in 2022, what changed once models got tools, and what did not change at all.'
-date: 2026-06-20
+date: 2026-07-13
 permalink: /posts/2026/06/prompt-injection-2022-vs-now/
 tags:
   - Security
@@ -10,9 +10,12 @@ tags:
   - Adversarial Fine-Tuning
 kind: "Retrospective"
 image: "/images/prompt-injection-retro/fig1-2022-vs-2026.svg"
----
+hook: |
+  In 2022 the attack was one sentence: "Ignore all previous instructions."
 
-Date: June 20, 2026 \| Estimated Reading Time: 11 min \| Author: Gustavo Sandoval
+  Today the same instructions hide in web pages and emails that the model reads on its own.
+reading_time: 11
+---
 
 People like to call prompt injection the SQL injection of LLMs, and the comparison holds up better than most. Untrusted input and trusted instructions travel down the same channel, and the model has no built-in way to tell them apart. I find it useful to go back to what this looked like in 2022, when the models were GPT-3 variants and the attacks were brand new, and put it next to where we are now.
 

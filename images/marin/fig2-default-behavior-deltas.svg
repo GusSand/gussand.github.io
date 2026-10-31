@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 418" width="940" height="418" role="img" aria-label="Marin-8B-Instruct minus Olmo-3-7B-Instruct on eight safety benchmarks. Marin is ahead on DoAnythingNow by 18.1 points and behind on HarmBench by 6.6.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#3d3d3a;
+        --a:#d95926; --b:#3987e5; --c:#6f6e69; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t{font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);} .lbl{font-size:13px;fill:var(--ink2);}
+  .v{font-size:12.5px;font-weight:600;} .xs{font-size:11px;fill:var(--muted);}
+</style>
+<rect width="940" height="418" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Out of the box: Marin is ahead on jailbreak templates and behind on plain requests</text>
+<text class="st" x="20" y="56">Marin-8B-Instruct minus Olmo-3-7B-Instruct, percentage points. Right = Marin safer (or, for benign sets, less over-refusal).</text>
+<line x1="470" y1="82" x2="470" y2="364" stroke="var(--axis)"/>
+<line x1="290" y1="82" x2="290" y2="364" stroke="var(--grid)"/><text class="xs" x="290" y="380" text-anchor="middle">-10</text>
+<line x1="380" y1="82" x2="380" y2="364" stroke="var(--grid)"/><text class="xs" x="380" y="380" text-anchor="middle">-5</text>
+<line x1="560" y1="82" x2="560" y2="364" stroke="var(--grid)"/><text class="xs" x="560" y="380" text-anchor="middle">+5</text>
+<line x1="650" y1="82" x2="650" y2="364" stroke="var(--grid)"/><text class="xs" x="650" y="380" text-anchor="middle">+10</text>
+<line x1="740" y1="82" x2="740" y2="364" stroke="var(--grid)"/><text class="xs" x="740" y="380" text-anchor="middle">+15</text>
+<line x1="830" y1="82" x2="830" y2="364" stroke="var(--grid)"/><text class="xs" x="830" y="380" text-anchor="middle">+20</text>
+<rect x="470.0" y="92" width="325.8" height="22" rx="3" fill="var(--a)"/>
+<text class="lbl" x="460" y="108" text-anchor="end">DoAnythingNow</text><text class="v" x="803.8" y="108">+18.1</text>
+<rect x="470.0" y="126" width="117.0" height="22" rx="3" fill="var(--a)"/>
+<text class="lbl" x="460" y="142" text-anchor="end">WildJailbreak, harmful</text><text class="v" x="595.0" y="142">+6.5</text>
+<rect x="470.0" y="160" width="79.2" height="22" rx="3" fill="var(--a)"/>
+<text class="lbl" x="460" y="176" text-anchor="end">StrongREJECT</text><text class="v" x="557.2" y="176">+4.4</text>
+<rect x="470.0" y="194" width="9.0" height="22" rx="3" fill="var(--a)"/>
+<text class="lbl" x="460" y="210" text-anchor="end">TrustLLM jailbreak</text><text class="v" x="487.0" y="210">+0.5</text>
+<rect x="452.0" y="228" width="18.0" height="22" rx="3" fill="var(--b)"/>
+<text class="lbl" x="480" y="244">WildGuard-Test</text><text class="v" x="444.0" y="244" text-anchor="end">-1.0</text>
+<rect x="426.8" y="262" width="43.2" height="22" rx="3" fill="var(--b)"/>
+<text class="lbl" x="480" y="278">XSTest (over-refusal)</text><text class="v" x="418.8" y="278" text-anchor="end">-2.4</text>
+<rect x="383.6" y="296" width="86.4" height="22" rx="3" fill="var(--b)"/>
+<text class="lbl" x="480" y="312">WildJailbreak, benign</text><text class="v" x="375.6" y="312" text-anchor="end">-4.8</text>
+<rect x="351.2" y="330" width="118.8" height="22" rx="3" fill="var(--b)"/>
+<text class="lbl" x="480" y="346">HarmBench</text><text class="v" x="343.2" y="346" text-anchor="end">-6.6</text>
+<text class="xs" x="20" y="404">Default behavior, 3 seeds per row, judged by WildGuard. Source: GusSand/marin_red_teaming.</text></svg>

@@ -93,14 +93,14 @@ padding.
   .radar-list .post-entry {
     margin: 0 0 26px;
     padding-bottom: 22px;
-    border-bottom: 1px solid #1e1e1c;
+    border-bottom: 1px solid var(--rule);
   }
   .radar-list .post-entry:last-child { border-bottom: 0; }
 
   .radar-list .post-date {
     display: block;
     width: auto;
-    color: #6f6e69;
+    color: var(--teal);
     font-size: 12.5px;
     letter-spacing: 0.04em;
     margin-bottom: 3px;
@@ -115,7 +115,7 @@ padding.
 
   .radar-list .post-summary {
     margin: 7px 0 0;
-    color: #a3a29b;
+    color: var(--muted);
     font-size: 15px;
     line-height: 1.55;
   }
@@ -126,16 +126,16 @@ padding.
     display: inline-block;
     margin: 0 6px 0 0;
     padding: 2px 8px;
-    border: 1px solid #2c2c2a;
+    border: 1px solid var(--rule);
     border-radius: 3px;
-    color: #6f6e69;
+    color: var(--muted);
     font-size: 11.5px;
   }
 
 
   .radar-label {
     margin: 34px 0 18px;
-    color: #6f6e69;
+    color: var(--muted);
     font-size: 12px;
     letter-spacing: 0.09em;
     text-transform: uppercase;
@@ -146,14 +146,14 @@ padding.
     margin: 11px 0 0;
     font-size: 13px;
     line-height: 1.8;
-    color: #6f6e69;
+    color: var(--muted);
   }
   .radar-children-label { margin-right: 4px; }
-  .radar-list .radar-unsummarised { color: #8a8981; font-weight: 500; }
-  .radar-children a { color: #8a8981; }
-  .radar-children a:hover { color: #c9c8c1; }
-  .radar-sep { padding: 0 6px; color: #3a3a37; }
+  .radar-list .radar-unsummarised { color: var(--muted); font-weight: 500; }
+  .radar-children a { color: var(--muted); }
+  .radar-children a:hover { color: var(--red); }
+  .radar-sep { padding: 0 6px; color: var(--rule); }
 
   .radar-list .post-tag-link { text-decoration: none; }
-  .radar-list .post-tag-link:hover { color: #a3a29b; border-color: #4a4a46; }
+  .radar-list .post-tag-link:hover { color: var(--muted); border-color: var(--red); }
 </style>

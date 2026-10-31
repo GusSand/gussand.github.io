@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img" aria-label="Marin base model misinformation rate by pretraining checkpoint: kestrel 69.3, ocelot 66.7, jellyfish 66.4, phoenix 51.7, starling 73.9, deeper-starling 73.7 percent.">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#3d3d3a;
+        --a:#d95926; --b:#3987e5; --c:#6f6e69; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t{font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);} .lbl{font-size:13px;fill:var(--ink2);}
+  .v{font-size:12.5px;font-weight:600;} .xs{font-size:11px;fill:var(--muted);}
+</style>
+<rect width="940" height="400" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Marin's misinformation rate is lowest at Phoenix and rises in the final cooldown</text>
+<text class="st" x="20" y="56">Share of 54 HarmBench misinformation requests where the Marin base model's answer is labeled harmful, by pretraining checkpoint.</text>
+<line x1="90" y1="330.0" x2="900" y2="330.0" stroke="var(--grid)"/><text class="xs" x="80" y="334.0" text-anchor="end">0%</text>
+<line x1="90" y1="282.0" x2="900" y2="282.0" stroke="var(--grid)"/><text class="xs" x="80" y="286.0" text-anchor="end">20%</text>
+<line x1="90" y1="234.0" x2="900" y2="234.0" stroke="var(--grid)"/><text class="xs" x="80" y="238.0" text-anchor="end">40%</text>
+<line x1="90" y1="186.0" x2="900" y2="186.0" stroke="var(--grid)"/><text class="xs" x="80" y="190.0" text-anchor="end">60%</text>
+<line x1="90" y1="138.0" x2="900" y2="138.0" stroke="var(--grid)"/><text class="xs" x="80" y="142.0" text-anchor="end">80%</text>
+<line x1="90" y1="90.0" x2="900" y2="90.0" stroke="var(--grid)"/><text class="xs" x="80" y="94.0" text-anchor="end">100%</text>
+<rect x="112.5" y="163.7" width="90" height="166.3" rx="3" fill="var(--c)"/>
+<text class="v" x="157.5" y="155.7" text-anchor="middle">69.3%</text><text class="lbl" x="157.5" y="350" text-anchor="middle">kestrel</text>
+<rect x="247.5" y="169.9" width="90" height="160.1" rx="3" fill="var(--c)"/>
+<text class="v" x="292.5" y="161.9" text-anchor="middle">66.7%</text><text class="lbl" x="292.5" y="350" text-anchor="middle">ocelot</text>
+<rect x="382.5" y="170.6" width="90" height="159.4" rx="3" fill="var(--c)"/>
+<text class="v" x="427.5" y="162.6" text-anchor="middle">66.4%</text><text class="lbl" x="427.5" y="350" text-anchor="middle">jellyfish</text>
+<rect x="517.5" y="205.9" width="90" height="124.1" rx="3" fill="var(--b)"/>
+<text class="v" x="562.5" y="197.9" text-anchor="middle">51.7%</text><text class="lbl" x="562.5" y="350" text-anchor="middle">phoenix</text>
+<rect x="652.5" y="152.6" width="90" height="177.4" rx="3" fill="var(--a)"/>
+<text class="v" x="697.5" y="144.6" text-anchor="middle">73.9%</text><text class="lbl" x="697.5" y="350" text-anchor="middle">starling</text>
+<rect x="787.5" y="153.1" width="90" height="176.9" rx="3" fill="var(--a)"/>
+<text class="v" x="832.5" y="145.1" text-anchor="middle">73.7%</text><text class="lbl" x="832.5" y="350" text-anchor="middle">deeper-starling</text>
+<text class="xs" x="562.5" y="368" text-anchor="middle">adds Nemotron-CC web text</text>
+<text class="xs" x="20" y="388">Checkpoints in training order; WildGuard judge; 3 seeds for kestrel and ocelot, 10 for the rest. Source: GusSand/marin_red_teaming.</text></svg>

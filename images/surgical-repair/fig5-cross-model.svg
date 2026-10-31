@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 354" width="940" height="354" role="img">
+<style>
+  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+        --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s2:#d95926; }
+  text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
+  .t   { font-size:17px; font-weight:600; }
+  .st  { font-size:13px; fill:var(--ink2); }
+  .lbl { font-size:13px; fill:var(--ink); }
+  .sm  { font-size:12px; fill:var(--ink2); }
+  .xs  { font-size:11px; fill:var(--muted); }
+  .num { font-size:12.5px; font-weight:600; fill:var(--ink); font-variant-numeric: tabular-nums; }
+  .tick{ font-size:11px; fill:var(--muted); font-variant-numeric: tabular-nums; }
+</style>
+<rect width="940" height="354" rx="8" fill="var(--surface)"/>
+<text class="t" x="20" y="34">Same recipe, five models: CWE-787 secure-generation rate</text>
+<text class="st" x="300" y="76">steering at the last hidden layer</text>
+<line x1="240.0" y1="90" x2="240.0" y2="290" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="240.0" y="308" text-anchor="middle">0%</text>
+<line x1="395.0" y1="90" x2="395.0" y2="290" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="395.0" y="308" text-anchor="middle">25%</text>
+<line x1="550.0" y1="90" x2="550.0" y2="290" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="550.0" y="308" text-anchor="middle">50%</text>
+<line x1="705.0" y1="90" x2="705.0" y2="290" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="705.0" y="308" text-anchor="middle">75%</text>
+<line x1="860.0" y1="90" x2="860.0" y2="290" stroke="var(--grid)" stroke-width="1"/>
+<text class="tick" x="860.0" y="308" text-anchor="middle">100%</text>
+<text class="lbl" x="226" y="114" text-anchor="end">Mistral-7B</text>
+<line x1="263.6" y1="110" x2="700.7" y2="110" stroke="var(--axis)" stroke-width="2"/>
+<circle cx="263.6" cy="110" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="700.7" cy="110" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="num" x="712.7" y="114">74.3%  (+70.5 pp)</text>
+<text class="lbl" x="226" y="154" text-anchor="end">Llama-3.1-8B</text>
+<line x1="281.5" y1="150" x2="694.5" y2="150" stroke="var(--axis)" stroke-width="2"/>
+<circle cx="281.5" cy="150" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="694.5" cy="150" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="num" x="706.5" y="154">73.3%  (+66.6 pp)</text>
+<text class="lbl" x="226" y="194" text-anchor="end">Qwen-2.5-14B</text>
+<line x1="263.6" y1="190" x2="576.7" y2="190" stroke="var(--axis)" stroke-width="2"/>
+<circle cx="263.6" cy="190" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="576.7" cy="190" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="num" x="588.7" y="194">54.3%  (+50.5 pp)</text>
+<text class="lbl" x="226" y="234" text-anchor="end">Llama-3.1-70B (4-bit)</text>
+<line x1="251.8" y1="230" x2="564.9" y2="230" stroke="var(--axis)" stroke-width="2"/>
+<circle cx="251.8" cy="230" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="564.9" cy="230" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="num" x="576.9" y="234">52.4%  (+50.5 pp)</text>
+<text class="lbl" x="226" y="274" text-anchor="end">Mistral-Small-24B</text>
+<line x1="240.0" y1="270" x2="481.8" y2="270" stroke="var(--axis)" stroke-width="2"/>
+<circle cx="240.0" cy="270" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="481.8" cy="270" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<text class="num" x="493.8" y="274">39.0%  (+39.0 pp)</text>
+<rect x="20" y="66" width="11" height="11" rx="2.5" fill="var(--s2)"/>
+<text class="sm" x="38" y="76">unsteered</text>
+<rect x="126.8" y="66" width="11" height="11" rx="2.5" fill="var(--s1)"/>
+<text class="sm" x="144.8" y="76">best steered</text>
+<text class="xs" x="20" y="338">The larger model in each family steers worse: Llama 70B 52.4% vs 8B 73.3%; Mistral 24B 39.0% vs 7B 74.3%.</text>
+</svg>
