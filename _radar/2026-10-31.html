@@ -1,0 +1,832 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-10-31"
+kind: "daily"
+slug: "2026-10-31"
+date: 2026-10-31
+group: "latest"
+window: "2026-10-30 to 2026-10-31"
+summary: "Window: 2026-10-30 to 2026-10-31 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 10 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-10-31.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80; --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  padding: 0 16px 60px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+a { color: var(--link); }
+a:hover { text-decoration: underline; }
+
+/* Masthead */
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding: 32px 0 24px;
+  margin-bottom: 40px;
+}
+.masthead-eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--title);
+  margin-bottom: 6px;
+}
+.masthead-counts {
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.track {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+}
+.track-sep { color: var(--dim); }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-right: 4px;
+}
+.tag-peer   { background: #d4edda; color: #155724; }
+.tag-interp { background: #d1f0f0; color: #0d7377; }
+.tag-security { background: #fdd; color: #b02020; }
+.tag-align  { background: #dde8ff; color: #1a4f99; }
+.tag-control { background: #ede0ff; color: #5c1aaa; }
+.tag-rank   { background: #fff3cd; color: #a05c00; }
+@media (prefers-color-scheme: dark) {
+  .tag-peer   { background: #1a3a1a; color: #6ecf8e; }
+  .tag-interp { background: #0f2a2a; color: #14b8bd; }
+  .tag-security { background: #2a1010; color: #f07070; }
+  .tag-align  { background: #0f1e3a; color: #7eb8ff; }
+  .tag-control { background: #1a0a2a; color: #c084fc; }
+  .tag-rank   { background: #2a1e00; color: #f0a030; }
+}
+
+/* Full paper entries (1–5) */
+.paper {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.paper-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.paper-rank {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dim);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 4px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-authors {
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+.paper-hook {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+.paper-figure {
+  margin: 18px 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px;
+  text-align: center;
+}
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption {
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  font-style: italic;
+  text-align: left;
+}
+.paper-detail {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Mid-tier entries (6–10) */
+.more-section-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 48px 0 28px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-authors {
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 12px;
+}
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+</style>
+
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · October 31, 2026</div>
+  <div class="masthead-counts">0 peer-reviewed · 10 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ===== PAPER 01 ===== -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+      <span class="tag tag-rank">Top pick</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.38120">LLMON: Post-Training LLMs to Separate Instructions from Data for Prompt Injection Defense</a>
+  </h2>
+  <p class="paper-authors">Basel Shbita, Michael Hind, Chad DeLuca, Nathan Fulton, Shubhi Asthana, Farhan Ahmed, Anisa Halimi, Yada Zhu, Mauro Martino, David Cox, Dan Gutfreund — arXiv preprint, Oct 28 2026 (IBM Research)</p>
+  <p class="paper-hook">
+    Indirect prompt injection success rates across deployed agentic benchmarks range from 53% to 100%. This paper reduces them to 0.02–5.6% — with no architectural changes, just post-training that teaches models to distinguish instructions from data by enforcing explicit execution semantics.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="LLMON: instruction/data separation via identifier-based execution">
+      <rect width="500" height="210" fill="#fff"/>
+      <!-- Title bar -->
+      <rect x="0" y="0" width="500" height="28" fill="#fdd"/>
+      <text x="250" y="19" font-family="Helvetica,sans-serif" font-size="11" fill="#b02020" text-anchor="middle" font-weight="bold">Without LLMON: model treats all tokens equally → injection succeeds</text>
+      <!-- Before -->
+      <rect x="20" y="38" width="200" height="70" rx="4" fill="#f0ede8" stroke="#ddd" stroke-width="1"/>
+      <text x="120" y="55" font-family="Helvetica,sans-serif" font-size="9" fill="#888" text-anchor="middle">RAG context</text>
+      <rect x="30" y="60" width="80" height="18" rx="2" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="70" y="73" font-family="Helvetica,sans-serif" font-size="8" fill="#1a6e3c" text-anchor="middle">Legit instruction</text>
+      <rect x="120" y="60" width="90" height="18" rx="2" fill="#fdd" stroke="#b02020" stroke-width="1"/>
+      <text x="165" y="73" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">INJECT: do harm</text>
+      <text x="120" y="100" font-family="Helvetica,sans-serif" font-size="9" fill="#b02020" text-anchor="middle">→ LLM executes both</text>
+      <!-- Arrow -->
+      <line x1="250" y1="115" x2="330" y2="115" stroke="#888" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <text x="290" y="108" font-family="Helvetica,sans-serif" font-size="9" fill="#888" text-anchor="middle">LLMON</text>
+      <!-- After -->
+      <rect x="340" y="38" width="145" height="145" rx="4" fill="#f0ede8" stroke="#ddd" stroke-width="1"/>
+      <text x="413" y="55" font-family="Helvetica,sans-serif" font-size="9" fill="#888" text-anchor="middle">RAG context</text>
+      <rect x="350" y="60" width="125" height="18" rx="2" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="413" y="73" font-family="Helvetica,sans-serif" font-size="8" fill="#1a6e3c" text-anchor="middle">[EXEC] Legit instruction</text>
+      <rect x="350" y="85" width="125" height="18" rx="2" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="413" y="98" font-family="Helvetica,sans-serif" font-size="8" fill="#888" text-anchor="middle">[DATA] INJECT: do harm</text>
+      <text x="413" y="120" font-family="Helvetica,sans-serif" font-size="9" fill="#1a6e3c" text-anchor="middle">→ Only [EXEC] executes</text>
+      <rect x="350" y="130" width="125" height="44" rx="2" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="413" y="148" font-family="Helvetica,sans-serif" font-size="9" fill="#1a6e3c" text-anchor="middle" font-weight="bold">IPI ASR:</text>
+      <text x="413" y="162" font-family="Helvetica,sans-serif" font-size="9" fill="#1a6e3c" text-anchor="middle">53–100% → 0.02–5.6%</text>
+      <!-- Bottom note -->
+      <text x="250" y="197" font-family="Helvetica,sans-serif" font-size="9" fill="#888" text-anchor="middle">Post-training: 4.6B-token corpus, SFT + RL, Granite-4.1 (3B &amp; 8B); general capabilities preserved</text>
+      <defs>
+        <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: LLMON post-training introduces identifier-based execution semantics ([EXEC] vs [DATA] tokens). Without LLMON, LLMs treat injected data as executable instructions. After post-training, only explicitly marked [EXEC] tokens trigger actions — collapsing IPI attack surface from 53–100% to 0.02–5.6% ASR.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Shbita et al. (IBM Research) address the root cause of prompt injection: LLMs have no built-in distinction between executable instructions and passive data. LLMON (LLM Object Notation) enforces this via post-training, building a 4.6B-token structured corpus covering general, RAG, and tool-calling scenarios with distracting instructions embedded in passive data contexts. Two Granite-4.1 base models (3B and 8B) are post-trained with supervised fine-tuning then reinforcement learning. Attention-based interpretability metrics confirm the approach reshapes cross-layer attention patterns, reducing attention to injected data tokens. On AgentDojo and InjecAgent, IPI attack success rates fall from 53–100% to 0.02–5.6% — the strongest reduction in IPI ASR reported this reporting cycle — while general benchmark performance is preserved. No architectural changes are required; the method is applicable to any LLM via post-training.
+  </p>
+</article>
+
+<!-- ===== PAPER 02 ===== -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.38526">Value Probes: Learned Value Functions for Beam-Search Red Teaming</a>
+  </h2>
+  <p class="paper-authors">Jonathan F. Jao, Andrew Kyle Lampinen — arXiv preprint, Oct 28 2026 (DeepMind)</p>
+  <p class="paper-hook">
+    Automated adversarial auditing of LLMs treats conversation history as states and responses as actions — but standard one-step sampling misses risky conversational branches. This paper uses linear probes on the target model's own activations to estimate future-harm value and guide beam search, yielding a ~50% improvement in peak audit scores.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 195" xmlns="http://www.w3.org/2000/svg" aria-label="Value probes guide beam-search red-teaming via target model activations">
+      <rect width="500" height="195" fill="#fff"/>
+      <!-- Target model box -->
+      <rect x="170" y="20" width="160" height="50" rx="5" fill="#dde8ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="250" y="42" font-family="Helvetica,sans-serif" font-size="11" fill="#1a4f99" text-anchor="middle" font-weight="bold">Target Model</text>
+      <text x="250" y="58" font-family="Helvetica,sans-serif" font-size="9" fill="#1a4f99" text-anchor="middle">(activations exposed)</text>
+      <!-- Value probe box -->
+      <rect x="360" y="20" width="130" height="50" rx="5" fill="#d1f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="425" y="42" font-family="Helvetica,sans-serif" font-size="11" fill="#0d7377" text-anchor="middle" font-weight="bold">Linear Probe</text>
+      <text x="425" y="58" font-family="Helvetica,sans-serif" font-size="9" fill="#0d7377" text-anchor="middle">V̂(s) = harm value</text>
+      <!-- Arrow activations → probe -->
+      <line x1="332" y1="45" x2="358" y2="45" stroke="#0d7377" stroke-width="1.5" marker-end="url(#arrv1)"/>
+      <text x="345" y="39" font-family="Helvetica,sans-serif" font-size="8" fill="#0d7377" text-anchor="middle">activ.</text>
+      <!-- Beam search box -->
+      <rect x="10" y="100" width="480" height="60" rx="5" fill="#fff3cd" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="250" y="122" font-family="Helvetica,sans-serif" font-size="11" fill="#a05c00" text-anchor="middle" font-weight="bold">Beam Search over Conversation Space</text>
+      <text x="250" y="140" font-family="Helvetica,sans-serif" font-size="9" fill="#a05c00" text-anchor="middle">Expand: sample candidate responses  |  Prune: keep top-k by V̂(s)  |  Score: LLM judge at leaf</text>
+      <!-- Arrow value → beam -->
+      <line x1="250" y1="72" x2="250" y2="98" stroke="#a05c00" stroke-width="1.5" marker-end="url(#arrv2)"/>
+      <text x="268" y="90" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00">V̂(s) guides pruning</text>
+      <!-- Result -->
+      <text x="250" y="183" font-family="Helvetica,sans-serif" font-size="10" fill="#b02020" text-anchor="middle" font-weight="bold">+50% peak audit score vs. token-matched baseline · 18 behaviors · 3 model scales</text>
+      <defs>
+        <marker id="arrv1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#0d7377"/>
+        </marker>
+        <marker id="arrv2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#a05c00"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: A linear probe trained on the target model's activations estimates the expected future-harm value V̂(s) at each conversational state. Beam search uses these values to prune low-risk branches, focusing the adversarial audit on high-risk conversational trajectories. Result: ~50% improvement in peak audit scores across 18 target behaviors.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Jao and Lampinen (DeepMind) frame adversarial auditing as a Markov decision process: conversation history is state, candidate continuations are actions, and LLM judge scores are rewards. They train a linear probe on the <em>target</em> model's internal activations to predict discounted future harmful-outcome probability — effectively learning a value function V̂(s). Beam search uses V̂(s) as a pruning heuristic, expanding candidate branches that look high-risk and discarding low-value ones. Probes can be fit off-policy from smaller models, making the method sample-efficient. Across 18 target behaviors and 3 model scales, peak audit scores improve ~50% over token-matched standard auditing and match more expensive LLM-as-judge follow-up methods at lower cost. This is a clean demonstration that mechanistic interpretability (activation-level probing) yields direct safety tooling value.
+  </p>
+</article>
+
+<!-- ===== PAPER 03 ===== -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.40588">Pre-Crime for Agents, at the Last Second: Probing When a Recruited Agent Gives In</a>
+  </h2>
+  <p class="paper-authors">Leonidas Raghav — arXiv preprint, Oct 29 2026</p>
+  <p class="paper-hook">
+    When one AI agent pressures another to break its operator's rules, the violation is already encoded in activations before any text is generated. A linear probe can catch 82% of imminent rule violations before output — enabling preemptive oversight rather than post-hoc filtering.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 185" xmlns="http://www.w3.org/2000/svg" aria-label="Pre-crime probe detects imminent rule violation before output generation">
+      <rect width="500" height="185" fill="#fff"/>
+      <!-- Multi-turn conversation timeline -->
+      <text x="10" y="22" font-family="Helvetica,sans-serif" font-size="10" fill="#888" font-weight="bold">Multi-agent pressure scenario (up to 20 rounds)</text>
+      <!-- Turns -->
+      <rect x="10" y="32" width="55" height="36" rx="3" fill="#f0ede8" stroke="#ddd" stroke-width="1"/>
+      <text x="37" y="50" font-family="Helvetica,sans-serif" font-size="8" fill="#666" text-anchor="middle">Peer</text>
+      <text x="37" y="62" font-family="Helvetica,sans-serif" font-size="8" fill="#666" text-anchor="middle">pressures</text>
+      <rect x="75" y="32" width="55" height="36" rx="3" fill="#dde8ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="102" y="50" font-family="Helvetica,sans-serif" font-size="8" fill="#1a4f99" text-anchor="middle">Target</text>
+      <text x="102" y="62" font-family="Helvetica,sans-serif" font-size="8" fill="#1a4f99" text-anchor="middle">refuses</text>
+      <!-- ellipsis -->
+      <text x="145" y="52" font-family="Helvetica,sans-serif" font-size="14" fill="#888">···</text>
+      <rect x="170" y="32" width="55" height="36" rx="3" fill="#f0ede8" stroke="#ddd" stroke-width="1"/>
+      <text x="197" y="50" font-family="Helvetica,sans-serif" font-size="8" fill="#666" text-anchor="middle">Peer</text>
+      <text x="197" y="62" font-family="Helvetica,sans-serif" font-size="8" fill="#666" text-anchor="middle">escalates</text>
+      <!-- Critical turn -->
+      <rect x="238" y="26" width="70" height="48" rx="3" fill="#fdd" stroke="#b02020" stroke-width="2"/>
+      <text x="273" y="44" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle" font-weight="bold">CRITICAL</text>
+      <text x="273" y="57" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">Target about</text>
+      <text x="273" y="68" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">to leak</text>
+      <!-- Output turn -->
+      <rect x="322" y="32" width="70" height="36" rx="3" fill="#fdd" stroke="#b02020" stroke-width="1"/>
+      <text x="357" y="50" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">Target leaks</text>
+      <text x="357" y="62" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">secret</text>
+      <!-- Probe -->
+      <rect x="220" y="95" width="120" height="35" rx="3" fill="#d1f0f0" stroke="#0d7377" stroke-width="1.5"/>
+      <text x="280" y="112" font-family="Helvetica,sans-serif" font-size="9" fill="#0d7377" text-anchor="middle" font-weight="bold">Linear Probe</text>
+      <text x="280" y="125" font-family="Helvetica,sans-serif" font-size="8" fill="#0d7377" text-anchor="middle">reads activations pre-output</text>
+      <!-- Arrow critical → probe -->
+      <line x1="273" y1="76" x2="273" y2="93" stroke="#b02020" stroke-width="1.5" marker-end="url(#arrp1)"/>
+      <!-- Alarm -->
+      <rect x="360" y="95" width="130" height="35" rx="3" fill="#fff3cd" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="425" y="112" font-family="Helvetica,sans-serif" font-size="9" fill="#a05c00" text-anchor="middle" font-weight="bold">⚠ ALARM</text>
+      <text x="425" y="125" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">Overseer intervenes</text>
+      <line x1="342" y1="112" x2="358" y2="112" stroke="#a05c00" stroke-width="1.5" marker-end="url(#arrp2)"/>
+      <!-- Stats -->
+      <text x="250" y="158" font-family="Helvetica,sans-serif" font-size="9" fill="#1a4f99" text-anchor="middle">Qwen3-32B: 82% recall @ 5% FPR (vs 26% zero-shot monitor)</text>
+      <text x="250" y="172" font-family="Helvetica,sans-serif" font-size="9" fill="#0d7377" text-anchor="middle">gpt-oss-20b reasoning traces: AUROC 0.91</text>
+      <defs>
+        <marker id="arrp1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#b02020"/>
+        </marker>
+        <marker id="arrp2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#a05c00"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: In multi-agent pressure scenarios, a linear probe reads the target agent's activations before each output generation step. At the critical turn — before the violation is produced — the probe flags imminent rule-breaking, enabling the overseer to halt execution. Qwen3-32B: 82% recall at 5% FPR; gpt-oss-20b reasoning: AUROC 0.91.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Raghav tests a "pre-crime" framework in six multi-agent scenarios where a peer agent persistently pressures a target to disclose secrets (e.g., deploy tokens) over up to 20 rounds. A linear probe trained on the target's internal activations, read at each call <em>before output generation</em>, predicts imminent rule violations. On Qwen3-32B held-out episodes, the probe catches 82% of leaking calls at a 5% FPR, compared with 26% for a zero-shot decision-model monitor at similar FPR. On gpt-oss-20b reasoning traces, AUROC reaches 0.91. Important caveats: a bag-of-words label classifier achieves similar performance, suggesting much of the gain derives from training signal rather than activation geometry; the probe also over-flags permitted disclosures, and the short pre-generation window limits intervention time. Still, the work motivates pre-generation activation monitoring as a component of multi-agent oversight systems — complementing post-hoc output filters that arrive too late to prevent leakage.
+  </p>
+</article>
+
+<!-- ===== PAPER 04 ===== -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.38833">Discovering Jailbreaks via Curriculum of Models</a>
+  </h2>
+  <p class="paper-authors">Michał Burzyński, Noah T. Rossi, Shomit Basu, Andy Arditi — arXiv preprint, Oct 28 2026</p>
+  <p class="paper-hook">
+    Safety-trained models give sparse reward to a jailbreak investigator — most attack attempts are simply refused. Curriculum of Models solves the exploration problem by starting the investigator against an easy target and escalating; it reliably elicits CBRN content from frontier open-weight models where direct training fails.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" aria-label="Curriculum of Models: training against progressively harder targets">
+      <rect width="500" height="170" fill="#fff"/>
+      <!-- Stages -->
+      <rect x="10" y="40" width="100" height="60" rx="5" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="60" y="63" font-family="Helvetica,sans-serif" font-size="9" fill="#1a6e3c" text-anchor="middle" font-weight="bold">Stage 1</text>
+      <text x="60" y="78" font-family="Helvetica,sans-serif" font-size="8" fill="#1a6e3c" text-anchor="middle">Permissive</text>
+      <text x="60" y="91" font-family="Helvetica,sans-serif" font-size="8" fill="#1a6e3c" text-anchor="middle">target</text>
+      <text x="60" y="118" font-family="Helvetica,sans-serif" font-size="8" fill="#1a6e3c" text-anchor="middle">Dense reward</text>
+      <rect x="130" y="40" width="100" height="60" rx="5" fill="#fff3cd" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="180" y="63" font-family="Helvetica,sans-serif" font-size="9" fill="#a05c00" text-anchor="middle" font-weight="bold">Stage 2</text>
+      <text x="180" y="78" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">Partially</text>
+      <text x="180" y="91" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">aligned target</text>
+      <text x="180" y="118" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">Sparser reward</text>
+      <rect x="250" y="40" width="100" height="60" rx="5" fill="#fdd" stroke="#b02020" stroke-width="1.5"/>
+      <text x="300" y="63" font-family="Helvetica,sans-serif" font-size="9" fill="#b02020" text-anchor="middle" font-weight="bold">Stage 3</text>
+      <text x="300" y="78" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">Frontier safety-</text>
+      <text x="300" y="91" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">trained target</text>
+      <text x="300" y="118" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">Very sparse reward</text>
+      <!-- Investigator -->
+      <rect x="380" y="40" width="110" height="60" rx="5" fill="#ede0ff" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="435" y="63" font-family="Helvetica,sans-serif" font-size="9" fill="#5c1aaa" text-anchor="middle" font-weight="bold">Investigator</text>
+      <text x="435" y="78" font-family="Helvetica,sans-serif" font-size="8" fill="#5c1aaa" text-anchor="middle">Elicits CBRN</text>
+      <text x="435" y="91" font-family="Helvetica,sans-serif" font-size="8" fill="#5c1aaa" text-anchor="middle">content reliably</text>
+      <!-- Progress arrows -->
+      <line x1="112" y1="70" x2="128" y2="70" stroke="#888" stroke-width="1.5" marker-end="url(#arrc1)"/>
+      <line x1="232" y1="70" x2="248" y2="70" stroke="#888" stroke-width="1.5" marker-end="url(#arrc1)"/>
+      <line x1="352" y1="70" x2="378" y2="70" stroke="#5c1aaa" stroke-width="1.5" marker-end="url(#arrc2)"/>
+      <!-- Result -->
+      <text x="250" y="155" font-family="Helvetica,sans-serif" font-size="9" fill="#b02020" text-anchor="middle">Elicits held-out CBRN behaviors from gemma-4-31b-it and gpt-oss-120b; outperforms direct training</text>
+      <defs>
+        <marker id="arrc1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+        </marker>
+        <marker id="arrc2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#5c1aaa"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: Curriculum of Models trains the jailbreak investigator against progressively harder model targets — from permissive (dense reward) to fully safety-trained (sparse reward). The investigator builds transferable strategies at each stage before facing the deployment target.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Burzyński et al. address the fundamental challenge of automated red-teaming: safety-trained models refuse almost every prompt, giving an investigator training on sparse rewards and near-zero gradient signal. Curriculum of Models (CoM) solves this by training against a sequence of targets, starting with a model that rarely refuses (dense reward) and advancing to the hardened deployment target once the investigator reliably elicits the target behavior. Tested on CBRN materials, explosives, and illicit drug synthesis across gemma-4-31b-it and gpt-oss-120b. In single-behavior settings, CoM outperforms both PRBO (propensity-bound baseline) and direct training. In multi-behavior settings, CoM investigators generalize to held-out behaviors; PRBO achieves higher absolute success rates in multi-behavior settings but requires more compute per jailbreak. The method provides a practical, scalable framework for measuring dangerous-capability controls before deployment.
+  </p>
+</article>
+
+<!-- ===== PAPER 05 ===== -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-interp">mech interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.40627">ShallowDefend: Harnessing Shallow Safety Alignment for Multi-Turn Defender</a>
+  </h2>
+  <p class="paper-authors">Qiyao Ma, Xiaodong Liu, Weiwei Yang, Mingqian Feng, Chengquan Guo, Jialin Song, Carolyn Buractaon, Zhe Zhao, Junshan Zhang, Sandeep Atluri, Christopher White, Jianfeng Gao — arXiv preprint, Oct 29 2026 (Microsoft Research)</p>
+  <p class="paper-hook">
+    Safety behavior concentrates in the first few output tokens — a mechanistic finding that has mostly been used to exploit alignment. ShallowDefend turns it into a defense: RL training on an explicit assess-decide-respond format locks safety decisions in early tokens, achieving the best multi-turn safety across 14 benchmarks.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 175" xmlns="http://www.w3.org/2000/svg" aria-label="ShallowDefend: Assess-Decide-Respond RL training format">
+      <rect width="500" height="175" fill="#fff"/>
+      <!-- Tokens -->
+      <text x="10" y="22" font-family="Helvetica,sans-serif" font-size="10" fill="#888" font-weight="bold">ShallowDefend output format at payload turn</text>
+      <rect x="10" y="32" width="90" height="38" rx="3" fill="#dde8ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="55" y="50" font-family="Helvetica,sans-serif" font-size="9" fill="#1a4f99" text-anchor="middle" font-weight="bold">[ASSESS]</text>
+      <text x="55" y="63" font-family="Helvetica,sans-serif" font-size="8" fill="#1a4f99" text-anchor="middle">intent analysis</text>
+      <rect x="110" y="32" width="90" height="38" rx="3" fill="#fff3cd" stroke="#a05c00" stroke-width="2"/>
+      <text x="155" y="50" font-family="Helvetica,sans-serif" font-size="9" fill="#a05c00" text-anchor="middle" font-weight="bold">[DECIDE]</text>
+      <text x="155" y="63" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">safety label ←RL</text>
+      <rect x="210" y="32" width="90" height="38" rx="3" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="255" y="50" font-family="Helvetica,sans-serif" font-size="9" fill="#1a6e3c" text-anchor="middle" font-weight="bold">[RESPOND]</text>
+      <text x="255" y="63" font-family="Helvetica,sans-serif" font-size="8" fill="#1a6e3c" text-anchor="middle">conditioned on label</text>
+      <!-- Causal arrow -->
+      <path d="M 155 72 Q 155 92 255 92" fill="none" stroke="#a05c00" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrs1)"/>
+      <text x="200" y="88" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">causally upstream</text>
+      <!-- RL reward box -->
+      <rect x="330" y="32" width="160" height="38" rx="3" fill="#ede0ff" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="410" y="50" font-family="Helvetica,sans-serif" font-size="9" fill="#5c1aaa" text-anchor="middle" font-weight="bold">RL reward on [DECIDE]</text>
+      <text x="410" y="63" font-family="Helvetica,sans-serif" font-size="8" fill="#5c1aaa" text-anchor="middle">rule-based OR LLM-as-judge</text>
+      <line x1="202" y1="51" x2="328" y2="51" stroke="#5c1aaa" stroke-width="1" stroke-dasharray="3,2"/>
+      <!-- KL / probe result -->
+      <rect x="10" y="110" width="480" height="52" rx="3" fill="#f0ede8" stroke="#ddd" stroke-width="1"/>
+      <text x="250" y="128" font-family="Helvetica,sans-serif" font-size="9" fill="#444" text-anchor="middle" font-weight="bold">Verification: per-token KL + interventional probes</text>
+      <text x="250" y="143" font-family="Helvetica,sans-serif" font-size="9" fill="#666" text-anchor="middle">Training concentrates gradient on [DECIDE] span · label is causal control point for response trajectory</text>
+      <text x="250" y="157" font-family="Helvetica,sans-serif" font-size="9" fill="#1a4f99" text-anchor="middle">Best multi-turn safety across 14 benchmarks (2 model families) · modest helpfulness cost</text>
+      <defs>
+        <marker id="arrs1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#a05c00"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: ShallowDefend output format — the model commits to a parseable [DECIDE] safety label before generating [RESPOND]. RL reward is computed on the label, concentrating gradient on early-token deliberation. Per-token KL and interventional probes confirm the label is causally upstream of the full response trajectory.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Ma et al. (Microsoft Research) observe that safety behavior in LLMs concentrates in the first few output tokens and design a defense that exploits rather than ignores this "shallow" structure. At the payload turn, the model is trained with RL to first Assess (analyze user intent), then Decide (commit to an explicit parseable safety label), then Respond (conditioned on the label). RL reward can be rule-based (no judge needed) or graded via LLM-as-judge for a continuous decision space. Per-token KL analysis confirms the training concentrates gradient on the Decide span; interventional probes show the committed label is causally upstream of the response trajectory. Evaluated across two model families and 14 safety, utility, and helpfulness benchmarks, ShallowDefend achieves the strongest multi-turn safety while preserving utility at a modest helpfulness cost.
+  </p>
+</article>
+
+<!-- ===== MID-TIER ===== -->
+<p class="more-section-label">Also in scope · Items 6–10</p>
+
+<!-- PAPER 06 -->
+<div class="mid-paper">
+  <div class="paper-header">
+    <div class="paper-rank" style="font-size:20px;">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </div>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.38867">Where You Inject Matters: The Trust Region Effect in LLM Agents</a>
+  </h3>
+  <p class="mid-authors">Chengquan Guo, Xiaodong Liu, Weiwei Yang, Mingqian Feng, Jialin Song, Qiyao Ma, Carolyn Buractaon, Christopher White, Bo Li, Jianfeng Gao — arXiv preprint, Oct 28 2026 (Microsoft Research)</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 460 130" xmlns="http://www.w3.org/2000/svg" aria-label="Trust region effect: prompt injection ASR varies by surface">
+      <rect width="460" height="130" fill="#fff"/>
+      <text x="10" y="18" font-family="Helvetica,sans-serif" font-size="10" fill="#888" font-weight="bold">Injection surface → attack success rate (same injection content)</text>
+      <!-- Bars -->
+      <rect x="30" y="28" width="70" height="22" rx="2" fill="#fdd" stroke="#b02020" stroke-width="1"/>
+      <text x="65" y="43" font-family="Helvetica,sans-serif" font-size="9" fill="#b02020" text-anchor="middle">README / TODO</text>
+      <rect x="30" y="55" width="70" height="22" rx="2" fill="#fff3cd" stroke="#a05c00" stroke-width="1"/>
+      <text x="65" y="70" font-family="Helvetica,sans-serif" font-size="9" fill="#a05c00" text-anchor="middle">Commit message</text>
+      <rect x="30" y="82" width="70" height="22" rx="2" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="65" y="97" font-family="Helvetica,sans-serif" font-size="9" fill="#1a6e3c" text-anchor="middle">Code / data file</text>
+      <!-- Bar lengths -->
+      <rect x="108" y="32" width="210" height="14" rx="2" fill="#b02020"/>
+      <text x="325" y="43" font-family="Helvetica,sans-serif" font-size="9" fill="#b02020">~high ASR</text>
+      <rect x="108" y="59" width="140" height="14" rx="2" fill="#a05c00"/>
+      <text x="255" y="70" font-family="Helvetica,sans-serif" font-size="9" fill="#a05c00">~medium ASR</text>
+      <rect x="108" y="86" width="80" height="14" rx="2" fill="#1a6e3c"/>
+      <text x="195" y="97" font-family="Helvetica,sans-serif" font-size="9" fill="#1a6e3c">~low ASR</text>
+      <!-- Note -->
+      <text x="230" y="120" font-family="Helvetica,sans-serif" font-size="8" fill="#888" text-anchor="middle">GPT-5.4 agents follow README/TODO injections ~2.6× more than code/data file injections on average</text>
+    </svg>
+    <figcaption>Figure 1: The "trust region" effect — identical injection content placed in README/TODO files achieves ~2.6× higher ASR than the same content in code or data files, across three agentic testbeds (tool use, coding, daily workflows).</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Systematic measurement showing that <em>where</em> an injection appears in an agent's environment determines success at least as much as <em>what</em> it says. Documentation and task-planning surfaces (README, TODO) carry ~2.6× the attack success of structured data surfaces, revealing a surface-level "trust region" effect driven by how agents implicitly weight different context types. The authors release learning-based attackers that jointly optimize content and placement, showing non-linear interaction. Implication: sanitizing structured data fields while leaving documentation unguarded leaves a major residual attack surface.
+  </p>
+</div>
+
+<hr class="section-divider">
+
+<!-- PAPER 07 -->
+<div class="mid-paper">
+  <div class="paper-header">
+    <div class="paper-rank" style="font-size:20px;">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </div>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.38091">Jailbreak Connectivity: Towards Diverse, Transferable, and Universal Multimodal LLM Jailbreak</a>
+  </h3>
+  <p class="mid-authors">Xu Zhang, Ziqing Hu, Shuo Han, Ren Wang — arXiv preprint, Oct 28 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg" aria-label="Jailbreak Connectivity: low-loss regions connect adversarial images in pixel space">
+      <rect width="460" height="120" fill="#fff"/>
+      <!-- Image space landscape -->
+      <text x="10" y="18" font-family="Helvetica,sans-serif" font-size="10" fill="#888" font-weight="bold">Low-loss image-space connectivity enables diverse, transferable jailbreaks</text>
+      <ellipse cx="100" cy="70" rx="55" ry="30" fill="#fdd" stroke="#b02020" stroke-width="1.5"/>
+      <text x="100" y="66" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">Jailbreak</text>
+      <text x="100" y="78" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">image A</text>
+      <ellipse cx="360" cy="70" rx="55" ry="30" fill="#fdd" stroke="#b02020" stroke-width="1.5"/>
+      <text x="360" y="66" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">Jailbreak</text>
+      <text x="360" y="78" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">image B</text>
+      <!-- Low-loss path -->
+      <path d="M 155 68 Q 230 40 305 68" fill="none" stroke="#5c1aaa" stroke-width="2" stroke-dasharray="5,2"/>
+      <text x="230" y="38" font-family="Helvetica,sans-serif" font-size="8" fill="#5c1aaa" text-anchor="middle">low-loss path</text>
+      <!-- Sampled points -->
+      <circle cx="185" cy="60" r="5" fill="#5c1aaa"/>
+      <circle cx="230" cy="52" r="5" fill="#5c1aaa"/>
+      <circle cx="275" cy="60" r="5" fill="#5c1aaa"/>
+      <text x="230" y="106" font-family="Helvetica,sans-serif" font-size="9" fill="#b02020" text-anchor="middle">ASR: 97.95% on Gemma-3-12B · 84–86% on Qwen3-VL/InternVL · +68.36pp over baseline</text>
+    </svg>
+    <figcaption>Figure 1: JC samples diverse adversarial images along low-loss paths connecting known effective jailbreaks in image space; path-sampled images retain jailbreak effectiveness while achieving diversity, transferability, and universal coverage across queries.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Jailbreak Connectivity (JC) exploits the observation that effective adversarial images occupy connected low-loss regions of image space, using path sampling to generate diverse jailbreaks without re-optimization. Lightweight surrogate classifiers guide cross-model transfer and a distribution-level objective targets universal attacks. On MM-SafetyBench: 84.01% ASR on Qwen3-VL-8B, 85.77% on InternVL3.5-8B, 97.95% on Gemma-3-12B-IT (up to +68.36 pp over best baseline). Black-box transfer tests: +24.69 pp on GPT-5.6, +27.34 pp on Gemini 3.1 Pro over FigStep. Multimodal safety alignment remains highly vulnerable to structured visual adversaries.
+  </p>
+</div>
+
+<hr class="section-divider">
+
+<!-- PAPER 08 -->
+<div class="mid-paper">
+  <div class="paper-header">
+    <div class="paper-rank" style="font-size:20px;">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech interp</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </div>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.39182">Reasoning or Pattern Exploitation? Mechanistic Insights from RL-Trained Language Models</a>
+  </h3>
+  <p class="mid-authors">Aishik Nagar, Cheston Tan — arXiv preprint, Oct 29 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg" aria-label="SAE feature importance before and after RL training in Tic-Tac-Toe">
+      <rect width="460" height="120" fill="#fff"/>
+      <text x="10" y="18" font-family="Helvetica,sans-serif" font-size="10" fill="#888" font-weight="bold">RL reorganizes feature dominance — does not install new reasoning concepts</text>
+      <!-- Before RL -->
+      <text x="115" y="36" font-family="Helvetica,sans-serif" font-size="9" fill="#1a4f99" text-anchor="middle" font-weight="bold">Before RL</text>
+      <rect x="30" y="42" width="60" height="12" rx="2" fill="#dde8ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="60" y="52" font-family="Helvetica,sans-serif" font-size="7" fill="#1a4f99" text-anchor="middle">Turn (medium)</text>
+      <rect x="30" y="58" width="45" height="12" rx="2" fill="#dde8ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="52" y="68" font-family="Helvetica,sans-serif" font-size="7" fill="#1a4f99" text-anchor="middle">Occupancy</text>
+      <rect x="30" y="74" width="30" height="12" rx="2" fill="#f0ede8" stroke="#ddd" stroke-width="1"/>
+      <text x="45" y="84" font-family="Helvetica,sans-serif" font-size="7" fill="#888" text-anchor="middle">Strategy</text>
+      <!-- After RL -->
+      <text x="340" y="36" font-family="Helvetica,sans-serif" font-size="9" fill="#b02020" text-anchor="middle" font-weight="bold">After RL (+high accuracy)</text>
+      <rect x="255" y="42" width="80" height="12" rx="2" fill="#fdd" stroke="#b02020" stroke-width="1"/>
+      <text x="295" y="52" font-family="Helvetica,sans-serif" font-size="7" fill="#b02020" text-anchor="middle">Turn (now dominant)</text>
+      <rect x="255" y="58" width="70" height="12" rx="2" fill="#fdd" stroke="#b02020" stroke-width="1"/>
+      <text x="290" y="68" font-family="Helvetica,sans-serif" font-size="7" fill="#b02020" text-anchor="middle">Occupancy (dominant)</text>
+      <rect x="255" y="74" width="30" height="12" rx="2" fill="#f0ede8" stroke="#ddd" stroke-width="1"/>
+      <text x="270" y="84" font-family="Helvetica,sans-serif" font-size="7" fill="#888" text-anchor="middle">Strategy</text>
+      <!-- Arrow -->
+      <line x1="100" y1="65" x2="250" y2="65" stroke="#888" stroke-width="1.5" marker-end="url(#arri1)" stroke-dasharray="5,2"/>
+      <text x="175" y="60" font-family="Helvetica,sans-serif" font-size="8" fill="#888" text-anchor="middle">RL training</text>
+      <text x="230" y="106" font-family="Helvetica,sans-serif" font-size="9" fill="#888" text-anchor="middle">SAE+causal interp · Tic-Tac-Toe · Qwen3, Llama-3 · decision localized to late layers</text>
+      <defs>
+        <marker id="arri1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: SAE feature importance for explicit prompt concepts (turn, occupancy) vs. strategic concepts (symmetries, forks) before and after RL training in Tic-Tac-Toe. RL boosts prominence of input-explicit features but does not install new strategic representations — accuracy gains reflect feature reweighting, not reasoning acquisition.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Uses SAEs and causal interventions to test whether RL training installs genuine game reasoning or reweights existing features. In a fully analyzable Tic-Tac-Toe domain, RL achieves high accuracy and cross-prompt robustness, but SAE analysis reveals the model relies primarily on features already explicit in the prompt (turn, occupancy, game progression); high-level strategic concepts (symmetries, forks) remain weakly represented throughout. RL "reorganizes which features dominate" without adding new concept information. Causal interventions localize decisions to late-layer residual stream states. The finding cautions against interpreting RL benchmark improvements as evidence of reasoning acquisition — a concern for alignment evaluations that use RL-trained models.
+  </p>
+</div>
+
+<hr class="section-divider">
+
+<!-- PAPER 09 -->
+<div class="mid-paper">
+  <div class="paper-header">
+    <div class="paper-rank" style="font-size:20px;">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </div>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.40516">How I Aligned Your Model: Scaling Up Multilingual Safety Training with Templates</a>
+  </h3>
+  <p class="mid-authors">Max Neuwinger, Hanna Yukhymenko, Imanol Schlag — arXiv preprint, Oct 29 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg" aria-label="MSafeTemp pipeline: template-based multilingual safety corpus generation">
+      <rect width="460" height="120" fill="#fff"/>
+      <!-- Pipeline stages -->
+      <rect x="10" y="30" width="80" height="50" rx="3" fill="#fdd" stroke="#b02020" stroke-width="1.5"/>
+      <text x="50" y="52" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle" font-weight="bold">Harmful</text>
+      <text x="50" y="64" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">English</text>
+      <text x="50" y="76" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">prompts</text>
+      <line x1="92" y1="55" x2="108" y2="55" stroke="#888" stroke-width="1.5" marker-end="url(#arrm1)"/>
+      <rect x="110" y="30" width="80" height="50" rx="3" fill="#fff3cd" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="150" y="52" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle" font-weight="bold">Extract</text>
+      <text x="150" y="64" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">slot</text>
+      <text x="150" y="76" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">templates</text>
+      <line x1="192" y1="55" x2="208" y2="55" stroke="#888" stroke-width="1.5" marker-end="url(#arrm1)"/>
+      <rect x="210" y="30" width="80" height="50" rx="3" fill="#ede0ff" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="250" y="47" font-family="Helvetica,sans-serif" font-size="8" fill="#5c1aaa" text-anchor="middle" font-weight="bold">Translate +</text>
+      <text x="250" y="59" font-family="Helvetica,sans-serif" font-size="8" fill="#5c1aaa" text-anchor="middle">culturally</text>
+      <text x="250" y="71" font-family="Helvetica,sans-serif" font-size="8" fill="#5c1aaa" text-anchor="middle">localize</text>
+      <line x1="292" y1="55" x2="308" y2="55" stroke="#888" stroke-width="1.5" marker-end="url(#arrm1)"/>
+      <rect x="310" y="30" width="140" height="50" rx="3" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="380" y="47" font-family="Helvetica,sans-serif" font-size="8" fill="#1a6e3c" text-anchor="middle" font-weight="bold">MSafeTemp</text>
+      <text x="380" y="59" font-family="Helvetica,sans-serif" font-size="8" fill="#1a6e3c" text-anchor="middle">60-language safety</text>
+      <text x="380" y="71" font-family="Helvetica,sans-serif" font-size="8" fill="#1a6e3c" text-anchor="middle">training corpus</text>
+      <text x="230" y="105" font-family="Helvetica,sans-serif" font-size="9" fill="#b02020" text-anchor="middle">English-only evals misjudge multilingual safety · localized attacks reveal gaps plain translation misses</text>
+      <defs>
+        <marker id="arrm1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: MSafeTemp pipeline — English harmful prompts are decomposed into slot templates, translated with cultural localization across 60 languages, and filled with locally relevant entities to produce training and evaluation data that exposes safety gaps invisible to plain translation.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Builds MSafeTemp, a 60-language safety training and evaluation corpus generated by extracting slot templates from English harmful prompts and filling them with culturally localized entities. Evaluations show English-only safety evaluation "misjudges multilingual safety": attacks failing in English succeed after translation, and culturally localized variants expose additional failures that plain translation misses. Augmenting safety training with MSafeTemp data improves alignment across model families beyond English. Strengthens the case that safety pipelines and evaluations must be explicitly multilingual; English-only safety scores are insufficient measures of deployed safety.
+  </p>
+</div>
+
+<hr class="section-divider">
+
+<!-- PAPER 10 -->
+<div class="mid-paper">
+  <div class="paper-header">
+    <div class="paper-rank" style="font-size:20px;">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech interp</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </div>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.39802">Revisiting Over-refusal in Safety-aligned LLMs: A Representation and Optimization Perspective</a>
+  </h3>
+  <p class="mid-authors">Chao Chen, Pengyang Shao, Wei Qin, Shijie Hao, Fei Shen, Richang Hong — arXiv preprint, Oct 29 2026</p>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg" aria-label="GOAL: harmful vs over-refusal representations converge in deep layers">
+      <rect width="460" height="120" fill="#fff"/>
+      <text x="10" y="16" font-family="Helvetica,sans-serif" font-size="9" fill="#888" font-weight="bold">Representation geometry across layers</text>
+      <!-- Layer axis -->
+      <line x1="30" y1="90" x2="430" y2="90" stroke="#ddd" stroke-width="1"/>
+      <text x="30" y="105" font-family="Helvetica,sans-serif" font-size="8" fill="#888">Early layers</text>
+      <text x="380" y="105" font-family="Helvetica,sans-serif" font-size="8" fill="#888">Late layers</text>
+      <!-- Harmful cluster -->
+      <ellipse cx="100" cy="45" rx="35" ry="18" fill="rgba(176,32,32,0.15)" stroke="#b02020" stroke-width="1.5"/>
+      <text x="100" y="49" font-family="Helvetica,sans-serif" font-size="8" fill="#b02020" text-anchor="middle">Harmful</text>
+      <!-- Over-refusal cluster early -->
+      <ellipse cx="100" cy="72" rx="35" ry="14" fill="rgba(26,79,153,0.15)" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="100" y="76" font-family="Helvetica,sans-serif" font-size="8" fill="#1a4f99" text-anchor="middle">Over-refusal</text>
+      <!-- Deep layer overlap -->
+      <ellipse cx="360" cy="52" rx="55" ry="28" fill="rgba(160,92,0,0.15)" stroke="#a05c00" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="360" y="47" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">Harmful ≈</text>
+      <text x="360" y="59" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">Over-refusal</text>
+      <text x="360" y="71" font-family="Helvetica,sans-serif" font-size="8" fill="#a05c00" text-anchor="middle">(overlap!)</text>
+      <!-- Arrow -->
+      <path d="M 140 58 Q 240 40 300 55" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arro1)"/>
+      <text x="220" y="38" font-family="Helvetica,sans-serif" font-size="8" fill="#888" text-anchor="middle">representations converge</text>
+      <text x="230" y="110" font-family="Helvetica,sans-serif" font-size="8" fill="#0d7377" text-anchor="middle">GOAL: gradient orthogonalization + contrastive learning → mitigates over-refusal, preserves safety</text>
+      <defs>
+        <marker id="arro1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: Harmful and over-refusal sample representations separate clearly in intermediate layers but converge in deep layers — explaining why the refusal mechanism over-generalizes to benign queries. GOAL removes over-refusal gradient components along the harmful-gradient low-rank subspace to fix the overlap.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Provides a mechanistic account of over-refusal: harmful and over-refusal samples separate in intermediate layers but overlap in deep layers, and harmful-sample gradients form a low-rank subspace that over-refusal gradients project onto. GOAL (Gradient Orthogonalization with contrAstive Learning) removes over-refusal gradient components along the harmful-gradient subspace and adds a contrastive objective to widen the deep-layer representation gap. Evaluated across multiple models and benchmarks, GOAL mitigates over-refusal while preserving safety. The first low-rank mechanistic account connecting representation geometry to the optimization dynamics that cause over-generalization of the refusal mechanism.
+  </p>
+</div>
+{% endraw %}
