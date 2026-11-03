@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 430" width="940" height="430" role="img" aria-label="Map of 30 follow-up papers to Arditi et al. 2024, in four groups: fine-tuning attacks, refusal geometry, direction-based defenses and data attribution, plus the measurement no paper has made.">
 <style>
-  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
-        --axis:#3d3d3a; --box:#232322; --ring:rgba(255,255,255,0.16);
-        --g1:#d95926; --g2:#3987e5; --g3:#0ca30c; --g4:#a77fe0; --gap:#f2c14e; }
+  svg { --surface:#FFFFFF; --ink:#111111; --ink2:#3D3D3B; --muted:#6B6B69;
+        --axis:#C9C9C5; --box:#F3F3F2; --ring:rgba(0,0,0,0.12);
+        --g1:#D9692B; --g2:#0155BF; --g3:#0E9972; --g4:#7A4FD0; --gap:#B56F00; }
   text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
   .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
   .ct{font-size:15px;font-weight:600;} .sm{font-size:12.5px;fill:var(--ink2);}

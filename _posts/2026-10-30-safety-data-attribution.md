@@ -10,6 +10,7 @@ tags:
   - Post-Training
   - Data Attribution
 kind: "Survey"
+lead: true
 hook: |
   An AI model refuses a harmful request. Ask again with "no more than 50 words" at the end, and it can comply.
 

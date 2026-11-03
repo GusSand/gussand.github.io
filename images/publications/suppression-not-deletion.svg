@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Suppression is not deletion: unlearned knowledge in code LLMs comes back under adversarial probes.">
-<rect width="640" height="400" rx="8" fill="#1a1a19"/>
-<text x="40" y="70" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" fill="#898781" letter-spacing="2">CODEUNLEARN-BENCH</text>
-<text x="40" y="150" font-family="Georgia,serif" font-size="46" font-weight="700" fill="#ffffff">Suppression</text>
-<text x="40" y="210" font-family="Georgia,serif" font-size="46" font-weight="700" fill="#f2c14e">≠ deletion</text>
-<g font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" fill="#c3c2b7">
+<rect width="640" height="400" rx="8" fill="#FFFFFF"/>
+<text x="40" y="70" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" fill="#6B6B69" letter-spacing="2">CODEUNLEARN-BENCH</text>
+<text x="40" y="150" font-family="Georgia,serif" font-size="46" font-weight="700" fill="#111111">Suppression</text>
+<text x="40" y="210" font-family="Georgia,serif" font-size="46" font-weight="700" fill="#B56F00">≠ deletion</text>
+<g font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" fill="#3D3D3B">
 <text x="40" y="270">Direct prompt: the model no longer emits it</text>
 <text x="40" y="300">Small fine-tune or a linear probe: it is still there</text>
 </g>
 <g transform="translate(40,330)">
 <rect x="0" y="0" width="560" height="10" rx="5" fill="#2c2c2a"/>
-<rect x="0" y="0" width="120" height="10" rx="5" fill="#3987e5"/>
-<rect x="120" y="0" width="440" height="10" rx="5" fill="#d95926" opacity="0.85"/>
+<rect x="0" y="0" width="120" height="10" rx="5" fill="#0155BF"/>
+<rect x="120" y="0" width="440" height="10" rx="5" fill="#D9692B" opacity="0.85"/>
 </g>
-<text x="40" y="370" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12" fill="#898781">Black-box checks pass. White-box checks recover the knowledge.</text>
+<text x="40" y="370" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12" fill="#6B6B69">Black-box checks pass. White-box checks recover the knowledge.</text>
 </svg>

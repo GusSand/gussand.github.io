@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 354" width="940" height="354" role="img">
 <style>
-  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
-        --grid:#2c2c2a; --axis:#383835; --s1:#3987e5; --s2:#d95926; }
+  svg { --surface:#FFFFFF; --ink:#111111; --ink2:#3D3D3B; --muted:#6B6B69;
+        --grid:#EBEBE8; --axis:#C9C9C5; --s1:#0155BF; --s2:#D9692B; }
   text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
   .t   { font-size:17px; font-weight:600; }
   .st  { font-size:13px; fill:var(--ink2); }

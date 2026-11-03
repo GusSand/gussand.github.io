@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 340" width="940" height="340" role="img" aria-label="The defensive side converged on layering rather than a single fix. An attack passes through input filtering, instruction hierarchy, adversarial fine-tuning as a training-time layer, output filtering, and constitutional constraints. Each thins it, none stops it alone, and a nonzero residual risk remains.">
 <style>
-  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
-        --box:#232322; --s1:#3987e5; --s2:#d95926; --crit:#e66767; }
+  svg { --surface:#FFFFFF; --ink:#111111; --ink2:#3D3D3B; --muted:#6B6B69;
+        --box:#F3F3F2; --s1:#0155BF; --s2:#D9692B; --crit:#C93C3C; }
   text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
   .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
   .lay{font-size:11.5px;fill:var(--ink2);font-weight:600;} .laym{font-size:10.5px;fill:var(--muted);}

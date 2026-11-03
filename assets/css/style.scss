@@ -2,31 +2,32 @@
 ---
 
 /* Site-wide styles. The palette matches the homepage (assets/css/home.css):
-   paper and ink in light mode, warm charcoal in dark mode, red and teal accents. */
+   black ink on light grey with one cobalt accent; near-black with a lighter cobalt in dark mode.
+   --accent is links and kickers, --accent-deep is dates, labels and hover, --tint is fills and rules. */
 :root {
-  --paper: #FBF7EF;
+  --paper: #F3F3F2;
   --card: #FFFFFF;
-  --ink: #1C1A17;
-  --ink2: #3A352E;
-  --red: #B3261E;
-  --teal: #0F6E6E;
-  --mustard: #F2C14E;
-  --rule: #DDD3C2;
-  --muted: #6B6458;
-  --zebra: #F4EEE3;
+  --ink: #111111;
+  --ink2: #333333;
+  --accent: #0155BF;
+  --accent-deep: #013C87;
+  --tint: #E2E2DF;
+  --rule: #DADAD7;
+  --muted: #676767;
+  --zebra: #EBEBE9;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #16130F;
-    --card: #211D17;
-    --ink: #F1EADC;
-    --ink2: #D9D0C0;
-    --red: #F26B5B;
-    --teal: #4FC1B8;
-    --mustard: #F2C14E;
-    --rule: #3A332A;
-    --muted: #A79E8E;
-    --zebra: #1C1914;
+    --paper: #141414;
+    --card: #1E1E1E;
+    --ink: #EDEDEC;
+    --ink2: #CFCFCD;
+    --accent: #6FA8FF;
+    --accent-deep: #9CC3FF;
+    --tint: #2E2E2C;
+    --rule: #333331;
+    --muted: #9A9A98;
+    --zebra: #1A1A1A;
   }
 }
 
@@ -50,15 +51,15 @@ h1, h2, h3 {
 }
 
 a {
-  color: var(--teal);
+  color: var(--accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-decoration-color: color-mix(in srgb, var(--teal) 45%, transparent);
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
   text-underline-offset: 3px;
 }
 
 a:hover {
-  color: var(--red);
+  color: var(--accent-deep);
   text-decoration: underline;
 }
 
@@ -118,7 +119,7 @@ hr {
 blockquote {
   margin: 1.4em 0;
   padding: 0.2em 1.1em;
-  border-left: 3px solid var(--mustard);
+  border-left: 3px solid var(--tint);
   color: var(--muted);
 }
 
@@ -222,7 +223,7 @@ pre {
 }
 
 .menu-item:hover {
-  color: var(--red);
+  color: var(--accent-deep);
   text-decoration: none;
 }
 
@@ -270,7 +271,7 @@ footer p {
 .hook {
   margin: 1.4em 0 1.8em;
   padding: 0.3em 0 0.3em 1.1em;
-  border-left: 4px solid var(--mustard);
+  border-left: 4px solid var(--accent);
 
   p {
     font-family: Fraunces, Georgia, serif;
@@ -302,14 +303,14 @@ footer p {
   }
 
   a {
-    color: var(--teal);
+    color: var(--accent);
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-decoration-color: color-mix(in srgb, var(--teal) 45%, transparent);
+    text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
 
     &:hover {
-      color: var(--red);
-      text-decoration-color: var(--red);
+      color: var(--accent-deep);
+      text-decoration-color: var(--accent-deep);
     }
   }
 
@@ -350,7 +351,7 @@ footer p {
 
 .post-date {
   font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-  color: var(--teal);
+  color: var(--accent);
   font-size: 13px;
   letter-spacing: 0.04em;
   margin-right: 15px;
@@ -369,7 +370,7 @@ footer p {
 }
 
 .post-link:hover {
-  color: var(--red);
+  color: var(--accent-deep);
   text-decoration: none;
 }
 
@@ -384,7 +385,7 @@ footer p {
   font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   font-size: 13px;
   letter-spacing: 0.04em;
-  color: var(--red);
+  color: var(--accent-deep);
   text-transform: uppercase;
 }
 
@@ -435,8 +436,8 @@ footer p {
 }
 
 .link-button:hover {
-  border-color: var(--red);
-  color: var(--red);
+  border-color: var(--accent-deep);
+  color: var(--accent-deep);
   text-decoration: none;
 }
 
@@ -458,7 +459,7 @@ footer p {
     color: var(--ink);
     font-weight: 600;
     text-align: left;
-    border-bottom: 2px solid var(--mustard);
+    border-bottom: 2px solid var(--tint);
   }
 
   th, td {
@@ -512,7 +513,7 @@ footer p {
   line-height: 1.3;
 
   a { color: var(--ink); text-decoration: none; }
-  a:hover { color: var(--red); }
+  a:hover { color: var(--accent-deep); }
 }
 .pub-authors { margin-top: 0.3em; font-size: 0.93em; color: var(--ink2); }
 .pub-venue { font-size: 0.9em; color: var(--muted); }
@@ -524,13 +525,13 @@ footer p {
   font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   font-size: 12px;
   letter-spacing: 0.03em;
-  color: var(--teal);
+  color: var(--accent);
   border: 1px solid var(--rule);
   border-radius: 4px;
   text-decoration: none;
   cursor: pointer;
 
-  &:hover { color: var(--red); border-color: var(--red); }
+  &:hover { color: var(--accent-deep); border-color: var(--accent-deep); }
 }
 .pub-abs {
   display: inline;

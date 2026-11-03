@@ -8,12 +8,13 @@ Homepage ("Field Notes"). Driven by post front matter:
   kind                   kicker label (Essay, Survey, ...); falls back to the first tag
   series / series_title  a series appears once, as its part with series_title
   short_title            shorter title for cards and the archive
-The lead is the newest non-series post; without an image it shows thumb_text. Cards are the next four
+The lead is the newest non-series post with lead: true, else the newest non-series post; without an image it shows thumb_text. Cards are the next four
 posts. The archive lists the rest. The radar box shows the newest three daily
 issues and the newest weekly issue from the radar collection.
 {% endcomment %}
 {% assign standalone = site.posts | where_exp: "p", "p.series == nil" %}
-{% assign lead = standalone | first %}
+{% assign lead = standalone | where_exp: "p", "p.lead == true" | first %}
+{% unless lead %}{% assign lead = standalone | first %}{% endunless %}
 {% assign series_heads = site.posts | where_exp: "p", "p.series_title" %}
 {% assign pool = standalone | concat: series_heads | sort: "date" | reverse %}
 {% assign radar_daily = site.radar | where: "kind", "daily" | sort: "date" | reverse %}
@@ -131,7 +132,7 @@ issues and the newest weekly issue from the radar collection.
       {% endif %}
       <div class="about">
         <img src="{{ '/images/headshot2.jpeg' | relative_url }}" alt="{{ site.author.name }}">
-        <span class="mono" style="color:var(--red)">About</span>
+        <span class="mono" style="color:var(--accent-deep)">About</span>
         <p>Industry Professor of Computer Science at NYU Tandon. My PhD work diagnoses where models go wrong and patches them without retraining.</p>
         <p><a class="more" href="{{ '/about/' | relative_url }}">More about me &rarr;</a></p>
       </div>

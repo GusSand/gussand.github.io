@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 498" width="940" height="498" role="img" aria-label="Grid of data attribution papers on safety behaviors by training stage and by how they were validated. The pretraining row has no paper that retrained after attributing a behavior to documents.">
 <style>
-  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --box:#232322; --ring:rgba(255,255,255,0.16);
-        --ok:#0ca30c; --weak:#d95926; --rank:#3987e5; --gap:#f2c14e; }
+  svg { --surface:#FFFFFF; --ink:#111111; --ink2:#3D3D3B; --muted:#6B6B69; --box:#F3F3F2; --ring:rgba(0,0,0,0.12);
+        --ok:#0E9972; --weak:#D9692B; --rank:#0155BF; --gap:#B56F00; }
   text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
   .t{font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);} .ch{font-size:13px;font-weight:600;}
   .rl{font-size:14px;font-weight:600;} .p{font-size:12.5px;fill:var(--ink2);} .xs{font-size:11px;fill:var(--muted);}

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 360" width="940" height="360" role="img" aria-label="In 2022 the attacker typed the injection directly and the worst case was a bad output. In 2026 the injection is planted in content the model retrieves, a web page, document, or email, and fires when a tool-using app reads it, so the blast radius becomes real actions in the world.">
 <style>
-  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
-        --box:#232322; --ring:rgba(255,255,255,0.16);
-        --s1:#3987e5; --s2:#d95926; --crit:#e66767; }
+  svg { --surface:#FFFFFF; --ink:#111111; --ink2:#3D3D3B; --muted:#6B6B69;
+        --box:#F3F3F2; --ring:rgba(0,0,0,0.12);
+        --s1:#0155BF; --s2:#D9692B; --crit:#C93C3C; }
   text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
   .t {font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);}
   .yr{font-size:14px;font-weight:700;} .nd{font-size:12.5px;fill:var(--ink2);}
@@ -15,7 +15,7 @@
 <text class="t" x="20" y="34">Same confusion, a much larger blast radius</text>
 <text class="st" x="20" y="56">Untrusted input and trusted instructions still share one channel. What changed is where the input comes from and what the model can do with it.</text>
 
-<line x1="470" y1="80" x2="470" y2="330" stroke="#2c2c2a" stroke-dasharray="4 4"/>
+<line x1="470" y1="80" x2="470" y2="330" stroke="#EBEBE8" stroke-dasharray="4 4"/>
 
 <!-- 2022 direct -->
 <text class="yr" x="30" y="104" fill="var(--s1)">2022 &#183; direct injection</text>

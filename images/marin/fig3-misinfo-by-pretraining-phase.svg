@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="940" height="400" role="img" aria-label="Marin base model misinformation rate by pretraining checkpoint: kestrel 69.3, ocelot 66.7, jellyfish 66.4, phoenix 51.7, starling 73.9, deeper-starling 73.7 percent.">
 <style>
-  svg { --surface:#1a1a19; --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --grid:#2c2c2a; --axis:#3d3d3a;
-        --a:#d95926; --b:#3987e5; --c:#6f6e69; }
+  svg { --surface:#FFFFFF; --ink:#111111; --ink2:#3D3D3B; --muted:#6B6B69; --grid:#EBEBE8; --axis:#C9C9C5;
+        --a:#D9692B; --b:#0155BF; --c:#8A8A86; }
   text { font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill: var(--ink); }
   .t{font-size:17px;font-weight:600;} .st{font-size:13px;fill:var(--ink2);} .lbl{font-size:13px;fill:var(--ink2);}
   .v{font-size:12.5px;font-weight:600;} .xs{font-size:11px;fill:var(--muted);}
