@@ -1,0 +1,457 @@
+---
+layout: "radar"
+title: "Research Radar — November 1, 2026"
+kind: "daily"
+slug: "2026-11-01"
+date: 2026-11-01
+group: "2026-W45"
+window: "2026-10-29 to 2026-11-01"
+summary: "Window: 2026-10-29 to 2026-11-01 · Sources swept: OpenReview, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 3 peer-reviewed · 7 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-11-01.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+/* Token system */
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa; --accent-green: #1a6e3c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  padding: 0 16px;
+}
+.page { max-width: 660px; margin: 0 auto; padding: 40px 0 80px; }
+
+/* Masthead */
+.masthead { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.masthead-eyebrow { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
+.masthead-issue { font-family: Georgia, serif; font-size: 28px; font-weight: bold; color: var(--title); line-height: 1.2; margin-bottom: 8px; }
+.masthead-counts { font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim); margin-bottom: 10px; }
+.masthead-tracks { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.track { font-size: 13px; color: var(--accent-teal); font-weight: 600; }
+.track-sep { color: var(--dim); }
+
+/* Tags */
+.tag { display: inline-block; font-family: 'Courier New', monospace; font-size: 10px; padding: 2px 7px; border-radius: 3px; background: var(--tag-bg); color: var(--tag-text); margin-right: 4px; margin-bottom: 4px; }
+.tag-peer { background: #e8f4e8; color: #1a6e3c; }
+.tag-interp { background: #e0f7f7; color: #0d7377; }
+.tag-security { background: #fde8e8; color: #b02020; }
+.tag-align { background: #e8eeff; color: #1a4f99; }
+.tag-control { background: #f0e8ff; color: #5c1aaa; }
+@media (prefers-color-scheme: dark) {
+  .tag-peer { background: #1a3a1a; color: #4ade80; }
+  .tag-interp { background: #0d2a2a; color: #14b8bd; }
+  .tag-security { background: #2a1a1a; color: #f07070; }
+  .tag-align { background: #1a1f3a; color: #7eb8ff; }
+  .tag-control { background: #1f1230; color: #c084fc; }
+}
+:root[data-theme="dark"] .tag-peer { background: #1a3a1a; color: #4ade80; }
+:root[data-theme="dark"] .tag-interp { background: #0d2a2a; color: #14b8bd; }
+:root[data-theme="dark"] .tag-security { background: #2a1a1a; color: #f07070; }
+:root[data-theme="dark"] .tag-align { background: #1a1f3a; color: #7eb8ff; }
+:root[data-theme="dark"] .tag-control { background: #1f1230; color: #c084fc; }
+
+/* Full papers (1–3) */
+.paper { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+.paper-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+.paper-rank { font-family: 'Courier New', monospace; font-size: 22px; font-weight: bold; color: var(--dim); min-width: 36px; }
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 4px; }
+.paper-title { font-family: Georgia, serif; font-size: 26px; font-weight: bold; line-height: 1.25; margin-bottom: 16px; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook { color: var(--text); line-height: 1.7; margin-bottom: 20px; }
+.paper-figure { margin: 20px 0; background: #fff; border: 1px solid var(--border); border-radius: 3px; padding: 12px; }
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption { font-size: 12px; color: var(--dim); margin-top: 8px; line-height: 1.5; }
+.paper-detail { color: var(--text); line-height: 1.7; }
+
+/* Mid-tier (4–10) */
+.more-section-label { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin: 48px 0 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+.mid-paper { margin-bottom: 44px; }
+.mid-paper .paper-header { margin-bottom: 10px; }
+.mid-title { font-family: Georgia, serif; font-size: 18px; font-weight: bold; line-height: 1.3; margin-bottom: 14px; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.paper-figure.mid-figure img { max-width: 440px; }
+.mid-summary { font-size: 14px; color: var(--text); line-height: 1.65; margin-top: 14px; }
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+/* Theme toggle */
+.theme-btn { position: fixed; top: 12px; right: 16px; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-size: 13px; padding: 4px 10px; border-radius: 4px; cursor: pointer; }
+</style>
+
+<button class="theme-btn" onclick="(function(){var r=document.documentElement,t=r.getAttribute('data-theme');r.setAttribute('data-theme',t==='dark'?'light':'dark');})()">toggle theme</button>
+<div class="page">
+
+<header class="masthead">
+  <div class="masthead-eyebrow">📡 RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · November 1, 2026</div>
+  <div class="masthead-counts">3 peer-reviewed &middot; 7 preprints &middot; 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ═══════════ PAPER 1 ═══════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">NeurIPS 2026</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">unlearning</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.38784">Loss is Not Behavior: A Unified Output-Space Analysis of Gradient-Based Machine Unlearning</a>
+  </h2>
+  <p class="paper-hook">
+    Certification of machine unlearning has relied on loss as a proxy — but two methods can arrive at the same loss while producing arbitrarily different outputs on the forget set. This NeurIPS 2026 paper proves why, and hands practitioners a precomputable diagnostic for telling them apart before deployment.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="Two models at equal loss but diverging outputs on forget set, governed by leverage matrices">
+      <rect width="500" height="210" fill="#fff"/>
+      <rect x="20" y="30" width="155" height="70" rx="4" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="97" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#1a4a1a" font-weight="bold">Retrained model</text>
+      <text x="97" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4a1a">(retain-only baseline)</text>
+      <rect x="325" y="30" width="155" height="70" rx="4" fill="#ffe8e8" stroke="#a02020" stroke-width="1.5"/>
+      <text x="402" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#7a1a1a" font-weight="bold">Unlearned model</text>
+      <text x="402" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#7a1a1a">(equal loss, diff. output)</text>
+      <line x1="175" y1="65" x2="325" y2="65" stroke="#555" stroke-width="1.5" stroke-dasharray="6,3"/>
+      <text x="250" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">same loss</text>
+      <text x="250" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a02020">≠ behavior</text>
+      <rect x="30" y="125" width="440" height="68" rx="4" fill="#f0ede8" stroke="#bbb" stroke-width="1"/>
+      <text x="250" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#333" font-weight="bold">Output-space gap governed by two leverage matrices</text>
+      <text x="145" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4f99">forget self-leverage</text>
+      <text x="250" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">×</text>
+      <text x="360" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b02020">retain cross-leverage</text>
+      <text x="250" y="186" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">→ precomputable audit diagnostics for forget-set certification</text>
+    </svg>
+    <figcaption>Figure 1: Two gradient-based unlearning methods can reach the same forget-set loss while diverging in output behavior. The gap is governed by the forget self-leverage and retain cross-leverage of the retrained model — both precomputable before choosing an unlearning method.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Zhao, Amiri, and Magdon-Ismail place all gradient-based unlearning methods in a unified three-parameter family (geometry, reweighting, projection) and derive closed-form expressions for the output-space gap between an unlearned model and a retain-only retrained model — first in linear regression, then extended to nonlinear networks via a generalized Gauss-Newton approximation with local linearity. Two leverage matrices computed from the retrained model's geometry drive the gap: "forget self-leverage" controls how the forget residual affects forget-set outputs, and "retain cross-leverage" controls its propagation into retain-set outputs. Existing methods account for this geometry only partially. The framework yields precomputable leverage diagnostics that let practitioners audit proposed forget sets and predict which type of gradient-based unlearning is likely to succeed — making behavioral certification of unlearning tractable before deployment.
+  </p>
+</article>
+
+<!-- ═══════════ PAPER 2 ═══════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">NeurIPS 2026 Workshop</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">agent-security</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.37679">Exposure Is Not Commitment: Double-Stratified Evaluation of Latent Monitors for Tool-Using Agents</a>
+  </h2>
+  <p class="paper-hook">
+    Papers keep disagreeing on whether activation probes can detect unsafe tool calls before they happen. Sinha pinpoints why: the standard training contrast confounds two very different things — whether the agent <em>saw</em> a prompt injection and whether it <em>acted</em> on it — and mixing them buries the real safety signal.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="Double-stratification: naive contrast vs exposure-only contrast; AUROC values">
+      <rect width="500" height="210" fill="#fff"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Naive vs. Double-Stratified Probe Training</text>
+      <rect x="15" y="34" width="218" height="90" rx="4" fill="#ffe8e8" stroke="#a02020" stroke-width="1.5"/>
+      <text x="124" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#7a1a1a">Naive contrast</text>
+      <text x="124" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#7a1a1a">unsafe vs. all other</text>
+      <text x="124" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a02020">Learns: exposure</text>
+      <text x="124" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a02020">AUROC ~1.0 exposure / ~0.5 commit</text>
+      <rect x="267" y="34" width="218" height="90" rx="4" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="1.5"/>
+      <text x="376" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a4a1a">Exposure-only contrast</text>
+      <text x="376" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#1a4a1a">unsafe vs. exposed-benign</text>
+      <text x="376" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#2a7a2a">Learns: commitment</text>
+      <text x="376" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#2a7a2a">AUROC 0.853–0.912 (2 steps early)</text>
+      <line x1="233" y1="79" x2="267" y2="79" stroke="#555" stroke-width="1.5" marker-end="url(#arrd2)"/>
+      <defs><marker id="arrd2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#555"/></marker></defs>
+      <rect x="90" y="148" width="320" height="52" rx="4" fill="#f0ede8" stroke="#bbb" stroke-width="1"/>
+      <text x="250" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">Negative results in prior work likely reflect</text>
+      <text x="250" y="186" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#333">training-contrast choice, not absent signal</text>
+    </svg>
+    <figcaption>Figure 1: Naive probes trained on "unsafe vs. everything else" learn exposure (flagging all injected trajectories alike) rather than behavioral commitment. Retraining on exposed-only cases recovers commitment prediction up to two steps before the unsafe tool call (AUROC 0.853–0.912 across three models).</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Sinha introduces a "double-stratification" protocol separating both evaluation and training populations by injection exposure and behavioral commitment. On the Qwen AgentDojo setup, naively trained probes achieve near-perfect AUROC (1.000 for probes, 0.908 for TF-IDF text) in separating exposed from unexposed trajectories but near-chance performance (≈0.5) at predicting which exposed trajectories commit to the unsafe action. Retrained on exposed-only cases — the correct comparison — probes reach AUROC 0.853 on Qwen, 0.896 on Mistral-7B, and 0.912 on OLMo-2-7B, two steps before the unsafe tool call (the maximum achievable in three-step trajectories). Internal representations separate exposure better than context, including when visible context is sanitized, indicating a genuine commitment signal in the model's activations that naive contrasts fail to recover.
+  </p>
+</article>
+
+<!-- ═══════════ PAPER 3 ═══════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-security">agent-security</span>
+      <span class="tag tag-control">AI control</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2610.37734">When Skills Tell Agents Not to Ask: A Large-Scale Study of Oversight Directives in Agent Skills</a>
+  </h2>
+  <p class="paper-hook">
+    1 in 17 of the 1.53 million real agent skills studied explicitly tells the agent to skip human approval or proceed without checking in — and 70% of those directives apply unconditionally, not just in CI. Existing skill scanners catch fewer than half of them.
+  </p>
+  <figure class="paper-figure">
+    <img src="https://arxiv.org/html/2610.37734v1/workflow.png" alt="Figure 2: Study pipeline — crawling 1.53M skills, codebook annotation, and large-scale detection" style="width:100%;max-width:500px;display:block;margin:0 auto;">
+    <figcaption>Figure 2: The study pipeline: 1.53M GitSkills crawled, split into semantic units, hand-labeled using a polarity/mechanism/scope codebook, and used to train and evaluate a detector at scale.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Sanko and Tian analyzed 1.53 million English agent skills, labeling "oversight-loosening directives" — instructions to proceed without approval, skip checks, or continue unsupervised — across 2,097 hand-annotated units. Approximately 1 in 17 skills (~88,000) contains such a directive; 70.1% apply unconditionally (not scoped to automated CI contexts). Skills invoking shell execution, package installation, or sudo have 1.7–1.8× higher odds of containing a loosening directive. Crucially, loosening is concentrated in a small upstream cluster: 2.4% of skill families account for half of all loosening-carrying copies, meaning a handful of popular widely-forked skills contaminate large fractions of the ecosystem. Open-source scanners detect at most 46% (precision below 0.4); a codebook-guided LLM reaches 61% recall with 0.71 precision, pointing to a deployable but not yet complete monitoring approach.
+  </p>
+</article>
+
+<!-- ═══════════ MID-TIER 4–10 ═══════════ -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- PAPER 4 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:16px">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag">agent</span>
+    </div>
+  </header>
+  <h2 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.38799">CARI: Cross-Boundary Adversarial Runtime Injection in Coding-Agent Workflows</a>
+  </h2>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.38799v1/framework_Crop.png" alt="Figure 1: CARI framework — peer component injects adversarial instructions via runtime feedback" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: A peer CI/backend component with authority to report its own state embeds instructions in runtime feedback; the victim coding agent reads and acts on them during debugging.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Runtime feedback from peer development components (CI jobs, test harnesses, backend services) is a practical injection channel: 2,845 of 3,000 trials succeeded (94.8%) across 10 attacks, four programming languages, and five models; product-level agents were also hit (61.3% on Codex, 58.7% on Claude Code). Generic prompt warnings were ineffective; explicit policy prompts suppressed attacks but over-refused legitimate actions.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 5 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:16px">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h2 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.40396">Understanding and Mitigating Role Spoofing in LLMs</a>
+  </h2>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.40396v1/figures/bars_injection_decomposition_small.png" alt="Figure 2: Role attribution by content vs. structural cues" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 2: LLMs attribute roles using both content-based and structural cues. Adversarial training against content attacks closes one axis but leaves structural role spoofing intact.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    LLMs infer conversational speaker roles from both content style and structural formatting; adversarial training that eliminates content-based injection leaves structural role-spoofing (fake formatting cues) fully intact — which may explain why frontier models remain injection-susceptible despite broad defenses. Linear probes trained to predict conversational roles can detect role spoofing across tested settings, offering a lightweight detection path.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 6 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:16px">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag">skills</span>
+    </div>
+  </header>
+  <h2 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37901">Scan Before You Install: Detecting and Mitigating Local and Composite Vulnerabilities in Skills</a>
+  </h2>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.37901v1/figures/skill-anatomy.png" alt="Figure 1: Anatomy of a skill — six vulnerability components" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: The six components of an agent skill — instructions, scripts, reference files, invocations, shared resources, config — each a potential vulnerability surface, analyzed in isolation and as a dependency graph.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    A six-module scanner modeling skills both individually and as a dependency graph achieves 95.90% recall / 4.22% FPR on SkillTrustBench (556 cases) and F1 0.947 on MalSkillBench (1,000 balanced), outperforming four prior tools; deployed against 1,587 real GitHub skills, it confirmed 53 vulnerabilities across 23 repos (89.8% precision), with mitigations blocking PoC attacks in 47/55 cases.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 7 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:16px">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag">jailbreak</span>
+    </div>
+  </header>
+  <h2 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.37738">Poisoned Skills: Propagating Jailbreaks Through Agent Markdown Files</a>
+  </h2>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Attack success rate comparison: baseline 0.5% vs injected SKILL.md 45% mean and 68.9% peak">
+      <rect width="440" height="155" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a">Mean Attack Success Rate</text>
+      <rect x="40" y="35" width="55" height="95" fill="#ccc" stroke="#aaa" stroke-width="1"/>
+      <rect x="40" y="128" width="55" height="2" fill="#888"/>
+      <text x="67" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Baseline</text>
+      <text x="67" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">0.5%</text>
+      <rect x="145" y="57" width="55" height="73" fill="#f07070" stroke="#b02020" stroke-width="1"/>
+      <text x="172" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">SKILL.md inj.</text>
+      <text x="172" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">45% mean</text>
+      <rect x="250" y="40" width="55" height="90" fill="#f09090" stroke="#b02020" stroke-width="1"/>
+      <text x="277" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Best model</text>
+      <text x="277" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">68.9%</text>
+      <rect x="355" y="74" width="55" height="56" fill="#d0c0f0" stroke="#6030a0" stroke-width="1"/>
+      <text x="382" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Phonetic</text>
+      <text x="382" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#6030a0">30%</text>
+    </svg>
+    <figcaption>Figure 1: Embedding a combined persona-manipulation + GPTFUZZER jailbreak in a SKILL.md file raises mean ASR from 0.5% (benign) to 45% across seven models; the most susceptible model reaches 68.9%. Phonetic obfuscation reduces but does not eliminate the attack.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Agent frameworks load user-supplied SKILL.md files into the context at startup; a combined persona-manipulation + GPTFUZZER payload in such a file raises mean ASR from 0.5% to 45% across seven open-weight models and 270 forbidden questions, reaching 68.9% on the most vulnerable model. Zero-width steganography provided no uplift; phonetic encoding reduced ASR to 30%. Model choice drove susceptibility more than obfuscation technique.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 8 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:16px">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">NeurIPS 2025 Workshop</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-align">alignment</span>
+    </div>
+  </header>
+  <h2 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.39766">Activation Probes Are Reliable With a Handful of Positive Examples</a>
+  </h2>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.39766v1/viz/gemma_joint_compressed.png" alt="Figure 1: Probe AUC vs. positive example count on Enron-Spam for few-shot vs. balanced training" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: Probe AUC on spam detection as a function of positive training examples (1–10) for Gemma, comparing few-shot (many negatives) vs. balanced training. Few-shot training is consistently more positive-sample-efficient.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Monitoring rare misalignment requires probes trained on scarce positives; Tyagi and Heimersheim show that training with many negatives outperforms balanced training at 1–10 positive examples, LLM upsampling gives roughly a 2× positive-count boost (but excessive upsampling hurts), and larger models are more positive-sample-efficient to probe — implying misalignment monitoring gets cheaper at frontier scale. Presented at the NeurIPS 2025 Mechanistic Interpretability Workshop.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 9 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:16px">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag">agent</span>
+    </div>
+  </header>
+  <h2 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.39122">Appreciation Teaches Unauthorized Execution: Self-Evolution Degrades the Robustness of Personal Agents to Indirect Prompt Injection</a>
+  </h2>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2610.39122v1/cartoon.png" alt="Figure 1: Authorization conflation — after skill evolution, agents treat third-party content with same authority as user instructions" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: Self-evolution conflates authorization — the agent generalizes trust from user-endorsed task content to structurally similar third-party content, enabling IPI from new untrusted sources.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Personal agents that learn from user feedback become substantially more susceptible to indirect prompt injection: skill evolution raised IPI attack success by 14.0–48.8 percentage points over the base agent; RL-based adaptation raised it by 3.0–39.3 points. The mechanism is authorization conflation — trust learned on user-endorsed tasks generalizes to structurally similar third-party content — warning that self-improvement loops create a new attack surface orthogonal to prompt-level defenses.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank" style="font-size:16px">10</div>
+    <div class="paper-meta">
+      <span class="tag">unlearning</span>
+      <span class="tag tag-align">alignment</span>
+    </div>
+  </header>
+  <h2 class="mid-title">
+    <a href="https://arxiv.org/abs/2610.40483">Preserving Utility in Continual LLM Unlearning via Orthogonal Projections</a>
+  </h2>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="COP: gradient updates projected onto orthogonal complement of cached activation subspaces from prior forget sets">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">Continual Orthogonal Projection (COP)</text>
+      <ellipse cx="130" cy="90" rx="60" ry="42" fill="none" stroke="#1a4f99" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="130" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4f99">Forget-set 1</text>
+      <text x="130" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4f99">activation subspace</text>
+      <text x="130" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4f99">(low-rank basis)</text>
+      <ellipse cx="205" cy="90" rx="60" ry="42" fill="none" stroke="#b02020" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="235" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">Forget-set 2</text>
+      <ellipse cx="310" cy="90" rx="52" ry="38" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="2"/>
+      <text x="310" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4a1a">Gradient update</text>
+      <text x="310" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a4a1a">⊥ both subspaces</text>
+      <line x1="362" y1="90" x2="415" y2="90" stroke="#2a7a2a" stroke-width="2" marker-end="url(#arrd3)"/>
+      <defs><marker id="arrd3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2a7a2a"/></marker></defs>
+      <text x="428" y="94" font-family="Georgia,serif" font-size="10" fill="#2a7a2a">W′</text>
+      <text x="220" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">New deletion does not interfere with prior forget sets</text>
+    </svg>
+    <figcaption>Figure 1: COP projects each gradient update onto the orthogonal complement of activation subspaces cached from all prior forget sets, keeping only a low-rank basis per layer — no stored gradients or prior data required.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Standard gradient-based unlearning collapses under sequential deletion requests; COP restricts each update to the orthogonal complement of activation subspaces from previous forget sets, storing only a compact low-rank basis per layer. On TOFU and RWKU benchmarks, COP preserves utility across sequential requests, maintains forgetting quality, and outperforms baselines designed specifically for continual unlearning.
+  </p>
+</article>
+
+<footer style="margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--dim);">
+  <p><strong>Note:</strong> November 1, 2026 is a Sunday — no new arXiv batch was announced. All 10 items are from the October 30, 2026 arXiv batch (cs.CR/cs.LG/cs.AI) not covered in earlier reports. Several papers cluster around agent skill supply-chain security.</p>
+  <p style="margin-top: 8px;">Window: 2026-10-29 to 2026-11-01 · Sources: arXiv cs.CL/cs.LG/cs.CR/cs.AI, OpenReview, Alignment Forum, lab blogs</p>
+</footer>
+
+</div>
+{% endraw %}
