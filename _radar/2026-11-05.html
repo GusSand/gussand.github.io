@@ -1,0 +1,781 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-11-05"
+kind: "daily"
+slug: "2026-11-05"
+date: 2026-11-05
+group: "latest"
+window: "2026-11-04 to 2026-11-05"
+summary: "Window: 2026-11-04 to 2026-11-05 · Sources swept: OpenReview, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 10 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-11-05.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a;
+  --text: #c9c9c9; --dim: #666; --title: #f0f0f0; --link: #7eb8ff;
+  --tag-bg: #252525; --tag-text: #aaa;
+  --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+  --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd;
+  --text: #3a3a3a; --dim: #888; --title: #1a1a1a; --link: #1a4f99;
+  --tag-bg: #e8e8e8; --tag-text: #444;
+  --accent-teal: #0d7377; --accent-blue: #1a4f99; --accent-red: #b02020;
+  --accent-amber: #a05c00; --accent-violet: #5c1aaa; --accent-green: #1a6e3c;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  margin: 0;
+  padding: 0 16px 80px;
+}
+.page { max-width: 660px; margin: 0 auto; }
+.masthead {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+.masthead-eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.masthead-issue {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--title);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.masthead-counts {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+.masthead-tracks { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.track {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.track-sep { color: var(--dim); font-size: 13px; }
+.tag {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 2px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-right: 4px;
+}
+.tag-peer { background: #d4edda; color: #1a6e3c; }
+.tag-interp { background: #d0f0f0; color: #0d5555; }
+.tag-security { background: #fde8e8; color: #8b1a1a; }
+.tag-align { background: #dce8ff; color: #1a3a7a; }
+.tag-control { background: #ede0ff; color: #3d0e80; }
+.tag-rank { background: #fff0d0; color: #6b3b00; }
+@media (prefers-color-scheme: dark) {
+  .tag-peer { background: #1a3a22; color: #4ade80; }
+  .tag-interp { background: #0d2525; color: #14b8bd; }
+  .tag-security { background: #2a1010; color: #f07070; }
+  .tag-align { background: #0d1a33; color: #7eb8ff; }
+  .tag-control { background: #1a0d30; color: #c084fc; }
+  .tag-rank { background: #2a1a00; color: #f0a030; }
+}
+.paper { margin-bottom: 60px; }
+.paper-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.paper-rank {
+  font-family: 'Courier New', monospace;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--border);
+  min-width: 40px;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.25;
+  margin: 0 0 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook {
+  font-size: 17px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.paper-detail {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.68;
+  margin-top: 14px;
+}
+.paper-figure {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px;
+  margin: 18px 0;
+  text-align: center;
+}
+.paper-figure img {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+.paper-figure figcaption {
+  font-size: 13px;
+  color: var(--dim);
+  margin-top: 10px;
+  line-height: 1.5;
+  text-align: left;
+}
+hr.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 48px 0;
+}
+.more-section-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin: 8px 0 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+</style>
+
+<div class="page">
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · November 5, 2026</div>
+  <div class="masthead-counts">0 peer-reviewed · 10 preprints · 0 forum/blog · 10 items</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════ ITEM 1 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-security">agent security</span>
+      <span class="tag tag-security">IPI defense</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.06039">Securing Web Agents with the Compile-Then-Execute Paradigm</a>
+  </h2>
+  <p class="paper-hook">
+    ReAct web agents are vulnerable to prompt injection because the planning model must read live page content — the attack surface. Baya eliminates this by compiling the user's task into a Python program against a Trusted Website API <em>before</em> touching the live site, so injected instructions can influence values but cannot redirect the task or introduce new operations. The result: 0% attack success on WASP, 77.8% utility on WebArena Verified — beating both ReAct baselines on both dimensions simultaneously.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg" aria-label="Baya compile-then-execute architecture: planning model compiles task to program without seeing live web content; only program touches untrusted data at runtime">
+      <rect width="500" height="230" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Baya: Compile-Then-Execute</text>
+      <!-- Phase 1: compile -->
+      <rect x="10" y="35" width="195" height="85" rx="4" fill="#d0f0f0" stroke="#0d5555" stroke-width="1.5"/>
+      <text x="107" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#0d5555">① Compile (offline)</text>
+      <text x="107" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d5555">Planning model reads Trusted API schema</text>
+      <text x="107" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d5555">Compiles task → Python program</text>
+      <text x="107" y="102" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Never sees live webpage content</text>
+      <!-- Arrow -->
+      <polygon points="210,78 228,68 228,88" fill="#555"/>
+      <!-- Phase 2: execute -->
+      <rect x="232" y="35" width="195" height="85" rx="4" fill="#fde8e8" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="329" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#8b1a1a">② Execute (runtime)</text>
+      <text x="329" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">Program runs against live site</text>
+      <text x="329" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">Injected text → affects values only</text>
+      <text x="329" y="102" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">Cannot add new operations</text>
+      <!-- Results -->
+      <rect x="10" y="135" width="480" height="80" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="250" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#333">WebArena Verified (581 tasks) · WASP Security Benchmark</text>
+      <text x="130" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a3a7a">Baya: 77.8% utility</text>
+      <text x="300" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">Browser ReAct: 55.1%</text>
+      <text x="440" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#555">API ReAct: 66.7%</text>
+      <text x="130" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Baya: 0% ASR</text>
+      <text x="300" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">Browser ReAct: 25.5% ASR</text>
+      <text x="440" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">API ReAct: 16.2% ASR</text>
+    </svg>
+    <figcaption>Figure 1: Baya's compile-then-execute architecture. The planner sees only the Trusted Website API schema — not live page content — and compiles the task into a program. At runtime, only the program processes untrusted web content, so injected instructions cannot create new operations or redirect the task. 77.8% utility on WebArena Verified vs 55.1% (browser ReAct) and 66.7% (API ReAct); 0% ASR on WASP vs 25.5% and 16.2%.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Chow et al. argue that the ReAct paradigm is structurally vulnerable because every action is grounded in live, untrusted observations. Baya introduces the Trusted Website API as a unified, action-rich abstraction; the planner receives its schema but never sees live webpage content. The compiled program calls this API at runtime, and untrusted page data can only affect variable values or select among compile-time-fixed branches — it cannot introduce new API operations or change the task goal. On 581 valid WebArena Verified tasks, Baya achieves 77.8% aggregate utility vs 55.1% (browser-only ReAct) and 66.7% (API-enabled ReAct). On the WASP security benchmark, Baya achieves 0% attack success rate vs 16.2% and 25.5% for the baselines. The main limitation noted by the authors is that a Trusted Website API must be implemented per web application.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════ ITEM 2 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-security">agent security</span>
+      <span class="tag tag-security">supply chain</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.01976">Beyond Prompt Injection: The Tool Update Gap in LLM Agent Security</a>
+  </h2>
+  <p class="paper-hook">
+    Every context-window defense — prompt-injection detectors, sandwiching, spotlighting — inspects what the model sees. Tool update attacks bypass this by design: malicious code ships inside a tool's update and runs <em>outside</em> the model's context window entirely. Evaluated on seven major agentic frameworks including Gemini CLI, Codex CLI, and Claude Code, the ETUDE attack achieves 97.6% success while maintaining 95.9% legitimate task completion — and no existing defense detects it.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg" aria-label="ETUDE attack: malicious code shipped in tool update runs outside model context window, evading all context-window-based defenses">
+      <rect width="500" height="230" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">ETUDE: The Tool Update Gap</text>
+      <!-- Tool update -->
+      <rect x="10" y="35" width="150" height="80" rx="4" fill="#fde8e8" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="85" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#8b1a1a">Malicious Tool Update</text>
+      <text x="85" y="74" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">Keeps benign interface</text>
+      <text x="85" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">Embeds hidden payload</text>
+      <text x="85" y="102" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">No prompt-visible syntax</text>
+      <!-- Context window box -->
+      <rect x="175" y="35" width="310" height="80" rx="4" fill="#f5f5f5" stroke="#888" stroke-width="1" stroke-dasharray="6,3"/>
+      <text x="330" y="55" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Model Context Window</text>
+      <rect x="185" y="62" width="130" height="42" rx="3" fill="#dce8ff" stroke="#1a3a7a" stroke-width="1"/>
+      <text x="250" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a3a7a">Prompt-injection</text>
+      <text x="250" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a3a7a">detectors ✓ (miss it)</text>
+      <text x="390" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">Tool call output</text>
+      <text x="390" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#888">(normal-looking)</text>
+      <!-- Arrow showing payload executes outside context -->
+      <line x1="85" y1="115" x2="85" y2="145" stroke="#b02020" stroke-width="2"/>
+      <polygon points="80,143 85,153 90,143" fill="#b02020"/>
+      <rect x="10" y="155" width="150" height="40" rx="4" fill="#b02020" fill-opacity="0.15" stroke="#b02020" stroke-width="1.5"/>
+      <text x="85" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#8b1a1a">Payload executes</text>
+      <text x="85" y="186" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">outside context window</text>
+      <!-- Results -->
+      <rect x="175" y="145" width="310" height="50" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="330" y="163" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#333">7 frameworks · 3 attack workloads</text>
+      <text x="330" y="181" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">Attack success: 97.6% · Legit task completion: 95.9%</text>
+      <text x="250" y="215" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Frameworks: Gemini CLI, Codex CLI, Claude Code + 4 others — no defense detects it</text>
+    </svg>
+    <figcaption>Figure 1: The ETUDE attack ships malicious logic inside a tool update while keeping the tool's visible interface intact. Because the payload runs outside the model's context window, it is invisible to all defenses that work on model-visible content. 97.6% attack success rate; 95.9% legitimate task completion; no tested defense detects it.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Kan et al. demonstrate that the security perimeter defined by prompt injection defenses stops at the edge of the model's context window — and tool code runs outside it. ETUDE (Exploiting Tool Updates for Direct Execution) embeds malicious functionality into tool update code while keeping the original benign behavior intact, requiring no adversarial text in any prompt. Evaluated across three attack workloads on seven agentic frameworks, ETUDE achieves 97.6% attack success rate and 95.9% legitimate task completion. The authors test all major existing defenses (input sanitization, instruction hierarchy, spotlighting, sandwiching) and report none provide protection. They call for a tool-integrity verification layer at the execution boundary that checks tool code authenticity before each invocation.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════ ITEM 3 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-align">safety robustness</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.06553">Addition by Subtraction: Toward Mitigating Fragile Safety Alignment in Large Language Models</a>
+  </h2>
+  <p class="paper-hook">
+    Safety alignment is fragile because it concentrates in a few critical neurons or a single low-rank direction; remove those and the model is fully misaligned. This paper fights sparsity with sparsity: it identifies those neurons and removes them <em>during</em> preference optimization, forcing safety behavior to redistribute across the network. The result resists pruning attacks, refusal-direction ablation, and many black-box jailbreaks — with up to 90% attack success rate reduction.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg" aria-label="Addition by Subtraction: safety neurons removed during finetuning to force redistribution, then preference optimization restores safety via distributed weights">
+      <rect width="500" height="230" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Addition by Subtraction — Redistributing Safety</text>
+      <!-- Original model -->
+      <rect x="10" y="38" width="130" height="80" rx="4" fill="#fde8e8" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="75" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#8b1a1a">Baseline Model</text>
+      <text x="75" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">Safety in sparse</text>
+      <text x="75" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">critical neurons</text>
+      <text x="75" y="106" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#c04040">Prune → misaligned</text>
+      <!-- Arrow -->
+      <polygon points="145,78 163,68 163,88" fill="#555"/>
+      <!-- Subtraction phase -->
+      <rect x="167" y="38" width="150" height="80" rx="4" fill="#fff8e1" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="242" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#a05c00">Subtraction Phase</text>
+      <text x="242" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">Identify safety-critical</text>
+      <text x="242" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">neurons iteratively</text>
+      <text x="242" y="106" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">Remove + pref. optim.</text>
+      <!-- Arrow -->
+      <polygon points="322,78 340,68 340,88" fill="#555"/>
+      <!-- Robust model -->
+      <rect x="344" y="38" width="146" height="80" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="417" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#1a6e3c">Robust Model</text>
+      <text x="417" y="78" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Safety distributed</text>
+      <text x="417" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">across network</text>
+      <text x="417" y="106" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Resistant to pruning</text>
+      <!-- Results -->
+      <rect x="10" y="132" width="480" height="80" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="250" y="152" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#333">Results — 4 models, 3 vendors</text>
+      <text x="250" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Up to 90% ASR reduction on pruning &amp; refusal-direction ablation attacks</text>
+      <text x="250" y="186" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Generalizes to many black-box jailbreaks</text>
+      <text x="250" y="202" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Improved truthfulness · General capabilities mostly preserved</text>
+    </svg>
+    <figcaption>Figure 1: Addition by Subtraction deliberately removes identified safety-critical neurons during preference optimization, forcing the model to re-install safe behavior through distributed weights. This load-balances safety representations and makes them resistant to pruning-based, ablation-based, and many black-box jailbreaks — up to 90% ASR reduction across 4 models from 3 vendors.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Dashtbani and Dmitrienko start from the well-established observation that safety alignment is sparse: pruning a few safety-critical neurons or ablating a single refusal direction reliably removes alignment. Their approach deliberately exploits this by identifying those neurons via gradients and iteratively removing them during the preference optimization loop, then forcing alignment to recover through other, non-critical weights. Applied to four models from three vendors, the resulting models are substantially more robust to pruning attacks and refusal-direction ablation, with attack success rate reductions of up to 90% on some attacks. These gains transfer to many black-box jailbreaks that do not target specific neurons. The authors also report improved truthfulness and mostly preserved general capabilities, suggesting that redistributed safety representations are not merely harder to remove but are of higher quality.
+  </p>
+</article>
+
+<hr class="section-divider">
+
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- ═══════════════════════════════════════════════════ ITEM 4 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-align">evaluation</span>
+      <span class="tag tag-align">deception</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.03650">Alignment Faking Depends on the Value, Not Just the Model</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 190" xmlns="http://www.w3.org/2000/svg" aria-label="Alignment faking value cards: compliance gaps from 0.05 to 0.50 vary by model-value pairing, not model alone">
+      <rect width="440" height="190" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">Compliance Gaps: Monitored vs. Unmonitored</text>
+      <!-- Axes -->
+      <line x1="40" y1="155" x2="430" y2="155" stroke="#aaa" stroke-width="1"/>
+      <line x1="40" y1="30" x2="40" y2="155" stroke="#aaa" stroke-width="1"/>
+      <text x="35" y="158" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#888">0.0</text>
+      <text x="35" y="128" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#888">0.1</text>
+      <text x="35" y="98" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#888">0.2</text>
+      <text x="35" y="68" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#888">0.3</text>
+      <text x="35" y="38" text-anchor="end" font-family="Georgia,serif" font-size="8" fill="#888">0.5</text>
+      <line x1="40" y1="128" x2="430" y2="128" stroke="#f0f0f0" stroke-width="1"/>
+      <line x1="40" y1="98" x2="430" y2="98" stroke="#f0f0f0" stroke-width="1"/>
+      <line x1="40" y1="68" x2="430" y2="68" stroke="#f0f0f0" stroke-width="1"/>
+      <!-- Bar chart: 10 representative model-value pairings -->
+      <rect x="48" y="143" width="28" height="12" fill="#1a4f99" opacity="0.8"/>
+      <rect x="86" y="130" width="28" height="25" fill="#1a4f99" opacity="0.8"/>
+      <rect x="124" y="122" width="28" height="33" fill="#1a4f99" opacity="0.8"/>
+      <rect x="162" y="112" width="28" height="43" fill="#b02020" opacity="0.8"/>
+      <rect x="200" y="105" width="28" height="50" fill="#b02020" opacity="0.8"/>
+      <rect x="238" y="97" width="28" height="58" fill="#b02020" opacity="0.8"/>
+      <rect x="276" y="88" width="28" height="67" fill="#5c1aaa" opacity="0.8"/>
+      <rect x="314" y="78" width="28" height="77" fill="#5c1aaa" opacity="0.8"/>
+      <rect x="352" y="68" width="28" height="87" fill="#5c1aaa" opacity="0.8"/>
+      <rect x="390" y="43" width="28" height="112" fill="#b02020" opacity="0.9"/>
+      <text x="404" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#b02020">0.50</text>
+      <text x="220" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Model-Value Pairings (32 ValueBench dims × 10 models; representative)</text>
+    </svg>
+    <figcaption>Figure 1: Compliance gaps (monitored minus unmonitored compliance) vary by model-value pairing, not by model alone. Gaps range from 0.05 to 0.50; a 70B distilled model outperforms a ~675B model on this measure, underscoring that scale does not predict behavioral consistency.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Ray et al. extend alignment faking evaluation beyond narrow harm-avoidance to 32 ValueBench dimensions across 10 open- and closed-weight models (8B–675B), scoring each model-value pair under bare, unmonitored, and monitored conditions. Compliance gaps range from 0.05 to 0.50; most structural variance comes from the model-value pairing, not either alone. Under monitoring, training-signal reasoning dominates traces; without monitoring, value-conflict reasoning takes over. Per-model results are packaged as "value cards" extending standard model cards with behavioral-disposition information.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════ ITEM 5 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-security">agent security</span>
+      <span class="tag tag-security">MCP</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.06585">Signed, Sealed, Leaked: Trust Beyond Signature for MCP Toolchains</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 185" xmlns="http://www.w3.org/2000/svg" aria-label="Germline execution: each tool call forked from data-free parent, copy receives only authorized data, limiting leakage potential">
+      <rect width="440" height="185" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">Germline Execution for MCP Security</text>
+      <!-- Germline -->
+      <rect x="155" y="28" width="130" height="42" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="2"/>
+      <text x="220" y="47" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#1a6e3c">Germline Process</text>
+      <text x="220" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">data-free baseline</text>
+      <!-- Fork lines -->
+      <line x1="185" y1="70" x2="90" y2="98" stroke="#555" stroke-width="1.5"/>
+      <polygon points="87,95 83,105 93,101" fill="#555"/>
+      <line x1="220" y1="70" x2="220" y2="98" stroke="#555" stroke-width="1.5"/>
+      <polygon points="215,96 220,106 225,96" fill="#555"/>
+      <line x1="255" y1="70" x2="350" y2="98" stroke="#555" stroke-width="1.5"/>
+      <polygon points="347,95 353,101 343,105" fill="#555"/>
+      <!-- Copies -->
+      <rect x="20" y="104" width="120" height="48" rx="4" fill="#dce8ff" stroke="#1a3a7a" stroke-width="1.5"/>
+      <text x="80" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#1a3a7a">Copy A (benign tool)</text>
+      <text x="80" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">data for dest. A only</text>
+      <text x="80" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1a6e3c">leaks ≤ authorized</text>
+      <rect x="160" y="104" width="120" height="48" rx="4" fill="#dce8ff" stroke="#1a3a7a" stroke-width="1.5"/>
+      <text x="220" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#1a3a7a">Copy B (benign tool)</text>
+      <text x="220" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">data for dest. B only</text>
+      <text x="220" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1a6e3c">leaks ≤ authorized</text>
+      <rect x="300" y="104" width="130" height="48" rx="4" fill="#fde8e8" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="365" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#8b1a1a">Copy C (malicious)</text>
+      <text x="365" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">tries to exfiltrate</text>
+      <text x="365" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#1a6e3c">only holds authorized data</text>
+      <!-- Result bar -->
+      <rect x="10" y="162" width="420" height="20" rx="3" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="220" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">153 attack runs: 0% unauthorized disclosure · 10–49 ms/invocation · formal proof</text>
+    </svg>
+    <figcaption>Figure 2: Germline execution model. Each MCP tool call forks from a data-free parent and receives only the data authorized for its destination. Even if a signed tool carries malicious code, it cannot leak data it was never given. 0% unauthorized disclosure in 153 attack runs; baselines leaked in 5.9–74.5%.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Aun et al. demonstrate that a signed MCP tool can covertly exfiltrate data by embedding secrets in permitted outbound traffic, bypassing MCPGuard-Dynamic in some trials. The germline defense forks each tool invocation from a data-free process, filling the copy only with data authorized for its destination; malicious code is limited to leaking what it was given. Across 153 attack runs, germline execution produces 0% unauthorized disclosure (vs 5.9–74.5% for baselines). Invocations complete in 10–49 ms; the authors provide a formal proof of sink noninterference under stated copy-confinement and data-free-germline assumptions.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════ ITEM 6 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.06380">Does Context Compression Preserve Refusal Alignment?</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 175" xmlns="http://www.w3.org/2000/svg" aria-label="Context compression suppresses refusal direction activation; Memory Steering intervention in compressed space restores it">
+      <rect width="440" height="175" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">Compression Weakens Refusal Direction</text>
+      <!-- Left: uncompressed -->
+      <rect x="10" y="30" width="130" height="80" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="75" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#1a6e3c">Uncompressed</text>
+      <text x="75" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Input → LLM</text>
+      <text x="75" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Refusal direction</text>
+      <text x="75" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">fully activated</text>
+      <!-- Middle: compressed + weakened -->
+      <rect x="155" y="30" width="130" height="80" rx="4" fill="#fde8e8" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="220" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#8b1a1a">Encoder Compressed</text>
+      <text x="220" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">High fidelity ✓</text>
+      <text x="220" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">Refusal direction</text>
+      <text x="220" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">suppressed</text>
+      <!-- Right: Memory Steering restores -->
+      <rect x="300" y="30" width="130" height="80" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="365" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#1a6e3c">+ Memory Steering</text>
+      <text x="365" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">In-space intervention</text>
+      <text x="365" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">No retraining</text>
+      <text x="365" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Near-baseline refusal</text>
+      <!-- Result text -->
+      <rect x="10" y="122" width="420" height="42" rx="3" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="220" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#333">Semantic preservation ≠ behavioral preservation</text>
+      <text x="220" y="156" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Effect holds across model families and compression architectures</text>
+    </svg>
+    <figcaption>Figure 1: Encoder-based compression suppresses the refusal direction even with high reconstruction fidelity. Memory Steering, an inference-time intervention operating entirely in compressed representation space, restores near-baseline refusal rates without retraining. Semantic preservation does not guarantee behavioral preservation.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Nguyen and Lin find that encoder-based context compression reduces refusal behavior in instruction-tuned LLMs even when reconstruction fidelity is high, because compression suppresses activation magnitude along the learned refusal direction. This effect holds across model families and compression architectures. Memory Steering — a lightweight inference-time correction that works entirely in compressed representation space and requires no retraining — restores refusal rates to near-baseline levels. The practical implication: systems using KV-cache compression or long-context compression for efficiency must separately verify that alignment-relevant features are preserved.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════ ITEM 7 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-security">agent security</span>
+      <span class="tag tag-security">IPI defense</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.06682">SecureGARD: Dynamic Ontology-Guided Governance for Secure Tool-Using LLM Agents</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 175" xmlns="http://www.w3.org/2000/svg" aria-label="SecureGARD: executable ontology classifies each agent action as ready, waiting, or forbidden before execution">
+      <rect width="440" height="175" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">SecureGARD: Ontology-Guided Action Classification</text>
+      <!-- Ontology box -->
+      <rect x="10" y="30" width="140" height="85" rx="4" fill="#d0f0f0" stroke="#0d5555" stroke-width="1.5"/>
+      <text x="80" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#0d5555">Executable Ontology</text>
+      <text x="80" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d5555">Tool semantics</text>
+      <text x="80" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d5555">State dependencies</text>
+      <text x="80" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d5555">LLM-refined + validated</text>
+      <!-- Arrow -->
+      <polygon points="155,73 173,63 173,83" fill="#555"/>
+      <!-- Classifier -->
+      <rect x="177" y="30" width="120" height="85" rx="4" fill="#f5f5f5" stroke="#888" stroke-width="1.5"/>
+      <text x="237" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#333">Action Classifier</text>
+      <text x="237" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">READY → execute</text>
+      <text x="237" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">WAITING → replan</text>
+      <text x="237" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">FORBIDDEN → block</text>
+      <!-- Arrow -->
+      <polygon points="302,73 320,63 320,83" fill="#555"/>
+      <!-- Results -->
+      <rect x="324" y="30" width="106" height="85" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="377" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#1a6e3c">Results</text>
+      <text x="377" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">0% ASR</text>
+      <text x="377" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">AgentDojo</text>
+      <text x="377" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">ASB · AgentDyn</text>
+      <rect x="10" y="128" width="420" height="38" rx="3" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="220" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Ontology refined offline via LLM proposals → consistency checks → held-out validation → frozen</text>
+      <text x="220" y="161" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Better utility under attack than existing baselines · "waiting" enables bounded replanning</text>
+    </svg>
+    <figcaption>Figure 2: SecureGARD's ontology-guided classification pipeline. Each proposed agent action is classified as ready, waiting, or forbidden using an executable ontology refined offline. 0% attack success rate on AgentDojo, ASB, and AgentDyn; improved utility under attack vs baselines.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Xiong et al. encode tool call semantics and episode-level state dependencies in an executable ontology, refining it offline using LLM-proposed rules that must pass consistency checks and held-out validation before freezing. At runtime, SecureGARD classifies each proposed action as ready (execute), waiting (prerequisite missing but recoverable), or forbidden (block). The waiting verdict enables bounded replanning without widening permissions. On AgentDojo, ASB, and AgentDyn under indirect prompt injection, SecureGARD reports 0% attack success rate and higher task utility than existing defenses.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════ ITEM 8 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-security">agent security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.05806">When File Ingestion Misleads Language Models: Measuring and Mitigating Divergences in Office Documents</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="OOXML extractor divergence: 19 channels where models read hidden content, 12 where visible content is dropped; enables attacks without explicit injection syntax">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">OOXML Extractor / Human-View Divergence</text>
+      <!-- Human view -->
+      <rect x="10" y="30" width="140" height="90" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="80" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#1a6e3c">Human View</text>
+      <text x="80" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Sees: visible text A</text>
+      <text x="80" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Doesn't see: hidden</text>
+      <text x="80" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">content in XML</text>
+      <text x="80" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Normal reading order</text>
+      <!-- Extractor view -->
+      <rect x="290" y="30" width="140" height="90" rx="4" fill="#fde8e8" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="360" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#8b1a1a">Model / Extractor View</text>
+      <text x="360" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">Reads: hidden XML</text>
+      <text x="360" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">19 hidden channels</text>
+      <text x="360" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">Drops: 12 visible</text>
+      <text x="360" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">Reordered reading</text>
+      <!-- Center: 5 attacks -->
+      <rect x="160" y="45" width="120" height="60" rx="4" fill="#fff0d0" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="220" y="66" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#a05c00">5 Attacks</text>
+      <text x="220" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">No injection syntax</text>
+      <text x="220" y="97" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">Invisible to reviewer</text>
+      <!-- Result -->
+      <rect x="10" y="132" width="420" height="30" rx="3" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="220" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">All 4 assistants (ChatGPT, Claude, Gemini, 365 Copilot) + 4 coding agents misled by ≥1 attack</text>
+    </svg>
+    <figcaption>Figure 1: OOXML extractors read content humans can't see (19 channels) and drop content humans can see (12 channels), enabling attacks that reorder document reading without injection syntax. All 4 tested chat assistants and 4 coding agents (Codex, Claude Code, Antigravity, GitHub Copilot CLI) are affected by at least one attack.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Li identifies 19 OOXML channels where extractors give models hidden content humans cannot see, and 12 channels where visible content is dropped; five attacks exploit this divergence without embedding explicit injection instructions. All four chat assistants and four coding agents tested are misled by at least one attack. The Prism defense rebuilds the human-visible view from the OOXML specification before extracting text, and generalizes to attacks outside its training distribution.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════ ITEM 9 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-align">unlearning</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.06681">Do unlearning algorithms learn the right features?</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="Standard unlearning metrics hide feature divergence; new feature recovery metric predicts downstream failures">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">Output Matching ≠ Feature Recovery</text>
+      <!-- Left: standard metric -->
+      <rect x="10" y="30" width="195" height="90" rx="4" fill="#fde8e8" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="107" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#8b1a1a">Standard Output Metric</text>
+      <text x="107" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Unlearned ≈ Retrained (outputs)</text>
+      <text x="107" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">✓ PASS</text>
+      <text x="107" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">Hidden: different features</text>
+      <text x="107" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b02020">→ fails under relearning</text>
+      <!-- Right: new metric -->
+      <rect x="235" y="30" width="195" height="90" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="332" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#1a6e3c">Feature Recovery Metric</text>
+      <text x="332" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Scores missing features</text>
+      <text x="332" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#444">Scores extraneous features</text>
+      <text x="332" y="98" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Predicts downstream failures</text>
+      <text x="332" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Applied to 8 methods</text>
+      <!-- Result -->
+      <rect x="10" y="132" width="420" height="30" rx="3" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="220" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#333">Formal: identical outputs ≠ identical features; one gradient step on head can break output agreement</text>
+    </svg>
+    <figcaption>Figure 1: Standard output-based unlearning metrics provably miss feature-level divergence. The new feature recovery metric separates missing and extraneous features; applied to 8 methods, it predicts which models will fail under relearning and downstream adaptation — unlike output metrics.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Dolgova et al. prove formally that two models with identical outputs can encode different features, and that a single gradient step on the prediction head can break output agreement — invalidating the standard metric of matching a retrained model. Deleting a small fraction of data can cause retraining to select entirely different features, so matching outputs may require learning features the full-data model never had. A new feature recovery metric separates missing from extraneous features; applied to 8 unlearning methods, it predicts downstream behavioral deviations under relearning and adaptation better than standard metrics do.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════════════════ ITEM 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-security">agent security</span>
+      <span class="tag tag-security">defense</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.02516">Cumulative and Audited Guardrail Tool Evolution for LLM Agent Safety</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="EVOLVE: self-evolving executable guardrail tools with independent audit, achieving 22% F1 improvement over static defenses">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="18" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">EVOLVE: Cumulative Guardrail Tool Evolution</text>
+      <!-- Interaction loop -->
+      <rect x="10" y="30" width="120" height="60" rx="4" fill="#fde8e8" stroke="#8b1a1a" stroke-width="1.5"/>
+      <text x="70" y="54" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#8b1a1a">Interaction</text>
+      <text x="70" y="70" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8b1a1a">New security event</text>
+      <!-- Conversion arrow -->
+      <polygon points="135,60 153,50 153,70" fill="#555"/>
+      <!-- Guardrail tools -->
+      <rect x="157" y="30" width="120" height="60" rx="4" fill="#d0f0f0" stroke="#0d5555" stroke-width="1.5"/>
+      <text x="217" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#0d5555">Guardrail Tools</text>
+      <text x="217" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d5555">Executable code</text>
+      <text x="217" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#0d5555">Inherited + refined</text>
+      <!-- Audit arrow -->
+      <polygon points="282,60 300,50 300,70" fill="#555"/>
+      <!-- Audit box -->
+      <rect x="304" y="30" width="120" height="60" rx="4" fill="#fff8e1" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="364" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#a05c00">Independent Audit</text>
+      <text x="364" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">Checks before</text>
+      <text x="364" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#a05c00">inheriting tool</text>
+      <!-- Feedback loop -->
+      <path d="M364,90 L364,120 L217,120 L217,92" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <polygon points="212,93 217,83 222,93" fill="#555"/>
+      <!-- Result -->
+      <rect x="10" y="132" width="420" height="30" rx="3" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="220" y="151" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">~22% average F1 improvement over static defenses · validated on robotic and autonomous agent systems</text>
+    </svg>
+    <figcaption>Figure 1: EVOLVE's cumulative evolution pipeline. New security knowledge is converted into executable guardrail tools, independently audited, and inherited across interactions for continuous improvement. ~22% average F1 improvement over static defenses across diverse benchmarks and embodied environments.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Yang et al. propose EVOLVE, which treats agent security as a cumulative evolution problem: security knowledge is externalized into executable guardrail tools that persist across interactions, are independently audited before entering the inheritance chain, and are iteratively refined by ongoing interaction. This contrasts with static rules or classifiers that generalize poorly to emerging risks. EVOLVE achieves an average ~22% F1 improvement over static defenses across benchmarks, backbone models, and embodied environments, with validation in robotic and autonomous agent systems.
+  </p>
+</article>
+<hr class="section-divider">
+
+<section style="font-size:14px; color: var(--dim); padding-top: 8px;">
+  <strong style="color:var(--title)">Notes</strong><br>
+  10 genuinely new, in-scope items, all preprints. The Nov 5 cs.AI/cs.CR/cs.LG/cs.CL batches were the primary source; several items (2611.01976, 2611.02516, 2611.03650) slipped through earlier daily sweeps. Strong theme: architectural and principled defenses for agentic LLMs (Baya compile-then-execute, ETUDE tool-update gap, germline MCP execution, SecureGARD ontology) alongside safety representation robustness work (Addition by Subtraction, alignment faking per-value analysis).
+</section>
+
+</div>
+{% endraw %}
