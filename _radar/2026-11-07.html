@@ -1,0 +1,776 @@
+---
+layout: "radar"
+title: "Research Radar — Nov 7, 2026"
+kind: "daily"
+slug: "2026-11-07"
+date: 2026-11-07
+group: "latest"
+window: "2026-11-06 – 2026-11-07"
+summary: "Window: 2026-11-06 – 2026-11-07 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 0 peer-reviewed · 9 preprints · 1 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-11-07.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a;
+  --text: #c9c9c9; --dim: #666; --title: #f0f0f0; --link: #7eb8ff;
+  --tag-bg: #252525; --tag-text: #aaa;
+  --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+  --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+  --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd;
+  --text: #3a3a3a; --dim: #888; --title: #1a1a1a; --link: #1a4f99;
+  --tag-bg: #e8e8e8; --tag-text: #444;
+  --accent-teal: #0d7377; --accent-blue: #1a4f99; --accent-red: #b02020;
+  --accent-amber: #a05c00; --accent-violet: #5c1aaa; --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  margin: 0;
+  padding: 0 16px 60px;
+}
+.wrap { max-width: 760px; margin: 0 auto; }
+/* Masthead */
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding: 28px 0 20px;
+  margin-bottom: 32px;
+}
+.masthead-eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.masthead-issue {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--title);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.masthead-counts {
+  font-size: 14px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.track {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+}
+.track-sep { color: var(--dim); font-size: 13px; }
+/* Tags */
+.tag {
+  display: inline-block;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-right: 4px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+}
+.tag-peer   { background: #d4edda; color: #155724; }
+.tag-interp { background: #d1ecf1; color: #0c5460; }
+.tag-security { background: #f8d7da; color: #721c24; }
+.tag-align  { background: #cce5ff; color: #004085; }
+.tag-control { background: #e2d9f3; color: #4a0d8a; }
+/* Full paper entries (top 3) */
+.paper {
+  margin-bottom: 52px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.paper-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.paper-rank {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--dim);
+  min-width: 36px;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin: 0 0 14px;
+}
+.paper-title a { color: var(--title); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.paper-figure {
+  margin: 0 0 18px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px;
+}
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure svg { display: block; margin: 0 auto; }
+.paper-figure figcaption {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.paper-detail {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+}
+/* Mid-tier entries (items 4–10) */
+.more-section-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 48px 0 24px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-summary { font-size: 14px; color: var(--text); line-height: 1.65; margin-top: 14px; }
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+/* Theme toggle */
+.theme-toggle { position: fixed; top: 14px; right: 20px; cursor: pointer; font-size: 18px; opacity: 0.5; }
+.theme-toggle:hover { opacity: 1; }
+</style>
+
+<div class="wrap">
+
+<button class="theme-toggle" onclick="
+  var r=document.documentElement;
+  var t=r.getAttribute('data-theme');
+  r.setAttribute('data-theme', t==='dark'?'light':'dark');
+" title="Toggle dark/light mode">◑</button>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · November 7, 2026</div>
+  <div class="masthead-counts">0 peer-reviewed · 9 preprints · 1 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════ ITEM 01 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-security">safety training</span>
+      <span class="tag">reasoning LLMs</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.07482">SAVeR²: Reasoning-based Safety Alignment for Large Reasoning Models via Verifiable Rewards</a>
+  </h2>
+  <p class="paper-hook">
+    Large Reasoning Models can reason their way into unsafe answers—existing methods impose a "safety tax" that degrades the chain-of-thought or generalize poorly under adversarial prompts. SAVeR² fixes this with four fine-grained verifiable reward signals and a gradient projection that eliminates first-order conflicts between safety and reasoning objectives.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg" aria-label="SAVeR2 overview: four verifiable reward components and gradient projection">
+      <rect width="500" height="230" fill="#fff"/>
+      <!-- Stage 1: Warmup -->
+      <rect x="10" y="30" width="140" height="90" rx="6" fill="#e8f4ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="80" y="52" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a4f99" text-anchor="middle">Safety Reasoning</text>
+      <text x="80" y="66" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a4f99" text-anchor="middle">Warm-up</text>
+      <text x="80" y="82" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Assess → Identify</text>
+      <text x="80" y="96" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">→ Justify → Refuse</text>
+      <text x="80" y="110" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">→ Redirect</text>
+      <!-- Stage 2: Data Selection -->
+      <rect x="180" y="30" width="140" height="90" rx="6" fill="#fff8e8" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="250" y="52" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#a05c00" text-anchor="middle">Difficulty-Aware</text>
+      <text x="250" y="66" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#a05c00" text-anchor="middle">Data Selection</text>
+      <text x="250" y="82" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Gaussian weights</text>
+      <text x="250" y="96" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">centered on target</text>
+      <text x="250" y="110" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">difficulty per scale</text>
+      <!-- Stage 3: GRPO -->
+      <rect x="350" y="30" width="140" height="90" rx="6" fill="#f0e8ff" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="420" y="52" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#5c1aaa" text-anchor="middle">Gradient</text>
+      <text x="420" y="66" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#5c1aaa" text-anchor="middle">Projection (GRPO)</text>
+      <text x="420" y="82" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">4 reward signals</text>
+      <text x="420" y="96" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">safety ⊥ reasoning</text>
+      <text x="420" y="110" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">gradient at 1st order</text>
+      <!-- Arrows -->
+      <line x1="150" y1="75" x2="178" y2="75" stroke="#888" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <line x1="320" y1="75" x2="348" y2="75" stroke="#888" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <defs>
+        <marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+        </marker>
+      </defs>
+      <!-- Results row -->
+      <rect x="10" y="145" width="480" height="72" rx="4" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+      <text x="20" y="162" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a">Key results (1.5B–671B):</text>
+      <text x="20" y="178" font-family="Georgia,serif" font-size="10" fill="#444">Safety 7B: 92.80 (vs 83.50 PPO) · Safety 14B: 94.28 (vs 87.22 STAR-1)</text>
+      <text x="20" y="193" font-family="Georgia,serif" font-size="10" fill="#444">AdvBench under GCG/PAIR/TAP: 97.33% · 671B Safe@1: 98.80 (vs Claude-4-Sonnet 98.98)</text>
+      <text x="20" y="208" font-family="Georgia,serif" font-size="10" fill="#444">Over-refusal (false refusal rate): 22.33% vs 35.00% (STAR-1) · H-mean: 85.89</text>
+    </svg>
+    <figcaption>Figure: SAVeR² three-stage pipeline. Safety warm-up instills a structured refusal pattern; difficulty-aware selection removes easy prompts; GRPO with four verifiable rewards and safety/reasoning gradient projection removes the safety tax.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    SAVeR² (arXiv:2611.07482) trains Large Reasoning Models (LRMs) with four verifiable reward signals graded by LLM-as-judge: safety reasoning, non-maliciousness, reasoning–answer consistency, and usefulness. A difficulty-aware data selection stage discards prompts already handled well, Gaussian-weighting the rest around a scale-dependent target difficulty. During GRPO training, a reasoning-preserving gradient projection eliminates first-order conflicts between the safety gradient and the reasoning gradient, removing the alignment tax. At 7B parameters, average safety score reaches 92.80 vs. 83.50 for the best baseline (PPO). At 14B, 94.28 vs. 87.22 (STAR-1). Under adversarial attacks (GCG, PAIR, TAP on AdvBench), the 14B variant achieves 97.33% defense success—highest of four compared methods. The 671B variant reaches 98.80 Safe@1, near Claude-4-Sonnet's 98.98, while raising reasoning Think@1 from 37.98 (base R1-671B) to 72.99.
+  </p>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════ ITEM 02 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">jailbreak defense</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">prefill attack</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.01342">J-Anchor: Defending Against Prefill Attacks via J-Space Selective Refusal Restoration</a>
+  </h2>
+  <p class="paper-hook">
+    Prefill jailbreaks work by forcing a harmful assistant prefix—but why do they erode refusal so reliably? This paper uses the Jacobian lens to pinpoint the mechanism and fixes it at inference time with no additional training.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="J-Anchor mechanism: refusal-state erosion and J-space restoration">
+      <rect width="500" height="220" fill="#fff"/>
+      <!-- Clean request flow -->
+      <text x="20" y="30" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a6e3c">Clean request</text>
+      <rect x="20" y="38" width="90" height="30" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="65" y="58" font-family="Georgia,serif" font-size="10" fill="#155724" text-anchor="middle">Refusal signal ↑</text>
+      <line x1="112" y1="53" x2="140" y2="53" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <rect x="142" y="38" width="90" height="30" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="187" y="58" font-family="Georgia,serif" font-size="10" fill="#155724" text-anchor="middle">REFUSE ✓</text>
+      <!-- Prefill attack -->
+      <text x="20" y="95" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#b02020">Prefill attack</text>
+      <rect x="20" y="103" width="90" height="30" rx="4" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="65" y="118" font-family="Georgia,serif" font-size="10" fill="#721c24" text-anchor="middle">Harmful signal ↑</text>
+      <text x="65" y="130" font-family="Georgia,serif" font-size="10" fill="#721c24" text-anchor="middle">Refusal erodes ↓</text>
+      <line x1="112" y1="118" x2="140" y2="118" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <rect x="142" y="103" width="90" height="30" rx="4" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="187" y="122" font-family="Georgia,serif" font-size="10" fill="#721c24" text-anchor="middle">COMPLY ✗</text>
+      <!-- J-Anchor defense -->
+      <text x="20" y="162" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#5c1aaa">J-Anchor defense</text>
+      <rect x="20" y="170" width="90" height="30" rx="4" fill="#e2d9f3" stroke="#5c1aaa" stroke-width="1"/>
+      <text x="65" y="185" font-family="Georgia,serif" font-size="10" fill="#4a0d8a" text-anchor="middle">Anchor pre-attack</text>
+      <text x="65" y="197" font-family="Georgia,serif" font-size="10" fill="#4a0d8a" text-anchor="middle">refusal state</text>
+      <line x1="112" y1="185" x2="140" y2="185" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <rect x="142" y="170" width="90" height="30" rx="4" fill="#e2d9f3" stroke="#5c1aaa" stroke-width="1"/>
+      <text x="187" y="185" font-family="Georgia,serif" font-size="10" fill="#4a0d8a" text-anchor="middle">Restore refusal</text>
+      <text x="187" y="197" font-family="Georgia,serif" font-size="10" fill="#4a0d8a" text-anchor="middle">component</text>
+      <line x1="234" y1="185" x2="262" y2="185" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <rect x="264" y="170" width="90" height="30" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="309" y="190" font-family="Georgia,serif" font-size="10" fill="#155724" text-anchor="middle">REFUSE ✓</text>
+      <!-- Results -->
+      <rect x="370" y="90" width="120" height="115" rx="4" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+      <text x="430" y="108" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Fixed-prefix ASR</text>
+      <text x="430" y="123" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Llama: 65.2→1.0%</text>
+      <text x="430" y="138" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Gemma: 82.7→0.0%</text>
+      <text x="430" y="153" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Qwen: 77.3→0.3%</text>
+      <text x="430" y="171" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="middle">Deep prefill k=500</text>
+      <text x="430" y="186" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">ASR ≤ 2.5%</text>
+      <text x="430" y="201" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="middle">Training-free</text>
+      <defs>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure: Prefill attacks cause "refusal-state erosion"—the refusal signal collapses while harmfulness stays elevated. J-Anchor records the assistant-header state as an anchor and restores depleted refusal components during generation, reducing ASR from ~65–83% to ≤2.5%.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    J-Anchor (arXiv:2611.01342) diagnoses prefill attacks with the Jacobian lens: under a forced prefix, the refusal signal "progressively declines to the benign baseline by the end of the prefill" while the harmfulness signal stays elevated. The proposed defense is training-free: (1) record the pre-attack refusal state at the assistant-header token; (2) gate on a risk threshold τ=0.75 to avoid modifying benign requests; (3) rescale and restore the depleted refusal components during prefilling and generation. On StrongREJECT with fixed-prefix attacks, ASR drops from 65.2%→1.0% (Llama-3.1-8B), 82.7%→0.0% (Gemma-4-E4B-IT), 77.3%→0.3% (Qwen3.5-4B). Deep-prefill (k=500) is similarly neutralized: ASR ≤2.5% across all backbones, reaching 0.0% on Gemma. Benign over-refusal on XSTest remains within 4 pp of the clean model.
+  </p>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════ ITEM 03 -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">unlearning</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.03955">Forget What Comes Next: LLM Unlearning via Statistical Independence</a>
+  </h2>
+  <p class="paper-hook">
+    Standard unlearning methods can match the retrained model's outputs while still encoding the supposedly forgotten information—PINT attacks this at the representation level by minimizing a provably correct information-theoretic objective.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="PINT: HSIC-based independence minimization for LLM unlearning">
+      <rect width="500" height="210" fill="#fff"/>
+      <!-- Forget objective -->
+      <rect x="20" y="25" width="200" height="80" rx="6" fill="#fff8e8" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="120" y="45" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#a05c00" text-anchor="middle">Forget Loss (HSIC)</text>
+      <text x="120" y="62" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Minimize dependence between</text>
+      <text x="120" y="76" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">prefix repr. and next tokens</text>
+      <text x="120" y="90" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="middle">on forget set</text>
+      <!-- Retain objective -->
+      <rect x="280" y="25" width="200" height="80" rx="6" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="380" y="45" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a6e3c" text-anchor="middle">Retain Loss</text>
+      <text x="380" y="62" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Keep final-layer repr.</text>
+      <text x="380" y="76" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">close to original model</text>
+      <text x="380" y="90" font-family="Georgia,serif" font-size="10" fill="#888" text-anchor="middle">on retain set</text>
+      <!-- Combined -->
+      <line x1="120" y1="107" x2="120" y2="130" stroke="#888" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <line x1="380" y1="107" x2="380" y2="130" stroke="#888" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <text x="250" y="122" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">λ · L_forget + L_retain</text>
+      <!-- Results bar chart -->
+      <rect x="20" y="145" width="460" height="55" rx="4" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+      <text x="30" y="162" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#1a1a1a">Avg. forget-utility frontier area: PINT 0.95 vs ≤0.90 baselines</text>
+      <text x="30" y="176" font-family="Georgia,serif" font-size="10" fill="#444">Gaussian poison: undetectable, 91% utility (best baseline: 63%) · 70B: WMDP-Cyber 53.0→27.6%, MMLU −0.002</text>
+      <text x="30" y="190" font-family="Georgia,serif" font-size="10" fill="#444">Theorem 3.2: Exact Memorization upper-bounded by C·√HSIC · Prop 3.3: PINT ≺ RMU (weaker requirement)</text>
+      <defs>
+        <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure: PINT combines an HSIC-based forget loss (provably bounding Exact Memorization leakage) with a representation-matching retain loss. It achieves the best forgetting-utility Pareto frontier of any tested method, scaling to 70B parameters.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    PINT (arXiv:2611.03955) minimizes the Hilbert-Schmidt Independence Criterion (HSIC) between prefix representations and next tokens on the forget set, provably bounding Exact Memorization leakage (Theorem 3.2). A retain loss anchors final-layer representations on retain data close to the original model, borrowing the RMU idea but weaker: Proposition 3.3 shows RMU's objective upper-bounds PINT's, so PINT does not require collapsing representations. Average area under the forget-utility Pareto frontier: 0.95 for PINT vs. ≤0.90 for all baselines. On Gaussian poisons, PINT makes them undetectable while retaining 91% utility vs. 63% for the best baseline. Scales to Llama-3-70B: WMDP-Cyber falls from 53.0%→27.6% (guessing target ≈25%) with only 0.002 MMLU drop.
+  </p>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════ ITEMS 4-10 -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- ITEM 04 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">deployment security</span>
+      <span class="tag">MoE</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.06147">SafeStart: Mitigating the Overlooked Safety Cost of Active Expert Reduction in MoE LLM Serving</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="SafeStart: harmful compliance increase under expert reduction vs SafeStart fix">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="20" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Attack Success Rate — Expert Reduction vs SafeStart</text>
+      <!-- Bar labels -->
+      <text x="90" y="40" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="middle">Qwen1.5-MoE</text>
+      <text x="220" y="40" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="middle">OLMoE</text>
+      <text x="350" y="40" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="middle">DeepSeek-V2-Lite</text>
+      <!-- Baseline bars -->
+      <rect x="40" y="45" width="30" height="60" fill="#cce5ff"/>
+      <rect x="170" y="90" width="30" height="30" fill="#cce5ff"/>
+      <rect x="300" y="80" width="30" height="40" fill="#cce5ff"/>
+      <text x="55" y="42" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">+18.4pp</text>
+      <text x="185" y="87" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">+9.5pp</text>
+      <text x="315" y="77" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">+6.6pp</text>
+      <!-- SafeStart bars -->
+      <rect x="80" y="103" width="30" height="2" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <rect x="210" y="103" width="30" height="17" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <rect x="340" y="103" width="30" height="17" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="95" y="115" font-family="Georgia,serif" font-size="9" fill="#1a6e3c" text-anchor="middle">−0.6pp</text>
+      <text x="225" y="115" font-family="Georgia,serif" font-size="9" fill="#1a6e3c" text-anchor="middle">+0.6pp</text>
+      <text x="355" y="115" font-family="Georgia,serif" font-size="9" fill="#1a6e3c" text-anchor="middle">+1.3pp</text>
+      <!-- Legend -->
+      <rect x="40" y="130" width="12" height="10" fill="#cce5ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="58" y="140" font-family="Georgia,serif" font-size="10" fill="#444">Expert reduction (2/3)</text>
+      <rect x="200" y="130" width="12" height="10" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="218" y="140" font-family="Georgia,serif" font-size="10" fill="#444">SafeStart fix</text>
+      <!-- x-axis -->
+      <line x1="30" y1="105" x2="420" y2="105" stroke="#888" stroke-width="1"/>
+      <text x="30" y="160" font-family="Georgia,serif" font-size="9" fill="#888">Speedup retained by SafeStart: ≥85% at batch 8/32</text>
+    </svg>
+    <figcaption>Figure: Expert reduction at ~2/3 of experts raises harmful compliance by up to 18.4 points; SafeStart (run all experts for prompt + first 8 tokens) reduces this to ≤1.3 points while retaining ≥85% of the speedup.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Running fewer experts in MoE serving speeds up inference 15–28% but raises attack success by 18.4 pp (Qwen1.5-MoE), 9.5 pp (OLMoE), and 6.6 pp (DeepSeek-V2-Lite) under jailbreaks, while MMLU falls ≤1.8 pp. SafeStart—a training-free Triton kernel patch that runs all experts for the prompt and first 8 tokens before switching to the reduced budget—restores safety to within 1.3 pp of the original model and retains ≥85% of the speedup at batch sizes 8 and 32. This paper shows that any MoE serving optimization must be safety-validated before production deployment.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 05 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">agent security</span>
+      <span class="tag">social engineering</span>
+      <span class="tag">benchmark</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.08281">Multimodal-SEA: Benchmarking AI Agent Security under Multimodal Social Engineering Attacks</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="Multimodal-SEA attack success rates across 7 models">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="18" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Pooled Attack Success Rate — 7 Multimodal Models</text>
+      <!-- Y axis label -->
+      <text x="20" y="90" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="middle" transform="rotate(-90,20,90)">ASR (%)</text>
+      <!-- X axis -->
+      <line x1="40" y1="130" x2="430" y2="130" stroke="#888" stroke-width="1"/>
+      <!-- Models as bars -->
+      <rect x="50" y="99" width="40" height="31" fill="#b02020"/>
+      <text x="70" y="145" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">GPT-5.6</text>
+      <text x="70" y="95" font-family="Georgia,serif" font-size="9" fill="#b02020" text-anchor="middle">34.5%</text>
+      <rect x="105" y="104" width="40" height="26" fill="#f07070"/>
+      <text x="125" y="145" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">Gemini</text>
+      <text x="125" y="100" font-family="Georgia,serif" font-size="9" fill="#b02020" text-anchor="middle">28.9%</text>
+      <rect x="160" y="109" width="40" height="21" fill="#f07070"/>
+      <text x="180" y="145" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">DeepSeek</text>
+      <text x="180" y="105" font-family="Georgia,serif" font-size="9" fill="#b02020" text-anchor="middle">23.2%</text>
+      <rect x="215" y="112" width="40" height="18" fill="#f0a030"/>
+      <text x="235" y="145" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">Qwen</text>
+      <text x="235" y="108" font-family="Georgia,serif" font-size="9" fill="#a05c00" text-anchor="middle">19.7%</text>
+      <rect x="270" y="115" width="40" height="15" fill="#f0a030"/>
+      <text x="290" y="145" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">Llama</text>
+      <text x="290" y="111" font-family="Georgia,serif" font-size="9" fill="#a05c00" text-anchor="middle">16.4%</text>
+      <rect x="325" y="118" width="40" height="12" fill="#c0d0e8"/>
+      <text x="345" y="145" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">Mistral</text>
+      <text x="345" y="114" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">12.1%</text>
+      <rect x="380" y="123" width="40" height="7" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="400" y="145" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">Claude</text>
+      <text x="400" y="119" font-family="Georgia,serif" font-size="9" fill="#1a6e3c" text-anchor="middle">7.1%*</text>
+      <text x="220" y="155" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">*Claude Opus 5 (lowest ASR but 32.1% over-refusal on benign requests)</text>
+    </svg>
+    <figcaption>Figure: All 7 multimodal models are vulnerable; pooled ASR ranges from 7.1% to 34.5%. Adding multimodal content raises average ASR from 19.9% → 29.2% even as proactive verification rises.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Multimodal-SEA provides 608 expert-designed tasks from real-world fraud cases (14 domains, 152 scenarios, 4 difficulty levels), with outcomes verified against tool execution logs. All 7 tested models are vulnerable (ASR 7.1%–34.5%). Adding multimodal attack content raises average ASR from 19.9% → 29.2% even as agent verification coverage improves (54.7% → 65.1%)—agents verify more but still miss deceptive content. Multimodal deception miss rates reach 70.9%. Safety prompts halved attack success on GPT-5.6-Sol but raised miss rate from 50.4% → 63.5%.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 06 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">prompt injection</span>
+      <span class="tag">RAG security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.08325">Decision Models as Retrieval Gates Against Injection and Pollution</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 150" xmlns="http://www.w3.org/2000/svg" aria-label="Retrieval gate pipeline: decision model screens passages before LLM generator">
+      <rect width="440" height="150" fill="#fff"/>
+      <!-- Query -->
+      <rect x="10" y="55" width="60" height="35" rx="4" fill="#e8f4ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="40" y="77" font-family="Georgia,serif" font-size="10" fill="#1a4f99" text-anchor="middle">Query</text>
+      <line x1="72" y1="72" x2="90" y2="72" stroke="#888" stroke-width="1.5" marker-end="url(#arr6)"/>
+      <!-- Retrieval -->
+      <rect x="92" y="45" width="80" height="55" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="132" y="68" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Web/Corpus</text>
+      <text x="132" y="82" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Retrieval</text>
+      <text x="132" y="96" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">(may contain</text>
+      <text x="132" y="106" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">injections)</text>
+      <line x1="174" y1="72" x2="192" y2="72" stroke="#888" stroke-width="1.5" marker-end="url(#arr6)"/>
+      <!-- Gate -->
+      <rect x="194" y="45" width="80" height="55" rx="4" fill="#e2d9f3" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="234" y="66" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#5c1aaa" text-anchor="middle">Kev-4B</text>
+      <text x="234" y="80" font-family="Georgia,serif" font-size="10" fill="#5c1aaa" text-anchor="middle">Decision Gate</text>
+      <text x="234" y="94" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">76ms/passage</text>
+      <line x1="276" y1="72" x2="294" y2="72" stroke="#888" stroke-width="1.5" marker-end="url(#arr6)"/>
+      <!-- Main LLM -->
+      <rect x="296" y="45" width="80" height="55" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="336" y="70" font-family="Georgia,serif" font-size="10" fill="#155724" text-anchor="middle">Main LLM</text>
+      <text x="336" y="84" font-family="Georgia,serif" font-size="10" fill="#155724" text-anchor="middle">Generator</text>
+      <text x="336" y="98" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">(clean passages)</text>
+      <line x1="378" y1="72" x2="396" y2="72" stroke="#888" stroke-width="1.5" marker-end="url(#arr6)"/>
+      <rect x="398" y="55" width="30" height="35" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="413" y="77" font-family="Georgia,serif" font-size="9" fill="#155724" text-anchor="middle">Safe</text>
+      <!-- Results annotation -->
+      <text x="220" y="125" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Injection ASR: 27.9% → 5.7% · Pollution acc: 28% → 83% · LLM judge: 10× cost</text>
+      <defs>
+        <marker id="arr6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure: A lightweight decision model screens retrieved passages before they reach the main LLM, cutting injection ASR from 27.9% to 5.7% at 76 ms per passage.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Open-weight decision models (Kev-4B) that answer typed questions about retrieved passages reduce prompt injection attack success from 27.9% → 5.7% (vs. 13.6% with published mitigations only) at 76 ms/passage with only 4 false positives out of 186 benign instruction pages. On retrieval pollution (200 queries, 2/3 fake pages), gating the full candidate pool holds accuracy at 83% and limits fake-page exposure to 0.5% vs. 28% without defense. HTML input outperforms plain text. Large LLM judges reach AUROC 0.99 vs. 0.94 for the gate but cost ~10× more.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 07 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">unlearning</span>
+      <span class="tag">evaluation</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.05866">Auditable Unlearning for LLMs</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="Auditable unlearning: GapWiden and GapVeil stages">
+      <rect width="440" height="160" fill="#fff"/>
+      <!-- 4 axes -->
+      <text x="220" y="18" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Four Evaluation Axes for Unlearning</text>
+      <rect x="20" y="28" width="90" height="40" rx="4" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="65" y="48" font-family="Georgia,serif" font-size="10" fill="#721c24" text-anchor="middle">Forget quality</text>
+      <text x="65" y="62" font-family="Georgia,serif" font-size="9" fill="#721c24" text-anchor="middle">✓ covered</text>
+      <rect x="120" y="28" width="90" height="40" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="165" y="48" font-family="Georgia,serif" font-size="10" fill="#155724" text-anchor="middle">Retain quality</text>
+      <text x="165" y="62" font-family="Georgia,serif" font-size="9" fill="#155724" text-anchor="middle">✓ covered</text>
+      <rect x="220" y="28" width="90" height="40" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="265" y="43" font-family="Georgia,serif" font-size="10" fill="#155724" text-anchor="middle">Membership</text>
+      <text x="265" y="57" font-family="Georgia,serif" font-size="10" fill="#155724" text-anchor="middle">inference</text>
+      <text x="265" y="68" font-family="Georgia,serif" font-size="9" fill="#155724" text-anchor="middle">✓ covered</text>
+      <rect x="320" y="28" width="100" height="40" rx="4" fill="#e2d9f3" stroke="#5c1aaa" stroke-width="2"/>
+      <text x="370" y="43" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#5c1aaa" text-anchor="middle">Auditability</text>
+      <text x="370" y="57" font-family="Georgia,serif" font-size="10" fill="#5c1aaa" text-anchor="middle">(new axis)</text>
+      <text x="370" y="68" font-family="Georgia,serif" font-size="9" fill="#b02020" text-anchor="middle">✗ none pass all 4</text>
+      <!-- Fix -->
+      <rect x="80" y="85" width="280" height="60" rx="6" fill="#fff8e8" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="220" y="103" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#a05c00" text-anchor="middle">Two-stage fix</text>
+      <text x="220" y="119" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">GapWiden: hinge loss widens forget/retain audit gap</text>
+      <text x="220" y="134" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">GapVeil: inference-time rejection sampler (attacker advantage: 0.11–0.15)</text>
+    </svg>
+    <figcaption>Figure: None of 11 unlearning methods satisfies all four evaluation axes. The GapWiden + GapVeil two-stage add-on achieves oracle-level auditability and leakage for every tested method on TOFU.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Across 11 unlearning methods on TOFU, MUSE, and RWKU, none satisfies all four axes (forget quality, retain quality, membership-inference resistance, and the new auditability axis). The proposed GapWiden (post-training hinge loss, margin m=6) widens the audit gap; GapVeil (inference-time rejection sampler, budget K) suppresses leakage. With both, auditability and leakage reach oracle parity for every method on TOFU. On MUSE, average auditability improves from 0.84→0.99 (News) and 0.81→0.99 (Books). Attacker advantage with GapVeil falls to 0.11–0.15 vs. 0.10–0.37 without it.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 08 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">probing</span>
+      <span class="tag">evaluation methodology</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.07805">Decodability Is Not Validity: Evaluating Nuisance Sensitivity in Language Model Concept Probes</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="Scatter plot showing decodability vs nuisance sensitivity for competitive extractors">
+      <rect width="440" height="160" fill="#fff"/>
+      <text x="220" y="18" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Decodability vs. Nuisance Sensitivity (CFN)</text>
+      <!-- Axes -->
+      <line x1="60" y1="130" x2="400" y2="130" stroke="#888" stroke-width="1"/>
+      <line x1="60" y1="30" x2="60" y2="130" stroke="#888" stroke-width="1"/>
+      <text x="230" y="148" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="middle">Decodability (held-out AUROC)</text>
+      <text x="20" y="80" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="middle" transform="rotate(-90,20,80)">Nuisance sensitivity (CFN↑ = worse)</text>
+      <!-- Scatter points showing NO correlation -->
+      <circle cx="100" cy="80" r="4" fill="#b02020"/>
+      <circle cx="120" cy="45" r="4" fill="#b02020"/>
+      <circle cx="150" cy="110" r="4" fill="#b02020"/>
+      <circle cx="180" cy="55" r="4" fill="#b02020"/>
+      <circle cx="210" cy="95" r="4" fill="#b02020"/>
+      <circle cx="240" cy="40" r="4" fill="#b02020"/>
+      <circle cx="270" cy="115" r="4" fill="#b02020"/>
+      <circle cx="300" cy="65" r="4" fill="#b02020"/>
+      <circle cx="330" cy="90" r="4" fill="#b02020"/>
+      <circle cx="360" cy="50" r="4" fill="#b02020"/>
+      <!-- Good selector -->
+      <circle cx="295" cy="45" r="6" fill="none" stroke="#1a6e3c" stroke-width="2"/>
+      <circle cx="145" cy="52" r="6" fill="none" stroke="#1a6e3c" stroke-width="2"/>
+      <!-- Annotation -->
+      <text x="220" y="135" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">Rank correlation between decodability and CFN changes sign across settings</text>
+      <text x="302" y="39" font-family="Georgia,serif" font-size="9" fill="#1a6e3c">Select by Conflict</text>
+    </svg>
+    <figcaption>Figure: Among probes with equal accuracy (competitive extractors), nuisance sensitivity (CFN) is uncorrelated with decodability. Selecting by Conflict score (circled) identifies low-CFN probes at a cost of ≤0.012 AUROC.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Across four target–nuisance settings on Qwen2.5-7B and Gemma-2-9B, probes with statistically equivalent AUROC differ up to several-fold in counterfactual nuisance sensitivity in three of four settings. Decodability rank-correlates with nuisance sensitivity with a sign that changes across settings—making it an unreliable proxy. The effect follows the probe's training data, not the natural association: uncorrelated first-person framing is absorbed as much as negation. Selecting extractors by Conflict score (nuisance-aware development diagnostic) lowers CFN wherever the default is sensitive at ≤0.012 AUROC cost. Direct implication: safety probes validated only by accuracy metrics may be detecting a spurious correlate rather than the target concept.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 09 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">RAG security</span>
+      <span class="tag">integrity</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.06498">Signed but Steerable: Measuring and Closing the Text-Vector Integrity Gap in Offline RAG</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 150" xmlns="http://www.w3.org/2000/svg" aria-label="Text-vector integrity gap in offline RAG: signature verifies provenance but not vector-text match">
+      <rect width="440" height="150" fill="#fff"/>
+      <!-- Provider -->
+      <rect x="20" y="30" width="80" height="50" rx="4" fill="#d4edda" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="60" y="55" font-family="Georgia,serif" font-size="10" fill="#155724" text-anchor="middle">Publisher</text>
+      <text x="60" y="69" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">signs pack</text>
+      <!-- Knowledge pack -->
+      <rect x="130" y="20" width="80" height="70" rx="4" fill="#f8f8f8" stroke="#888" stroke-width="1"/>
+      <text x="170" y="42" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Knowledge</text>
+      <text x="170" y="56" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Pack</text>
+      <text x="170" y="70" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">text + vectors</text>
+      <!-- Attacker swaps vectors -->
+      <text x="250" y="45" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#b02020" text-anchor="middle">Attacker</text>
+      <text x="250" y="58" font-family="Georgia,serif" font-size="9" fill="#b02020" text-anchor="middle">swaps vectors</text>
+      <text x="250" y="70" font-family="Georgia,serif" font-size="9" fill="#b02020" text-anchor="middle">within tolerance</text>
+      <!-- Result -->
+      <rect x="310" y="30" width="110" height="50" rx="4" fill="#f8d7da" stroke="#b02020" stroke-width="1"/>
+      <text x="365" y="51" font-family="Georgia,serif" font-size="10" fill="#721c24" text-anchor="middle">Attack doc ranks</text>
+      <text x="365" y="65" font-family="Georgia,serif" font-size="10" fill="#721c24" text-anchor="middle">1st for 25% targets</text>
+      <!-- Fix -->
+      <rect x="80" y="105" width="280" height="35" rx="4" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="220" y="121" font-family="Georgia,serif" font-size="10" fill="#155724" text-anchor="middle">Fix: verify quantization codes + guard band + canonicalization</text>
+      <text x="220" y="134" font-family="Georgia,serif" font-size="9" fill="#444" text-anchor="middle">Accepts 100% honest vectors; closes the gap across 3 platforms</text>
+    </svg>
+    <figcaption>Figure: A valid signature proves who published a pack but not that vectors match the text; an attacker within cosine tolerance can rank attacker documents first for 25% of targets. Verifying quantization codes instead of raw cosines closes the gap.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Offline RAG packs carry pre-computed embeddings alongside text; a valid signature proves provenance but not vector-text correspondence. On a FAISS PQ index over 57,638 documents, tampered vectors passing audit ranked the attacker's document first for 25% of targets. On a Raspberry Pi 5, the attack drops correct answers from 0.75 → 0.39. The fix verifies quantization codes (with a calibrated guard band and canonicalization) rather than raw cosines, accepting 100% of honest vectors across three platforms, while closing the attack surface.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">dangerous capabilities</span>
+      <span class="tag">lab blog</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/">METR: Independent Assessment of AI R&amp;D Acceleration at Anthropic in October 2026</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 150" xmlns="http://www.w3.org/2000/svg" aria-label="AI R&D acceleration: 2x pace estimate from METR assessment">
+      <rect width="440" height="150" fill="#fff"/>
+      <text x="220" y="18" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Estimated AI R&amp;D Acceleration at Anthropic (METR)</text>
+      <!-- Timeline bars -->
+      <text x="30" y="45" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="end">Mar 24–</text>
+      <text x="30" y="55" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="end">Oct 25</text>
+      <rect x="35" y="38" width="150" height="22" rx="3" fill="#cce5ff" stroke="#1a4f99" stroke-width="1"/>
+      <text x="115" y="53" font-family="Georgia,serif" font-size="10" fill="#1a4f99" text-anchor="middle">Baseline pace (1×)</text>
+      <text x="30" y="85" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="end">Aug–</text>
+      <text x="30" y="95" font-family="Georgia,serif" font-size="10" fill="#666" text-anchor="end">Oct 26</text>
+      <rect x="35" y="78" width="300" height="22" rx="3" fill="#f8d7da" stroke="#b02020" stroke-width="1.5"/>
+      <text x="185" y="93" font-family="Georgia,serif" font-size="10" fill="#b02020" text-anchor="middle">~1.9–2× pace (AI-accelerated R&amp;D)</text>
+      <!-- Attribution note -->
+      <text x="220" y="125" font-family="Georgia,serif" font-size="10" fill="#444" text-anchor="middle">Attribution: majority of acceleration likely from AI being used in AI R&amp;D</text>
+      <text x="220" y="140" font-family="Georgia,serif" font-size="9" fill="#888" text-anchor="middle">Published Nov 5, 2026 · Public version has majority of key evidence redacted by Anthropic</text>
+    </svg>
+    <figcaption>Figure: METR's independent assessment found Anthropic's capability progress accelerated ~1.9–2× relative to Mar 2024–Oct 2025, with a majority likely attributable to AI being used in AI R&D itself.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    METR conducted a high-access assessment at Anthropic (Aug–Oct 2026) and found that progress on well-specified tasks is running at approximately 1.9–2× the March 2024–October 2025 pace (range: 1.3×–3× not ruled out), with a majority of acceleration attributed to AI being used in AI R&D itself. METR notes the public version has a majority of its most informative evidence redacted by Anthropic, requiring readers to rely more on METR's judgment than it would prefer. This is the first independent quantitative assessment of AI-accelerated AI development—a key threshold in Anthropic's Responsible Scaling Policy.
+  </p>
+</article>
+
+</div><!-- .wrap -->
+{% endraw %}
