@@ -1,0 +1,816 @@
+---
+layout: "radar"
+title: "Research Radar — Nov 11, 2026"
+kind: "daily"
+slug: "2026-11-11"
+date: 2026-11-11
+group: "latest"
+window: "2026-11-10 to 2026-11-11"
+summary: "Window: 2026-11-10 to 2026-11-11 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 2 peer-reviewed · 8 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-11-11.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80; --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  line-height: 1.65;
+  font-size: 16px;
+  padding: 0 16px;
+}
+.page-wrapper { max-width: 760px; margin: 0 auto; padding: 32px 0 64px; }
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 36px;
+}
+.masthead-eyebrow {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-family: system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--title);
+  margin-bottom: 8px;
+}
+.masthead-counts {
+  font-family: Courier New, monospace;
+  font-size: 12px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--dim);
+}
+.track { color: var(--accent-teal); font-weight: 600; }
+.track-sep { margin: 0 6px; }
+.paper {
+  margin-bottom: 52px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.paper:last-of-type { border-bottom: none; }
+.paper-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.paper-rank {
+  font-family: Courier New, monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dim);
+  line-height: 1;
+  min-width: 36px;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
+.tag {
+  font-family: Courier New, monospace;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  text-transform: lowercase;
+}
+.tag-interp { background: #d4f4f4; color: #0d5c5f; }
+.tag-security { background: #fde8e8; color: #8b1a1a; }
+.tag-align { background: #dde8ff; color: #1a3a7a; }
+.tag-control { background: #ede8ff; color: #3c1a7a; }
+.tag-peer { background: #d4f4d4; color: #1a5c1a; }
+.tag-rank { background: #fff4d4; color: #7a4a00; }
+@media (prefers-color-scheme: dark) {
+  .tag-interp { background: #0d3a3c; color: #7de8ea; }
+  .tag-security { background: #3c1a1a; color: #f0a0a0; }
+  .tag-align { background: #1a2a4a; color: #9ab8ff; }
+  .tag-control { background: #2a1a4a; color: #c084fc; }
+  .tag-peer { background: #1a3a1a; color: #7de87d; }
+  .tag-rank { background: #3a2a0a; color: #f0c060; }
+}
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook {
+  font-size: 17px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.paper-figure {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px;
+  margin: 20px 0;
+  text-align: center;
+}
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption {
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.paper-detail {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+}
+.more-section-label {
+  font-family: Courier New, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-top: 2px solid var(--border);
+  padding-top: 20px;
+  margin: 40px 0 32px;
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 36px 0;
+}
+</style>
+
+<div class="page-wrapper">
+
+<header class="masthead">
+  <div class="masthead-eyebrow">📡 RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · November 11, 2026</div>
+  <div class="masthead-counts">2 peer-reviewed · 8 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAPER 01
+════════════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">NeurIPS 2026 oral</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">methodology</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.14483">Mechanistic Interpretability Needs a Logic of Inference</a>
+  </h2>
+  <p class="paper-hook">
+    Mechanistic interpretability has accumulated findings about neurons, circuits, and features, but lacks a principled method for turning those findings into cumulative mechanistic explanations. This NeurIPS 2026 oral argues the field is stuck at the observation level because it has no logic for inference — no shared procedure for deciding when evidence supports a claimed mechanism rather than just correlating with one.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Recursive logic for mechanistic inference — five principles as a closed loop">
+      <rect x="0" y="0" width="500" height="220" fill="#fff"/>
+      <!-- Center circle label -->
+      <circle cx="250" cy="110" r="40" fill="none" stroke="#0d7377" stroke-width="2"/>
+      <text x="250" y="106" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#0d7377">Recursive</text>
+      <text x="250" y="121" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#0d7377">Logic</text>
+      <!-- Five principle nodes -->
+      <ellipse cx="250" cy="20" rx="70" ry="16" fill="#e8f4ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="250" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#1a4f99">P1: Phenomenon</text>
+      <ellipse cx="430" cy="85" rx="60" ry="16" fill="#e8f4ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="430" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#1a4f99">P2: Substrate</text>
+      <ellipse cx="380" cy="185" rx="66" ry="16" fill="#e8f4ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="380" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#1a4f99">P3: Causal chain</text>
+      <ellipse cx="120" cy="185" rx="66" ry="16" fill="#e8f4ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="120" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#1a4f99">P4: Prediction</text>
+      <ellipse cx="70" cy="85" rx="60" ry="16" fill="#e8f4ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="70" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#1a4f99">P5: Domain</text>
+      <!-- Arrows around the circle -->
+      <path d="M 290 26 Q 390 50 423 70" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr1)"/>
+      <path d="M 437 101 Q 440 155 416 170" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr1)"/>
+      <path d="M 316 190 Q 250 205 184 190" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr1)"/>
+      <path d="M 83 101 Q 60 155 84 170" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr1)"/>
+      <path d="M 77 70 Q 160 44 210 26" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr1)"/>
+      <defs>
+        <marker id="arr1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: Five-principle recursive logic maps observations (neurons, features, circuits) to cumulative mechanistic explanations — each principle gates the next and loops back to refine the phenomenon description.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The authors draw on the history of neuroscience to identify four recurring inferential bottlenecks in mechanistic interpretability: conflating correlation with causation, treating local patches as global mechanisms, failing to distinguish implementation from computation, and generating findings that don't compose. Their recursive five-principle procedure specifies what a mechanistic claim must include: the phenomenon, the substrate, the causal chain, the prediction, and the domain it generalizes to. Applied consistently, the procedure converts isolated findings into testable hypotheses and prevents the accumulation of incompatible "circuit" accounts for the same behavior. The paper explicitly notes that mechanistic evidence alone cannot certify alignment — that requires evidence linking discovered mechanisms to deployed behavior.
+  </p>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAPER 02
+════════════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">NeurIPS 2026</span>
+      <span class="tag tag-interp">mech-interp</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.13270">What drives the emergence of symbolic mechanisms in large language models?</a>
+  </h2>
+  <p class="paper-hook">
+    A controlled training study that isolates the driver of symbolic computation in transformers: data diversity, not architecture. The finding reframes safety-relevant interpretability assumptions — circuits found in one model family may reflect that family's training distribution rather than a universal architectural property.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Data diversity drives symbolic mechanisms across architectures">
+      <rect x="0" y="0" width="500" height="200" fill="#fff"/>
+      <!-- Y axis label -->
+      <text x="14" y="110" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#444" transform="rotate(-90 14 110)">Symbolic signature strength</text>
+      <!-- X axis label -->
+      <text x="250" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#444">Data diversity (low → high)</text>
+      <!-- Bars for 3 architectures at 3 diversity levels -->
+      <!-- Low diversity -->
+      <rect x="60" y="145" width="20" height="30" fill="#1a4f99" opacity="0.7"/>
+      <rect x="82" y="142" width="20" height="33" fill="#0d7377" opacity="0.7"/>
+      <rect x="104" y="148" width="20" height="27" fill="#b02020" opacity="0.7"/>
+      <!-- Medium diversity -->
+      <rect x="200" y="110" width="20" height="65" fill="#1a4f99" opacity="0.7"/>
+      <rect x="222" y="105" width="20" height="70" fill="#0d7377" opacity="0.7"/>
+      <rect x="244" y="112" width="20" height="63" fill="#b02020" opacity="0.7"/>
+      <!-- High diversity -->
+      <rect x="340" y="55" width="20" height="120" fill="#1a4f99" opacity="0.7"/>
+      <rect x="362" y="50" width="20" height="125" fill="#0d7377" opacity="0.7"/>
+      <rect x="384" y="58" width="20" height="117" fill="#b02020" opacity="0.7"/>
+      <!-- Axes -->
+      <line x1="40" y1="175" x2="460" y2="175" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="40" y1="175" x2="40" y2="20" stroke="#ccc" stroke-width="1.5"/>
+      <!-- Diversity labels -->
+      <text x="92" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#888">Low</text>
+      <text x="232" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#888">Medium</text>
+      <text x="372" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#888">High</text>
+      <!-- Legend -->
+      <rect x="430" y="40" width="12" height="10" fill="#1a4f99" opacity="0.7"/>
+      <text x="445" y="50" font-family="system-ui, sans-serif" font-size="9" fill="#444">Transformer</text>
+      <rect x="430" y="58" width="12" height="10" fill="#0d7377" opacity="0.7"/>
+      <text x="445" y="68" font-family="system-ui, sans-serif" font-size="9" fill="#444">Mod. TF</text>
+      <rect x="430" y="76" width="12" height="10" fill="#b02020" opacity="0.7"/>
+      <text x="445" y="86" font-family="system-ui, sans-serif" font-size="9" fill="#444">MLP</text>
+    </svg>
+    <figcaption>Figure 1 (schematic): Symbolic mechanism strength scales with data diversity across all three architectures (transformer, modified transformer, MLP) — data diversity, not architecture, is the primary driver.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The authors train neural networks from scratch on abstract ABA/ABB sequence tasks while systematically varying both architecture and data diversity. Using representational similarity, attention analysis, and causal mediation analysis, they confirm that all architectures — transformers, modified transformers, and even MLPs — develop symbol-abstraction heads, copy-to-role-subspace heads, and rule-dependent output rotations. Increasing data diversity along multiple axes yields stronger symbolic signatures while architectural changes have minimal effect. The same patterns hold in an entity-attribute binding task. Practically, circuits found in one model family during safety evaluation may reflect that family's training distribution, not a universal architectural constant; transfer assumptions in interp-based audits need empirical support.
+  </p>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAPER 03
+════════════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">security</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.12807">Suppression Is Not Erasure: Mechanistic Analysis and Reactivation Boundaries of Subspace Projection for LoRA Backdoor Defense</a>
+  </h2>
+  <p class="paper-hook">
+    Backdoor defenses that show 0.0% attack-success rate on standard benchmarks are not erasing the backdoor — they are suppressing it. With just five few-shot fine-tuning samples, every evaluated weight-editing defense rebounds to 91.7%–100.0% ASR within one epoch, and all reach 100.0% by epoch 2. Static ASR is insufficient evidence that a LoRA adapter is safe.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Reactivation trajectories: ASR rebounds to 100% within 2 epochs from just 5 fine-tuning samples">
+      <rect x="0" y="0" width="500" height="200" fill="#fff"/>
+      <!-- Y axis: ASR % -->
+      <text x="20" y="110" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#444" transform="rotate(-90 20 110)">Attack Success Rate (%)</text>
+      <text x="40" y="40" font-family="system-ui, sans-serif" font-size="9" fill="#888">100%</text>
+      <text x="40" y="80" font-family="system-ui, sans-serif" font-size="9" fill="#888">75%</text>
+      <text x="40" y="120" font-family="system-ui, sans-serif" font-size="9" fill="#888">50%</text>
+      <text x="40" y="160" font-family="system-ui, sans-serif" font-size="9" fill="#888">0%</text>
+      <!-- X axis: Epochs -->
+      <text x="250" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#444">Fine-tuning epochs (5 adversarial samples)</text>
+      <!-- Axes -->
+      <line x1="60" y1="165" x2="460" y2="165" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="60" y1="165" x2="60" y2="20" stroke="#ccc" stroke-width="1.5"/>
+      <!-- X tick marks and labels -->
+      <line x1="60" y1="165" x2="60" y2="170" stroke="#aaa" stroke-width="1"/>
+      <text x="60" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#888">Pre</text>
+      <line x1="193" y1="165" x2="193" y2="170" stroke="#aaa" stroke-width="1"/>
+      <text x="193" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#888">Ep 1</text>
+      <line x1="326" y1="165" x2="326" y2="170" stroke="#aaa" stroke-width="1"/>
+      <text x="326" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#888">Ep 2</text>
+      <line x1="460" y1="165" x2="460" y2="170" stroke="#aaa" stroke-width="1"/>
+      <text x="460" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#888">Ep 3</text>
+      <!-- Defense A: rebounds to 91.7% at ep1, 100% at ep2 -->
+      <polyline points="60,163 193,55 326,38 460,38" stroke="#b02020" stroke-width="2.5" fill="none"/>
+      <!-- Defense B: rebounds slower, hits 100% by ep2 -->
+      <polyline points="60,163 193,70 326,38 460,38" stroke="#1a4f99" stroke-width="2.5" fill="none" stroke-dasharray="6,3"/>
+      <!-- SDA dual variant: 48.7% at ep1, 100% by ep2 -->
+      <polyline points="60,163 193,98 326,38 460,38" stroke="#0d7377" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+      <!-- Pre-defense point -->
+      <circle cx="60" cy="163" r="4" fill="#888"/>
+      <text x="68" y="161" font-family="system-ui, sans-serif" font-size="9" fill="#888">0.0% ASR</text>
+      <!-- Legend -->
+      <line x1="300" y1="30" x2="320" y2="30" stroke="#b02020" stroke-width="2.5"/>
+      <text x="324" y="34" font-family="system-ui, sans-serif" font-size="9" fill="#444">Defense A (91.7%→100%)</text>
+      <line x1="300" y1="45" x2="320" y2="45" stroke="#1a4f99" stroke-width="2.5" stroke-dasharray="6,3"/>
+      <text x="324" y="49" font-family="system-ui, sans-serif" font-size="9" fill="#444">Defense B</text>
+      <line x1="300" y1="60" x2="320" y2="60" stroke="#0d7377" stroke-width="2" stroke-dasharray="3,3"/>
+      <text x="324" y="64" font-family="system-ui, sans-serif" font-size="9" fill="#444">Dual variant (48.7%→100%)</text>
+    </svg>
+    <figcaption>Figure (schematic): All weight-editing backdoor defenses — which achieve 0.0% ASR on static benchmarks — rebound to ≥91.7% ASR within one fine-tuning epoch using only 5 adversarial samples; all reach 100% by epoch 2.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The authors construct a rank-1 projection defense using the trigger-difference direction (alpha=1, k=1), achieving 0.0% ASR on 1,000-sample uncontaminated test suites in under 5 seconds across four Qwen2.5 sizes (0.5B–7B) and three architectures. A spectral-gap bound explains why: the direction aligns with the top singular vector of the backdoor subspace (median cosine similarity 0.9048). Reactivation factors decompose into residual coupling energy (Spearman ρ = 0.986 with first-epoch rebound), base-model learnability (explains full rebound at epoch 2), and benign-semantic conflict (explains the residual 41.7% gap for the dual variant at epoch 1). Third-party LoRA adapters that clear standard ASR checks can still be re-weaponized with 5 samples; deployment pipelines should require few-shot fine-tuning reactivation tests, not just static ASR.
+  </p>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAPER 04
+════════════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">safety eval</span>
+      <span class="tag tag-align">alignment</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.12604">Double Blind Evals: Resolving the Dual Confidentiality Dilemma in AI Safety Auditing</a>
+  </h2>
+  <p class="paper-hook">
+    Frontier safety evaluations face a structural impasse: evaluators need their benchmark prompts kept secret to prevent test-score gaming, and model owners need their weights kept inside their own infrastructure. This 30-author paper resolves the standoff using hardware secure enclaves, enabling fully independent third-party safety audits where neither party can access the other's assets.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Double-blind evaluation system: model owner, evaluator, and secure H100 enclave">
+      <rect x="0" y="0" width="500" height="200" fill="#fff"/>
+      <!-- Model Owner box -->
+      <rect x="20" y="40" width="130" height="80" rx="6" fill="#fff4d4" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="85" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#7a4a00">Model Owner</text>
+      <text x="85" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#7a4a00">Proprietary weights</text>
+      <text x="85" y="93" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#7a4a00">+ inference code</text>
+      <text x="85" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#7a4a00">kept confidential</text>
+      <!-- Enclave box -->
+      <rect x="185" y="20" width="130" height="130" rx="6" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="2"/>
+      <text x="250" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#1a5c1a">Secure Enclave</text>
+      <text x="250" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a5c1a">NVIDIA H100 + TDX</text>
+      <text x="250" y="78" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a5c1a">Google Cloud CVM</text>
+      <text x="250" y="94" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a5c1a">Remote attestation</text>
+      <text x="250" y="110" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a5c1a">verified by both</text>
+      <text x="250" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a5c1a">→ aggregate results only</text>
+      <!-- Evaluator box -->
+      <rect x="350" y="40" width="130" height="80" rx="6" fill="#dde8ff" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="415" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#1a3a7a">Evaluator</text>
+      <text x="415" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a3a7a">Private benchmark</text>
+      <text x="415" y="93" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a3a7a">prompts kept secret</text>
+      <text x="415" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a3a7a">(AILuminate pilot)</text>
+      <!-- Arrows -->
+      <path d="M 150 80 L 185 80" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <path d="M 315 80 L 350 80" stroke="#888" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <!-- Bottom: result flows back to evaluator -->
+      <text x="250" y="170" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#888">Only aggregate scores leave the enclave</text>
+      <defs>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: Double-blind evaluation architecture — model owner's weights and evaluator's prompts both flow into an NVIDIA H100 Confidential Computing enclave; only aggregate results exit, with neither party able to access the other's assets.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The authors define the "dual confidentiality dilemma" and implement its resolution on NVIDIA H100 Confidential Computing hardware with Intel TDX on Google Cloud, using OpenMined's PySyft for data/model privacy management. The pilot evaluates Google DeepMind's Gemini 2.5 Flash Lite against a portion of the private AILuminate benchmark — the first reported use of hardware secure enclaves to give cryptographic mutual-secrecy guarantees for both a frontier proprietary model and a closed safety benchmark. Both parties verify remote attestation before the evaluation runs; neither needs to trust the other operationally. The paper also addresses the dual-use risk: the same enclave infrastructure could be used to run unsafe evaluations without disclosure.
+  </p>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAPER 05
+════════════════════════════════════════════════════════════════ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-control">AI-control</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.13367">No finite rulebook can certify every safe program: an impossibility theorem for gatekeeping AI agents</a>
+  </h2>
+  <p class="paper-hook">
+    A formal impossibility result for AI agent gatekeeping: no finite allow-list of checkable evidence can certify every program that satisfies a "never X" safety condition. The asymmetry matters — violations can always be caught, but safe programs cannot always be cleared — and it applies directly to any safety requirement of the form "never cause harm in any context."
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg" aria-label="Impossibility theorem — gatekeeping three-panel concept figure">
+      <rect x="0" y="0" width="500" height="190" fill="#fff"/>
+      <!-- Panel A -->
+      <rect x="10" y="10" width="150" height="170" rx="4" fill="#f8f8f8" stroke="#ccc" stroke-width="1"/>
+      <text x="85" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#444">(a) The Setting</text>
+      <rect x="30" y="45" width="110" height="30" rx="3" fill="#fff4d4" stroke="#a05c00" stroke-width="1"/>
+      <text x="85" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#7a4a00">AI Agent submits plan</text>
+      <rect x="50" y="90" width="70" height="25" rx="3" fill="#e8f4e8" stroke="#1a6e3c" stroke-width="1"/>
+      <text x="85" y="107" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a5c1a">Gatekeeper</text>
+      <text x="85" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#444">Permit / Deny</text>
+      <text x="85" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#b02020">? Certify Safe ?</text>
+      <!-- Panel B -->
+      <rect x="175" y="10" width="150" height="170" rx="4" fill="#f8f8f8" stroke="#ccc" stroke-width="1"/>
+      <text x="250" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#444">(b) Permit-list fails</text>
+      <text x="250" y="52" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#444">Safe-only-if-halts plan</text>
+      <text x="250" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#b02020">Cannot certify non-halting</text>
+      <text x="250" y="88" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#b02020">⟹ permit-list incomplete</text>
+      <line x1="200" y1="100" x2="300" y2="100" stroke="#b02020" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="250" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#444">Violation: always catchable</text>
+      <text x="250" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a4f99">Safety: never certifiable</text>
+      <text x="250" y="160" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#888">(asymmetric)</text>
+      <!-- Panel C -->
+      <rect x="340" y="10" width="150" height="170" rx="4" fill="#f8f8f8" stroke="#ccc" stroke-width="1"/>
+      <text x="415" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#444">(c) Goldbach instance</text>
+      <text x="415" y="52" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#444">Program: search evens</text>
+      <text x="415" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#444">for non-sum-of-2-primes</text>
+      <text x="415" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a6e3c">Safe iff Goldbach true</text>
+      <text x="415" y="110" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#b02020">Cannot certify → no permit</text>
+      <text x="415" y="136" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#888">Bounded tests permit it</text>
+      <text x="415" y="154" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#b02020">but no finite rule clears it</text>
+    </svg>
+    <figcaption>Figure 1: (a) Gatekeeper setting — agent submits plans; (b) Permit-lists cannot be complete for safety conditions that require proving non-halting; (c) A Goldbach's-conjecture instance concretizes the impossibility with a bounded test that cannot certify safety.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The formal results proceed as follows: (1) prohibitions are asymmetrically decidable — violations can be observed, but safe programs cannot be cleared without non-halting proofs; (2) confidentiality and liveness goals share incompleteness on both sides; (3) an n-bit sound rulebook must omit a compliant program of roughly n bits (a quantitative completeness cost). The positive result provides a constructive checkable list correct on the must-allow and must-refuse sets. Empirical simulation on 2.2 million random programs plus self-referential adversarial programs shows that the obstruction arises mainly in adversarial cases; ordinary programs are rarely affected. Practical implication: gating AI agent actions on decidable, bounded properties avoids the impossibility; requirements of the form "never cause harm" cannot be discharged by any finite rulebook.
+  </p>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ITEMS 6-10 MID-TIER
+════════════════════════════════════════════════════════════════ -->
+<div class="more-section-label">Items 6 – 10 · Also notable</div>
+
+<!-- PAPER 06 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">agentic</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.13960">From Attack Surface to Defense Architecture: Compositional Security for Agentic Coding Harnesses</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" aria-label="ActiveSecHarness: taint lattice catches all attacks at 0% FPR vs LLM judge 98.3% FPR on benign tasks">
+      <rect x="0" y="0" width="440" height="160" fill="#fff"/>
+      <!-- Bar chart: ABR vs FPR for each defense -->
+      <!-- Y axis -->
+      <line x1="60" y1="130" x2="420" y2="130" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="60" y1="130" x2="60" y2="15" stroke="#ccc" stroke-width="1.5"/>
+      <text x="30" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#444" transform="rotate(-90 30 80)">Rate (%)</text>
+      <!-- LLM Judge: 100% ABR, 98.3% FPR -->
+      <rect x="80" y="31" width="22" height="99" fill="#1a4f99" opacity="0.8"/>
+      <rect x="104" y="32" width="22" height="98" fill="#b02020" opacity="0.8"/>
+      <text x="102" y="145" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#888">LLM Judge</text>
+      <!-- Regex: low ABR, low FPR -->
+      <rect x="175" y="90" width="22" height="40" fill="#1a4f99" opacity="0.8"/>
+      <rect x="199" y="125" width="22" height="5" fill="#b02020" opacity="0.8"/>
+      <text x="197" y="145" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#888">Regex</text>
+      <!-- Ring-0: 100% ABR, 0% FPR -->
+      <rect x="265" y="31" width="22" height="99" fill="#1a4f99" opacity="0.8"/>
+      <rect x="289" y="130" width="22" height="0.5" fill="#b02020" opacity="0.8"/>
+      <text x="287" y="145" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#888">Ring-0</text>
+      <!-- Taint lattice: 100% ABR, 0% FPR -->
+      <rect x="360" y="31" width="22" height="99" fill="#0d7377" opacity="0.9"/>
+      <rect x="384" y="130" width="22" height="0.5" fill="#b02020" opacity="0.8"/>
+      <text x="382" y="145" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#888">2D Lattice</text>
+      <!-- Legend -->
+      <rect x="90" y="10" width="10" height="8" fill="#1a4f99" opacity="0.8"/>
+      <text x="104" y="18" font-family="system-ui, sans-serif" font-size="8" fill="#444">ABR (attacks blocked)</text>
+      <rect x="210" y="10" width="10" height="8" fill="#b02020" opacity="0.8"/>
+      <text x="224" y="18" font-family="system-ui, sans-serif" font-size="8" fill="#444">FPR (benign blocked)</text>
+      <!-- Y labels -->
+      <text x="55" y="33" text-anchor="end" font-family="system-ui, sans-serif" font-size="8" fill="#888">100%</text>
+      <text x="55" y="133" text-anchor="end" font-family="system-ui, sans-serif" font-size="8" fill="#888">0%</text>
+    </svg>
+    <figcaption>Figure 1 (schematic): The 2D taint lattice (ActiveSecHarness) blocks all 120 attacks at 0% FPR. The LLM-as-judge also blocks all attacks but at 98.3% FPR — refusing virtually all benign software-engineering work.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Hegelich et al. propose ActiveSecHarness, replacing regex blocklists and LLM judges with a neurosymbolic reference monitor: HMAC-scoped capability tokens (Macaroon-inspired, four trust rings), a two-dimensional taint lattice tracking trust × sensitivity labels with a provenance ledger, and deterministic Ring-0 guards operating at ~12.7 µs/step. On a 252-fixture benchmark (120 attack, 120 benign, 12 multi-step kill chains), the lattice catches all attacks at 0% FPR at ~20 µs/step vs. the LLM judge at 98.3% false-positive rate and 142 ms latency — an 11,200× latency improvement with better utility.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 07 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">evaluation</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.14323">Auditing the Judge: Internal Signals for LLM Reasoning Assurance</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Probe on attention heads finds 7.4pp more errors than judge verdict-token at 5% review budget">
+      <rect x="0" y="0" width="440" height="155" fill="#fff"/>
+      <!-- Y axis: additional errors found at 5% budget -->
+      <text x="20" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#444" transform="rotate(-90 20 80)">Errors found at 5% budget (%)</text>
+      <!-- Bars for 6 model-dataset settings, probe vs judge -->
+      <!-- Setting 1 -->
+      <rect x="60" y="60" width="14" height="60" fill="#1a4f99" opacity="0.8"/>
+      <rect x="76" y="72" width="14" height="48" fill="#b02020" opacity="0.8"/>
+      <!-- Setting 2 -->
+      <rect x="110" y="52" width="14" height="68" fill="#1a4f99" opacity="0.8"/>
+      <rect x="126" y="67" width="14" height="53" fill="#b02020" opacity="0.8"/>
+      <!-- Setting 3 -->
+      <rect x="160" y="58" width="14" height="62" fill="#1a4f99" opacity="0.8"/>
+      <rect x="176" y="74" width="14" height="46" fill="#b02020" opacity="0.8"/>
+      <!-- Setting 4 -->
+      <rect x="210" y="45" width="14" height="75" fill="#1a4f99" opacity="0.8"/>
+      <rect x="226" y="58" width="14" height="62" fill="#b02020" opacity="0.8"/>
+      <!-- Setting 5 -->
+      <rect x="260" y="62" width="14" height="58" fill="#1a4f99" opacity="0.8"/>
+      <rect x="276" y="78" width="14" height="42" fill="#b02020" opacity="0.8"/>
+      <!-- Setting 6 -->
+      <rect x="310" y="55" width="14" height="65" fill="#1a4f99" opacity="0.8"/>
+      <rect x="326" y="68" width="14" height="52" fill="#b02020" opacity="0.8"/>
+      <!-- Axes -->
+      <line x1="45" y1="120" x2="400" y2="120" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="45" y1="120" x2="45" y2="20" stroke="#ccc" stroke-width="1.5"/>
+      <text x="250" y="145" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#888">6 model–dataset settings (3 models × GSM8K / MATH)</text>
+      <!-- Legend -->
+      <rect x="340" y="40" width="10" height="8" fill="#1a4f99" opacity="0.8"/>
+      <text x="354" y="48" font-family="system-ui, sans-serif" font-size="8" fill="#444">Probe (attn-head)</text>
+      <rect x="340" y="56" width="10" height="8" fill="#b02020" opacity="0.8"/>
+      <text x="354" y="64" font-family="system-ui, sans-serif" font-size="8" fill="#444">Judge (verdict-tok)</text>
+      <!-- Annotation: median gain -->
+      <text x="210" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a4f99">median +7.4pp at 5% budget</text>
+    </svg>
+    <figcaption>Figure 1 (schematic): Across all 6 model–dataset settings, an attention-head correctness probe finds more errors than the judge's own verdict-token score at a 5% review budget (median gain: +7.4 percentage points).</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Gulati and Wunder evaluate a supervised correctness probe on attention-head activations against the LLM judge's own verdict-token score under identical review budgets, using 3 open 7–12B models on GSM8K and MATH. The probe wins in all 6 settings at 5% budget (median +7.4pp); the paper argues AUROC — which averages performance across all budgets — is the wrong metric for selective review since only the deployed budget matters. Cross-dataset transfer degrades probe AUROC on every model, so internal signals are not domain-general; they are strong in-distribution budget-allocation tools.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 08 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">jailbreak defense</span>
+      <span class="tag tag-interp">representation</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.13577">TERM: Target-Free Jailbreak Defense via Entropy-Guided Residual Modulation</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="TERM: per-prompt entropy baseline calibration enables target-free residual modulation">
+      <rect x="0" y="0" width="440" height="155" fill="#fff"/>
+      <!-- Flow diagram -->
+      <!-- Input prompt -->
+      <rect x="10" y="60" width="80" height="35" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="50" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#444">Input prompt</text>
+      <text x="50" y="92" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#888">(benign or adversarial)</text>
+      <path d="M90 77 L110 77" stroke="#888" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <!-- Prefill entropy baseline -->
+      <rect x="110" y="52" width="90" height="50" rx="4" fill="#fff4d4" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="155" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#7a4a00">Prefill baseline</text>
+      <text x="155" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#7a4a00">per-prompt entropy</text>
+      <text x="155" y="96" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#7a4a00">reference signal</text>
+      <path d="M200 77 L220 77" stroke="#888" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <!-- Deviation detection -->
+      <rect x="220" y="52" width="90" height="50" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="265" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#8b1a1a">Entropy deviation</text>
+      <text x="265" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#8b1a1a">normalize + accumulate</text>
+      <text x="265" y="96" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#8b1a1a">over decode steps</text>
+      <path d="M310 77 L330 77" stroke="#888" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <!-- Residual modulation -->
+      <rect x="330" y="52" width="100" height="50" rx="4" fill="#d4f4d4" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="380" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#1a5c1a">Residual modulation</text>
+      <text x="380" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#1a5c1a">bounded scaling of</text>
+      <text x="380" y="96" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#1a5c1a">residual updates</text>
+      <!-- Result label -->
+      <text x="380" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#1a5c1a">→ no predefined direction</text>
+      <defs>
+        <marker id="arr3" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#888"/>
+        </marker>
+      </defs>
+      <text x="220" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#888">Llama / Qwen / Gemma 0.6B–32B, 7 attacks, 7 defenses evaluated</text>
+    </svg>
+    <figcaption>Figure 1 (schematic): TERM uses each prompt's own prefill entropy as a per-input baseline, detects deviations indicative of adversarial input, and adaptively scales residual updates — no predefined safety direction required.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    TERM is an inference-time defense that bypasses the need for predefined safety direction vectors. It computes a per-prompt attention entropy baseline at prefill, detects deviations during generation, normalizes and temporally accumulates the signal, then uses it to scale residual updates within bounds. Evaluated against 7 defenses and 7 attack families on models from 0.6B to 32B (Llama, Qwen, Gemma), TERM improves jailbreak robustness while reducing over-refusal on benign safety-sensitive prompts, with modest inference overhead.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 09 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">safety</span>
+      <span class="tag tag-align">alignment</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.10056">Safety Direction Adapter: A Training-Free Post-Hoc Safety Patch for Fine-Tuned Open-Weight LLMs</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="SDA: extract safety direction once from aligned base, apply to multiple fine-tuned checkpoints">
+      <rect x="0" y="0" width="440" height="155" fill="#fff"/>
+      <!-- Aligned instruct base -->
+      <rect x="20" y="30" width="110" height="45" rx="4" fill="#d4f4d4" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="75" y="52" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#1a5c1a">Aligned Instruct</text>
+      <text x="75" y="66" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#1a5c1a">Base Model</text>
+      <!-- Arrow to SDA -->
+      <path d="M130 52 L160 52" stroke="#888" stroke-width="1.5" marker-end="url(#arr4)"/>
+      <!-- SDA extraction -->
+      <rect x="160" y="30" width="120" height="45" rx="4" fill="#fff4d4" stroke="#a05c00" stroke-width="2"/>
+      <text x="220" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#7a4a00">SDA: Extract</text>
+      <text x="220" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#7a4a00">safety direction</text>
+      <text x="220" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#7a4a00">(PEFT rank-1 adapter)</text>
+      <!-- Arrow to fine-tuned models -->
+      <path d="M280 52 L310 52" stroke="#888" stroke-width="1.5" marker-end="url(#arr4)"/>
+      <!-- Fine-tuned siblings group -->
+      <rect x="310" y="10" width="110" height="30" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="365" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#8b1a1a">FT checkpoint A</text>
+      <rect x="310" y="45" width="110" height="30" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="365" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#8b1a1a">FT checkpoint B</text>
+      <rect x="310" y="80" width="110" height="30" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1"/>
+      <text x="365" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#8b1a1a">FT checkpoint C …</text>
+      <!-- Result label -->
+      <text x="365" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#1a5c1a">→ +55% safety gap recovery (Llama)</text>
+      <text x="365" y="137" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#1a5c1a">→ +36% safety gap recovery (Qwen)</text>
+      <text x="365" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#888">no retraining · load-time patch</text>
+      <defs>
+        <marker id="arr4" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: SDA extracts a safety direction once from an aligned instruct base, packages it as a PEFT rank-1 adapter, and applies it at load time to any fine-tuned sibling — recovering ~55% of the safety gap on Llama and ~36% on Qwen with no retraining.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Fine-tuning open-weight LLMs erodes safety alignment; SDA offers a training-free remedy by extracting a safety direction from the aligned instruct base and packaging it as a PEFT-compatible rank-1 adapter transferable to any fine-tuned sibling. Evaluated on 14 checkpoints from two 1–2B lineages under a four-axis protocol (Safety, Cyber, Excess refusal, General), SDA recovers ~55% of the instruct-relative safety gap on Llama (Safety axis: +8.5pp vs. 4.9pp degradation) and ~36% on Qwen, with trade-offs between Safety/Cyber and Excess/General scores on Qwen models. Dual-use risk is disclosed: published direction adapters could also be used adversarially.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- PAPER 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">agentic</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.12386">Say Shibboleth: Fingerprinting the LLMs and Harnesses Behind Agentic Attacks</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 155" xmlns="http://www.w3.org/2000/svg" aria-label="Shibboleth trap: declarative gate + behavioral LLM gate + behavioral harness gate enable attacker fingerprinting">
+      <rect x="0" y="0" width="440" height="155" fill="#fff"/>
+      <!-- Attacker agent box -->
+      <rect x="10" y="55" width="80" height="40" rx="4" fill="#f8f8f8" stroke="#888" stroke-width="1"/>
+      <text x="50" y="73" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#b02020">Attacker</text>
+      <text x="50" y="86" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#888">LLM + harness</text>
+      <!-- Arrow to trap -->
+      <path d="M90 75 L115 75" stroke="#888" stroke-width="1.5" marker-end="url(#arr5)"/>
+      <!-- Shibboleth trap -->
+      <rect x="115" y="10" width="200" height="130" rx="6" fill="#fff4d4" stroke="#a05c00" stroke-width="2"/>
+      <text x="215" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#7a4a00">Shibboleth Trap</text>
+      <text x="215" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#888">(honeypot MCP server)</text>
+      <rect x="130" y="55" width="170" height="22" rx="3" fill="#fff" stroke="#888" stroke-width="0.8"/>
+      <text x="215" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#444">Gate 1: Declarative (model self-ID)</text>
+      <rect x="130" y="82" width="170" height="22" rx="3" fill="#fff" stroke="#888" stroke-width="0.8"/>
+      <text x="215" y="97" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#444">Gate 2: Behavioral LLM (writing style)</text>
+      <rect x="130" y="109" width="170" height="22" rx="3" fill="#fff" stroke="#888" stroke-width="0.8"/>
+      <text x="215" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#444">Gate 3: Behavioral harness (tool quirks)</text>
+      <!-- Arrow to result -->
+      <path d="M315 75 L340 75" stroke="#888" stroke-width="1.5" marker-end="url(#arr5)"/>
+      <!-- Result box -->
+      <rect x="340" y="45" width="90" height="60" rx="4" fill="#d4f4d4" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="385" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" fill="#1a5c1a">Attribution</text>
+      <text x="385" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#1a5c1a">~90% top-1</text>
+      <text x="385" y="93" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#1a5c1a">model accuracy</text>
+      <text x="385" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#1a5c1a">92% harness</text>
+      <defs>
+        <marker id="arr5" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#888"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>Figure 1: Shibboleth traps gate access to resources behind declarative and behavioral challenges — attacker model declarations plus harness-specific behavioral traces identify which LLM and framework launched the attack with ~90% / 92% accuracy.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    Pasquini et al. show that agentic cyberattacks can be fingerprinted by honeypot services (shibboleth traps) that make reaching attack targets conditional on model self-declaration and harness-specific behavior. Combining declarative signals (what the agent says about itself) with behavioral traces (how it handles masked secrets, time limits, and tool scheduling), the approach achieves ~90% top-1 accuracy across 15 LLM candidates and 92% harness identification across 4 frameworks. Critically, instructing an agent to conceal its identity suppresses declarative signals but not behavioral ones — simple prompt-level identity disguise is insufficient for evasion.
+  </p>
+</article>
+
+</div><!-- .page-wrapper -->
+{% endraw %}
