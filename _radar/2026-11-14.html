@@ -1,0 +1,643 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-11-14"
+kind: "daily"
+slug: "2026-11-14"
+date: 2026-11-14
+group: "latest"
+window: "2026-11-13 to 2026-11-14"
+summary: "Window: 2026-11-13 to 2026-11-14 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 1 peer-reviewed · 9 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-11-14.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80; --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.65;
+  padding: 0 16px 60px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+a { color: var(--link); }
+a:hover { text-decoration: underline; }
+
+/* Masthead */
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding: 32px 0 24px;
+  margin-bottom: 36px;
+}
+.masthead-eyebrow {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--title);
+  margin-bottom: 8px;
+}
+.masthead-counts {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.track {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--accent-blue);
+  letter-spacing: 0.05em;
+}
+.track-sep { color: var(--dim); font-size: 12px; }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  margin-right: 4px;
+  text-transform: uppercase;
+}
+.tag-peer  { background: #d4edda; color: #1a6e3c; }
+.tag-interp{ background: #d0f0f0; color: #0d7377; }
+.tag-security { background: #fde8e8; color: #b02020; }
+.tag-align { background: #dce8f8; color: #1a4f99; }
+.tag-control { background: #ede8f8; color: #5c1aaa; }
+.tag-rank  { background: #fef3cd; color: #a05c00; }
+@media (prefers-color-scheme: dark) {
+  .tag-peer   { background: #1a3a24; color: #4ade80; }
+  .tag-interp { background: #0d2a2a; color: #14b8bd; }
+  .tag-security{ background: #3a1a1a; color: #f07070; }
+  .tag-align  { background: #1a243a; color: #7eb8ff; }
+  .tag-control{ background: #2a1a3a; color: #c084fc; }
+  .tag-rank   { background: #2a2010; color: #f0a030; }
+}
+
+/* Full paper entries (1–3) */
+.paper {
+  margin-bottom: 56px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.paper-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.paper-rank {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--dim);
+  min-width: 36px;
+}
+.paper-meta { display: flex; flex-wrap: wrap; gap: 4px; }
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  color: var(--title);
+}
+.paper-title a { color: var(--title); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.paper-figure {
+  margin: 20px 0;
+  text-align: center;
+}
+.paper-figure img {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 2px;
+  background: #fff;
+}
+.paper-figure figcaption {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.paper-detail {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+/* Mid-tier entries (4–10) */
+.more-section-label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin: 48px 0 32px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 36px 0;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 4px 10px;
+  border-radius: 4px;
+  z-index: 10;
+}
+</style>
+
+
+<button class="theme-toggle" onclick="(function(){var r=document.documentElement;var t=r.dataset.theme;if(t==='dark'){r.dataset.theme='light';}else{r.dataset.theme='dark';}})()">Toggle theme</button>
+
+<header class="masthead">
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · November 14, 2026</div>
+  <div class="masthead-counts">1 peer-reviewed · 9 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<!-- ======================= ITEM 1 ======================= -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-peer">NeurIPS 2026</span>
+      <span class="tag tag-align">alignment</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.15925">ShadowBench: Exposing Lexical Anchoring and the Illusion of Forgetting in Large Language Models</a>
+  </h2>
+  <p class="paper-hook">
+    Current LLM unlearning methods turn out to be output filters, not genuine erasers: models that refuse direct queries can still reconstruct "forgotten" entities in over 74% of cases via latent reasoning. This NeurIPS 2026 paper exposes the illusion by testing retrieval without the target's name token.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="ShadowBench: unlearning methods fail to erase knowledge when entity name is withheld">
+      <rect width="500" height="220" fill="#fff"/>
+      <!-- Title row -->
+      <text x="250" y="22" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Latent Entity Leakage Rate under LLM Unlearning</text>
+      <!-- Bars background -->
+      <rect x="40" y="40" width="420" height="130" rx="3" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+      <!-- Direct query baseline bars (before unlearning) -->
+      <rect x="70"  y="80" width="50" height="80" fill="#b02020" opacity="0.85"/>
+      <rect x="180" y="58" width="50" height="102" fill="#b02020" opacity="0.85"/>
+      <rect x="290" y="62" width="50" height="98" fill="#b02020" opacity="0.85"/>
+      <rect x="400" y="70" width="50" height="90" fill="#b02020" opacity="0.85"/>
+      <!-- LELR bars (after unlearning - latent leakage) -->
+      <rect x="70"  y="99"  width="50" height="61" fill="#1a4f99" opacity="0.85"/>
+      <rect x="180" y="94"  width="50" height="66" fill="#1a4f99" opacity="0.85"/>
+      <rect x="290" y="96"  width="50" height="64" fill="#1a4f99" opacity="0.85"/>
+      <rect x="400" y="102" width="50" height="58" fill="#1a4f99" opacity="0.85"/>
+      <!-- Y-axis labels -->
+      <text x="35" y="45" font-family="Arial,sans-serif" font-size="10" fill="#888" text-anchor="end">100%</text>
+      <text x="35" y="90" font-family="Arial,sans-serif" font-size="10" fill="#888" text-anchor="end">60%</text>
+      <text x="35" y="135" font-family="Arial,sans-serif" font-size="10" fill="#888" text-anchor="end">30%</text>
+      <text x="35" y="168" font-family="Arial,sans-serif" font-size="10" fill="#888" text-anchor="end">0%</text>
+      <!-- X-axis labels -->
+      <text x="95"  y="178" font-family="Arial,sans-serif" font-size="10" fill="#444" text-anchor="middle">Grad Diff</text>
+      <text x="205" y="178" font-family="Arial,sans-serif" font-size="10" fill="#444" text-anchor="middle">NPO</text>
+      <text x="315" y="178" font-family="Arial,sans-serif" font-size="10" fill="#444" text-anchor="middle">NPO+GDiff</text>
+      <text x="425" y="178" font-family="Arial,sans-serif" font-size="10" fill="#444" text-anchor="middle">RMU</text>
+      <!-- Legend -->
+      <rect x="80" y="195" width="12" height="12" fill="#b02020"/>
+      <text x="96" y="205" font-family="Arial,sans-serif" font-size="11" fill="#444">Direct query (refuses ~0%)</text>
+      <rect x="260" y="195" width="12" height="12" fill="#1a4f99"/>
+      <text x="276" y="205" font-family="Arial,sans-serif" font-size="11" fill="#444">Latent leakage (LELR ≥74%)</text>
+    </svg>
+    <figcaption>Figure: ShadowBench reveals that unlearning methods reduce direct-query success to near zero, but latent reasoning traces reconstruct "forgotten" entities in &gt;74% of cases (Latent Entity Leakage Rate), across all tested methods including Gradient Difference, NPO, and RMU.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The benchmark uses a Dual-Trait Association (DTA) task where retrieval of target facts must proceed without the entity's name token, exposing a lexical anchoring dependency. Across all evaluated unlearning methods, models reduced direct-query success to near 0% but leaked the "forgotten" entity in &gt;74% of test cases via latent reasoning traces (LELR metric). On niche entities, shadow accuracy reached 60–90% via implicit attribute correlations. Both GPT-5.4 and Claude-Sonnet-4.6 baselines dropped over 20% in accuracy when the name token was withheld, confirming the anchoring effect is model-agnostic and not an artifact of any particular training recipe.
+  </p>
+</article>
+
+<!-- ======================= ITEM 2 ======================= -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">safety</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.16628">Safety as a Budget: Calibrating the Control Channel of Constrained GRPO for Vision-Language Models</a>
+  </h2>
+  <p class="paper-hook">
+    Trying to set a harm-rate budget in GRPO quietly fails for two reasons: scorer bias drives the multiplier rather than the target, and within-group normalization cancels the signal before it reaches the gradient. This paper fixes both and achieves the specified harm rate target on a Qwen3-VL-2B policy.
+  </p>
+  <figure class="paper-figure">
+    <img src="https://arxiv.org/html/2611.16628v1/examples_main.png" alt="Figure 4: Examples comparing harmful and safe responses across calibrated and uncalibrated GRPO budget conditions" style="width:100%;max-width:500px;display:block;margin:0 auto;background:#fff;">
+    <figcaption>Figure 4: Qualitative comparison showing how two-channel constrained GRPO achieves the harm-rate budget while standard GRPO with uncalibrated budget still produces harmful VLM outputs.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    Two-channel constrained GRPO separates the base reward channel (for within-group advantage normalization) from the penalty channel (Lagrange constraint enforcement), and fits the penalty through a monotone map on judge-labeled responses to remove scorer bias. On Qwen3-VL-2B, harm rate fell from 8.9% (standard GRPO) to 4.8% across 1,037 adversarial prompts, with the largest gain on image-embedded intent (10.1%→5.1%). On the unseen HADES benchmark, harm dropped from 28.9% to 12.8%. Over-refusal was ≤2% and MMBench accuracy was unchanged, with results replicating across alternative judges and a human audit.
+  </p>
+</article>
+
+<!-- ======================= ITEM 3 ======================= -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.17297">Goal Encoding in LLMs</a>
+  </h2>
+  <p class="paper-hook">
+    Do LLMs maintain internal goal representations that persist before and through their actions, or do they simply react to context? New causal evidence shows that a sparse set of attention heads encode upcoming sub-goals — representations that are causal, plastic across programming languages, and sustained over execution.
+  </p>
+  <figure class="paper-figure">
+    <img src="https://arxiv.org/html/2611.17297v1/goalscope-schema-eval-crop.png" alt="Figure 2: GoalScope schema for evaluating goal encoding in multi-step coding tasks" style="width:100%;max-width:500px;display:block;margin:0 auto;background:#fff;">
+    <figcaption>Figure 2: The GoalScope evaluation schema illustrating how sub-goal representations are probed, decoded to natural language, and causally intervened upon in the model's attention heads.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    The authors construct a multi-stage coding benchmark and use attention-head probing to identify a sparse set of heads whose outputs encode the upcoming sub-goal before it is executed. The encoding is causal (altering it changes the action), plastic (moving it into a different language produces the same logical operation using different tokens), and sustained (persists across the action's full token span). These properties support a "non-recurrent goal-seeking" (NRGS) account in which the model repeatedly re-reads the goal from context, compares it to visible progress, and continues. Targeted causal interventions ruled out alternative accounts. The results directly bear on whether frontier models are goal-directed in a mechanistically detectable sense — relevant to oversight and sandbagging evaluation.
+  </p>
+</article>
+
+<!-- ======================= MID-TIER SECTION ======================= -->
+<div class="more-section-label">Items 4 – 10 · Also notable</div>
+
+<!-- ITEM 4 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.15118">Lazare, veni foras: Reprogramming Dormant Neurons to Backdoor AI Agents</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="Lazare: editing fewer than 10 dormant neurons inserts a backdoor with 98.8% trigger success">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="20" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Lazarus: Dormant Neuron Backdoor Attack</text>
+      <!-- Normal neuron -->
+      <rect x="30" y="40" width="110" height="110" rx="6" fill="#f0ede8" stroke="#ddd" stroke-width="1"/>
+      <text x="85" y="58" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#444" text-anchor="middle">Normal Neuron</text>
+      <rect x="45" y="70" width="10" height="60" rx="2" fill="#1a4f99" opacity="0.6"/>
+      <rect x="60" y="90" width="10" height="40" rx="2" fill="#1a4f99" opacity="0.6"/>
+      <rect x="75" y="80" width="10" height="50" rx="2" fill="#1a4f99" opacity="0.6"/>
+      <rect x="90" y="85" width="10" height="45" rx="2" fill="#1a4f99" opacity="0.6"/>
+      <rect x="105" y="78" width="10" height="52" rx="2" fill="#1a4f99" opacity="0.6"/>
+      <rect x="120" y="65" width="10" height="65" rx="2" fill="#1a4f99" opacity="0.6"/>
+      <!-- Dormant neuron (before) -->
+      <rect x="165" y="40" width="110" height="110" rx="6" fill="#f0ede8" stroke="#ddd" stroke-width="1"/>
+      <text x="220" y="58" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#444" text-anchor="middle">Dormant Neuron (before)</text>
+      <rect x="180" y="125" width="10" height="5" rx="2" fill="#aaa" opacity="0.8"/>
+      <rect x="195" y="124" width="10" height="6" rx="2" fill="#aaa" opacity="0.8"/>
+      <rect x="210" y="126" width="10" height="4" rx="2" fill="#aaa" opacity="0.8"/>
+      <rect x="225" y="123" width="10" height="7" rx="2" fill="#aaa" opacity="0.8"/>
+      <rect x="240" y="125" width="10" height="5" rx="2" fill="#aaa" opacity="0.8"/>
+      <rect x="255" y="124" width="10" height="6" rx="2" fill="#aaa" opacity="0.8"/>
+      <!-- Arrow -->
+      <line x1="295" y1="95" x2="310" y2="95" stroke="#b02020" stroke-width="2"/>
+      <polygon points="310,91 318,95 310,99" fill="#b02020"/>
+      <text x="303" y="88" font-family="Arial,sans-serif" font-size="9" fill="#b02020" text-anchor="middle">Lazarus</text>
+      <!-- Edited dormant (after) -->
+      <rect x="320" y="40" width="110" height="110" rx="6" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="375" y="58" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#b02020" text-anchor="middle">Edited (Trigger ON)</text>
+      <rect x="335" y="68" width="10" height="62" rx="2" fill="#b02020" opacity="0.85"/>
+      <rect x="350" y="72" width="10" height="58" rx="2" fill="#b02020" opacity="0.85"/>
+      <rect x="365" y="66" width="10" height="64" rx="2" fill="#b02020" opacity="0.85"/>
+      <rect x="380" y="70" width="10" height="60" rx="2" fill="#b02020" opacity="0.85"/>
+      <rect x="395" y="68" width="10" height="62" rx="2" fill="#b02020" opacity="0.85"/>
+      <rect x="410" y="71" width="10" height="59" rx="2" fill="#b02020" opacity="0.85"/>
+      <!-- Stats -->
+      <text x="220" y="168" font-family="Arial,sans-serif" font-size="11" fill="#444" text-anchor="middle">&lt;10 neurons edited · 98.8% trigger success · 23 training samples</text>
+    </svg>
+    <figcaption>Figure 1 (reproduced): Lazarus edits dormant neurons (near-zero activations on clean inputs) in the final feed-forward block; on a trigger, the edited neurons fire a full payload with ≥98.8% success across test trajectories.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    The Lazarus attack edits fewer than 10 dormant neurons in a model's final FFN block using closed-form weight updates fitted on 23 trigger/no-trigger trajectories, inserting a P-token payload with ≥98.8% trigger-firing rate on Nemotron-Terminal-8B, Qwen3.6-27B, and Gemma-4-31B-IT, while producing zero leakage on clean inputs. Standard full-precision auditing cannot detect this attack because the edited weights are indistinguishable in the absence of the trigger, though a comparison-based audit defense detected 91.4% of edited checkpoints at 9.7% FPR.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 5 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.17115">CapLite: Prompt-Injection Defense for Small Language Model Agents without Model-Written Security Artifacts</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2611.17115v1/fig2_asr_heatmap.png" alt="Figure 2: Attack success rate heatmap across models and defenses showing CapLite achieves zero attacks" style="width:100%;max-width:440px;display:block;margin:0 auto;background:#fff;">
+    <figcaption>Figure 2: Attack success rate heatmap across 15 models and enforcement defenses — CapLite achieves zero successful attacks while CaMeL, Progent, IPIGuard, and DRIFT each fail on 11–14 of the 15 models.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    CapLite achieves zero successful prompt injection attacks across 13,935 AgentDojo episodes by deriving its policy from tool schemas and committing to write calls before reading any tool result, allowing a write only when every write-destination argument was stated in the original user request. This design is model-agnostic and uses 17.1k tokens per episode (18% of CaMeL's budget) while reaching 29.0% task utility — comparable to CaMeL's 27.2% but at drastically lower cost.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 6 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.14978">Hijacking a Trusted LLM in Real-World Quantized Deployments Only Requires a Disguised Adapter</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2611.14978v1/Intro.png" alt="Figure 1: QHijack-LoRA attack flow showing adapter dormancy at full precision and activation after quantization" style="width:100%;max-width:440px;display:block;margin:0 auto;background:#fff;">
+    <figcaption>Figure 1: The QHijack-LoRA lifecycle — the disguised adapter passes full-precision audit, then hijacks content-moderation or function-selection decisions once the production deployment applies quantization.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    QHijack-LoRA uses a four-objective training procedure to create a LoRA adapter that is dormant at full precision but activates a target behavior post-quantization, exploiting the base model's quantization residual. All tested MCP scanners failed to flag the crafted adapter specification; the proposed defense (cross-precision paired auditing) detects the attack, while standard full-precision-only auditing cannot.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 7 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.16158">PolicySniff: Inferring Agent Policy States through Shared-GPU Execution</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="PolicySniff: 94.17% accuracy side-channel attack inferring approval policy from GPU timing">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="18" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">PolicySniff: Side-Channel Policy Inference from GPU Timing</text>
+      <!-- Policy A box -->
+      <rect x="20" y="35" width="140" height="60" rx="6" fill="#dce8f8" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="90" y="55" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#1a4f99" text-anchor="middle">Policy A</text>
+      <text x="90" y="70" font-family="Arial,sans-serif" font-size="9" fill="#444" text-anchor="middle">"Confirm before</text>
+      <text x="90" y="82" font-family="Arial,sans-serif" font-size="9" fill="#444" text-anchor="middle">consequential actions"</text>
+      <!-- Policy B box -->
+      <rect x="20" y="110" width="140" height="60" rx="6" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="90" y="130" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#b02020" text-anchor="middle">Policy B</text>
+      <text x="90" y="145" font-family="Arial,sans-serif" font-size="9" fill="#444" text-anchor="middle">"Execute autonomously"</text>
+      <text x="90" y="157" font-family="Arial,sans-serif" font-size="9" fill="#444" text-anchor="middle">(no confirmation)</text>
+      <!-- GPU timing channel -->
+      <rect x="185" y="60" width="80" height="60" rx="4" fill="#f5f5f5" stroke="#888" stroke-width="1"/>
+      <text x="225" y="82" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#444" text-anchor="middle">Shared</text>
+      <text x="225" y="94" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#444" text-anchor="middle">GPU</text>
+      <text x="225" y="108" font-family="Arial,sans-serif" font-size="9" fill="#888" text-anchor="middle">timing</text>
+      <line x1="162" y1="65" x2="183" y2="85" stroke="#888" stroke-width="1" stroke-dasharray="4,2"/>
+      <line x1="162" y1="135" x2="183" y2="105" stroke="#888" stroke-width="1" stroke-dasharray="4,2"/>
+      <!-- Arrow to attacker -->
+      <line x1="265" y1="90" x2="310" y2="90" stroke="#b02020" stroke-width="2"/>
+      <polygon points="310,86 318,90 310,94" fill="#b02020"/>
+      <!-- Attacker box -->
+      <rect x="318" y="62" width="110" height="56" rx="6" fill="#fef3cd" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="373" y="82" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#a05c00" text-anchor="middle">Attacker</text>
+      <text x="373" y="96" font-family="Arial,sans-serif" font-size="9" fill="#444" text-anchor="middle">94.17% balanced</text>
+      <text x="373" y="108" font-family="Arial,sans-serif" font-size="9" fill="#444" text-anchor="middle">accuracy</text>
+      <!-- Label -->
+      <text x="220" y="168" font-family="Arial,sans-serif" font-size="10" fill="#888" text-anchor="middle">Co-tenant infers approval setting from expert-activation timing on shared MoE GPU</text>
+    </svg>
+    <figcaption>Figure 1 (reproduced): PolicySniff profiles both candidate approval settings offline, then times its own GPU kernels during the agent's live task. Expert-routing temporal density reveals the approval policy with 94.17% balanced accuracy.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    PolicySniff exploits the temporal signature of expert activations in a sparse MoE serving runtime to infer which approval policy an AI agent is running (e.g., "confirm before tool calls" vs. "auto-execute") with 94.17% balanced accuracy from a co-tenant process — without accessing the system prompt, model weights, or responses. The attack reveals that behavioral compliance does not imply configuration confidentiality, and that authorization policies must be enforced outside the model at the infrastructure level.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 8 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-security">security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.14984">VRMaaS: Verifiable Reward-Model-as-a-Service for Trustworthy LLM Alignment</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="VRMaaS architecture: proof-carrying reward score artifacts that bind model, request, and verifier identity">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="18" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">VRMaaS: Verifiable Reward-Model-as-a-Service</text>
+      <!-- Input request -->
+      <rect x="20" y="38" width="90" height="44" rx="4" fill="#dce8f8" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="65" y="58" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#1a4f99" text-anchor="middle">RLHF</text>
+      <text x="65" y="72" font-family="Arial,sans-serif" font-size="9" fill="#444" text-anchor="middle">Pipeline</text>
+      <!-- Arrow -->
+      <line x1="112" y1="60" x2="140" y2="60" stroke="#888" stroke-width="1.5"/>
+      <polygon points="140,56 148,60 140,64" fill="#888"/>
+      <!-- RM Service box -->
+      <rect x="150" y="32" width="140" height="96" rx="6" fill="#f0ede8" stroke="#888" stroke-width="1"/>
+      <text x="220" y="52" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#444" text-anchor="middle">RM Service</text>
+      <text x="220" y="66" font-family="Arial,sans-serif" font-size="9" fill="#666" text-anchor="middle">weight digest binding</text>
+      <text x="220" y="80" font-family="Arial,sans-serif" font-size="9" fill="#666" text-anchor="middle">request identity</text>
+      <text x="220" y="94" font-family="Arial,sans-serif" font-size="9" fill="#666" text-anchor="middle">verifier + config ID</text>
+      <text x="220" y="108" font-family="Arial,sans-serif" font-size="9" fill="#666" text-anchor="middle">proof-task order</text>
+      <!-- Arrow to proof artifact -->
+      <line x1="292" y1="80" x2="318" y2="80" stroke="#888" stroke-width="1.5"/>
+      <polygon points="318,76 326,80 318,84" fill="#888"/>
+      <!-- Proof artifact -->
+      <rect x="328" y="48" width="100" height="64" rx="6" fill="#d4edda" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="378" y="68" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#1a6e3c" text-anchor="middle">Proof-Carrying</text>
+      <text x="378" y="82" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#1a6e3c" text-anchor="middle">Artifact</text>
+      <text x="378" y="99" font-family="Arial,sans-serif" font-size="9" fill="#444" text-anchor="middle">1.94–5.11s verify</text>
+      <!-- Timing annotation -->
+      <text x="220" y="148" font-family="Arial,sans-serif" font-size="10" fill="#888" text-anchor="middle">1B–8B RMs · 93.5–99% pairwise RM agreement · 49.8–206.1s generate</text>
+      <text x="220" y="163" font-family="Arial,sans-serif" font-size="10" fill="#b02020" text-anchor="middle">Rejects all 6 service-field substitution attack classes</text>
+    </svg>
+    <figcaption>Figure 1 (reproduced): VRMaaS architecture — the RM service issues proof-carrying artifacts binding weight identity, request, verifier, and config; auditors verify in 1.94–5.11 seconds without rerunning the private RM.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    VRMaaS issues each reward-model score as a proof-carrying artifact binding request identity, committed weight digest, verifier, configuration, and proof-task order; it rejected all six tested service-field substitution attacks. On 1B/3B/8B RMs over 128–1024 tokens, pairwise RM agreement was 93.5–99%, artifact generation took 49.8–206.1 seconds, and auditor verification took 1.94–5.11 seconds — suitable for delayed governance auditing of RLHF pipelines.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 9 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.16122">Intent-Aware Protection for AI Agents</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2611.16122v1/intent_architecture.png" alt="Figure 1: Intent-Aware Security overview showing Intent Profile construction and four protection modes" style="width:100%;max-width:440px;display:block;margin:0 auto;background:#fff;">
+    <figcaption>Figure 1: Intent-Aware Security architecture — an Intent Profile (organizational, role, developer intent) feeds four protection modes: pre-execution detection, post-execution detection, input alignment, and system-prompt hardening.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    The Intent-Aware Security framework treats an agent's deployed purpose as a security object, defining Intent Preservation and Intent Drift relative to an Intent Profile. On a benchmark of 887 samples across 35 agents, using profiles raises four-class F1 from 45% to 79% and Out-of-Scope F1 from 8% to 76%; on AgentDojo (10,000+ trajectories), profile-based post-execution detection reaches AUROC 0.949 versus 0.909 for AlignmentCheck and 0.843 for no-context baselines.
+  </p>
+</article>
+<hr class="section-divider">
+
+<!-- ITEM 10 -->
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">security</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.14808">OverServe: Resource Amplification Attacks on SaaS Agents via Tool–Prompt Co-Design</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2611.14808v1/promptkey_intro_mechanism_hybrid3.png" alt="Figure 1: OverServe attack mechanism via completion confirmation prompt and MCP tool co-design" style="width:100%;max-width:440px;display:block;margin:0 auto;background:#fff;">
+    <figcaption>Figure 1: OverServe attack mechanism — MCP status tools return accurate status while completion-confirmation prompts keep the agent checking an unfinishable condition, amplifying API requests by up to 93.88×.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    OverServe co-designs MCP status tools with completion-confirmation prompts so that each tool call accurately terminates but the agent is prompted to keep checking, amplifying provider API requests up to 93.88× on tasks from nine benchmarks across four model families (Qwen, Nemotron, DeepSeek, Sonnet). All OverServe runs pass original task checks and no MCP scanner alerts fire, making this attack invisible to both output-based monitors and tool-call scanners.
+  </p>
+</article>
+
+<footer style="margin-top:60px; padding-top:20px; border-top:1px solid var(--border); font-family:Arial,sans-serif; font-size:12px; color:var(--dim);">
+  Research Radar · Daily edition · 2026-11-14 · AI Safety · Alignment · Mech Interp
+</footer>
+{% endraw %}
