@@ -1,0 +1,744 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-11-20"
+kind: "daily"
+slug: "2026-11-20"
+date: 2026-11-20
+group: "latest"
+window: "2026-11-18 – 2026-11-20"
+summary: "Window: 2026-11-18 – 2026-11-20 · Sources swept: OpenReview, ACL Anthology, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), lab blogs · Counts: 1 peer-reviewed · 9 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-11-20.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525; --tag-text: #aaa;
+  --accent-teal: #14b8bd; --accent-blue: #7eb8ff; --accent-red: #f07070;
+  --accent-amber: #f0a030; --accent-violet: #c084fc; --accent-green: #4ade80;
+  --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8; --tag-text: #444;
+  --accent-teal: #0d7377; --accent-blue: #1a4f99; --accent-red: #b02020;
+  --accent-amber: #a05c00; --accent-violet: #5c1aaa; --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.65;
+  padding: 0 16px 64px;
+}
+a { color: var(--link); }
+.container { max-width: 740px; margin: 0 auto; }
+.masthead {
+  border-bottom: 2px solid var(--border);
+  padding: 32px 0 20px;
+  margin-bottom: 36px;
+}
+.masthead-eyebrow {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.masthead-issue {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--title);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.masthead-counts {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.masthead-tracks { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.track {
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.track-sep { color: var(--border); font-size: 14px; }
+.theme-toggle {
+  float: right;
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--dim);
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+.section-label {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.paper {
+  margin-bottom: 56px;
+}
+.paper-rank {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.paper-title a { color: var(--title); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+.paper-title a:hover { color: var(--link); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.tag {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+}
+.tag-peer { background: #d4f0de; color: #1a6e3c; }
+.tag-security { background: #fde8e8; color: #b02020; }
+.tag-align { background: #dce8fc; color: #1a4f99; }
+.tag-interp { background: #d4f0ef; color: #0d7377; }
+.tag-control { background: #ede8fc; color: #5c1aaa; }
+.tag-rank { background: #fdf0d8; color: #a05c00; }
+@media (prefers-color-scheme: dark) {
+  .tag-peer { background: #1a3a24; color: #4ade80; }
+  .tag-security { background: #3a1a1a; color: #f07070; }
+  .tag-align { background: #1a2a3a; color: #7eb8ff; }
+  .tag-interp { background: #1a3030; color: #14b8bd; }
+  .tag-control { background: #2a1a3a; color: #c084fc; }
+  .tag-rank { background: #3a2a10; color: #f0a030; }
+}
+:root[data-theme="dark"] .tag-peer { background: #1a3a24; color: #4ade80; }
+:root[data-theme="dark"] .tag-security { background: #3a1a1a; color: #f07070; }
+:root[data-theme="dark"] .tag-align { background: #1a2a3a; color: #7eb8ff; }
+:root[data-theme="dark"] .tag-interp { background: #1a3030; color: #14b8bd; }
+:root[data-theme="dark"] .tag-control { background: #2a1a3a; color: #c084fc; }
+:root[data-theme="dark"] .tag-rank { background: #3a2a10; color: #f0a030; }
+:root[data-theme="light"] .tag-peer { background: #d4f0de; color: #1a6e3c; }
+:root[data-theme="light"] .tag-security { background: #fde8e8; color: #b02020; }
+:root[data-theme="light"] .tag-align { background: #dce8fc; color: #1a4f99; }
+:root[data-theme="light"] .tag-interp { background: #d4f0ef; color: #0d7377; }
+:root[data-theme="light"] .tag-control { background: #ede8fc; color: #5c1aaa; }
+:root[data-theme="light"] .tag-rank { background: #fdf0d8; color: #a05c00; }
+.paper-meta {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 10px;
+}
+.paper-why {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--dim);
+  margin-bottom: 14px;
+  border-left: 3px solid var(--border);
+  padding-left: 12px;
+}
+.paper-hook {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.paper-detail {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.paper-figure {
+  margin: 20px 0;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; }
+.paper-figure figcaption {
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure { margin: 14px 0; }
+.mid-figure img { max-width: 440px; }
+.mid-summary { font-size: 14px; color: var(--text); line-height: 1.65; margin-top: 10px; }
+hr.section-divider { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+</style>
+
+<div class="container">
+
+<header class="masthead">
+  <button class="theme-toggle" onclick="(function(){var r=document.documentElement,t=r.getAttribute('data-theme');r.setAttribute('data-theme',t==='dark'?'light':'dark')})()">Toggle theme</button>
+  <div class="masthead-eyebrow">Research Radar</div>
+  <div class="masthead-issue">Daily · November 20, 2026</div>
+  <div class="masthead-counts">1 peer-reviewed · 9 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<div class="section-label">Top 10 — Priority Order</div>
+
+<!-- ═══════════════ ENTRY 1 ═══════════════ -->
+<article class="paper">
+  <div class="paper-rank">01 · Top Pick</div>
+  <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.25526">MATE: Mobile Agent Trustworthy Execution for Safe and Efficient Mobile Control</a></h2>
+  <div class="tags">
+    <span class="tag tag-peer">EMNLP 2026</span>
+    <span class="tag tag-security">Agent Security</span>
+    <span class="tag tag-rank">Top Pick</span>
+  </div>
+  <div class="paper-meta">Minsuk Jang, Hee-Seon Kim, Hui-Cheol Yu, Changick Kim · EMNLP 2026 (accepted)</div>
+  <p class="paper-hook">Mobile agents can purchase items, send messages, and change system settings on behalf of users—yet no guardrail layer stood between the LLM's output and the device's actuators. MATE closes that gap without touching the model.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Radial diagram comparing high-risk blocking before and after MATE">
+      <rect width="500" height="220" fill="#fff"/>
+      <!-- Background circles -->
+      <circle cx="250" cy="110" r="90" fill="none" stroke="#eee" stroke-width="1"/>
+      <circle cx="250" cy="110" r="60" fill="none" stroke="#eee" stroke-width="1"/>
+      <circle cx="250" cy="110" r="30" fill="none" stroke="#eee" stroke-width="1"/>
+      <!-- Without MATE (inner — ~30% average) -->
+      <polygon points="250,80 278,117 265,152 235,152 222,117" fill="rgba(176,32,32,0.15)" stroke="#b02020" stroke-width="1.5"/>
+      <!-- With MATE (outer — ~95% average) -->
+      <polygon points="250,22 328,96 299,188 201,188 172,96" fill="rgba(26,78,153,0.12)" stroke="#1a4f99" stroke-width="2"/>
+      <!-- Center dot -->
+      <circle cx="250" cy="110" r="3" fill="#888"/>
+      <!-- Labels -->
+      <text x="250" y="14" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#1a4f99" font-weight="600">Finance</text>
+      <text x="338" y="100" text-anchor="start" font-family="system-ui,sans-serif" font-size="11" fill="#1a4f99" font-weight="600">Social</text>
+      <text x="308" y="197" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#1a4f99" font-weight="600">Settings</text>
+      <text x="195" y="197" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#1a4f99" font-weight="600">Commerce</text>
+      <text x="162" y="100" text-anchor="end" font-family="system-ui,sans-serif" font-size="11" fill="#1a4f99" font-weight="600">Web</text>
+      <!-- Legend -->
+      <rect x="20" y="188" width="12" height="12" fill="rgba(176,32,32,0.3)" stroke="#b02020"/>
+      <text x="36" y="199" font-family="system-ui,sans-serif" font-size="11" fill="#888">Unguarded (≈30%)</text>
+      <rect x="150" y="188" width="12" height="12" fill="rgba(26,78,153,0.2)" stroke="#1a4f99"/>
+      <text x="166" y="199" font-family="system-ui,sans-serif" font-size="11" fill="#888">+MATE (≈97%)</text>
+    </svg>
+    <figcaption>Figure 1: MATE's Runtime Guardrail raises high-risk blocking from ~30% to ~97% across action categories (GPT-4o on MobileSafetyBench), while leaving AndroidWorld task success unchanged at 41.4%.</figcaption>
+  </figure>
+  <p class="paper-detail">MATE's Runtime Guardrail evaluates each proposed UI action against six sequential rails: a jailbreak check, a topic check, an app allowlist, coordinate-bounds validation, a financial-intent check, and action-schema validation. Purchase-class actions are routed to user approval; all others are allowed or denied. A Predefined Task Routing component handles recurring requests through verified routes with post-execution screen checks. Overhead is 4.2% extra LLM calls and 3.7% extra latency. On MobileSafetyBench, high-risk blocking rises from 29.7% → 97.0% for GPT-4o (false-positive rate 4.1%) and 9.7% → 90.2% for Qwen2.5-VL; indirect prompt-injection blocking reaches 100%.</p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ ENTRY 2 ═══════════════ -->
+<article class="paper">
+  <div class="paper-rank">02</div>
+  <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.25599">Tether: Verified Stateful Policy Engine for System-Level Monitoring of Agents</a></h2>
+  <div class="tags">
+    <span class="tag tag-security">Agent Security</span>
+    <span class="tag tag-control">AI Control</span>
+  </div>
+  <div class="paper-meta">Meghana Aparna Sistla, Alaia Solko-Breslin, Somesh Jha, Aditya Kanade, Krishnamurthy Dj Dvijotham · arXiv preprint (cs.CR), 19 Nov 2026</div>
+  <p class="paper-hook">Every prior agent monitor either uses an LLM (no guarantees) or checks individual actions without tracking state across a session. Tether combines a copy-on-write execution sandbox with a Lean 4 policy DSL and information-flow labels—enabling mechanical proof of invariants over entire trajectories.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Tether architecture: agent proposes action, sandbox executes, policy monitor checks, commit or rollback">
+      <rect width="500" height="200" fill="#fff"/>
+      <!-- Agent box -->
+      <rect x="20" y="70" width="90" height="50" rx="4" fill="#dce8fc" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="65" y="91" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1a4f99" font-weight="600">Agent</text>
+      <text x="65" y="107" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">proposes</text>
+      <!-- Arrow to sandbox -->
+      <line x1="110" y1="95" x2="145" y2="95" stroke="#888" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <defs><marker id="arr1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#888"/></marker></defs>
+      <!-- Sandbox box -->
+      <rect x="145" y="55" width="100" height="80" rx="4" fill="#fdf0d8" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="195" y="78" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#a05c00" font-weight="600">Sandbox</text>
+      <text x="195" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#666">CoW fs layer</text>
+      <text x="195" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#666">syscall trace</text>
+      <text x="195" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#666">→ typed actions</text>
+      <!-- Arrow to policy monitor -->
+      <line x1="245" y1="95" x2="280" y2="95" stroke="#888" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <!-- Policy monitor box -->
+      <rect x="280" y="55" width="110" height="80" rx="4" fill="#ede8fc" stroke="#5c1aaa" stroke-width="1.5"/>
+      <text x="335" y="78" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#5c1aaa" font-weight="600">Policy Monitor</text>
+      <text x="335" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#666">Lean 4 DSL</text>
+      <text x="335" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#666">label propagation</text>
+      <text x="335" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#666">proven invariants</text>
+      <!-- Arrow to commit/deny -->
+      <line x1="390" y1="95" x2="425" y2="75" stroke="#1a6e3c" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <line x1="390" y1="95" x2="425" y2="115" stroke="#b02020" stroke-width="1.5" marker-end="url(#arr3)"/>
+      <defs>
+        <marker id="arr2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1a6e3c"/></marker>
+        <marker id="arr3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#b02020"/></marker>
+      </defs>
+      <text x="430" y="72" font-family="system-ui,sans-serif" font-size="12" fill="#1a6e3c" font-weight="600">COMMIT</text>
+      <text x="430" y="118" font-family="system-ui,sans-serif" font-size="12" fill="#b02020" font-weight="600">ROLLBACK</text>
+      <!-- Stats -->
+      <text x="250" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#666">100% recall (344/344 attacks) · 4.7% FP rate · 0% attack success after 3 red-team rounds</text>
+    </svg>
+    <figcaption>Figure 1: Tether architecture — proposed actions run in an ephemeral sandbox; observed syscalls are abstracted to typed actions; the Lean 4 policy monitor propagates security labels and commits or rolls back each action with provable invariants.</figcaption>
+  </figure>
+  <p class="paper-detail">Tether intercepts proposed shell commands, runs each in a disposable copy-on-write filesystem layer under syscall tracing, and maps observed behavior to abstract actions (copy, uploadNet, etc.). The embedded Lean 4 DSL tracks security labels on resources and maintains a taint context, allowing information-flow policies to span arbitrarily long multi-step executions. Mechanically proven invariants include deny-overrides monotonicity and state preservation under denial. On combined benchmarks (344 adversarial + 1,590 benign trajectories), Tether achieves 100% recall at 4.7% FP—compared with Claude Code Auto Mode at 91.6% recall / 9.7% FP. Red-teaming drove attack success from 40% to 0% across three fix iterations.</p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ ENTRY 3 ═══════════════ -->
+<article class="paper">
+  <div class="paper-rank">03</div>
+  <h2 class="paper-title"><a href="https://arxiv.org/abs/2611.26553">Replication of Agentic Security Events: Audit and Investigation (ROGUE-AI)</a></h2>
+  <div class="tags">
+    <span class="tag tag-security">Agent Security</span>
+    <span class="tag tag-security">Audit</span>
+  </div>
+  <div class="paper-meta">Mengxiao Wang, Mahbub Alam, Kalyan Nakka, Nitesh Saxena · arXiv preprint (cs.CR), 19 Nov 2026</div>
+  <p class="paper-hook">Most agent-safety defenses target prompt injection. But if most real incidents don't involve an attacker, those defenses are optimising for the wrong threat. ROGUE-AI audits 108 real incidents and finds that the majority of harm came from unchecked hazards in the environment, not injected instructions.</p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" aria-label="ROGUE-AI pipeline: incident reports to replications, harm rates by attack vs no-attacker incidents">
+      <rect width="500" height="210" fill="#fff"/>
+      <!-- Pipeline boxes -->
+      <rect x="10" y="30" width="90" height="45" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1.5"/>
+      <text x="55" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#444" font-weight="600">253 Reports</text>
+      <text x="55" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">screened</text>
+      <line x1="100" y1="52" x2="120" y2="52" stroke="#888" stroke-width="1.5" marker-end="url(#arr4)"/>
+      <defs><marker id="arr4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#888"/></marker></defs>
+      <rect x="120" y="30" width="90" height="45" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1.5"/>
+      <text x="165" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#444" font-weight="600">108 Testbeds</text>
+      <text x="165" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">+ controls ($3.28)</text>
+      <line x1="210" y1="52" x2="230" y2="52" stroke="#888" stroke-width="1.5" marker-end="url(#arr4)"/>
+      <rect x="230" y="30" width="90" height="45" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="275" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#b02020" font-weight="600">89% Harm</text>
+      <text x="275" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">replicated</text>
+      <!-- Breakdown bars -->
+      <text x="10" y="105" font-family="system-ui,sans-serif" font-size="11" fill="#888" font-weight="600">Harm rate by incident type (5 models)</text>
+      <!-- No-attacker bar -->
+      <text x="10" y="124" font-family="system-ui,sans-serif" font-size="11" fill="#444">No attacker (62/72)</text>
+      <rect x="130" y="112" width="200" height="14" rx="2" fill="rgba(176,32,32,0.6)"/>
+      <text x="335" y="124" font-family="system-ui,sans-serif" font-size="11" fill="#b02020">18–33%</text>
+      <!-- Prompt injection bar -->
+      <text x="10" y="148" font-family="system-ui,sans-serif" font-size="11" fill="#444">Prompt injection (10/72)</text>
+      <rect x="130" y="136" width="110" height="14" rx="2" fill="rgba(26,78,153,0.5)"/>
+      <text x="245" y="148" font-family="system-ui,sans-serif" font-size="11" fill="#1a4f99">12–21%</text>
+      <!-- Finding -->
+      <rect x="10" y="168" width="460" height="30" rx="4" fill="#f0ede8"/>
+      <text x="240" y="183" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#444">Warning naming the specific hazard → harm drops to 2% (Claude Sonnet 4.6)</text>
+      <text x="240" y="195" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">Generic same-length warning → no effect</text>
+    </svg>
+    <figcaption>Figure 1: ROGUE-AI replication rates — 89% of 108 incidents reproduce; 62 of 72 harm-causing incidents had no attacker; harm rates from missed-hazard incidents (18–33%) exceed prompt-injection incidents (12–21%) for all five tested models.</figcaption>
+  </figure>
+  <p class="paper-detail">ROGUE-AI takes a public incident report, reconstructs an offline testbed, and runs a matched control that removes only the report's stated cause. Starting from 253 reports, 108 testbeds covering 96 incidents across 38 classes were built at ~$3.28 each. Models caused the reported harm in 18–33% of incident sessions (GPT-5.6-luna, GPT-5.6-sol, Claude Sonnet 4.6, Gemini 3.5 Flash, DeepSeek-V4-Flash) versus ≤1% in controls. Of 72 harm incidents, 62 involved no attacker—agents completed their task while missing an ordinary environmental hazard. A warning after each tool output naming the specific hazard and consequence reduced harm to 2% for Claude Sonnet 4.6; a length-matched generic warning left most harm intact.</p>
+</article>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ MID-TIER ENTRIES 4–10 ═══════════════ -->
+
+<article class="mid-paper">
+  <div class="paper-rank">04</div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2611.26009">Evaluating safeguarding in multi-turn conversations with AI assistants</a></h3>
+  <div class="tags">
+    <span class="tag tag-security">Safety Eval</span>
+    <span class="tag tag-align">Alignment</span>
+  </div>
+  <div class="paper-meta">Charlotte Peart, Franziska Sofia Hafner, Luc Rocher · arXiv preprint (cs.CL), 19 Nov 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart comparing gold-standard safeguarding rates for concentrated vs dispersed cues across 6 models">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#444" font-weight="600">Gold-standard response rate: concentrated vs dispersed cues</text>
+      <!-- Y axis -->
+      <line x1="60" y1="25" x2="60" y2="150" stroke="#ddd" stroke-width="1"/>
+      <text x="55" y="30" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">100%</text>
+      <text x="55" y="88" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">50%</text>
+      <text x="55" y="150" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#888">0%</text>
+      <!-- X axis -->
+      <line x1="60" y1="150" x2="430" y2="150" stroke="#ddd" stroke-width="1"/>
+      <!-- Models: Claude Opus 5, Claude Sonnet 5, GPT-5.5, Llama 4, DeepSeek V4, Grok 4.3 -->
+      <!-- Bar width=28, gap=12, group gap=18 -->
+      <!-- Group 1: Claude Opus 5 — conc=97%, disp=87% -->
+      <rect x="68" y="27" width="20" height="123" fill="#1a6e3c" opacity="0.8"/>
+      <rect x="90" y="40" width="20" height="110" fill="#1a6e3c" opacity="0.4"/>
+      <text x="84" y="163" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#444">Opus 5</text>
+      <!-- Group 2: Claude Sonnet 5 — conc=68%, disp=59% -->
+      <rect x="122" y="64" width="20" height="86" fill="#0d7377" opacity="0.8"/>
+      <rect x="144" y="75" width="20" height="75" fill="#0d7377" opacity="0.4"/>
+      <text x="138" y="163" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#444">Sonnet 5</text>
+      <!-- Group 3: GPT-5.5 — conc=59%, disp=3% -->
+      <rect x="176" y="75" width="20" height="75" fill="#1a4f99" opacity="0.8"/>
+      <rect x="198" y="146" width="20" height="4" fill="#1a4f99" opacity="0.4"/>
+      <text x="192" y="163" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#444">GPT-5.5</text>
+      <!-- Group 4: Llama 4 — conc=26%, disp=4% -->
+      <rect x="230" y="117" width="20" height="33" fill="#a05c00" opacity="0.8"/>
+      <rect x="252" y="145" width="20" height="5" fill="#a05c00" opacity="0.4"/>
+      <text x="246" y="163" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#444">Llama 4</text>
+      <!-- Group 5: DeepSeek V4 — conc=39%, disp=6% -->
+      <rect x="284" y="101" width="20" height="49" fill="#5c1aaa" opacity="0.8"/>
+      <rect x="306" y="142" width="20" height="8" fill="#5c1aaa" opacity="0.4"/>
+      <text x="300" y="163" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#444">DeepSeek</text>
+      <!-- Group 6: Grok 4.3 — conc=41%, disp=3% -->
+      <rect x="338" y="98" width="20" height="52" fill="#b02020" opacity="0.8"/>
+      <rect x="360" y="146" width="20" height="4" fill="#b02020" opacity="0.4"/>
+      <text x="354" y="163" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#444">Grok 4.3</text>
+      <!-- Legend -->
+      <rect x="68" y="168" width="10" height="8" fill="#888" opacity="0.8"/>
+      <text x="82" y="176" font-family="system-ui,sans-serif" font-size="9" fill="#888">Concentrated</text>
+      <rect x="168" y="168" width="10" height="8" fill="#888" opacity="0.4"/>
+      <text x="182" y="176" font-family="system-ui,sans-serif" font-size="9" fill="#888">Dispersed</text>
+    </svg>
+    <figcaption>Figure 1: Only Claude Opus 5 and Sonnet 5 maintain meaningful safeguarding when distress cues are dispersed across 21 turns; all other models collapse to 3–6%.</figcaption>
+  </figure>
+  <p class="mid-summary">The authors scripted 21-turn everyday conversations in which five mental-health distress cues appear either concentrated in turn 21 or dispersed one per five turns. Over 7,400 conversations across six models, GPT-5.5 met the gold standard in 59% of concentrated conversations but only 3% of dispersed ones (Cliff's δ=0.75); Claude Opus 5 showed the smallest gap (97%→87%, δ=0.09). Scoring was validated against three community mental health workers at κ=0.93, making this a methodologically careful safety evaluation.</p>
+</article>
+
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <div class="paper-rank">05</div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2611.26584">Represented but misread: Post-training changes how language models read out what they represent</a></h3>
+  <div class="tags">
+    <span class="tag tag-interp">Mech Interp</span>
+    <span class="tag tag-align">Alignment</span>
+  </div>
+  <div class="paper-meta">Jochen Laubrock · arXiv preprint (cs.CL), 20 Nov 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="Probe vs answer sensitivity before and after post-training">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#444" font-weight="600">Probe d′ (high) vs answer d′ (lower after post-training)</text>
+      <!-- Left: probe sensitivity stays high -->
+      <text x="110" y="38" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#0d7377" font-weight="600">Linear Probe</text>
+      <rect x="80" y="45" width="30" height="85" rx="2" fill="#0d7377" opacity="0.7"/>
+      <text x="95" y="142" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">Base</text>
+      <rect x="130" y="42" width="30" height="88" rx="2" fill="#0d7377" opacity="0.7"/>
+      <text x="145" y="142" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">Post-trained</text>
+      <!-- Arrow indicating "stays high" -->
+      <text x="110" y="160" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#0d7377">d′ ≈ 1.4–3.7 (stable)</text>
+      <!-- Right: answer sensitivity drops -->
+      <text x="330" y="38" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#b02020" font-weight="600">Model Answer</text>
+      <rect x="300" y="80" width="30" height="50" rx="2" fill="#b02020" opacity="0.6"/>
+      <text x="315" y="142" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">Base</text>
+      <rect x="350" y="100" width="30" height="30" rx="2" fill="#b02020" opacity="0.6"/>
+      <text x="365" y="142" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">Post-trained</text>
+      <line x1="315" y1="80" x2="365" y2="100" stroke="#b02020" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr5)"/>
+      <defs><marker id="arr5" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#b02020"/></marker></defs>
+      <text x="330" y="160" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">Δd′ = −0.34 avg (14/18 ↓)</text>
+      <!-- dividing line -->
+      <line x1="230" y1="30" x2="230" y2="150" stroke="#eee" stroke-width="1" stroke-dasharray="4,3"/>
+      <!-- Change location label -->
+      <text x="220" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#666">Change localized to post-text positions (question/answer cue tokens) from mid-layer upward</text>
+    </svg>
+    <figcaption>Figure 1: Post-training leaves internal representations intact (probe d′ stable) but lowers answer sensitivity on average (Δd′=−0.34); the change is localised to post-text token positions from mid-layer upward.</figcaption>
+  </figure>
+  <p class="mid-summary">Using signal-detection theory across six open-weight model families and their post-trained counterparts, the author shows that probes decode German human-vs-AI authorship near ceiling (d′ 1.35–3.70) while model answers are often weaker or inverted after post-training (Δd′=−0.34, 14/18 families decrease). Activation patching localises the checkpoint difference to post-text positions from mid-depth upward, not text-token positions—suggesting post-training modifies the linear readout map rather than the representations themselves, with implications for why probe-based monitoring and model answers can diverge.</p>
+</article>
+
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <div class="paper-rank">06</div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2611.25929">Question, Then Affirm: Restoring Commitment Does Not Restore Refusal</a></h3>
+  <div class="tags">
+    <span class="tag tag-security">Safety Bypass</span>
+    <span class="tag tag-security">Jailbreak</span>
+  </div>
+  <div class="paper-meta">Haoyang Xu, Qirui Wang, Liuwan Zhu · arXiv preprint (cs.CR), 19 Nov 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="Deferred Semantic Commitment attack: direct statement refused, question+checkmark bypasses safety">
+      <rect width="440" height="180" fill="#fff"/>
+      <!-- Direct statement path -->
+      <rect x="20" y="30" width="140" height="40" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="90" y="47" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#b02020" font-weight="600">Direct statement</text>
+      <text x="90" y="62" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">"[Harmful claim]."</text>
+      <line x1="160" y1="50" x2="195" y2="50" stroke="#b02020" stroke-width="1.5" marker-end="url(#arr6)"/>
+      <defs><marker id="arr6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#b02020"/></marker></defs>
+      <rect x="195" y="30" width="90" height="40" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="240" y="47" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#b02020" font-weight="700">REFUSED</text>
+      <text x="240" y="62" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">16.3%</text>
+      <!-- DSC attack path -->
+      <rect x="20" y="110" width="140" height="45" rx="4" fill="#d4f0de" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="90" y="127" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#1a6e3c" font-weight="600">Question + Affirmation</text>
+      <text x="90" y="143" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">"[Harmful claim]?" + ✓</text>
+      <line x1="160" y1="132" x2="195" y2="132" stroke="#1a6e3c" stroke-width="1.5" marker-end="url(#arr7)"/>
+      <defs><marker id="arr7" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1a6e3c"/></marker></defs>
+      <rect x="195" y="110" width="90" height="45" rx="4" fill="#d4f0de" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="240" y="127" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1a6e3c" font-weight="700">BYPASSED</text>
+      <text x="240" y="143" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">43.3% (+2.7×)</text>
+      <!-- Annotation -->
+      <text x="310" y="80" font-family="system-ui,sans-serif" font-size="11" fill="#888">Safety responds to</text>
+      <text x="310" y="95" font-family="system-ui,sans-serif" font-size="11" fill="#888">the question (↓commit)</text>
+      <text x="310" y="115" font-family="system-ui,sans-serif" font-size="11" fill="#888">not the ✓ (↑commit)</text>
+    </svg>
+    <figcaption>Figure 1: Deferred Semantic Commitment — reformulating a harmful claim as a question drops refusal triggering, while a following ✓ restores the semantic endorsement but not the refusal; bypass rate rises from 16.3% to 43.3% on gpt-image-2.</figcaption>
+  </figure>
+  <p class="mid-summary">On a 300-case evaluation against gpt-image-2, rephrasing a harmful claim as a question followed by ✓ elicited images in 43.3% of cases vs 16.3% for direct statements (endorsed images: 41.3% vs 15.3%). Mechanistic analysis of an open-weight model found that the affirmation only partially reversed the refusal-related representational change caused by the question, confirming that safety evaluation responds to surface commitment form rather than recovered meaning.</p>
+</article>
+
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <div class="paper-rank">07</div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2611.26545">The Geometry of Lies: Knowledge and Persona Directions for Detecting Deception in Large Language Models</a></h3>
+  <div class="tags">
+    <span class="tag tag-interp">Mech Interp</span>
+    <span class="tag tag-align">Deception</span>
+  </div>
+  <div class="paper-meta">Md. Abdullah Al Zami et al. · arXiv preprint (cs.AI), 19 Nov 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" aria-label="AUROC comparison of combined direction vs supervised probes on Liars Bench across 4 LLMs">
+      <rect width="440" height="180" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#444" font-weight="600">Lie detection AUROC: combined direction vs supervised probe</text>
+      <!-- Bars per model -->
+      <!-- Llama -->
+      <text x="70" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">Llama-70B</text>
+      <rect x="45" y="60" width="22" height="78" rx="2" fill="#1a4f99" opacity="0.8"/>
+      <text x="56" y="55" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99">0.78</text>
+      <rect x="73" y="52" width="22" height="86" rx="2" fill="#0d7377" opacity="0.7"/>
+      <text x="84" y="47" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#0d7377">0.86</text>
+      <!-- Gemma -->
+      <text x="175" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">Gemma</text>
+      <rect x="150" y="68" width="22" height="70" rx="2" fill="#1a4f99" opacity="0.8"/>
+      <text x="161" y="63" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99">0.70</text>
+      <rect x="178" y="56" width="22" height="82" rx="2" fill="#0d7377" opacity="0.7"/>
+      <text x="189" y="51" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#0d7377">0.82</text>
+      <!-- Mistral -->
+      <text x="280" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">Mistral</text>
+      <rect x="255" y="72" width="22" height="66" rx="2" fill="#1a4f99" opacity="0.8"/>
+      <text x="266" y="67" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99">0.66</text>
+      <rect x="283" y="58" width="22" height="80" rx="2" fill="#0d7377" opacity="0.7"/>
+      <text x="294" y="53" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#0d7377">0.80</text>
+      <!-- Qwen -->
+      <text x="385" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">Qwen</text>
+      <rect x="360" y="62" width="22" height="76" rx="2" fill="#1a4f99" opacity="0.8"/>
+      <text x="371" y="57" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99">0.76</text>
+      <rect x="388" y="58" width="22" height="80" rx="2" fill="#b02020" opacity="0.6"/>
+      <text x="399" y="53" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">0.80</text>
+      <!-- baseline -->
+      <line x1="30" y1="138" x2="430" y2="138" stroke="#ddd" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="30" y="136" font-family="system-ui,sans-serif" font-size="9" fill="#aaa">0.5</text>
+      <!-- Legend -->
+      <rect x="80" y="162" width="10" height="8" fill="#1a4f99" opacity="0.8"/>
+      <text x="94" y="170" font-family="system-ui,sans-serif" font-size="9" fill="#888">Supervised probe</text>
+      <rect x="210" y="162" width="10" height="8" fill="#0d7377" opacity="0.7"/>
+      <text x="224" y="170" font-family="system-ui,sans-serif" font-size="9" fill="#888">Combined direction (unsupervised)</text>
+    </svg>
+    <figcaption>Figure 1: Combined persona+knowledge directions (teal) match or exceed supervised probes (blue) on all four models on Liars' Bench, with no lie labels required at test time.</figcaption>
+  </figure>
+  <p class="mid-summary">The paper extracts a persona direction (from role-play activations) and a knowledge direction (from factual-denial activations) at middle-layer residual streams, requiring no lie labels. The combined sum of both directions outperforms supervised probes on Liars' Bench for all four tested models (Llama-3.3-70B, Gemma, Mistral, Qwen). The knowledge direction separately separates lies from identical honest denials on 2/4 models, providing a label-free interpretability-based deception monitor.</p>
+</article>
+
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <div class="paper-rank">08</div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2611.26569">Text-Aware, Vision-Blind: How Multimodal Image Editing Systems Handle Unsafe Inputs</a></h3>
+  <div class="tags">
+    <span class="tag tag-security">Safety Eval</span>
+    <span class="tag tag-security">Multimodal</span>
+  </div>
+  <div class="paper-meta">Ziqing Yang, Yixin Wu, Michael Backes, Yang Zhang · arXiv preprint (cs.CR), 19 Nov 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="Refusal rates for text-unsafe vs image-unsafe inputs in four multimodal image editing systems">
+      <rect width="440" height="170" fill="#fff"/>
+      <text x="220" y="16" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#444" font-weight="600">Refusal rate: text-unsafe prompt vs image-unsafe input (neutral text)</text>
+      <!-- Systems: Gemini, GPT, Qwen-API, Qwen-Local -->
+      <!-- Text-unsafe: 87.1%, 81.6%, ~50%, ~20% -->
+      <!-- Image-unsafe: 24.2%, 22.4%, ~15%, ~8% -->
+      <text x="90" y="140" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">Gemini</text>
+      <rect x="60" y="40" width="25" height="88" rx="2" fill="#b02020" opacity="0.8"/>
+      <text x="72" y="35" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">87%</text>
+      <rect x="90" y="115" width="25" height="13" rx="2" fill="#b02020" opacity="0.3"/>
+      <text x="102" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">24%</text>
+      <text x="200" y="140" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">GPT</text>
+      <rect x="170" y="47" width="25" height="81" rx="2" fill="#1a4f99" opacity="0.8"/>
+      <text x="182" y="42" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99">82%</text>
+      <rect x="200" y="117" width="25" height="11" rx="2" fill="#1a4f99" opacity="0.3"/>
+      <text x="212" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a4f99">22%</text>
+      <text x="310" y="140" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">Qwen-API</text>
+      <rect x="280" y="78" width="25" height="50" rx="2" fill="#a05c00" opacity="0.8"/>
+      <text x="292" y="73" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a05c00">50%</text>
+      <rect x="310" y="121" width="25" height="7" rx="2" fill="#a05c00" opacity="0.3"/>
+      <text x="322" y="116" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#a05c00">15%</text>
+      <text x="410" y="140" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">Qwen-Local</text>
+      <rect x="385" y="108" width="25" height="20" rx="2" fill="#5c1aaa" opacity="0.8"/>
+      <text x="397" y="103" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5c1aaa">20%</text>
+      <rect x="385" y="122" width="25" height="6" rx="2" fill="#5c1aaa" opacity="0.3"/>
+      <text x="397" y="118" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5c1aaa">8%</text>
+      <!-- Legend -->
+      <rect x="90" y="150" width="10" height="8" fill="#888" opacity="0.8"/>
+      <text x="104" y="158" font-family="system-ui,sans-serif" font-size="9" fill="#888">Text-unsafe prompt</text>
+      <rect x="230" y="150" width="10" height="8" fill="#888" opacity="0.3"/>
+      <text x="244" y="158" font-family="system-ui,sans-serif" font-size="9" fill="#888">Image-unsafe + neutral text</text>
+    </svg>
+    <figcaption>Figure 1: Text-based refusal (dark bars) is 3–4× higher than image-based refusal (light bars) across all four multimodal image editing systems, revealing a systematic vision-blind safety gap.</figcaption>
+  </figure>
+  <p class="mid-summary">EditSafetyBench (5,940 pairs, 11 risk categories) reveals that Gemini and GPT refuse 87% and 82% of text-unsafe requests but only 24% and 22% of image-unsafe inputs with neutral instructions. GPT allows 70.4% of edits involving unsafe political content. Sexual content shows the strongest visual sensitivity. The gap narrows on Qwen Local because its text-based refusals are themselves weaker.</p>
+</article>
+
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <div class="paper-rank">09</div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2611.25470">ToolPulse: Side-Channel Eavesdropping on Tool-Using LLM Agents</a></h3>
+  <div class="tags">
+    <span class="tag tag-security">Agent Security</span>
+    <span class="tag tag-security">Side Channel</span>
+  </div>
+  <div class="paper-meta">Zihao Dan, Jinyu Zhang, Jinzhao Lian, Yun Chen, Shinan Liu · arXiv preprint (cs.CR), 19 Nov 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="ToolPulse architecture: cache side-channel monitors local tool calls while LLM runs on remote vendor servers">
+      <rect width="440" height="170" fill="#fff"/>
+      <!-- Vendor server -->
+      <rect x="260" y="20" width="150" height="50" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1.5" stroke-dasharray="6,3"/>
+      <text x="335" y="40" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#888" font-weight="600">Vendor LLM</text>
+      <text x="335" y="56" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#aaa">(opaque, remote)</text>
+      <!-- User machine -->
+      <rect x="20" y="80" width="200" height="70" rx="4" fill="#dce8fc" stroke="#1a4f99" stroke-width="1.5"/>
+      <text x="120" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#1a4f99" font-weight="600">User Machine</text>
+      <text x="120" y="114" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">Tool calls → shared OS libs</text>
+      <text x="120" y="130" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#444">CPU cache activity</text>
+      <!-- Attacker -->
+      <rect x="260" y="90" width="150" height="50" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="335" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#b02020" font-weight="600">Attacker</text>
+      <text x="335" y="126" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">Flush+Reload monitor</text>
+      <!-- Arrow: LLM → tool calls -->
+      <line x1="260" y1="45" x2="225" y2="90" stroke="#888" stroke-width="1.5" marker-end="url(#arr8)"/>
+      <defs><marker id="arr8" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#888"/></marker></defs>
+      <text x="235" y="70" font-family="system-ui,sans-serif" font-size="9" fill="#888">instructions</text>
+      <!-- Arrow: cache → attacker -->
+      <line x1="220" y1="115" x2="260" y2="115" stroke="#b02020" stroke-width="1.5" marker-end="url(#arr9)"/>
+      <defs><marker id="arr9" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#b02020"/></marker></defs>
+      <text x="240" y="109" font-family="system-ui,sans-serif" font-size="9" fill="#b02020">cache signal</text>
+      <!-- Result -->
+      <text x="220" y="160" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">Tool Recovery F1 ≥93% · noisy multi-user server · 11 LLMs tested</text>
+    </svg>
+    <figcaption>Figure 1: ToolPulse attack — CPU cache side-channel on shared libraries used by local tool calls leaks the agent's workflow even when the LLM runs on opaque vendor infrastructure.</figcaption>
+  </figure>
+  <p class="mid-summary">When LLM agents drive local tools (shell, file I/O), those tools call shared OS libraries whose memory accesses are observable via Flush+Reload cache side-channel. ToolPulse achieves ≥93% F1 on Tool Recovery (reconstructing the agent's tool-execution workflow) across 11 LLMs on a server shared by ~20 concurrent users. Additional attacks recover user intent (Task Profiling) and flag sensitive operations (Trigger Localization).</p>
+</article>
+
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <div class="paper-rank">10</div>
+  <h3 class="mid-title"><a href="https://arxiv.org/abs/2611.25086">Living off the Local Model: Abusing Browser-Embedded Language Models for Post-Exploitation</a></h3>
+  <div class="tags">
+    <span class="tag tag-security">LLM Security</span>
+    <span class="tag tag-security">Post-Exploit</span>
+  </div>
+  <div class="paper-meta">William Fleshman, Joseph Lucas · arXiv preprint (cs.CR), 18 Nov 2026</div>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" aria-label="Architecture of browser-embedded LLM post-exploitation: attacker script drives Gemini Nano via Chrome Prompt API">
+      <rect width="440" height="170" fill="#fff"/>
+      <!-- Attacker script (OS-native) -->
+      <rect x="20" y="30" width="120" height="50" rx="4" fill="#fde8e8" stroke="#b02020" stroke-width="1.5"/>
+      <text x="80" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#b02020" font-weight="600">Attacker Script</text>
+      <text x="80" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">OS-native interpreter</text>
+      <text x="80" y="78" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">(no install required)</text>
+      <!-- Chrome / Prompt API -->
+      <rect x="175" y="30" width="120" height="50" rx="4" fill="#f0ede8" stroke="#888" stroke-width="1.5"/>
+      <text x="235" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#444" font-weight="600">Chrome Prompt API</text>
+      <text x="235" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">Gemini Nano (on-device)</text>
+      <text x="235" y="78" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">vendor-signed, trusted</text>
+      <!-- Tasks box -->
+      <rect x="330" y="30" width="90" height="50" rx="4" fill="#d4f0de" stroke="#1a6e3c" stroke-width="1.5"/>
+      <text x="375" y="50" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#1a6e3c" font-weight="600">Capabilities</text>
+      <text x="375" y="64" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">credential ID</text>
+      <text x="375" y="76" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#888">image read / exfil</text>
+      <!-- Arrows -->
+      <line x1="140" y1="55" x2="175" y2="55" stroke="#b02020" stroke-width="1.5" marker-end="url(#arr10)"/>
+      <defs><marker id="arr10" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#b02020"/></marker></defs>
+      <line x1="295" y1="55" x2="330" y2="55" stroke="#888" stroke-width="1.5" marker-end="url(#arr11)"/>
+      <defs><marker id="arr11" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#888"/></marker></defs>
+      <!-- Demo -->
+      <rect x="20" y="110" width="400" height="45" rx="4" fill="#f0ede8"/>
+      <text x="220" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#444" font-weight="600">End-to-end demo (no user interaction, no attacker network traffic):</text>
+      <text x="220" y="144" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#888">webcam → password → decrypt archive → triage contents → stage private key for exfil</text>
+    </svg>
+    <figcaption>Figure 1: Attacker drives Gemini Nano (vendor-signed, locally trusted) via Chrome's Prompt API using an OS-native script; end-to-end exfiltration leaves no attacker-attributed network traffic.</figcaption>
+  </figure>
+  <p class="mid-summary">Chrome's on-device Gemini Nano can be driven from the host using only OS-bundled interpreters; the activation check is bypassable with a simulated click. The model successfully identified credentials, classified images, detected PII, and in a simulated operation read a webcam password, unlocked an encrypted archive, and staged a private key for exfiltration—all without user interaction and with no network traffic attributable to attacker infrastructure.</p>
+</article>
+
+</div>
+{% endraw %}
