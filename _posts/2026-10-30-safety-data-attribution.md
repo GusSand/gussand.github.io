@@ -18,6 +18,7 @@ hook: |
 image: "/images/data-attribution/fig1-what-has-been-tested.svg"
 image_caption: "Data attribution papers on safety behaviors, by training stage and by how they were checked."
 reading_time: 13
+canary: true
 ---
 
 [Xiao and Aranguri](https://arxiv.org/abs/2602.11079) found this failure in OLMo 2, Ai2's open model, and call it distractor-triggered compliance. It raises a concrete question: which training examples taught the model to do that?

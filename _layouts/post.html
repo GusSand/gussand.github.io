@@ -23,6 +23,8 @@ layout: default
     {{ content }}
   </div>
 
+  {% if page.canary %}{% include reader-canary.html %}{% endif %}
+
   {% if site.comments.provider and page.comments != false %}
     <hr>
     <h2 id="questions">Questions & Comments</h2>
