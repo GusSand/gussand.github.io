@@ -1,0 +1,534 @@
+---
+layout: "radar"
+title: "Research Radar — 2026-11-28"
+kind: "daily"
+slug: "2026-11-28"
+date: 2026-11-28
+group: "latest"
+window: "2026-11-26 to 2026-11-28"
+summary: "Window: 2026-11-26 to 2026-11-28 · Sources swept: OpenReview, ACL Anthology, TMLR, arXiv (cs.CL/cs.LG/cs.CR/cs.AI), LessWrong/Alignment Forum, lab blogs · Counts: 3 peer-reviewed · 7 preprints · 0 forum/blog"
+source_url: "https://github.com/GusSand/research-radar/blob/claude/radar/reports/daily/2026-11-28.md"
+styled: true
+excerpt_separator: ""
+---
+
+{% raw %}
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #f0ede8;
+  --border: #ddd;
+  --text: #3a3a3a;
+  --dim: #888;
+  --title: #1a1a1a;
+  --link: #1a4f99;
+  --tag-bg: #e8e8e8;
+  --tag-text: #444;
+  --accent-teal: #0d7377;
+  --accent-blue: #1a4f99;
+  --accent-red: #b02020;
+  --accent-amber: #a05c00;
+  --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c;
+  --theme-band: #e8f4e8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #c9c9c9;
+    --dim: #666;
+    --title: #f0f0f0;
+    --link: #7eb8ff;
+    --fig-bg: #1e1e1e;
+    --fig-border: #333;
+    --tag-bg: #252525;
+    --tag-text: #aaa;
+    --accent-teal: #14b8bd;
+    --accent-blue: #7eb8ff;
+    --accent-red: #f07070;
+    --accent-amber: #f0a030;
+    --accent-violet: #c084fc;
+    --accent-green: #4ade80;
+    --theme-band: #1a2a1a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1a1a1a; --border: #2a2a2a; --text: #c9c9c9;
+  --dim: #666; --title: #f0f0f0; --link: #7eb8ff; --tag-bg: #252525;
+  --tag-text: #aaa; --accent-teal: #14b8bd; --accent-blue: #7eb8ff;
+  --accent-red: #f07070; --accent-amber: #f0a030; --accent-violet: #c084fc;
+  --accent-green: #4ade80; --theme-band: #1a2a1a;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f7; --surface: #f0ede8; --border: #ddd; --text: #3a3a3a;
+  --dim: #888; --title: #1a1a1a; --link: #1a4f99; --tag-bg: #e8e8e8;
+  --tag-text: #444; --accent-teal: #0d7377; --accent-blue: #1a4f99;
+  --accent-red: #b02020; --accent-amber: #a05c00; --accent-violet: #5c1aaa;
+  --accent-green: #1a6e3c; --theme-band: #e8f4e8;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.65;
+  padding: 0 16px 60px;
+}
+a { color: var(--link); }
+.masthead {
+  max-width: 760px; margin: 0 auto; padding: 36px 0 28px;
+  border-bottom: 2px solid var(--border);
+}
+.masthead-eyebrow {
+  font-family: -apple-system, sans-serif; font-size: 11px;
+  letter-spacing: .14em; color: var(--dim); text-transform: uppercase;
+}
+.masthead-issue {
+  font-size: 26px; font-weight: bold; color: var(--title); margin: 6px 0 4px;
+}
+.masthead-counts { font-size: 14px; color: var(--dim); margin-bottom: 10px; }
+.masthead-tracks { display: flex; gap: 8px; flex-wrap: wrap; }
+.track {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 3px 10px; border-radius: 3px;
+  font-family: -apple-system, sans-serif; font-size: 12px; color: var(--dim);
+}
+.track-sep { color: var(--border); line-height: 2.2; }
+.content { max-width: 760px; margin: 0 auto; padding-top: 32px; }
+.section-label {
+  font-family: -apple-system, sans-serif; font-size: 11px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--dim);
+  margin: 48px 0 24px; border-top: 1px solid var(--border); padding-top: 16px;
+}
+.paper {
+  margin-bottom: 56px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.paper-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.paper-rank {
+  font-family: -apple-system, sans-serif; font-size: 22px; font-weight: 700;
+  color: var(--dim); min-width: 36px;
+}
+.paper-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-family: -apple-system, sans-serif; font-size: 11px;
+  background: var(--tag-bg); color: var(--tag-text);
+  padding: 2px 8px; border-radius: 3px; white-space: nowrap;
+}
+.tag-peer   { background: #e6f4ec; color: var(--accent-green); }
+.tag-interp { background: #e0f5f5; color: var(--accent-teal); }
+.tag-security { background: #fdecea; color: var(--accent-red); }
+.tag-align  { background: #e8edf8; color: var(--accent-blue); }
+.tag-control { background: #f0eaff; color: var(--accent-violet); }
+.tag-rank   { background: #fff3e0; color: var(--accent-amber); }
+.paper-title {
+  font-family: Georgia, serif; font-size: 22px; font-weight: bold;
+  line-height: 1.3; margin-bottom: 12px;
+  text-decoration: underline; text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.paper-title a { color: var(--title); text-decoration: inherit; }
+.paper-title a:hover { color: var(--link); }
+.paper-hook { font-size: 15px; color: var(--text); line-height: 1.7; margin-bottom: 16px; }
+.paper-figure { margin: 20px 0; }
+.paper-figure img { width: 100%; max-width: 500px; display: block; margin: 0 auto; border-radius: 2px; background: #fff; }
+.paper-figure figcaption {
+  font-family: -apple-system, sans-serif; font-size: 12px; color: var(--dim);
+  margin-top: 8px; text-align: center; max-width: 500px; margin-left: auto; margin-right: auto;
+}
+.paper-detail { font-size: 14px; color: var(--text); line-height: 1.7; }
+/* mid-tier */
+.more-section-label {
+  font-family: -apple-system, sans-serif; font-size: 12px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--dim);
+  border-top: 2px solid var(--border); padding-top: 14px; margin: 48px 0 24px;
+}
+.mid-paper { margin-bottom: 44px; }
+.mid-title {
+  font-family: Georgia, serif; font-size: 18px; font-weight: bold;
+  line-height: 1.3; margin-bottom: 14px;
+  text-decoration: underline; text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.mid-title a { color: var(--title); text-decoration: inherit; }
+.mid-title a:hover { color: var(--link); }
+.mid-figure img { max-width: 440px; }
+.mid-summary { font-size: 14px; color: var(--text); line-height: 1.65; margin-top: 14px; }
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+</style>
+
+
+<header class="masthead">
+  <div class="masthead-eyebrow">RESEARCH RADAR</div>
+  <div class="masthead-issue">Daily · November 28, 2026</div>
+  <div class="masthead-counts">3 peer-reviewed · 7 preprints · 0 forum/blog</div>
+  <div class="masthead-tracks">
+    <span class="track">AI Safety</span>
+    <span class="track-sep">·</span>
+    <span class="track">Alignment</span>
+    <span class="track-sep">·</span>
+    <span class="track">Mech Interp</span>
+  </div>
+</header>
+
+<div class="content">
+
+<!-- ============================================================ -->
+<!-- PAPER 01 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">01</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-interp">activation steering</span>
+      <span class="tag">preprint · EACL 2027 submitted</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.33640">Sparse-to-Sparse Feature Learning for Cross-Layer Analysis and Steering</a>
+  </h2>
+  <p class="paper-hook">
+    Linking SAE features across consecutive layers via a sparse-to-sparse (S2S) objective creates a causal chain through the residual stream, making cross-layer steering interventions more accurate and interpretable than matching baselines.
+  </p>
+  <figure class="paper-figure">
+    <img src="https://arxiv.org/html/2611.33640v1/method.png" alt="Figure 1: S2S backward-chaining training procedure" style="width:100%;max-width:500px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: S2S trains SAEs sequentially from output to input; each layer's sparse features are trained to predict those of the next layer, anchored by an output-distribution loss. This backward chain ensures cross-layer feature correspondence supports causal steering.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    <strong>Masahiro Kaneko, Ayana Niwa, Timothy Baldwin.</strong> The authors introduce Sparse-to-Sparse (S2S) feature learning, which trains SAEs so that sparse features at each intermediate layer predict those of the next layer, anchored at the final layer by an output-distribution loss; training proceeds sequentially from the output layer backward. Evaluated across eight language models, S2S produces significantly stronger cross-layer feature correspondence than unlinked SAE baselines matched for output-distribution shift. Causal ablation isolates the steering effect to the sparse pathway. The result enables more principled decomposition of multi-layer computations and more controllable activation-steering interventions.
+  </p>
+</article>
+
+<!-- ============================================================ -->
+<!-- PAPER 02 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">02</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-peer">FLLM 2026</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.33525">Deletion You Can Check: Auditing LLM Unlearning</a>
+  </h2>
+  <p class="paper-hook">
+    A membership-inference score near chance is not evidence that a model has forgotten: on BookMIA, exact retraining lands at AUC 0.122, not 0.5, exposing the population mismatch that makes most unlearning audits vacuous.
+  </p>
+  <figure class="paper-figure">
+    <img src="https://arxiv.org/html/2611.33525v1/fig3_conjunctive.png" alt="Figure 3: Reference-gated conjunctive audit framework" style="width:100%;max-width:500px;display:block;margin:0 auto;">
+    <figcaption>Figure 3: The reference-gated audit framework: exact retraining defines what "forgot" means empirically; a near-chance MIA score is only meaningful once this reference is calibrated to the deletion population.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    <strong>Mayank Gulati, Gerhard Wunder.</strong> A controlled 2×2 study across ArxivMIA and BookMIA with Llama-3.2-1B and Qwen2.5-1.5B uses exact retraining as the gold reference for each unlearning method (GA+GD, NPO-RT, SCRUB). On BookMIA/Qwen, exact retraining reaches ROC-AUC 0.122, failing the standard near-chance criterion; a post-hoc diagnostic replacing mislabeled records shifts the reference to 0.523, revealing a population mismatch in the benchmark. On ArxivMIA/Llama, none of the three methods passes the joint audit criteria. Core finding: a near-chance MIA score is not evidence of deletion until a calibrated reference establishes what chance means.
+  </p>
+</article>
+
+<!-- ============================================================ -->
+<!-- PAPER 03 -->
+<!-- ============================================================ -->
+<article class="paper">
+  <header class="paper-header">
+    <div class="paper-rank">03</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI safety</span>
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h2 class="paper-title">
+    <a href="https://arxiv.org/abs/2611.33515">Evaluation and Restoration of Safety in Reasoning-Tuned LLMs</a>
+  </h2>
+  <p class="paper-hook">
+    Across every model family tested, reasoning optimization reliably raised the unsafe response rate — and ESPG, a gradient-free guardrail method, restores safety without GPU memory overhead beyond inference.
+  </p>
+  <figure class="paper-figure">
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" aria-label="Unsafe rate increases with reasoning optimization, restored by ESPG across model families">
+      <rect width="500" height="240" fill="#fff"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#222" font-weight="bold">Unsafe Rate by Training Stage (schematic)</text>
+      <line x1="60" y1="40" x2="60" y2="185" stroke="#333" stroke-width="1.5"/>
+      <line x1="60" y1="185" x2="470" y2="185" stroke="#333" stroke-width="1.5"/>
+      <text x="55" y="188" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#555">0%</text>
+      <text x="55" y="153" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#555">10%</text>
+      <text x="55" y="118" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#555">20%</text>
+      <text x="55" y="83" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#555">30%</text>
+      <text x="55" y="48" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#555">40%</text>
+      <line x1="60" y1="150" x2="470" y2="150" stroke="#ddd" stroke-width="0.5" stroke-dasharray="4,4"/>
+      <line x1="60" y1="115" x2="470" y2="115" stroke="#ddd" stroke-width="0.5" stroke-dasharray="4,4"/>
+      <line x1="60" y1="80" x2="470" y2="80" stroke="#ddd" stroke-width="0.5" stroke-dasharray="4,4"/>
+      <rect x="75"  y="157" width="25" height="28" fill="#4a7ec9"/>
+      <rect x="103" y="87"  width="25" height="98" fill="#c94a4a"/>
+      <rect x="131" y="150" width="25" height="35" fill="#2eaa5c"/>
+      <text x="115" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#444">Model A</text>
+      <rect x="195" y="164" width="25" height="21" fill="#4a7ec9"/>
+      <rect x="223" y="73"  width="25" height="112" fill="#c94a4a"/>
+      <rect x="251" y="153" width="25" height="32" fill="#2eaa5c"/>
+      <text x="235" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#444">Model B</text>
+      <rect x="315" y="150" width="25" height="35" fill="#4a7ec9"/>
+      <rect x="343" y="97"  width="25" height="88" fill="#c94a4a"/>
+      <rect x="371" y="147" width="25" height="38" fill="#2eaa5c"/>
+      <text x="355" y="202" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#444">Model C</text>
+      <rect x="80"  y="215" width="12" height="10" fill="#4a7ec9"/>
+      <text x="95"  y="224" font-family="Georgia, serif" font-size="10" fill="#333">Base</text>
+      <rect x="145" y="215" width="12" height="10" fill="#c94a4a"/>
+      <text x="160" y="224" font-family="Georgia, serif" font-size="10" fill="#333">Reasoning-tuned (↑ unsafe)</text>
+      <rect x="335" y="215" width="12" height="10" fill="#2eaa5c"/>
+      <text x="350" y="224" font-family="Georgia, serif" font-size="10" fill="#333">+ESPG (restored)</text>
+    </svg>
+    <figcaption>Figure 1 (schematic): Unsafe rate rises for all model families after reasoning fine-tuning; ESPG (evolution strategies + post-training guardrail) restores safety to near-baseline with minimal inference overhead.</figcaption>
+  </figure>
+  <p class="paper-detail">
+    <strong>Ehsan Latif, Roberto Dailey, Risto Miikkulainen, Elliot Meyerson.</strong> The unsafe response rate increased in every model family evaluated after reasoning fine-tuning. ESPG (evolution strategies with a post-training guardrail) is a gradient-free corrective that requires no GPU memory beyond inference and trains on very few samples. Safety restoration is described as "significant" across the tested families. The result adds to growing evidence that chain-of-thought and reasoning-RL training create a safety-capability trade-off requiring deliberate mitigation.
+  </p>
+</article>
+
+<!-- ============================================================ -->
+<!-- Items 4–10 -->
+<!-- ============================================================ -->
+<div class="more-section-label">Items 4–10 · Also notable</div>
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">04</div>
+    <div class="paper-meta">
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag tag-peer">NeurReps @ NeurIPS 2026</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.33182">Neighbor Crowding Predicts Feature Stability in Sparse Autoencoders</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2611.33182v1/stability_by_token_count.png" alt="Figure 1: SAE feature stability by token count, broken down by neighbor crowding regime" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: Stability fraction by training-token budget; features in crowded (dense) sphere regions achieve high stability earlier, confirming neighbor crowding as the leading single-run predictor.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    <strong>Denis Federico Lim, Naveen Dasari, George Flint, Kevin Zhu.</strong> Six single-run statistics are tested as predictors of cross-seed SAE feature stability; neighbor crowding — the geometric density of features on the unit sphere — is the strongest predictor. Features in dense sphere regions are substantially more stable across random initializations. Result: a single SAE run is sufficient to flag unreliable features, dramatically reducing the cost of feature-quality assessment for practitioners.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">05</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag tag-interp">mech-interp</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.33302">Two Timescales of Forgetting in Fine-tuning of Language Models</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Two timescales: surface behavior drops fast, internal representations erode slowly">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#222" font-weight="bold">Two Timescales of Forgetting During Fine-tuning</text>
+      <line x1="60" y1="40" x2="60" y2="185" stroke="#333" stroke-width="1.5"/>
+      <line x1="60" y1="185" x2="460" y2="185" stroke="#333" stroke-width="1.5"/>
+      <text x="55" y="188" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#555">0</text>
+      <text x="55" y="45" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#555">1</text>
+      <text x="257" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#444">Fine-tuning steps</text>
+      <polyline points="60,55 90,78 120,110 150,145 180,163 220,172 280,175 360,177 460,178" fill="none" stroke="#c94a4a" stroke-width="2.5"/>
+      <polyline points="60,55 90,52 120,54 150,56 180,62 220,78 280,110 360,145 460,165" fill="none" stroke="#4a7ec9" stroke-width="2.5"/>
+      <line x1="180" y1="40" x2="180" y2="185" stroke="#888" stroke-width="1" stroke-dasharray="5,4"/>
+      <text x="183" y="58" font-family="Georgia, serif" font-size="10" fill="#888">fast phase</text>
+      <line x1="70" y1="207" x2="95" y2="207" stroke="#c94a4a" stroke-width="2.5"/>
+      <text x="98" y="211" font-family="Georgia, serif" font-size="10" fill="#333">Surface behavior (fast)</text>
+      <line x1="280" y1="207" x2="305" y2="207" stroke="#4a7ec9" stroke-width="2.5"/>
+      <text x="308" y="211" font-family="Georgia, serif" font-size="10" fill="#333">Internal repr. (slow)</text>
+    </svg>
+    <figcaption>Figure 1 (schematic): Behavior is suppressed quickly (fast timescale ∝ token-latent correlation); internal representations of deleted rules persist long after via slow parameter drift.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    <strong>Yilin Luo, Jin Hwa Lee, Andrew M. Saxe, Antonio Sclocchi.</strong> Using the Random Hierarchy Model (a controlled CFG), fine-tuning on a restricted rule subset reveals two timescales: surface behavior stops quickly (fast timescale, inversely proportional to token-latent correlation magnitude), while internal representations of the deleted rules persist via slow parameter drift. The pattern replicates in natural language. For safety alignment: a model that stops producing unsafe outputs under fine-tuning may still harbor the latent representations needed to do so.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">06</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">reward hacking</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.34363">Single-Database Rewards Are Hackable: Counterfactual Execution for Trustworthy Text-to-SQL RL</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg" aria-label="Counterfactual-DB reward cuts reward hacks from 54.1% to 1.9%">
+      <rect width="500" height="190" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#222" font-weight="bold">Single-DB (hackable) vs. Counterfactual-DB Reward</text>
+      <rect x="15" y="35" width="195" height="110" rx="6" fill="#fff3f3" stroke="#c94a4a" stroke-width="1.5"/>
+      <text x="112" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#c94a4a" font-weight="bold">Single-DB</text>
+      <text x="112" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#444">RL agent → SQL → DB₁</text>
+      <text x="112" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#c94a4a">result = ref → Reward!</text>
+      <text x="112" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#c94a4a" font-weight="bold">Hack rate: 54.1%</text>
+      <text x="112" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#888">(wrong query, lucky match)</text>
+      <line x1="210" y1="90" x2="285" y2="90" stroke="#888" stroke-width="1.5" marker-end="url(#arrH)"/>
+      <text x="248" y="84" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#666">fix</text>
+      <defs>
+        <marker id="arrH" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#888"/></marker>
+      </defs>
+      <rect x="285" y="35" width="200" height="110" rx="6" fill="#f0fff4" stroke="#2eaa5c" stroke-width="1.5"/>
+      <text x="385" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#2eaa5c" font-weight="bold">Counterfactual-DB</text>
+      <text x="385" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#444">SQL → DB₁ + DB₂… (synth.)</text>
+      <text x="385" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#2eaa5c">all match → Reward</text>
+      <text x="385" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#2eaa5c" font-weight="bold">Hack rate: 1.9%</text>
+      <text x="385" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#888">0 false neg. on 2,847 correct</text>
+      <text x="250" y="168" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#444">Spider: mean CF +1.6 pts  ·  3.35B model, 3 seeds</text>
+    </svg>
+    <figcaption>Figure 1 (schematic): Counterfactual copies of the database expose structurally buggy queries that pass by luck on the original, cutting reward hacks from 54.1% to 1.9% with zero false negatives on correct queries.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    <strong>Shreshth Rai, Rishii Kumar Singh, Aksh Aggarwal.</strong> The strict counterfactual-database (CF) reward runs each SQL query on a small set of program-synthesized database variants; it pays only when every variant matches the reference. On 1,302 synthetic audit queries, this cut reward hacks from 54.1% to 1.9%; zero correct queries were rejected. On Spider with a 3.35B model, the mean form gained 1.6 points. The authors also show single-seed RL comparisons can reverse sign — a caution for under-replicated benchmarks.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">07</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag">hardware attack</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.33370">RegionAlign: Manipulating Parameter Layouts for Localized Fault Injection on LLMs and VLMs</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2611.33370v1/Attack_overview2.png" alt="Figure 1: RegionAlign attack overview — bit-sensitivity search + channel permutation" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 1: The malicious provider runs a bit-sensitivity search, then permutes channels to co-locate vulnerable bits in one memory region — without changing any weight values or clean performance.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    <strong>Xiaomeng Wang, Peter Horvath, Zhengyu Zhao, Martha Larson, Zhuoran Liu, Lejla Batina.</strong> A supply-chain attacker applies channel permutations to concentrate fault-vulnerable bits in a contiguous memory region without altering weight values or clean accuracy; physical EMFI experiments confirm bit corruption is achievable. Under matched fault budgets, RegionAlign-rearranged models degrade significantly more than originals. The attack is undetectable from weight inspection alone.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">08</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">preference optimization</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.34275">LatentCP-DPO: Conformal Pessimism for DPO with Finite-Sample Guarantees</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <img src="https://arxiv.org/html/2611.34275v1/exp_1.png" alt="Figure 3: LatentCP-DPO empirical validation on finite preference datasets" style="width:100%;max-width:440px;display:block;margin:0 auto;">
+    <figcaption>Figure 3: Empirical validation; finite-sample marginal coverage is confirmed and conformal pessimism term tightens with unlabeled optimization sample size.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    <strong>Hongwei Xu, Jingyi Liu, Vincent Y. F. Tan, Zai Yang, Yulian Wu.</strong> LatentCP-DPO wraps DPO in conformal uncertainty sets over latent reward parameters, training the policy against the worst-case expected preference log-likelihood over those sets. For both Bradley-Terry and Plackett-Luce feedback, finite-sample marginal coverage holds under exchangeability; derived suboptimality bounds decompose into approximation, conformal uncertainty, and estimation error terms, giving preference optimization a certified robustness statement for small-data regimes.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">09</div>
+    <div class="paper-meta">
+      <span class="tag tag-align">alignment</span>
+      <span class="tag">deception</span>
+      <span class="tag">preprint</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.33747">Tells of a Lying Machine: Analyzing LLM-Generated Strategic Dialogue in Chinese Werewolf</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-label="Wolf vs villager linguistic feature effect sizes in Werewolf">
+      <rect width="500" height="220" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#222" font-weight="bold">Wolf vs. Villager Linguistic Features (5,404 utterances)</text>
+      <line x1="90" y1="38" x2="90" y2="175" stroke="#333" stroke-width="1.5"/>
+      <line x1="90" y1="175" x2="460" y2="175" stroke="#333" stroke-width="1.5"/>
+      <text x="85" y="178" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#555">0</text>
+      <text x="85" y="118" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#555">0.08</text>
+      <text x="85" y="58"  text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#555">0.15</text>
+      <line x1="90" y1="118" x2="460" y2="118" stroke="#eee" stroke-width="0.5" stroke-dasharray="4,3"/>
+      <line x1="90" y1="58"  x2="460" y2="58"  stroke="#eee" stroke-width="0.5" stroke-dasharray="4,3"/>
+      <rect x="130" y="117" width="50" height="58" fill="#4a7ec9"/>
+      <text x="155" y="109" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#4a7ec9">+0.074</text>
+      <rect x="225" y="119" width="50" height="56" fill="#6a8ec9"/>
+      <text x="250" y="111" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#6a8ec9">+0.072</text>
+      <rect x="320" y="62" width="50" height="113" fill="#c94a4a"/>
+      <text x="345" y="54" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#c94a4a">r=.145</text>
+      <text x="155" y="195" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#444">Certainty</text>
+      <text x="250" y="195" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#444">Uncertainty</text>
+      <text x="345" y="195" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#444">Emot. Intens.</text>
+      <text x="250" y="212" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#888">LLM judge accuracy: 60.8–70.2%  ·  generation probe: certainty +0.164</text>
+    </svg>
+    <figcaption>Figure 1 (schematic): Effect sizes of three linguistic dimensions in wolf vs. villager utterances; emotional intensification (r=.145) is the largest signal, but its reliance on a single degree marker limits robustness.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    <strong>Xian Cui, Gan Yang, Dongqi Han, Han Zhu, Bo Zheng, Jianhui Zheng, Xiaoyong Li.</strong> Analysis of 5,404 utterances from 150 Chinese Werewolf games by 12 LLMs finds wolves score higher on certainty (+0.074), uncertainty (+0.072), and emotional intensification (r=.145). LLM judges reach only 60.8–70.2% accuracy; a generation probe confirms the effect is role-driven (not data selection): fixing speaking goal while changing identity raises certainty by +0.164. The authors flag single-marker reliance as a validity concern.
+  </p>
+</article>
+<hr class="section-divider">
+
+<article class="mid-paper">
+  <header class="paper-header">
+    <div class="paper-rank">10</div>
+    <div class="paper-meta">
+      <span class="tag tag-security">AI security</span>
+      <span class="tag tag-peer">ESORICS AD&amp;D 2026</span>
+    </div>
+  </header>
+  <h3 class="mid-title">
+    <a href="https://arxiv.org/abs/2611.34770">Make the Adversary Spend More: Stateful Deception as a Cost-Exchange Primitive for AI-Era Cyber Defense</a>
+  </h3>
+  <figure class="paper-figure mid-figure">
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" aria-label="Stateful deception architecture with per-adversary state isolation">
+      <rect width="500" height="200" fill="#fff"/>
+      <text x="250" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#222" font-weight="bold">Stateful Deception Cost-Exchange Architecture</text>
+      <rect x="15" y="40" width="90" height="50" rx="6" fill="#fff3f3" stroke="#c94a4a" stroke-width="1.5"/>
+      <text x="60" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#c94a4a" font-weight="bold">Attacker</text>
+      <text x="60" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#c94a4a">(isolated session)</text>
+      <line x1="105" y1="65" x2="135" y2="65" stroke="#888" stroke-width="1.5" marker-end="url(#arrS1)"/>
+      <rect x="135" y="40" width="110" height="50" rx="6" fill="#fff8e1" stroke="#a05c00" stroke-width="1.5"/>
+      <text x="190" y="61" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#a05c00" font-weight="bold">Continuity Est.</text>
+      <text x="190" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">(maps attacker → state)</text>
+      <line x1="245" y1="65" x2="275" y2="65" stroke="#888" stroke-width="1.5" marker-end="url(#arrS2)"/>
+      <rect x="275" y="40" width="90" height="50" rx="6" fill="#e8f4e8" stroke="#2eaa5c" stroke-width="1.5"/>
+      <text x="320" y="61" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#2eaa5c" font-weight="bold">Persistent State</text>
+      <text x="320" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">(per adversary)</text>
+      <line x1="365" y1="65" x2="395" y2="65" stroke="#888" stroke-width="1.5" marker-end="url(#arrS3)"/>
+      <rect x="395" y="40" width="90" height="50" rx="6" fill="#e8e8f8" stroke="#4a4ac9" stroke-width="1.5"/>
+      <text x="440" y="61" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#4a4ac9" font-weight="bold">LLM Renderer</text>
+      <text x="440" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">(explicit state only)</text>
+      <defs>
+        <marker id="arrS1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#888"/></marker>
+        <marker id="arrS2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#888"/></marker>
+        <marker id="arrS3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#888"/></marker>
+      </defs>
+      <rect x="15" y="108" width="470" height="36" rx="4" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/>
+      <text x="250" y="122" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-weight="bold">Cowrie SSH Honeypot (deterministic layer)</text>
+      <text x="250" y="136" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888">Routes commands → LLM only when needed · handles common commands locally</text>
+      <text x="250" y="162" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#222">Key result: 63% reduction in per-session defender cost (5 open-weight models)</text>
+      <text x="250" y="180" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">DER = mission-weighted attacker effort ÷ defender resources</text>
+    </svg>
+    <figcaption>Figure 1 (schematic): Each attacker maps to isolated persistent state via continuity estimation; LLM renderer sees only explicit state; Cowrie handles deterministic commands locally. Result: 63% reduction in per-session defender cost.</figcaption>
+  </figure>
+  <p class="mid-summary">
+    <strong>Alessandro Cantelli-Forti, Isabella Marasco, Hosam Alamleh, Giada Boschi, Michele Colajanni.</strong> An SSH honeypot pairs Cowrie with a local LLM; per-adversary persistent state isolates each recognized attacker's session so their view remains consistent without cross-session leakage. Deterministic-layer and prompt optimizations reduced per-session defender cost by approximately 63% across five open-weight models. The Deception Exchange Rate (DER) formalizes the asymmetric cost shift; attacker-side DER measurement is deferred to future work.
+  </p>
+</article>
+
+</div><!-- .content -->
+{% endraw %}
